@@ -32,9 +32,9 @@ FILE_ID_PATTERN: Final[re.Pattern[str]] = re.compile(r"(?:CH|ch|NP|np)\d{4}")
 class StudentForm:
     """用于存储单个角色形态结构化数据的类"""
     file_id: str
+    kivo_wiki_id: int
     name: str
     skin_name: str
-    kivo_wiki_id: int
     name_cn: str
     name_jp: str
     name_tw: str
@@ -107,7 +107,8 @@ class DataParser:
         - CH/NP 类统一使用大写
         - 其他类统一使用小写
         """
-        if file_id.upper().startswith(('CH', 'NP')):
+        # 检查是否以CH或NP开头，并且后面跟着4个数字
+        if re.match(r"^(CH|NP)\d{4}$", file_id, re.IGNORECASE):
             return file_id.upper()
         return file_id.lower()
 
@@ -122,7 +123,29 @@ class DataParser:
                 return self._normalize_file_id(match.group(0))
         return None
 
-    def _find_special_forms_from_gallery(self, gallery: list[dict]) -> dict[str, str]:
+    def _parse_skin_name_from_title(self, title: str) -> str | None:
+        """
+        从 gallery 的 title 中解析出皮肤名。
+        如果 title 代表一个特殊形态，则返回处理后的 skin_name (可能为空字符串)；
+        否则返回 None。
+        """
+        # 定义标识特殊形态的核心关键字
+        IDENTIFY_KEYWORDS: Final[tuple[str, ...]] = ("立绘", "差分")
+        # 定义需要从标题中移除的关键字，按长度降序排列以避免错误替换
+        CLEANUP_KEYWORDS: Final[tuple[str, ...]] = ("初始", "差分", "立绘", "脸部", "表情", "脸图", "-")
+
+        # 检查标题是否包含任何一个核心关键字
+        if not any(key in title for key in IDENTIFY_KEYWORDS):
+            return None
+
+        # 移除所有关键字以提取皮肤名
+        skin_name = title
+        for key in CLEANUP_KEYWORDS:
+            skin_name = skin_name.replace(key, "")
+        
+        return skin_name.strip()
+
+    def _find_special_forms_from_gallery(self, gallery: list[dict], base_skin_name: str = "") -> dict[str, str]:
         """
         次高优先级：从图库中提取特殊形态的 file_id 及其形态名称。
         主要针对 "领航服差分" 等未在 character_datas 中定义的形态。
@@ -130,14 +153,40 @@ class DataParser:
         special_forms = {}
         for gallery_item in gallery:
             title = gallery_item.get("title", "")
-            # 目标是寻找 character_datas 中未定义的特殊形态
-            if "差分" in title:
-                skin_name = title.replace("差分", "").strip()
+            # 使用辅助函数来判断和提取 skin_name
+            if (gallery_skin_name := self._parse_skin_name_from_title(title)) is not None:
                 for image_url in gallery_item.get("images", []):
+                    file_id_found: str | None = None
+                    # 优先匹配标准 file_id 格式 (如 CH0123, NP0456)
                     if match := FILE_ID_PATTERN.search(image_url):
                         # 使用 group(0) 获取完整匹配，然后标准化格式
-                        file_id = self._normalize_file_id(match.group(0))
-                        special_forms[file_id] = skin_name
+                        file_id_found = self._normalize_file_id(match.group(0))
+                    # 若无标准ID，则尝试从文件名提取非标准ID (如 shiroko_robber)
+                    else:
+                        filename = image_url.split('/')[-1]
+                        # 假定ID是文件名中 "_spr_" 之前的部分
+                        if '_spr_' in filename:
+                            potential_id = filename.split('_spr_', 1)[0]
+                            # 移除常见的 'J_' 区域前缀
+                            if potential_id.startswith('J_'):
+                                potential_id = potential_id.removeprefix('J_')
+
+                            # 简单的健全性检查，避免提取无效ID (如纯数字或过短的字符串)
+                            if len(potential_id) > 2 and not potential_id.isdigit():
+                                file_id_found = self._normalize_file_id(potential_id)
+                    
+                    if file_id_found:
+                        # 结合基础皮肤名和图库皮肤名
+                        if base_skin_name and gallery_skin_name:
+                            combined_skin_name = f"{base_skin_name},{gallery_skin_name}"
+                        elif base_skin_name:
+                            combined_skin_name = base_skin_name
+                        else:
+                            combined_skin_name = gallery_skin_name
+                            
+                        # 使用找到的第一个有效ID作为此形态的ID，然后处理下一个gallery item
+                        special_forms[file_id_found] = combined_skin_name
+                        break
         return special_forms
 
     def parse(self, json_data: dict, kivo_wiki_id: int) -> tuple[list[StudentForm], str | None]:
@@ -198,9 +247,9 @@ class DataParser:
 
             results.append(StudentForm(
                 file_id=file_id,
+                kivo_wiki_id=kivo_wiki_id,
                 name=name,
                 skin_name=skin_name,
-                kivo_wiki_id=kivo_wiki_id,
                 name_cn=name_cn,
                 name_jp=name_jp,
                 name_tw=name_tw,
@@ -210,14 +259,14 @@ class DataParser:
             processed_file_ids.add(file_id)
 
         # 2. 处理 gallery 中的特殊形态
-        special_forms = self._find_special_forms_from_gallery(data.get("gallery", []))
+        special_forms = self._find_special_forms_from_gallery(data.get("gallery", []), skin_cn_val or "")
         for file_id, skin_name in special_forms.items():
             if file_id not in processed_file_ids:
                 results.append(StudentForm(
                     file_id=file_id,
+                    kivo_wiki_id=kivo_wiki_id,
                     name=name,
                     skin_name=skin_name,
-                    kivo_wiki_id=kivo_wiki_id,
                     name_cn=name_cn,
                     name_jp=name_jp,
                     name_tw=name_tw,
@@ -226,8 +275,11 @@ class DataParser:
                 ))
                 processed_file_ids.add(file_id)
 
-        return results, None
+        # 在函数末尾增加检查：如果最终没有解析到任何数据，则返回具体原因
+        if not results:
+            return [], "未找到可解析的角色形态"
 
+        return results, None
 
 # --- 5. 文件输出模块 ---
 
