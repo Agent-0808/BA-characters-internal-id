@@ -104,13 +104,43 @@ class DataParser:
     def _normalize_file_id(self, file_id: str) -> str:
         """
         标准化文件ID格式：
+        - 移除 'J_' 前缀
+        - 移除 '_spr' 后缀
         - CH/NP 类统一使用大写
         - 其他类统一使用小写
         """
+        # 移除 'J_' 前缀
+        if file_id.startswith('J_'):
+            file_id = file_id.removeprefix('J_')
+            
+        # 移除 '_spr' 后缀
+        if file_id.endswith('_spr'):
+            file_id = file_id[:-4]  # 移除 "_spr"
+            
         # 检查是否以CH或NP开头，并且后面跟着4个数字
         if re.match(r"^(CH|NP)\d{4}$", file_id, re.IGNORECASE):
             return file_id.upper()
         return file_id.lower()
+    
+    def _is_valid_file_id(self, file_id: str) -> bool:
+        """
+        检查file_id是否有效
+        - 长度大于2
+        - 不是纯数字
+        """
+        return len(file_id) > 2 and not file_id.isdigit()
+
+    def _find_file_id_from_given_name_jp(self, given_name_jp: str | None) -> str | None:
+        """
+        从 given_name_jp 字段中提取 file_id。
+        """
+        if not given_name_jp:
+            return None
+            
+        # 直接使用_normalize_file_id处理，它会自动移除_spr后缀
+        normalized_id = self._normalize_file_id(given_name_jp)
+
+        return normalized_id
 
     def _find_file_id_from_voice(self, voices: list[dict]) -> str | None:
         """
@@ -167,14 +197,10 @@ class DataParser:
                         # 假定ID是文件名中 "_spr_" 之前的部分
                         if '_spr_' in filename:
                             potential_id = filename.split('_spr_', 1)[0]
-                            # 移除常见的 'J_' 区域前缀
-                            if potential_id.startswith('J_'):
-                                potential_id = potential_id.removeprefix('J_')
-
-                            # 简单的健全性检查，避免提取无效ID (如纯数字或过短的字符串)
-                            if len(potential_id) > 2 and not potential_id.isdigit():
+                            # 验证提取的ID是否有效
+                            if self._is_valid_file_id(potential_id):
                                 file_id_found = self._normalize_file_id(potential_id)
-                    
+
                     if file_id_found:
                         # 结合基础皮肤名和图库皮肤名
                         if base_skin_name and gallery_skin_name:
@@ -222,9 +248,16 @@ class DataParser:
         name_en = base_name_en  # 英文和韩文名保持不变
         name_kr = base_name_kr
 
-        # 1. 处理 character_datas 中的常规形态
+        # 1. 预先提取所有可能的 file_id 来源
         file_id_from_voice = self._find_file_id_from_voice(data.get("voice", []))
+        file_id_from_given_name_jp = None
+        
+        if given_name_jp := data.get("given_name_jp"):
+            # 仅当 given_name_jp 看起来像一个文件名时才处理
+            if given_name_jp.endswith("_spr"):
+                file_id_from_given_name_jp = self._find_file_id_from_given_name_jp(given_name_jp)
 
+        # 2. 处理 character_datas 中的常规形态
         for char_data in data.get("character_datas", []):
             file_id: str | None = None
             dev_name = char_data.get("dev_name")
@@ -234,10 +267,14 @@ class DataParser:
             # 优先级 1: 语音
             if file_id_from_voice:
                 file_id = file_id_from_voice
+            # 优先级 2: given_name_jp (处理_spr结尾的情况)
+            elif file_id_from_given_name_jp:
+                file_id = file_id_from_given_name_jp
+                logging.debug(f"ID {kivo_wiki_id}: 从given_name_jp提取file_id: '{data.get('given_name_jp')}' -> '{file_id}'")
             # 优先级 3: dev_name 作为后备
             else:
                 file_id = self._normalize_file_id(dev_name.removesuffix("_default"))
-                logging.debug(f"ID {kivo_wiki_id}: 未能从语音中找到 file_id, "
+                logging.debug(f"ID {kivo_wiki_id}: 未能从语音或given_name_jp中找到 file_id, "
                               f"回退'{dev_name}' -> '{file_id}'")
 
             if file_id in processed_file_ids:
@@ -258,7 +295,27 @@ class DataParser:
             ))
             processed_file_ids.add(file_id)
 
-        # 2. 处理 gallery 中的特殊形态
+        # 3. 后备方案：如果 character_datas 为空但我们有其他来源的 file_id
+        if not results:
+            # 优先使用语音，其次是 given_name_jp
+            fallback_file_id = file_id_from_voice or file_id_from_given_name_jp
+            if fallback_file_id and fallback_file_id not in processed_file_ids:
+                logging.debug(f"ID {kivo_wiki_id}: 使用后备 file_id '{fallback_file_id}'")
+                skin_name = skin_cn_val or ""
+                results.append(StudentForm(
+                    file_id=fallback_file_id,
+                    kivo_wiki_id=kivo_wiki_id,
+                    name=name,
+                    skin_name=skin_name,
+                    name_cn=name_cn,
+                    name_jp=name_jp,
+                    name_tw=name_tw,
+                    name_en=name_en,
+                    name_kr=name_kr
+                ))
+                processed_file_ids.add(fallback_file_id)
+
+        # 4. 处理 gallery 中的特殊形态
         special_forms = self._find_special_forms_from_gallery(data.get("gallery", []), skin_cn_val or "")
         for file_id, skin_name in special_forms.items():
             if file_id not in processed_file_ids:
@@ -267,7 +324,7 @@ class DataParser:
                     kivo_wiki_id=kivo_wiki_id,
                     name=name,
                     skin_name=skin_name,
-                    name_cn=name_cn,
+                    name_cn=name_cn, # 对于画廊形态，沿用基础名称
                     name_jp=name_jp,
                     name_tw=name_tw,
                     name_en=name_en,
