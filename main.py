@@ -10,7 +10,8 @@ import httpx
 
 # 可配置的常量
 API_BASE_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/students/{student_id}"
-STUDENT_ID_RANGE: Final[range] = range(1, 567)
+SPINE_API_BASE_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/spines/{spine_id}"
+STUDENT_ID_RANGE: Final[range] = range(170, 200)
 OUTPUT_FILENAME: Final[str] = "students_data.csv"
 SKIPPED_FILENAME: Final[str] = "skipped_ids.csv"
 MAX_CONCURRENT_REQUESTS: Final[int] = 5
@@ -53,8 +54,6 @@ class SkippedRecord:
     school: int | str
 
 
-# --- 3. API 请求模块 ---
-
 class APIClient:
     """负责处理所有网络请求的客户端"""
 
@@ -79,6 +78,26 @@ class APIClient:
             logging.error(f"处理 ID {student_id} 时发生未知错误: {e}")
             return None, f"未知错误: {e}"
 
+    async def fetch_spine_data(self, spine_id: int) -> dict[str, any] | None:
+        """根据 spine_id 获取 spine 数据"""
+        url = SPINE_API_BASE_URL.format(spine_id=spine_id)
+        try:
+            response = await self.client.get(url, timeout=10.0)
+            response.raise_for_status()
+            json_response = response.json()
+            # 确保返回的数据是有效的字典且包含 'data' 键
+            if isinstance(json_response, dict) and 'data' in json_response:
+                return json_response['data']
+            logging.warning(f"Spine ID {spine_id} 的响应格式无效: {json_response}")
+            return None
+        except httpx.RequestError as e:
+            # 将此处的日志级别从 error 改为 warning，因为部分 spine_id 请求失败是正常现象
+            logging.warning(f"请求 Spine ID {spine_id} 时网络错误: {e}")
+            return None
+        except Exception as e:
+            logging.error(f"处理 Spine ID {spine_id} 时发生未知错误: {e}")
+            return None
+
 
 # --- 4. 数据解析模块 ---
 
@@ -101,12 +120,14 @@ class DataParser:
             return "官方账号"
 
         # 规则2: 跳过没有spine动画数据的记录
-        if not data.get("spine"):
-            return "缺少'spine'数据"
+        # 注意：现在spine是主要信息源，即使顶层没有spine字段，也可能通过其他方式解析，故移除此规则
+        # if not data.get("spine"):
+        #     return "缺少'spine'数据"
 
         # 规则3: 检查 character_datas 字段是否存在且为列表
-        if not isinstance(data.get('character_datas'), list):
-            return "character_datas 格式无效"
+        # 放宽此规则，因为某些NPC可能没有 character_datas
+        # if not isinstance(data.get('character_datas'), list):
+        #     return "character_datas 格式无效"
 
         return None
 
@@ -168,16 +189,6 @@ class DataParser:
             if file_id := self._extract_file_id_from_url(skin.get("avatar")):
                 return file_id  # 返回找到的第一个
 
-        return None
-
-    def _find_file_id_from_voice(self, voices: list[dict]) -> str | None:
-        """
-        最高优先级：从语音数据的 description 字段提取 file_id。
-        """
-        for voice in voices:
-            description = voice.get("description", "")
-            if file_id := self._extract_file_id_from_url(description):
-                return file_id
         return None
 
     def _find_file_id_from_given_name_jp(self, given_name_jp: str | None) -> str | None:
@@ -264,7 +275,7 @@ class DataParser:
                         break
         return special_forms
 
-    def parse(self, json_data: dict, kivo_wiki_id: int) -> tuple[list[StudentForm], str | None]:
+    def parse(self, json_data: dict, kivo_wiki_id: int, spine_data: list[dict[str, any]]) -> tuple[list[StudentForm], str | None]:
         """
         解析单个JSON响应。
         返回 (StudentForm列表, None) 或 ([], 跳过原因)。
@@ -276,12 +287,6 @@ class DataParser:
         results: list[StudentForm] = []
         processed_file_ids: set[str] = set()
 
-        # 提取皮肤名称
-        # 'skin' 字段通常是中文的皮肤名，'skin_jp' 字段是日语皮肤名，作为后备
-        skin_cn_val = data.get("skin") or data.get("skin_cn")
-        skin_jp_val = data.get("skin_jp")
-        skin_tw_val = data.get("skin_zh_tw")
-
         # 提取并构建基础名称
         name = self._build_name(data.get("family_name"), data.get("given_name"))
         base_name_cn = self._build_name(data.get("family_name_cn"), data.get("given_name_cn"))
@@ -290,14 +295,53 @@ class DataParser:
         base_name_en = self._build_name(data.get("family_name_en"), data.get("given_name_en"))
         base_name_kr = self._build_name(data.get("family_name_kr"), data.get("given_name_kr"))
 
-        # 如果有皮肤名称，则附加到对应语言的名称后
-        name_cn = f"{base_name_cn} （{skin_cn_val}）" if base_name_cn and skin_cn_val else base_name_cn
-        name_jp = f"{base_name_jp} （{skin_jp_val}）" if base_name_jp and skin_jp_val else base_name_jp
-        name_tw = f"{base_name_tw} （{skin_tw_val}）" if base_name_tw and skin_tw_val else base_name_tw
-        name_en = base_name_en  # 英文和韩文名保持不变
-        name_kr = base_name_kr
+        # 1. 最高优先级：从 spine 数据提取
+        for spine_item in spine_data:
+            if not (spine_name_raw := spine_item.get("name")):
+                continue
+            # 过滤掉非角色形态的 spine，如 "Kayoko_home"
+            if "home" in spine_name_raw.lower():
+                continue
 
-        # 1. 预先提取所有可能的 file_id 来源
+            file_id = self._normalize_file_id(spine_name_raw)
+            if not file_id or file_id in processed_file_ids:
+                continue
+
+            remark = spine_item.get("remark", "")
+            # "初始立绘" 通常代表基础形态，其皮肤名应为空
+            skin_name = "" if remark == "初始立绘" else remark
+
+            # 根据每个形态独立的 skin_name 构建多语言名称
+            name_cn = f"{base_name_cn} （{skin_name}）" if base_name_cn and skin_name else base_name_cn
+            name_jp = f"{base_name_jp} （{skin_name}）" if base_name_jp and skin_name else base_name_jp
+            name_tw = f"{base_name_tw} （{skin_name}）" if base_name_tw and skin_name else base_name_tw
+
+            results.append(StudentForm(
+                file_id=file_id,
+                kivo_wiki_id=kivo_wiki_id,
+                name=name,
+                skin_name=skin_name,
+                name_cn=name_cn,
+                name_jp=name_jp,
+                name_tw=name_tw,
+                name_en=base_name_en,
+                name_kr=base_name_kr
+            ))
+            processed_file_ids.add(file_id)
+
+
+        # --- 2. 后备逻辑 ---
+        # 提取用于后备方案的皮肤名称
+        skin_cn_val = data.get("skin") or data.get("skin_cn")
+        skin_jp_val = data.get("skin_jp")
+        skin_tw_val = data.get("skin_zh_tw")
+
+        # 为后备方案统一构建名称
+        fallback_name_cn = f"{base_name_cn} （{skin_cn_val}）" if base_name_cn and skin_cn_val else base_name_cn
+        fallback_name_jp = f"{base_name_jp} （{skin_jp_val}）" if base_name_jp and skin_jp_val else base_name_jp
+        fallback_name_tw = f"{base_name_tw} （{skin_tw_val}）" if base_name_tw and skin_tw_val else base_name_tw
+
+        # 2a. 预先提取所有可能的 file_id 来源
         file_id_from_voice = self._find_file_id_from_voice(data.get("voice", []))
         file_id_from_avatar = self._find_file_id_from_avatar(data)
         file_id_from_given_name_jp = None
@@ -307,7 +351,7 @@ class DataParser:
             if given_name_jp.endswith("_spr"):
                 file_id_from_given_name_jp = self._find_file_id_from_given_name_jp(given_name_jp)
 
-        # 2. 处理 character_datas 中的常规形态
+        # 2b. 处理 character_datas 中的常规形态
         for char_data in data.get("character_datas", []):
             file_id: str | None = None
             dev_name = char_data.get("dev_name")
@@ -334,52 +378,44 @@ class DataParser:
             skin_name = skin_cn_val or ""
 
             results.append(StudentForm(
-                file_id=file_id,
-                kivo_wiki_id=kivo_wiki_id,
-                name=name,
-                skin_name=skin_name,
-                name_cn=name_cn,
-                name_jp=name_jp,
-                name_tw=name_tw,
-                name_en=name_en,
-                name_kr=name_kr
+                file_id=file_id, kivo_wiki_id=kivo_wiki_id, name=name,
+                skin_name=skin_name, name_cn=fallback_name_cn, name_jp=fallback_name_jp,
+                name_tw=fallback_name_tw, name_en=base_name_en, name_kr=base_name_kr
             ))
             processed_file_ids.add(file_id)
 
-        # 3. 后备方案：如果 character_datas 为空或未解析出结果
-        if not results:
-            # 优先级: voice > avatar > given_name_jp
+        # 2c. 后备方案：如果 character_datas 为空或未解析出结果
+        # 此处的 `results` 可能已包含来自 spine 的数据，因此检查 `processed_file_ids` 是否为空更准确
+        if not processed_file_ids:
             fallback_file_id = file_id_from_voice or file_id_from_avatar or file_id_from_given_name_jp
             if fallback_file_id and fallback_file_id not in processed_file_ids:
                 logging.debug(f"ID {kivo_wiki_id}: 使用后备 file_id '{fallback_file_id}'")
                 skin_name = skin_cn_val or ""
                 results.append(StudentForm(
-                    file_id=fallback_file_id,
+                    file_id=fallback_file_id, kivo_wiki_id=kivo_wiki_id, name=name,
+                    skin_name=skin_name, name_cn=fallback_name_cn, name_jp=fallback_name_jp,
+                    name_tw=fallback_name_tw, name_en=base_name_en, name_kr=base_name_kr
+                ))
+                processed_file_ids.add(fallback_file_id)
+
+        # 2d. 处理 gallery 中的特殊形态
+        special_forms = self._find_special_forms_from_gallery(data.get("gallery", []), skin_cn_val or "")
+        for file_id, skin_name in special_forms.items():
+            if file_id not in processed_file_ids:
+                # gallery 的 skin_name 是新解析的，需重新构建名称
+                name_cn = f"{base_name_cn} （{skin_name}）" if base_name_cn and skin_name else base_name_cn
+                name_jp = f"{base_name_jp} （{skin_name}）" if base_name_jp and skin_name else base_name_jp
+                name_tw = f"{base_name_tw} （{skin_name}）" if base_name_tw and skin_name else base_name_tw
+                results.append(StudentForm(
+                    file_id=file_id,
                     kivo_wiki_id=kivo_wiki_id,
                     name=name,
                     skin_name=skin_name,
                     name_cn=name_cn,
                     name_jp=name_jp,
                     name_tw=name_tw,
-                    name_en=name_en,
-                    name_kr=name_kr
-                ))
-                processed_file_ids.add(fallback_file_id)
-
-        # 4. 处理 gallery 中的特殊形态
-        special_forms = self._find_special_forms_from_gallery(data.get("gallery", []), skin_cn_val or "")
-        for file_id, skin_name in special_forms.items():
-            if file_id not in processed_file_ids:
-                results.append(StudentForm(
-                    file_id=file_id,
-                    kivo_wiki_id=kivo_wiki_id,
-                    name=name,
-                    skin_name=skin_name,
-                    name_cn=name_cn, # 对于画廊形态，沿用基础名称
-                    name_jp=name_jp,
-                    name_tw=name_tw,
-                    name_en=name_en,
-                    name_kr=name_kr
+                    name_en=base_name_en,
+                    name_kr=base_name_kr
                 ))
                 processed_file_ids.add(file_id)
 
@@ -477,6 +513,7 @@ async def process_student_id(
     """
     async with semaphore:
         json_data, fetch_reason = await client.fetch_student_data(student_id)
+        # 即使请求学生数据失败，也需要延迟，避免对API造成过大压力
         await asyncio.sleep(REQUEST_DELAY_SECONDS)
 
         if not json_data:
@@ -484,14 +521,18 @@ async def process_student_id(
             skipped = SkippedRecord(
                 student_id=student_id,
                 reason=fetch_reason or "未知网络原因",
-                name="",
-                name_jp="",
-                name_en="",
-                school=""
+                name="", name_jp="", name_en="", school=""
             )
             return student_id, [], skipped
 
-        forms, parse_reason = parser.parse(json_data, student_id)
+        # 获取 spine 数据
+        spine_ids = json_data.get("data", {}).get("spine", [])
+        spine_tasks = [client.fetch_spine_data(sid) for sid in spine_ids if isinstance(sid, int)]
+        spine_results_raw = await asyncio.gather(*spine_tasks)
+        spine_results = [r for r in spine_results_raw if r]
+
+        forms, parse_reason = parser.parse(json_data, student_id, spine_results)
+
         if not forms:
             # 如果解析失败或因规则被跳过，则从JSON数据中提取详细信息
             data = json_data.get("data", {})
