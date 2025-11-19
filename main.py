@@ -1,3 +1,4 @@
+# main.py
 import asyncio
 import csv
 import logging
@@ -11,10 +12,10 @@ import httpx
 # 可配置的常量
 API_BASE_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/students/{student_id}"
 SPINE_API_BASE_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/spines/{spine_id}"
-STUDENT_ID_RANGE: Final[range] = range(170, 200)
+STUDENT_ID_RANGE: Final[range] = range(1, 20)
 OUTPUT_FILENAME: Final[str] = "students_data.csv"
 SKIPPED_FILENAME: Final[str] = "skipped_ids.csv"
-MAX_CONCURRENT_REQUESTS: Final[int] = 5
+MAX_CONCURRENT_REQUESTS: Final[int] = 3
 REQUEST_DELAY_SECONDS: Final[float] = 2
 
 # 日志配置
@@ -34,6 +35,7 @@ class StudentForm:
     """用于存储单个角色形态结构化数据的类"""
     file_id: str
     kivo_wiki_id: int
+    spine_id: int | None
     name: str
     skin_name: str
     name_cn: str
@@ -46,12 +48,15 @@ class StudentForm:
 @dataclass
 class SkippedRecord:
     """用于存储跳过的ID及其原因的类"""
-    student_id: int
-    reason: str
-    name: str
-    name_jp: str
-    name_en: str
-    school: int | str
+    student_id: int = 0
+    spine_id: int | None = None
+    reason: str = ""
+    spine_name: str | None = None
+    spine_remark: str | None = None
+    name: str = ""
+    name_jp: str = ""
+    name_en: str = ""
+    school: int | str = ""
 
 
 class APIClient:
@@ -59,6 +64,10 @@ class APIClient:
 
     def __init__(self, client: httpx.AsyncClient):
         self.client = client
+
+        self.client.headers.update({
+            "User-Agent": "BA-characters-internal-id (https://github.com/Agent-0808/BA-characters-internal-id)"
+        })
 
     async def fetch_student_data(self, student_id: int) -> tuple[dict | None, str | None]:
         """
@@ -78,8 +87,8 @@ class APIClient:
             logging.error(f"处理 ID {student_id} 时发生未知错误: {e}")
             return None, f"未知错误: {e}"
 
-    async def fetch_spine_data(self, spine_id: int) -> dict[str, any] | None:
-        """根据 spine_id 获取 spine 数据"""
+    async def fetch_spine_data(self, spine_id: int) -> tuple[dict[str, any] | None, str | None]:
+        """根据 spine_id 获取 spine 数据。返回 (数据, None) 或 (None, 错误原因)"""
         url = SPINE_API_BASE_URL.format(spine_id=spine_id)
         try:
             response = await self.client.get(url, timeout=10.0)
@@ -87,47 +96,60 @@ class APIClient:
             json_response = response.json()
             # 确保返回的数据是有效的字典且包含 'data' 键
             if isinstance(json_response, dict) and 'data' in json_response:
-                return json_response['data']
+                return json_response['data'], None
             logging.warning(f"Spine ID {spine_id} 的响应格式无效: {json_response}")
-            return None
+            return None, "响应格式无效"
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == 404:
+                return None, "未找到 (404)"
+            return None, f"HTTP错误: {e.response.status_code}"
         except httpx.RequestError as e:
-            # 将此处的日志级别从 error 改为 warning，因为部分 spine_id 请求失败是正常现象
             logging.warning(f"请求 Spine ID {spine_id} 时网络错误: {e}")
-            return None
+            return None, f"网络错误: {e}"
         except Exception as e:
             logging.error(f"处理 Spine ID {spine_id} 时发生未知错误: {e}")
-            return None
-
+            return None, f"未知错误: {e}"
 
 # --- 4. 数据解析模块 ---
 
 class DataParser:
     """负责解析JSON数据并根据规则提取信息"""
 
-    def _validate_and_get_skip_reason(self, json_data: dict | None) -> str | None:
+    def _get_spine_skip_reason(self, spine_item: dict[str, any]) -> str | None:
+        """
+        检查单个 spine 数据，如果应跳过则返回原因，否则返回 None。
+        """
+        if not spine_item or not spine_item.get("name"):
+            return "缺少名称或数据无效"
+
+        # 只接受spr类型
+        if type := spine_item.get("type"):
+            if type != "spr":
+                return f"类型 ({type})"
+
+        # 跳过特定后缀的形态
+        SPINE_SUFFIXES_TO_SKIP: Final[list[str]] = ["_cn", "_steam", "_glitch_spr", "_cbt"]
+
+        for suffix in SPINE_SUFFIXES_TO_SKIP:
+            if spine_item.get("name").lower().endswith(suffix.lower()):
+                return f"后缀 ({suffix})"
+
+        return None
+
+    def _validate_and_get_skip_reason(self, char_data: dict | None) -> str | None:
         """
         对JSON数据进行预检查，如果应跳过则返回原因，否则返回None。
         """
-        if not json_data or 'data' not in json_data:
+        if not char_data or 'data' not in char_data:
             return "数据无效或缺少 'data' 键"
 
-        data = json_data['data']
+        data = char_data['data']
         if not data:
             return "键 'data' 的值为空"
 
         # 规则1: 跳过特定学校ID（例如官方账号）
         if data.get("school") == 30:
             return "官方账号"
-
-        # 规则2: 跳过没有spine动画数据的记录
-        # 注意：现在spine是主要信息源，即使顶层没有spine字段，也可能通过其他方式解析，故移除此规则
-        # if not data.get("spine"):
-        #     return "缺少'spine'数据"
-
-        # 规则3: 检查 character_datas 字段是否存在且为列表
-        # 放宽此规则，因为某些NPC可能没有 character_datas
-        # if not isinstance(data.get('character_datas'), list):
-        #     return "character_datas 格式无效"
 
         return None
 
@@ -178,16 +200,10 @@ class DataParser:
 
     def _find_file_id_from_avatar(self, data: dict) -> str | None:
         """
-        从顶层 avatar 或 skin_list 中的 avatar 字段提取 file_id。
+        从 avatar 字段提取 file_id。
         """
-        # 1. 检查顶层 avatar
         if file_id := self._extract_file_id_from_url(data.get("avatar")):
             return file_id
-
-        # 2. 检查 skin_list 中的 avatar
-        for skin in data.get("skin_list", []):
-            if file_id := self._extract_file_id_from_url(skin.get("avatar")):
-                return file_id  # 返回找到的第一个
 
         return None
 
@@ -275,19 +291,21 @@ class DataParser:
                         break
         return special_forms
 
-    def parse(self, json_data: dict, kivo_wiki_id: int, spine_data: list[dict[str, any]]) -> tuple[list[StudentForm], str | None]:
+    def parse(self, json_data: dict, kivo_wiki_id: int, spine_data: list[dict[str, any]]) -> tuple[
+        list[StudentForm], list[SkippedRecord], str | None]:
         """
         解析单个JSON响应。
-        返回 (StudentForm列表, None) 或 ([], 跳过原因)。
+        返回 (StudentForm列表, SkippedRecord列表, 学生级别的跳过原因 | None)。
         """
         if skip_reason := self._validate_and_get_skip_reason(json_data):
-            return [], skip_reason
+            return [], [], skip_reason
 
         data = json_data['data']
         results: list[StudentForm] = []
+        skipped_spines: list[SkippedRecord] = []
         processed_file_ids: set[str] = set()
 
-        # 提取并构建基础名称
+        # 提取基础信息
         name = self._build_name(data.get("family_name"), data.get("given_name"))
         base_name_cn = self._build_name(data.get("family_name_cn"), data.get("given_name_cn"))
         base_name_jp = self._build_name(data.get("family_name_jp"), data.get("given_name_jp"))
@@ -295,32 +313,66 @@ class DataParser:
         base_name_en = self._build_name(data.get("family_name_en"), data.get("given_name_en"))
         base_name_kr = self._build_name(data.get("family_name_kr"), data.get("given_name_kr"))
 
+        # 从学生主数据中提取各语言的基础皮肤名
+        base_skin_cn = data.get("skin") or data.get("skin_cn") or ""
+        base_skin_jp = data.get("skin_jp") or ""
+        base_skin_tw = data.get("skin_zh_tw") or ""
+
         # 1. 最高优先级：从 spine 数据提取
         for spine_item in spine_data:
-            if not (spine_name_raw := spine_item.get("name")):
-                continue
-            # 过滤掉非角色形态的 spine，如 "Kayoko_home"
-            if "home" in spine_name_raw.lower():
+            if skip_reason := self._get_spine_skip_reason(spine_item):
+                # 从 spine_item 中获取 spine_id, name 和 remark
+                spine_id = spine_item.get("id")
+                spine_name = spine_item.get("name")
+                spine_remark = spine_item.get("remark", "")
+                
+                skipped_spines.append(SkippedRecord(
+                    student_id=kivo_wiki_id,
+                    spine_id=spine_id,
+                    reason=skip_reason,
+                    spine_name=spine_name,
+                    spine_remark=spine_remark,
+                    name=name, 
+                    name_jp=base_name_jp, 
+                    name_en=base_name_en, 
+                    school=data.get("school", "")
+                ))
                 continue
 
+            # 经过滤，我们确信 spine_name_raw 存在
+            spine_name_raw = spine_item["name"]
             file_id = self._normalize_file_id(spine_name_raw)
             if not file_id or file_id in processed_file_ids:
                 continue
 
-            remark = spine_item.get("remark", "")
-            # "初始立绘" 通常代表基础形态，其皮肤名应为空
-            skin_name = "" if remark == "初始立绘" else remark
+            # 从 spine_item 中获取 spine_id 和 remark
+            spine_id = spine_item.get("id")
+            spine_remark = spine_item.get("remark", "")
 
-            # 根据每个形态独立的 skin_name 构建多语言名称
-            name_cn = f"{base_name_cn} （{skin_name}）" if base_name_cn and skin_name else base_name_cn
-            name_jp = f"{base_name_jp} （{skin_name}）" if base_name_jp and skin_name else base_name_jp
-            name_tw = f"{base_name_tw} （{skin_name}）" if base_name_tw and skin_name else base_name_tw
+            # 根据 remark 和基础皮肤名确定最终皮肤名
+            final_skin_cn = base_skin_cn
+            final_skin_jp = base_skin_jp
+            final_skin_tw = base_skin_tw
+
+            # 如果 remark 不是 "初始立绘"，则将其作为附加皮肤名
+            if spine_remark and spine_remark != "初始立绘":
+                # 如果已有基础皮肤名，则用逗号连接
+                final_skin_cn = f"{base_skin_cn},{spine_remark}" if base_skin_cn else spine_remark
+                # 对于日文和繁中，如果主数据中没有，则也使用 remark
+                final_skin_jp = f"{base_skin_jp},{spine_remark}" if base_skin_jp else spine_remark
+                final_skin_tw = f"{base_skin_tw},{spine_remark}" if base_skin_tw else spine_remark
+
+            # 根据最终皮肤名构建多语言名称
+            name_cn = f"{base_name_cn} （{final_skin_cn}）" if base_name_cn and final_skin_cn else base_name_cn
+            name_jp = f"{base_name_jp} （{final_skin_jp}）" if base_name_jp and final_skin_jp else base_name_jp
+            name_tw = f"{base_name_tw} （{final_skin_tw}）" if base_name_tw and final_skin_tw else base_name_tw
 
             results.append(StudentForm(
                 file_id=file_id,
                 kivo_wiki_id=kivo_wiki_id,
+                spine_id=spine_id,
                 name=name,
-                skin_name=skin_name,
+                skin_name=final_skin_cn,
                 name_cn=name_cn,
                 name_jp=name_jp,
                 name_tw=name_tw,
@@ -331,15 +383,10 @@ class DataParser:
 
 
         # --- 2. 后备逻辑 ---
-        # 提取用于后备方案的皮肤名称
-        skin_cn_val = data.get("skin") or data.get("skin_cn")
-        skin_jp_val = data.get("skin_jp")
-        skin_tw_val = data.get("skin_zh_tw")
-
         # 为后备方案统一构建名称
-        fallback_name_cn = f"{base_name_cn} （{skin_cn_val}）" if base_name_cn and skin_cn_val else base_name_cn
-        fallback_name_jp = f"{base_name_jp} （{skin_jp_val}）" if base_name_jp and skin_jp_val else base_name_jp
-        fallback_name_tw = f"{base_name_tw} （{skin_tw_val}）" if base_name_tw and skin_tw_val else base_name_tw
+        fallback_name_cn = f"{base_name_cn} （{base_skin_cn}）" if base_name_cn and base_skin_cn else base_name_cn
+        fallback_name_jp = f"{base_name_jp} （{base_skin_jp}）" if base_name_jp and base_skin_jp else base_name_jp
+        fallback_name_tw = f"{base_name_tw} （{base_skin_tw}）" if base_name_tw and base_skin_tw else base_name_tw
 
         # 2a. 预先提取所有可能的 file_id 来源
         file_id_from_voice = self._find_file_id_from_voice(data.get("voice", []))
@@ -375,31 +422,27 @@ class DataParser:
             if not file_id or file_id in processed_file_ids:
                 continue
 
-            skin_name = skin_cn_val or ""
-
             results.append(StudentForm(
-                file_id=file_id, kivo_wiki_id=kivo_wiki_id, name=name,
-                skin_name=skin_name, name_cn=fallback_name_cn, name_jp=fallback_name_jp,
+                file_id=file_id, kivo_wiki_id=kivo_wiki_id, spine_id=None, name=name,
+                skin_name=base_skin_cn, name_cn=fallback_name_cn, name_jp=fallback_name_jp,
                 name_tw=fallback_name_tw, name_en=base_name_en, name_kr=base_name_kr
             ))
             processed_file_ids.add(file_id)
 
         # 2c. 后备方案：如果 character_datas 为空或未解析出结果
-        # 此处的 `results` 可能已包含来自 spine 的数据，因此检查 `processed_file_ids` 是否为空更准确
         if not processed_file_ids:
             fallback_file_id = file_id_from_voice or file_id_from_avatar or file_id_from_given_name_jp
             if fallback_file_id and fallback_file_id not in processed_file_ids:
                 logging.debug(f"ID {kivo_wiki_id}: 使用后备 file_id '{fallback_file_id}'")
-                skin_name = skin_cn_val or ""
                 results.append(StudentForm(
-                    file_id=fallback_file_id, kivo_wiki_id=kivo_wiki_id, name=name,
-                    skin_name=skin_name, name_cn=fallback_name_cn, name_jp=fallback_name_jp,
+                    file_id=fallback_file_id, kivo_wiki_id=kivo_wiki_id, spine_id=None, name=name,
+                    skin_name=base_skin_cn, name_cn=fallback_name_cn, name_jp=fallback_name_jp,
                     name_tw=fallback_name_tw, name_en=base_name_en, name_kr=base_name_kr
                 ))
                 processed_file_ids.add(fallback_file_id)
 
         # 2d. 处理 gallery 中的特殊形态
-        special_forms = self._find_special_forms_from_gallery(data.get("gallery", []), skin_cn_val or "")
+        special_forms = self._find_special_forms_from_gallery(data.get("gallery", []), base_skin_cn)
         for file_id, skin_name in special_forms.items():
             if file_id not in processed_file_ids:
                 # gallery 的 skin_name 是新解析的，需重新构建名称
@@ -409,6 +452,7 @@ class DataParser:
                 results.append(StudentForm(
                     file_id=file_id,
                     kivo_wiki_id=kivo_wiki_id,
+                    spine_id=None,
                     name=name,
                     skin_name=skin_name,
                     name_cn=name_cn,
@@ -420,10 +464,10 @@ class DataParser:
                 processed_file_ids.add(file_id)
 
         # 在函数末尾增加检查：如果最终没有解析到任何数据，则返回具体原因
-        if not results:
-            return [], "未找到可解析的角色形态"
+        if not results and not skipped_spines:
+            return [], [], "未找到可解析的角色形态"
 
-        return results, None
+        return results, skipped_spines, None
 
 # --- 5. 文件输出模块 ---
 
@@ -506,12 +550,13 @@ async def process_student_id(
     client: APIClient,
     parser: DataParser,
     semaphore: asyncio.Semaphore
-) -> tuple[int, list[StudentForm], SkippedRecord | None]:
+) -> tuple[int, list[StudentForm], list[SkippedRecord]]:
     """
     获取、解析并处理单个学生ID的数据。
-    返回学生ID、处理结果的列表和一个可选的SkippedRecord对象。
+    返回学生ID、处理结果的列表和一个SkippedRecord列表。
     """
     async with semaphore:
+        all_skipped: list[SkippedRecord] = []
         json_data, fetch_reason = await client.fetch_student_data(student_id)
         # 即使请求学生数据失败，也需要延迟，避免对API造成过大压力
         await asyncio.sleep(REQUEST_DELAY_SECONDS)
@@ -520,21 +565,29 @@ async def process_student_id(
             # 在无法获取JSON数据时，创建一个包含基本信息的SkippedRecord
             skipped = SkippedRecord(
                 student_id=student_id,
+                spine_id=None,
                 reason=fetch_reason or "未知网络原因",
-                name="", name_jp="", name_en="", school=""
+                spine_name=None, 
+                spine_remark=None,
+                name="", 
+                name_jp="", 
+                name_en="", 
+                school=""
             )
-            return student_id, [], skipped
+            return student_id, [], [skipped]
 
         # 获取 spine 数据
         spine_ids = json_data.get("data", {}).get("spine", [])
         spine_tasks = [client.fetch_spine_data(sid) for sid in spine_ids if isinstance(sid, int)]
         spine_results_raw = await asyncio.gather(*spine_tasks)
-        spine_results = [r for r in spine_results_raw if r]
+        # 只提取成功获取的数据部分，忽略错误信息
+        spine_results = [data for data, error in spine_results_raw if data is not None]
 
-        forms, parse_reason = parser.parse(json_data, student_id, spine_results)
+        forms, skipped_spines, student_skip_reason = parser.parse(json_data, student_id, spine_results)
+        all_skipped.extend(skipped_spines)
 
-        if not forms:
-            # 如果解析失败或因规则被跳过，则从JSON数据中提取详细信息
+        if student_skip_reason:
+            # 如果整个学生因规则被跳过，则从JSON数据中提取详细信息
             data = json_data.get("data", {})
             name = parser._build_name(data.get("family_name"), data.get("given_name")) or data.get("given_name_cn", "")
             name_jp = parser._build_name(data.get("family_name_jp"), data.get("given_name_jp")) or ""
@@ -543,16 +596,18 @@ async def process_student_id(
 
             skipped = SkippedRecord(
                 student_id=student_id,
-                reason=parse_reason or "解析失败",
+                spine_id=None,
+                reason=student_skip_reason,
+                spine_name=None, 
+                spine_remark=None,
                 name=name,
                 name_jp=name_jp,
                 name_en=name_en,
                 school=school
             )
-            return student_id, [], skipped
+            all_skipped.append(skipped)
 
-        # 成功解析
-        return student_id, forms, None
+        return student_id, forms, all_skipped
 
 async def main():
     """主执行函数"""
@@ -576,26 +631,31 @@ async def main():
         processed_count = 0
         for future in asyncio.as_completed(tasks):
             processed_count += 1
-            student_id, forms_list, skipped_record = await future
+            student_id, forms_list, newly_skipped_records = await future
 
             progress_prefix = f"[{processed_count}/{total_count}]"
 
-            if skipped_record:
-                # 失败或跳过
-                print(f"{progress_prefix} ID: {student_id} -> 已跳过 ({skipped_record.reason})")
-                skipped_records.append(skipped_record)
-            else:
+            if forms_list:
                 # 成功提取到数据
                 file_ids_str = ", ".join(form.file_id for form in forms_list)
                 print(f"{progress_prefix} ID: {student_id} -> 成功, File IDs: {file_ids_str}")
                 all_student_forms.extend(forms_list)
 
+            if newly_skipped_records:
+                # 记录并打印跳过信息
+                for skipped in newly_skipped_records:
+                    if skipped.spine_id:
+                        print(f"{progress_prefix} ID: {student_id} -> Spine ID {skipped.spine_id} 已跳过 ({skipped.reason})")
+                    else:
+                        print(f"{progress_prefix} ID: {student_id} -> 已跳过 ({skipped.reason})")
+                skipped_records.extend(newly_skipped_records)
+
 
     # 按 file_id 排序以保证输出顺序稳定
-    all_student_forms.sort(key=lambda x: x.file_id)
+    all_student_forms.sort(key=lambda x: (x.kivo_wiki_id, x.file_id))
 
-    # 按 student_id 排序以保证输出顺序稳定
-    skipped_records.sort(key=lambda x: x.student_id)
+    # 按 student_id 和 spine_id 排序以保证输出顺序稳定
+    skipped_records.sort(key=lambda x: (x.student_id, x.spine_id or -1))
 
     # 写入文件
     writer = CsvWriter(OUTPUT_FILENAME)
