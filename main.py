@@ -8,17 +8,38 @@ from dataclasses import dataclass, fields, astuple
 from typing import Final, Any
 import httpx
 
-# TODO: 去除“立绘后缀"
-# TODO: 去除两个相同的skin_name
+# TODO: 添加model
 
 # --- 配置模块 ---
 
 # 可配置的常量
 CHAR_API_BASE_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/students/{student_id}"
 SPINE_API_BASE_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/spines/{spine_id}"
+STUDENTS_LIST_API_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/students/?id_sort=desc"
 
-FINAL_STUDENT_ID: Final[int] = 566
-STUDENT_ID_RANGE: Final[range] = range(1, FINAL_STUDENT_ID + 1)
+# 从API获取最新的学生ID
+async def get_final_student_id() -> int:
+    """从API获取最新的学生ID（最大的ID）"""
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(STUDENTS_LIST_API_URL, timeout=10.0)
+            response.raise_for_status()
+            data = response.json()
+            
+            if data.get("code") == 2000 and "data" in data and "students" in data["data"]:
+                students = data["data"]["students"]
+                if students and len(students) > 0:
+                    # 获取第一个学生的ID（因为按id_sort=desc排序，第一个就是最大的）
+                    return students[0]["id"]
+            
+            logging.warning("无法从API获取学生ID")
+            return 0
+    except Exception as e:
+        logging.error(f"获取最新学生ID失败: {e}")
+        return 0
+
+FINAL_STUDENT_ID: int = 0  # 将在main函数中动态更新
+STUDENT_ID_RANGE: range = range(1, FINAL_STUDENT_ID + 1)
 
 OUTPUT_FILENAME: Final[str] = "students_data.csv"
 SKIPPED_FILENAME: Final[str] = "skipped_ids.csv"
@@ -754,5 +775,19 @@ async def main():
     skipped_writer.write_skipped(skipped_records)
 
 
+async def startup():
+    """程序启动函数，负责初始化配置"""
+    global FINAL_STUDENT_ID, STUDENT_ID_RANGE
+    
+    # 获取最新的学生ID
+    FINAL_STUDENT_ID = await get_final_student_id()
+    STUDENT_ID_RANGE = range(1, FINAL_STUDENT_ID + 1)
+    
+    logging.info(f"获取到最新的学生ID: {FINAL_STUDENT_ID}")
+    logging.info(f"处理范围: 1 到 {FINAL_STUDENT_ID}")
+    
+    # 执行主程序
+    await main()
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(startup())
