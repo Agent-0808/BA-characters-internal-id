@@ -5,6 +5,9 @@ __pycache__/
 venv/
 env/
 
+cache/
+output/
+
 files/
 *.xlsx
 test.py
