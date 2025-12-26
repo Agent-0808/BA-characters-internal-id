@@ -3,9 +3,10 @@ import csv
 import logging
 import re
 import json
+import argparse
 from pathlib import Path
 from dataclasses import dataclass, fields, astuple
-from typing import Final, Any
+from typing import Any
 import httpx
 
 # TODO: 添加model
@@ -13,9 +14,11 @@ import httpx
 # --- 配置模块 ---
 
 # 可配置的常量
-CHAR_API_BASE_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/students/{student_id}"
-SPINE_API_BASE_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/spines/{spine_id}"
-STUDENTS_LIST_API_URL: Final[str] = "https://api.kivo.wiki/api/v1/data/students/?id_sort=desc"
+BASE_API_URL: str = "https://api.kivo.wiki/api/v1/data"
+CHAR_API_BASE_URL: str = f"{BASE_API_URL}/students/{{student_id}}"
+SPINE_API_BASE_URL: str = f"{BASE_API_URL}/spines/{{spine_id}}"
+STUDENTS_LIST_API_URL: str = f"{BASE_API_URL}/students/?id_sort=desc"
+SPINES_LIST_API_URL: str = f"{BASE_API_URL}/spines/"
 
 # 从API获取最新的学生ID
 async def get_final_student_id() -> int:
@@ -38,15 +41,54 @@ async def get_final_student_id() -> int:
         logging.error(f"获取最新学生ID失败: {e}")
         return 0
 
+# 从API获取最新的Spine ID
+async def get_final_spine_id() -> int:
+    """从API获取最新的Spine ID（最大的ID）"""
+    try:
+        async with httpx.AsyncClient() as client:
+            # 第一步：获取最大页数
+            response = await client.get(SPINES_LIST_API_URL, params={"page": 1}, timeout=10.0)
+            response.raise_for_status()
+            data = response.json()
+            
+            if data.get("code") == 2000 and "data" in data and "max_page" in data["data"]:
+                max_page = data["data"]["max_page"]
+                
+                # 第二步：获取最后一页数据
+                response = await client.get(SPINES_LIST_API_URL, params={"page": max_page}, timeout=10.0)
+                response.raise_for_status()
+                data = response.json()
+                
+                if data.get("code") == 2000 and "data" in data and "spine" in data["data"]:
+                    spine_list = data["data"]["spine"]
+                    if spine_list and len(spine_list) > 0:
+                        # 返回最后一个spine的ID
+                        return spine_list[-1]["id"]
+            
+            logging.warning("无法从API获取Spine ID")
+            return 0
+    except Exception as e:
+        logging.error(f"获取最新Spine ID失败: {e}")
+        return 0
+
 FINAL_STUDENT_ID: int = 0  # 将在main函数中动态更新
+FINAL_SPINE_ID: int = 0  # 将在main函数中动态更新
 STUDENT_ID_RANGE: range = range(1, FINAL_STUDENT_ID + 1)
 
-OUTPUT_FILENAME: Final[str] = "students_data.csv"
-SKIPPED_FILENAME: Final[str] = "skipped_ids.csv"
-CACHE_DIR: Final[Path] = Path("cache")
+# 输出文件名配置
+OUTPUT_FILENAME: str = "students_data.csv"
+SKIPPED_FILENAME: str = "skipped_ids.csv"
 
-MAX_CONCURRENT_REQUESTS: Final[int] = 3
-REQUEST_DELAY_SECONDS: Final[float] = 2
+# 缓存目录配置
+CACHE_DIR: Path = Path("cache")
+
+# 请求配置
+MAX_CONCURRENT_REQUESTS: int = 3  # 最大并发请求数
+REQUEST_DELAY_SECONDS: float = 2  # 两次请求之间的间隔（秒）
+PAGE_SIZE: int = 1  # API请求页大小，用于获取最新数据
+
+# 运行模式配置
+TEST_MODE: bool = False  # 测试模式：True 表示只检测更新，不执行完整爬取
 
 # 日志配置
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -92,6 +134,7 @@ class CacheManager:
         self.base_dir = base_dir
         self.students_dir = base_dir / "students"
         self.spines_dir = base_dir / "spines"
+        self.state_file = base_dir / "state.json"
         self._ensure_dirs()
 
     def _ensure_dirs(self):
@@ -150,6 +193,26 @@ class CacheManager:
         file_path = self.spines_dir / f"{spine_id}.json"
         await self._write_json(file_path, data)
 
+    async def get_state(self) -> dict:
+        """读取状态文件"""
+        if state := await self._read_json(self.state_file):
+            return state
+        # 返回默认状态
+        return {
+            "max_student_id": 0,
+            "max_spine_id": 0,
+            "last_updated": None
+        }
+
+    async def save_state(self, max_student_id: int, max_spine_id: int):
+        """保存状态文件"""
+        state = {
+            "max_student_id": max_student_id,
+            "max_spine_id": max_spine_id,
+            "last_updated": asyncio.get_event_loop().time()
+        }
+        await self._write_json(self.state_file, state)
+
     async def _read_json(self, path: Path) -> dict | None:
         """异步读取 JSON 文件"""
         if not path.exists():
@@ -177,6 +240,28 @@ class CacheManager:
             # 使用 separators 生成紧凑的 JSON (无多余空格)
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
 
+class Sentinel:
+    """负责检查是否需要更新数据"""
+    
+    def __init__(self, client: httpx.AsyncClient):
+        self.client = client
+    
+    async def check_updates(self, local_max_student_id: int, local_max_spine_id: int) -> tuple[bool, int, int]:
+        """检查是否需要更新数据"""
+        # 直接使用程序启动时获取的最新ID，避免重复API请求
+        remote_max_student_id = FINAL_STUDENT_ID
+        remote_max_spine_id = FINAL_SPINE_ID
+        
+        # 判定是否需要更新
+        need_update = False
+        if remote_max_student_id > local_max_student_id:
+            need_update = True
+        
+        if remote_max_spine_id > local_max_spine_id:
+            need_update = True
+        
+        return need_update, remote_max_student_id, remote_max_spine_id
+
 class APIClient:
     """负责处理所有网络请求及缓存管理的客户端"""
 
@@ -192,18 +277,45 @@ class APIClient:
             "User-Agent": "BA-characters-internal-id (https://github.com/Agent-0808/BA-characters-internal-id)"
         })
 
-    async def fetch_student_data(self, student_id: int) -> tuple[dict | None, str | None, bool]:
+    async def fetch_student_data(self, student_id: int, force_refresh: bool = False) -> tuple[dict | None, str | None, bool]:
         """
         根据学生ID获取数据（优先查缓存）。
         返回 (数据, 错误/跳过原因, 是否命中缓存)。
         """
-        # 1. 尝试从缓存获取
+        # 1. 如果强制刷新，跳过缓存直接从API获取
+        if force_refresh:
+            # 记录请求计数
+            self.student_req_count += 1
+            
+            url = CHAR_API_BASE_URL.format(student_id=student_id)
+            try:
+                response = await self.client.get(url, timeout=10.0)
+                if response.status_code == 404:
+                    # 未找到
+                    return None, "未找到 (404)", False
+                response.raise_for_status()
+                
+                json_data = response.json()
+                
+                # 成功获取后，保存到缓存
+                if json_data and json_data.get('code') == 2000:
+                    await self.cache.save_student(student_id, json_data)
+                
+                # 返回 False 表示来自 API 请求
+                return json_data, None, False
+            except httpx.RequestError as e:
+                return None, f"网络错误: {e}", False
+            except Exception as e:
+                logging.error(f"处理 ID {student_id} 时发生未知错误: {e}")
+                return None, f"未知错误: {e}", False
+        
+        # 2. 尝试从缓存获取
         if cached_data := await self.cache.get_student(student_id):
             logging.debug(f"ID {student_id}: 命中缓存")
             # 返回 True 表示命中缓存
             return cached_data, None, True
 
-        # 2. 缓存未命中，从 API 获取
+        # 3. 缓存未命中，从 API 获取
         # 记录请求计数
         self.student_req_count += 1
         
@@ -217,7 +329,7 @@ class APIClient:
             
             json_data = response.json()
             
-            # 3. 成功获取后，保存到缓存
+            # 4. 成功获取后，保存到缓存
             if json_data and json_data.get('code') == 2000:
                 await self.cache.save_student(student_id, json_data)
             
@@ -276,7 +388,7 @@ class DataParser:
 
     # 语言配置映射：(语言后缀, 是否包含皮肤名称)
     # key: 目标字段后缀, value: (JSON中的姓key, JSON中的名key, JSON中的皮肤key, 是否附加皮肤)
-    _LANG_CONFIG: Final[dict[str, tuple[str, str, str, bool]]] = {
+    _LANG_CONFIG: dict[str, tuple[str, str, str, bool]] = {
         "full_name": ("family_name", "given_name", "skin", True), # 包含皮肤的完整名称
         "name": ("family_name", "given_name", "", False), # 不包含皮肤的基础名称
         "cn": ("family_name_cn", "given_name_cn", "skin_cn", True),
@@ -356,13 +468,13 @@ class DataParser:
             return f"类型 ({type_})"
         
         # 跳过包含特定关键词的形态
-        SPINE_KEYWORDS_TO_SKIP: Final[list[str]] = ["toschool", "minori", "ui_raidboss"]
+        SPINE_KEYWORDS_TO_SKIP: list[str] = ["toschool", "minori", "ui_raidboss"]
         for keyword in SPINE_KEYWORDS_TO_SKIP:
             if keyword in name_lower:
                 return f"包含 ({keyword})"
 
         # 跳过特定后缀的形态
-        SPINE_SUFFIXES_TO_SKIP: Final[list[str]] = [
+        SPINE_SUFFIXES_TO_SKIP: list[str] = [
             "_cn", "_steam", "_glitch_spr", "_cbt", "_halofix", "spr-2", "_old"
         ]
         for suffix in SPINE_SUFFIXES_TO_SKIP:
@@ -647,7 +759,9 @@ async def process_student_id(
     student_id: int,
     client: APIClient,
     parser: DataParser,
-    semaphore: asyncio.Semaphore
+    semaphore: asyncio.Semaphore,
+    delay: float,
+    force_refresh: bool = False
 ) -> tuple[int, list[StudentForm], list[SkippedRecord]]:
     """
     获取、解析并处理单个学生ID的数据。
@@ -658,9 +772,15 @@ async def process_student_id(
         # 获取数据，并得知来源是否为缓存
         json_data, fetch_reason, from_cache = await client.fetch_student_data(student_id)
         
+        # 如果强制刷新且数据来自缓存，则重新获取
+        if force_refresh and from_cache:
+            # 清除缓存，重新获取
+            logging.debug(f"ID {student_id}: 强制刷新，清除缓存并重新获取")
+            json_data, fetch_reason, from_cache = await client.fetch_student_data(student_id, force_refresh=True)
+        
         # 如果数据不是来自缓存（即发起了网络请求），则执行延迟以礼貌对待 API
         if not from_cache:
-            await asyncio.sleep(REQUEST_DELAY_SECONDS)
+            await asyncio.sleep(delay)
 
         if not json_data:
             # 在无法获取JSON数据时，创建一个包含基本信息的SkippedRecord
@@ -710,41 +830,43 @@ async def process_student_id(
 
         return student_id, forms, all_skipped
 
-async def main():
-    """主执行函数"""
-    semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
-    parser = DataParser()
-    cache_manager = CacheManager()
+class Crawler:
+    """核心爬虫工作流"""
     
-    all_student_forms: list[StudentForm] = []
-    skipped_records: list[SkippedRecord] = []
-
-    async with httpx.AsyncClient() as http_client:
-        # 将 cache_manager 注入 APIClient
-        client = APIClient(http_client, cache_manager)
-        student_ids = list(STUDENT_ID_RANGE)
-        total_count = len(student_ids)
-
+    def __init__(self, client: APIClient, parser: DataParser, cache_manager: CacheManager, max_concurrent: int, delay: float):
+        self.client = client
+        self.parser = parser
+        self.cache_manager = cache_manager
+        self.max_concurrent = max_concurrent
+        self.delay = delay
+    
+    async def refresh_students(self, student_ids: list[int]) -> tuple[list[StudentForm], list[SkippedRecord]]:
+        """刷新所有学生索引"""
+        semaphore = asyncio.Semaphore(self.max_concurrent)
         tasks = [
-            process_student_id(student_id, client, parser, semaphore)
+            process_student_id(student_id, self.client, self.parser, semaphore, self.delay, force_refresh=True)
             for student_id in student_ids
         ]
-
-        logging.info(f"开始处理 {total_count} 个学生 ID (使用缓存路径: {CACHE_DIR})...")
-
+        
+        all_student_forms: list[StudentForm] = []
+        all_skipped_records: list[SkippedRecord] = []
+        
+        logging.info(f"开始刷新 {len(student_ids)} 个学生数据...")
         processed_count = 0
+        total_count = len(student_ids)
+        
         for future in asyncio.as_completed(tasks):
             processed_count += 1
             student_id, forms_list, newly_skipped_records = await future
-
+            
             progress_prefix = f"[{processed_count}/{total_count}]"
-
+            
             if forms_list:
                 # 成功提取到数据
                 file_ids_str = ", ".join(form.file_id for form in forms_list)
                 logging.info(f"{progress_prefix} ID: {student_id} -> 成功, File IDs: {file_ids_str}")
                 all_student_forms.extend(forms_list)
-
+            
             if newly_skipped_records:
                 # 记录并打印跳过信息
                 for skipped in newly_skipped_records:
@@ -752,13 +874,104 @@ async def main():
                         logging.info(f"{progress_prefix} ID: {student_id} -> Spine ID {skipped.spine_id} 已跳过 ({skipped.reason})")
                     else:
                         logging.info(f"{progress_prefix} ID: {student_id} -> 已跳过 ({skipped.reason})")
-                skipped_records.extend(newly_skipped_records)
+                all_skipped_records.extend(newly_skipped_records)
+        
+        return all_student_forms, all_skipped_records
+    
+    async def get_all_student_forms_from_cache(self, student_ids: list[int]) -> tuple[list[StudentForm], list[SkippedRecord]]:
+        """直接从缓存获取所有学生数据"""
+        semaphore = asyncio.Semaphore(self.max_concurrent)
+        tasks = [
+            process_student_id(student_id, self.client, self.parser, semaphore, self.delay)
+            for student_id in student_ids
+        ]
+        
+        all_student_forms: list[StudentForm] = []
+        all_skipped_records: list[SkippedRecord] = []
+        
+        logging.info(f"开始从缓存读取 {len(student_ids)} 个学生数据...")
+        processed_count = 0
+        total_count = len(student_ids)
+        
+        for future in asyncio.as_completed(tasks):
+            processed_count += 1
+            student_id, forms_list, newly_skipped_records = await future
+            
+            progress_prefix = f"[{processed_count}/{total_count}]"
+            
+            if forms_list:
+                # 成功提取到数据
+                file_ids_str = ", ".join(form.file_id for form in forms_list)
+                logging.info(f"{progress_prefix} ID: {student_id} -> 成功, File IDs: {file_ids_str}")
+                all_student_forms.extend(forms_list)
+            
+            if newly_skipped_records:
+                # 记录并打印跳过信息
+                for skipped in newly_skipped_records:
+                    if skipped.spine_id:
+                        logging.info(f"{progress_prefix} ID: {student_id} -> Spine ID {skipped.spine_id} 已跳过 ({skipped.reason})")
+                    else:
+                        logging.info(f"{progress_prefix} ID: {student_id} -> 已跳过 ({skipped.reason})")
+                all_skipped_records.extend(newly_skipped_records)
+        
+        return all_student_forms, all_skipped_records
+
+async def main():
+    """主执行函数"""
+    parser = DataParser()
+    cache_manager = CacheManager()
+    
+    # 读取本地状态
+    local_state = await cache_manager.get_state()
+    local_max_student_id = local_state.get("max_student_id", 0)
+    local_max_spine_id = local_state.get("max_spine_id", 0)
+    
+    logging.info(f"本地状态: 最大学生ID {local_max_student_id}, 最大Spine ID {local_max_spine_id}")
+    
+    async with httpx.AsyncClient() as http_client:
+        # 初始化客户端
+        client = APIClient(http_client, cache_manager)
+        sentinel = Sentinel(http_client)
+        crawler = Crawler(client, parser, cache_manager)
+        
+        # 第一步：检查更新
+        logging.info("开始检查更新...")
+        need_update, remote_max_student_id, remote_max_spine_id = await sentinel.check_updates(local_max_student_id, local_max_spine_id)
+        
+        # 打印更新检查结果
+        logging.info(f"本地学生ID: {local_max_student_id}, 远程学生ID: {remote_max_student_id}")
+        logging.info(f"本地Spine ID: {local_max_spine_id}, 远程Spine ID: {remote_max_spine_id}")
+        logging.info(f"是否需要更新: {need_update}")
+        
+        # 测试模式下，只检查更新，不执行后续逻辑
+        if TEST_MODE:
+            logging.info("测试模式已启用，跳过后续爬取和写入操作。")
+            return
+        
+        # 确定学生ID范围
+        student_ids = list(range(1, remote_max_student_id + 1))
+        
+        all_student_forms: list[StudentForm] = []
+        skipped_records: list[SkippedRecord] = []
+        
+        # 第二步：决策执行
+        if not need_update:
+            logging.info("当前数据已是最新，跳过爬取。")
+            # 模式 A：直接从缓存获取数据
+            all_student_forms, skipped_records = await crawler.get_all_student_forms_from_cache(student_ids)
+        else:
+            logging.info("检测到更新，开始刷新数据...")
+            # 模式 B：触发更新
+            all_student_forms, skipped_records = await crawler.refresh_students(student_ids)
+            
+            # 第三步：状态回写
+            logging.info("更新完成，保存状态...")
+            await cache_manager.save_state(remote_max_student_id, remote_max_spine_id)
         
         # 输出统计信息
         logging.info("-" * 40)
         logging.info(f"学生数据请求: {client.student_req_count}")
         logging.info(f"Spine 数据请求: {client.spine_req_count}")
-
 
     # 按 file_id 排序以保证输出顺序稳定
     all_student_forms.sort(key=lambda x: (x.char_id, x.file_id))
@@ -775,19 +988,121 @@ async def main():
     skipped_writer.write_skipped(skipped_records)
 
 
-async def startup():
+async def startup(test_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURRENT_REQUESTS, delay: float = REQUEST_DELAY_SECONDS):
     """程序启动函数，负责初始化配置"""
-    global FINAL_STUDENT_ID, STUDENT_ID_RANGE
-    
-    # 获取最新的学生ID
+    # 程序开始时获取最新的学生ID和Spine ID
+    global FINAL_STUDENT_ID, FINAL_SPINE_ID
     FINAL_STUDENT_ID = await get_final_student_id()
-    STUDENT_ID_RANGE = range(1, FINAL_STUDENT_ID + 1)
+    FINAL_SPINE_ID = await get_final_spine_id()
     
-    logging.info(f"获取到最新的学生ID: {FINAL_STUDENT_ID}")
-    logging.info(f"处理范围: 1 到 {FINAL_STUDENT_ID}")
+    logging.info(f"程序启动时获取的最新学生ID: {FINAL_STUDENT_ID}, 最新Spine ID: {FINAL_SPINE_ID}")
     
     # 执行主程序
-    await main()
+    await main(test_mode, max_concurrent, delay)
+
+async def main(test_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURRENT_REQUESTS, delay: float = REQUEST_DELAY_SECONDS):
+    """主执行函数"""
+    parser = DataParser()
+    cache_manager = CacheManager()
+    
+    # 读取本地状态
+    local_state = await cache_manager.get_state()
+    local_max_student_id = local_state.get("max_student_id", 0)
+    local_max_spine_id = local_state.get("max_spine_id", 0)
+    
+    logging.info(f"本地状态: 最大学生ID {local_max_student_id}, 最大Spine ID {local_max_spine_id}")
+    logging.info(f"配置: 最大并发请求数 {max_concurrent}, 请求延迟 {delay}秒")
+    
+    async with httpx.AsyncClient() as http_client:
+        # 初始化客户端
+        client = APIClient(http_client, cache_manager)
+        sentinel = Sentinel(http_client)
+        crawler = Crawler(client, parser, cache_manager, max_concurrent, delay)
+        
+        # 第一步：检查更新
+        logging.info("开始检查更新...")
+        need_update, remote_max_student_id, remote_max_spine_id = await sentinel.check_updates(local_max_student_id, local_max_spine_id)
+        
+        # 打印更新检查结果
+        logging.info(f"本地学生ID: {local_max_student_id}, 远程学生ID: {remote_max_student_id}")
+        logging.info(f"本地Spine ID: {local_max_spine_id}, 远程Spine ID: {remote_max_spine_id}")
+        logging.info(f"是否需要更新: {need_update}")
+        
+        # 测试模式下，只检查更新，不执行后续逻辑
+        if test_mode:
+            logging.info("测试模式已启用，跳过后续爬取和写入操作。")
+            return
+        
+        # 确定学生ID范围
+        student_ids = list(range(1, remote_max_student_id + 1))
+        
+        all_student_forms: list[StudentForm] = []
+        skipped_records: list[SkippedRecord] = []
+        
+        # 第二步：决策执行
+        if not need_update:
+            logging.info("当前数据已是最新，跳过爬取。")
+            # 模式 A：直接从缓存获取数据
+            all_student_forms, skipped_records = await crawler.get_all_student_forms_from_cache(student_ids)
+        else:
+            logging.info("检测到更新，开始刷新数据...")
+            # 模式 B：触发更新
+            all_student_forms, skipped_records = await crawler.refresh_students(student_ids)
+            
+            # 第三步：状态回写
+            logging.info("更新完成，保存状态...")
+            await cache_manager.save_state(remote_max_student_id, remote_max_spine_id)
+        
+        # 输出统计信息
+        logging.info("-" * 40)
+        logging.info(f"学生数据请求: {client.student_req_count}")
+        logging.info(f"Spine 数据请求: {client.spine_req_count}")
+
+    # 按 file_id 排序以保证输出顺序稳定
+    all_student_forms.sort(key=lambda x: (x.char_id, x.file_id))
+
+    # 按 student_id 和 spine_id 排序以保证输出顺序稳定
+    skipped_records.sort(key=lambda x: (x.student_id, x.spine_id or -1))
+
+    # 写入文件
+    writer = CsvWriter(OUTPUT_FILENAME)
+    writer.write(all_student_forms)
+
+    # 写入跳过记录文件
+    skipped_writer = CsvWriter(SKIPPED_FILENAME)
+    skipped_writer.write_skipped(skipped_records)
+
+async def list_info():
+    """列出当前缓存中的学生和皮肤信息"""
+    cache_manager = CacheManager()
+    
+    # 读取本地状态
+    local_state = await cache_manager.get_state()
+    local_max_student_id = local_state.get("max_student_id", 0)
+    local_max_spine_id = local_state.get("max_spine_id", 0)
+    
+    print("=== 当前缓存信息 ===")
+    print(f"本地最大学生ID: {local_max_student_id}")
+    print(f"本地最大Spine ID: {local_max_spine_id}")
+    
+    # 统计缓存文件数量
+    student_files = list(cache_manager.students_dir.glob("*.json"))
+    spine_files = list(cache_manager.spines_dir.glob("*.json"))
+    
+    print(f"缓存学生文件数: {len(student_files)}")
+    print(f"缓存Spine文件数: {len(spine_files)}")
+    print("===================")
 
 if __name__ == "__main__":
-    asyncio.run(startup())
+    # 解析命令行参数
+    parser = argparse.ArgumentParser(description="BA-characters-internal-id")
+    parser.add_argument("--test", "-t", action="store_true", help="测试模式：只检测是否需要更新，不执行完整爬取")
+    parser.add_argument("--list", "-l", action="store_true", help="列出当前缓存中的学生和皮肤信息")
+    parser.add_argument("--max-concurrent", "-m", type=int, default=3, help="最大并发请求数 (默认: 3)")
+    parser.add_argument("--delay", "-d", type=float, default=2.0, help="两次请求之间的间隔（秒） (默认: 2.0)")
+    args = parser.parse_args()
+    
+    if args.list:
+        asyncio.run(list_info())
+    else:
+        asyncio.run(startup(args.test, args.max_concurrent, args.delay))
