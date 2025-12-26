@@ -89,6 +89,7 @@ PAGE_SIZE: int = 1  # API请求页大小，用于获取最新数据
 
 # 运行模式配置
 TEST_MODE: bool = False  # 测试模式：True 表示只检测更新，不执行完整爬取
+TEST_OVERWRITE_CACHE: bool = True  # 测试模式下是否用新数据覆盖本地缓存
 
 # 日志配置
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -144,7 +145,7 @@ class CacheManager:
 
     def _clean_student_data(self, json_data: dict[str, Any]) -> dict[str, Any]:
         """
-        清洗学生数据，移除不需要的大文本字段以节省空间
+        深度清洗学生数据，移除所有非ID/名称/Spine映射所需的字段。
         """
         if not json_data or 'data' not in json_data:
             return json_data
@@ -153,22 +154,51 @@ class CacheManager:
         if not isinstance(data, dict):
             return json_data
 
-        # 1. 移除明确不需要的字段
-        for field in ['more', 'gallery']:
-            data.pop(field, None)
+        STRIPPED_MARKER = "(stripped)"
 
-        # 2. 处理 Voice 字段，仅保留“是否为空列表”的信息
-        # 逻辑：如果有内容，替换为占位符表示存在；如果为空或不存在，保持为空列表
-        voice_fields = ['voice', 'voice_cn', 'voice_kr']
-        for field in voice_fields:
-            if field in data:
-                content = data[field]
-                if isinstance(content, list) and content:
-                    # 如果列表不为空，替换为简短标记，保留"非空"这一信息
-                    data[field] = ["(cached_stripped)"]
-                else:
-                    # 否则设置为空列表
-                    data[field] = []
+        # 1. 定义需要处理的字段
+        # keys_to_remove: 完全移除的字段
+        # keys_to_strip: 需要清洗的字段
+        keys_to_remove = [
+            # 大文本 / 列表
+            'gallery', 'more', 
+            'sd_model_image', 'avatar',
+            'recollection_lobby_image',
+            'introduction', 'introduction_cn',
+            'voice_play_icon', 'voice_pause_icon',
+            'source', 'contributor'
+        ]
+
+        keys_to_strip = ['voice', 'voice_cn', 'voice_kr']
+        
+        # 统一处理：先检查移除，再检查标记
+        for key in keys_to_remove + keys_to_strip:
+            if key in keys_to_remove:
+                data.pop(key, None)
+            elif key in keys_to_strip and key in data:
+                content = data[key]
+                # 如果列表存在且不为空，替换为标记
+                data[key] = [STRIPPED_MARKER] if content else []
+
+        # 清洗 character_datas
+        if 'character_datas' in data:
+            for char_data in data['character_datas']:
+                # 移除 character_datas 内部的冗余字段
+                sub_keys_to_remove = [
+                    'skill', 'cultivate_material', 'equipment', 
+                    'basic',
+                ]
+                for key in sub_keys_to_remove:
+                    char_data.pop(key, None)
+                
+                # 深度清洗 weapons 字段，移除嵌套的无用字段
+                if 'weapons' in char_data and isinstance(char_data['weapons'], dict):
+                    weapons_fields_to_remove = [
+                        'icon', 'description', 'description_cn', 
+                        'info', 'skill'
+                    ]
+                    for field in weapons_fields_to_remove:
+                        char_data['weapons'].pop(field, None)
 
         return json_data
 
@@ -181,7 +211,8 @@ class CacheManager:
         """清洗并保存学生数据到缓存"""
         cleaned_data = self._clean_student_data(data)
         file_path = self.students_dir / f"{student_id}.json"
-        await self._write_json(file_path, cleaned_data)
+        if cleaned_data:
+            await self._write_json(file_path, cleaned_data)
 
     async def get_spine(self, spine_id: int) -> dict | None:
         """从缓存读取 Spine 数据"""
@@ -197,7 +228,6 @@ class CacheManager:
         """读取状态文件"""
         if state := await self._read_json(self.state_file):
             return state
-        # 返回默认状态
         return {
             "max_student_id": 0,
             "max_spine_id": 0,
@@ -218,7 +248,6 @@ class CacheManager:
         if not path.exists():
             return None
         try:
-            # 使用 asyncio.to_thread 避免文件IO阻塞事件循环
             return await asyncio.to_thread(self._read_json_sync, path)
         except Exception as e:
             logging.warning(f"读取缓存失败 {path}: {e}")
@@ -988,76 +1017,86 @@ async def main():
     skipped_writer.write_skipped(skipped_records)
 
 
-async def startup(test_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURRENT_REQUESTS, delay: float = REQUEST_DELAY_SECONDS):
+async def startup(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURRENT_REQUESTS, delay: float = REQUEST_DELAY_SECONDS, test_id: int | None = None, no_cache_overwrite: bool = False):
     """程序启动函数，负责初始化配置"""
-    # 程序开始时获取最新的学生ID和Spine ID
-    global FINAL_STUDENT_ID, FINAL_SPINE_ID
-    FINAL_STUDENT_ID = await get_final_student_id()
-    FINAL_SPINE_ID = await get_final_spine_id()
-    
-    logging.info(f"程序启动时获取的最新学生ID: {FINAL_STUDENT_ID}, 最新Spine ID: {FINAL_SPINE_ID}")
+    # 测试模式不需要获取全局最新 ID
+    if test_id is None:
+        # 程序开始时获取最新的学生ID和Spine ID
+        global FINAL_STUDENT_ID, FINAL_SPINE_ID
+        FINAL_STUDENT_ID, FINAL_SPINE_ID = await asyncio.gather(
+            get_final_student_id(),
+            get_final_spine_id()
+        )
+        logging.info(f"程序启动时获取的最新学生ID: {FINAL_STUDENT_ID}, 最新Spine ID: {FINAL_SPINE_ID}")
     
     # 执行主程序
-    await main(test_mode, max_concurrent, delay)
+    await main(check_mode, max_concurrent, delay, test_id, no_cache_overwrite)
 
-async def main(test_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURRENT_REQUESTS, delay: float = REQUEST_DELAY_SECONDS):
+
+async def main(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURRENT_REQUESTS, delay: float = REQUEST_DELAY_SECONDS, test_id: int | None = None, no_cache_overwrite: bool = False):
     """主执行函数"""
     parser = DataParser()
     cache_manager = CacheManager()
     
-    # 读取本地状态
-    local_state = await cache_manager.get_state()
-    local_max_student_id = local_state.get("max_student_id", 0)
-    local_max_spine_id = local_state.get("max_spine_id", 0)
-    
-    logging.info(f"本地状态: 最大学生ID {local_max_student_id}, 最大Spine ID {local_max_spine_id}")
-    logging.info(f"配置: 最大并发请求数 {max_concurrent}, 请求延迟 {delay}秒")
-    
     async with httpx.AsyncClient() as http_client:
-        # 初始化客户端
         client = APIClient(http_client, cache_manager)
-        sentinel = Sentinel(http_client)
-        crawler = Crawler(client, parser, cache_manager, max_concurrent, delay)
+
+        # 模式一：测试模式，处理单个ID并退出
+        if test_id is not None:
+            # 根据命令行参数更新全局配置
+            global TEST_OVERWRITE_CACHE
+            TEST_OVERWRITE_CACHE = not no_cache_overwrite
+            await run_test_mode(client, parser, test_id)
+            return
+
+        # --- 以下为完整运行或检查更新模式 ---
         
-        # 第一步：检查更新
+        # 读取本地状态
+        local_state = await cache_manager.get_state()
+        local_max_student_id = local_state.get("max_student_id", 0)
+        local_max_spine_id = local_state.get("max_spine_id", 0)
+        
+        logging.info(f"本地状态: 最大学生ID {local_max_student_id}, 最大Spine ID {local_max_spine_id}")
+        logging.info(f"配置: 最大并发请求数 {max_concurrent}, 请求延迟 {delay}秒")
+        
+        sentinel = Sentinel(http_client)
+        
+        # 检查更新
         logging.info("开始检查更新...")
         need_update, remote_max_student_id, remote_max_spine_id = await sentinel.check_updates(local_max_student_id, local_max_spine_id)
         
-        # 打印更新检查结果
         logging.info(f"本地学生ID: {local_max_student_id}, 远程学生ID: {remote_max_student_id}")
         logging.info(f"本地Spine ID: {local_max_spine_id}, 远程Spine ID: {remote_max_spine_id}")
         logging.info(f"是否需要更新: {need_update}")
         
-        # 测试模式下，只检查更新，不执行后续逻辑
-        if test_mode:
-            logging.info("测试模式已启用，跳过后续爬取和写入操作。")
+        # 模式二：检查更新模式，报告后退出
+        if check_mode:
+            logging.info("检查更新模式已启用，跳过后续爬取和写入操作。")
             return
         
-        # 确定学生ID范围
+        # 模式三：完整执行
+        crawler = Crawler(client, parser, cache_manager, max_concurrent, delay)
         student_ids = list(range(1, remote_max_student_id + 1))
         
-        all_student_forms: list[StudentForm] = []
-        skipped_records: list[SkippedRecord] = []
+        all_student_forms: list[StudentForm]
+        skipped_records: list[SkippedRecord]
         
-        # 第二步：决策执行
         if not need_update:
-            logging.info("当前数据已是最新，跳过爬取。")
-            # 模式 A：直接从缓存获取数据
+            logging.info("当前数据已是最新，从缓存加载。")
             all_student_forms, skipped_records = await crawler.get_all_student_forms_from_cache(student_ids)
         else:
             logging.info("检测到更新，开始刷新数据...")
-            # 模式 B：触发更新
             all_student_forms, skipped_records = await crawler.refresh_students(student_ids)
             
-            # 第三步：状态回写
             logging.info("更新完成，保存状态...")
             await cache_manager.save_state(remote_max_student_id, remote_max_spine_id)
         
-        # 输出统计信息
         logging.info("-" * 40)
         logging.info(f"学生数据请求: {client.student_req_count}")
         logging.info(f"Spine 数据请求: {client.spine_req_count}")
 
+    # --- 文件写入部分（移出 async with 块） ---
+    
     # 按 file_id 排序以保证输出顺序稳定
     all_student_forms.sort(key=lambda x: (x.char_id, x.file_id))
 
@@ -1071,6 +1110,45 @@ async def main(test_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURRENT
     # 写入跳过记录文件
     skipped_writer = CsvWriter(SKIPPED_FILENAME)
     skipped_writer.write_skipped(skipped_records)
+
+async def run_test_mode(client: APIClient, parser: DataParser, test_id: int):
+    """
+    运行测试模式，获取、解析并打印单个学生ID的数据。
+    """
+    logging.info(f"测试模式已启用，ID: {test_id}")
+    
+    # 直接获取指定学生的数据（强制刷新，不使用缓存）
+    student_data, error_msg, from_cache = await client.fetch_student_data(test_id, force_refresh=True)
+    
+    if not student_data or student_data.get('code') != 2000:
+        logging.warning(f"学生ID {test_id} 不存在或获取失败: {error_msg}")
+        print("\n=== 测试模式结果 ===")
+        print(f"学生ID {test_id}: 获取失败 - {error_msg or '未知错误'}")
+        return
+
+    # 获取 spine 数据
+    spine_ids = student_data.get("data", {}).get("spine", [])
+    spine_tasks = [client.fetch_spine_data(sid) for sid in spine_ids if isinstance(sid, int)]
+    spine_results_raw = await asyncio.gather(*spine_tasks)
+    spine_results = [data for data, error in spine_results_raw if data]
+    
+    # 解析数据
+    forms, _, student_skip_reason = parser.parse(student_data, test_id, spine_results)
+    
+    print("\n=== 测试模式结果 ===")
+    if forms:
+        form = forms[0]  # 测试模式只处理一个学生，取第一个结果
+        logging.info(f"学生ID {test_id} 数据获取成功")
+        # 使用 f-string 和 dataclasses.fields 动态打印所有字段
+        for field in fields(form):
+            print(f"{field.name}: {getattr(form, field.name)}")
+        print(f"数据来源: {'缓存' if from_cache else 'API'}")
+    elif student_skip_reason:
+        logging.warning(f"学生ID {test_id} 被跳过: {student_skip_reason}")
+        print(f"学生ID {test_id}: 被跳过 - {student_skip_reason}")
+    else:
+        logging.warning(f"学生ID {test_id} 数据解析失败")
+        print(f"学生ID {test_id}: 数据解析失败")
 
 async def list_info():
     """列出当前缓存中的学生和皮肤信息"""
@@ -1096,13 +1174,18 @@ async def list_info():
 if __name__ == "__main__":
     # 解析命令行参数
     parser = argparse.ArgumentParser(description="BA-characters-internal-id")
-    parser.add_argument("--test", "-t", action="store_true", help="测试模式：只检测是否需要更新，不执行完整爬取")
+    parser.add_argument("--check", "-c", action="store_true", help="检查更新模式：只检测是否需要更新，不执行完整爬取")
+    parser.add_argument("--test", "-t", type=int, metavar="ID", help="测试模式：只请求指定的学生ID")
     parser.add_argument("--list", "-l", action="store_true", help="列出当前缓存中的学生和皮肤信息")
     parser.add_argument("--max-concurrent", "-m", type=int, default=3, help="最大并发请求数 (默认: 3)")
     parser.add_argument("--delay", "-d", type=float, default=2.0, help="两次请求之间的间隔（秒） (默认: 2.0)")
+    parser.add_argument("--no-cache-overwrite", action="store_true", help="测试模式下不覆盖本地缓存")
     args = parser.parse_args()
     
     if args.list:
         asyncio.run(list_info())
+    elif args.test is not None:
+        # 测试模式：只处理指定的学生ID
+        asyncio.run(startup(args.check, args.max_concurrent, args.delay, args.test, args.no_cache_overwrite))
     else:
-        asyncio.run(startup(args.test, args.max_concurrent, args.delay))
+        asyncio.run(startup(args.check, args.max_concurrent, args.delay, None, args.no_cache_overwrite))
