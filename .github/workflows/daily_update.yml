@@ -138,6 +138,7 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: "Auto-update: ${{ env.CODE_VERSION }}-${{ steps.date.outputs.date }}"
           keep_files: false
+          enable_jekyll: true
 
       # 创建 Release 发布
       # 仅当检测到变化时运行
