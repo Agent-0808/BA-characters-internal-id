@@ -227,8 +227,11 @@ class CacheManager:
 
     async def get_state(self) -> dict:
         """读取状态文件"""
+        logging.info(f"正在读取状态文件: {self.state_file}")
         if state := await self._read_json(self.state_file):
+            logging.info(f"成功读取状态文件。包含数据: {state}")
             return state
+        logging.info("状态文件不存在或为空，返回默认状态")
         return {
             "max_student_id": 0,
             "max_spine_id": 0,
