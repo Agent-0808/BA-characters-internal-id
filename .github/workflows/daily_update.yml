@@ -1,0 +1,105 @@
+name: Daily Data Update
+
+# 触发机制
+on:
+  # 1. 定时任务：每天北京时间 3点 (UTC 19点)
+  schedule:
+    - cron: '0 19 * * *'
+  
+  # 2. 手动触发：允许在网页端点击按钮运行
+  workflow_dispatch:
+  
+  # 3. 推送触发：仅当推送到 workflow-test 分支时触发 (方便你现在测试)
+  push:
+    branches:
+      - workflow-test
+
+# 权限配置：允许写入代码和创建 Release
+permissions:
+  contents: write
+
+# 环境变量：版本号配置
+env:
+  BASE_VERSION: v3.0
+
+jobs:
+  update-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 准备 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 安装依赖
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install httpx
+
+      # 运行爬虫
+      - name: Run scraper
+        run: python main.py
+
+      # 检测是否有新数据或缓存变化
+      - name: Check for changes
+        id: check_changes
+        run: |
+          # 使用 git status 查看是否有文件被修改或新建
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+            echo "✅ Detected changes in data or cache."
+          else
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+            echo "💤 No changes detected."
+          fi
+
+      # 生成日期后缀 (仅当有变动时)
+      - name: Get current date
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        id: date
+        # 生成格式如 2025-08-08
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      # 提交并推送到 workflow-test 分支 (保存缓存)
+      - name: Commit and Push changes
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # 强制添加缓存目录和数据文件 (确保 cache 目录没被 gitignore)
+          git add cache/ output/
+          # 如果有 state.json，取消下面这行的注释
+          # git add state.json
+          
+          git commit -m "Auto-update: ${{ env.BASE_VERSION }}-${{ steps.date.outputs.date }}"
+          
+          # 推送到当前分支
+          git push
+
+      # 创建 Release (格式: va.b-yyyymmdd)
+      - name: Create Release
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          # 版本号组合：手动版本 + 日期
+          tag_name: ${{ env.BASE_VERSION }}-${{ steps.date.outputs.date }}
+          name: ${{ env.BASE_VERSION }} Auto Update ${{ steps.date.outputs.date }}
+          body: |
+            自动检测到数据更新。
+            
+            - **Base Version**: ${{ env.BASE_VERSION }}
+            - **Update Date**: ${{ steps.date.outputs.date }}
+            - **Updated Files**: `output/students_data.csv`, `output/skipped_ids.csv`
+          files: |
+            output/students_data.csv
+            output/skipped_ids.csv
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

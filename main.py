@@ -75,7 +75,8 @@ FINAL_STUDENT_ID: int = 0  # 将在main函数中动态更新
 FINAL_SPINE_ID: int = 0  # 将在main函数中动态更新
 STUDENT_ID_RANGE: range = range(1, FINAL_STUDENT_ID + 1)
 
-# 输出文件名配置
+# 输出目录和文件名配置
+OUTPUT_DIR: Path = Path("output")
 OUTPUT_FILENAME: str = "students_data.csv"
 SKIPPED_FILENAME: str = "skipped_ids.csv"
 
@@ -715,6 +716,8 @@ class CsvWriter:
 
     def __init__(self, filename: str):
         self.filename = filename
+        # 确保输出目录存在
+        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     def _get_alternative_filename(self, original_filename: str) -> str:
         """生成备用文件名"""
@@ -727,28 +730,30 @@ class CsvWriter:
             logging.warning("没有可供写入的数据。")
             return
 
-        filenames_to_try = [self.filename, self._get_alternative_filename(self.filename)]
+        # 构建完整路径
+        full_path = OUTPUT_DIR / self.filename
+        filenames_to_try = [full_path, OUTPUT_DIR / self._get_alternative_filename(self.filename)]
 
-        for filename in filenames_to_try:
+        for filepath in filenames_to_try:
             try:
-                logging.info(f"开始将 {len(data)} 条记录写入到 {filename}...")
-                with open(filename, 'w', newline='', encoding='utf-8-sig') as csvfile:
+                logging.info(f"开始将 {len(data)} 条记录写入到 {filepath}...")
+                with open(filepath, 'w', newline='', encoding='utf-8-sig') as csvfile:
                     # 获取dataclass的字段名作为表头
                     header = [f.name for f in fields(StudentForm)]
                     writer = csv.writer(csvfile)
                     writer.writerow(header)
                     # 使用推导式和astuple提高写入效率
                     writer.writerows(astuple(form) for form in data)
-                logging.info(f"数据成功写入 {filename}。")
+                logging.info(f"数据成功写入 {filepath}。")
                 return  # 成功写入，退出函数
             except IOError as e:
-                if filename == filenames_to_try[-1]:
+                if filepath == filenames_to_try[-1]:
                     # 已经是最后一个文件名，仍然失败
-                    logging.error(f"写入文件 {filename} 时发生错误: {e}")
+                    logging.error(f"写入文件 {filepath} 时发生错误: {e}")
                     logging.error("所有尝试的文件名均失败，数据未能保存。")
                 else:
                     # 还有备用文件名可以尝试
-                    logging.warning(f"写入文件 {filename} 失败，可能是文件被占用，尝试使用备用文件名...")
+                    logging.warning(f"写入文件 {filepath} 失败，可能是文件被占用，尝试使用备用文件名...")
                     continue
 
     def write_skipped(self, data: list[SkippedRecord]):
@@ -757,28 +762,30 @@ class CsvWriter:
             logging.warning("没有可供写入的跳过记录。")
             return
 
-        filenames_to_try = [self.filename, self._get_alternative_filename(self.filename)]
+        # 构建完整路径
+        full_path = OUTPUT_DIR / self.filename
+        filenames_to_try = [full_path, OUTPUT_DIR / self._get_alternative_filename(self.filename)]
 
-        for filename in filenames_to_try:
+        for filepath in filenames_to_try:
             try:
-                logging.info(f"开始将 {len(data)} 条跳过记录写入到 {filename}...")
-                with open(filename, 'w', newline='', encoding='utf-8-sig') as csvfile:
+                logging.info(f"开始将 {len(data)} 条跳过记录写入到 {filepath}...")
+                with open(filepath, 'w', newline='', encoding='utf-8-sig') as csvfile:
                     # 获取dataclass的字段名作为表头
                     header = [f.name for f in fields(SkippedRecord)]
                     writer = csv.writer(csvfile)
                     writer.writerow(header)
                     # 使用推导式和astuple提高写入效率
                     writer.writerows(astuple(record) for record in data)
-                logging.info(f"跳过记录成功写入 {filename}。")
+                logging.info(f"跳过记录成功写入 {filepath}。")
                 return  # 成功写入，退出函数
             except IOError as e:
-                if filename == filenames_to_try[-1]:
+                if filepath == filenames_to_try[-1]:
                     # 已经是最后一个文件名，仍然失败
-                    logging.error(f"写入文件 {filename} 时发生错误: {e}")
+                    logging.error(f"写入文件 {filepath} 时发生错误: {e}")
                     logging.error("所有尝试的文件名均失败，跳过记录未能保存。")
                 else:
                     # 还有备用文件名可以尝试
-                    logging.warning(f"写入文件 {filename} 失败，可能是文件被占用，尝试使用备用文件名...")
+                    logging.warning(f"写入文件 {filepath} 失败，可能是文件被占用，尝试使用备用文件名...")
                     continue
 
 
