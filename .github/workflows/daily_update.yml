@@ -8,6 +8,12 @@ on:
   
   # 允许在网页端手动点击按钮触发
   workflow_dispatch:
+    inputs:
+      skip_cache:
+        description: '不使用缓存'
+        required: false
+        default: false
+        type: boolean
   
   # 当代码推送到 workflow-test 分支时触发测试（调试用）
   push:
@@ -46,6 +52,7 @@ jobs:
       # 尝试从 data 分支拉取上次的缓存文件
       # 从远程的 data 分支将 cache 文件夹恢复到当前工作目录，实现增量更新
       - name: 从 data 分支恢复缓存
+        if: github.event.inputs.skip_cache != 'true'
         run: |
           echo "正在检查远程 data 分支..."
           # 尝试获取 origin/data 的信息，如果分支不存在（首次运行）则忽略错误
@@ -78,11 +85,13 @@ jobs:
       # 获取当前日期
       - name: 获取当前日期
         id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        run: |
+          echo "当前日期: $(date +'%Y-%m-%d')"
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       # 运行主程序
       - name: 运行爬虫脚本
-        run: python main.py -m 1 -d 5
+        run: python main.py -m 1 -d 3
 
       # 检测数据是否发生变化
       # 对比运行前后的 state.json 哈希值
