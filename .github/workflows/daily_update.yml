@@ -4,8 +4,7 @@ name: 日常检测更新
 on:
   # 定时任务：每天北京时间 3点 (UTC时间 19点)
   schedule:
-    - cron: '*/10 * * * *'
-      timezone: 'Asia/Shanghai'
+    - cron: '0 19 * * *'
   
   # 允许在网页端手动点击按钮触发
   workflow_dispatch:
