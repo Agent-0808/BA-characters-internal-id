@@ -4,7 +4,7 @@ name: 日常检测更新
 on:
   # 定时任务：每天北京时间 3点 (UTC时间 19点)
   schedule:
-    - cron: '0 10 * * *'
+    - cron: '*/10 * * * *'
       timezone: 'Asia/Shanghai'
   
   # 允许在网页端手动点击按钮触发
@@ -83,7 +83,7 @@ jobs:
 
       # 运行主程序
       - name: 运行爬虫脚本
-        run: python main.py
+        run: python main.py -m 1 -d 5
 
       # 检测数据是否发生变化
       # 对比运行前后的 state.json 哈希值
@@ -97,6 +97,7 @@ jobs:
             echo "empty" > post_hash.txt
           fi
           
+          echo "运行前 Hash: $(cat pre_hash.txt)"
           echo "运行后 Hash: $(cat post_hash.txt)"
           
           # 比较两个哈希文件，-s 表示静默模式
