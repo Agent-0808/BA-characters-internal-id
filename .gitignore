@@ -1,5 +1,13 @@
-cache
-files
-*.csv
+__pycache__/
+*.pyc
+
+.venv/
+venv/
+env/
+
+cache/
+output/
+
+files/
 *.xlsx
 test.py

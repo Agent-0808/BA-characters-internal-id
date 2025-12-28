@@ -1,0 +1,172 @@
+name: 日常检测更新
+
+# 触发机制配置
+on:
+  # 定时任务：每天北京时间 3点 (UTC时间 19点)
+  schedule:
+    - cron: '0 19 * * *'
+  
+  # 允许在网页端手动点击按钮触发
+  workflow_dispatch:
+    inputs:
+      skip_cache:
+        description: '不使用缓存'
+        required: false
+        default: false
+        type: boolean
+  
+  # 当代码推送到 workflow-test 分支时触发测试（调试用）
+  push:
+    branches:
+      - workflow-test
+
+# 权限配置：允许 Action 读写仓库内容以进行推送和发布 Release
+permissions:
+  contents: write
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出当前分支（main）的代码
+      - name: 检出代码仓库
+        uses: actions/checkout@v4
+
+      # 读取版本号文件并设置为环境变量
+      - name: 读取版本号
+        run: echo "CODE_VERSION=$(cat VERSION)" >> $GITHUB_ENV
+
+      # 配置 Python 环境
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 安装依赖库
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install httpx
+
+      # 尝试从 data 分支拉取上次的缓存文件
+      # 从远程的 data 分支将 cache 文件夹恢复到当前工作目录，实现增量更新
+      - name: 从 data 分支恢复缓存
+        if: github.event.inputs.skip_cache != 'true'
+        run: |
+          echo "正在检查远程 data 分支..."
+          # 尝试获取 origin/data 的信息，如果分支不存在（首次运行）则忽略错误
+          git fetch origin data || echo "未找到 data 分支。"
+          
+          # 检查远程 data 分支里是否有 cache 目录
+          if git ls-tree -d origin/data:cache >/dev/null 2>&1; then
+            echo "发现缓存，正在恢复..."
+            # 将 origin/data 分支下的 cache 目录检出到当前工作区
+            git checkout origin/data -- cache/
+          else
+            echo "未发现缓存，将建立新缓存目录。"
+            mkdir -p cache
+          fi
+
+      # 记录运行前的状态文件指纹
+      # 因为 cache 目录被 gitignore 忽略，无法用 git status 检测变化
+      # 我们通过计算 state.json 的 MD5 哈希值来判断 Python 脚本是否进行了更新
+      - name: 记录运行前状态
+        id: pre_state
+        run: |
+          if [ -f "cache/state.json" ]; then
+            # 计算文件哈希并保存到临时文件
+            md5sum cache/state.json | awk '{print $1}' > pre_hash.txt
+          else
+            echo "empty" > pre_hash.txt
+          fi
+          echo "运行前 Hash: $(cat pre_hash.txt)"
+
+      # 获取当前日期
+      - name: 获取当前日期
+        id: date
+        run: |
+          echo "当前日期: $(date +'%Y-%m-%d')"
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      # 运行主程序
+      - name: 运行爬虫脚本
+        run: python main.py -m 1 -d 3
+
+      # 检测数据是否发生变化
+      # 对比运行前后的 state.json 哈希值
+      - name: 检测是否有数据更新
+        id: check_changes
+        run: |
+          # 计算运行后的哈希
+          if [ -f "cache/state.json" ]; then
+            md5sum cache/state.json | awk '{print $1}' > post_hash.txt
+          else
+            echo "empty" > post_hash.txt
+          fi
+          
+          echo "运行前 Hash: $(cat pre_hash.txt)"
+          echo "运行后 Hash: $(cat post_hash.txt)"
+          
+          # 比较两个哈希文件，-s 表示静默模式
+          if cmp -s pre_hash.txt post_hash.txt; then
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+            echo "💤 状态文件未发生变化，无需更新。"
+          else
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+            echo "✅ 检测到新数据！准备提交和发布。"
+          fi
+
+      # 准备要发布到 data 分支的文件
+      # 仅当检测到变化时运行
+      - name: 准备发布文件
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: |
+          mkdir -p deployment_folder
+          
+          if [ -d "output" ]; then
+            cp -r output deployment_folder/
+          fi
+          
+          if [ -d "cache" ]; then
+            cp -r cache deployment_folder/
+          fi
+          
+          echo "以下文件将被推送到 data 分支："
+          ls -R deployment_folder
+
+      # 将数据和缓存推送到 data 分支
+      # 仅当检测到变化时运行
+      - name: 将数据和缓存推送到 data 分支
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deployment_folder
+          publish_branch: data
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: "Auto-update: ${{ env.CODE_VERSION }}-${{ steps.date.outputs.date }}"
+          keep_files: false
+          enable_jekyll: true
+
+      # 创建 Release 发布
+      # 仅当检测到变化时运行
+      - name: 创建 Release 版本
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.CODE_VERSION }}-${{ steps.date.outputs.date }}
+          name: ${{ env.CODE_VERSION }} Auto Update ${{ steps.date.outputs.date }}
+          body: |
+            检测到数据变动，已生成新的文件和缓存。
+            
+            - **代码版本**: ${{ env.CODE_VERSION }}
+            - **更新日期**: ${{ steps.date.outputs.date }}
+            - **数据分支**: [查看 data 分支](https://github.com/${{ github.repository }}/tree/data)
+            
+          files: |
+            output/students_data.csv
+            output/skipped_ids.csv
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
