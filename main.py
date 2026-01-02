@@ -960,34 +960,50 @@ class Crawler:
         self.max_concurrent = max_concurrent
         self.delay = delay
     
-    async def refresh_students(self, student_ids: list[int]) -> tuple[list[StudentForm], list[SkippedRecord]]:
-        """刷新所有学生索引"""
-        # 获取学校列表
-        schools_map, error = await self.client.fetch_schools_data()
+    async def run(self, student_ids: list[int], force_refresh: bool = False) -> tuple[list[StudentForm], list[SkippedRecord]]:
+        """
+        执行爬取或缓存读取流程
+        :param student_ids: 需要处理的学生ID列表
+        :param force_refresh: 是否强制刷新（True=爬取更新, False=读取缓存）
+        """
+        action_name = "刷新" if force_refresh else "读取缓存"
+        
+        # 1. 获取学校列表 (如果强制刷新，连同学校数据一起刷新)
+        schools_map, error = await self.client.fetch_schools_data(force_refresh=force_refresh)
         if error:
             logging.error(f"获取学校数据失败: {error}")
             schools_map = {}
         else:
             logging.info(f"成功获取 {len(schools_map)} 个学校数据")
         
+        # 2. 创建并发任务
         semaphore = asyncio.Semaphore(self.max_concurrent)
+        # 这里的 process_student_id 引用的是全局定义的那个函数
         tasks = [
-            process_student_id(student_id, self.client, self.parser, semaphore, self.delay, force_refresh=True, schools_map=schools_map)
+            process_student_id(
+                student_id, 
+                self.client, 
+                self.parser, 
+                semaphore, 
+                self.delay, 
+                force_refresh=force_refresh, 
+                schools_map=schools_map
+            )
             for student_id in student_ids
         ]
         
         all_student_forms: list[StudentForm] = []
         all_skipped_records: list[SkippedRecord] = []
         
-        logging.info(f"开始刷新 {len(student_ids)} 个学生数据...")
-        processed_count = 0
-        total_count = len(student_ids)
+        logging.info(f"开始{action_name} {len(student_ids)} 个学生数据...")
         
-        for future in asyncio.as_completed(tasks):
-            processed_count += 1
+        # 3. 执行并收集结果
+        total_count = len(student_ids)
+        # 使用 enumerate 配合 as_completed 并不是有序的，这里仅用于计数
+        for i, future in enumerate(asyncio.as_completed(tasks), 1):
             student_id, forms_list, newly_skipped_records = await future
             
-            progress_prefix = f"[{processed_count}/{total_count}]"
+            progress_prefix = f"[{i}/{total_count}]"
             
             if forms_list:
                 # 成功提取到数据
@@ -998,131 +1014,11 @@ class Crawler:
             if newly_skipped_records:
                 # 记录并打印跳过信息
                 for skipped in newly_skipped_records:
-                    if skipped.spine_id:
-                        logging.info(f"{progress_prefix} ID: {student_id} -> Spine ID {skipped.spine_id} 已跳过 ({skipped.reason})")
-                    else:
-                        logging.info(f"{progress_prefix} ID: {student_id} -> 已跳过 ({skipped.reason})")
+                    reason_msg = f"Spine ID {skipped.spine_id} 已跳过" if skipped.spine_id else "已跳过"
+                    logging.info(f"{progress_prefix} ID: {student_id} -> {reason_msg} ({skipped.reason})")
                 all_skipped_records.extend(newly_skipped_records)
         
         return all_student_forms, all_skipped_records
-    
-    async def get_all_student_forms_from_cache(self, student_ids: list[int]) -> tuple[list[StudentForm], list[SkippedRecord]]:
-        """直接从缓存获取所有学生数据"""
-        # 获取学校列表
-        schools_map, error = await self.client.fetch_schools_data()
-        if error:
-            logging.error(f"获取学校数据失败: {error}")
-            schools_map = {}
-        else:
-            logging.info(f"成功获取 {len(schools_map)} 个学校数据")
-        
-        semaphore = asyncio.Semaphore(self.max_concurrent)
-        tasks = [
-            process_student_id(student_id, self.client, self.parser, semaphore, self.delay, schools_map=schools_map)
-            for student_id in student_ids
-        ]
-        
-        all_student_forms: list[StudentForm] = []
-        all_skipped_records: list[SkippedRecord] = []
-        
-        logging.info(f"开始从缓存读取 {len(student_ids)} 个学生数据...")
-        processed_count = 0
-        total_count = len(student_ids)
-        
-        for future in asyncio.as_completed(tasks):
-            processed_count += 1
-            student_id, forms_list, newly_skipped_records = await future
-            
-            progress_prefix = f"[{processed_count}/{total_count}]"
-            
-            if forms_list:
-                # 成功提取到数据
-                file_ids_str = ", ".join(form.file_id for form in forms_list)
-                logging.info(f"{progress_prefix} ID: {student_id} -> 成功, File IDs: {file_ids_str}")
-                all_student_forms.extend(forms_list)
-            
-            if newly_skipped_records:
-                # 记录并打印跳过信息
-                for skipped in newly_skipped_records:
-                    if skipped.spine_id:
-                        logging.info(f"{progress_prefix} ID: {student_id} -> Spine ID {skipped.spine_id} 已跳过 ({skipped.reason})")
-                    else:
-                        logging.info(f"{progress_prefix} ID: {student_id} -> 已跳过 ({skipped.reason})")
-                all_skipped_records.extend(newly_skipped_records)
-        
-        return all_student_forms, all_skipped_records
-
-async def main():
-    """主执行函数"""
-    parser = DataParser()
-    cache_manager = CacheManager()
-    
-    # 读取本地状态
-    local_state = await cache_manager.get_state()
-    local_max_student_id = local_state.get("max_student_id", 0)
-    local_max_spine_id = local_state.get("max_spine_id", 0)
-    
-    logging.info(f"本地状态: 最大学生ID {local_max_student_id}, 最大Spine ID {local_max_spine_id}")
-    
-    async with httpx.AsyncClient() as http_client:
-        # 初始化客户端
-        client = APIClient(http_client, cache_manager)
-        sentinel = Sentinel(http_client)
-        crawler = Crawler(client, parser, cache_manager)
-        
-        # 第一步：检查更新
-        logging.info("开始检查更新...")
-        need_update, remote_max_student_id, remote_max_spine_id = await sentinel.check_updates(local_max_student_id, local_max_spine_id)
-        
-        # 打印更新检查结果
-        logging.info(f"本地学生ID: {local_max_student_id}, 远程学生ID: {remote_max_student_id}")
-        logging.info(f"本地Spine ID: {local_max_spine_id}, 远程Spine ID: {remote_max_spine_id}")
-        logging.info(f"是否需要更新: {need_update}")
-        
-        # 测试模式下，只检查更新，不执行后续逻辑
-        if TEST_MODE:
-            logging.info("测试模式已启用，跳过后续爬取和写入操作。")
-            return
-        
-        # 确定学生ID范围
-        student_ids = list(range(1, remote_max_student_id + 1))
-        
-        all_student_forms: list[StudentForm] = []
-        skipped_records: list[SkippedRecord] = []
-        
-        # 第二步：决策执行
-        if not need_update:
-            logging.info("当前数据已是最新，跳过爬取。")
-            # 模式 A：直接从缓存获取数据
-            all_student_forms, skipped_records = await crawler.get_all_student_forms_from_cache(student_ids)
-        else:
-            logging.info("检测到更新，开始刷新数据...")
-            # 模式 B：触发更新
-            all_student_forms, skipped_records = await crawler.refresh_students(student_ids)
-            
-            # 第三步：状态回写
-            logging.info("更新完成，保存状态...")
-            await cache_manager.save_state(remote_max_student_id, remote_max_spine_id)
-        
-        # 输出统计信息
-        logging.info("-" * 40)
-        logging.info(f"学生数据请求: {client.student_req_count}")
-        logging.info(f"Spine 数据请求: {client.spine_req_count}")
-
-    # 按 file_id 排序以保证输出顺序稳定
-    all_student_forms.sort(key=lambda x: (x.char_id, x.file_id))
-
-    # 按 student_id 和 spine_id 排序以保证输出顺序稳定
-    skipped_records.sort(key=lambda x: (x.student_id, x.spine_id or -1))
-
-    # 写入文件
-    writer = CsvWriter(OUTPUT_FILENAME)
-    writer.write(all_student_forms)
-
-    # 写入跳过记录文件
-    skipped_writer = CsvWriter(SKIPPED_FILENAME)
-    skipped_writer.write_skipped(skipped_records)
-
 
 async def startup(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURRENT_REQUESTS, delay: float = REQUEST_DELAY_SECONDS, test_id: int | None = None, no_cache_overwrite: bool = False):
     """程序启动函数，负责初始化配置"""
@@ -1185,16 +1081,17 @@ async def main(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURREN
         crawler = Crawler(client, parser, cache_manager, max_concurrent, delay)
         student_ids = list(range(1, remote_max_student_id + 1))
         
-        all_student_forms: list[StudentForm]
-        skipped_records: list[SkippedRecord]
-        
-        if not need_update:
-            logging.info("当前数据已是最新，从缓存加载。")
-            all_student_forms, skipped_records = await crawler.get_all_student_forms_from_cache(student_ids)
+        # 决策逻辑简化：force_refresh 直接由 need_update 决定
+        if need_update:
+            logging.info("检测到更新，开始全量刷新数据...")
         else:
-            logging.info("检测到更新，开始刷新数据...")
-            all_student_forms, skipped_records = await crawler.refresh_students(student_ids)
-            
+            logging.info("当前数据已是最新，从缓存加载。")
+
+        # 统一调用 run 方法，消除了重复的流程控制代码
+        all_student_forms, skipped_records = await crawler.run(student_ids, force_refresh=need_update)
+
+        # 只有在确实进行了更新操作时，才保存新的状态
+        if need_update:
             logging.info("更新完成，保存状态...")
             await cache_manager.save_state(remote_max_student_id, remote_max_spine_id)
         
@@ -1202,7 +1099,7 @@ async def main(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURREN
         logging.info(f"学生数据请求: {client.student_req_count}")
         logging.info(f"Spine 数据请求: {client.spine_req_count}")
 
-    # --- 文件写入部分（移出 async with 块） ---
+    # --- 文件写入部分 ---
     
     # 按 file_id 排序以保证输出顺序稳定
     all_student_forms.sort(key=lambda x: (x.char_id, x.file_id))
