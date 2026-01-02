@@ -19,6 +19,16 @@ CHAR_API_BASE_URL: str = f"{BASE_API_URL}/students/{{student_id}}"
 SPINE_API_BASE_URL: str = f"{BASE_API_URL}/spines/{{spine_id}}"
 STUDENTS_LIST_API_URL: str = f"{BASE_API_URL}/students/?id_sort=desc"
 SPINES_LIST_API_URL: str = f"{BASE_API_URL}/spines/"
+SCHOOLS_API_URL: str = f"{BASE_API_URL}/schools/?page_size=40"
+
+def strip(data: dict[str, Any], key: str) -> None:
+    """对字典中指定键的值进行处理，如果键存在且字符串长度超过10则执行strip操作，否则保留原样"""
+    if key in data:
+        if not data[key]:
+            data[key] = []
+        elif isinstance(data[key], str) and len(data[key]) > 10:
+            data[key] = "(stripped)"
+
 
 # 从API获取最新的学生ID
 async def get_final_student_id() -> int:
@@ -114,6 +124,7 @@ class StudentForm:
     name_tw: str
     name_en: str
     name_kr: str
+    school_name: str
 
 
 @dataclass
@@ -128,6 +139,7 @@ class SkippedRecord:
     name_jp: str = ""
     name_en: str = ""
     school: int | str = ""
+    school_name: str = ""
 
 class CacheManager:
     """负责本地数据的缓存管理"""
@@ -137,6 +149,7 @@ class CacheManager:
         self.students_dir = base_dir / "students"
         self.spines_dir = base_dir / "spines"
         self.state_file = base_dir / "state.json"
+        self.schools_cache_file = base_dir / "schools.json"
         self._ensure_dirs()
 
     def _ensure_dirs(self):
@@ -154,8 +167,6 @@ class CacheManager:
         data = json_data['data']
         if not isinstance(data, dict):
             return json_data
-
-        STRIPPED_MARKER = "(stripped)"
 
         # 1. 定义需要处理的字段
         # keys_to_remove: 完全移除的字段
@@ -177,9 +188,8 @@ class CacheManager:
             if key in keys_to_remove:
                 data.pop(key, None)
             elif key in keys_to_strip and key in data:
-                content = data[key]
                 # 如果列表存在且不为空，替换为标记
-                data[key] = [STRIPPED_MARKER] if content else []
+                strip(data, key)
 
         # 清洗 character_datas
         if 'character_datas' in data:
@@ -246,6 +256,17 @@ class CacheManager:
             "last_updated": asyncio.get_event_loop().time()
         }
         await self._write_json(self.state_file, state)
+
+    async def get_schools(self) -> dict[int, dict[str, Any]]:
+        """从缓存读取学校数据"""
+        if schools_data := await self._read_json(self.schools_cache_file):
+            if schools_data.get("code") == 2000 and "data" in schools_data and "school" in schools_data["data"]:
+                return {school["id"]: school for school in schools_data["data"]["school"]}
+        return {}
+
+    async def save_schools(self, schools_data: dict):
+        """保存学校数据到缓存"""
+        await self._write_json(self.schools_cache_file, schools_data)
 
     async def _read_json(self, path: Path) -> dict | None:
         """异步读取 JSON 文件"""
@@ -414,6 +435,45 @@ class APIClient:
             logging.error(f"处理 Spine ID {spine_id} 时发生未知错误: {e}")
             return None, f"未知错误: {e}"
 
+    async def fetch_schools_data(self, force_refresh: bool = False) -> tuple[dict[int, dict[str, Any]] | None, str | None]:
+        """
+        从API获取学校列表数据（优先查缓存）。
+        返回 (学校字典, 错误原因)。
+        """
+        # 1. 如果强制刷新，跳过缓存直接从API获取
+        if force_refresh:
+            try:
+                response = await self.client.get(SCHOOLS_API_URL, timeout=10.0)
+                response.raise_for_status()
+                json_data = response.json()
+                
+                if json_data and json_data.get('code') == 2000:
+                    if 'data' in json_data and 'school' in json_data['data']:
+                        for school in json_data['data']['school']:
+                            for key in ['description', 'logo', 'preview_image']:
+                                strip(school, key)
+                    
+                    # 成功获取后，保存到缓存
+                    await self.cache.save_schools(json_data)
+                    
+                    # 返回学校字典，以id为键
+                    schools = json_data['data']['school']
+                    return {school["id"]: school for school in schools}, None
+                else:
+                    return None, "无效的学校数据格式"
+            except httpx.RequestError as e:
+                return None, f"网络错误: {e}"
+            except Exception as e:
+                logging.error(f"获取学校数据失败: {e}")
+                return None, f"未知错误: {e}"
+        
+        # 2. 尝试从缓存获取
+        if cached_schools := await self.cache.get_schools():
+            return cached_schools, None
+        
+        # 3. 缓存未命中，从 API 获取
+        return await self.fetch_schools_data(force_refresh=True)
+
 # --- 数据解析模块 ---
 
 class DataParser:
@@ -508,7 +568,7 @@ class DataParser:
 
         # 跳过特定后缀的形态
         SPINE_SUFFIXES_TO_SKIP: list[str] = [
-            "_cn", "_steam", "_glitch_spr", "_cbt", "_halofix", "spr-2", "_old"
+            "_cn", "_steam", "_glitch_spr", "_cbt", "_halofix", "spr-2", "_old", "_old_spr"
         ]
         for suffix in SPINE_SUFFIXES_TO_SKIP:
             if name_lower.endswith(suffix):
@@ -619,7 +679,7 @@ class DataParser:
 
     # Entry Point
 
-    def parse(self, json_data: dict, kivo_wiki_id: int, spine_data: list[dict[str, Any]]) -> tuple[
+    def parse(self, json_data: dict, kivo_wiki_id: int, spine_data: list[dict[str, Any]], school_name: str = "") -> tuple[
         list[StudentForm], list[SkippedRecord], str | None]:
         """
         主解析入口：
@@ -644,6 +704,9 @@ class DataParser:
         for spine_item in spine_data:
             # 3.1 检查 Spine 是否跳过
             if skip_reason := self._get_spine_skip_reason(spine_item):
+                # 获取学校ID
+                school = data.get("school", "")
+                
                 skipped_spines.append(SkippedRecord(
                     student_id=kivo_wiki_id,
                     spine_id=spine_item.get("id"),
@@ -653,7 +716,8 @@ class DataParser:
                     name=default_name, 
                     name_jp=base_name_jp, 
                     name_en=base_name_en, 
-                    school=data.get("school", "")
+                    school=school,
+                    school_name=school_name
                 ))
                 continue
 
@@ -692,7 +756,8 @@ class DataParser:
                 name_jp=names["jp"],
                 name_tw=names["tw"],
                 name_en=names["en"],
-                name_kr=names["kr"]
+                name_kr=names["kr"],
+                school_name=school_name
             )
 
             # --- 去重与合并逻辑 ---
@@ -800,11 +865,13 @@ async def process_student_id(
     parser: DataParser,
     semaphore: asyncio.Semaphore,
     delay: float,
-    force_refresh: bool = False
+    force_refresh: bool = False,
+    schools_map: dict[int, dict[str, Any]] | None = None
 ) -> tuple[int, list[StudentForm], list[SkippedRecord]]:
     """
     获取、解析并处理单个学生ID的数据。
     """
+    schools_map = schools_map or {}
     async with semaphore:
         all_skipped: list[SkippedRecord] = []
         
@@ -832,9 +899,17 @@ async def process_student_id(
                 name="", 
                 name_jp="", 
                 name_en="", 
-                school=""
+                school="",
+                school_name=""
             )
             return student_id, [], [skipped]
+
+        # 获取学校名称
+        school_name = ""
+        if 'data' in json_data and 'school' in json_data['data']:
+            school_id = json_data['data']['school']
+            if isinstance(school_id, int) and school_id in schools_map:
+                school_name = schools_map[school_id].get('name', '')
 
         # 获取 spine 数据
         spine_ids = json_data.get("data", {}).get("spine", [])
@@ -843,7 +918,7 @@ async def process_student_id(
         # 只提取成功获取的数据部分，忽略错误信息
         spine_results = [data for data, error in spine_results_raw if data is not None]
 
-        forms, skipped_spines, student_skip_reason = parser.parse(json_data, student_id, spine_results)
+        forms, skipped_spines, student_skip_reason = parser.parse(json_data, student_id, spine_results, school_name)
         all_skipped.extend(skipped_spines)
 
         if student_skip_reason:
@@ -853,6 +928,11 @@ async def process_student_id(
             name_jp = parser._build_name(data.get("family_name_jp"), data.get("given_name_jp")) or ""
             name_en = parser._build_name(data.get("family_name_en"), data.get("given_name_en")) or ""
             school = data.get("school", "")
+            
+            # 获取学校名称
+            school_name = ""
+            if isinstance(school, int) and school in schools_map:
+                school_name = schools_map[school].get('name', '')
 
             skipped = SkippedRecord(
                 student_id=student_id,
@@ -863,7 +943,8 @@ async def process_student_id(
                 name=name,
                 name_jp=name_jp,
                 name_en=name_en,
-                school=school
+                school=school,
+                school_name=school_name
             )
             all_skipped.append(skipped)
 
@@ -881,9 +962,17 @@ class Crawler:
     
     async def refresh_students(self, student_ids: list[int]) -> tuple[list[StudentForm], list[SkippedRecord]]:
         """刷新所有学生索引"""
+        # 获取学校列表
+        schools_map, error = await self.client.fetch_schools_data()
+        if error:
+            logging.error(f"获取学校数据失败: {error}")
+            schools_map = {}
+        else:
+            logging.info(f"成功获取 {len(schools_map)} 个学校数据")
+        
         semaphore = asyncio.Semaphore(self.max_concurrent)
         tasks = [
-            process_student_id(student_id, self.client, self.parser, semaphore, self.delay, force_refresh=True)
+            process_student_id(student_id, self.client, self.parser, semaphore, self.delay, force_refresh=True, schools_map=schools_map)
             for student_id in student_ids
         ]
         
@@ -919,9 +1008,17 @@ class Crawler:
     
     async def get_all_student_forms_from_cache(self, student_ids: list[int]) -> tuple[list[StudentForm], list[SkippedRecord]]:
         """直接从缓存获取所有学生数据"""
+        # 获取学校列表
+        schools_map, error = await self.client.fetch_schools_data()
+        if error:
+            logging.error(f"获取学校数据失败: {error}")
+            schools_map = {}
+        else:
+            logging.info(f"成功获取 {len(schools_map)} 个学校数据")
+        
         semaphore = asyncio.Semaphore(self.max_concurrent)
         tasks = [
-            process_student_id(student_id, self.client, self.parser, semaphore, self.delay)
+            process_student_id(student_id, self.client, self.parser, semaphore, self.delay, schools_map=schools_map)
             for student_id in student_ids
         ]
         
@@ -1127,6 +1224,14 @@ async def run_test_mode(client: APIClient, parser: DataParser, test_id: int):
     """
     logging.info(f"测试模式已启用，ID: {test_id}")
     
+    # 获取学校列表
+    schools_map, error = await client.fetch_schools_data()
+    if error:
+        logging.error(f"获取学校数据失败: {error}")
+        schools_map = {}
+    else:
+        logging.info(f"成功获取 {len(schools_map)} 个学校数据")
+    
     # 直接获取指定学生的数据（强制刷新，不使用缓存）
     student_data, error_msg, from_cache = await client.fetch_student_data(test_id, force_refresh=True)
     
@@ -1136,6 +1241,13 @@ async def run_test_mode(client: APIClient, parser: DataParser, test_id: int):
         print(f"学生ID {test_id}: 获取失败 - {error_msg or '未知错误'}")
         return
 
+    # 如果有学校信息，计算学校名称
+    school_name = ""
+    if schools_map and 'data' in student_data and 'school' in student_data['data']:
+        school_id = student_data['data']['school']
+        if isinstance(school_id, int) and school_id in schools_map:
+            school_name = schools_map[school_id].get('name', '')
+
     # 获取 spine 数据
     spine_ids = student_data.get("data", {}).get("spine", [])
     spine_tasks = [client.fetch_spine_data(sid) for sid in spine_ids if isinstance(sid, int)]
@@ -1143,7 +1255,7 @@ async def run_test_mode(client: APIClient, parser: DataParser, test_id: int):
     spine_results = [data for data, error in spine_results_raw if data]
     
     # 解析数据
-    forms, _, student_skip_reason = parser.parse(student_data, test_id, spine_results)
+    forms, _, student_skip_reason = parser.parse(student_data, test_id, spine_results, school_name)
     
     print("\n=== 测试模式结果 ===")
     if forms:
