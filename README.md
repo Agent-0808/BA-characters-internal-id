@@ -1,8 +1,13 @@
 # BA-characters-internal-id
 
-整理角色对应的文件ID，方便解包时确定对应文件名。
+整理了《碧蓝档案》/《蔚蓝档案》/Blue Archive 中角色对应的文件ID，方便解包时确定对应文件名。
 
-可以从Release中下载最新版本的CSV文件，避免多次请求API。
+可以从Release中下载最新版本的`students_data.csv`文件，避免多次请求API。
+
+### 部署
+
+- 每天北京时间3点（UTC 19:00）自动检查，如有更新则会发布新release
+- 配有缓存机制，减少API请求次数
 
 ### 示例
 
@@ -19,7 +24,5 @@ Steam版的文件储存路径为`BlueArchive\BlueArchive_Data\StreamingAssets\PU
 ### 致谢
 
 - 信息来自 [基沃托斯古书馆](https://kivo.wiki)，感谢
-
 - API用法参考：[说明](https://github.com/Agent-0808/bluearchive-api-kivowiki)（[原仓库](https://github.com/Dale233/bluearchive-api-kivowiki)）
-
 - 代码由AI编写
