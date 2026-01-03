@@ -294,28 +294,6 @@ class CacheManager:
             # 使用 separators 生成紧凑的 JSON (无多余空格)
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
 
-class Sentinel:
-    """负责检查是否需要更新数据"""
-    
-    def __init__(self, client: httpx.AsyncClient):
-        self.client = client
-    
-    async def check_updates(self, local_max_student_id: int, local_max_spine_id: int) -> tuple[bool, int, int]:
-        """检查是否需要更新数据"""
-        # 直接使用程序启动时获取的最新ID，避免重复API请求
-        remote_max_student_id = FINAL_STUDENT_ID
-        remote_max_spine_id = FINAL_SPINE_ID
-        
-        # 判定是否需要更新
-        need_update = False
-        if remote_max_student_id > local_max_student_id:
-            need_update = True
-        
-        if remote_max_spine_id > local_max_spine_id:
-            need_update = True
-        
-        return need_update, remote_max_student_id, remote_max_spine_id
-
 class APIClient:
     """负责处理所有网络请求及缓存管理的客户端"""
 
@@ -331,63 +309,67 @@ class APIClient:
             "User-Agent": "BA-characters-internal-id (https://github.com/Agent-0808/BA-characters-internal-id)"
         })
 
+    async def get_remote_max_ids(self) -> tuple[int, int]:
+        """获取远程最新的 Student ID 和 Spine ID"""
+        max_student_id = 0
+        max_spine_id = 0
+        
+        # 1. 获取最新学生ID
+        try:
+            resp = await self.client.get(STUDENTS_LIST_API_URL, timeout=10.0)
+            if resp.status_code == 200:
+                data = resp.json()
+                if data.get("code") == 2000 and (students := data.get("data", {}).get("students")):
+                    max_student_id = students[0]["id"]
+        except Exception as e:
+            logging.error(f"获取最新学生ID失败: {e}")
+
+        # 2. 获取最新Spine ID
+        try:
+            # 先获取最大页数
+            resp_page = await self.client.get(SPINES_LIST_API_URL, params={"page": 1}, timeout=10.0)
+            if resp_page.status_code == 200:
+                data_page = resp_page.json()
+                if max_page := data_page.get("data", {}).get("max_page"):
+                    # 获取最后一页数据
+                    resp_last = await self.client.get(SPINES_LIST_API_URL, params={"page": max_page}, timeout=10.0)
+                    if resp_last.status_code == 200:
+                        data_last = resp_last.json()
+                        if spine_list := data_last.get("data", {}).get("spine"):
+                            max_spine_id = spine_list[-1]["id"]
+        except Exception as e:
+            logging.error(f"获取最新Spine ID失败: {e}")
+
+        return max_student_id, max_spine_id
+
     async def fetch_student_data(self, student_id: int, force_refresh: bool = False) -> tuple[dict | None, str | None, bool]:
         """
         根据学生ID获取数据（优先查缓存）。
         返回 (数据, 错误/跳过原因, 是否命中缓存)。
         """
-        # 1. 如果强制刷新，跳过缓存直接从API获取
-        if force_refresh:
-            # 记录请求计数
-            self.student_req_count += 1
-            
-            url = CHAR_API_BASE_URL.format(student_id=student_id)
-            try:
-                response = await self.client.get(url, timeout=10.0)
-                if response.status_code == 404:
-                    # 未找到
-                    return None, "未找到 (404)", False
-                response.raise_for_status()
-                
-                json_data = response.json()
-                
-                # 成功获取后，保存到缓存
-                if json_data and json_data.get('code') == 2000:
-                    await self.cache.save_student(student_id, json_data)
-                
-                # 返回 False 表示来自 API 请求
-                return json_data, None, False
-            except httpx.RequestError as e:
-                return None, f"网络错误: {e}", False
-            except Exception as e:
-                logging.error(f"处理 ID {student_id} 时发生未知错误: {e}")
-                return None, f"未知错误: {e}", False
-        
-        # 2. 尝试从缓存获取
-        if cached_data := await self.cache.get_student(student_id):
-            logging.debug(f"ID {student_id}: 命中缓存")
-            # 返回 True 表示命中缓存
-            return cached_data, None, True
+        # 1. 尝试读取缓存（条件：未开启强制刷新 且 缓存存在）
+        if not force_refresh:
+            if cached_data := await self.cache.get_student(student_id):
+                logging.debug(f"ID {student_id}: 命中缓存")
+                return cached_data, None, True
 
-        # 3. 缓存未命中，从 API 获取
-        # 记录请求计数
+        # 2. 执行 API 请求（开启了强制刷新 或 缓存未命中）
         self.student_req_count += 1
-        
         url = CHAR_API_BASE_URL.format(student_id=student_id)
+        
         try:
             response = await self.client.get(url, timeout=10.0)
-            if response.status_code == 404:
-                # 未找到，未命中缓存
-                return None, "未找到 (404)", False
-            response.raise_for_status()
             
+            if response.status_code == 404:
+                return None, "未找到 (404)", False
+            
+            response.raise_for_status()
             json_data = response.json()
             
-            # 4. 成功获取后，保存到缓存
+            # 成功获取且数据有效时，保存到缓存
             if json_data and json_data.get('code') == 2000:
                 await self.cache.save_student(student_id, json_data)
             
-            # 返回 False 表示来自 API 请求
             return json_data, None, False
 
         except httpx.RequestError as e:
@@ -1044,7 +1026,7 @@ async def main(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURREN
     async with httpx.AsyncClient() as http_client:
         client = APIClient(http_client, cache_manager)
 
-        # 模式一：测试模式，处理单个ID并退出
+        # 模式一：测试模式
         if test_id is not None:
             # 根据命令行参数更新全局配置
             global TEST_OVERWRITE_CACHE
@@ -1052,45 +1034,50 @@ async def main(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURREN
             await run_test_mode(client, parser, test_id)
             return
 
-        # --- 以下为完整运行或检查更新模式 ---
+        # --- 正式运行流程 ---
         
-        # 读取本地状态
+        logging.info("正在初始化...")
+
+        # 1. 获取远程状态 (原本 startup 的工作)
+        remote_max_student_id, remote_max_spine_id = await client.get_remote_max_ids()
+        logging.info(f"远程最新状态: Student ID {remote_max_student_id}, Spine ID {remote_max_spine_id}")
+
+        if remote_max_student_id == 0:
+            logging.error("无法获取远程数据，程序终止")
+            return
+
+        # 2. 获取本地状态
         local_state = await cache_manager.get_state()
         local_max_student_id = local_state.get("max_student_id", 0)
         local_max_spine_id = local_state.get("max_spine_id", 0)
+        logging.info(f"本地缓存状态: Student ID {local_max_student_id}, Spine ID {local_max_spine_id}")
         
-        logging.info(f"本地状态: 最大学生ID {local_max_student_id}, 最大Spine ID {local_max_spine_id}")
         logging.info(f"配置: 最大并发请求数 {max_concurrent}, 请求延迟 {delay}秒")
         
-        sentinel = Sentinel(http_client)
+        # 3. 比较状态 (原本 Sentinel 的工作)
+        need_update = (remote_max_student_id > local_max_student_id) or \
+                      (remote_max_spine_id > local_max_spine_id)
         
-        # 检查更新
-        logging.info("开始检查更新...")
-        need_update, remote_max_student_id, remote_max_spine_id = await sentinel.check_updates(local_max_student_id, local_max_spine_id)
-        
-        logging.info(f"本地学生ID: {local_max_student_id}, 远程学生ID: {remote_max_student_id}")
-        logging.info(f"本地Spine ID: {local_max_spine_id}, 远程Spine ID: {remote_max_spine_id}")
         logging.info(f"是否需要更新: {need_update}")
         
-        # 模式二：检查更新模式，报告后退出
+        # 模式二：检查更新模式
         if check_mode:
             logging.info("检查更新模式已启用，跳过后续爬取和写入操作。")
             return
         
-        # 模式三：完整执行
+        # 模式三：执行爬取
         crawler = Crawler(client, parser, cache_manager, max_concurrent, delay)
         student_ids = list(range(1, remote_max_student_id + 1))
         
-        # 决策逻辑简化：force_refresh 直接由 need_update 决定
         if need_update:
             logging.info("检测到更新，开始全量刷新数据...")
         else:
             logging.info("当前数据已是最新，从缓存加载。")
 
-        # 统一调用 run 方法，消除了重复的流程控制代码
+        # 4. 运行任务
         all_student_forms, skipped_records = await crawler.run(student_ids, force_refresh=need_update)
 
-        # 只有在确实进行了更新操作时，才保存新的状态
+        # 5. 更新状态
         if need_update:
             logging.info("更新完成，保存状态...")
             await cache_manager.save_state(remote_max_student_id, remote_max_spine_id)
@@ -1101,17 +1088,15 @@ async def main(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURREN
 
     # --- 文件写入部分 ---
     
-    # 按 file_id 排序以保证输出顺序稳定
+    # 排序
     all_student_forms.sort(key=lambda x: (x.char_id, x.file_id))
-
-    # 按 student_id 和 spine_id 排序以保证输出顺序稳定
     skipped_records.sort(key=lambda x: (x.student_id, x.spine_id or -1))
 
-    # 写入文件
+    # 写入 CSV
     writer = CsvWriter(OUTPUT_FILENAME)
     writer.write(all_student_forms)
 
-    # 写入跳过记录文件
+    # 写入跳过记录
     skipped_writer = CsvWriter(SKIPPED_FILENAME)
     skipped_writer.write_skipped(skipped_records)
 
@@ -1203,8 +1188,11 @@ if __name__ == "__main__":
     
     if args.list:
         asyncio.run(list_info())
-    elif args.test is not None:
-        # 测试模式：只处理指定的学生ID
-        asyncio.run(startup(args.check, args.max_concurrent, args.delay, args.test, args.no_cache_overwrite))
     else:
-        asyncio.run(startup(args.check, args.max_concurrent, args.delay, None, args.no_cache_overwrite))
+        asyncio.run(main(
+            check_mode=args.check, 
+            max_concurrent=args.max_concurrent, 
+            delay=args.delay, 
+            test_id=args.test, 
+            no_cache_overwrite=args.no_cache_overwrite
+        ))
