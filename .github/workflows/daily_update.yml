@@ -155,13 +155,14 @@ jobs:
         if: steps.check_changes.outputs.changes_detected == 'true'
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ env.CODE_VERSION }}-${{ steps.date.outputs.date }}
-          name: ${{ env.CODE_VERSION }} Auto Update ${{ steps.date.outputs.date }}
+          tag_name: ${{ steps.date.outputs.date }}-${{ env.CODE_VERSION }}
+          name: ${{ steps.date.outputs.date }} Auto Update (${{ env.CODE_VERSION }})
+          target_commitish: data
           body: |
             检测到数据变动，已生成新的文件和缓存。
             
-            - **代码版本**: ${{ env.CODE_VERSION }}
             - **更新日期**: ${{ steps.date.outputs.date }}
+            - **代码版本**: ${{ env.CODE_VERSION }}
             - **数据分支**: [查看 data 分支](https://github.com/${{ github.repository }}/tree/data)
             
           files: |
