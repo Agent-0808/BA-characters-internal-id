@@ -50,20 +50,19 @@ jobs:
           pip install httpx
 
       # 尝试从 data 分支拉取上次的缓存文件
-      # 从远程的 data 分支将 cache 文件夹恢复到当前工作目录，实现增量更新
-      - name: 从 data 分支恢复缓存
+      # 从远程的 data 分支恢复到当前工作目录，实现增量更新
+      - name: 从 data 分支恢复数据
         if: github.event.inputs.skip_cache != 'true'
         run: |
           echo "正在检查远程 data 分支..."
-          # 尝试获取 origin/data 的信息，如果分支不存在（首次运行）则忽略错误
-          git fetch origin data || echo "未找到 data 分支。"
           
-          # 检查远程 data 分支里是否有 cache 目录
-          if git ls-tree -d origin/data:cache >/dev/null 2>&1; then
+          # 判断 fetch 是否成功，如果分支不存在会进入 else
+          if git fetch origin data >/dev/null 2>&1; then
             echo "发现缓存，正在恢复..."
-            # 将 origin/data 分支下的 cache 目录检出到当前工作区
-            git checkout origin/data -- cache/
+            # 把 origin/data 分支下的所有文件检出到当前目录
+            git checkout origin/data -- .
           else
+            echo "远程 data 分支不存在。"
             echo "未发现缓存，将建立新缓存目录。"
             mkdir -p cache
           fi
