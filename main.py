@@ -20,6 +20,7 @@ SPINE_API_BASE_URL: str = f"{BASE_API_URL}/spines/{{spine_id}}"
 STUDENTS_LIST_API_URL: str = f"{BASE_API_URL}/students/?id_sort=desc"
 SPINES_LIST_API_URL: str = f"{BASE_API_URL}/spines/"
 SCHOOLS_API_URL: str = f"{BASE_API_URL}/schools/?page_size=40"
+STUDENTS_UPDATED_API_URL: str = f"{BASE_API_URL}/students/?updated_at_sort=desc&page=1&page_size=50"
 
 def strip(data: dict[str, Any], key: str) -> None:
     """对字典中指定键的值进行处理，如果键存在且字符串长度超过10则执行strip操作，否则保留原样"""
@@ -457,6 +458,31 @@ class APIClient:
         
         # 3. 缓存未命中，从 API 获取
         return await self.fetch_schools_data(force_refresh=True)
+
+    async def fetch_recently_updated_ids(self) -> set[int]:
+        """
+        获取最近修改过的学生ID列表（按更新时间降序，取前100个）。
+        返回去重后的学生ID集合。
+        """
+        try:
+            response = await self.client.get(STUDENTS_UPDATED_API_URL, timeout=10.0)
+            response.raise_for_status()
+            json_data = response.json()
+            
+            if json_data and json_data.get('code') == 2000:
+                if 'data' in json_data and 'students' in json_data['data']:
+                    students = json_data['data']['students']
+                    # 提取所有ID并返回集合
+                    return {student['id'] for student in students if 'id' in student}
+            
+            logging.warning("获取最近更新的学生ID失败：响应格式无效")
+            return set()
+        except httpx.RequestError as e:
+            logging.error(f"获取最近更新的学生ID失败（网络错误）: {e}")
+            return set()
+        except Exception as e:
+            logging.error(f"获取最近更新的学生ID失败（未知错误）: {e}")
+            return set()
 
 # --- 数据解析模块 ---
 
@@ -944,16 +970,21 @@ class Crawler:
         self.max_concurrent = max_concurrent
         self.delay = delay
     
-    async def run(self, student_ids: list[int], force_refresh: bool = False) -> tuple[list[StudentForm], list[SkippedRecord]]:
+    async def run(self, student_ids: list[int], force_refresh_ids: set[int] | None = None) -> tuple[list[StudentForm], list[SkippedRecord]]:
         """
         执行爬取或缓存读取流程
         :param student_ids: 需要处理的学生ID列表
-        :param force_refresh: 是否强制刷新（True=爬取更新, False=读取缓存）
+        :param force_refresh_ids: 需要强制刷新的学生ID集合，None表示不强制刷新任何ID
         """
-        action_name = "刷新" if force_refresh else "读取缓存"
+        # 如果没有传入强制刷新ID集合，则初始化为空集合
+        if force_refresh_ids is None:
+            force_refresh_ids = set()
+            
+        # 如果有需要强制刷新的ID，则强制刷新学校数据
+        force_refresh_schools = len(force_refresh_ids) > 0
         
-        # 1. 获取学校列表 (如果强制刷新，连同学校数据一起刷新)
-        schools_map, error = await self.client.fetch_schools_data(force_refresh=force_refresh)
+        # 1. 获取学校列表 (如果需要强制刷新的ID不为空，则连同学校数据一起刷新)
+        schools_map, error = await self.client.fetch_schools_data(force_refresh=force_refresh_schools)
         if error:
             logging.error(f"获取学校数据失败: {error}")
             schools_map = {}
@@ -970,7 +1001,7 @@ class Crawler:
                 self.parser, 
                 semaphore, 
                 self.delay, 
-                force_refresh=force_refresh, 
+                force_refresh=(student_id in force_refresh_ids), 
                 schools_map=schools_map
             )
             for student_id in student_ids
@@ -979,7 +1010,8 @@ class Crawler:
         all_student_forms: list[StudentForm] = []
         all_skipped_records: list[SkippedRecord] = []
         
-        logging.info(f"开始{action_name} {len(student_ids)} 个学生数据...")
+        action_name = f"处理 {len(student_ids)} 个学生数据"
+        logging.info(f"开始{action_name}，其中 {len(force_refresh_ids)} 个需要强制刷新...")
         
         # 3. 执行并收集结果
         total_count = len(student_ids)
@@ -988,11 +1020,12 @@ class Crawler:
             student_id, forms_list, newly_skipped_records = await future
             
             progress_prefix = f"[{i}/{total_count}]"
+            refresh_status = "强制刷新" if student_id in force_refresh_ids else "缓存"
             
             if forms_list:
                 # 成功提取到数据
                 file_ids_str = ", ".join(form.file_id for form in forms_list)
-                logging.info(f"{progress_prefix} ID: {student_id} -> 成功, File IDs: {file_ids_str}")
+                logging.info(f"{progress_prefix} ID: {student_id} -> 成功 ({refresh_status}), File IDs: {file_ids_str}")
                 all_student_forms.extend(forms_list)
             
             if newly_skipped_records:
@@ -1054,13 +1087,25 @@ async def main(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURREN
         local_max_spine_id = local_state.get("max_spine_id", 0)
         logging.info(f"本地缓存状态: Student ID {local_max_student_id}, Spine ID {local_max_spine_id}")
         
-        logging.info(f"配置: 最大并发请求数 {max_concurrent}, 请求延迟 {delay}秒")
+        logging.info(f"配置: 最大并发请求数 {max_concurrent}, 请求延迟 {delay} 秒")
         
-        # 3. 比较状态 (原本 Sentinel 的工作)
-        need_update = (remote_max_student_id > local_max_student_id) or \
-                      (remote_max_spine_id > local_max_spine_id)
+        # 3. 比较状态并构建需要强制刷新的ID集合
+        ids_to_force_refresh: set[int] = set()
         
-        logging.info(f"是否需要更新: {need_update}")
+        # 处理新增：如果有新的学生ID，将差值范围内的ID加入集合
+        if remote_max_student_id > local_max_student_id:
+            new_ids = set(range(local_max_student_id + 1, remote_max_student_id + 1))
+            ids_to_force_refresh.update(new_ids)
+            logging.info(f"检测到新增学生ID: {local_max_student_id + 1} ~ {remote_max_student_id} (共 {len(new_ids)} 个)")
+        
+        # 处理更新：如果学生或Spine有更新，获取最近修改过的ID
+        if remote_max_student_id > local_max_student_id or remote_max_spine_id > local_max_spine_id:
+            recently_updated_ids = await client.fetch_recently_updated_ids()
+            if recently_updated_ids:
+                ids_to_force_refresh.update(recently_updated_ids)
+                logging.info(f"获取到最近更新的学生ID: {len(recently_updated_ids)} 个")
+        
+        logging.info(f"需要强制刷新的学生ID总数: {len(ids_to_force_refresh)}")
         
         # 模式二：检查更新模式
         if check_mode:
@@ -1071,16 +1116,16 @@ async def main(check_mode: bool = TEST_MODE, max_concurrent: int = MAX_CONCURREN
         crawler = Crawler(client, parser, cache_manager, max_concurrent, delay)
         student_ids = list(range(1, remote_max_student_id + 1))
         
-        if need_update:
-            logging.info("检测到更新，开始全量刷新数据...")
+        if ids_to_force_refresh:
+            logging.info("检测到更新，开始增量刷新数据...")
         else:
             logging.info("当前数据已是最新，从缓存加载。")
 
         # 4. 运行任务
-        all_student_forms, skipped_records = await crawler.run(student_ids, force_refresh=need_update)
+        all_student_forms, skipped_records = await crawler.run(student_ids, force_refresh_ids=ids_to_force_refresh)
 
         # 5. 更新状态
-        if need_update:
+        if ids_to_force_refresh:
             logging.info("更新完成，保存状态...")
             await cache_manager.save_state(remote_max_student_id, remote_max_spine_id)
         
