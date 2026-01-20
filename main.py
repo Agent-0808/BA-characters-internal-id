@@ -28,6 +28,8 @@ def strip(data: dict[str, Any], key: str) -> None:
             data[key] = []
         elif isinstance(data[key], str) and len(data[key]) > 10:
             data[key] = "(stripped)"
+        elif isinstance(data[key], list) and len(data[key]) > 0:
+            data[key] = "(stripped)"
 
 
 # 从API获取最新的学生ID
