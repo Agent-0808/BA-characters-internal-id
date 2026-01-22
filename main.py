@@ -22,7 +22,7 @@ SPINES_LIST_API_URL: str = f"{BASE_API_URL}/spines/"
 SCHOOLS_API_URL: str = f"{BASE_API_URL}/schools/?page_size=40"
 STUDENTS_UPDATED_API_URL: str = f"{BASE_API_URL}/students/?updated_at_sort=desc&page=1&page_size=50"
 
-def strip(data: dict[str, Any], key: str) -> None:
+def strip_key(data: dict[str, Any], key: str) -> None:
     """对字典中指定键的值进行处理，如果键存在且字符串长度超过10则执行strip操作，否则保留原样"""
     if key in data:
         if not data[key]:
@@ -31,6 +31,10 @@ def strip(data: dict[str, Any], key: str) -> None:
             data[key] = "(stripped)"
         elif isinstance(data[key], list) and len(data[key]) > 0:
             data[key] = "(stripped)"
+
+def remove_key(data: dict[str, Any], key: str) -> None:
+    """从字典中删除指定的键"""
+    data.pop(key, None)
 
 
 # 从API获取最新的学生ID
@@ -189,10 +193,10 @@ class CacheManager:
         # 统一处理：先检查移除，再检查标记
         for key in keys_to_remove + keys_to_strip:
             if key in keys_to_remove:
-                data.pop(key, None)
+                remove_key(data, key)
             elif key in keys_to_strip and key in data:
                 # 如果列表存在且不为空，替换为标记
-                strip(data, key)
+                strip_key(data, key)
 
         # 清洗 character_datas
         if 'character_datas' in data:
@@ -203,7 +207,7 @@ class CacheManager:
                     'basic',
                 ]
                 for key in sub_keys_to_remove:
-                    char_data.pop(key, None)
+                    remove_key(char_data, key)
                 
                 # 深度清洗 weapons 字段，移除嵌套的无用字段
                 if 'weapons' in char_data and isinstance(char_data['weapons'], dict):
@@ -212,7 +216,7 @@ class CacheManager:
                         'info', 'skill'
                     ]
                     for field in weapons_fields_to_remove:
-                        char_data['weapons'].pop(field, None)
+                        remove_key(char_data['weapons'], field)
 
         return json_data
 
@@ -224,6 +228,7 @@ class CacheManager:
     async def save_student(self, student_id: int, data: dict):
         """清洗并保存学生数据到缓存"""
         cleaned_data = self._clean_student_data(data)
+        remove_key(cleaned_data, "time")
         file_path = self.students_dir / f"{student_id}.json"
         if cleaned_data:
             await self._write_json(file_path, cleaned_data)
@@ -235,6 +240,7 @@ class CacheManager:
 
     async def save_spine(self, spine_id: int, data: dict):
         """保存 Spine 数据到缓存 (Spine 数据通常较小，不做额外清洗)"""
+        remove_key(data, "time")
         file_path = self.spines_dir / f"{spine_id}.json"
         await self._write_json(file_path, data)
 
@@ -269,6 +275,7 @@ class CacheManager:
 
     async def save_schools(self, schools_data: dict):
         """保存学校数据到缓存"""
+        remove_key(schools_data, "time")
         await self._write_json(self.schools_cache_file, schools_data)
 
     async def _read_json(self, path: Path) -> dict | None:
@@ -436,7 +443,8 @@ class APIClient:
                     if 'data' in json_data and 'school' in json_data['data']:
                         for school in json_data['data']['school']:
                             for key in ['description', 'logo', 'preview_image']:
-                                strip(school, key)
+                                remove_key(school, key)
+                            
                     
                     # 成功获取后，保存到缓存
                     await self.cache.save_schools(json_data)
