@@ -543,8 +543,8 @@ class DataParser:
     def _normalize_file_id(self, file_id: str) -> str:
         """
         标准化文件ID格式：
-        - 优先提取标准的 CHxxxx / NPxxxx 格式，保留有意义的后缀（如 _noweapon）
-        - 移除 new_, old_ 前缀和 _spr 等后缀
+        - 提取标准的 CHxxxx / NPxxxx 格式，保留有意义的后缀（如 _noweapon）
+        - 移除 new_, old_ 前缀和 _spr 及后面的所有内容
         """
         cleaned_id = file_id.strip()
         
@@ -553,10 +553,9 @@ class DataParser:
             if cleaned_id.lower().startswith(prefix.lower()):
                 cleaned_id = cleaned_id[len(prefix):]
         
-        # 2. 移除 _spr 和 _spr_update 后缀
-        for suffix in ['_spr_update', '_spr']:
-            if cleaned_id.endswith(suffix):
-                cleaned_id = cleaned_id.removesuffix(suffix)
+        # 2. 移除 _spr 及后面的所有内容
+        if '_spr' in cleaned_id.lower():
+            cleaned_id = cleaned_id.lower().split('_spr')[0]
         
         # 3. 提取标准格式 (CH/NP + 4位数字 + 可选后缀)
         if match := re.search(r"(CH|NP)(\d{4})(_[a-z]+)?", cleaned_id, re.IGNORECASE):
@@ -590,7 +589,7 @@ class DataParser:
 
         # 跳过特定后缀的形态
         SPINE_SUFFIXES_TO_SKIP: list[str] = [
-            "_cn", "_steam", "_glitch_spr", "_cbt", "_halofix", "spr-2", "_old", "_old_spr"
+            "_cn", "_steam", "_glitch_spr", "_cbt", "_halofix", "spr-2", "_old", "_old_spr", "_new"
         ]
         for suffix in SPINE_SUFFIXES_TO_SKIP:
             if name_lower.endswith(suffix):
