@@ -543,22 +543,26 @@ class DataParser:
     def _normalize_file_id(self, file_id: str) -> str:
         """
         标准化文件ID格式：
-        - 优先提取标准的 CHxxxx / NPxxxx 格式
+        - 优先提取标准的 CHxxxx / NPxxxx 格式，保留有意义的后缀（如 _noweapon）
         - 移除 new_, old_ 前缀和 _spr 等后缀
         """
-        # 1. 尝试直接提取标准格式 (CH/NP + 4位数字)
-        if match := re.search(r"(CH|NP)\d{4}", file_id, re.IGNORECASE):
-            return match.group(0).upper()
-
-        # 2. 否则手动清洗
         cleaned_id = file_id.strip()
+        
+        # 1. 移除前缀
         for prefix in ['J_', 'new_', 'old_']:
             if cleaned_id.lower().startswith(prefix.lower()):
                 cleaned_id = cleaned_id[len(prefix):]
-
-        for suffix in ['_spr', '_spr_update']:
+        
+        # 2. 移除 _spr 和 _spr_update 后缀
+        for suffix in ['_spr_update', '_spr']:
             if cleaned_id.endswith(suffix):
                 cleaned_id = cleaned_id.removesuffix(suffix)
+        
+        # 3. 提取标准格式 (CH/NP + 4位数字 + 可选后缀)
+        if match := re.search(r"(CH|NP)(\d{4})(_[a-z]+)?", cleaned_id, re.IGNORECASE):
+            id = f"{match.group(1).upper()}{match.group(2)}{match.group(3).lower() if match.group(3) else ''}"
+            # match的三个部分：CH/NP + 4位数字 + 可选后缀
+            return id
             
         return cleaned_id.lower()
 
@@ -1196,12 +1200,12 @@ async def run_test_mode(client: APIClient, parser: DataParser, test_id: int):
     
     print("\n=== 测试模式结果 ===")
     if forms:
-        form = forms[0]  # 测试模式只处理一个学生，取第一个结果
-        logging.info(f"学生ID {test_id} 数据获取成功")
-        # 使用 f-string 和 dataclasses.fields 动态打印所有字段
-        for field in fields(form):
-            print(f"{field.name}: {getattr(form, field.name)}")
-        print(f"数据来源: {'缓存' if from_cache else 'API'}")
+        logging.info(f"学生ID {test_id} 数据获取成功，共 {len(forms)} 个形态")
+        for idx, form in enumerate(forms, 1):
+            print(f"\n--- 形态 {idx} ---")
+            for field in fields(form):
+                print(f"{field.name}: {getattr(form, field.name)}")
+        print(f"\n数据来源: {'缓存' if from_cache else 'API'}")
     elif student_skip_reason:
         logging.warning(f"学生ID {test_id} 被跳过: {student_skip_reason}")
         print(f"学生ID {test_id}: 被跳过 - {student_skip_reason}")
