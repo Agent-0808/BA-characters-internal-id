@@ -123,6 +123,7 @@ class StudentForm:
     file_id: str
     char_id: int
     spine_id: int | None
+    type: str
     full_name: str
     name: str
     skin_name: str
@@ -543,8 +544,9 @@ class DataParser:
     def _normalize_file_id(self, file_id: str) -> str:
         """
         标准化文件ID格式：
-        - 提取标准的 CHxxxx / NPxxxx 格式，保留有意义的后缀（如 _noweapon）
-        - 移除 new_, old_ 前缀和 _spr 及后面的所有内容
+        - 提取标准的 CHxxxx / NPxxxx 格式，保留 _spr 和 _home 后缀
+        - 移除 new_, old_ 前缀
+        - 移除不需要的后缀（如 _Steam, _cn, _cbt 等），但保留 _spr 和 _home
         """
         cleaned_id = file_id.strip()
         
@@ -553,9 +555,20 @@ class DataParser:
             if cleaned_id.lower().startswith(prefix.lower()):
                 cleaned_id = cleaned_id[len(prefix):]
         
-        # 2. 移除 _spr 及后面的所有内容
-        if '_spr' in cleaned_id.lower():
-            cleaned_id = cleaned_id.lower().split('_spr')[0]
+        # 2. 移除不需要的后缀（保留 _spr 和 _home）
+        # 使用正则表达式：匹配 _spr 或 _home，或者匹配其他需要移除的后缀
+        # 移除的后缀列表
+        suffixes_to_remove = ['_steam', '_cn', '_cbt', '_glitch_spr', '_halofix', 'spr-2', '_old', '_old_spr', '_new']
+        # 构建正则表达式：匹配 _spr 或 _home（保留），或者匹配需要移除的后缀
+        pattern = r'(_spr|_home|' + '|'.join(suffixes_to_remove) + r')'
+        
+        # 找到所有匹配的后缀
+        matches = re.findall(pattern, cleaned_id, re.IGNORECASE)
+        for match in matches:
+            match_lower = match.lower()
+            # 如果不是 _spr 或 _home，则移除
+            if match_lower not in ['_spr', '_home']:
+                cleaned_id = cleaned_id.lower().replace(match_lower, '')
         
         # 3. 提取标准格式 (CH/NP + 4位数字 + 可选后缀)
         if match := re.search(r"(CH|NP)(\d{4})(_[a-z]+)?", cleaned_id, re.IGNORECASE):
@@ -576,8 +589,8 @@ class DataParser:
 
         name_lower = name.lower()
 
-        # 只接受spr类型
-        ACCEPT_TYPES = ["spr"]
+        # 只接受spr和home类型
+        ACCEPT_TYPES = ["spr", "home"]
         if (type_ := spine_item.get("type")) not in ACCEPT_TYPES:
             return f"类型 ({type_})"
         
@@ -770,6 +783,7 @@ class DataParser:
                 file_id=file_id,
                 char_id=kivo_wiki_id,
                 spine_id=spine_id,
+                type=spine_item.get("type"),
                 full_name=names["full_name"],
                 name=names["name"],
                 skin_name=final_skin_str,
