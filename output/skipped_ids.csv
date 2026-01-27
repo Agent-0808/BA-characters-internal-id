@@ -285,9 +285,9 @@
 168,945,类型 (home),NP0013_quest_CN,国服,岩仓 步美,岩櫃 アユム,Iwabitsu Ayumu,12,联邦学生会
 168,949,后缀 (cn),NP0013_spr_CN,国服,岩仓 步美,岩櫃 アユム,Iwabitsu Ayumu,12,联邦学生会
 169,950,后缀 (cn),NP0015_spr_CN,国服,不知火 花耶,不知火 カヤ,Shiranui Kaya,12,联邦学生会
-171,857,类型 (home),NP0032_npc,,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
 171,946,类型 (home),NP0032_npc_CN,国服,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
 171,951,后缀 (cn),NP0032_spr_CN,国服,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
+171,1434,类型 (home),NP0032_npc_HD,,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
 173,519,类型 (home),arona_workpage_nighttime,,普拉娜,プラナ,Plana (Planetarium),6,夏莱
 175,486,类型 (home),Karin_home,,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
 175,1037,后缀 (steam),karin_spr_Steam,Steam版初始立绘,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
@@ -305,10 +305,10 @@
 183,858,类型 (home),Rin_raiddungeon,,七神 凛,七神 リン,Nanagami Rin,12,联邦学生会
 183,947,类型 (home),Rin_raiddungeon_CN,国服,七神 凛,七神 リン,Nanagami Rin,12,联邦学生会
 183,957,后缀 (cn),rin_spr_CN,国服,七神 凛,七神 リン,Nanagami Rin,12,联邦学生会
-184,859,类型 (home),Momoka_weekdungeon,,由良木 桃香,由良木 モモカ,Yuragi Momoka,12,联邦学生会
 184,860,后缀 (glitch_spr),momoka_glitch_spr,2024.10.23更新错版,由良木 桃香,由良木 モモカ,Yuragi Momoka,12,联邦学生会
 184,944,类型 (home),Momoka_weekdungeon_CN,国服,由良木 桃香,由良木 モモカ,Yuragi Momoka,12,联邦学生会
 184,948,后缀 (cn),momoka_spr_CN,国服,由良木 桃香,由良木 モモカ,Yuragi Momoka,12,联邦学生会
+184,1433,类型 (home),Momoka_weekdungeon_HD,,由良木 桃香,由良木 モモカ,Yuragi Momoka,12,联邦学生会
 185,393,类型 (home),Utaha_home,,白石 歌原,白石 ウタハ,Shiraishi Utaha,4,千禧科学学院
 185,1052,后缀 (steam),utaha_spr_Steam,Steam版初始立绘,白石 歌原,白石 ウタハ,Shiraishi Utaha,4,千禧科学学院
 186,483,类型 (home),Juri_home,,牛牧 朱莉,牛牧 ジュリ,Ushimaki Juri,3,格赫娜学园
