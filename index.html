@@ -278,8 +278,8 @@
                     <div class="stat-label">角色数</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value" id="schoolCount">-</div>
-                    <div class="stat-label">学校数</div>
+                    <div class="stat-value" id="updateTime">-</div>
+                    <div class="stat-label">数据更新时间</div>
                 </div>
             </div>
         </div>
@@ -304,9 +304,9 @@
         </div>
 
         <div class="footer">
-            <p>数据自动更新于 <span id="updateTime">-</span> | 
-            <a href="https://github.com/Agent-0808/BA-characters-internal-id" target="_blank">GitHub 仓库</a> | 
-            <a href="https://github.com/Agent-0808/BA-characters-internal-id/tree/data/output" target="_blank">数据文件</a></p>
+            <p><a href="https://github.com/Agent-0808/BA-characters-internal-id" target="_blank">GitHub 仓库</a> | 
+            <a id="dataFileLink" href="https://github.com/Agent-0808/BA-characters-internal-id/Releases" target="_blank">数据文件</a> | 
+            <a href="https://kivo.wiki" target="_blank">基沃托斯古书馆</a></p>
         </div>
     </div>
 
@@ -316,7 +316,10 @@
             // 如果是本地文件协议(file://)或localhost，使用本地CSV，否则使用GitHub raw
             csvUrl: (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')
                 ? 'output/students_data.csv'
-                : 'https://raw.githubusercontent.com/Agent-0808/BA-characters-internal-id/data/output/students_data.csv'
+                : 'https://raw.githubusercontent.com/Agent-0808/BA-characters-internal-id/data/output/students_data.csv',
+            // GitHub API 配置
+            repoOwner: 'Agent-0808',
+            repoName: 'BA-characters-internal-id'
         };
 
         let allData = [];
@@ -430,9 +433,6 @@
 
             const uniqueChars = new Set(data.map(d => d.char_id)).size;
             document.getElementById('charCount').textContent = uniqueChars;
-
-            const uniqueSchools = new Set(data.map(d => d.school_name).filter(Boolean)).size;
-            document.getElementById('schoolCount').textContent = uniqueSchools;
         }
 
         // 填充学校筛选器
@@ -469,15 +469,44 @@
             renderTable(filteredData);
         }
 
+        // 获取最新的 Release 信息
+        async function fetchLatestRelease() {
+            try {
+                const apiUrl = `https://api.github.com/repos/${CONFIG.repoOwner}/${CONFIG.repoName}/releases/latest`;
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`GitHub API error! status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('获取 Release 信息失败:', error);
+                return null;
+            }
+        }
+
+        // 更新页面底部的 Release 链接
+        function updateReleaseLink(release) {
+            const dataFileLink = document.getElementById('dataFileLink');
+            if (dataFileLink && release) {
+                dataFileLink.href = release.html_url;
+                dataFileLink.textContent = '下载数据';
+            }
+        }
+
         // 加载数据
         async function loadData() {
             try {
-                const response = await fetch(CONFIG.csvUrl);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                // 并行加载 CSV 和 Release 信息
+                const [csvResponse, release] = await Promise.all([
+                    fetch(CONFIG.csvUrl),
+                    fetchLatestRelease()
+                ]);
+
+                if (!csvResponse.ok) {
+                    throw new Error(`HTTP error! status: ${csvResponse.status}`);
                 }
 
-                const text = await response.text();
+                const text = await csvResponse.text();
                 allData = parseCSV(text);
                 filteredData = allData;
 
@@ -485,7 +514,14 @@
                 populateSchoolFilter(allData);
                 renderTable(allData);
 
-                document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
+                // 显示 Release 发布时间或当前时间
+                if (release && release.published_at) {
+                    const releaseDate = new Date(release.published_at);
+                    document.getElementById('updateTime').textContent = releaseDate.toLocaleDateString('zh-CN');
+                    updateReleaseLink(release);
+                } else {
+                    document.getElementById('updateTime').textContent = new Date().toLocaleDateString('zh-CN');
+                }
             } catch (error) {
                 console.error('加载数据失败:', error);
                 document.getElementById('tableContainer').innerHTML = `
