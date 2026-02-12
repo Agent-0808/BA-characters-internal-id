@@ -36,6 +36,11 @@ jobs:
     # 只在 workflow_run 成功时或手动触发时运行
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     
+    # GitHub Pages 部署需要的环境配置
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
       # 检出 main 分支代码
       - name: 检出代码
