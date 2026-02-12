@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BA Characters Internal ID</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .controls {
+            padding: 20px 30px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .search-box::before {
+            content: "🔍";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .filter-group select {
+            padding: 10px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        th {
+            background: #f1f5f9;
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 2px solid #e2e8f0;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .school-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #fef3c7;
+            color: #92400e;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #64748b;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #4f46e5;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #dc2626;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: #64748b;
+        }
+
+        .footer {
+            padding: 20px 30px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .footer a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .filter-group {
+                justify-content: space-between;
+            }
+
+            th, td {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 蔚蓝档案角色内部ID数据</h1>
+            <p>Blue Archive Characters Internal ID Database</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalCount">-</div>
+                    <div class="stat-label">总记录</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="charCount">-</div>
+                    <div class="stat-label">角色数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="schoolCount">-</div>
+                    <div class="stat-label">学校数</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索角色名称...">
+            </div>
+            <div class="filter-group">
+                <label>学校:</label>
+                <select id="schoolFilter">
+                    <option value="">全部</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container" id="tableContainer">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>正在加载数据...</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>数据自动更新于 <span id="updateTime">-</span> | 
+            <a href="https://github.com/Agent-0808/BA-characters-internal-id" target="_blank">GitHub 仓库</a> | 
+            <a href="https://github.com/Agent-0808/BA-characters-internal-id/tree/data/output" target="_blank">数据文件</a></p>
+        </div>
+    </div>
+
+    <script>
+        // 配置 - 自动判断本地还是线上环境
+        const CONFIG = {
+            // 如果是本地文件协议(file://)或localhost，使用本地CSV，否则使用GitHub raw
+            csvUrl: (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+                ? 'output/students_data.csv'
+                : 'https://raw.githubusercontent.com/Agent-0808/BA-characters-internal-id/data/output/students_data.csv'
+        };
+
+        let allData = [];
+        let filteredData = [];
+
+        // 解析 CSV（处理引号包裹的字段）
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            const result = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i]);
+                const row = {};
+                headers.forEach((header, index) => {
+                    row[header] = values[index]?.trim() || '';
+                });
+                result.push(row);
+            }
+
+            return result;
+        }
+
+        // 解析单行 CSV，正确处理引号包裹的字段
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                const nextChar = line[i + 1];
+
+                if (char === '"') {
+                    if (inQuotes && nextChar === '"') {
+                        // 转义的引号
+                        current += '"';
+                        i++;
+                    } else {
+                        // 切换引号状态
+                        inQuotes = !inQuotes;
+                    }
+                } else if (char === ',' && !inQuotes) {
+                    // 字段分隔符
+                    result.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+
+            // 添加最后一个字段
+            result.push(current);
+            return result;
+        }
+
+        // 渲染表格
+        function renderTable(data) {
+            const container = document.getElementById('tableContainer');
+
+            if (data.length === 0) {
+                container.innerHTML = '<div class="empty"><p>没有找到匹配的数据</p></div>';
+                return;
+            }
+
+            const html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>文件ID</th>
+                            <th>KivoWiki</th>
+                            <th>Spine ID</th>
+                            <th>完整名称</th>
+                            <th>角色名</th>
+                            <th>皮肤名</th>
+                            <th>国服名称</th>
+                            <th>日本語</th>
+                            <th>繁體中文</th>
+                            <th>English</th>
+                            <th>한국어</th>
+                            <th>学校</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.map(row => `
+                            <tr>
+                                <td><code>${row.file_id}</code></td>
+                                <td>${row.char_id}</td>
+                                <td>${row.spine_id}</td>
+                                <td>${row.full_name}</td>
+                                <td><strong>${row.name}</strong></td>
+                                <td>${row.skin_name || '-'}</td>
+                                <td>${row.name_cn}</td>
+                                <td>${row.name_jp}</td>
+                                <td>${row.name_tw}</td>
+                                <td>${row.name_en}</td>
+                                <td>${row.name_kr}</td>
+                                <td><span class="school-tag">${row.school_name}</span></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        // 更新统计
+        function updateStats(data) {
+            document.getElementById('totalCount').textContent = data.length;
+
+            const uniqueChars = new Set(data.map(d => d.char_id)).size;
+            document.getElementById('charCount').textContent = uniqueChars;
+
+            const uniqueSchools = new Set(data.map(d => d.school_name).filter(Boolean)).size;
+            document.getElementById('schoolCount').textContent = uniqueSchools;
+        }
+
+        // 填充学校筛选器
+        function populateSchoolFilter(data) {
+            const schools = [...new Set(data.map(d => d.school_name).filter(Boolean))].sort();
+            const select = document.getElementById('schoolFilter');
+
+            schools.forEach(school => {
+                const option = document.createElement('option');
+                option.value = school;
+                option.textContent = school;
+                select.appendChild(option);
+            });
+        }
+
+        // 筛选数据
+        function filterData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const schoolFilter = document.getElementById('schoolFilter').value;
+
+            filteredData = allData.filter(row => {
+                const matchSearch = !searchTerm ||
+                    row.name?.toLowerCase().includes(searchTerm) ||
+                    row.full_name?.toLowerCase().includes(searchTerm) ||
+                    row.name_cn?.toLowerCase().includes(searchTerm) ||
+                    row.name_jp?.toLowerCase().includes(searchTerm) ||
+                    row.file_id?.toLowerCase().includes(searchTerm);
+
+                const matchSchool = !schoolFilter || row.school_name === schoolFilter;
+
+                return matchSearch && matchSchool;
+            });
+
+            renderTable(filteredData);
+        }
+
+        // 加载数据
+        async function loadData() {
+            try {
+                const response = await fetch(CONFIG.csvUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const text = await response.text();
+                allData = parseCSV(text);
+                filteredData = allData;
+
+                updateStats(allData);
+                populateSchoolFilter(allData);
+                renderTable(allData);
+
+                document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                document.getElementById('tableContainer').innerHTML = `
+                    <div class="error">
+                        <p>❌ 加载数据失败</p>
+                        <p style="font-size: 12px; margin-top: 10px;">${error.message}</p>
+                        <p style="font-size: 12px; margin-top: 10px;">
+                            请确保数据文件已上传到 data 分支的 output 目录
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        // 事件监听
+        document.getElementById('searchInput').addEventListener('input', filterData);
+        document.getElementById('schoolFilter').addEventListener('change', filterData);
+
+        // 初始化
+        loadData();
+    </script>
+</body>
+</html>
