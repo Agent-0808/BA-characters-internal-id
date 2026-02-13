@@ -131,6 +131,66 @@
             border-color: #4f46e5;
         }
 
+        /* 列显示控制按钮 */
+        .column-toggle-btn {
+            padding: 10px 14px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .column-toggle-btn:hover {
+            border-color: #4f46e5;
+            background: #f1f5f9;
+        }
+
+        /* 列选择下拉菜单 */
+        .column-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .column-dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 5px;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            z-index: 100;
+            padding: 10px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .column-dropdown-content.show {
+            display: block;
+        }
+
+        .column-dropdown-item {
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #334155;
+        }
+
+        .column-dropdown-item:hover {
+            background: #f1f5f9;
+        }
+
+        .column-dropdown-item input[type="checkbox"] {
+            cursor: pointer;
+        }
+
         .table-container {
             overflow-x: auto;
             max-height: 70vh;
@@ -149,14 +209,44 @@
             z-index: 10;
         }
 
+        /* 表头样式 - 支持排序 */
         th {
             background: #f1f5f9;
-            padding: 14px 12px;
+            padding: 0;
             text-align: left;
             font-weight: 600;
             color: #475569;
             border-bottom: 2px solid #e2e8f0;
             white-space: nowrap;
+            vertical-align: top;
+        }
+
+        /* 表头内容容器 */
+        .th-content {
+            padding: 10px 12px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.2s;
+            height: 40px;
+        }
+
+        .th-content:hover {
+            background: #e2e8f0;
+        }
+
+        /* 排序箭头 */
+        .sort-arrow {
+            font-size: 10px;
+            color: #94a3b8;
+            transition: color 0.2s;
+        }
+
+        .th-content.sort-asc .sort-arrow,
+        .th-content.sort-desc .sort-arrow {
+            color: #4f46e5;
         }
 
         td {
@@ -230,6 +320,28 @@
             text-decoration: underline;
         }
 
+        /* 文件ID列限制宽度 */
+        td[data-col="file_id"],
+        th[data-col="file_id"] {
+            max-width: 120px;
+            width: 120px;
+        }
+
+        /* KivoWiki 和 Spine ID 列限制宽度 */
+        td[data-col="char_id"],
+        th[data-col="char_id"],
+        td[data-col="spine_id"],
+        th[data-col="spine_id"] {
+            max-width: 80px;
+            width: 80px;
+            text-align: center;
+        }
+
+        /* 隐藏列的样式 */
+        .col-hidden {
+            display: none !important;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.5rem;
@@ -294,6 +406,13 @@
                     <option value="">全部</option>
                 </select>
             </div>
+            <!-- 列显示控制 -->
+            <div class="column-dropdown">
+                <button class="column-toggle-btn" onclick="toggleColumnDropdown()">显示/隐藏列 ▼</button>
+                <div class="column-dropdown-content" id="columnDropdown">
+                    <!-- 动态生成列选项 -->
+                </div>
+            </div>
         </div>
 
         <div class="table-container" id="tableContainer">
@@ -313,19 +432,42 @@
     <script>
         // 配置 - 自动判断本地还是线上环境
         const CONFIG = {
-            // 如果是本地文件协议(file://)或localhost，使用本地CSV，否则使用GitHub raw
             csvUrl: (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')
                 ? 'output/students_data.csv'
                 : 'https://raw.githubusercontent.com/Agent-0808/BA-characters-internal-id/data/output/students_data.csv',
-            // GitHub API 配置
             repoOwner: 'Agent-0808',
             repoName: 'BA-characters-internal-id'
         };
 
+        // 列配置 - 定义所有列的信息
+        const COLUMN_CONFIG = [
+            { key: 'file_id', label: '文件ID', defaultVisible: true },
+            { key: 'char_id', label: 'KivoWiki', defaultVisible: true },
+            { key: 'spine_id', label: 'Spine ID', defaultVisible: true },
+            { key: 'full_name', label: '完整名称', defaultVisible: true },
+            { key: 'name', label: '角色名', defaultVisible: false },
+            { key: 'skin_name', label: '皮肤名', defaultVisible: false },
+            { key: 'name_cn', label: '国服名称', defaultVisible: false },
+            { key: 'name_jp', label: '日本語', defaultVisible: true },
+            { key: 'name_tw', label: '繁體中文', defaultVisible: false },
+            { key: 'name_en', label: 'English', defaultVisible: true },
+            { key: 'name_kr', label: '한국어', defaultVisible: false },
+            { key: 'school_name', label: '学校', defaultVisible: true }
+        ];
+
         let allData = [];
         let filteredData = [];
+        let currentSort = { column: null, direction: 'asc' };
+        let columnVisibility = {};
 
-        // 解析 CSV（处理引号包裹的字段）
+        // 初始化列显示状态
+        function initColumnVisibility() {
+            COLUMN_CONFIG.forEach(col => {
+                columnVisibility[col.key] = col.defaultVisible;
+            });
+        }
+
+        // 解析 CSV
         function parseCSV(text) {
             const lines = text.trim().split('\n');
             const headers = lines[0].split(',').map(h => h.trim());
@@ -343,7 +485,7 @@
             return result;
         }
 
-        // 解析单行 CSV，正确处理引号包裹的字段
+        // 解析单行 CSV
         function parseCSVLine(line) {
             const result = [];
             let current = '';
@@ -355,15 +497,12 @@
 
                 if (char === '"') {
                     if (inQuotes && nextChar === '"') {
-                        // 转义的引号
                         current += '"';
                         i++;
                     } else {
-                        // 切换引号状态
                         inQuotes = !inQuotes;
                     }
                 } else if (char === ',' && !inQuotes) {
-                    // 字段分隔符
                     result.push(current);
                     current = '';
                 } else {
@@ -371,9 +510,48 @@
                 }
             }
 
-            // 添加最后一个字段
             result.push(current);
             return result;
+        }
+
+        // 生成表头 HTML
+        function generateHeaderHTML() {
+            return COLUMN_CONFIG.map((col, index) => {
+                if (!columnVisibility[col.key]) return '';
+                const sortClass = currentSort.column === col.key ? `sort-${currentSort.direction}` : '';
+                const arrow = currentSort.column === col.key
+                    ? (currentSort.direction === 'asc' ? '▲' : '▼')
+                    : '⇅';
+                return `
+                    <th data-col="${col.key}">
+                        <div class="th-content ${sortClass}" onclick="sortBy('${col.key}')">
+                            ${col.label}
+                            <span class="sort-arrow">${arrow}</span>
+                        </div>
+                    </th>
+                `;
+            }).join('');
+        }
+
+        // 生成数据行 HTML
+        function generateRowHTML(row) {
+            return COLUMN_CONFIG.map(col => {
+                if (!columnVisibility[col.key]) return '';
+                let value = row[col.key] || '';
+
+                // 特殊处理某些列
+                if (col.key === 'file_id') {
+                    return `<td data-col="${col.key}"><code>${value}</code></td>`;
+                } else if (col.key === 'name') {
+                    return `<td data-col="${col.key}"><strong>${value}</strong></td>`;
+                } else if (col.key === 'skin_name') {
+                    return `<td data-col="${col.key}">${value || '-'}</td>`;
+                } else if (col.key === 'school_name') {
+                    return `<td data-col="${col.key}"><span class="school-tag">${value}</span></td>`;
+                } else {
+                    return `<td data-col="${col.key}">${value}</td>`;
+                }
+            }).join('');
         }
 
         // 渲染表格
@@ -389,36 +567,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>文件ID</th>
-                            <th>KivoWiki</th>
-                            <th>Spine ID</th>
-                            <th>完整名称</th>
-                            <th>角色名</th>
-                            <th>皮肤名</th>
-                            <th>国服名称</th>
-                            <th>日本語</th>
-                            <th>繁體中文</th>
-                            <th>English</th>
-                            <th>한국어</th>
-                            <th>学校</th>
+                            ${generateHeaderHTML()}
                         </tr>
                     </thead>
                     <tbody>
                         ${data.map(row => `
-                            <tr>
-                                <td><code>${row.file_id}</code></td>
-                                <td>${row.char_id}</td>
-                                <td>${row.spine_id}</td>
-                                <td>${row.full_name}</td>
-                                <td><strong>${row.name}</strong></td>
-                                <td>${row.skin_name || '-'}</td>
-                                <td>${row.name_cn}</td>
-                                <td>${row.name_jp}</td>
-                                <td>${row.name_tw}</td>
-                                <td>${row.name_en}</td>
-                                <td>${row.name_kr}</td>
-                                <td><span class="school-tag">${row.school_name}</span></td>
-                            </tr>
+                            <tr>${generateRowHTML(row)}</tr>
                         `).join('')}
                     </tbody>
                 </table>
@@ -427,10 +581,110 @@
             container.innerHTML = html;
         }
 
+        // 排序功能
+        function sortBy(column) {
+            if (currentSort.column === column) {
+                // 切换排序方向
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.column = column;
+                currentSort.direction = 'asc';
+            }
+
+            // 排序数据
+            filteredData.sort((a, b) => {
+                let valA = a[column] || '';
+                let valB = b[column] || '';
+
+                // 尝试数字排序
+                const numA = parseFloat(valA);
+                const numB = parseFloat(valB);
+                
+                if (!isNaN(numA) && !isNaN(numB) && valA !== '' && valB !== '') {
+                    return currentSort.direction === 'asc' ? numA - numB : numB - numA;
+                }
+
+                // 字符串排序
+                valA = valA.toString().toLowerCase();
+                valB = valB.toString().toLowerCase();
+                
+                if (valA < valB) return currentSort.direction === 'asc' ? -1 : 1;
+                if (valA > valB) return currentSort.direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            renderTable(filteredData);
+        }
+
+        // 应用所有筛选条件
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const schoolFilter = document.getElementById('schoolFilter').value;
+
+            filteredData = allData.filter(row => {
+                // 全局搜索
+                const matchSearch = !searchTerm ||
+                    row.name?.toLowerCase().includes(searchTerm) ||
+                    row.full_name?.toLowerCase().includes(searchTerm) ||
+                    row.name_cn?.toLowerCase().includes(searchTerm) ||
+                    row.name_jp?.toLowerCase().includes(searchTerm) ||
+                    row.name_tw?.toLowerCase().includes(searchTerm) ||
+                    row.name_en?.toLowerCase().includes(searchTerm) ||
+                    row.name_kr?.toLowerCase().includes(searchTerm) ||
+                    row.file_id?.toLowerCase().includes(searchTerm);
+
+                // 学校筛选
+                const matchSchool = !schoolFilter || row.school_name === schoolFilter;
+
+                return matchSearch && matchSchool;
+            });
+
+            // 如果有排序，重新应用
+            if (currentSort.column) {
+                sortBy(currentSort.column);
+            } else {
+                renderTable(filteredData);
+            }
+            updateStats(filteredData);
+        }
+
+        // 生成列控制下拉菜单
+        function generateColumnDropdown() {
+            const dropdown = document.getElementById('columnDropdown');
+            dropdown.innerHTML = COLUMN_CONFIG.map(col => `
+                <label class="column-dropdown-item">
+                    <input type="checkbox" 
+                           ${columnVisibility[col.key] ? 'checked' : ''} 
+                           onchange="toggleColumn('${col.key}', this.checked)">
+                    ${col.label}
+                </label>
+            `).join('');
+        }
+
+        // 切换列显示/隐藏
+        function toggleColumn(column, visible) {
+            columnVisibility[column] = visible;
+            renderTable(filteredData);
+        }
+
+        // 显示/隐藏下拉菜单
+        function toggleColumnDropdown() {
+            const dropdown = document.getElementById('columnDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // 点击外部关闭下拉菜单
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('columnDropdown');
+            const btn = document.querySelector('.column-toggle-btn');
+            if (!dropdown.contains(event.target) && !btn.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+
         // 更新统计
         function updateStats(data) {
             document.getElementById('totalCount').textContent = data.length;
-
             const uniqueChars = new Set(data.map(d => d.char_id)).size;
             document.getElementById('charCount').textContent = uniqueChars;
         }
@@ -446,27 +700,6 @@
                 option.textContent = school;
                 select.appendChild(option);
             });
-        }
-
-        // 筛选数据
-        function filterData() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const schoolFilter = document.getElementById('schoolFilter').value;
-
-            filteredData = allData.filter(row => {
-                const matchSearch = !searchTerm ||
-                    row.name?.toLowerCase().includes(searchTerm) ||
-                    row.full_name?.toLowerCase().includes(searchTerm) ||
-                    row.name_cn?.toLowerCase().includes(searchTerm) ||
-                    row.name_jp?.toLowerCase().includes(searchTerm) ||
-                    row.file_id?.toLowerCase().includes(searchTerm);
-
-                const matchSchool = !schoolFilter || row.school_name === schoolFilter;
-
-                return matchSearch && matchSchool;
-            });
-
-            renderTable(filteredData);
         }
 
         // 获取最新的 Release 信息
@@ -496,7 +729,9 @@
         // 加载数据
         async function loadData() {
             try {
-                // 并行加载 CSV 和 Release 信息
+                initColumnVisibility();
+                generateColumnDropdown();
+
                 const [csvResponse, release] = await Promise.all([
                     fetch(CONFIG.csvUrl),
                     fetchLatestRelease()
@@ -514,7 +749,6 @@
                 populateSchoolFilter(allData);
                 renderTable(allData);
 
-                // 显示 Release 发布时间或当前时间
                 if (release && release.published_at) {
                     const releaseDate = new Date(release.published_at);
                     document.getElementById('updateTime').textContent = releaseDate.toLocaleDateString('zh-CN');
@@ -537,8 +771,8 @@
         }
 
         // 事件监听
-        document.getElementById('searchInput').addEventListener('input', filterData);
-        document.getElementById('schoolFilter').addEventListener('change', filterData);
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('schoolFilter').addEventListener('change', applyFilters);
 
         // 初始化
         loadData();
