@@ -35,6 +35,7 @@ jobs:
 
       # 读取版本号文件并设置为环境变量
       - name: 读取版本号
+        working-directory: ./crawler
         run: echo "CODE_VERSION=$(cat VERSION)" >> $GITHUB_ENV
 
       # 配置 Python 环境
@@ -89,6 +90,7 @@ jobs:
 
       # 运行主程序
       - name: 运行爬虫脚本
+        working-directory: ./crawler
         run: python main.py -m 1 -d 3
 
       # 检测数据是否发生变化

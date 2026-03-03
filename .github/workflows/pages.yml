@@ -2,17 +2,17 @@ name: 部署 GitHub Pages
 
 # 触发机制配置
 on:
-  # 当 main 分支的 index.html 更新时触发
+  # 当 main 分支的 web 目录更新时触发
   push:
     branches:
       - main
     paths:
-      - 'index.html'
+      - 'web/**'
   
   # 允许手动触发
   workflow_dispatch:
 
-  # 当 daily_update 工作流成功时触发（通过 workflow_run）
+  # 当 crawler 工作流成功时触发（通过 workflow_run）
   workflow_run:
     workflows: ["日常检测更新"]
     types:
@@ -46,6 +46,19 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
+      # 设置 Node 环境
+      - name: 设置 Node 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 安装依赖并构建
+      - name: 构建项目
+        working-directory: ./web
+        run: |
+          npm ci
+          npm run build
+
       # 设置 GitHub Pages
       - name: 设置 Pages
         uses: actions/configure-pages@v5
@@ -54,7 +67,7 @@ jobs:
       - name: 上传页面文件
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: './web/dist'
 
       # 部署到 GitHub Pages
       - name: 部署到 Pages

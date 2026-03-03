@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BA Characters Internal ID</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 蔚蓝档案角色内部ID数据</h1>
+            <p>Blue Archive Characters Internal ID Database</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalCount">-</div>
+                    <div class="stat-label">总记录</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="charCount">-</div>
+                    <div class="stat-label">角色数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="updateTime">-</div>
+                    <div class="stat-label">数据更新时间</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索角色名称...">
+            </div>
+            <div class="filter-group">
+                <label>学校:</label>
+                <select id="schoolFilter">
+                    <option value="">全部</option>
+                </select>
+            </div>
+            <!-- 列显示控制 -->
+            <div class="column-dropdown">
+                <button class="column-toggle-btn">显示/隐藏列 ▼</button>
+                <div class="column-dropdown-content" id="columnDropdown">
+                    <!-- 动态生成列选项 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container" id="tableContainer">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>正在加载数据...</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><a href="https://github.com/Agent-0808/BA-characters-internal-id" target="_blank">GitHub 仓库</a> | 
+            <a id="dataFileLink" href="https://github.com/Agent-0808/BA-characters-internal-id/Releases" target="_blank">数据文件</a> | 
+            <a href="https://kivo.wiki" target="_blank">基沃托斯古书馆</a></p>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

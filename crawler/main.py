@@ -93,12 +93,19 @@ FINAL_SPINE_ID: int = 0  # 将在main函数中动态更新
 STUDENT_ID_RANGE: range = range(1, FINAL_STUDENT_ID + 1)
 
 # 输出目录和文件名配置
-OUTPUT_DIR: Path = Path("output")
+# 如果在 crawler/ 子目录运行，输出到上级目录的 output/
+_OUTPUT_DIR = Path("output")
+if Path.cwd().name == "crawler":
+    _OUTPUT_DIR = Path("..") / "output"
+OUTPUT_DIR: Path = _OUTPUT_DIR
 OUTPUT_FILENAME: str = "students_data.csv"
 SKIPPED_FILENAME: str = "skipped_ids.csv"
 
 # 缓存目录配置
-CACHE_DIR: Path = Path("cache")
+_CACHE_DIR = Path("cache")
+if Path.cwd().name == "crawler":
+    _CACHE_DIR = Path("..") / "cache"
+CACHE_DIR: Path = _CACHE_DIR
 
 # 请求配置
 MAX_CONCURRENT_REQUESTS: int = 3  # 最大并发请求数
