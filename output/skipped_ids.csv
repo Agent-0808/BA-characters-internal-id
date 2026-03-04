@@ -189,8 +189,6 @@
 110,1058,类型 (home),Akari_home_Combined,回忆大厅,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 111,460,类型 (home),Hasumi_home,,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
 111,1057,后缀 (steam),hasumi_spr_Steam,Steam版初始立绘,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
-112,380,类型 (home),Aru_home,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
-112,385,类型 (home),Aru_scene,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
 112,1055,后缀 (steam),aru_spr_Steam,Steam版初始立绘,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
 113,386,类型 (home),Asuna_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
 113,958,类型 (home),Asuna_home_fix,光线修复,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
@@ -281,9 +279,9 @@
 166,926,包含 (minori),minori_spr_CN,国服,安守 实梨,安守 ミノリ,Yasumori Minori,5,红冬联邦学园
 167,560,类型 (home),momiji_home,,秋泉 红叶,秋泉 モミジ,Akiizumi Momiji,5,红冬联邦学园
 167,982,后缀 (halofix),momiji_spr_halofix,光环修正,秋泉 红叶,秋泉 モミジ,Akiizumi Momiji,5,红冬联邦学园
-168,856,类型 (home),NP0013_quest,,岩仓 步美,岩櫃 アユム,Iwabitsu Ayumu,12,联邦学生会
-168,945,类型 (home),NP0013_quest_CN,国服,岩仓 步美,岩櫃 アユム,Iwabitsu Ayumu,12,联邦学生会
-168,949,后缀 (cn),NP0013_spr_CN,国服,岩仓 步美,岩櫃 アユム,Iwabitsu Ayumu,12,联邦学生会
+168,856,类型 (home),NP0013_quest,,岩柜 步美,岩櫃 アユム,Iwabitsu Ayumu,12,联邦学生会
+168,945,类型 (home),NP0013_quest_CN,国服,岩柜 步美,岩櫃 アユム,Iwabitsu Ayumu,12,联邦学生会
+168,949,后缀 (cn),NP0013_spr_CN,国服,岩柜 步美,岩櫃 アユム,Iwabitsu Ayumu,12,联邦学生会
 169,950,后缀 (cn),NP0015_spr_CN,国服,不知火 花耶,不知火 カヤ,Shiranui Kaya,12,联邦学生会
 171,946,类型 (home),NP0032_npc_CN,国服,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
 171,951,后缀 (cn),NP0032_spr_CN,国服,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
@@ -564,12 +562,15 @@
 505,885,类型 (home),CH0284_home_fix,光线修复,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
 506,883,类型 (home),CH0285_home,,生盐 诺亚,生塩 ノア,Ushio Noa,4,千禧科学学院
 506,884,类型 (home),CH0285_home_fix,光线修复,生盐 诺亚,生塩 ノア,Ushio Noa,4,千禧科学学院
+508,1449,类型 (home),CH0310_home,,黑崎 小雪,黒崎 コユキ,Kurosaki Koyuki,4,千禧科学学院
 512,890,类型 (home),CH0281_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
 512,902,类型 (home),CH0281_home_fix,光线修复,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
 513,891,类型 (home),CH0282_home,,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
 514,889,类型 (home),CH0280_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 514,901,类型 (home),CH0280_home_fix,光线修复,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
-518,1217,类型 (home),CH0335_home,,凯伊,ケイ,Kei,4,千禧科学学院
+518,1217,类型 (home),CH0335_home,,天童 凯伊,天童 ケイ,Tendou Kei,4,千禧科学学院
+518,1438,类型 (home),SC90002000_02,Vol.Ex - 2,天童 凯伊,天童 ケイ,Tendou Kei,4,千禧科学学院
+518,1440,类型 (home),SC90002000_04,Vol.Ex - 4,天童 凯伊,天童 ケイ,Tendou Kei,4,千禧科学学院
 519,,未找到可解析的角色形态,,,「香主」,香主,PR manager,7,山海经高级中学
 520,918,类型 (home),CH0082_home,,冰室 濑名,氷室 セナ,Himuro Sena,3,格赫娜学园
 521,919,类型 (home),CH0286_home,,牛牧 朱莉,牛牧 ジュリ,Ushimaki Juri,3,格赫娜学园
@@ -610,6 +611,9 @@
 573,1209,类型 (home),CH0333_home,,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
 573,1432,类型 (home),CH0333_Emoji,技能弹出动画,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
 574,1216,类型 (home),CH0334_home,,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
+574,1437,类型 (home),SC90002000_01,Vol.Ex - 1,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
+574,1439,类型 (home),SC90002000_03,Vol.Ex - 3,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
+574,1440,类型 (home),SC90002000_04,Vol.Ex - 4,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
 575,,未找到 (404),,,,,,,
 576,1442,类型 (home),CH0337_home,,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
 577,1441,类型 (home),CH0336_home,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
