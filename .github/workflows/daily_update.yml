@@ -20,9 +20,10 @@ on:
     branches:
       - workflow-test
 
-# 权限配置：允许 Action 读写仓库内容以进行推送和发布 Release
+# 权限配置：允许 Action 读写仓库内容以进行推送和发布 Release，以及触发其他工作流
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update-and-deploy:
@@ -161,13 +162,22 @@ jobs:
           target_commitish: data
           body: |
             检测到数据变动，已生成新的文件和缓存。
-            
+
             - **更新日期**: ${{ steps.date.outputs.date }}
             - **代码版本**: ${{ env.CODE_VERSION }}
             - **数据分支**: [查看 data 分支](https://github.com/${{ github.repository }}/tree/data)
-            
+
           files: |
             output/students_data.csv
             output/skipped_ids.csv
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 触发 Pages 部署工作流
+      # 仅当检测到变化时运行
+      - name: 触发 Pages 部署
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: |
+          gh workflow run pages.yml --ref main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

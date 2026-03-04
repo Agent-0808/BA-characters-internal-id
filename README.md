@@ -2,9 +2,9 @@
 
 整理了《碧蓝档案》/《蔚蓝档案》/Blue Archive 中角色对应的文件ID，方便解包时确定对应文件名。
 
-部署页面：[https://agent-0808.github.io/BA-characters-internal-id/](Github Pages)
+部署页面：[Github Pages](https://agent-0808.github.io/BA-characters-internal-id/)
 
-可以从Release中下载最新版本的`students_data.csv`文件。
+可以从 [Release](https://github.com/Agent-0808/BA-characters-internal-id/releases) 中下载最新版本的`students_data.csv`文件。
 
 ### 部署
 

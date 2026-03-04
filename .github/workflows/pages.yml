@@ -8,15 +8,9 @@ on:
       - main
     paths:
       - 'web/**'
-  
+
   # 允许手动触发
   workflow_dispatch:
-
-  # 当 crawler 工作流成功时触发（通过 workflow_run）
-  workflow_run:
-    workflows: ["日常检测更新"]
-    types:
-      - completed
 
 # 权限配置
 permissions:
@@ -32,9 +26,6 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
-    # 只在 workflow_run 成功时或手动触发时运行
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     
     # GitHub Pages 部署需要的环境配置
     environment:
