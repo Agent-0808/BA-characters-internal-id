@@ -18,3 +18,7 @@ node_modules/
 dist/
 *.log
 .DS_Store
+
+# 嵌入数据（由CI生成）
+web/public/data/*
+!web/public/data/.gitkeep

@@ -37,9 +37,17 @@ export interface ReleaseInfo {
   html_url: string;
 }
 
+// 元数据
+export interface Metadata {
+  updateDate: string;
+  version: string;
+  releaseUrl: string;
+}
+
 // 应用配置
 export interface AppConfig {
   csvUrl: string;
+  metadataUrl: string;
   repoOwner: string;
   repoName: string;
 }

@@ -1,11 +1,9 @@
 import type { AppConfig, ColumnConfig } from './types.js';
 
-// 配置 - 自动判断本地还是线上环境
-// 本地文件协议使用相对路径，其他情况（包括 localhost）使用线上数据
+// 配置 - 使用本地嵌入的数据
 export const CONFIG: AppConfig = {
-  csvUrl: location.protocol === 'file:'
-    ? 'output/students_data.csv'
-    : 'https://raw.githubusercontent.com/Agent-0808/BA-characters-internal-id/data/output/students_data.csv',
+  csvUrl: './data/students_data.csv',
+  metadataUrl: './data/metadata.json',
   repoOwner: 'Agent-0808',
   repoName: 'BA-characters-internal-id'
 };

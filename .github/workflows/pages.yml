@@ -43,6 +43,48 @@ jobs:
         with:
           node-version: '20'
 
+      # 从 data 分支获取最新数据
+      - name: 获取最新数据
+        run: |
+          mkdir -p web/public/data
+          
+          if git fetch origin data 2>/dev/null; then
+            git checkout origin/data -- output/ 2>/dev/null || true
+            
+            if [ -f "output/students_data.csv" ]; then
+              cp output/students_data.csv web/public/data/
+            fi
+          fi
+
+      # 生成元数据文件
+      - name: 生成元数据
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(cat crawler/VERSION)
+          RELEASE_INFO=$(gh api repos/${{ github.repository }}/releases/latest 2>/dev/null || echo "{}")
+          
+          UPDATE_DATE=$(echo "$RELEASE_INFO" | jq -r '.published_at // empty' | cut -dT -f1)
+          RELEASE_URL=$(echo "$RELEASE_INFO" | jq -r '.html_url // empty')
+          
+          if [ -z "$UPDATE_DATE" ] || [ "$UPDATE_DATE" = "null" ]; then
+            UPDATE_DATE=$(date +'%Y-%m-%d')
+          fi
+          if [ -z "$RELEASE_URL" ] || [ "$RELEASE_URL" = "null" ]; then
+            RELEASE_URL="https://github.com/${{ github.repository }}/releases"
+          fi
+          
+          cat > web/public/data/metadata.json << EOF
+          {
+            "updateDate": "${UPDATE_DATE}",
+            "version": "${VERSION}",
+            "releaseUrl": "${RELEASE_URL}"
+          }
+          EOF
+          
+          echo "生成的元数据:"
+          cat web/public/data/metadata.json
+
       # 安装依赖并构建
       - name: 构建项目
         working-directory: ./web

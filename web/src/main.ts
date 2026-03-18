@@ -1,7 +1,7 @@
 import './style.css';
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
-import type { StudentData, ColumnVisibility, SortState, ReleaseInfo } from './types.js';
+import type { StudentData, ColumnVisibility, SortState, Metadata } from './types.js';
 
 // 状态管理
 let allData: StudentData[] = [];
@@ -226,25 +226,24 @@ function populateSchoolFilter(data: StudentData[]): void {
   });
 }
 
-// 获取最新的 Release 信息
-async function fetchLatestRelease(): Promise<ReleaseInfo | null> {
+// 获取元数据
+async function fetchMetadata(): Promise<Metadata | null> {
   try {
-    const apiUrl = `https://api.github.com/repos/${CONFIG.repoOwner}/${CONFIG.repoName}/releases/latest`;
-    const response = await fetch(apiUrl);
+    const response = await fetch(CONFIG.metadataUrl);
     if (!response.ok) {
-      throw new Error(`GitHub API error! status: ${response.status}`);
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
     return await response.json();
   } catch (error) {
-    console.error('获取 Release 信息失败:', error);
+    console.error('获取元数据失败:', error);
     return null;
   }
 }
 
 // 更新页面底部的 Release 链接
-function updateReleaseLink(release: ReleaseInfo | null): void {
-  if (elements.dataFileLink && release) {
-    elements.dataFileLink.href = release.html_url;
+function updateReleaseLink(metadata: Metadata | null): void {
+  if (elements.dataFileLink && metadata) {
+    elements.dataFileLink.href = metadata.releaseUrl;
     elements.dataFileLink.textContent = '下载数据';
   }
 }
@@ -255,9 +254,9 @@ async function loadData(): Promise<void> {
     initColumnVisibility();
     generateColumnDropdown();
 
-    const [csvResponse, release] = await Promise.all([
+    const [csvResponse, metadata] = await Promise.all([
       fetch(CONFIG.csvUrl),
-      fetchLatestRelease()
+      fetchMetadata()
     ]);
 
     if (!csvResponse.ok) {
@@ -272,10 +271,9 @@ async function loadData(): Promise<void> {
     populateSchoolFilter(allData);
     renderTable(allData);
 
-    if (release && release.published_at) {
-      const releaseDate = new Date(release.published_at);
-      elements.updateTime.textContent = releaseDate.toLocaleDateString('zh-CN');
-      updateReleaseLink(release);
+    if (metadata && metadata.updateDate) {
+      elements.updateTime.textContent = metadata.updateDate;
+      updateReleaseLink(metadata);
     } else {
       elements.updateTime.textContent = new Date().toLocaleDateString('zh-CN');
     }
@@ -286,7 +284,7 @@ async function loadData(): Promise<void> {
         <p>❌ 加载数据失败</p>
         <p style="font-size: 12px; margin-top: 10px;">${error instanceof Error ? error.message : '未知错误'}</p>
         <p style="font-size: 12px; margin-top: 10px;">
-          请确保数据文件已上传到 data 分支的 output 目录
+          数据文件可能尚未生成，请稍后再试
         </p>
       </div>
     `;
