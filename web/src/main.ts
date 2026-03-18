@@ -56,6 +56,9 @@ function generateRowHTML(row: StudentData): string {
     // 特殊处理某些列
     if (col.key === 'file_id') {
       return `<td data-col="${col.key}"><code>${value}</code></td>`;
+    } else if (col.key === 'char_id') {
+      const url = `https://kivo.wiki/data/character/${value}?mode=appreciation`;
+      return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
     } else if (col.key === 'name') {
       return `<td data-col="${col.key}"><strong>${value}</strong></td>`;
     } else if (col.key === 'skin_name') {
