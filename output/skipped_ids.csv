@@ -115,6 +115,7 @@
 76,864,类型 (home),LobbyHoshino_multi,TV动画特典,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
 76,874,类型 (home),SC12000_02,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
 76,1032,后缀 (steam),hoshino_spr_Steam,Steam版初始立绘,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+76,1060,类型 (home),Hoshino_home_Combined,回忆大厅,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
 76,1191,类型 (home),Hoshino_default_MidAutumn,中秋,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
 77,446,类型 (home),CH0187_home,,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
 78,497,类型 (home),Nonomi_home,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
@@ -346,9 +347,9 @@
 243,,未找到 (404),,,,,,,
 246,,未找到 (404),,,,,,,
 254,715,类型 (home),SC51000_02,Vol5.1,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
+254,995,类型 (home),SC52000_02,Vol5.2,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
 254,997,类型 (home),CH0222_home,,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
 254,1001,类型 (home),CH0222_home_fix,光线修复,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
-254,1004,类型 (home),SC52000_02_fix,Vol5.2 光线修复,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
 264,559,类型 (home),CH0124_home,,姬木 梅露,姫木 メル,Himeki Meru,5,红冬联邦学园
 269,1059,类型 (home),CH0060_Home_Combined,回忆大厅,剑先 鹤城,剣先 ツルギ,Kenzaki Tsurugi,2,圣三一综合学园
 271,603,后缀 (cbt),reizyo_cbt,CBT旧绘废案,鹿山 丽情,鹿山 レイジョ,Kayama Reijo,7,山海经高级中学
@@ -623,4 +624,4 @@
 584,,官方账号,,,Blancat,,,30,制作组相关
 585,,官方账号,,,ramuri,,,30,制作组相关
 586,,官方账号,,,Jehyun,,,30,制作组相关
-589,,未找到可解析的角色形态,,,密井 京子,密井 キョウコ,Mitsui Kyouko,0,
+589,,未找到可解析的角色形态,,,密井 京子,密井 キョウコ,Mitsui Kyouko,17,不良少女们
