@@ -1,267 +1,362 @@
 ﻿student_id,spine_id,reason,spine_name,spine_remark,name,name_jp,name_en,school,school_name
 1,360,类型 (home),CH0069_home,,圣园 未花,聖園 ミカ,Misono Mika,2,圣三一综合学园
+1,1073,类型 (home),CH0294_home,,圣园 未花,聖園 ミカ,Misono Mika,2,圣三一综合学园
 2,362,类型 (home),Momoi_home,,才羽 桃井,才羽 モモイ,Saiba Momoi,4,千禧科学学院
 2,363,类型 (home),Momoi_Scene,,才羽 桃井,才羽 モモイ,Saiba Momoi,4,千禧科学学院
+2,741,类型 (home),CH0201_home,,才羽 桃井,才羽 モモイ,Saiba Momoi,4,千禧科学学院
+2,966,类型 (home),CH0201_home_fix,光线修复,才羽 桃井,才羽 モモイ,Saiba Momoi,4,千禧科学学院
 3,370,类型 (home),Azusa_home,,白洲 梓,白洲 アズサ,Shirasu Azusa,2,圣三一综合学园
+3,371,类型 (home),Azusa_swimsuit_home,,白洲 梓,白洲 アズサ,Shirasu Azusa,2,圣三一综合学园
 3,1022,后缀 (steam),azusa_spr_Steam,Steam版初始立绘,白洲 梓,白洲 アズサ,Shirasu Azusa,2,圣三一综合学园
+3,1023,后缀 (steam),azusa_swimsuit_spr_Steam,Steam版初始立绘,白洲 梓,白洲 アズサ,Shirasu Azusa,2,圣三一综合学园
+3,1066,类型 (home),Azusa_swimsuit_home_fix,光线修复,白洲 梓,白洲 アズサ,Shirasu Azusa,2,圣三一综合学园
 4,414,类型 (home),CH0137_home,,春原 心奈,春原 ココナ,Sunohara Kokona,7,山海经高级中学
-5,,未找到 (404),,,,,,,
 6,506,类型 (home),Miyako_home,,月雪 宫子,月雪 ミヤコ,Tsukiyuki Miyako,11,SRT特殊学园
+6,526,类型 (home),CH0215_home,,月雪 宫子,月雪 ミヤコ,Tsukiyuki Miyako,11,SRT特殊学园
 6,598,后缀 (cbt),miyako_cbt,CBT旧绘废案,月雪 宫子,月雪 ミヤコ,Tsukiyuki Miyako,11,SRT特殊学园
 7,507,类型 (home),Moe_home,,风仓 萌绘,風倉 モエ,Kazekura Moe,11,SRT特殊学园
+7,774,类型 (home),CH0216_home,,风仓 萌绘,風倉 モエ,Kazekura Moe,11,SRT特殊学园
 8,416,类型 (home),CH0144_home,,空井 咲,空井 サキ,Sorai Saki,11,SRT特殊学园
+8,524,类型 (home),CH0217_home,,空井 咲,空井 サキ,Sorai Saki,11,SRT特殊学园
 9,417,类型 (home),CH0145_home,,霞泽 美游,霞沢 ミユ,Kasumizawa Miyu,11,SRT特殊学园
+9,525,类型 (home),CH0218_home,,霞泽 美游,霞沢 ミユ,Kasumizawa Miyu,11,SRT特殊学园
 10,378,类型 (home),Airi_home,,栗村 爱莉,栗村 アイリ,Kurimura Airi,2,圣三一综合学园
+10,709,类型 (home),CH0251_home,,栗村 爱莉,栗村 アイリ,Kurimura Airi,2,圣三一综合学园
 10,1018,后缀 (steam),airi_spr_Steam,Steam初始立绘,栗村 爱莉,栗村 アイリ,Kurimura Airi,2,圣三一综合学园
 11,391,类型 (home),Wakamo_Scene_0,,狐坂 若藻,狐坂 ワカモ,Kosaka Wakamo,9,百鬼夜行联合学园
 11,392,类型 (home),Wakamo_home,,狐坂 若藻,狐坂 ワカモ,Kosaka Wakamo,9,百鬼夜行联合学园
+11,427,类型 (home),CH0175_home,,狐坂 若藻,狐坂 ワカモ,Kosaka Wakamo,9,百鬼夜行联合学园
 11,609,类型 (home),Wakamo_Scene_02,CBT旧绘废案1,狐坂 若藻,狐坂 ワカモ,Kosaka Wakamo,9,百鬼夜行联合学园
 11,610,类型 (home),Wakamo_Scene_01,CBT旧绘废案2,狐坂 若藻,狐坂 ワカモ,Kosaka Wakamo,9,百鬼夜行联合学园
-16,,未找到可解析的角色形态,,,老师,先生,Sensei,6,夏莱
+11,742,包含 (ui_),Ui_RaidBoss_HoverCraft,,狐坂 若藻,狐坂 ワカモ,Kosaka Wakamo,9,百鬼夜行联合学园
 17,954,后缀 (cn),NP0040_spr_CN,国服,联邦学生会长,連邦生徒会長,GSC President,12,联邦学生会
 18,399,类型 (home),CH0081_home,,冰室 濑名,氷室 セナ,Himuro Sena,3,格赫娜学园
 18,716,类型 (home),CH0081_home_CN,国服,冰室 濑名,氷室 セナ,Himuro Sena,3,格赫娜学园
+18,918,类型 (home),CH0082_home,,冰室 濑名,氷室 セナ,Himuro Sena,3,格赫娜学园
 18,1045,后缀 (steam),sena_spr_Steam,Steam版初始立绘,冰室 濑名,氷室 セナ,Himuro Sena,3,格赫娜学园
 20,421,类型 (home),CH0160_home,,各务 千寻,各務 チヒロ,Kagami Chihiro,4,千禧科学学院
 20,720,类型 (home),CH0160_home_CN,国服,各务 千寻,各務 チヒロ,Kagami Chihiro,4,千禧科学学院
-21,,未找到 (404),,,,,,,
 22,504,类型 (home),Mimori_home,,水羽 弥守,水羽 ミモリ,Mizuha Mimori,9,百鬼夜行联合学园
+22,558,类型 (home),CH0183_home,,水羽 弥守,水羽 ミモリ,Mizuha Mimori,9,百鬼夜行联合学园
+22,964,类型 (home),CH0183_home_fix,光线修复,水羽 弥守,水羽 ミモリ,Mizuha Mimori,9,百鬼夜行联合学园
 22,1067,类型 (home),Mimori_home_fix,光线修复,水羽 弥守,水羽 ミモリ,Mizuha Mimori,9,百鬼夜行联合学园
 23,425,类型 (home),CH0169_home,,古关 忧,古関 ウイ,Kozeki Ui,2,圣三一综合学园
+23,552,类型 (home),CH0204_home,,古关 忧,古関 ウイ,Kozeki Ui,2,圣三一综合学园
 24,357,类型 (home),Akane_home,Akane_home,室笠 茜,室笠 アカネ,Murokasa Akane,4,千禧科学学院
+24,403,类型 (home),CH0099_home,,室笠 茜,室笠 アカネ,Murokasa Akane,4,千禧科学学院
 24,1019,后缀 (steam),akane_spr_Steam,Steam版初始立绘,室笠 茜,室笠 アカネ,Murokasa Akane,4,千禧科学学院
 25,361,类型 (home),Nagisa_home,,桐藤 渚,桐藤 ナギサ,Kirifuji Nagisa,2,圣三一综合学园
 25,637,后缀 (old_spr),nagisa_old_spr,23年1月22日前,桐藤 渚,桐藤 ナギサ,Kirifuji Nagisa,2,圣三一综合学园
+25,1072,类型 (home),CH0293_home,,桐藤 渚,桐藤 ナギサ,Kirifuji Nagisa,2,圣三一综合学园
 26,468,类型 (home),Hinata_home,,若叶 日向,若葉 ヒナタ,Wakaba Hinata,2,圣三一综合学园
+26,549,类型 (home),CH0210_home,,若叶 日向,若葉 ヒナタ,Wakaba Hinata,2,圣三一综合学园
 26,1031,后缀 (steam),hinata_spr_Steam,Steam版初始立绘,若叶 日向,若葉 ヒナタ,Wakaba Hinata,2,圣三一综合学园
 27,366,类型 (home),Midori_home,,才羽 绿,才羽 ミドリ,Saiba Midori,4,千禧科学学院
+27,740,类型 (home),CH0202_home,,才羽 绿,才羽 ミドリ,Saiba Midori,4,千禧科学学院
 28,398,类型 (home),CH0095_home,,生盐 诺亚,生塩 ノア,Ushio Noa,4,千禧科学学院
+28,883,类型 (home),CH0285_home,,生盐 诺亚,生塩 ノア,Ushio Noa,4,千禧科学学院
+28,884,类型 (home),CH0285_home_fix,光线修复,生盐 诺亚,生塩 ノア,Ushio Noa,4,千禧科学学院
 28,1025,后缀 (steam),CH0095_spr_Steam,Steam版初始立绘,生盐 诺亚,生塩 ノア,Ushio Noa,4,千禧科学学院
 29,485,类型 (home),Kaede_home,,勇美 枫,勇美 カエデ,Isami Kaede,9,百鬼夜行联合学园
 29,768,类型 (home),kaede_home_CN,国服,勇美 枫,勇美 カエデ,Isami Kaede,9,百鬼夜行联合学园
-30,741,类型 (home),CH0201_home,,才羽 桃井,才羽 モモイ,Saiba Momoi,4,千禧科学学院
-30,966,类型 (home),CH0201_home_fix,光线修复,才羽 桃井,才羽 モモイ,Saiba Momoi,4,千禧科学学院
-31,740,类型 (home),CH0202_home,,才羽 绿,才羽 ミドリ,Saiba Midori,4,千禧科学学院
 32,413,类型 (home),CH0114_home,,大野 月咏,大野 ツクヨ,Ōno Tsukuyo,9,百鬼夜行联合学园
 32,769,类型 (home),CH0114_home_CN,国服,大野 月咏,大野 ツクヨ,Ōno Tsukuyo,9,百鬼夜行联合学园
+32,1196,类型 (home),CH0297_home,,大野 月咏,大野 ツクヨ,Ōno Tsukuyo,9,百鬼夜行联合学园
 33,505,类型 (home),Misaki_home,,戒野 美咲,戒野 ミサキ,Imashino Misaki,10,阿里乌斯分校
+33,1161,类型 (home),CH0268_home,,戒野 美咲,戒野 ミサキ,Imashino Misaki,10,阿里乌斯分校
 34,471,类型 (home),Hiyori_home,,槌永 日和,槌永 ヒヨリ,Tsuchinaga Hiyori,10,阿里乌斯分校
+34,784,类型 (home),CH0269_home,,槌永 日和,槌永 ヒヨリ,Tsuchinaga Hiyori,10,阿里乌斯分校
+34,797,类型 (home),CH0269_home_fix,光线修复,槌永 日和,槌永 ヒヨリ,Tsuchinaga Hiyori,10,阿里乌斯分校
 35,387,类型 (home),Atsuko_home,,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
+35,781,类型 (home),CH0267_home,,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
+35,795,类型 (home),CH0267_home_fix,光线修复,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
 35,1068,类型 (home),Atsuko_home_fix,光线修复,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
 36,489,类型 (home),Saori_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
+36,779,类型 (home),CH0266_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
+36,933,类型 (home),CH0259_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
+36,934,类型 (home),CH0259_home_fix,光线修复,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
 37,374,类型 (home),kazusa_home,,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
 37,541,后缀 (old),kazusa_old,旧立绘,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
+37,708,类型 (home),CH0250_home,,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
 37,773,类型 (home),kazusa_home_CN,国服,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
 38,419,类型 (home),CH0156_home,,枣 伊吕波,棗 イロハ,Natsume Iroha,3,格赫娜学园
 38,719,类型 (home),CH0156_home_CN,国服,枣 伊吕波,棗 イロハ,Natsume Iroha,3,格赫娜学园
 38,1069,类型 (home),CH0156_home_fix,光线修复,枣 伊吕波,棗 イロハ,Natsume Iroha,3,格赫娜学园
 39,379,类型 (home),Ako_home,,天雨 亚子,天雨 アコ,Amau Ako,3,格赫娜学园
+39,655,类型 (home),CH0231_home,礼服亚子,天雨 亚子,天雨 アコ,Amau Ako,3,格赫娜学园
 40,397,类型 (home),CH0092_home,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
-41,427,类型 (home),CH0175_home,,狐坂 若藻,狐坂 ワカモ,Kosaka Wakamo,9,百鬼夜行联合学园
-41,742,包含 (ui_raidboss),Ui_RaidBoss_HoverCraft,,狐坂 若藻,狐坂 ワカモ,Kosaka Wakamo,9,百鬼夜行联合学园
+40,497,类型 (home),Nonomi_home,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
+40,831,类型 (home),LobbyNonomi_multi,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
+40,873,类型 (home),SC12000_01,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
+40,1043,后缀 (steam),nonomi_spr_Steam,Steam版初始立绘,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
 42,475,类型 (home),Hoshino_swimsuit_home,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+42,532,类型 (home),Hoshino_home,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+42,785,类型 (home),CH0258_home,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+42,799,类型 (home),CH0258_home_fix,光线修复,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+42,864,类型 (home),LobbyHoshino_multi,TV动画特典,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+42,874,类型 (home),SC12000_02,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+42,1032,后缀 (steam),hoshino_spr_Steam,Steam版初始立绘,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+42,1060,类型 (home),Hoshino_home_Combined,回忆大厅,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+42,1191,类型 (home),Hoshino_default_MidAutumn,中秋,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
 43,887,类型 (home),CH0070_home,,百合园 圣娅,百合園 セイア,Yurizono Seia,2,圣三一综合学园
 43,899,类型 (home),CH0070_home_fix,光线修复,百合园 圣娅,百合園 セイア,Yurizono Seia,2,圣三一综合学园
+43,1074,类型 (home),CH0295_home,,百合园 圣娅,百合園 セイア,Yurizono Seia,2,圣三一综合学园
+44,484,类型 (home),Serika_home,,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
 44,487,类型 (home),Serika_Newyear_home,,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
 44,607,后缀 (old),serika_newyear_old,CBT旧绘废案,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
+44,745,类型 (home),CH0189_home,,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
+44,822,类型 (home),LobbySerika_multi,TV动画BD特典,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
+44,873,类型 (home),SC12000_01,,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
+44,1046,后缀 (steam),serika_spr_Steam,Steam版初始立绘,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
+44,1063,类型 (home),Serika_home_fix,光线修复,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
 44,1064,类型 (home),Serika_Newyear_home_fix,光线修复,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
 45,498,类型 (home),Marina_home,,池仓 玛丽娜,池倉 マリナ,Ikekura Marina,5,红冬联邦学园
 45,596,后缀 (old),marina_old,CBT旧绘废案,池仓 玛丽娜,池倉 マリナ,Ikekura Marina,5,红冬联邦学园
+45,811,类型 (home),CH0270_home,,池仓 玛丽娜,池倉 マリナ,Ikekura Marina,5,红冬联邦学园
+45,815,类型 (home),CH0270_home_fix,光线修复,池仓 玛丽娜,池倉 マリナ,Ikekura Marina,5,红冬联邦学园
 45,1040,后缀 (steam),marina_spr_Steam,Steam版初始立绘,池仓 玛丽娜,池倉 マリナ,Ikekura Marina,5,红冬联邦学园
 46,431,类型 (home),CH0179_home,,久田 泉奈,久田 イズナ,Kuda Izuna,9,百鬼夜行联合学园
+46,480,类型 (home),Izuna_home,,久田 泉奈,久田 イズナ,Kuda Izuna,9,百鬼夜行联合学园
+46,1035,后缀 (steam),izuna_spr_Steam,Steam版初始立绘,久田 泉奈,久田 イズナ,Kuda Izuna,9,百鬼夜行联合学园
+47,388,类型 (home),Ayane_home,,奥空 绫音,奥空 アヤネ,Okusora Ayane,1,阿比多斯高中
 47,428,类型 (home),CH0176_home,,奥空 绫音,奥空 アヤネ,Okusora Ayane,1,阿比多斯高中
+47,863,类型 (home),LobbyAyane_multi,TV动画特典,奥空 绫音,奥空 アヤネ,Okusora Ayane,1,阿比多斯高中
+47,873,类型 (home),SC12000_01,,奥空 绫音,奥空 アヤネ,Okusora Ayane,1,阿比多斯高中
 48,430,类型 (home),CH0178_home,,和乐 千世,和楽 チセ,Waraku Chise,9,百鬼夜行联合学园
+48,441,类型 (home),Chise_home,,和乐 千世,和楽 チセ,Waraku Chise,9,百鬼夜行联合学园
 49,429,类型 (home),CH0177_home,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
+49,443,类型 (home),Fuuka_home,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
+49,590,后缀 (cbt),fuuka_cbt,CBT旧绘废案,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
+49,727,类型 (home),Fuuka_home_CN,国服,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
+49,728,类型 (home),Fuuka_Scene,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
 50,432,类型 (home),CH0180_home,,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
+50,465,类型 (home),Shizuko_home,,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
+50,601,后缀 (cbt),orihime_cbt,CBT旧绘废案,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
 50,771,类型 (home),CH0180_home_CN,国服,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
+50,973,类型 (home),Shizuko_home_fix,光线修复,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
 51,433,类型 (home),CH0181_home,,猫冢 响,猫塚 ヒビキ,Nekozuka Hibiki,4,千禧科学学院
+51,462,类型 (home),Hibiki_home,,猫冢 响,猫塚 ヒビキ,Nekozuka Hibiki,4,千禧科学学院
 52,389,类型 (home),Yuuka_home,,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
+52,436,类型 (home),CH0184_00,,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
+52,439,类型 (home),CH0184_home,,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
 52,736,类型 (home),yuuka_home_CN,国服,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
+52,882,类型 (home),CH0284_home,,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
+52,885,类型 (home),CH0284_home_fix,光线修复,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
 52,1054,后缀 (steam),yuuka_spr_Steam,Steam版初始立绘,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
+53,393,类型 (home),Utaha_home,,白石 歌原,白石 ウタハ,Shiraishi Utaha,4,千禧科学学院
 53,435,类型 (home),CH0182_home,,白石 歌原,白石 ウタハ,Shiraishi Utaha,4,千禧科学学院
-54,436,类型 (home),CH0184_00,,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
-54,439,类型 (home),CH0184_home,,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
+53,1052,后缀 (steam),utaha_spr_Steam,Steam版初始立绘,白石 歌原,白石 ウタハ,Shiraishi Utaha,4,千禧科学学院
 55,445,类型 (home),CH0186_home,,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
-56,558,类型 (home),CH0183_home,,水羽 弥守,水羽 ミモリ,Mizuha Mimori,9,百鬼夜行联合学园
-56,964,类型 (home),CH0183_home_fix,光线修复,水羽 弥守,水羽 ミモリ,Mizuha Mimori,9,百鬼夜行联合学园
+55,499,类型 (home),mari_home,,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
+55,595,后缀 (cbt),mari_cbt,CBT旧绘废案,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
+55,837,类型 (home),CH0273_home_,,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
+55,1177,后缀 (steam),mari_spr_Steam,Steam版初始立绘,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
+57,495,类型 (home),Kotori_home,,丰见 小鸟,豊見 コトリ,Toyomi Kotori,4,千禧科学学院
 57,565,类型 (home),CH0185_home,,丰见 小鸟,豊見 コトリ,Toyomi Kotori,4,千禧科学学院
 57,965,类型 (home),CH0185_home_CN,国服,丰见 小鸟,豊見 コトリ,Toyomi Kotori,4,千禧科学学院
+57,1039,后缀 (steam),kotori_spr_Steam,Steam版初始立绘,丰见 小鸟,豊見 コトリ,Toyomi Kotori,4,千禧科学学院
+58,466,类型 (home),Shiroko_ridingsuit_home,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
+58,467,类型 (home),Shiroko_home,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
 58,543,类型 (home),CH0188_home,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
-59,745,类型 (home),CH0189_home,,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
+58,724,类型 (home),shiroko_home_CN,国服,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
+58,813,类型 (home),LobbyShiroko_multi,TV动画,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
+58,872,类型 (home),SC11000_01,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
+58,873,类型 (home),SC12000_01,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
+58,1065,类型 (home),Shiroko_ridingsuit_home_fix,光线修复,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
 60,447,类型 (home),CH0190_home,,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
+60,460,类型 (home),Hasumi_home,,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
+60,1057,后缀 (steam),hasumi_spr_Steam,Steam版初始立绘,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
+60,1070,类型 (home),CH0291_home,,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
 61,826,类型 (home),CH0139_home,,龙华 妃咲,竜華 キサキ,Ryuuge Kisaki,7,山海经高级中学
 62,420,类型 (home),CH0159_home,,明星 日鞠,明星 ヒマリ,Akeboshi Himari,4,千禧科学学院
 62,820,类型 (home),CH0159_home_CN,国服,明星 日鞠,明星 ヒマリ,Akeboshi Himari,4,千禧科学学院
+62,1208,类型 (home),CH0332_home,,明星 日鞠,明星 ヒマリ,Akeboshi Himari,4,千禧科学学院
 63,415,类型 (home),CH0141_home,,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
+63,761,类型 (home),CH0261_home,,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
+63,766,类型 (home),CH0261_home_fix,光线修复,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
 63,828,类型 (home),CH0141_home_Halofix,24.09.25修正,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
 63,1027,后缀 (steam),CH0141_spr_Steam,Steam版初始立绘,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
 67,625,后缀 (spr-2),CH0174_spr-2,23.11.08之后,音葵,オトギ,Otogi,11,SRT特殊学园
 68,437,类型 (home),CH9999_home,,初音未来,初音 ミク,Hatsune Miku,26,联动作品
-69,462,类型 (home),Hibiki_home,,猫冢 响,猫塚 ヒビキ,Nekozuka Hibiki,4,千禧科学学院
 70,412,类型 (home),CH0058_home,,阿慈谷 日富美,阿慈谷 ヒフミ,Ajitani Hifumi,2,圣三一综合学园
+70,464,类型 (home),Hihumi_home,,阿慈谷 日富美,阿慈谷 ヒフミ,Ajitani Hifumi,2,圣三一综合学园
 70,735,类型 (home),CH0058_home_CN,国服,阿慈谷 日富美,阿慈谷 ヒフミ,Ajitani Hifumi,2,圣三一综合学园
+71,407,类型 (home),CH0063_home,,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
 71,470,类型 (home),Hina_home,,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
+71,656,类型 (home),CH0230_home,礼服日奈,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
 71,725,类型 (home),Hina_home_CN,国服,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
 71,726,后缀 (cn),Hina_spr_CN,国服,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
+71,729,类型 (home),CH0063_home_CN,国服,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
+71,730,后缀 (cn),CH0063_spr_CN,国服,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
 71,732,后缀 (cn),NP0017_spr_CN,国服战损,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
+71,1024,后缀 (steam),CH0063_spr_Steam,Steam版初始立绘,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
+71,1028,后缀 (steam),CH0230_spr_Steam,Steam版初始立绘,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
+72,408,类型 (home),CH0064_home,,银镜 伊织,銀鏡 イオリ,Shiromi Iori,3,格赫娜学园
 72,476,类型 (home),Iori_home,,银镜 伊织,銀鏡 イオリ,Shiromi Iori,3,格赫娜学园
 72,733,后缀 (cn),iori_spr_CN,国服,银镜 伊织,銀鏡 イオリ,Shiromi Iori,3,格赫娜学园
 72,1033,后缀 (steam),iori_spr_Steam,Steam版初始立绘,银镜 伊织,銀鏡 イオリ,Shiromi Iori,3,格赫娜学园
 73,478,类型 (home),Izumi_home,,狮子堂 泉,獅子堂 イズミ,Shishido Izumi,3,格赫娜学园
+73,479,类型 (home),Izumi_swimsuit_home,,狮子堂 泉,獅子堂 イズミ,Shishido Izumi,3,格赫娜学园
+73,923,类型 (home),CH0197_home,,狮子堂 泉,獅子堂 イズミ,Shishido Izumi,3,格赫娜学园
 73,1034,后缀 (steam),izumi_spr_Steam,Steam版初始立绘,狮子堂 泉,獅子堂 イズミ,Shishido Izumi,3,格赫娜学园
-74,464,类型 (home),Hihumi_home,,阿慈谷 日富美,阿慈谷 ヒフミ,Ajitani Hifumi,2,圣三一综合学园
-75,479,类型 (home),Izumi_swimsuit_home,,狮子堂 泉,獅子堂 イズミ,Shishido Izumi,3,格赫娜学园
-76,532,类型 (home),Hoshino_home,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
-76,864,类型 (home),LobbyHoshino_multi,TV动画特典,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
-76,874,类型 (home),SC12000_02,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
-76,1032,后缀 (steam),hoshino_spr_Steam,Steam版初始立绘,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
-76,1060,类型 (home),Hoshino_home_Combined,回忆大厅,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
-76,1191,类型 (home),Hoshino_default_MidAutumn,中秋,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
+77,434,类型 (home),CH0211_home,,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
 77,446,类型 (home),CH0187_home,,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
-78,497,类型 (home),Nonomi_home,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
-78,831,类型 (home),LobbyNonomi_multi,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
-78,873,类型 (home),SC12000_01,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
-78,1043,后缀 (steam),nonomi_spr_Steam,Steam版初始立绘,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
+77,1209,类型 (home),CH0333_home,,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
+77,1432,类型 (home),CH0333_Emoji,技能弹出动画,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
 79,501,类型 (home),Mashiro_home,,静山 真白,静山 マシロ,Shizuyama Mashiro,2,圣三一综合学园
-80,503,类型 (home),Mashiro_swimsuit_home,,静山 真白,静山 マシロ,Shizuyama Mashiro,2,圣三一综合学园
+79,503,类型 (home),Mashiro_swimsuit_home,,静山 真白,静山 マシロ,Shizuyama Mashiro,2,圣三一综合学园
+81,368,类型 (home),CH0203_home,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
 81,1061,类型 (home),Yuzu_home_Combined,回忆大厅,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
-82,368,类型 (home),CH0203_home,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
-83,484,类型 (home),Serika_home,,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
-83,822,类型 (home),LobbySerika_multi,TV动画BD特典,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
-83,873,类型 (home),SC12000_01,,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
-83,1046,后缀 (steam),serika_spr_Steam,Steam版初始立绘,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
-83,1063,类型 (home),Serika_home_fix,光线修复,黑见 芹香,黒見 セリカ,Kuromi Serika,1,阿比多斯高中
-84,441,类型 (home),Chise_home,,和乐 千世,和楽 チセ,Waraku Chise,9,百鬼夜行联合学园
-85,388,类型 (home),Ayane_home,,奥空 绫音,奥空 アヤネ,Okusora Ayane,1,阿比多斯高中
-85,863,类型 (home),LobbyAyane_multi,TV动画特典,奥空 绫音,奥空 アヤネ,Okusora Ayane,1,阿比多斯高中
-85,873,类型 (home),SC12000_01,,奥空 绫音,奥空 アヤネ,Okusora Ayane,1,阿比多斯高中
-86,467,类型 (home),Shiroko_home,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
-86,724,类型 (home),shiroko_home_CN,国服,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
-86,813,类型 (home),LobbyShiroko_multi,TV动画,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
-86,872,类型 (home),SC11000_01,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
-86,873,类型 (home),SC12000_01,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
-87,466,类型 (home),Shiroko_ridingsuit_home,,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
-87,1065,类型 (home),Shiroko_ridingsuit_home_fix,光线修复,砂狼 白子,砂狼 シロコ,Sunaookami Shiroko,1,阿比多斯高中
+81,1441,类型 (home),CH0336_home,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
+88,481,类型 (home),Saya_casual_home,,药子 纱绫,薬子 サヤ,Yakushi Saya,7,山海经高级中学
 88,482,类型 (home),Saya_home,,药子 纱绫,薬子 サヤ,Yakushi Saya,7,山海经高级中学
-89,481,类型 (home),Saya_casual_home,,药子 纱绫,薬子 サヤ,Yakushi Saya,7,山海经高级中学
-89,723,类型 (home),saya_casual_home_CN,国服,药子 纱绫,薬子 サヤ,Yakushi Saya,7,山海经高级中学
+88,723,类型 (home),saya_casual_home_CN,国服,药子 纱绫,薬子 サヤ,Yakushi Saya,7,山海经高级中学
+90,409,类型 (home),CH0066_home,,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
 90,463,类型 (home),Shun_home,,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
+90,731,类型 (home),CH0066_home_CN,国服,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
 90,1047,后缀 (steam),shun_spr_Steam,Steam版初始立绘,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
+91,451,类型 (home),CH0194_home,,鹫见 芹娜,鷲見 セリナ,Sumi Serina,2,圣三一综合学园
 91,477,类型 (home),serina_home,,鹫见 芹娜,鷲見 セリナ,Sumi Serina,2,圣三一综合学园
 92,453,类型 (home),Hanako_home,,浦和 花子,浦和 ハナコ,Urawa Hanako,2,圣三一综合学园
+92,554,类型 (home),CH0209_home,,浦和 花子,浦和 ハナコ,Urawa Hanako,2,圣三一综合学园
 92,852,类型 (home),Hanako_home_fix,光线修复,浦和 花子,浦和 ハナコ,Urawa Hanako,2,圣三一综合学园
 93,395,类型 (home),Tsubaki_home,,春日 椿,春日 ツバキ,Kasuga Tsubaki,9,百鬼夜行联合学园
+93,694,类型 (home),CH0255_home,,春日 椿,春日 ツバキ,Kasuga Tsubaki,9,百鬼夜行联合学园
+93,968,类型 (home),CH0255_home_fix,光线修复,春日 椿,春日 ツバキ,Kasuga Tsubaki,9,百鬼夜行联合学园
 93,1050,后缀 (steam),tsubaki_spr_Steam,Steam版初始立绘,春日 椿,春日 ツバキ,Kasuga Tsubaki,9,百鬼夜行联合学园
 94,394,类型 (home),Tsurugi_home,,剑先 鹤城,剣先 ツルギ,Kenzaki Tsurugi,2,圣三一综合学园
 94,1051,后缀 (steam),tsurugi_spr_Steam,Steam版初始立绘,剑先 鹤城,剣先 ツルギ,Kenzaki Tsurugi,2,圣三一综合学园
+94,1059,类型 (home),CH0060_Home_Combined,回忆大厅,剑先 鹤城,剣先 ツルギ,Kenzaki Tsurugi,2,圣三一综合学园
 95,457,类型 (home),Tomoe_home,,佐城 智惠,佐城 トモエ,Sashiro Tomoe,5,红冬联邦学园
+95,812,类型 (home),CH0271_home,,佐城 智惠,佐城 トモエ,Sashiro Tomoe,5,红冬联邦学园
+95,816,类型 (home),CH0271_home_fix,光线修复,佐城 智惠,佐城 トモエ,Sashiro Tomoe,5,红冬联邦学园
 95,1049,后缀 (steam),tomoe_spr_Steam,Steam版初始立绘,佐城 智惠,佐城 トモエ,Sashiro Tomoe,5,红冬联邦学园
-96,465,类型 (home),Shizuko_home,,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
-96,601,后缀 (cbt),orihime_cbt,CBT旧绘废案,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
-96,973,类型 (home),Shizuko_home_fix,光线修复,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
-97,443,类型 (home),Fuuka_home,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
-97,590,后缀 (cbt),fuuka_cbt,CBT旧绘废案,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
-97,727,类型 (home),Fuuka_home_CN,国服,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
-97,728,类型 (home),Fuuka_Scene,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
 98,450,类型 (home),Hanae_home,,朝颜 花江,朝顔 ハナエ,Asagao Hanae,2,圣三一综合学园
-99,499,类型 (home),mari_home,,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
-99,595,后缀 (cbt),mari_cbt,CBT旧绘废案,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
-99,1177,后缀 (steam),mari_spr_Steam,Steam版初始立绘,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
+98,452,类型 (home),CH0195_home,,朝颜 花江,朝顔 ハナエ,Asagao Hanae,2,圣三一综合学园
 100,490,类型 (home),kirino_home,,中务 桐乃,中務 キリノ,Nakatsukasa Kirino,8,瓦尔基里警察学校
 100,593,后缀 (cbt),kirino_cbt,CBT旧绘废案,中务 桐乃,中務 キリノ,Nakatsukasa Kirino,8,瓦尔基里警察学校
+100,763,类型 (home),CH0262_home,,中务 桐乃,中務 キリノ,Nakatsukasa Kirino,8,瓦尔基里警察学校
+100,970,类型 (home),CH0262_home_fix,光线修复,中务 桐乃,中務 キリノ,Nakatsukasa Kirino,8,瓦尔基里警察学校
 101,454,类型 (home),CH0198_home,,黑崎 小雪,黒崎 コユキ,Kurosaki Koyuki,4,千禧科学学院
+101,1449,类型 (home),CH0310_home,,黑崎 小雪,黒崎 コユキ,Kurosaki Koyuki,4,千禧科学学院
 102,384,类型 (home),Aru_newyear_home,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
+102,681,类型 (home),CH0240_home,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
+102,1055,后缀 (steam),aru_spr_Steam,Steam版初始立绘,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
 103,390,类型 (home),Zunko_home,,赤司 纯子,赤司 ジュンコ,Akashi Junko,3,格赫娜学园
+103,449,类型 (home),CH0192_home,,赤司 纯子,赤司 ジュンコ,Akashi Junko,3,格赫娜学园
 104,518,类型 (home),arona_workpage_daytime,,阿罗娜,アロナ,Arona,6,夏莱
 105,540,类型 (home),sora_shop,,空,ソラ,Sora,16,天使24便利店
 105,734,类型 (home),sora_CN,国服,空,ソラ,Sora,16,天使24便利店
 106,472,类型 (home),Shigure_home,,间宵 时雨,間宵 シグレ,Mayoi Shigure,5,红冬联邦学园
 106,473,类型 (home),Shigure_01,,间宵 时雨,間宵 シグレ,Mayoi Shigure,5,红冬联邦学园
 106,474,类型 (home),Shigure_00,,间宵 时雨,間宵 シグレ,Mayoi Shigure,5,红冬联邦学园
+106,573,类型 (home),CH0123_home,,间宵 时雨,間宵 シグレ,Mayoi Shigure,5,红冬联邦学园
 107,508,类型 (home),Mutsuki_home,,浅黄 睦月,浅黄 ムツキ,Asagi Mutsuki,3,格赫娜学园
+107,509,类型 (home),mutsuki_newyear_home,,浅黄 睦月,浅黄 ムツキ,Asagi Mutsuki,3,格赫娜学园
+107,1041,后缀 (steam),mutsuki_newyear_spr_Steam,Steam版初始立绘,浅黄 睦月,浅黄 ムツキ,Asagi Mutsuki,3,格赫娜学园
 107,1042,后缀 (steam),mutsuki_spr_Steam,Steam版初始立绘,浅黄 睦月,浅黄 ムツキ,Asagi Mutsuki,3,格赫娜学园
 108,367,类型 (home),Aris_home,,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
-109,409,类型 (home),CH0066_home,,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
-109,731,类型 (home),CH0066_home_CN,国服,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
+108,369,类型 (home),CH0200_home,,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
+108,903,类型 (home),CH0200_home_CN,国服,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
+108,1216,类型 (home),CH0334_home,,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
+108,1437,类型 (home),SC90002000_01,Vol.Ex - 1,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
+108,1439,类型 (home),SC90002000_03,Vol.Ex - 3,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
+108,1440,类型 (home),SC90002000_04,Vol.Ex - 4,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
 110,381,类型 (home),akari_bg,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,382,类型 (home),akari_home,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,383,类型 (home),akari_scene,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
+110,687,类型 (home),CH0196_home,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,1020,后缀 (steam),akari_spr_Steam,Steam版初始立绘,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,1058,类型 (home),Akari_home_Combined,回忆大厅,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
-111,460,类型 (home),Hasumi_home,,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
-111,1057,后缀 (steam),hasumi_spr_Steam,Steam版初始立绘,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
-112,1055,后缀 (steam),aru_spr_Steam,Steam版初始立绘,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
+110,1178,类型 (home),CH0196_home_CN,国服,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 113,386,类型 (home),Asuna_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
+113,402,类型 (home),CH0098_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
+113,890,类型 (home),CH0281_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
+113,902,类型 (home),CH0281_home_fix,光线修复,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
 113,958,类型 (home),Asuna_home_fix,光线修复,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
 113,1021,后缀 (steam),asuna_spr_Steam,Steam版初始立绘,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
+113,1026,后缀 (steam),CH0098_spr_Steam,Steam版初始立绘,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
 114,567,类型 (home),CH0071_home,,仲正 一花,仲正 イチカ,Nakamasa ichika,2,圣三一综合学园
+114,1071,类型 (home),CH0292_home,,仲正 一花,仲正 イチカ,Nakamasa ichika,2,圣三一综合学园
 115,594,后缀 (cbt),makoto_cbt,CBT旧绘废案,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 115,653,类型 (home),CH0079_home,真琴,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 115,959,类型 (home),CH0079_home_fix,光线修复,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 116,568,类型 (home),CH0089_home,,鬼怒川 霞,鬼怒川 カスミ,Kinugawa Kasumi,3,格赫娜学园
+117,422,类型 (home),CH0163_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,440,类型 (home),Chinatsu_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,737,后缀 (cn),chinatsu_spr_CN,国服,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,1029,后缀 (steam),chinatsu_spr_Steam,Steam版初始立绘,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 118,375,类型 (home),Yoshimi_home,,伊原木 好美,伊原木 ヨシミ,Ibaragi Yoshimi,2,圣三一综合学园
+118,707,类型 (home),CH0220_home,,伊原木 好美,伊原木 ヨシミ,Ibaragi Yoshimi,2,圣三一综合学园
 118,1053,后缀 (steam),yoshimi_spr_Steam,Steam版初始立绘,伊原木 好美,伊原木 ヨシミ,Ibaragi Yoshimi,2,圣三一综合学园
+118,1062,类型 (home),CH0220_home_fix,光线修复,伊原木 好美,伊原木 ヨシミ,Ibaragi Yoshimi,2,圣三一综合学园
+119,424,类型 (home),CH0165_home,,天见 和香,天見 ノドカ,Amami Nodoka,5,红冬联邦学园
 119,500,类型 (home),Nodoka_home,,天见 和香,天見 ノドカ,Amami Nodoka,5,红冬联邦学园
-120,424,类型 (home),CH0165_home,,天见 和香,天見 ノドカ,Amami Nodoka,5,红冬联邦学园
-120,862,后缀 (new),CH0165_spr_new,24.11.06更新立绘,天见 和香,天見 ノドカ,Amami Nodoka,5,红冬联邦学园
-120,963,类型 (home),CH0165_home_fix,光线修复,天见 和香,天見 ノドカ,Amami Nodoka,5,红冬联邦学园
-121,407,类型 (home),CH0063_home,,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
-121,729,类型 (home),CH0063_home_CN,国服,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
-121,730,后缀 (cn),CH0063_spr_CN,国服,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
-121,1024,后缀 (steam),CH0063_spr_Steam,Steam版初始立绘,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
-122,408,类型 (home),CH0064_home,,银镜 伊织,銀鏡 イオリ,Shiromi Iori,3,格赫娜学园
+119,862,后缀 (new),CH0165_spr_new,24.11.06更新立绘,天见 和香,天見 ノドカ,Amami Nodoka,5,红冬联邦学园
+119,963,类型 (home),CH0165_home_fix,光线修复,天见 和香,天見 ノドカ,Amami Nodoka,5,红冬联邦学园
 123,400,类型 (home),CH0086_home,,鬼方 佳代子,鬼方 カヨコ,Onikata Kayoko,3,格赫娜学园
+123,488,类型 (home),Kayoko_home,,鬼方 佳代子,鬼方 カヨコ,Onikata Kayoko,3,格赫娜学园
+123,682,类型 (home),CH0239_home,,鬼方 佳代子,鬼方 カヨコ,Onikata Kayoko,3,格赫娜学园
+123,684,类型 (home),CH0239_home_fix,光线修复,鬼方 佳代子,鬼方 カヨコ,Onikata Kayoko,3,格赫娜学园
 124,401,类型 (home),CH0087_home,,伊草 遥香,伊草 ハルカ,Igusa Haruka,3,格赫娜学园
+124,456,类型 (home),Haruka_home,,伊草 遥香,伊草 ハルカ,Igusa Haruka,3,格赫娜学园
+124,1056,后缀 (steam),haruka_spr_Steam,Steam版初始立绘,伊草 遥香,伊草 ハルカ,Igusa Haruka,3,格赫娜学园
 126,996,类型 (home),CH0109_home,,天地 尼娅,天地 ニヤ,Amachi Niya,9,百鬼夜行联合学园
 126,1000,类型 (home),CH0109_home_fix,光线修复,天地 尼娅,天地 ニヤ,Amachi Niya,9,百鬼夜行联合学园
 127,688,后缀 (new),CH0110_New,新初始立绘,里滨 海夏,里浜 ウミカ,Satohama Umika,9,百鬼夜行联合学园
 127,693,类型 (home),CH0110_Home,,里滨 海夏,里浜 ウミカ,Satohama Umika,9,百鬼夜行联合学园
 128,511,类型 (home),CH0135_home,,朱城 留美,朱城 ルミ,Akeshiro Rumi,7,山海经高级中学
 129,418,类型 (home),CH0152_home,,苍森 美弥,蒼森 ミネ,Aomori Mine,2,圣三一综合学园
-130,402,类型 (home),CH0098_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
-130,1026,后缀 (steam),CH0098_spr_Steam,Steam版初始立绘,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
+129,839,类型 (home),CH0275_home,,苍森 美弥,蒼森 ミネ,Aomori Mine,2,圣三一综合学园
+129,971,类型 (home),CH0275_home_fix,光线修复,苍森 美弥,蒼森 ミネ,Aomori Mine,2,圣三一综合学园
 131,510,类型 (home),CH0138_home,,近卫 南,近衛 ミナ,Konoe Mina,7,山海经高级中学
-132,403,类型 (home),CH0099_home,,室笠 茜,室笠 アカネ,Murokasa Akane,4,千禧科学学院
 133,888,类型 (home),CH0158_home,,调月 莉音,調月 リオ,Tsukatsuki Rio,4,千禧科学学院
 133,900,类型 (home),CH0158_home_fix,光线修复,调月 莉音,調月 リオ,Tsukatsuki Rio,4,千禧科学学院
+133,1207,类型 (home),CH0331_home,,调月 莉音,調月 リオ,Tsukatsuki Rio,4,千禧科学学院
 134,1183,类型 (home),CH0166_home,,河驹风 兰舞,河駒風 ラブ,Komakaze Rabu,2,圣三一综合学园
 135,777,类型 (home),CH0263_home,,砂狼 白子*恐怖,砂狼 シロコ＊テラー,Sunaookami Shiroko*terror,1,阿比多斯高中
 135,798,类型 (home),CH0263_home_fix,光线修复,砂狼 白子*恐怖,砂狼 シロコ＊テラー,Sunaookami Shiroko*terror,1,阿比多斯高中
 136,654,类型 (home),Ibuki_home,伊吹,丹花 伊吹,丹花 イブキ,Tanga Ibuki,3,格赫娜学园
 136,853,类型 (home),Ibuki_home_fix,光线修复,丹花 伊吹,丹花 イブキ,Tanga Ibuki,3,格赫娜学园
 137,404,类型 (home),CH0100_home,,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
+137,486,类型 (home),Karin_home,,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
 137,829,类型 (home),CH0100_home_Halofix,24.09.25修正,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
+137,891,类型 (home),CH0282_home,,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
+137,1037,后缀 (steam),karin_spr_Steam,Steam版初始立绘,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
 138,405,类型 (home),CH0101_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
+138,502,类型 (home),Neru_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
+138,600,后缀 (cbt),neru_cbt,CBT旧绘废案,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
+138,889,类型 (home),CH0280_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
+138,901,类型 (home),CH0280_home_fix,光线修复,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 139,373,类型 (home),CH0155_home,,柚鸟 夏,柚鳥 ナツ,Yutori Natsu,2,圣三一综合学园
 139,721,类型 (home),CH0155_home_CN,国服,柚鸟 夏,柚鳥 ナツ,Yutori Natsu,2,圣三一综合学园
-140,422,类型 (home),CH0163_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
+139,1006,类型 (home),CH0221_home,,柚鸟 夏,柚鳥 ナツ,Yutori Natsu,2,圣三一综合学园
 141,423,类型 (home),CH0164_home,,连河 切里诺,連河 チェリノ,Renkawa Cherino,5,红冬联邦学园
+141,438,类型 (home),Cherino_home,,连河 切里诺,連河 チェリノ,Renkawa Cherino,5,红冬联邦学园
 141,717,后缀 (cn),CH0164_spr_CN,国服,连河 切里诺,連河 チェリノ,Renkawa Cherino,5,红冬联邦学园
 141,718,类型 (home),CH0164_home_CN,国服,连河 切里诺,連河 チェリノ,Renkawa Cherino,5,红冬联邦学园
 141,962,类型 (home),CH0164_home_fix,光线修复,连河 切里诺,連河 チェリノ,Renkawa Cherino,5,红冬联邦学园
 142,376,类型 (home),CH0167_home,,宇泽 玲纱,宇沢 レイサ,Uzawa Reisa,2,圣三一综合学园
 142,1176,后缀 (steam),CH0167_spr_Steam,Steam版初始立绘,宇泽 玲纱,宇沢 レイサ,Uzawa Reisa,2,圣三一综合学园
+142,1185,类型 (home),CH0326_home,,宇泽 玲纱,宇沢 レイサ,Uzawa Reisa,2,圣三一综合学园
 143,406,类型 (home),CH0107_home,,桑上 果穗,桑上 カホ,Kuwakami Kaho,9,百鬼夜行联合学园
 143,961,类型 (home),CH0107_home_fix,光线修复,桑上 果穗,桑上 カホ,Kuwakami Kaho,9,百鬼夜行联合学园
 144,426,类型 (home),CH0170_home,,尾刃 叶渚,尾刃 カンナ,Ogata Kanna,8,瓦尔基里警察学校
+144,764,类型 (home),CH0260_home,,尾刃 叶渚,尾刃 カンナ,Ogata Kanna,8,瓦尔基里警察学校
 144,866,类型 (home),CH0170_home_CN,国服,尾刃 叶渚,尾刃 カンナ,Ogata Kanna,8,瓦尔基里警察学校
+144,969,类型 (home),CH0260_home_fix,光线修复,尾刃 叶渚,尾刃 カンナ,Ogata Kanna,8,瓦尔基里警察学校
 145,448,类型 (home),CH0191_home,,黑馆 晴奈,黒舘 ハルナ,Kurodate Haruna,3,格赫娜学园
-146,449,类型 (home),CH0192_home,,赤司 纯子,赤司 ジュンコ,Akashi Junko,3,格赫娜学园
-152,369,类型 (home),CH0200_home,,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
-152,903,类型 (home),CH0200_home_CN,国服,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
-153,451,类型 (home),CH0194_home,,鹫见 芹娜,鷲見 セリナ,Sumi Serina,2,圣三一综合学园
-154,566,类型 (home),CH0193_home,,黑馆 晴奈,黒舘 ハルナ,Kurodate Haruna,3,格赫娜学园
-155,687,类型 (home),CH0196_home,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
-155,1178,类型 (home),CH0196_home_CN,国服,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
-156,923,类型 (home),CH0197_home,,狮子堂 泉,獅子堂 イズミ,Shishido Izumi,3,格赫娜学园
+145,458,类型 (home),Haruna_home,,黑馆 晴奈,黒舘 ハルナ,Kurodate Haruna,3,格赫娜学园
+145,566,类型 (home),CH0193_home,,黑馆 晴奈,黒舘 ハルナ,Kurodate Haruna,3,格赫娜学园
 157,491,类型 (home),Koharu_home,,下江 小春,下江 コハル,Shimoe Koharu,2,圣三一综合学园
+157,550,类型 (home),CH0205_home,,下江 小春,下江 コハル,Shimoe Koharu,2,圣三一综合学园
 158,442,类型 (home),Eimi_home,,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
+158,643,类型 (home),CH0219_home,,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
 158,1030,后缀 (steam),eimi_spr_Steam,Steam版初始立绘,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
+158,1442,类型 (home),CH0337_home,,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
 159,589,后缀 (cbt),Erika_CBT,CBT旧绘废案,旗见 绘里香,旗見 エリカ,hatami erika,3,格赫娜学园
 160,455,类型 (home),Hare_home,,小钩 晴,小鈎 ハレ,Omagari Hare,4,千禧科学学院
+160,648,类型 (home),CH0233_home,,小钩 晴,小鈎 ハレ,Omagari Hare,4,千禧科学学院
 162,936,包含 (toschool),ToSchool_JTFMobMaid1,女仆装站姿,正义实现委员会部员A,正義実現委員会部員,,2,圣三一综合学园
 162,937,包含 (toschool),ToSchool_JTFMobMaid2,女仆装叉手,正义实现委员会部员A,正義実現委員会部員,,2,圣三一综合学园
 162,938,包含 (toschool),ToSchool_JTFMobSports1,运动服站姿,正义实现委员会部员A,正義実現委員会部員,,2,圣三一综合学园
@@ -288,19 +383,13 @@
 171,951,后缀 (cn),NP0032_spr_CN,国服,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
 171,1434,类型 (home),NP0032_npc_HD,,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
 173,519,类型 (home),arona_workpage_nighttime,,普拉娜,プラナ,Plana (Planetarium),6,夏莱
-175,486,类型 (home),Karin_home,,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
-175,1037,后缀 (steam),karin_spr_Steam,Steam版初始立绘,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
-176,488,类型 (home),Kayoko_home,,鬼方 佳代子,鬼方 カヨコ,Onikata Kayoko,3,格赫娜学园
-177,509,类型 (home),mutsuki_newyear_home,,浅黄 睦月,浅黄 ムツキ,Asagi Mutsuki,3,格赫娜学园
-177,1041,后缀 (steam),mutsuki_newyear_spr_Steam,Steam版初始立绘,浅黄 睦月,浅黄 ムツキ,Asagi Mutsuki,3,格赫娜学园
-178,452,类型 (home),CH0195_home,,朝颜 花江,朝顔 ハナエ,Asagao Hanae,2,圣三一综合学园
-179,438,类型 (home),Cherino_home,,连河 切里诺,連河 チェリノ,Renkawa Cherino,5,红冬联邦学园
-180,480,类型 (home),Izuna_home,,久田 泉奈,久田 イズナ,Kuda Izuna,9,百鬼夜行联合学园
-180,1035,后缀 (steam),izuna_spr_Steam,Steam版初始立绘,久田 泉奈,久田 イズナ,Kuda Izuna,9,百鬼夜行联合学园
 181,459,类型 (home),Suzumi_home,,守月 铃美,守月 スズミ,Morizuki Suzumi,2,圣三一综合学园
 181,722,类型 (home),suzumi_home_CN,国服,守月 铃美,守月 スズミ,Morizuki Suzumi,2,圣三一综合学园
 181,1017,后缀 (steam),suzumi_spr_steam,Steam初始立绘,守月 铃美,守月 スズミ,Morizuki Suzumi,2,圣三一综合学园
+181,1184,类型 (home),CH0325_home,,守月 铃美,守月 スズミ,Morizuki Suzumi,2,圣三一综合学园
 182,496,类型 (home),Maki_home,,小涂 真纪,小塗 マキ,Konuri Maki,4,千禧科学学院
+182,912,类型 (home),CH0235_home,,小涂 真纪,小塗 マキ,Konuri Maki,4,千禧科学学院
+182,914,类型 (home),CH0235_home_fix,光线修复,小涂 真纪,小塗 マキ,Konuri Maki,4,千禧科学学院
 183,858,类型 (home),Rin_raiddungeon,,七神 凛,七神 リン,Nanagami Rin,12,联邦学生会
 183,947,类型 (home),Rin_raiddungeon_CN,国服,七神 凛,七神 リン,Nanagami Rin,12,联邦学生会
 183,957,后缀 (cn),rin_spr_CN,国服,七神 凛,七神 リン,Nanagami Rin,12,联邦学生会
@@ -308,60 +397,43 @@
 184,944,类型 (home),Momoka_weekdungeon_CN,国服,由良木 桃香,由良木 モモカ,Yuragi Momoka,12,联邦学生会
 184,948,后缀 (cn),momoka_spr_CN,国服,由良木 桃香,由良木 モモカ,Yuragi Momoka,12,联邦学生会
 184,1433,类型 (home),Momoka_weekdungeon_HD,,由良木 桃香,由良木 モモカ,Yuragi Momoka,12,联邦学生会
-185,393,类型 (home),Utaha_home,,白石 歌原,白石 ウタハ,Shiraishi Utaha,4,千禧科学学院
-185,1052,后缀 (steam),utaha_spr_Steam,Steam版初始立绘,白石 歌原,白石 ウタハ,Shiraishi Utaha,4,千禧科学学院
 186,483,类型 (home),Juri_home,,牛牧 朱莉,牛牧 ジュリ,Ushimaki Juri,3,格赫娜学园
+186,919,类型 (home),CH0286_home,,牛牧 朱莉,牛牧 ジュリ,Ushimaki Juri,3,格赫娜学园
+186,922,类型 (home),CH0286_home_fix,光线修复,牛牧 朱莉,牛牧 ジュリ,Ushimaki Juri,3,格赫娜学园
 186,1036,后缀 (steam),juri_spr_Steam,Steam版初始立绘,牛牧 朱莉,牛牧 ジュリ,Ushimaki Juri,3,格赫娜学园
 187,461,类型 (home),Sumire_home,,乙花 堇,乙花 スミレ,Otohana Sumire,4,千禧科学学院
+187,930,类型 (home),CH0287_home,,乙花 堇,乙花 スミレ,Otohana Sumire,4,千禧科学学院
 187,1048,后缀 (steam),sumire_spr_Steam,Steam版初始立绘,乙花 堇,乙花 スミレ,Otohana Sumire,4,千禧科学学院
-192,456,类型 (home),Haruka_home,,伊草 遥香,伊草 ハルカ,Igusa Haruka,3,格赫娜学园
-192,1056,后缀 (steam),haruka_spr_Steam,Steam版初始立绘,伊草 遥香,伊草 ハルカ,Igusa Haruka,3,格赫娜学园
 194,469,类型 (home),Shimiko_home,,圆堂 志美子,円堂 シミコ,Endo Shimiko,2,圣三一综合学园
-195,458,类型 (home),Haruna_home,,黑馆 晴奈,黒舘 ハルナ,Kurodate Haruna,3,格赫娜学园
 203,492,类型 (home),Sakurako_home,,歌住 樱子,歌住 サクラコ,Utazumi Sakurako,2,圣三一综合学园
 203,542,后缀 (old),sakurako_old,旧立绘,歌住 樱子,歌住 サクラコ,Utazumi Sakurako,2,圣三一综合学园
-206,,未找到 (404),,,,,,,
-207,,未找到 (404),,,,,,,
+203,838,类型 (home),CH0274_home,,歌住 樱子,歌住 サクラコ,Utazumi Sakurako,2,圣三一综合学园
+203,854,类型 (home),CH0274_home_fix,光线修复,歌住 樱子,歌住 サクラコ,Utazumi Sakurako,2,圣三一综合学园
 208,955,后缀 (cn),NP0106_spr_CN,国服,联邦学生会行政人员A,連邦生徒会の行政員A,,12,联邦学生会
 209,956,后缀 (cn),NP0107_spr_CN,国服,联邦学生会行政官A,連邦生徒会の行政官A,,12,联邦学生会
-210,,未找到 (404),,,,,,,
-211,495,类型 (home),Kotori_home,,丰见 小鸟,豊見 コトリ,Toyomi Kotori,4,千禧科学学院
-211,1039,后缀 (steam),kotori_spr_Steam,Steam版初始立绘,丰见 小鸟,豊見 コトリ,Toyomi Kotori,4,千禧科学学院
 212,493,类型 (home),Kotama_home,,音濑 小玉,音瀬 コタマ,Otose Kotama,4,千禧科学学院
+212,650,类型 (home),CH0232_home,,音濑 小玉,音瀬 コタマ,Otose Kotama,4,千禧科学学院
+212,967,类型 (home),CH0232_home_fix,光线修复,音濑 小玉,音瀬 コタマ,Otose Kotama,4,千禧科学学院
 212,1038,后缀 (steam),kotama_spr_Steam,Steam版初始立绘,音濑 小玉,音瀬 コタマ,Otose Kotama,4,千禧科学学院
-213,502,类型 (home),Neru_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
-213,600,后缀 (cbt),neru_cbt,CBT旧绘废案,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 214,377,类型 (home),CH0113_home,,千鸟 满,千鳥 ミチル,Chidori Michiru,9,百鬼夜行联合学园
+214,1195,类型 (home),CH0296_home,,千鸟 满,千鳥 ミチル,Chidori Michiru,9,百鬼夜行联合学园
 215,494,类型 (home),Pina_home,,朝比奈 菲娜,朝比奈 フィーナ,Asahina Pina,9,百鬼夜行联合学园
+215,983,类型 (home),CH0257_home,,朝比奈 菲娜,朝比奈 フィーナ,Asahina Pina,9,百鬼夜行联合学园
+215,984,类型 (home),CH0257_home_fix,光线修复,朝比奈 菲娜,朝比奈 フィーナ,Asahina Pina,9,百鬼夜行联合学园
 215,1044,后缀 (steam),pina_spr_Steam,Steam版初始立绘,朝比奈 菲娜,朝比奈 フィーナ,Asahina Pina,9,百鬼夜行联合学园
 216,606,后缀 (cbt),satsuki_cbt,CBT旧绘废案,京极 皋月,京極 サツキ,Kyougoku Satsuki,3,格赫娜学园
 216,868,类型 (home),CH0080_home,,京极 皋月,京極 サツキ,Kyougoku Satsuki,3,格赫娜学园
-227,573,类型 (home),CH0123_home,,间宵 时雨,間宵 シグレ,Mayoi Shigure,5,红冬联邦学园
-228,371,类型 (home),Azusa_swimsuit_home,,白洲 梓,白洲 アズサ,Shirasu Azusa,2,圣三一综合学园
-228,1023,后缀 (steam),azusa_swimsuit_spr_Steam,Steam版初始立绘,白洲 梓,白洲 アズサ,Shirasu Azusa,2,圣三一综合学园
-228,1066,类型 (home),Azusa_swimsuit_home_fix,光线修复,白洲 梓,白洲 アズサ,Shirasu Azusa,2,圣三一综合学园
 229,396,类型 (home),CH0088_home,,下仓 惠,下倉 メグ,Shimokura Megu,3,格赫娜学园
-230,434,类型 (home),CH0211_home,,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
-236,,未找到 (404),,,,,,,
-237,,未找到 (404),,,,,,,
-243,,未找到 (404),,,,,,,
-246,,未找到 (404),,,,,,,
 254,715,类型 (home),SC51000_02,Vol5.1,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
 254,995,类型 (home),SC52000_02,Vol5.2,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
 254,997,类型 (home),CH0222_home,,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
 254,1001,类型 (home),CH0222_home_fix,光线修复,御稜 名草,御稜 ナグサ,Goryou Nagusa,9,百鬼夜行联合学园
 264,559,类型 (home),CH0124_home,,姬木 梅露,姫木 メル,Himeki Meru,5,红冬联邦学园
-269,1059,类型 (home),CH0060_Home_Combined,回忆大厅,剑先 鹤城,剣先 ツルギ,Kenzaki Tsurugi,2,圣三一综合学园
 271,603,后缀 (cbt),reizyo_cbt,CBT旧绘废案,鹿山 丽情,鹿山 レイジョ,Kayama Reijo,7,山海经高级中学
 271,827,类型 (home),reizyo_home,,鹿山 丽情,鹿山 レイジョ,Kayama Reijo,7,山海经高级中学
 271,830,类型 (home),reizyo_home_fix,光线修复,鹿山 丽情,鹿山 レイジョ,Kayama Reijo,7,山海经高级中学
 275,952,后缀 (cn),NP0033_spr_CN,国服,灰音,ハイネ,Haine,12,联邦学生会
 276,953,后缀 (cn),NP0037_spr_CN,国服,李,スモモ,Sumomo,12,联邦学生会
-277,,未找到 (404),,,,,,,
-278,525,类型 (home),CH0218_home,,霞泽 美游,霞沢 ミユ,Kasumizawa Miyu,11,SRT特殊学园
-279,524,类型 (home),CH0217_home,,空井 咲,空井 サキ,Sorai Saki,11,SRT特殊学园
-280,526,类型 (home),CH0215_home,,月雪 宫子,月雪 ミヤコ,Tsukiyuki Miyako,11,SRT特殊学园
-286,774,类型 (home),CH0216_home,,风仓 萌绘,風倉 モエ,Kazekura Moe,11,SRT特殊学园
 289,591,后缀 (cbt),kanna_cbt,CBT旧绘废案,康娜（CBT）,Kanna,,25,所属存疑
 290,597,后缀 (cbt),miria_cbt,CBT旧绘废案,米莉亚（CBT）,miria,,25,所属存疑
 291,599,后缀 (cbt),nao_cbt,CBT旧绘废案,奈央（CBT）,nao,,25,所属存疑
@@ -371,257 +443,50 @@
 295,544,类型 (home),Ui_RaidBoss_Binah,初始立绘,比纳,ビナー,Binah,21,神名十文字
 296,833,类型 (home),Ui_RaidBoss_Chesed,,凯赛德,ケセド,Chesed,21,神名十文字
 297,624,类型 (home),Ui_RaidBoss_Hod,,霍德,ホド,Hod,21,神名十文字
-298,,未找到可解析的角色形态,,,凯瑟,ケテル,Kether,21,神名十文字
-299,550,类型 (home),CH0205_home,,下江 小春,下江 コハル,Shimoe Koharu,2,圣三一综合学园
-300,554,类型 (home),CH0209_home,,浦和 花子,浦和 ハナコ,Urawa Hanako,2,圣三一综合学园
-301,549,类型 (home),CH0210_home,,若叶 日向,若葉 ヒナタ,Wakaba Hinata,2,圣三一综合学园
-302,552,类型 (home),CH0204_home,,古关 忧,古関 ウイ,Kozeki Ui,2,圣三一综合学园
-304,,未找到可解析的角色形态,,,凛华,リンカ,Rinka,7,山海经高级中学
-305,545,包含 (ui_raidboss),Ui_RaidBoss_Kaitenger,初始立绘,KAITEN FX MK.0,KAITEN FX Mk.0,KAITEN FX Mk.0,17,不良少女们
+305,545,包含 (ui_),Ui_RaidBoss_Kaitenger,初始立绘,KAITEN FX MK.0,KAITEN FX Mk.0,KAITEN FX Mk.0,17,不良少女们
 306,546,类型 (home),Ui_RaidBoss_ShiroKuro,初始立绘,白&黑,シロ＆クロ,Shiro & Kuro,22,史林皮亚
 307,547,类型 (home),Ui_RaidBoss_Perorozilla,初始立绘,佩洛洛斯拉,ペロロジラ,Perorodzilla,23,怪谈的无限图书馆
 308,1190,类型 (home),CH0229_home,,三善 贵音,三善 タカネ,Miyoshi Takane,5,红冬联邦学园
 309,1189,类型 (home),CH0228_home,,荒槙 八云,荒槇 ヤクモ,Aramaki Yakumo,5,红冬联邦学园
-314,,未找到可解析的角色形态,,,列车乘务员C,Hpbar_Portrait_AttendantBoss_Highlander_HG,,24,海兰德铁道学园
 315,579,类型 (home),CH9998_home,初始立绘,御坂 美琴,御坂 美琴,Misaka Mikoto,26,联动作品
 316,578,类型 (home),CH9997_home,初始立绘,食蜂 操祈,食蜂 操祈,Shokuhou Misaki,26,联动作品
 317,577,类型 (home),CH0996_home,初始立绘,佐天 泪子,佐天 涙子,Saten Ruiko,26,联动作品
 318,623,类型 (home),CH0161_home,,勘解由小路 紫,勘解由小路 ユカリ,Kadenokouji Yukari,9,百鬼夜行联合学园
+318,1008,类型 (home),CH0301_home,,勘解由小路 紫,勘解由小路 ユカリ,Kadenokouji Yukari,9,百鬼夜行联合学园
 319,631,类型 (home),CH0224_home,,不破 莲华,不破 レンゲ,Fuwa Renge,9,百鬼夜行联合学园
+319,1009,类型 (home),CH0302_home,,不破 莲华,不破 レンゲ,Fuwa Renge,9,百鬼夜行联合学园
+319,1016,类型 (home),CH0302_home_fix,光线修复,不破 莲华,不破 レンゲ,Fuwa Renge,9,百鬼夜行联合学园
 320,630,类型 (home),CH0225_home,,桐生 桔梗,桐生 キキョウ,Kiryuu Kikyou,9,百鬼夜行联合学园
+320,1007,类型 (home),CH0300_home,,桐生 桔梗,桐生 キキョウ,Kiryuu Kikyou,9,百鬼夜行联合学园
 321,714,类型 (home),SC51000_01,Vol5.1,箭吹 棕榈,箭吹 シュロ,Yabuki Shuro,9,百鬼夜行联合学园
 328,739,类型 (home),Ui_RaidBoss_Hieronymus,,希罗尼穆斯,ヒエロニムス,Hieronymus,27,诸圣相通
 329,633,类型 (home),Ui_RaidBoss_Goz,,戈兹,ゴズ,Goz,22,史林皮亚
 330,669,类型 (home),Ui_RaidBoss_EN0005,,格里高利,グレゴリオ,Gregorius,27,诸圣相通
-332,,未找到 (404),,,,,,,
-333,825,包含 (ui_raidboss),Ui_RaidBoss_EN0006,,猫鬼黑影,猫鬼 クロカゲ,Myouki Kurokage,28,幻魉百物语
-334,643,类型 (home),CH0219_home,,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
-338,,未找到可解析的角色形态,,,盖布拉,ゲブラ,Geburah,21,神名十文字
-339,,未找到可解析的角色形态,,,色彩,色彩,Chroma,25,所属存疑
-340,648,类型 (home),CH0233_home,,小钩 晴,小鈎 ハレ,Omagari Hare,4,千禧科学学院
-341,650,类型 (home),CH0232_home,,音濑 小玉,音瀬 コタマ,Otose Kotama,4,千禧科学学院
-341,967,类型 (home),CH0232_home_fix,光线修复,音濑 小玉,音瀬 コタマ,Otose Kotama,4,千禧科学学院
+333,825,包含 (ui_),Ui_RaidBoss_EN0006,,猫鬼黑影,猫鬼 クロカゲ,Myouki Kurokage,28,幻魉百物语
 342,929,类型 (home),CH0245_home,,野正 莱依,野正 レイ,Nomasa Rei,4,千禧科学学院
 342,931,类型 (home),CH0245_home_fix,光线修复,野正 莱依,野正 レイ,Nomasa Rei,4,千禧科学学院
-343,912,类型 (home),CH0235_home,,小涂 真纪,小塗 マキ,Konuri Maki,4,千禧科学学院
-343,914,类型 (home),CH0235_home_fix,光线修复,小涂 真纪,小塗 マキ,Konuri Maki,4,千禧科学学院
-345,655,类型 (home),CH0231_home,礼服亚子,天雨 亚子,天雨 アコ,Amau Ako,3,格赫娜学园
-346,656,类型 (home),CH0230_home,礼服日奈,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
-346,1028,后缀 (steam),CH0230_spr_Steam,Steam版初始立绘,空崎 日奈,空崎 ヒナ,Sorasaki Hina,3,格赫娜学园
 347,869,类型 (home),CH0238_home,,元宫 千明,元宮 チアキ,Motomiya Chiaki,3,格赫娜学园
 347,871,类型 (home),CH0238_home_fix,光线修复,元宫 千明,元宮 チアキ,Motomiya Chiaki,3,格赫娜学园
-348,,彩蛋,,,苡蛇花 遁,いだはな トン,Idahana Ton,0,
-350,681,类型 (home),CH0240_home,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
-351,682,类型 (home),CH0239_home,,鬼方 佳代子,鬼方 カヨコ,Onikata Kayoko,3,格赫娜学园
-351,684,类型 (home),CH0239_home_fix,光线修复,鬼方 佳代子,鬼方 カヨコ,Onikata Kayoko,3,格赫娜学园
-356,933,类型 (home),CH0259_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
-356,934,类型 (home),CH0259_home_fix,光线修复,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
-357,,未找到 (404),,,,,,,
-360,694,类型 (home),CH0255_home,,春日 椿,春日 ツバキ,Kasuga Tsubaki,9,百鬼夜行联合学园
-360,968,类型 (home),CH0255_home_fix,光线修复,春日 椿,春日 ツバキ,Kasuga Tsubaki,9,百鬼夜行联合学园
-362,983,类型 (home),CH0257_home,,朝比奈 菲娜,朝比奈 フィーナ,Asahina Pina,9,百鬼夜行联合学园
-362,984,类型 (home),CH0257_home_fix,光线修复,朝比奈 菲娜,朝比奈 フィーナ,Asahina Pina,9,百鬼夜行联合学园
-364,,未找到可解析的角色形态,,,赛特,セト,set,29,星界诸神
 365,978,类型 (home),CH0242_home,,橘 光,橘 ヒカリ,Tachibana Hikari,24,海兰德铁道学园
 366,979,类型 (home),CH0243_home,,橘 望,橘 ノゾミ,Tachibana Nozomi,24,海兰德铁道学园
 366,980,类型 (home),CH0243_home_fix,光线修复,橘 望,橘 ノゾミ,Tachibana Nozomi,24,海兰德铁道学园
-368,708,类型 (home),CH0250_home,,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
-369,709,类型 (home),CH0251_home,,栗村 爱莉,栗村 アイリ,Kurimura Airi,2,圣三一综合学园
-370,707,类型 (home),CH0220_home,,伊原木 好美,伊原木 ヨシミ,Ibaraki Yoshimi,2,圣三一综合学园
-370,1062,类型 (home),CH0220_home_fix,光线修复,伊原木 好美,伊原木 ヨシミ,Ibaraki Yoshimi,2,圣三一综合学园
-371,1006,类型 (home),CH0221_home,,柚鸟 夏,柚鳥 ナツ,Yutori Natsu,2,圣三一综合学园
-373,785,类型 (home),CH0258_home,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
-373,799,类型 (home),CH0258_home_fix,光线修复,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
-374,,未找到可解析的角色形态,,,「雷帝」,「雷帝」,Tyrant Emperor,3,格赫娜学园
-375,764,类型 (home),CH0260_home,,尾刃 叶渚,尾刃 カンナ,Ogata Kanna,8,瓦尔基里警察学校
-375,969,类型 (home),CH0260_home_fix,光线修复,尾刃 叶渚,尾刃 カンナ,Ogata Kanna,8,瓦尔基里警察学校
-376,761,类型 (home),CH0261_home,,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
-376,766,类型 (home),CH0261_home_fix,光线修复,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
-377,763,类型 (home),CH0262_home,,中务 桐乃,中務 キリノ,Nakatsukasa Kirino,8,瓦尔基里警察学校
-377,970,类型 (home),CH0262_home_fix,光线修复,中务 桐乃,中務 キリノ,Nakatsukasa Kirino,8,瓦尔基里警察学校
 378,1451,类型 (home),CH0264_home,,志真 心华,志真 コノカ,Shima konoka,8,瓦尔基里警察学校
-381,779,类型 (home),CH0266_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
-382,781,类型 (home),CH0267_home,,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
-382,795,类型 (home),CH0267_home_fix,光线修复,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
-383,784,类型 (home),CH0269_home,,槌永 日和,槌永 ヒヨリ,Tsuchinaga Hiyori,10,阿里乌斯分校
-383,797,类型 (home),CH0269_home_fix,光线修复,槌永 日和,槌永 ヒヨリ,Tsuchinaga Hiyori,10,阿里乌斯分校
-384,1161,类型 (home),CH0268_home,,戒野 美咲,戒野 ミサキ,Imashino Misaki,10,阿里乌斯分校
-388,812,类型 (home),CH0271_home,,佐城 智惠,佐城 トモエ,Sashiro Tomoe,5,红冬联邦学园
-388,816,类型 (home),CH0271_home_fix,光线修复,佐城 智惠,佐城 トモエ,Sashiro Tomoe,5,红冬联邦学园
-389,811,类型 (home),CH0270_home,,池仓 玛丽娜,池倉 マリナ,Ikekura Marina,5,红冬联邦学园
-389,815,类型 (home),CH0270_home_fix,光线修复,池仓 玛丽娜,池倉 マリナ,Ikekura Marina,5,红冬联邦学园
-394,,未找到 (404),,,,,,,
-397,,未找到 (404),,,,,,,
-398,,官方账号,,,金用河,,Kim Yong-ha,30,制作组相关
-399,,官方账号,,,朴炳林,,,30,制作组相关
-400,,官方账号,,,（梁主宁） isakusan,,Yang JuYoung,30,制作组相关
-401,,官方账号,,,玄升秀,,Seungsoo Hyun,30,制作组相关
-402,,官方账号,,,权民燮,,,30,制作组相关
-403,,官方账号,,,（李正熙） CloudPoet,,Junghee Lee,30,制作组相关
-404,,官方账号,,,（金仁） hwansang,,hwansang,30,制作组相关
-405,,官方账号,,,（吴弦锡） POIst,,Oh HyunSeok,30,制作组相关
-406,,官方账号,,,（朴圣旻） Then-goon,,Park SeongMin,30,制作组相关
-407,,官方账号,,,（南旼澈） Prenguin,,Nam MinCheol,30,制作组相关
-408,,官方账号,,,（李贤珉） GrimGreen,,Lee HyounMin,30,制作组相关
-409,,官方账号,,,Yang YoungGee,,,30,制作组相关
-410,,官方账号,,,akaakaigamgyul,,Jeon YiGi,30,制作组相关
-411,,官方账号,,,X19A,,Lee ChangGi,30,制作组相关
-412,,官方账号,,,naq9,,Yon JungSeok,30,制作组相关
-413,,官方账号,,,NOOK,,Kim SunWook,30,制作组相关
-414,,官方账号,,,车敏瑟,,,30,制作组相关
-415,,官方账号,,,安景燮,,,30,制作组相关
-416,,官方账号,,,彩奈小编,,,30,制作组相关
-417,,官方账号,,,（金国基） 9ml,,Kim Kukki,30,制作组相关
-418,,官方账号,,,YutokaMizu,,,30,制作组相关
-419,,官方账号,,,キキ,,,30,制作组相关
-420,,官方账号,,,NAMYO,,,30,制作组相关
-421,,官方账号,,,mona,,,30,制作组相关
-422,,官方账号,,,OSUK2,,,30,制作组相关
-423,,官方账号,,,ぶくろて,,,30,制作组相关
-424,,官方账号,,,nemoga,,,30,制作组相关
-425,,官方账号,,,GULIM,,,30,制作组相关
-426,,官方账号,,,seicoh,,,30,制作组相关
-427,,官方账号,,,Mx2J,,,30,制作组相关
-428,,官方账号,,,まきあっと,,,30,制作组相关
-429,,官方账号,,,イコモチ,,,30,制作组相关
-430,,官方账号,,,tokki,,,30,制作组相关
-431,,官方账号,,,CHILD,,Kim Sae Hansol,30,制作组相关
-432,,官方账号,,,Fame,,,30,制作组相关
-433,,官方账号,,,tonito,,,30,制作组相关
-434,,官方账号,,,Kokosando,,,30,制作组相关
-435,,官方账号,,,にぎりうさぎ,,,30,制作组相关
-436,,官方账号,,,DoReMi,,,30,制作组相关
-437,,官方账号,,,はねこと,,,30,制作组相关
-438,,官方账号,,,7peach,,,30,制作组相关
-439,,官方账号,,,ミミトケ,,,30,制作组相关
-440,,官方账号,,,ポップキュン,,,30,制作组相关
-441,,官方账号,,,ヌードル,,,30,制作组相关
-442,,官方账号,,,日下雲,,,30,制作组相关
-443,,官方账号,,,eno,,,30,制作组相关
-444,,官方账号,,,カンザリン,,,30,制作组相关
-445,,官方账号,,,Doremsan2j,,,30,制作组相关
-446,,官方账号,,,ビョルチ,,,30,制作组相关
-447,,官方账号,,,Empew,,,30,制作组相关
-448,,官方账号,,,やまかわ,,,30,制作组相关
-449,,官方账号,,,nino,,,30,制作组相关
-450,,官方账号,,,あやみ,,,30,制作组相关
-451,,官方账号,,,三脚たこ,,,30,制作组相关
-452,,官方账号,,,ni02,,,30,制作组相关
-453,,官方账号,,,Paruru,,,30,制作组相关
-454,,官方账号,,,MISOM150,,,30,制作组相关
-455,,官方账号,,,RONOPU,,,30,制作组相关
-456,,官方账号,,,mery,,,30,制作组相关
-457,,官方账号,,,whoisshe,,,30,制作组相关
-458,,官方账号,,,ミモザ,,,30,制作组相关
-459,,官方账号,,,Vinoker,,,30,制作组相关
-460,,官方账号,,,春夏冬ゆう,,,30,制作组相关
-461,,官方账号,,,sabet,,,30,制作组相关
-462,,官方账号,,,桧野ひなこ,,,30,制作组相关
-463,,官方账号,,,maruchi,,,30,制作组相关
-464,,官方账号,,,二色こぺ,,,30,制作组相关
-465,,官方账号,,,Crab D,,,30,制作组相关
-466,,官方账号,,,本田ロアロ,,,30,制作组相关
-467,,官方账号,,,owa,,,30,制作组相关
-468,,官方账号,,,Mitsukiyo,ミツキヨ,,30,制作组相关
-469,,官方账号,,,KARUT,,,30,制作组相关
-470,,官方账号,,,Nor,,,30,制作组相关
-471,,官方账号,,,夕野ヨシミ(IOSYS),,,30,制作组相关
-472,,官方账号,,,YUC'e,,,30,制作组相关
-473,,官方账号,,,EmoCosine,,,30,制作组相关
-474,,官方账号,,,Aiobahn,,,30,制作组相关
-475,,官方账号,,,Synthion,,,30,制作组相关
-476,,官方账号,,,7mai,,,30,制作组相关
-477,,官方账号,,,Lee KyungSeo (filloon),,,30,制作组相关
-478,,官方账号,,,Hyun DaSom (pia),,,30,制作组相关
-479,,官方账号,,,Lee Seul (SUROO),,,30,制作组相关
-480,,官方账号,,,CookieBox,,,30,制作组相关
-481,,官方账号,,,Choi JinOu (Danyu),,,30,制作组相关
-482,,官方账号,,,Kim DeokSu,,,30,制作组相关
-483,,官方账号,,,Kim SunTae,,,30,制作组相关
-484,,官方账号,,,DSCo,,,30,制作组相关
-485,,官方账号,,,Kim HaeJong (kikihae),,,30,制作组相关
-486,,官方账号,,,Kang HyeongChang (LM5),,,30,制作组相关
-487,,官方账号,,,Kim HaNeul (Dodobird),,,30,制作组相关
-488,,官方账号,,,Anyan,,,30,制作组相关
-489,,官方账号,,,Jeng youJeong,,,30,制作组相关
-490,,官方账号,,,Jung Yujung,,,30,制作组相关
-491,,官方账号,,,Airuei,,,30,制作组相关
-492,,官方账号,,,坂卷学,坂巻学,Sakamaki Manabu,30,制作组相关
-493,,官方账号,,,市来光弘,いちき みつひろ,,30,制作组相关
-494,,官方账号,,,高冢智人,高塚智人,Takatsuka Tomohit,30,制作组相关
-495,,官方账号,,,Arcie,,,30,制作组相关
-496,,官方账号,,,Jin DaeGeon,,,30,制作组相关
-497,,官方账号,,,Doremsang,,,30,制作组相关
-498,837,类型 (home),CH0273_home_,,伊落 玛丽,伊落 マリー,Iochi Mari,2,圣三一综合学园
-499,838,类型 (home),CH0274_home,,歌住 樱子,歌住 サクラコ,Utazumi Sakurako,2,圣三一综合学园
-499,854,类型 (home),CH0274_home_fix,光线修复,歌住 樱子,歌住 サクラコ,Utazumi Sakurako,2,圣三一综合学园
-500,839,类型 (home),CH0275_home,,苍森 美弥,蒼森 ミネ,Aomori Mine,2,圣三一综合学园
-500,971,类型 (home),CH0275_home_fix,光线修复,苍森 美弥,蒼森 ミネ,Aomori Mine,2,圣三一综合学园
-501,,未找到可解析的角色形态,,,霍克玛,コクマー,Chokmah,21,神名十文字
-503,,官方账号,,,dydldidl,,,30,制作组相关
-504,,官方账号,,,koo3473,,,30,制作组相关
-505,882,类型 (home),CH0284_home,,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
-505,885,类型 (home),CH0284_home_fix,光线修复,早濑 优香,早瀬 ユウカ,Hayase Yuuka,4,千禧科学学院
-506,883,类型 (home),CH0285_home,,生盐 诺亚,生塩 ノア,Ushio Noa,4,千禧科学学院
-506,884,类型 (home),CH0285_home_fix,光线修复,生盐 诺亚,生塩 ノア,Ushio Noa,4,千禧科学学院
-508,1449,类型 (home),CH0310_home,,黑崎 小雪,黒崎 コユキ,Kurosaki Koyuki,4,千禧科学学院
-512,890,类型 (home),CH0281_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
-512,902,类型 (home),CH0281_home_fix,光线修复,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
-513,891,类型 (home),CH0282_home,,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
-514,889,类型 (home),CH0280_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
-514,901,类型 (home),CH0280_home_fix,光线修复,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
+502,1435,包含 (ui_),Ui_IAWorldBoss_EN0015,钢铁大陆攻略战,马路库特,マルクト,Malkuth,21,神名十文字
 518,1217,类型 (home),CH0335_home,,天童 凯伊,天童 ケイ,Tendou Kei,4,千禧科学学院
 518,1438,类型 (home),SC90002000_02,Vol.Ex - 2,天童 凯伊,天童 ケイ,Tendou Kei,4,千禧科学学院
 518,1440,类型 (home),SC90002000_04,Vol.Ex - 4,天童 凯伊,天童 ケイ,Tendou Kei,4,千禧科学学院
-519,,未找到可解析的角色形态,,,「香主」,香主,PR manager,7,山海经高级中学
-520,918,类型 (home),CH0082_home,,冰室 濑名,氷室 セナ,Himuro Sena,3,格赫娜学园
-521,919,类型 (home),CH0286_home,,牛牧 朱莉,牛牧 ジュリ,Ushimaki Juri,3,格赫娜学园
-521,922,类型 (home),CH0286_home_fix,光线修复,牛牧 朱莉,牛牧 ジュリ,Ushimaki Juri,3,格赫娜学园
-523,930,类型 (home),CH0287_home,,乙花 堇,乙花 スミレ,Otohana Sumire,4,千禧科学学院
 525,977,类型 (home),CH0288_home,,内海 青叶,内海 アオバ,Utsumi Aoba,24,海兰德铁道学园
 525,981,类型 (home),CH0288_home_fix,光线修复,内海 青叶,内海 アオバ,Utsumi Aoba,24,海兰德铁道学园
-528,,未找到可解析的角色形态,,,提法勒特,ティファレト,TIPHARETH,21,神名十文字
 529,1003,类型 (home),SC52000_01_fix,Vol5.2 光线修复,七稜 菖蒲,七稜 アヤメ,Nanakado Ayame,9,百鬼夜行联合学园
-533,1008,类型 (home),CH0301_home,,勘解由小路 紫,勘解由小路 ユカリ,Kadenokouji Yukari,9,百鬼夜行联合学园
-534,1007,类型 (home),CH0300_home,,桐生 桔梗,桐生 キキョウ,Kiryuu Kikyou,9,百鬼夜行联合学园
-535,1009,类型 (home),CH0302_home,,不破 莲华,不破 レンゲ,Fuwa Renge,9,百鬼夜行联合学园
-535,1016,类型 (home),CH0302_home_fix,光线修复,不破 莲华,不破 レンゲ,Fuwa Renge,9,百鬼夜行联合学园
-540,,官方账号,,,BILLBUNG,,,30,制作组相关
-541,1070,类型 (home),CH0291_home,,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
-542,1071,类型 (home),CH0292_home,,仲正 一花,仲正 イチカ,Nakamasa Ichika,2,圣三一综合学园
-543,1074,类型 (home),CH0295_home,,百合园 圣娅,百合園 セイア,Yurizono Seia,2,圣三一综合学园
-544,1072,类型 (home),CH0293_home,,桐藤 渚,桐藤 ナギサ,Kirifuji Nagisa,2,圣三一综合学园
-545,1073,类型 (home),CH0294_home,,圣园 未花,聖園 ミカ,Misono Mika,2,圣三一综合学园
 548,1091,类型 (home),CH0306_home,,板垣 庚,板垣 カノエ,Itagaki Kanoe,14,狂猎艺术学院
 549,1090,类型 (home),CH0304_home,,白尾 艾利,白尾 エリ,Shirao Eri,14,狂猎艺术学院
 550,1450,类型 (home),CH0305_home,,衣斐 莱娜,衣斐 レナ,Kinui Rena,14,狂猎艺术学院
 554,1173,类型 (home),CH0317_home,,樱井 美代,桜井 ミヨ,Sakurai Miyo,14,狂猎艺术学院
-555,,未找到可解析的角色形态,,,云类鹫 爱美,雲類鷲 マナミ,Uruwashi Manami,14,狂猎艺术学院
 559,1163,类型 (home),SC61000_01,Vol.6.1,梯 昴,梯 スバル,Kakehashi Subaru,10,阿里乌斯分校
 559,1169,类型 (home),SC62000_01,Vol.6.2,梯 昴,梯 スバル,Kakehashi Subaru,10,阿里乌斯分校
 559,1186,类型 (home),CH0309_home,,梯 昴,梯 スバル,Kakehashi Subaru,10,阿里乌斯分校
 559,1187,类型 (home),SC63000_01,Vol.6.3,梯 昴,梯 スバル,Kakehashi Subaru,10,阿里乌斯分校
 560,1174,类型 (home),CH0318_home,,若狭 冬,若狭 フユ,Wakasa Fuyu,14,狂猎艺术学院
 561,1175,类型 (home),CH0319_home,,薄叶 律,薄葉 リツ,Usuba Ritsu,14,狂猎艺术学院
-563,1184,类型 (home),CH0325_home,,守月 铃美,守月 スズミ,Morizuki Suzumi,2,圣三一综合学园
-564,,未找到可解析的角色形态,,,耶索德,イェソド,Yesod,21,神名十文字
-565,1185,类型 (home),CH0326_home,,宇泽 玲纱,宇沢 レイサ,Uzawa Reisa,2,圣三一综合学园
-567,,未找到 (404),,,,,,,
-568,1196,类型 (home),CH0297_home,,大野 月咏,大野 ツクヨ,Ōno Tsukuyo,9,百鬼夜行联合学园
-569,1195,类型 (home),CH0296_home,,千鸟 满,千鳥 ミチル,Chidori Michiru,9,百鬼夜行联合学园
-571,1207,类型 (home),CH0331_home,,调月 莉音,調月 リオ,Tsukatsuki Rio,4,千禧科学学院
-572,1208,类型 (home),CH0332_home,,明星 日鞠,明星 ヒマリ,Akeboshi Himari,4,千禧科学学院
-573,1209,类型 (home),CH0333_home,,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
-573,1432,类型 (home),CH0333_Emoji,技能弹出动画,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
-574,1216,类型 (home),CH0334_home,,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
-574,1437,类型 (home),SC90002000_01,Vol.Ex - 1,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
-574,1439,类型 (home),SC90002000_03,Vol.Ex - 3,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
-574,1440,类型 (home),SC90002000_04,Vol.Ex - 4,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
-575,,未找到 (404),,,,,,,
-576,1442,类型 (home),CH0337_home,,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
-577,1441,类型 (home),CH0336_home,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
-582,,未找到可解析的角色形态,,,内察赫,ネツァク,Netzach,21,神名十文字
-584,,官方账号,,,Blancat,,,30,制作组相关
-585,,官方账号,,,ramuri,,,30,制作组相关
-586,,官方账号,,,Jehyun,,,30,制作组相关
-589,,未找到可解析的角色形态,,,密井 京子,密井 キョウコ,Mitsui Kyouko,17,不良少女们
+581,1224,包含 (ui_),Ui_IAWorldBoss_EN0012,钢铁大陆攻略战,达阿特,ダアト,Daath,21,神名十文字
+583,1436,包含 (ui_),Ui_IAWorldBoss_EN0020,钢铁大陆攻略战,神名十文字,デカグラマトン,Decagrammaton,21,神名十文字
