@@ -2,7 +2,7 @@
 export interface StudentData {
   file_id: string;
   student_id: string;
-  char_id: string;
+  page_id: string;
   spine_id: string;
   full_name: string;
   name: string;

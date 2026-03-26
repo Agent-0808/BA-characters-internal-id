@@ -230,7 +230,7 @@ class StudentAggregator:
                     spine_ids = []
 
                 pages.append(KivoWikiPage(
-                    kivowiki_id=page_id,
+                    page_id=page_id,
                     skin_name=page_data.get("skin", ""),
                     skin_name_cn=page_data.get("skin_cn", ""),
                     skin_name_jp=page_data.get("skin_jp", ""),
@@ -286,7 +286,7 @@ class CsvGenerator:
     """从中间JSON文件生成最终CSV"""
 
     # Spine跳过规则
-    SPINE_KEYWORDS_TO_SKIP: list[str] = ["toschool", "minori", "ui_raidboss"]
+    SPINE_KEYWORDS_TO_SKIP: list[str] = ["toschool", "minori", "ui_"]
     SPINE_SUFFIXES_TO_SKIP: list[str] = [
         "_cn", "_steam", "_glitch_spr", "_cbt", "_halofix", "spr-2", "_old", "_old_spr", "_new"
     ]
@@ -421,7 +421,7 @@ class CsvGenerator:
             school_name = self.schools_map.get(school_id, "")
 
             for page in student.get("pages", []):
-                kivowiki_id = page["kivowiki_id"]
+                page_id = page["page_id"]
                 skin_name = page.get("skin_name", "")
                 skin_name_cn = page.get("skin_name_cn", "")
                 skin_name_jp = page.get("skin_name_jp", "")
@@ -494,7 +494,7 @@ class CsvGenerator:
                     form = StudentForm(
                         file_id=file_id,
                         student_id=student_id,
-                        char_id=kivowiki_id,
+                        page_id=page_id,
                         spine_id=spine_id,
                         full_name=full_name,
                         name=base_name,
@@ -519,7 +519,7 @@ class CsvGenerator:
                 all_forms.extend(forms_map.values())
 
         # 排序
-        all_forms.sort(key=lambda x: (x.student_id, x.char_id, x.file_id))
+        all_forms.sort(key=lambda x: (x.student_id, x.page_id, x.file_id))
         all_skipped.sort(key=lambda x: (x.student_id, x.spine_id or -1))
 
         return all_forms, all_skipped

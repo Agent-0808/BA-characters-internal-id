@@ -17,7 +17,7 @@ const elements = {
   tableContainer: document.getElementById('tableContainer') as HTMLDivElement,
   columnDropdown: document.getElementById('columnDropdown') as HTMLDivElement,
   totalCount: document.getElementById('totalCount') as HTMLDivElement,
-  charCount: document.getElementById('charCount') as HTMLDivElement,
+  studentCount: document.getElementById('studentCount') as HTMLDivElement,
   updateTime: document.getElementById('updateTime') as HTMLDivElement,
   dataFileLink: document.getElementById('dataFileLink') as HTMLAnchorElement,
 };
@@ -59,7 +59,7 @@ function generateRowHTML(row: StudentData): string {
       return `<td data-col="${col.key}"><code>${value}</code></td>`;
     } else if (col.key === 'student_id') {
       return `<td data-col="${col.key}">${value}</td>`;
-    } else if (col.key === 'char_id') {
+    } else if (col.key === 'page_id') {
       const url = `https://kivo.wiki/data/character/${value}?mode=appreciation`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
     } else if (col.key === 'name') {
@@ -222,9 +222,9 @@ document.addEventListener('click', (event) => {
 // 更新统计
 function updateStats(data: StudentData[]): void {
   elements.totalCount.textContent = data.length.toString();
-  // 使用 student_id 统计唯一角色数
+  // 使用 student_id 统计唯一学生数
   const uniqueStudents = new Set(data.map(d => d.student_id)).size;
-  elements.charCount.textContent = uniqueStudents.toString();
+  elements.studentCount.textContent = uniqueStudents.toString();
 }
 
 // 填充学校筛选器

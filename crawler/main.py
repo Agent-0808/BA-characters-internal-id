@@ -120,19 +120,19 @@ async def run_crawler(
         
         # 3. 比较状态并构建需要强制刷新的ID集合
         ids_to_force_refresh: set[int] = set()
-        
+
         if remote_max_student_id > local_max_student_id:
             new_ids = set(range(local_max_student_id + 1, remote_max_student_id + 1))
             ids_to_force_refresh.update(new_ids)
-            logging.info(f"检测到新增学生ID: {local_max_student_id + 1} ~ {remote_max_student_id} (共 {len(new_ids)} 个)")
-        
+            logging.info(f"检测到新增页面ID: {local_max_student_id + 1} ~ {remote_max_student_id} (共 {len(new_ids)} 个)")
+
         if remote_max_student_id > local_max_student_id or remote_max_spine_id > local_max_spine_id:
             recently_updated_ids = await client.fetch_recently_updated_ids()
             if recently_updated_ids:
                 ids_to_force_refresh.update(recently_updated_ids)
-                logging.info(f"获取到最近更新的学生ID: {len(recently_updated_ids)} 个")
-        
-        logging.info(f"需要强制刷新的学生ID总数: {len(ids_to_force_refresh)}")
+                logging.info(f"获取到最近更新的页面ID: {len(recently_updated_ids)} 个")
+
+        logging.info(f"需要强制刷新的页面ID总数: {len(ids_to_force_refresh)}")
         
         # 模式二：检查更新模式
         if check_mode:
@@ -141,14 +141,14 @@ async def run_crawler(
         
         # 模式三：执行爬取（仅更新缓存）
         crawler = Crawler(client, cache_manager, max_concurrent, delay)
-        student_ids = list(range(1, remote_max_student_id + 1))
-        
+        page_ids = list(range(1, remote_max_student_id + 1))
+
         if ids_to_force_refresh:
             logging.info("检测到更新，开始增量刷新数据...")
         else:
             logging.info("当前数据已是最新，从缓存加载。")
 
-        success_count, fail_count = await crawler.run(student_ids, force_refresh_ids=ids_to_force_refresh)
+        success_count, fail_count = await crawler.run(page_ids, force_refresh_ids=ids_to_force_refresh)
 
         if ids_to_force_refresh:
             logging.info("更新完成，保存状态...")

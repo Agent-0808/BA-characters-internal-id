@@ -67,20 +67,20 @@ class APIClient:
 
         return max_student_id, max_spine_id
 
-    async def fetch_student_data(self, student_id: int, force_refresh: bool = False) -> tuple[dict | None, str | None, bool]:
+    async def fetch_student_data(self, page_id: int, force_refresh: bool = False) -> tuple[dict | None, str | None, bool]:
         """
-        根据学生ID获取数据（优先查缓存）。
+        根据KivoWiki页面ID获取数据（优先查缓存）。
         返回 (数据, 错误/跳过原因, 是否命中缓存)。
         """
         # 1. 尝试读取缓存（条件：未开启强制刷新 且 缓存存在）
         if not force_refresh:
-            if cached_data := await self.cache.get_student(student_id):
-                logging.debug(f"ID {student_id}: 命中缓存")
+            if cached_data := await self.cache.get_student(page_id):
+                logging.debug(f"ID {page_id}: 命中缓存")
                 return cached_data, None, True
 
         # 2. 执行 API 请求（开启了强制刷新 或 缓存未命中）
         self.student_req_count += 1
-        url = CHAR_API_BASE_URL.format(student_id=student_id)
+        url = CHAR_API_BASE_URL.format(student_id=page_id)
         
         try:
             response = await self.client.get(url, timeout=10.0)
@@ -93,14 +93,14 @@ class APIClient:
             
             # 成功获取且数据有效时，保存到缓存
             if json_data and json_data.get('code') == 2000:
-                await self.cache.save_student(student_id, json_data)
-            
+                await self.cache.save_student(page_id, json_data)
+
             return json_data, None, False
 
         except httpx.RequestError as e:
             return None, f"网络错误: {e}", False
         except Exception as e:
-            logging.error(f"处理 ID {student_id} 时发生未知错误: {e}")
+            logging.error(f"处理 ID {page_id} 时发生未知错误: {e}")
             return None, f"未知错误: {e}", False
 
     async def fetch_spine_data(self, spine_id: int) -> tuple[dict[str, Any] | None, str | None]:
