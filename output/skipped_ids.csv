@@ -128,7 +128,6 @@
 49,443,类型 (home),Fuuka_home,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
 49,590,后缀 (cbt),fuuka_cbt,CBT旧绘废案,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
 49,727,类型 (home),Fuuka_home_CN,国服,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
-49,728,类型 (home),Fuuka_Scene,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
 50,432,类型 (home),CH0180_home,,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
 50,465,类型 (home),Shizuko_home,,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
 50,601,后缀 (cbt),orihime_cbt,CBT旧绘废案,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
@@ -205,6 +204,8 @@
 77,1432,类型 (home),CH0333_Emoji,技能弹出动画,飞鸟马 时,飛鳥馬 トキ,Asuma Toki,4,千禧科学学院
 79,501,类型 (home),Mashiro_home,,静山 真白,静山 マシロ,Shizuyama Mashiro,2,圣三一综合学园
 79,503,类型 (home),Mashiro_swimsuit_home,,静山 真白,静山 マシロ,Shizuyama Mashiro,2,圣三一综合学园
+81,364,类型 (home),Yuzu_home,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
+81,365,类型 (home),yuzu_bg,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
 81,368,类型 (home),CH0203_home,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
 81,1061,类型 (home),Yuzu_home_Combined,回忆大厅,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
 81,1441,类型 (home),CH0336_home,,花冈 柚子,花岡 ユズ,Hanaoka Yuzu,4,千禧科学学院
@@ -264,7 +265,6 @@
 108,1440,类型 (home),SC90002000_04,Vol.Ex - 4,天童 爱丽丝,天童 アリス,Tendou Aris,4,千禧科学学院
 110,381,类型 (home),akari_bg,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,382,类型 (home),akari_home,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
-110,383,类型 (home),akari_scene,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,687,类型 (home),CH0196_home,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,1020,后缀 (steam),akari_spr_Steam,Steam版初始立绘,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,1058,类型 (home),Akari_home_Combined,回忆大厅,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
@@ -281,7 +281,6 @@
 115,594,后缀 (cbt),makoto_cbt,CBT旧绘废案,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 115,653,类型 (home),CH0079_home,真琴,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 115,959,类型 (home),CH0079_home_fix,光线修复,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
-116,568,类型 (home),CH0089_home,,鬼怒川 霞,鬼怒川 カスミ,Kinugawa Kasumi,3,格赫娜学园
 117,422,类型 (home),CH0163_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,440,类型 (home),Chinatsu_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,737,后缀 (cn),chinatsu_spr_CN,国服,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
@@ -303,7 +302,6 @@
 124,1056,后缀 (steam),haruka_spr_Steam,Steam版初始立绘,伊草 遥香,伊草 ハルカ,Igusa Haruka,3,格赫娜学园
 126,996,类型 (home),CH0109_home,,天地 尼娅,天地 ニヤ,Amachi Niya,9,百鬼夜行联合学园
 126,1000,类型 (home),CH0109_home_fix,光线修复,天地 尼娅,天地 ニヤ,Amachi Niya,9,百鬼夜行联合学园
-127,688,后缀 (new),CH0110_New,新初始立绘,里滨 海夏,里浜 ウミカ,Satohama Umika,9,百鬼夜行联合学园
 127,693,类型 (home),CH0110_Home,,里滨 海夏,里浜 ウミカ,Satohama Umika,9,百鬼夜行联合学园
 128,511,类型 (home),CH0135_home,,朱城 留美,朱城 ルミ,Akeshiro Rumi,7,山海经高级中学
 129,418,类型 (home),CH0152_home,,苍森 美弥,蒼森 ミネ,Aomori Mine,2,圣三一综合学园
@@ -324,7 +322,6 @@
 137,891,类型 (home),CH0282_home,,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
 137,1037,后缀 (steam),karin_spr_Steam,Steam版初始立绘,角楯 花凛,角楯 カリン,Kakudate Karin,4,千禧科学学院
 138,405,类型 (home),CH0101_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
-138,502,类型 (home),Neru_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 138,600,后缀 (cbt),neru_cbt,CBT旧绘废案,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 138,889,类型 (home),CH0280_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 138,901,类型 (home),CH0280_home_fix,光线修复,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
