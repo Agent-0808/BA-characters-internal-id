@@ -54,6 +54,9 @@ jobs:
             if [ -f "output/students_data.csv" ]; then
               cp output/students_data.csv web/public/data/
             fi
+            if [ -f "output/schools.json" ]; then
+              cp output/schools.json web/public/data/
+            fi
           fi
 
       # 生成元数据文件

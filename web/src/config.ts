@@ -4,6 +4,7 @@ import type { AppConfig, ColumnConfig } from './types.js';
 export const CONFIG: AppConfig = {
   csvUrl: './data/students_data.csv',
   metadataUrl: './data/metadata.json',
+  schoolsUrl: './data/schools.json',
   repoOwner: 'Agent-0808',
   repoName: 'BA-characters-internal-id'
 };
@@ -11,7 +12,8 @@ export const CONFIG: AppConfig = {
 // 列配置 - 定义所有列的信息
 export const COLUMN_CONFIG: ColumnConfig[] = [
   { key: 'file_id', label: '文件ID', defaultVisible: true },
-  { key: 'char_id', label: 'KivoWiki', defaultVisible: true },
+  { key: 'student_id', label: 'ID', defaultVisible: true },
+  { key: 'char_id', label: 'Page', defaultVisible: true },
   { key: 'spine_id', label: 'Spine ID', defaultVisible: true },
   { key: 'full_name', label: '完整名称', defaultVisible: true },
   { key: 'name', label: '角色名', defaultVisible: false },

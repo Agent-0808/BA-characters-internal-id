@@ -43,7 +43,7 @@ async def generate_intermediate_files(cache_manager: CacheManager):
     # 1. 读取学校数据
     schools_map = await cache_manager.get_schools()
     schools_list = [
-        School(id=sid, name=s.get("name", ""), name_cn=s.get("name_cn", ""))
+        School(id=sid, name=s.get("name", ""), name_cn=s.get("name_cn", ""), logo=s.get("logo", ""))
         for sid, s in schools_map.items()
     ]
     

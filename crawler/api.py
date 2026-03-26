@@ -157,8 +157,7 @@ class APIClient:
                 if json_data and json_data.get('code') == 2000:
                     if 'data' in json_data and 'school' in json_data['data']:
                         for school in json_data['data']['school']:
-                            for key in ['description', 'logo', 'preview_image']:
-                                remove_key(school, key)
+                            remove_key(school, 'description')
                         
                     
                     # 成功获取后，保存到缓存

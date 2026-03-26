@@ -47,7 +47,7 @@ class OutputWriter:
 
         filepath = OUTPUT_DIR / SCHOOLS_OUTPUT_FILENAME
         data = [
-            {"id": s.id, "name": s.name, "name_cn": s.name_cn}
+            {"id": s.id, "name": s.name, "name_cn": s.name_cn, "logo": s.logo}
             for s in schools
         ]
         self._write_json(filepath, data)
@@ -233,6 +233,8 @@ class StudentAggregator:
                     kivowiki_id=page_id,
                     skin_name=page_data.get("skin", ""),
                     skin_name_cn=page_data.get("skin_cn", ""),
+                    skin_name_jp=page_data.get("skin_jp", ""),
+                    skin_name_tw=page_data.get("skin_zh_tw", ""),
                     avatar=avatar,
                     spines=spine_ids
                 ))
@@ -344,6 +346,7 @@ class CsvGenerator:
             r"[\(（](?:已)?更新至实装[\)）]",
             r"修正版?",
             r"更新",
+            r"高清",
             r"(?i)\b(old|new|fixed|ver\.?\d*)\b",
             r"[旧新]",
             r"[\(（][\)）]",
@@ -421,8 +424,10 @@ class CsvGenerator:
                 kivowiki_id = page["kivowiki_id"]
                 skin_name = page.get("skin_name", "")
                 skin_name_cn = page.get("skin_name_cn", "")
+                skin_name_jp = page.get("skin_name_jp", "")
+                skin_name_tw = page.get("skin_name_tw", "")
 
-                # 构建皮肤显示名称
+                # 构建皮肤显示名称（中文优先）
                 skin_display = skin_name_cn if skin_name_cn else skin_name
 
                 # 处理该页面的所有spine
@@ -463,7 +468,7 @@ class CsvGenerator:
                     base_name_en = student.get("name_en", "")
                     base_name_kr = student.get("name_kr", "")
 
-                    # 处理备注
+                    # 处理备注（用于full_name）
                     processed_remark = self._process_spine_remark(spine_remark, skin_display, base_name)
 
                     # 构建完整名称（包含皮肤）
@@ -475,10 +480,12 @@ class CsvGenerator:
                             return f"{base}（{','.join(parts)}）"
                         return base
 
+                    # full_name: 使用中文皮肤名 + remark
                     full_name = build_full_name(base_name, skin_display, processed_remark)
-                    name_cn = build_full_name(base_name_cn, skin_display, processed_remark)
-                    name_jp = build_full_name(base_name_jp, skin_display, processed_remark)
-                    name_tw = build_full_name(base_name_tw, skin_display, processed_remark)
+                    # name_cn/jp/tw: 只使用对应语言的皮肤名，不加remark
+                    name_cn = build_full_name(base_name_cn, skin_name_cn, "")
+                    name_jp = build_full_name(base_name_jp, skin_name_jp, "")
+                    name_tw = build_full_name(base_name_tw, skin_name_tw, "")
 
                     # 构建skin_name字段
                     skin_parts = [s for s in [skin_display, processed_remark] if s]
@@ -486,6 +493,7 @@ class CsvGenerator:
 
                     form = StudentForm(
                         file_id=file_id,
+                        student_id=student_id,
                         char_id=kivowiki_id,
                         spine_id=spine_id,
                         full_name=full_name,
@@ -496,6 +504,7 @@ class CsvGenerator:
                         name_tw=name_tw,
                         name_en=base_name_en,
                         name_kr=base_name_kr,
+                        school_id=school_id,
                         school_name=school_name
                     )
 
@@ -510,7 +519,7 @@ class CsvGenerator:
                 all_forms.extend(forms_map.values())
 
         # 排序
-        all_forms.sort(key=lambda x: (x.char_id, x.file_id))
+        all_forms.sort(key=lambda x: (x.student_id, x.char_id, x.file_id))
         all_skipped.sort(key=lambda x: (x.student_id, x.spine_id or -1))
 
         return all_forms, all_skipped

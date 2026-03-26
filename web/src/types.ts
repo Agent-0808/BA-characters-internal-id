@@ -1,6 +1,7 @@
 // 学生数据结构
 export interface StudentData {
   file_id: string;
+  student_id: string;
   char_id: string;
   spine_id: string;
   full_name: string;
@@ -11,6 +12,7 @@ export interface StudentData {
   name_tw: string;
   name_en: string;
   name_kr: string;
+  school_id: string;
   school_name: string;
   [key: string]: string;  // 允许其他字符串属性
 }
@@ -48,6 +50,15 @@ export interface Metadata {
 export interface AppConfig {
   csvUrl: string;
   metadataUrl: string;
+  schoolsUrl: string;
   repoOwner: string;
   repoName: string;
+}
+
+// 学校数据
+export interface School {
+  id: number;
+  name: string;
+  name_cn: string;
+  logo: string;
 }

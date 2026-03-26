@@ -1,13 +1,14 @@
 import './style.css';
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
-import type { StudentData, ColumnVisibility, SortState, Metadata } from './types.js';
+import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
 
 // 状态管理
 let allData: StudentData[] = [];
 let filteredData: StudentData[] = [];
 let currentSort: SortState = { column: null, direction: 'asc' };
 let columnVisibility: ColumnVisibility = {} as ColumnVisibility;
+let schoolsMap: Map<number, School> = new Map();
 
 // DOM 元素引用
 const elements = {
@@ -56,6 +57,8 @@ function generateRowHTML(row: StudentData): string {
     // 特殊处理某些列
     if (col.key === 'file_id') {
       return `<td data-col="${col.key}"><code>${value}</code></td>`;
+    } else if (col.key === 'student_id') {
+      return `<td data-col="${col.key}">${value}</td>`;
     } else if (col.key === 'char_id') {
       const url = `https://kivo.wiki/data/character/${value}?mode=appreciation`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
@@ -64,6 +67,12 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'skin_name') {
       return `<td data-col="${col.key}">${value || '-'}</td>`;
     } else if (col.key === 'school_name') {
+      // 渲染学校 logo + 名称
+      const schoolId = parseInt(row.school_id);
+      const school = schoolsMap.get(schoolId);
+      if (school && school.logo) {
+        return `<td data-col="${col.key}"><span class="school-tag"><img src="https:${school.logo}" class="school-logo" alt="">${value}</span></td>`;
+      }
       return `<td data-col="${col.key}"><span class="school-tag">${value}</span></td>`;
     } else {
       return `<td data-col="${col.key}">${value}</td>`;
@@ -213,8 +222,9 @@ document.addEventListener('click', (event) => {
 // 更新统计
 function updateStats(data: StudentData[]): void {
   elements.totalCount.textContent = data.length.toString();
-  const uniqueChars = new Set(data.map(d => d.char_id)).size;
-  elements.charCount.textContent = uniqueChars.toString();
+  // 使用 student_id 统计唯一角色数
+  const uniqueStudents = new Set(data.map(d => d.student_id)).size;
+  elements.charCount.textContent = uniqueStudents.toString();
 }
 
 // 填充学校筛选器
@@ -243,6 +253,20 @@ async function fetchMetadata(): Promise<Metadata | null> {
   }
 }
 
+// 获取学校数据
+async function fetchSchools(): Promise<void> {
+  try {
+    const response = await fetch(CONFIG.schoolsUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const schools: School[] = await response.json();
+    schoolsMap = new Map(schools.map(s => [s.id, s]));
+  } catch (error) {
+    console.error('获取学校数据失败:', error);
+  }
+}
+
 // 更新页面底部的 Release 链接
 function updateReleaseLink(metadata: Metadata | null): void {
   if (elements.dataFileLink && metadata) {
@@ -261,6 +285,9 @@ async function loadData(): Promise<void> {
       fetch(CONFIG.csvUrl),
       fetchMetadata()
     ]);
+
+    // 并行加载学校数据
+    await fetchSchools();
 
     if (!csvResponse.ok) {
       throw new Error(`HTTP error! status: ${csvResponse.status}`);

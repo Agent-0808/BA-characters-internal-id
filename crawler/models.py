@@ -32,6 +32,7 @@ class School:
     id: int
     name: str
     name_cn: str
+    logo: str = ""
 
 
 @dataclass
@@ -49,6 +50,8 @@ class KivoWikiPage:
     kivowiki_id: int
     skin_name: str
     skin_name_cn: str
+    skin_name_jp: str
+    skin_name_tw: str
     avatar: str
     spines: list[int]
 
@@ -82,6 +85,8 @@ class Student:
                     "kivowiki_id": p.kivowiki_id,
                     "skin_name": p.skin_name,
                     "skin_name_cn": p.skin_name_cn,
+                    "skin_name_jp": p.skin_name_jp,
+                    "skin_name_tw": p.skin_name_tw,
                     "avatar": p.avatar,
                     "spines": p.spines
                 }
@@ -96,6 +101,7 @@ class Student:
 class StudentForm:
     """用于存储单个角色形态结构化数据的类"""
     file_id: str
+    student_id: int
     char_id: int
     spine_id: int | None
     full_name: str
@@ -106,6 +112,7 @@ class StudentForm:
     name_tw: str
     name_en: str
     name_kr: str
+    school_id: int
     school_name: str
 
 
