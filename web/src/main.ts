@@ -267,10 +267,10 @@ async function fetchSchools(): Promise<void> {
   }
 }
 
-// 更新页面底部的 Release 链接
-function updateReleaseLink(metadata: Metadata | null): void {
-  if (elements.dataFileLink && metadata) {
-    elements.dataFileLink.href = metadata.releaseUrl;
+// 更新页面底部的数据文件链接
+function updateReleaseLink(): void {
+  if (elements.dataFileLink) {
+    elements.dataFileLink.href = './data/';
     elements.dataFileLink.textContent = '下载数据';
   }
 }
@@ -303,10 +303,10 @@ async function loadData(): Promise<void> {
 
     if (metadata && metadata.updateDate) {
       elements.updateTime.textContent = metadata.updateDate;
-      updateReleaseLink(metadata);
     } else {
       elements.updateTime.textContent = new Date().toLocaleDateString('zh-CN');
     }
+    updateReleaseLink();
   } catch (error) {
     console.error('加载数据失败:', error);
     elements.tableContainer.innerHTML = `

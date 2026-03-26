@@ -92,6 +92,14 @@ jobs:
           npm ci
           npm run build
 
+      # 为 data 目录生成文件列表页面
+      - name: 生成数据目录列表
+        uses: gacts/directory-listing@v1
+        with:
+          target: ./web/dist/data
+          ignore: |
+            .gitkeep
+
       # 设置 GitHub Pages
       - name: 设置 Pages
         uses: actions/configure-pages@v5
