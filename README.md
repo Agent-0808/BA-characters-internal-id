@@ -6,11 +6,11 @@
 [![GitHub Downloads](https://img.shields.io/github/downloads/Agent-0808/BA-characters-internal-id/latest/total)](https://github.com/Agent-0808/BA-characters-internal-id/releases)
 
 
-部署页面：[Github Pages](https://agent-0808.github.io/BA-characters-internal-id/)
-
 可以从 [Release](https://github.com/Agent-0808/BA-characters-internal-id/releases) 中下载最新版本的`students_data.csv`文件。
 
 ### 部署
+
+部署页面：[Github Pages](https://agent-0808.github.io/BA-characters-internal-id/)
 
 - 每天北京时间3点（UTC 19:00）自动检查，如有更新则会发布新release
 - 配有缓存机制，减少API请求次数

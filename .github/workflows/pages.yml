@@ -47,15 +47,12 @@ jobs:
       - name: 获取最新数据
         run: |
           mkdir -p web/public/data
-          
+
           if git fetch origin data 2>/dev/null; then
             git checkout origin/data -- output/ 2>/dev/null || true
-            
-            if [ -f "output/students_data.csv" ]; then
-              cp output/students_data.csv web/public/data/
-            fi
-            if [ -f "output/schools.json" ]; then
-              cp output/schools.json web/public/data/
+
+            if [ -d "output" ]; then
+              cp -r output/* web/public/data/
             fi
           fi
 
