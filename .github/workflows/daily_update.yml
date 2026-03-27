@@ -14,6 +14,11 @@ on:
         required: false
         default: false
         type: boolean
+      always_push:
+        description: '总是推送（即使CSV未改变也推送）'
+        required: false
+        default: false
+        type: boolean
   
   # 当代码推送到 workflow-test 分支时触发测试（调试用）
   push:
@@ -118,9 +123,9 @@ jobs:
           fi
 
       # 准备要发布到 data 分支的文件
-      # 仅当检测到变化时运行
+      # 仅当检测到变化或总是推送时运行
       - name: 准备发布文件
-        if: steps.check_changes.outputs.changes_detected == 'true'
+        if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.always_push == 'true'
         run: |
           mkdir -p deployment_folder
           
@@ -136,9 +141,9 @@ jobs:
           ls -R deployment_folder
 
       # 将数据和缓存推送到 data 分支
-      # 仅当检测到变化时运行
+      # 仅当检测到变化或总是推送时运行
       - name: 将数据和缓存推送到 data 分支
-        if: steps.check_changes.outputs.changes_detected == 'true'
+        if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.always_push == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
