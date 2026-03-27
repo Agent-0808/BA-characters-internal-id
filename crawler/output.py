@@ -229,6 +229,15 @@ class StudentAggregator:
                 if not isinstance(spine_ids, list):
                     spine_ids = []
 
+                # 获取 character_datas 中的 rarity 和 limited
+                character_datas = page_data.get("character_datas", [])
+                rarity = 0
+                limited = False
+                if character_datas and isinstance(character_datas, list):
+                    first_char_data = character_datas[0] if character_datas else {}
+                    rarity = first_char_data.get("rarity", 0)
+                    limited = first_char_data.get("limited", False)
+
                 pages.append(KivoWikiPage(
                     page_id=page_id,
                     skin_name=page_data.get("skin", ""),
@@ -236,7 +245,13 @@ class StudentAggregator:
                     skin_name_jp=page_data.get("skin_jp", ""),
                     skin_name_tw=page_data.get("skin_zh_tw", ""),
                     avatar=avatar,
-                    spines=spine_ids
+                    spines=spine_ids,
+                    is_install=page_data.get("is_install", False),
+                    is_install_cn=page_data.get("is_install_cn", False),
+                    is_install_global=page_data.get("is_install_global", False),
+                    is_npc=page_data.get("is_npc", False),
+                    rarity=rarity,
+                    limited=limited
                 ))
 
                 # 收集Spine数据
@@ -330,7 +345,7 @@ class CsvGenerator:
             
         return cleaned_id.lower()
 
-    def _process_spine_remark(self, remark: str | None, base_skin: str | None, name: str | None = None) -> str:
+    def _process_spine_remark(self, remark: str | None, exclude_list: list[str]) -> str:
         """处理Spine备注信息"""
         if not remark:
             return ""
@@ -360,18 +375,16 @@ class CsvGenerator:
         processed = re.sub(r"[,，]\s*[,，]", ",", processed)
         processed = re.sub(r"[\(（]\s*([^)）]+?)\s*[\)）]", r",\1", processed)
         processed = processed.strip(",，")
-        
+
         replacement_rules = [
             (r"礼服(?:日奈|亚子)", "礼服"),
             ("西服", "西装"),
         ]
-        
+
         for pattern, replacement in replacement_rules:
             processed = re.sub(pattern, replacement, processed)
 
-        if base_skin and processed == base_skin:
-            return ""
-        if name and processed == name:
+        if processed in exclude_list:
             return ""
 
         return processed
@@ -427,8 +440,6 @@ class CsvGenerator:
                 skin_name_jp = page.get("skin_name_jp", "")
                 skin_name_tw = page.get("skin_name_tw", "")
 
-                # 构建皮肤显示名称（中文优先）
-                skin_display = skin_name_cn if skin_name_cn else skin_name
 
                 # 处理该页面的所有spine
                 forms_map: dict[str, StudentForm] = {}
@@ -469,7 +480,10 @@ class CsvGenerator:
                     base_name_kr = student.get("name_kr", "")
 
                     # 处理备注（用于full_name）
-                    processed_remark = self._process_spine_remark(spine_remark, skin_display, base_name)
+                    exclude_list = [skin_name, skin_name_cn, skin_name_jp, skin_name_tw,
+                                    base_name, base_name_cn, base_name_jp, base_name_tw,
+                                    base_name_en, base_name_kr]
+                    processed_remark = self._process_spine_remark(spine_remark, exclude_list)
 
                     # 构建完整名称（包含皮肤）
                     def build_full_name(base: str, skin: str, remark: str) -> str:
@@ -480,15 +494,15 @@ class CsvGenerator:
                             return f"{base}（{','.join(parts)}）"
                         return base
 
-                    # full_name: 使用中文皮肤名 + remark
-                    full_name = build_full_name(base_name, skin_display, processed_remark)
+                    # full_name: 使用 skin_name + remark
+                    full_name = build_full_name(base_name, skin_name, processed_remark)
                     # name_cn/jp/tw: 只使用对应语言的皮肤名，不加remark
                     name_cn = build_full_name(base_name_cn, skin_name_cn, "")
                     name_jp = build_full_name(base_name_jp, skin_name_jp, "")
                     name_tw = build_full_name(base_name_tw, skin_name_tw, "")
 
                     # 构建skin_name字段
-                    skin_parts = [s for s in [skin_display, processed_remark] if s]
+                    skin_parts = [s for s in [skin_name, processed_remark] if s]
                     final_skin = ",".join(skin_parts)
 
                     form = StudentForm(

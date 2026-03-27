@@ -54,6 +54,30 @@ class KivoWikiPage:
     skin_name_tw: str
     avatar: str
     spines: list[int]
+    is_install: bool = False
+    is_install_cn: bool = False
+    is_install_global: bool = False
+    is_npc: bool = False
+    rarity: int = 0
+    limited: bool = False
+
+    def to_dict(self) -> dict[str, Any]:
+        """转换为字典格式"""
+        return {
+            "page_id": self.page_id,
+            "skin_name": self.skin_name,
+            "skin_name_cn": self.skin_name_cn,
+            "skin_name_jp": self.skin_name_jp,
+            "skin_name_tw": self.skin_name_tw,
+            "avatar": self.avatar,
+            "spines": self.spines,
+            "is_install": self.is_install,
+            "is_install_cn": self.is_install_cn,
+            "is_install_global": self.is_install_global,
+            "is_npc": self.is_npc,
+            "rarity": self.rarity,
+            "limited": self.limited
+        }
 
 
 @dataclass
@@ -80,18 +104,7 @@ class Student:
             "name_kr": self.name_kr,
             "name_tw": self.name_tw,
             "school_id": self.school_id,
-            "pages": [
-                {
-                    "page_id": p.page_id,
-                    "skin_name": p.skin_name,
-                    "skin_name_cn": p.skin_name_cn,
-                    "skin_name_jp": p.skin_name_jp,
-                    "skin_name_tw": p.skin_name_tw,
-                    "avatar": p.avatar,
-                    "spines": p.spines
-                }
-                for p in self.pages
-            ]
+            "pages": [p.to_dict() for p in self.pages]
         }
 
 
