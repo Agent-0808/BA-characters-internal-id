@@ -24,7 +24,13 @@
           120,
           118,
           116
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 545,
@@ -36,7 +42,13 @@
         "spines": [
           1296,
           1073
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -62,7 +74,13 @@
           362,
           363,
           1360
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 30,
@@ -76,7 +94,13 @@
           1465,
           966,
           741
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 579,
@@ -87,7 +111,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%89%8D%E7%BE%BD%20%E6%A1%83%E4%BA%95/%E4%B8%B4%E6%88%98/np0267.png",
         "spines": [
           1382
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -115,7 +145,13 @@
           316,
           285,
           1022
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 228,
@@ -129,7 +165,13 @@
           1023,
           1066,
           371
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -153,7 +195,13 @@
         "spines": [
           414,
           131
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -179,7 +227,13 @@
           345,
           189,
           598
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 280,
@@ -191,7 +245,13 @@
         "spines": [
           1473,
           526
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -216,7 +276,13 @@
           507,
           343,
           178
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 286,
@@ -228,7 +294,13 @@
         "spines": [
           1474,
           774
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -253,7 +325,13 @@
           416,
           138,
           184
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 279,
@@ -265,7 +343,13 @@
         "spines": [
           1475,
           524
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -290,7 +374,13 @@
           417,
           141,
           185
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 278,
@@ -302,7 +392,13 @@
         "spines": [
           1476,
           525
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -328,7 +424,13 @@
           1231,
           1018,
           378
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 369,
@@ -341,7 +443,13 @@
           1497,
           709,
           1549
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -370,7 +478,13 @@
           391,
           609,
           610
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 41,
@@ -383,7 +497,13 @@
           427,
           177,
           742
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -407,7 +527,13 @@
         "spines": [
           57,
           1378
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -430,7 +556,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%A5%9E%E5%90%8D%E5%8D%81%E5%AD%97%E6%9C%BA%E5%99%A8%E4%BA%BAA/avatar.png",
         "spines": [
           66
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -453,7 +585,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E9%BE%9F%E7%BB%84%E6%9C%BA%E5%99%A8%E4%BA%BAA/avatar.png",
         "spines": [
           68
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -476,7 +614,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E6%92%92%E6%9C%BA%E5%99%A8%E4%BA%BAA/avatar.png",
         "spines": [
           70
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -497,7 +641,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%80%81%E5%B8%88/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -521,7 +671,13 @@
         "spines": [
           258,
           954
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -547,7 +703,13 @@
           399,
           716,
           1045
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 520,
@@ -559,7 +721,13 @@
         "spines": [
           1240,
           918
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -582,7 +750,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%88%88%E5%B0%94%E5%AD%94%E8%BE%BE&%E5%8D%B0%E8%8A%B1%E9%87%89%E6%B3%95/avatar.png",
         "spines": [
           300
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -607,7 +781,13 @@
           421,
           152,
           720
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 344,
@@ -618,7 +798,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%90%84%E5%8A%A1%20%E5%8D%83%E5%AF%BB/%E9%9C%B2%E8%90%A5/avatar.png",
         "spines": [
           1486
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 510,
@@ -629,7 +815,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%90%84%E5%8A%A1%20%E5%8D%83%E5%AF%BB/%E7%9D%A1%E8%A1%A3/chihiro.png",
         "spines": [
           1313
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -654,7 +846,13 @@
           353,
           1067,
           504
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 56,
@@ -667,7 +865,13 @@
           1462,
           964,
           558
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -691,7 +895,13 @@
         "spines": [
           425,
           165
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 302,
@@ -703,7 +913,13 @@
         "spines": [
           1467,
           552
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -728,7 +944,13 @@
           1232,
           357,
           1019
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 132,
@@ -740,7 +962,13 @@
         "spines": [
           112,
           403
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 517,
@@ -751,7 +979,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%AE%A4%E7%AC%A0%20%E8%8C%9C/%E6%A0%A1%E6%9C%8D/akane.png",
         "spines": [
           1307
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -777,7 +1011,13 @@
           361,
           1334,
           637
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 544,
@@ -789,7 +1029,13 @@
         "spines": [
           1295,
           1072
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -814,7 +1060,13 @@
           468,
           1393,
           1031
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 301,
@@ -826,7 +1078,13 @@
         "spines": [
           1470,
           549
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -852,7 +1110,13 @@
           1162,
           1404,
           1361
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 31,
@@ -864,7 +1128,13 @@
         "spines": [
           1466,
           740
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 580,
@@ -875,7 +1145,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%89%8D%E7%BE%BD%20%E7%BB%BF/%E4%B8%B4%E6%88%98/NP0268.png",
         "spines": [
           1383
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -901,7 +1177,13 @@
           398,
           253,
           1025
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 506,
@@ -914,7 +1196,13 @@
           1287,
           884,
           883
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -940,7 +1228,13 @@
           314,
           232,
           768
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 361,
@@ -951,7 +1245,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%8B%87%E7%BE%8E%20%E6%9E%AB/%E5%AF%BC%E6%B8%B8/avatar.png",
         "spines": [
           1501
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -977,7 +1277,13 @@
           413,
           769,
           230
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 568,
@@ -989,7 +1295,13 @@
         "spines": [
           1299,
           1196
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1013,7 +1325,13 @@
         "spines": [
           346,
           505
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 384,
@@ -1025,7 +1343,13 @@
         "spines": [
           1270,
           1161
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1049,7 +1373,13 @@
         "spines": [
           290,
           471
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 383,
@@ -1062,7 +1392,13 @@
           1271,
           797,
           784
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -1089,7 +1425,13 @@
           170,
           1068,
           387
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 382,
@@ -1102,7 +1444,13 @@
           1269,
           795,
           781
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -1128,7 +1476,13 @@
           489,
           111,
           298
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 356,
@@ -1142,7 +1496,13 @@
           677,
           934,
           933
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 381,
@@ -1155,7 +1515,13 @@
           1268,
           779,
           1357
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -1182,7 +1548,13 @@
           541,
           773,
           1354
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 368,
@@ -1195,7 +1567,13 @@
           1496,
           708,
           711
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -1221,7 +1599,13 @@
           1069,
           419,
           719
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1248,7 +1632,13 @@
           221,
           286,
           89
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 345,
@@ -1260,7 +1650,13 @@
         "spines": [
           655,
           1483
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -1292,7 +1688,13 @@
           831,
           873,
           1043
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": true
       },
       {
         "page_id": 40,
@@ -1305,7 +1707,13 @@
           397,
           108,
           204
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1338,7 +1746,13 @@
           1032,
           1191,
           1060
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 42,
@@ -1351,7 +1765,13 @@
           475,
           297,
           213
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 287,
@@ -1363,7 +1783,13 @@
         "spines": [
           1490,
           1533
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 373,
@@ -1383,7 +1809,13 @@
           799,
           785,
           796
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -1409,7 +1841,13 @@
           1366,
           899,
           887
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 543,
@@ -1421,7 +1859,13 @@
         "spines": [
           1297,
           1074
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -1454,7 +1898,13 @@
           484,
           873,
           822
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 44,
@@ -1468,7 +1918,13 @@
           607,
           1064,
           487
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 59,
@@ -1481,7 +1937,13 @@
           1464,
           211,
           745
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1507,7 +1969,13 @@
           498,
           596,
           1040
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 389,
@@ -1520,7 +1988,13 @@
           1272,
           815,
           811
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1546,7 +2020,13 @@
           480,
           234,
           1035
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 46,
@@ -1558,7 +2038,13 @@
         "spines": [
           182,
           431
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 570,
@@ -1569,7 +2055,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%B9%85%E7%94%B0%20%E6%B3%89%E5%A5%88/%E7%A4%BC%E6%9C%8D/%E3%82%A4%E3%82%BA%E3%83%8A.png",
         "spines": [
           1300
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -1600,7 +2092,13 @@
           1348,
           863,
           873
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 47,
@@ -1613,7 +2111,13 @@
           179,
           428,
           210
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -1638,7 +2142,13 @@
           227,
           441,
           231
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 48,
@@ -1650,7 +2160,13 @@
         "spines": [
           181,
           430
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -1677,7 +2193,13 @@
           590,
           727,
           1430
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 49,
@@ -1689,7 +2211,13 @@
         "spines": [
           180,
           429
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 522,
@@ -1700,7 +2228,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%88%B1%E6%B8%85%20%E6%9E%AB%E9%A6%99/%E7%A7%81%E6%9C%8D/fuuka.png",
         "spines": [
           1292
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -1727,7 +2261,13 @@
           601,
           973,
           465
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 50,
@@ -1740,7 +2280,13 @@
           183,
           432,
           771
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -1764,7 +2310,13 @@
         "spines": [
           279,
           462
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 51,
@@ -1776,7 +2328,13 @@
         "spines": [
           186,
           433
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -1803,7 +2361,13 @@
           95,
           736,
           1054
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 54,
@@ -1816,7 +2380,13 @@
           439,
           190,
           436
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 505,
@@ -1829,7 +2399,13 @@
           1286,
           885,
           882
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1856,7 +2432,13 @@
           19,
           1351,
           1052
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 53,
@@ -1868,7 +2450,13 @@
         "spines": [
           187,
           435
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1894,7 +2482,13 @@
           499,
           595,
           1177
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 55,
@@ -1906,7 +2500,13 @@
         "spines": [
           445,
           193
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 498,
@@ -1918,7 +2518,13 @@
         "spines": [
           1275,
           837
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -1944,7 +2550,13 @@
           495,
           192,
           1039
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 57,
@@ -1957,7 +2569,13 @@
           1463,
           565,
           965
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -1989,7 +2607,13 @@
           813,
           872,
           873
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 58,
@@ -2002,7 +2626,13 @@
           195,
           212,
           543
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 87,
@@ -2015,7 +2645,13 @@
           34,
           1065,
           466
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2040,7 +2676,13 @@
           460,
           1392,
           1057
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 60,
@@ -2052,7 +2694,13 @@
         "spines": [
           198,
           447
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       },
       {
         "page_id": 541,
@@ -2064,7 +2712,13 @@
         "spines": [
           1293,
           1070
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -2089,7 +2743,13 @@
           1246,
           826,
           1346
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2116,7 +2776,13 @@
           88,
           1528,
           820
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 572,
@@ -2130,7 +2796,13 @@
           1208,
           1385,
           1384
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -2157,7 +2829,13 @@
           415,
           1349,
           1027
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       },
       {
         "page_id": 376,
@@ -2170,7 +2848,13 @@
           1264,
           766,
           761
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2193,7 +2877,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%83%E5%BA%A6%20%E9%9B%AA%E4%B9%83/avatar.png",
         "spines": [
           169
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -2217,7 +2907,13 @@
         "spines": [
           171,
           533
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -2241,7 +2937,13 @@
         "spines": [
           173,
           534
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -2266,7 +2968,13 @@
           175,
           625,
           535
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -2290,7 +2998,13 @@
         "spines": [
           224,
           437
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -2317,7 +3031,13 @@
           283,
           311,
           309
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 70,
@@ -2330,7 +3050,13 @@
           85,
           412,
           735
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2359,7 +3085,13 @@
           725,
           726,
           732
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 121,
@@ -2374,7 +3106,13 @@
           729,
           730,
           1024
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 346,
@@ -2387,7 +3125,13 @@
           656,
           1255,
           1028
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -2413,7 +3157,13 @@
           476,
           733,
           1033
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 122,
@@ -2425,7 +3175,13 @@
         "spines": [
           93,
           408
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -2451,7 +3207,13 @@
           478,
           236,
           1034
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 75,
@@ -2463,7 +3225,13 @@
         "spines": [
           306,
           479
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       },
       {
         "page_id": 156,
@@ -2475,7 +3243,13 @@
         "spines": [
           1251,
           923
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2503,7 +3277,13 @@
           166,
           164,
           74
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 230,
@@ -2515,7 +3295,13 @@
         "spines": [
           220,
           434
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 516,
@@ -2526,7 +3312,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%A3%9E%E9%B8%9F%E9%A9%AC%20%E6%97%B6/original/toki.png",
         "spines": [
           1308
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 573,
@@ -2539,7 +3331,13 @@
           1328,
           1209,
           1432
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -2564,7 +3362,13 @@
           501,
           350,
           214
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 80,
@@ -2576,7 +3380,13 @@
         "spines": [
           351,
           503
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -2603,7 +3413,13 @@
           1061,
           364,
           365
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 82,
@@ -2616,7 +3432,13 @@
           218,
           368,
           69
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       },
       {
         "page_id": 577,
@@ -2628,7 +3450,13 @@
         "spines": [
           1330,
           1441
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2652,7 +3480,13 @@
         "spines": [
           52,
           482
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 89,
@@ -2665,7 +3499,13 @@
           481,
           54,
           723
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2690,7 +3530,13 @@
           1416,
           463,
           1047
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 109,
@@ -2703,7 +3549,13 @@
           94,
           409,
           731
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2728,7 +3580,13 @@
           42,
           477,
           174
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 153,
@@ -2740,7 +3598,13 @@
         "spines": [
           202,
           451
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2768,7 +3632,13 @@
           90,
           852,
           453
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 300,
@@ -2781,7 +3651,13 @@
           1469,
           554,
           1521
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -2806,7 +3682,13 @@
           1422,
           395,
           1050
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 360,
@@ -2819,7 +3701,13 @@
           1500,
           968,
           694
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2846,7 +3734,13 @@
           225,
           846,
           1051
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 269,
@@ -2858,7 +3752,13 @@
         "spines": [
           91,
           1059
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -2883,7 +3783,13 @@
           1421,
           457,
           1049
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       },
       {
         "page_id": 388,
@@ -2896,7 +3802,13 @@
           1273,
           816,
           812
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2921,7 +3833,13 @@
           450,
           262,
           172
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 178,
@@ -2933,7 +3851,13 @@
         "spines": [
           203,
           452
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -2959,7 +3883,13 @@
           490,
           593,
           1350
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 377,
@@ -2972,7 +3902,13 @@
           1265,
           970,
           763
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -2996,7 +3932,13 @@
         "spines": [
           207,
           454
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 161,
@@ -3007,7 +3949,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E5%B4%8E%20%E5%B0%8F%E9%9B%AA/%E5%85%94%E5%A5%B3%E9%83%8E/avatar.png",
         "spines": [
           154
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 508,
@@ -3019,7 +3967,13 @@
         "spines": [
           1310,
           1449
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3045,7 +3999,13 @@
           1427,
           1428,
           1055
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 102,
@@ -3057,7 +4017,13 @@
         "spines": [
           47,
           384
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 350,
@@ -3069,7 +4035,13 @@
         "spines": [
           1489,
           681
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3094,7 +4066,13 @@
           10,
           390,
           241
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 146,
@@ -3106,7 +4084,13 @@
         "spines": [
           200,
           449
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -3130,7 +4114,13 @@
         "spines": [
           1234,
           518
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -3155,7 +4145,13 @@
           1417,
           540,
           734
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -3181,7 +4177,13 @@
           472,
           473,
           474
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 227,
@@ -3193,7 +4195,13 @@
         "spines": [
           123,
           573
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3218,7 +4226,13 @@
           1407,
           508,
           1042
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 177,
@@ -3231,7 +4245,13 @@
           1406,
           509,
           1041
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 352,
@@ -3242,7 +4262,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%B5%85%E9%BB%84%20%E7%9D%A6%E6%9C%88/%E7%A4%BC%E6%9C%8D/avatar.png",
         "spines": [
           1492
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 354,
@@ -3253,7 +4279,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%B5%85%E9%BB%84%20%E7%9D%A6%E6%9C%88/%E8%A5%BF%E8%A3%85/avatar.png",
         "spines": [
           1494
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -3279,7 +4311,13 @@
           53,
           367,
           1359
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 152,
@@ -3292,7 +4330,13 @@
           209,
           369,
           903
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 574,
@@ -3308,7 +4352,13 @@
           1437,
           1439,
           1440
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -3337,7 +4387,13 @@
           382,
           381,
           1429
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 155,
@@ -3350,7 +4406,13 @@
           205,
           687,
           1178
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3377,7 +4439,13 @@
           958,
           386,
           1021
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 130,
@@ -3390,7 +4458,13 @@
           1242,
           402,
           1026
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 512,
@@ -3404,7 +4478,13 @@
           902,
           890,
           161
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -3429,7 +4509,13 @@
           1454,
           567,
           1352
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 542,
@@ -3441,7 +4527,13 @@
         "spines": [
           1294,
           1071
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -3468,7 +4560,13 @@
           660,
           959,
           653
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 539,
@@ -3479,7 +4577,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%BE%BD%E6%B2%BC%20%E7%9C%9F%E7%90%B4/%E7%A4%BC%E6%9C%8D/%E7%BE%BD%E6%B2%BC%E7%9C%9F%E7%90%B4%28%E7%A4%BC%E6%9C%8D%29.png",
         "spines": [
           1498
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -3503,7 +4607,13 @@
         "spines": [
           1455,
           663
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 546,
@@ -3515,7 +4625,13 @@
         "spines": [
           1324,
           1386
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -3541,7 +4657,13 @@
           440,
           737,
           1029
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 140,
@@ -3553,7 +4675,13 @@
         "spines": [
           156,
           422
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3579,7 +4707,13 @@
           375,
           1353,
           1053
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 370,
@@ -3593,7 +4727,13 @@
           1548,
           1062,
           707
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -3617,7 +4757,13 @@
         "spines": [
           500,
           325
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       },
       {
         "page_id": 120,
@@ -3631,7 +4777,13 @@
           862,
           963,
           424
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3656,7 +4808,13 @@
           328,
           488,
           79
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 123,
@@ -3668,7 +4826,13 @@
         "spines": [
           102,
           400
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 351,
@@ -3681,7 +4845,13 @@
           1488,
           684,
           682
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3706,7 +4876,13 @@
           268,
           456,
           1056
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 124,
@@ -3718,7 +4894,13 @@
         "spines": [
           103,
           401
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 353,
@@ -3729,7 +4911,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%BC%8A%E8%8D%89%20%E9%81%A5%E9%A6%99/%E7%A4%BC%E6%9C%8D/avatar.png",
         "spines": [
           1493
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 355,
@@ -3740,7 +4928,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%BC%8A%E8%8D%89%20%E9%81%A5%E9%A6%99/%E8%A5%BF%E8%A3%85/avatar.png",
         "spines": [
           1495
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -3764,7 +4958,13 @@
         "spines": [
           81,
           87
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -3790,7 +4990,13 @@
           1000,
           996,
           1370
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3815,7 +5021,13 @@
           1456,
           693,
           119
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3840,7 +5052,13 @@
           1458,
           511,
           1358
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3864,7 +5082,13 @@
         "spines": [
           142,
           418
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 500,
@@ -3877,7 +5101,13 @@
           1277,
           971,
           839
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -3901,7 +5131,13 @@
         "spines": [
           1459,
           510
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3929,7 +5165,13 @@
           76,
           153,
           1363
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 571,
@@ -3941,7 +5183,13 @@
         "spines": [
           1326,
           1207
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -3966,7 +5214,13 @@
           1249,
           1183,
           1380
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       },
       {
         "page_id": 379,
@@ -3977,7 +5231,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%B2%B3%E9%A9%B9%E9%A3%8E%20%E5%85%B0%E8%88%9E/%E6%B3%B3%E8%A3%85/avatar.png",
         "spines": [
           1281
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4004,7 +5264,13 @@
           776,
           798,
           777
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -4030,7 +5296,13 @@
           1499,
           853,
           654
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 538,
@@ -4041,7 +5313,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%B9%E8%8A%B1%20%E4%BC%8A%E5%90%B9/%E7%A4%BC%E6%9C%8D/%E4%B8%B9%E8%8A%B1%E4%BC%8A%E5%90%B9%28%E7%A4%BC%E6%9C%8D%29.png",
         "spines": [
           661
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4067,7 +5345,13 @@
           1399,
           160,
           1037
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 137,
@@ -4080,7 +5364,13 @@
           113,
           829,
           404
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 513,
@@ -4092,7 +5382,13 @@
         "spines": [
           1284,
           891
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -4119,7 +5415,13 @@
           148,
           146,
           600
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 138,
@@ -4131,7 +5433,13 @@
         "spines": [
           114,
           405
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 514,
@@ -4144,7 +5452,13 @@
           1282,
           901,
           889
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -4171,7 +5485,13 @@
           229,
           721,
           1355
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 371,
@@ -4184,7 +5504,13 @@
           1252,
           713,
           1006
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -4208,7 +5534,13 @@
         "spines": [
           1389,
           438
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 141,
@@ -4223,7 +5555,13 @@
           962,
           423,
           718
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 391,
@@ -4234,7 +5572,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%BF%9E%E6%B2%B3%20%E5%88%87%E9%87%8C%E8%AF%BA/original/avatar.png",
         "spines": [
           1280
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4259,7 +5603,13 @@
           1250,
           376,
           1176
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 565,
@@ -4271,7 +5621,13 @@
         "spines": [
           1322,
           1185
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -4296,7 +5652,13 @@
           115,
           961,
           406
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -4322,7 +5684,13 @@
           426,
           104,
           866
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 375,
@@ -4335,7 +5703,13 @@
           1263,
           969,
           764
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -4359,7 +5733,13 @@
         "spines": [
           270,
           458
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 145,
@@ -4371,7 +5751,13 @@
         "spines": [
           199,
           448
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       },
       {
         "page_id": 154,
@@ -4383,7 +5769,13 @@
         "spines": [
           201,
           566
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -4406,7 +5798,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%AF%BF%E5%8F%B8%E9%BB%91/avatar.png",
         "spines": [
           317
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4429,7 +5827,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%AF%BF%E5%8F%B8%E7%BB%BF/avatar.png",
         "spines": [
           319
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4452,7 +5856,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%AF%BF%E5%8F%B8%E7%B2%89/avatar.png",
         "spines": [
           320
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4475,7 +5885,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%AF%BF%E5%8F%B8%E7%BA%A2/avatar.png",
         "spines": [
           322
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4498,7 +5914,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%AF%BF%E5%8F%B8%E9%BB%84/avatar.png",
         "spines": [
           324
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4524,7 +5946,13 @@
           491,
           307,
           305
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 299,
@@ -4536,7 +5964,13 @@
         "spines": [
           550,
           1468
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -4561,7 +5995,13 @@
           1391,
           442,
           1030
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 334,
@@ -4573,7 +6013,13 @@
         "spines": [
           642,
           643
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 576,
@@ -4585,7 +6031,13 @@
         "spines": [
           1331,
           1442
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -4609,7 +6061,13 @@
         "spines": [
           255,
           589
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4633,7 +6091,13 @@
         "spines": [
           266,
           455
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       },
       {
         "page_id": 340,
@@ -4645,7 +6109,13 @@
         "spines": [
           1485,
           648
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 507,
@@ -4656,7 +6126,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B0%8F%E9%92%A9%20%E6%99%B4/%E7%9D%A1%E8%A1%A3/hare.png",
         "spines": [
           1311
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4688,7 +6164,13 @@
           941,
           942,
           943
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4714,7 +6196,13 @@
           592,
           972,
           738
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -4738,7 +6226,13 @@
         "spines": [
           340,
           86
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4761,7 +6255,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%88%9E/avatar.png",
         "spines": [
           341
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4789,7 +6289,13 @@
           924,
           348,
           926
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -4814,7 +6320,13 @@
           1561,
           560,
           982
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       }
     ]
   },
@@ -4841,7 +6353,13 @@
           856,
           949,
           945
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4865,7 +6383,13 @@
         "spines": [
           293,
           950
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4888,7 +6412,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%B4%9D%E9%98%BF%E6%9C%B5%E8%8E%89%E5%88%87/avatar.png",
         "spines": [
           271
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4914,7 +6444,13 @@
           951,
           1434,
           946
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4937,7 +6473,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E6%92%92PMC%20%E7%90%86%E4%BA%8B/avatar.png",
         "spines": [
           63
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 172,
@@ -4948,7 +6490,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E6%92%92PMC%20%E7%90%86%E4%BA%8B/%E5%BA%A6%E5%81%87/avatar.png",
         "spines": [
           264
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4972,7 +6520,13 @@
         "spines": [
           263,
           519
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -4995,7 +6549,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%91%9B%E5%8F%B6/avatar.png",
         "spines": [
           260
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5021,7 +6581,13 @@
           459,
           722,
           1017
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 563,
@@ -5033,7 +6599,13 @@
         "spines": [
           1321,
           1184
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -5058,7 +6630,13 @@
           342,
           496,
           238
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 343,
@@ -5071,7 +6649,13 @@
           1256,
           914,
           912
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 509,
@@ -5082,7 +6666,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B0%8F%E6%B6%82%20%E7%9C%9F%E7%BA%AA/%E7%9D%A1%E8%A1%A3/maki.png",
         "spines": [
           1312
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5109,7 +6699,13 @@
           858,
           957,
           947
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5137,7 +6733,13 @@
           860,
           948,
           944
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5162,7 +6764,13 @@
           1398,
           483,
           1036
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 521,
@@ -5175,7 +6783,13 @@
           1288,
           922,
           919
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -5201,7 +6815,13 @@
           461,
           216,
           1048
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 523,
@@ -5213,7 +6833,13 @@
         "spines": [
           1289,
           930
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -5236,7 +6862,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%AD%A5%E6%9E%AA%E4%B8%8D%E8%89%AF/avatar.png",
         "spines": [
           25
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5259,7 +6891,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%86%B2%E9%94%8B%E6%9E%AA%E4%B8%8D%E8%89%AF/avatar.png",
         "spines": [
           1418
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5282,7 +6920,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%87%8D%E6%9C%BA%E6%9E%AA%E4%B8%8D%E8%89%AF/avatar.png",
         "spines": [
           27
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5305,7 +6949,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%B8%A9%E6%B3%89%E5%BC%80%E5%8F%91%E9%83%A8%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
           29
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5328,7 +6978,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B7%9D%E6%B5%81%20%E8%AF%97%E4%B9%83/avatar.png",
         "spines": [
           35
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5352,7 +7008,13 @@
         "spines": [
           1415,
           469
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 566,
@@ -5363,7 +7025,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%9C%86%E5%A0%82%20%E5%BF%97%E7%BE%8E%E5%AD%90/original/172f5cf85a208844ee036398ecccfe07.png",
         "spines": [
           1323
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5386,7 +7054,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%8A%AC%E5%A4%A7%E5%B0%86/avatar.png",
         "spines": [
           40
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5409,7 +7083,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%9C%BA%E6%9E%AA%E4%B8%8D%E8%89%AF/%E6%B0%B4%E7%9D%80/avatar.png",
         "spines": [
           50
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5432,7 +7112,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%86%B2%E9%94%8B%E6%9E%AA%E4%B8%8D%E8%89%AF/%E6%B0%B4%E7%9D%80/avatar.png",
         "spines": [
           51
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5455,7 +7141,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%BA%A2%E5%86%AC%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
           58
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5478,7 +7170,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A5%B3%E6%AD%A6%E7%A5%9E%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
           61
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 283,
@@ -5489,7 +7187,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A5%B3%E6%AD%A6%E7%A5%9E%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FA/%E6%B3%B3%E8%A3%85/avatar.png",
         "spines": [
           1511
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5512,7 +7216,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%BD%A9%E6%B4%9B%E6%B4%9B/avatar.png",
         "spines": [
           67
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5538,7 +7248,13 @@
           492,
           143,
           542
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 499,
@@ -5551,7 +7267,13 @@
           1276,
           854,
           838
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -5574,7 +7296,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%8E%84%E9%BE%99%E9%97%A8%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
           1508
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5597,7 +7325,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%BC%97%E6%9C%97%E8%A5%BF%E6%96%AF/avatar.png",
         "spines": [
           84
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5621,7 +7355,13 @@
         "spines": [
           100,
           955
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5645,7 +7385,13 @@
         "spines": [
           98,
           956
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5670,7 +7416,13 @@
           1400,
           493,
           1038
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 341,
@@ -5683,7 +7435,13 @@
           1484,
           967,
           650
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 511,
@@ -5694,7 +7452,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%9F%B3%E6%BF%91%20%E5%B0%8F%E7%8E%89/%E7%9D%A1%E8%A1%A3/kotama.png",
         "spines": [
           1314
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5718,7 +7482,13 @@
         "spines": [
           1244,
           377
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       },
       {
         "page_id": 569,
@@ -5730,7 +7500,13 @@
         "spines": [
           1298,
           1195
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -5755,7 +7531,13 @@
           1409,
           494,
           1044
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": false
       },
       {
         "page_id": 362,
@@ -5768,7 +7550,13 @@
           1262,
           984,
           983
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -5793,7 +7581,13 @@
           1239,
           606,
           868
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -5816,7 +7610,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%8C%B6%E4%BC%9A%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
           281
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5839,7 +7639,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%95%91%E6%80%A5%E5%8C%BB%E5%AD%A6%E9%83%A8%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
           280
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5862,7 +7668,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%9C%A3%E4%B8%89%E4%B8%80%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
           278
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5885,7 +7697,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%BF%AE%E5%A5%B3%E4%BC%9A%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
           276
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5908,7 +7726,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%A0%BC%E8%B5%AB%E5%A8%9C%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
           274
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5931,7 +7755,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%87%E9%AD%94%E6%AE%BF%EF%BC%88%EF%BC%9F%EF%BC%89%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
           273
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5954,7 +7784,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%8C%B6%E4%BC%9A%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F2/avatar.png",
         "spines": [
           272
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -5977,7 +7813,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A4%B4%E7%9B%94%E5%9B%A2%E5%AD%A6%E7%94%9F-%E9%BB%91/avatar.png",
         "spines": [
           275
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6000,7 +7842,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A4%B4%E7%9B%94%E5%9B%A2%E5%AD%A6%E7%94%9F-%E7%BA%A2/avatar.png",
         "spines": [
           277
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6023,7 +7871,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%A3%8E%E7%BA%AA%E5%A7%94%E5%91%98%E4%BC%9A%E6%9D%82%E9%B1%BC%E9%85%B1/avatar.png",
         "spines": [
           259
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6047,7 +7901,13 @@
         "spines": [
           105,
           396
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 547,
@@ -6058,7 +7918,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%8B%E4%BB%93%20%E6%83%A0/%E6%B3%B3%E8%A3%85/2.png",
         "spines": [
           1325
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6081,7 +7947,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%AD%91%E9%AD%85%E4%B8%80%E5%BA%A7%20%E9%83%A8%E5%91%98/avatar.png",
         "spines": [
           13
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6104,7 +7976,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B0%A4%E6%96%AF%E8%92%82%E5%A8%85%E5%9C%A3%E5%BE%92%E4%BC%9A%E6%AD%A5%E6%9E%AA/avatar.png",
         "spines": [
           12
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 303,
@@ -6115,7 +7993,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B0%A4%E6%96%AF%E8%92%82%E5%A8%9C%E5%9C%A3%E5%BE%92/%E6%B3%B3%E8%A3%85/avatar.png",
         "spines": [
           1514
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6138,7 +8022,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%AD%91%E9%AD%85%E4%B8%80%E5%BA%A7%20%E9%98%9F%E9%95%BF/avatar.png",
         "spines": [
           14
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6161,7 +8051,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%BA%A2%E5%86%AC-%E5%8A%B3%E5%8A%A1%E9%83%A8%E5%AD%A6%E7%94%9F/avatar.png",
         "spines": [
           16
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6184,7 +8080,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%99%AE%E9%80%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
           17
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6207,7 +8109,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E6%92%92PMC%E6%9C%BA%E5%99%A8%E4%BA%BA/avatar.png",
         "spines": [
           82
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6230,7 +8138,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E6%92%92%E5%8F%B8%E4%BB%A4%E5%AE%98/avatar.png",
         "spines": [
           106
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6253,7 +8167,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E6%92%92%E4%B8%BB%E7%AE%A1/avatar.png",
         "spines": [
           130
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6276,7 +8196,13 @@
         "avatar": "//static.kivo.wiki/images/students/NPC%E5%81%9A%E9%A5%AD%E9%B8%9F/avatar.png",
         "spines": [
           149
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6299,7 +8225,13 @@
         "avatar": "//static.kivo.wiki/images/students/NPC%E9%B8%9F/avatar.png",
         "spines": [
           151
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6322,7 +8254,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%8D%83%E7%A6%A7%E5%B7%A5%E7%A8%8B%E9%83%A8%E5%AD%A6%E7%94%9FB/avatar.png",
         "spines": [
           155
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6345,7 +8283,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B0%A4%E6%96%AF%E8%92%82%E5%A8%85%E5%9C%A3%E5%BE%92%E4%BC%9A-%E8%8A%AD%E8%8A%AD%E6%8B%89/avatar.png",
         "spines": [
           176
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6368,7 +8312,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%97%A0%E5%90%8D%E5%8F%B8%E7%A5%AD/avatar.png",
         "spines": [
           254
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6391,7 +8341,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%8D%83%E7%A6%A7%20%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
           261
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6415,7 +8371,13 @@
         "spines": [
           269,
           514
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6438,7 +8400,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%95%86%E5%BA%97%E8%80%81%E6%9D%BF/avatar.png",
         "spines": [
           349
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6461,7 +8429,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%8B%97%E7%8B%97-%E8%B7%AF%E4%BA%BA/avatar.png",
         "spines": [
           252
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6484,7 +8458,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%85%94%E5%A5%B3%E9%83%8E%E5%AD%A6%E7%94%9F-%E7%8B%99%E5%87%BB%E6%9E%AA/avatar.png",
         "spines": [
           83
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6507,7 +8487,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%B8%85%E6%BE%84%20%E6%99%B6/avatar.png",
         "spines": [
           222
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 551,
@@ -6518,7 +8504,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%B8%85%E6%BE%84%20%E6%99%B6/%E5%88%B6%E6%9C%8D/miria.png",
         "spines": [
           1319
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6549,7 +8541,13 @@
           715,
           1371,
           995
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 537,
@@ -6560,7 +8558,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%BE%A1%E7%A8%9C%20%E5%90%8D%E8%8D%89/%E6%B3%B3%E8%A3%85/CH0303_avatar.png",
         "spines": [
           1304
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6583,7 +8587,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%9F%8E%E5%B8%82%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
           228
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6606,7 +8616,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%9C%BC%E7%BD%A9%E7%8C%AB%E7%8C%AB/avatar.png",
         "spines": [
           235
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6629,7 +8645,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%92%8C%E6%9C%8D%E7%8C%AB%E7%8C%AB/avatar.png",
         "spines": [
           237
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6652,7 +8674,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%BB%B7%E5%B8%A6%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
           239
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6675,7 +8703,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%B4%9D%E9%9B%B7%E5%B8%BD%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
           240
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6698,7 +8732,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E8%89%B2%E5%92%8C%E6%9C%8D%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
           242
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6721,7 +8761,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B8%82%E6%B0%91%E6%9C%BA%E5%99%A8%E4%BA%BA/avatar.png",
         "spines": [
           243
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6744,7 +8790,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%B5%84%E6%9C%AC%E6%9C%BA%E5%99%A8%E4%BA%BA/avatar.png",
         "spines": [
           245
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6767,7 +8819,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B1%B1%E6%B5%B7%E7%BB%8F%E5%BA%97%E5%91%98/avatar.png",
         "spines": [
           248
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6792,7 +8850,13 @@
           564,
           563,
           559
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 265,
@@ -6803,7 +8867,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A7%AC%E6%9C%A8%20%E7%88%B1%E7%91%A0/%E6%B8%A9%E6%B3%89/avatar.png",
         "spines": [
           125
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6826,7 +8896,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%B4%9D%E9%9B%B7%E5%B8%BDNPC%E9%B8%9F/avatar.png",
         "spines": [
           139
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6849,7 +8925,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%9D%B4%E8%9D%B6%E7%BB%93NPC%E9%B8%9F/avatar.png",
         "spines": [
           137
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6872,7 +8954,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B0%8F%E5%AD%A6%E7%94%9FNPC%E9%B8%9F/avatar.png",
         "spines": [
           135
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6896,7 +8984,13 @@
         "spines": [
           1471,
           1373
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6922,7 +9016,13 @@
           830,
           827,
           603
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -6945,7 +9045,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%99%AE%E9%9B%B7%E9%82%A3%E5%B8%95%E7%89%B9%E6%96%AF/avatar.png",
         "spines": [
           132
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6968,7 +9074,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%9C%BA%E5%99%A8%E4%BA%BA/avatar.png",
         "spines": [
           59
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6991,7 +9103,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%AE%88%E5%8D%AB%E6%9C%BA%E5%99%A8%E4%BA%BA/avatar.png",
         "spines": [
           140
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7015,7 +9133,13 @@
         "spines": [
           1507,
           952
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7039,7 +9163,13 @@
         "spines": [
           515,
           953
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7062,7 +9192,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%81%87%E6%97%A5%E5%8C%97%E6%9E%81%E7%86%8A/avatar.png",
         "spines": [
           1513
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7085,7 +9221,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B7%A5%E4%BA%BA%E8%8A%B1%E6%A0%97%E9%BC%A0/avatar.png",
         "spines": [
           1512
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7108,7 +9250,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A4%B4%E5%B8%A6%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
           1509
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7131,7 +9279,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%89%93%E6%B8%94%E7%8B%B8%E7%8C%AB/avatar.png",
         "spines": [
           1510
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7155,7 +9309,13 @@
         "spines": [
           1460,
           1532
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7178,7 +9338,13 @@
         "avatar": "//static.kivo.wiki/images/students/Kanna/CBT/avatar.png",
         "spines": [
           591
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7201,7 +9367,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%B1%B3%E8%8E%89%E4%BA%9A/CBT/avatar.png",
         "spines": [
           597
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7224,7 +9396,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A5%88%E5%A4%AE/CBT/avatar.png",
         "spines": [
           599
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7247,7 +9425,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E8%A3%B4/CBT/avatar.png",
         "spines": [
           602
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7270,7 +9454,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%9C%B2%E9%9F%B3/CBT/avatar.png",
         "spines": [
           605
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7293,7 +9483,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%94%B1%E5%8A%A0%E5%88%A9/CBT/avatar.png",
         "spines": [
           608
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7316,7 +9512,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%AF%94%E7%BA%B3/avatar.png",
         "spines": [
           544
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7339,7 +9541,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E8%B5%9B%E5%BE%B7/avatar.png",
         "spines": [
           833
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7362,7 +9570,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%9C%8D%E5%BE%B7/avatar.png",
         "spines": [
           624
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7383,7 +9597,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E7%91%9F/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7404,7 +9624,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%87%9B%E5%8D%8E/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7427,7 +9653,13 @@
         "avatar": "//static.kivo.wiki/images/students/KAITEN%20FX%20MK.0/avatar.png",
         "spines": [
           545
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7450,7 +9682,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%99%BD&%E9%BB%91/avatar.png",
         "spines": [
           546
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7473,7 +9711,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%BD%A9%E7%BD%97%E7%BD%97%E6%96%AF%E6%8B%89/avatar.png",
         "spines": [
           547
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7497,7 +9741,13 @@
         "spines": [
           562,
           1190
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -7521,7 +9771,13 @@
         "spines": [
           1482,
           1189
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -7544,7 +9800,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E5%B8%82%E7%BB%84%E7%BB%87%E6%88%90%E5%91%98A/avatar.png",
         "spines": [
           1516
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7567,7 +9829,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%88%97%E8%BD%A6%E4%B9%98%E5%8A%A1%E5%91%98A/avatar.png",
         "spines": [
           1515
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7590,7 +9858,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%88%97%E8%BD%A6%E4%B9%98%E5%8A%A1%E5%91%98B/avatar.png",
         "spines": [
           1525
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7613,7 +9887,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%88%97%E8%BD%A6%E4%B9%98%E5%8A%A1%E5%91%98C/avatar.png",
         "spines": [
           1526
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7634,7 +9914,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%88%97%E8%BD%A6%E4%B9%98%E5%8A%A1%E5%91%98D/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7659,7 +9945,13 @@
           1506,
           579,
           1534
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -7684,7 +9976,13 @@
           1505,
           578,
           1535
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -7709,7 +10007,13 @@
           1504,
           577,
           1536
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -7735,7 +10039,13 @@
           623,
           1517,
           1518
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 533,
@@ -7747,7 +10057,13 @@
         "spines": [
           1302,
           1008
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -7771,7 +10087,13 @@
         "spines": [
           1478,
           631
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 535,
@@ -7784,7 +10106,13 @@
           1303,
           1016,
           1009
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 2,
+        "limited": false
       }
     ]
   },
@@ -7808,7 +10136,13 @@
         "spines": [
           1479,
           630
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       },
       {
         "page_id": 534,
@@ -7820,7 +10154,13 @@
         "spines": [
           1301,
           1007
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -7846,7 +10186,13 @@
           1527,
           1530,
           714
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7871,7 +10217,13 @@
           1487,
           1381,
           1376
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7895,7 +10247,13 @@
         "spines": [
           1519,
           1377
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 536,
@@ -7906,7 +10264,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E7%99%BE%E9%AC%BC%E5%A4%9C%E8%A1%8C%E5%AD%A6%E7%94%9FA/%E6%B3%B3%E8%A3%85/NP0255_avatar.png",
         "spines": [
           1015
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7929,7 +10293,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%99%BE%E9%AC%BC%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FB/avatar.png",
         "spines": [
           1520
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7952,7 +10322,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%99%BE%E9%AC%BC%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FC/avatar.png",
         "spines": [
           1523
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7975,7 +10351,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B1%B1%E6%B5%B7%E7%BB%8F%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
           1522
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -7998,7 +10380,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B1%B1%E6%B5%B7%E7%BB%8F%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FB/avatar.png",
         "spines": [
           1524
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8021,7 +10409,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B8%8C%E7%BD%97%E5%B0%BC%E7%A9%86%E6%96%AF/avatar.png",
         "spines": [
           739
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8044,7 +10438,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%88%88%E5%85%B9/avatar.png",
         "spines": [
           633
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8067,7 +10467,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%A0%BC%E9%87%8C%E9%AB%98%E5%88%A9/avatar.png",
         "spines": [
           669
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8091,7 +10497,13 @@
         "spines": [
           1480,
           632
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8114,7 +10526,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%8C%AB%E9%AC%BC%E9%BB%91%E5%BD%B1/avatar.png",
         "spines": [
           825
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8138,7 +10556,13 @@
         "spines": [
           1336,
           1555
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8162,7 +10586,13 @@
         "spines": [
           1337,
           1557
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8186,7 +10616,13 @@
         "spines": [
           1338,
           1556
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8207,7 +10643,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E7%9B%96%E5%B8%83%E6%8B%89/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8228,7 +10670,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%89%B2%E5%BD%A9/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8253,7 +10701,13 @@
           1260,
           931,
           929
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -8278,7 +10732,13 @@
           1257,
           871,
           869
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -8301,7 +10761,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%9C%B0%E4%B8%8B%E7%94%9F%E6%B4%BB%E8%80%85/avatar.png",
         "spines": [
           1531
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8324,7 +10790,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E5%B8%AE%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
           1546
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8347,7 +10819,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E5%B8%AE%E6%9C%BA%E5%99%A8%E4%BA%BAA/avatar.png",
         "spines": [
           1545
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8370,7 +10848,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%BA%BA%E5%8A%9B%E8%BD%A6%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
           692
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8391,7 +10875,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%B5%9B%E7%89%B9/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8415,7 +10905,13 @@
         "spines": [
           1258,
           978
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -8440,7 +10936,13 @@
           1259,
           980,
           979
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -8465,7 +10967,13 @@
           1491,
           1543,
           1544
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8488,7 +10996,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%A4%8E%E5%90%8D%20%E7%BA%BA/original/tmg.png",
         "spines": [
           1261
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8509,7 +11023,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%20%E3%80%8C%E9%9B%B7%E5%B8%9D%E3%80%8D/original/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8533,7 +11053,13 @@
         "spines": [
           1266,
           1451
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -8556,7 +11082,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%B0%8F%E9%B8%9F%E6%B8%B8%20%E6%98%9F%E9%87%8E%20%2A%E6%81%90%E6%80%96/original/avatar.png",
         "spines": [
           1547
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8579,7 +11111,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%A0%97%E6%BB%A8%20%E6%98%8E%E7%BE%8E/original/%E5%A7%90%E8%B4%B5.png",
         "spines": [
           1267
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8602,7 +11140,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E5%BE%AE%E7%AC%91%E6%95%99%E6%8E%88/original/%E6%95%99%E6%8E%88.png",
         "spines": [
           1279
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8625,7 +11169,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20DJ%E7%8B%97%E7%8B%97/original/avatar.png",
         "spines": [
           1342
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8650,7 +11200,13 @@
           1274,
           1364,
           1365
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8673,7 +11229,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E4%BA%AC%E5%89%A7%E9%83%A8%E5%91%98A/original/avatar.png",
         "spines": [
           1344
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8696,7 +11258,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E4%BA%AC%E5%89%A7%E9%83%A8%E5%91%98B/original/avatar.png",
         "spines": [
           1345
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8719,7 +11287,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E5%B9%BB%E9%AD%89%E7%99%BE%E7%89%A9%E8%AF%AD/original/avatar.png",
         "spines": [
           627
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8742,7 +11316,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E6%97%A0%E8%B2%8C%E6%9B%BF%E8%BA%AB/original/avatar.png",
         "spines": [
           629
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8763,7 +11343,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%20%E9%9C%8D%E5%85%8B%E7%8E%9B/original/Chokmah_avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8789,7 +11375,13 @@
           904,
           1435,
           1446
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8812,7 +11404,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E6%9C%AA%E6%9D%A5/original/%E6%9C%AA%E6%9D%A5.png",
         "spines": [
           1285
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8841,7 +11439,13 @@
           1217,
           1438,
           1440
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -8862,7 +11466,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%20%E3%80%8C%E9%A6%99%E4%B8%BB%E3%80%8D/original/Common2.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8885,7 +11495,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E6%A3%92%E7%90%83%E7%8B%97%E7%8B%97/original/NP0247.png",
         "spines": [
           1369
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8910,7 +11526,13 @@
           1290,
           981,
           977
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -8933,7 +11555,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E6%9A%B4%E8%B5%B0%E6%97%8FA/original/NP0245.png",
         "spines": [
           1367
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8956,7 +11584,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E6%9A%B4%E8%B5%B0%E6%97%8F%E8%80%81%E5%A4%A7/original/NP0246.png",
         "spines": [
           1368
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -8977,7 +11611,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%20%E6%8F%90%E6%B3%95%E5%8B%92%E7%89%B9/original/Tiphareth_Avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9003,7 +11643,13 @@
           1343,
           1356,
           1003
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9026,7 +11672,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%9C%9F%E7%94%9F%20%E8%93%9F/original/CH0276_spr_00.png",
         "spines": [
           1278
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       },
       {
         "page_id": 531,
@@ -9037,7 +11689,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%9C%9F%E7%94%9F%20%E8%93%9F/%E5%92%8C%E6%9C%8D/CH0289_spr_00.png",
         "spines": [
           1291
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9060,7 +11718,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E6%9C%80%E5%BC%BA%E7%8B%AC%E8%A7%92%E7%8B%AE/original/NP0250.png",
         "spines": [
           1372
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9084,7 +11748,13 @@
         "spines": [
           1306,
           1091
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -9108,7 +11778,13 @@
         "spines": [
           1083,
           1090
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -9132,7 +11808,13 @@
         "spines": [
           1305,
           1450
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -9155,7 +11837,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E8%88%8D%E7%9B%91%E9%98%9F%E6%88%90%E5%91%98A/original/%E3%82%B6%E3%82%B3A.png",
         "spines": [
           1374
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9178,7 +11866,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E8%88%8D%E7%9B%91%E9%98%9F%E6%88%90%E5%91%98B/original/%E3%82%B6%E3%82%B3B.png",
         "spines": [
           1375
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9202,7 +11896,13 @@
         "spines": [
           1317,
           1173
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -9223,7 +11923,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E4%BA%91%E7%B1%BB%E9%B9%AB%20%E7%88%B1%E7%BE%8E/original/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9246,7 +11952,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E9%98%BF%E9%87%8C%E4%B9%8C%E6%96%AF%E5%AD%A6%E7%94%9FB/original/arius_B.png",
         "spines": [
           1379
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9270,7 +11982,13 @@
         "spines": [
           1168,
           1188
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9293,7 +12011,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%AB%8B%E6%9C%A8%20%E8%BF%88%E4%BA%9A/original/maia.png",
         "spines": [
           1320
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9320,7 +12044,13 @@
           1163,
           1169,
           1187
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -9344,7 +12074,13 @@
         "spines": [
           1316,
           1174
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -9368,7 +12104,13 @@
         "spines": [
           1318,
           1175
-        ]
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -9391,7 +12133,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E8%A3%95%E7%BE%8E/original/%E3%83%92%E3%83%AD%E3%83%9F.png",
         "spines": [
           1315
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9412,7 +12160,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%20%E8%80%B6%E7%B4%A2%E5%BE%B7/original/yesod.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9435,7 +12189,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E5%8A%B3%E5%B7%A5%E6%9C%BA%E5%99%A8%E4%BA%BAA/original/labor.png",
         "spines": [
           1388
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9458,7 +12218,13 @@
         "avatar": "//static.kivo.wiki/images/students/%20%E8%BE%BE%E9%98%BF%E7%89%B9/original/daath.png",
         "spines": [
           1224
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9479,7 +12245,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%20%E5%86%85%E5%AF%9F%E8%B5%AB/original/netzach%20%281%29.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9503,7 +12275,13 @@
         "spines": [
           1447,
           1436
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9526,7 +12304,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%BE%BD%E5%92%8B%20%E7%BF%BC/original/%E5%9B%BE%E5%B1%82%201.png",
         "spines": [
           1502
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9549,7 +12333,13 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%9B%91%E5%8E%9F%20%E7%BE%8E%E9%93%83/original/%E5%9B%BE%E5%B1%82%201.png",
         "spines": [
           1503
-        ]
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -9570,7 +12360,13 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%AF%86%E4%BA%95%20%E4%BA%AC%E5%AD%90/original/avatar.png",
-        "spines": []
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   }
