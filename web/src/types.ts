@@ -51,6 +51,7 @@ export interface AppConfig {
   csvUrl: string;
   metadataUrl: string;
   schoolsUrl: string;
+  studentsUrl: string;
   repoOwner: string;
   repoName: string;
 }
@@ -62,3 +63,36 @@ export interface School {
   name_cn: string;
   logo: string;
 }
+
+// Page (页面) 数据结构
+export interface KivoPage {
+  page_id: number;
+  skin_name: string;
+  skin_name_cn: string;
+  skin_name_jp: string;
+  skin_name_tw: string;
+  avatar: string;
+  spines: number[];
+  is_install: boolean;
+  is_install_cn: boolean;
+  is_install_global: boolean;
+  is_npc: boolean;
+  rarity: number;
+  limited: boolean;
+}
+
+// 学生数据结构 (来自 students.json)
+export interface Student {
+  id: number;
+  name: string;
+  name_cn: string;
+  name_jp: string;
+  name_en: string;
+  name_kr: string;
+  name_tw: string;
+  school_id: number;
+  pages: KivoPage[];
+}
+
+// 展开状态映射
+export type ExpandState = Record<number, boolean>;

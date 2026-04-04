@@ -5,6 +5,7 @@ export const CONFIG: AppConfig = {
   csvUrl: './data/students_data.csv',
   metadataUrl: './data/metadata.json',
   schoolsUrl: './data/schools.json',
+  studentsUrl: './data/students.json',
   repoOwner: 'Agent-0808',
   repoName: 'BA-characters-internal-id'
 };
