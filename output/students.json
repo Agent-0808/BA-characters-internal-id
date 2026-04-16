@@ -978,13 +978,14 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%AE%A4%E7%AC%A0%20%E8%8C%9C/%E6%A0%A1%E6%9C%8D/akane.png",
         "spines": [
-          1307
+          1307,
+          1563
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false
       }
     ]
@@ -7583,7 +7584,7 @@
           868
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -9744,7 +9745,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -9774,7 +9775,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -10714,7 +10715,7 @@
   {
     "id": 347,
     "name": "元宫 千明",
-    "name_cn": "",
+    "name_cn": "元宫 千明",
     "name_jp": "元宮 チアキ",
     "name_en": "Motomiya Chiaki",
     "name_kr": "모토미야 치아키",
@@ -10734,7 +10735,7 @@
           869
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -12047,7 +12048,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false

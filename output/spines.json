@@ -6652,5 +6652,11 @@
     "name": "shiroko_spr_HD",
     "remark": "初始立绘",
     "type": "spr"
+  },
+  {
+    "id": 1563,
+    "name": "CH0307_home",
+    "remark": "",
+    "type": "home"
   }
 ]
