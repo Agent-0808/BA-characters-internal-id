@@ -176,7 +176,10 @@
 63,766,类型 (home),CH0261_home_fix,光线修复,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
 63,828,类型 (home),CH0141_home_Halofix,24.09.25修正,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
 63,1027,后缀 (steam),CH0141_spr_Steam,Steam版初始立绘,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
-67,625,后缀 (spr-2),CH0174_spr-2,23.11.08之后,音葵,オトギ,Otogi,11,SRT特殊学园
+65,1564,类型 (home),CH0172_home,,吉野 妮可,吉野 ニコ,Yoshino Niko,11,SRT特殊学园
+66,1565,类型 (home),CH0173_home,,高仓 胡桃,高倉 クルミ,Takakura Kurumi,11,SRT特殊学园
+67,625,后缀 (spr-2),CH0174_spr-2,23.11.08之后,天神山 音葵,天神山 オトギ,Tenjinyama Otogi,11,SRT特殊学园
+67,1566,类型 (home),CH0174_home,,天神山 音葵,天神山 オトギ,Tenjinyama Otogi,11,SRT特殊学园
 68,437,类型 (home),CH9999_home,,初音未来,初音 ミク,Hatsune Miku,26,联动作品
 70,412,类型 (home),CH0058_home,,阿慈谷 日富美,阿慈谷 ヒフミ,Ajitani Hifumi,2,圣三一综合学园
 70,464,类型 (home),Hihumi_home,,阿慈谷 日富美,阿慈谷 ヒフミ,Ajitani Hifumi,2,圣三一综合学园

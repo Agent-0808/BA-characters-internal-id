@@ -749,7 +749,8 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E6%88%88%E5%B0%94%E5%AD%94%E8%BE%BE&%E5%8D%B0%E8%8A%B1%E9%87%89%E6%B3%95/avatar.png",
         "spines": [
-          300
+          300,
+          1571
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -2877,7 +2878,8 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%83%E5%BA%A6%20%E9%9B%AA%E4%B9%83/avatar.png",
         "spines": [
-          169
+          169,
+          1575
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -2890,12 +2892,12 @@
   },
   {
     "id": 65,
-    "name": "妮可",
+    "name": "吉野 妮可",
     "name_cn": "妮可",
-    "name_jp": "ニコ",
-    "name_en": "Niko",
-    "name_kr": "니코",
-    "name_tw": "仁子",
+    "name_jp": "吉野 ニコ",
+    "name_en": "Yoshino Niko",
+    "name_kr": "요시노 니코",
+    "name_tw": "吉野 仁子",
     "school_id": 11,
     "pages": [
       {
@@ -2904,27 +2906,28 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E5%A6%AE%E5%8F%AF/avatar.png",
+        "avatar": "//static.kivo.wiki/images/students/%E5%90%89%E9%87%8E%20%E5%A6%AE%E5%8F%AF/original/Student_Portrait_CH0172_Collection.png",
         "spines": [
           171,
-          533
+          533,
+          1564
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
-        "limited": false
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
   {
     "id": 66,
-    "name": "胡桃",
+    "name": "高仓 胡桃",
     "name_cn": "胡桃",
-    "name_jp": "クルミ",
-    "name_en": "Kurumi",
-    "name_kr": "쿠루미",
+    "name_jp": "高倉 クルミ",
+    "name_en": "Takakura Kurumi",
+    "name_kr": "타카쿠라 쿠루미",
     "name_tw": "胡桃",
     "school_id": 11,
     "pages": [
@@ -2934,27 +2937,28 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E8%83%A1%E6%A1%83/avatar.png",
+        "avatar": "//static.kivo.wiki/images/students/%E9%AB%98%E4%BB%93%20%E8%83%A1%E6%A1%83/original/Student_Portrait_CH0173_Collection.png",
         "spines": [
           173,
-          534
+          534,
+          1565
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
-        "limited": false
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
   {
     "id": 67,
-    "name": "音葵",
+    "name": "天神山 音葵",
     "name_cn": "御伽",
-    "name_jp": "オトギ",
-    "name_en": "Otogi",
-    "name_kr": "오토기",
+    "name_jp": "天神山 オトギ",
+    "name_en": "Tenjinyama Otogi",
+    "name_kr": "텐진야마 오토기",
     "name_tw": "御伽",
     "school_id": 11,
     "pages": [
@@ -2964,18 +2968,19 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E9%9F%B3%E8%91%B5/avatar.png",
+        "avatar": "//static.kivo.wiki/images/students/%E5%A4%A9%E7%A5%9E%E5%B1%B1%20%E9%9F%B3%E8%91%B5/original/Student_Portrait_CH0174_Collection.png",
         "spines": [
           175,
           625,
-          535
+          535,
+          1566
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
-        "limited": false
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -5264,7 +5269,9 @@
           71,
           776,
           798,
-          777
+          777,
+          793,
+          794
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -6383,7 +6390,8 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%8D%E7%9F%A5%E7%81%AB%20%E8%8A%B1%E8%80%B6/avatar.png",
         "spines": [
           293,
-          950
+          950,
+          1574
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -6699,7 +6707,8 @@
           129,
           858,
           957,
-          947
+          947,
+          1573
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -12366,6 +12375,93 @@
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 592,
+    "name": "联邦学生会长？",
+    "name_cn": "",
+    "name_jp": "連邦生徒会長",
+    "name_en": "",
+    "name_kr": "총학생회장",
+    "name_tw": "",
+    "school_id": 12,
+    "pages": [
+      {
+        "page_id": 592,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E8%81%94%E9%82%A6%E5%AD%A6%E7%94%9F%E4%BC%9A%E9%95%BF/original/fake.png",
+        "spines": [
+          1572
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 593,
+    "name": "奥威尔",
+    "name_cn": "",
+    "name_jp": "オーウェル",
+    "name_en": "Orwell",
+    "name_kr": "오웰",
+    "name_tw": "",
+    "school_id": 20,
+    "pages": [
+      {
+        "page_id": 593,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%A8%81%E5%B0%94/original/%E5%A5%A5%E5%A8%81%E5%B0%94.png",
+        "spines": [
+          1570
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 594,
+    "name": "田径部员A",
+    "name_cn": "",
+    "name_jp": "陸上部員A",
+    "name_en": "",
+    "name_kr": "육상부원 A",
+    "name_tw": "",
+    "school_id": 3,
+    "pages": [
+      {
+        "page_id": 594,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E7%94%B0%E5%BE%84%E9%83%A8%E5%91%98A/original/athlete.png",
+        "spines": [
+          1576
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
         "rarity": 0,
         "limited": false
       }

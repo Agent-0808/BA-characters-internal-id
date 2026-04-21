@@ -3366,6 +3366,18 @@
     "type": "home"
   },
   {
+    "id": 793,
+    "name": "NP0231_spr",
+    "remark": "头套（破碎光环）差分",
+    "type": "spr"
+  },
+  {
+    "id": 794,
+    "name": "NP0232_spr",
+    "remark": "头套（修复光环）差分",
+    "type": "spr"
+  },
+  {
     "id": 795,
     "name": "CH0267_home_fix",
     "remark": "光线修复",
@@ -6658,5 +6670,65 @@
     "name": "CH0307_home",
     "remark": "",
     "type": "home"
+  },
+  {
+    "id": 1564,
+    "name": "CH0172_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1565,
+    "name": "CH0173_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1566,
+    "name": "CH0174_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1570,
+    "name": "NP0265_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1571,
+    "name": "NP0289_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1572,
+    "name": "NP0290_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1573,
+    "name": "NP0291_spr",
+    "remark": "私服立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1574,
+    "name": "NP0292_spr",
+    "remark": "囚服立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1575,
+    "name": "NP0293_spr",
+    "remark": "无武器",
+    "type": "spr"
+  },
+  {
+    "id": 1576,
+    "name": "NP0294_spr",
+    "remark": "初始立绘",
+    "type": "spr"
   }
 ]
