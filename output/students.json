@@ -10841,11 +10841,11 @@
   },
   {
     "id": 363,
-    "name": "人力车学生A",
+    "name": "浅草 夏树",
     "name_cn": "",
-    "name_jp": "",
+    "name_jp": "浅草 ナツキ",
     "name_en": "",
-    "name_kr": "",
+    "name_kr": "아사쿠사 나츠키",
     "name_tw": "",
     "school_id": 9,
     "pages": [
@@ -12462,6 +12462,35 @@
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 595,
+    "name": "？？？",
+    "name_cn": "",
+    "name_jp": "くねくね",
+    "name_en": "",
+    "name_kr": "",
+    "name_tw": "",
+    "school_id": 0,
+    "pages": [
+      {
+        "page_id": 595,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%EF%BC%9F%EF%BC%9F%EF%BC%9F/original/%E3%81%8F%E3%81%AD%E3%81%8F%E3%81%AD.png",
+        "spines": [
+          1577
+        ],
+        "is_install": true,
+        "is_install_cn": true,
+        "is_install_global": true,
+        "is_npc": false,
         "rarity": 0,
         "limited": false
       }

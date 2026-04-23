@@ -6730,5 +6730,11 @@
     "name": "NP0294_spr",
     "remark": "初始立绘",
     "type": "spr"
+  },
+  {
+    "id": 1577,
+    "name": "NP0295_spr",
+    "remark": "初始立绘",
+    "type": "spr"
   }
 ]
