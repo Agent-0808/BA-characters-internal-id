@@ -192,12 +192,6 @@
     "type": "spr"
   },
   {
-    "id": 57,
-    "name": "Arius_GL1_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 58,
     "name": "royalguard_redwinter1_spr",
     "remark": "初始立绘",
@@ -234,20 +228,8 @@
     "type": "spr"
   },
   {
-    "id": 66,
-    "name": "Automata_Decagrammaton1_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 67,
     "name": "peroro_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 68,
-    "name": "Automata_Kurokamegumi1_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -255,12 +237,6 @@
     "id": 69,
     "name": "NP0126_spr",
     "remark": "箱子",
-    "type": "spr"
-  },
-  {
-    "id": 70,
-    "name": "Automata_PMC1_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -312,20 +288,8 @@
     "type": "spr"
   },
   {
-    "id": 83,
-    "name": "BunnyGirl_SR_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 84,
     "name": "NP0115_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 85,
-    "name": "CH0058_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -360,24 +324,6 @@
     "type": "spr"
   },
   {
-    "id": 91,
-    "name": "CH0060_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 93,
-    "name": "CH0064_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 94,
-    "name": "CH0066_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 95,
     "name": "NP0109_spr",
     "remark": "领航服",
@@ -408,27 +354,9 @@
     "type": "spr"
   },
   {
-    "id": 102,
-    "name": "CH0086_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 103,
-    "name": "CH0087_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 104,
     "name": "NP0105_spr",
     "remark": "战损",
-    "type": "spr"
-  },
-  {
-    "id": 105,
-    "name": "CH0088_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -438,39 +366,9 @@
     "type": "spr"
   },
   {
-    "id": 108,
-    "name": "CH0092_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 111,
     "name": "NP0103_spr",
     "remark": "头盔",
-    "type": "spr"
-  },
-  {
-    "id": 112,
-    "name": "CH0099_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 113,
-    "name": "CH0100_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 114,
-    "name": "CH0101_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 115,
-    "name": "CH0107_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -504,12 +402,6 @@
     "type": "spr"
   },
   {
-    "id": 125,
-    "name": "CH0125_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 126,
     "name": "NP0099_spr",
     "remark": "领航服",
@@ -534,12 +426,6 @@
     "type": "spr"
   },
   {
-    "id": 131,
-    "name": "CH0137_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 132,
     "name": "NP0095_spr",
     "remark": "初始立绘",
@@ -558,12 +444,6 @@
     "type": "spr"
   },
   {
-    "id": 138,
-    "name": "CH0144_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 139,
     "name": "NP0092_spr",
     "remark": "初始立绘",
@@ -576,33 +456,9 @@
     "type": "spr"
   },
   {
-    "id": 141,
-    "name": "CH0145_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 142,
-    "name": "CH0152_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 143,
     "name": "NP0090_spr",
     "remark": "圣徒会制服",
-    "type": "spr"
-  },
-  {
-    "id": 144,
-    "name": "CH0155_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 145,
-    "name": "CH0156_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -636,44 +492,14 @@
     "type": "spr"
   },
   {
-    "id": 152,
-    "name": "CH0160_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 153,
     "name": "NP0085_spr",
     "remark": "AMAS战斗机器人",
     "type": "spr"
   },
   {
-    "id": 154,
-    "name": "CH0162_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 155,
     "name": "NP0084_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 156,
-    "name": "CH0163_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 158,
-    "name": "CH0164_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 159,
-    "name": "CH0165_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -696,21 +522,9 @@
     "type": "spr"
   },
   {
-    "id": 165,
-    "name": "CH0169_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 166,
     "name": "NP0079_spr",
     "remark": "阿比舒机甲",
-    "type": "spr"
-  },
-  {
-    "id": 167,
-    "name": "CH0170_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -720,21 +534,9 @@
     "type": "spr"
   },
   {
-    "id": 169,
-    "name": "CH0171_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 170,
     "name": "NP0077_spr",
     "remark": "紧身衣",
-    "type": "spr"
-  },
-  {
-    "id": 171,
-    "name": "CH0172_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -744,21 +546,9 @@
     "type": "spr"
   },
   {
-    "id": 173,
-    "name": "CH0173_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 174,
     "name": "NP0075_spr",
     "remark": "护士服（运动会）",
-    "type": "spr"
-  },
-  {
-    "id": 175,
-    "name": "CH0174_spr",
-    "remark": "23.11.08之前",
     "type": "spr"
   },
   {
@@ -768,45 +558,9 @@
     "type": "spr"
   },
   {
-    "id": 177,
-    "name": "CH0175_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 178,
     "name": "NP0073_spr",
     "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 179,
-    "name": "CH0176_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 180,
-    "name": "CH0177_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 181,
-    "name": "CH0178_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 182,
-    "name": "CH0179_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 183,
-    "name": "CH0180_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -1188,12 +942,6 @@
     "type": "spr"
   },
   {
-    "id": 255,
-    "name": "erika_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 256,
     "name": "NP0041_spr",
     "remark": "战损",
@@ -1202,12 +950,6 @@
   {
     "id": 257,
     "name": "fuuka_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 258,
-    "name": "NP0040_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -1395,12 +1137,6 @@
     "id": 292,
     "name": "hoshino_robber_spr",
     "remark": "头套",
-    "type": "spr"
-  },
-  {
-    "id": 293,
-    "name": "NP0015_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -1604,12 +1340,6 @@
   {
     "id": 343,
     "name": "moe_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 345,
-    "name": "miyako_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -2526,26 +2256,8 @@
     "type": "home"
   },
   {
-    "id": 514,
-    "name": "NP0142_spr",
-    "remark": "警卫服",
-    "type": "spr"
-  },
-  {
-    "id": 515,
-    "name": "NP0037_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 518,
     "name": "arona_workpage_daytime",
-    "remark": "",
-    "type": "home"
-  },
-  {
-    "id": 519,
-    "name": "arona_workpage_nighttime",
     "remark": "",
     "type": "home"
   },
@@ -2572,24 +2284,6 @@
     "name": "Hoshino_home",
     "remark": "",
     "type": "home"
-  },
-  {
-    "id": 533,
-    "name": "NP0139_spr",
-    "remark": "无武器",
-    "type": "spr"
-  },
-  {
-    "id": 534,
-    "name": "NP0140_spr",
-    "remark": "无武器",
-    "type": "spr"
-  },
-  {
-    "id": 535,
-    "name": "NP0141_spr",
-    "remark": "无武器",
-    "type": "spr"
   },
   {
     "id": 536,
@@ -2720,6 +2414,12 @@
   {
     "id": 567,
     "name": "CH0071_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 568,
+    "name": "CH0089_home",
     "remark": "",
     "type": "home"
   },
@@ -2991,12 +2691,6 @@
     "id": 661,
     "name": "CH0254_spr",
     "remark": "礼服立绘",
-    "type": "spr"
-  },
-  {
-    "id": 663,
-    "name": "CH0089_spr_update",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -6690,6 +6384,12 @@
     "type": "home"
   },
   {
+    "id": 1569,
+    "name": "Arona_workpage_nighttime_02",
+    "remark": "",
+    "type": "home"
+  },
+  {
     "id": 1570,
     "name": "NP0265_spr",
     "remark": "初始立绘",
@@ -6734,6 +6434,306 @@
   {
     "id": 1577,
     "name": "NP0295_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1578,
+    "name": "Arius_GL1_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1579,
+    "name": "Automata_Decagrammaton1_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1580,
+    "name": "Automata_Kurokamegumi1_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1581,
+    "name": "Automata_PMC1_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1582,
+    "name": "BunnyGirl_SR_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1583,
+    "name": "CH0058_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1584,
+    "name": "CH0060_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1585,
+    "name": "CH0064_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1586,
+    "name": "CH0066_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1587,
+    "name": "CH0086_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1588,
+    "name": "CH0087_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1589,
+    "name": "CH0088_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1590,
+    "name": "CH0092_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1591,
+    "name": "CH0099_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1592,
+    "name": "CH0100_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1593,
+    "name": "CH0101_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1594,
+    "name": "CH0107_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1595,
+    "name": "CH0125_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1596,
+    "name": "CH0137_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1597,
+    "name": "CH0144_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1598,
+    "name": "CH0145_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1599,
+    "name": "CH0152_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1600,
+    "name": "CH0155_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1601,
+    "name": "CH0156_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1602,
+    "name": "CH0160_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1603,
+    "name": "CH0162_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1604,
+    "name": "CH0163_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1605,
+    "name": "CH0165_spr_HD",
+    "remark": "24.11.06更新立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1606,
+    "name": "CH0169_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1607,
+    "name": "CH0164_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1608,
+    "name": "CH0170_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1609,
+    "name": "CH0171_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1610,
+    "name": "CH0172_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1611,
+    "name": "CH0173_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1612,
+    "name": "CH0174_spr_HD",
+    "remark": "23.11.08之后",
+    "type": "spr"
+  },
+  {
+    "id": 1613,
+    "name": "CH0175_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1614,
+    "name": "CH0176_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1615,
+    "name": "CH0177_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1616,
+    "name": "CH0178_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1617,
+    "name": "CH0179_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1618,
+    "name": "CH0180_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1619,
+    "name": "NP0015_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1620,
+    "name": "NP0037_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1621,
+    "name": "NP0040_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1622,
+    "name": "NP0139_spr_HD",
+    "remark": "无武器",
+    "type": "spr"
+  },
+  {
+    "id": 1623,
+    "name": "NP0140_spr_HD",
+    "remark": "无武器",
+    "type": "spr"
+  },
+  {
+    "id": 1624,
+    "name": "NP0141_spr_HD",
+    "remark": "无武器",
+    "type": "spr"
+  },
+  {
+    "id": 1625,
+    "name": "NP0142_spr_HD",
+    "remark": "警卫服",
+    "type": "spr"
+  },
+  {
+    "id": 1626,
+    "name": "erika_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1627,
+    "name": "miyako_spr_HD",
     "remark": "初始立绘",
     "type": "spr"
   }

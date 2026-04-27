@@ -285,6 +285,7 @@
 115,594,后缀 (cbt),makoto_cbt,CBT旧绘废案,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 115,653,类型 (home),CH0079_home,真琴,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 115,959,类型 (home),CH0079_home_fix,光线修复,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
+116,568,类型 (home),CH0089_home,,鬼怒川 霞,鬼怒川 カスミ,Kinugawa Kasumi,3,格赫娜学园
 117,422,类型 (home),CH0163_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,440,类型 (home),Chinatsu_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,737,后缀 (cn),chinatsu_spr_CN,国服,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
@@ -383,7 +384,7 @@
 171,946,类型 (home),NP0032_npc_CN,国服,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
 171,951,后缀 (cn),NP0032_spr_CN,国服,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
 171,1434,类型 (home),NP0032_npc_HD,,扇喜 葵,扇喜 アオイ,Oki Aoi,12,联邦学生会
-173,519,类型 (home),arona_workpage_nighttime,,普拉娜,プラナ,Plana (Planetarium),6,夏莱
+173,1569,类型 (home),Arona_workpage_nighttime_02,,普拉娜,プラナ,Plana (Planetarium),6,夏莱
 181,459,类型 (home),Suzumi_home,,守月 铃美,守月 スズミ,Morizuki Suzumi,2,圣三一综合学园
 181,722,类型 (home),suzumi_home_CN,国服,守月 铃美,守月 スズミ,Morizuki Suzumi,2,圣三一综合学园
 181,1017,后缀 (steam),suzumi_spr_steam,Steam初始立绘,守月 铃美,守月 スズミ,Morizuki Suzumi,2,圣三一综合学园
