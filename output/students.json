@@ -1300,7 +1300,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -3088,6 +3088,7 @@
           470,
           291,
           1554,
+          303,
           725,
           726,
           732
@@ -6065,16 +6066,17 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E6%97%97%E8%A7%81%20%E8%89%BE%E4%B8%BD%E5%8D%A1/avatar.png",
+        "avatar": "//static.kivo.wiki/images/students/%E6%97%97%E8%A7%81%20%E7%BB%98%E9%87%8C%E9%A6%99/original/Student_Portrait_erika_Collection.png",
         "spines": [
           1626,
-          589
+          589,
+          1628
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false
       }
     ]
@@ -7513,7 +7515,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -10844,7 +10846,7 @@
     "name": "浅草 夏树",
     "name_cn": "",
     "name_jp": "浅草 ナツキ",
-    "name_en": "",
+    "name_en": "Asakusa Natsuki",
     "name_kr": "아사쿠사 나츠키",
     "name_tw": "",
     "school_id": 9,

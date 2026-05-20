@@ -1170,6 +1170,12 @@
     "type": "spr"
   },
   {
+    "id": 303,
+    "name": "NP0009_spr",
+    "remark": "睡衣（黑眼圈）",
+    "type": "spr"
+  },
+  {
     "id": 305,
     "name": "NP0008_spr",
     "remark": "学校泳装",
@@ -6736,5 +6742,11 @@
     "name": "miyako_spr_HD",
     "remark": "初始立绘",
     "type": "spr"
+  },
+  {
+    "id": 1628,
+    "name": "erika_home",
+    "remark": "",
+    "type": "home"
   }
 ]
