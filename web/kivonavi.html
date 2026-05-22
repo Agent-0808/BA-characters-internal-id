@@ -10,7 +10,7 @@
         <div class="header">
             <h1>📚 KivoWiki 角色数据导航</h1>
             <p>KivoWiki Characters Navigation</p>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">📊 文件ID</a>
                 <a href="kivonavi.html" class="active">🎴 KivoWiki导航</a>
             </div>
@@ -72,6 +72,11 @@
         </div>
     </div>
 
+    <script>
+      document.querySelectorAll('#navLinks a').forEach(a => {
+        a.href += window.location.search;
+      });
+    </script>
     <script type="module" src="/src/students.ts"></script>
 </body>
 </html>
