@@ -7,6 +7,7 @@ let allStudents: Student[] = [];
 let filteredStudents: Student[] = [];
 let schoolsMap: Map<number, School> = new Map();
 let expandState: ExpandState = {};
+const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_link');
 
 // DOM 元素引用
 const elements = {
@@ -67,6 +68,7 @@ function generatePageHTML(page: KivoPage): string {
   const avatar = getPageAvatar(page);
   const pageName = getPageName(page);
   const kivoUrl = `https://kivo.wiki/data/character/${page.page_id}?mode=appreciation`;
+  const spineUrl = (spineId: number) => `https://api.kivo.wiki/api/v1/data/spines/${spineId}`;
   const rarityStars = getRarityStars(page.rarity);
 
   const installJpClass = page.is_install ? '' : 'not-installed';
@@ -77,7 +79,9 @@ function generatePageHTML(page: KivoPage): string {
   const installGlobalIcon = page.is_install_global ? '🌐' : '❌';
 
   const spinesHTML = page.spines.map(spineId =>
-    `<span class="spine-id">${spineId}</span>`
+    spineLinkEnabled
+      ? `<a href="${spineUrl(spineId)}" target="_blank" rel="noopener" class="spine-id">${spineId}</a>`
+      : `<span class="spine-id">${spineId}</span>`
   ).join('');
 
   return `

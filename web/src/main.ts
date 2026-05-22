@@ -9,6 +9,7 @@ let filteredData: StudentData[] = [];
 let currentSort: SortState = { column: null, direction: 'asc' };
 let columnVisibility: ColumnVisibility = {} as ColumnVisibility;
 let schoolsMap: Map<number, School> = new Map();
+const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_link');
 
 // DOM 元素引用
 const elements = {
@@ -61,6 +62,9 @@ function generateRowHTML(row: StudentData): string {
       return `<td data-col="${col.key}">${value}</td>`;
     } else if (col.key === 'page_id') {
       const url = `https://kivo.wiki/data/character/${value}?mode=appreciation`;
+      return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
+    } else if (col.key === 'spine_id' && spineLinkEnabled) {
+      const url = `https://api.kivo.wiki/api/v1/data/spines/${value}`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
     } else if (col.key === 'name') {
       return `<td data-col="${col.key}"><strong>${value}</strong></td>`;
