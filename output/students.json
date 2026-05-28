@@ -93,7 +93,8 @@
           832,
           1465,
           966,
-          741
+          741,
+          1629
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -1246,7 +1247,8 @@
         "skin_name_tw": "導覽員",
         "avatar": "//static.kivo.wiki/images/students/%E5%8B%87%E7%BE%8E%20%E6%9E%AB/%E5%AF%BC%E6%B8%B8/avatar.png",
         "spines": [
-          1501
+          1501,
+          1632
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -1845,7 +1847,7 @@
           887
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -2801,7 +2803,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": true
@@ -2910,7 +2912,8 @@
         "spines": [
           1610,
           1622,
-          1564
+          1564,
+          1570
         ],
         "is_install": true,
         "is_install_cn": false,
@@ -3341,7 +3344,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 1,
         "limited": true
@@ -3707,7 +3710,8 @@
         "spines": [
           1500,
           968,
-          694
+          694,
+          1631
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -4268,13 +4272,14 @@
         "skin_name_tw": "禮服",
         "avatar": "//static.kivo.wiki/images/students/%E6%B5%85%E9%BB%84%20%E7%9D%A6%E6%9C%88/%E7%A4%BC%E6%9C%8D/avatar.png",
         "spines": [
-          1492
+          1492,
+          1634
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false
       },
       {
@@ -4362,7 +4367,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": true
@@ -4476,7 +4481,7 @@
       {
         "page_id": 512,
         "skin_name": "制服",
-        "skin_name_cn": "",
+        "skin_name_cn": "制服",
         "skin_name_jp": "制服",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%80%E4%B9%8B%E6%BF%91%20%E6%98%8E%E6%97%A5%E5%A5%88/%E6%A0%A1%E6%9C%8D/Student_Portrait_CH0281_Collection.png",
@@ -4487,7 +4492,7 @@
           161
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -4917,13 +4922,14 @@
         "skin_name_tw": "禮服",
         "avatar": "//static.kivo.wiki/images/students/%E4%BC%8A%E8%8D%89%20%E9%81%A5%E9%A6%99/%E7%A4%BC%E6%9C%8D/avatar.png",
         "spines": [
-          1493
+          1493,
+          1635
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false
       },
       {
@@ -5193,7 +5199,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": true
@@ -5384,7 +5390,7 @@
       {
         "page_id": 513,
         "skin_name": "制服",
-        "skin_name_cn": "",
+        "skin_name_cn": "制服",
         "skin_name_jp": "制服",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%A7%92%E6%A5%AF%20%E8%8A%B1%E5%87%9B/%E6%A0%A1%E6%9C%8D/Student_Portrait_CH0282_Collection.png",
@@ -5393,7 +5399,7 @@
           891
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 1,
@@ -6360,7 +6366,7 @@
         "spines": [
           1332,
           126,
-          856,
+          1636,
           949,
           945
         ],
@@ -6707,7 +6713,7 @@
         "spines": [
           1411,
           129,
-          858,
+          1637,
           957,
           947,
           1573
@@ -7278,7 +7284,8 @@
         "spines": [
           1276,
           854,
-          838
+          838,
+          1630
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -7561,7 +7568,8 @@
         "spines": [
           1262,
           984,
-          983
+          983,
+          1633
         ],
         "is_install": true,
         "is_install_cn": false,
@@ -11454,7 +11462,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": true
