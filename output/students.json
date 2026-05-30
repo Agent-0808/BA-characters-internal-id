@@ -18,8 +18,8 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%9C%A3%E5%9B%AD%E6%9C%AA%E8%8A%B1/avatar.png",
         "spines": [
           354,
-          301,
-          256,
+          1674,
+          1694,
           360,
           120,
           118,
@@ -142,9 +142,9 @@
         "spines": [
           1236,
           370,
-          318,
-          316,
-          285,
+          1665,
+          1666,
+          1680,
           1022
         ],
         "is_install": true,
@@ -475,7 +475,7 @@
           392,
           18,
           8,
-          295,
+          1677,
           391,
           609,
           610
@@ -750,7 +750,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E6%88%88%E5%B0%94%E5%AD%94%E8%BE%BE&%E5%8D%B0%E8%8A%B1%E9%87%89%E6%B3%95/avatar.png",
         "spines": [
-          300,
+          1675,
           1571
         ],
         "is_install": false,
@@ -1425,7 +1425,7 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%A7%A4%20%E4%BA%9A%E6%B4%A5%E5%AD%90/avatar.png",
         "spines": [
           64,
-          282,
+          1681,
           170,
           1068,
           387
@@ -1479,7 +1479,7 @@
           1412,
           489,
           111,
-          298
+          1676
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -1634,7 +1634,7 @@
           43,
           379,
           221,
-          286,
+          1679,
           89
         ],
         "is_install": true,
@@ -2381,9 +2381,10 @@
         "skin_name_tw": "體育服",
         "avatar": "//static.kivo.wiki/images/students/%E6%97%A9%E6%BF%91%20%E4%BC%98%E9%A6%99/avatar.png",
         "spines": [
-          439,
-          190,
-          436
+          1642,
+          436,
+          802,
+          439
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -2452,7 +2453,7 @@
         "skin_name_tw": "應援團",
         "avatar": "//static.kivo.wiki/images/students/%E7%99%BD%E7%9F%B3%20%E6%AD%8C%E5%8E%9F/%E5%BA%94%E6%8F%B4%E5%9B%A2/avatar.png",
         "spines": [
-          187,
+          1641,
           435
         ],
         "is_install": true,
@@ -2502,8 +2503,8 @@
         "skin_name_tw": "體育服",
         "avatar": "//static.kivo.wiki/images/students/%E4%BC%8A%E8%90%BD%20%E7%8E%9B%E4%B8%BD/%E4%BD%93%E8%82%B2%E6%9C%8D/avatar.png",
         "spines": [
-          445,
-          193
+          1643,
+          445
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -2627,7 +2628,7 @@
         "skin_name_tw": "泳裝",
         "avatar": "//static.kivo.wiki/images/students/%E7%A0%82%E7%8B%BC%20%E7%99%BD%E5%AD%90/%E6%B3%B3%E8%A3%85/avatar.png",
         "spines": [
-          195,
+          1645,
           212,
           543
         ],
@@ -2696,7 +2697,7 @@
         "skin_name_tw": "體育服",
         "avatar": "//static.kivo.wiki/images/students/%E7%BE%BD%E5%B7%9D%20%E8%8E%B2%E8%A7%81/%E4%BD%93%E8%82%B2%E6%9C%8D/avatar.png",
         "spines": [
-          198,
+          1646,
           447
         ],
         "is_install": true,
@@ -3005,7 +3006,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%88%9D%E9%9F%B3%20%E6%9C%AA%E6%9D%A5/avatar.png",
         "spines": [
-          224,
+          1656,
           437
         ],
         "is_install": true,
@@ -3038,8 +3039,8 @@
           284,
           464,
           283,
-          311,
-          309
+          1669,
+          1670
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -3091,7 +3092,7 @@
           470,
           291,
           1554,
-          303,
+          1673,
           725,
           726,
           732
@@ -3281,7 +3282,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E9%A3%9E%E9%B8%9F%E9%A9%AC%20%E6%97%B6/avatar.png",
         "spines": [
-          194,
+          1644,
           446,
           168,
           166,
@@ -3303,7 +3304,7 @@
         "skin_name_tw": "兔女郎",
         "avatar": "//static.kivo.wiki/images/students/%E9%A3%9E%E9%B8%9F%E9%A9%AC%20%E6%97%B6/%E5%85%94%E5%A5%B3%E9%83%8E/avatar.png",
         "spines": [
-          220,
+          1654,
           434
         ],
         "is_install": true,
@@ -3439,7 +3440,7 @@
         "skin_name_tw": "女僕",
         "avatar": "//static.kivo.wiki/images/students/%E8%8A%B1%E5%86%88%20%E6%9F%9A%E5%AD%90/%E5%A5%B3%E4%BB%86/avatar.png",
         "spines": [
-          218,
+          1653,
           368,
           69
         ],
@@ -3606,7 +3607,7 @@
         "skin_name_tw": "聖誕節",
         "avatar": "//static.kivo.wiki/images/students/%E9%B9%AB%E8%A7%81%20%E8%8A%B9%E5%A8%9C/%E5%9C%A3%E8%AF%9E%E8%8A%82/avatar.png",
         "spines": [
-          202,
+          1649,
           451
         ],
         "is_install": true,
@@ -3637,8 +3638,8 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%B5%A6%E5%92%8C%20%E8%8A%B1%E5%AD%90/avatar.png",
         "spines": [
           265,
-          315,
-          313,
+          1667,
+          1668,
           90,
           852,
           453
@@ -3860,7 +3861,7 @@
         "skin_name_tw": "聖誕節",
         "avatar": "//static.kivo.wiki/images/students/%E6%9C%9D%E9%A2%9C%20%E8%8A%B1%E6%B1%9F/%E5%9C%A3%E8%AF%9E%E8%8A%82/avatar.png",
         "spines": [
-          203,
+          1650,
           452
         ],
         "is_install": true,
@@ -3941,7 +3942,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E5%B4%8E%20%E5%B0%8F%E9%9B%AA/avatar.png",
         "spines": [
-          207,
+          1651,
           454
         ],
         "is_install": true,
@@ -4093,7 +4094,7 @@
         "skin_name_tw": "正月",
         "avatar": "//static.kivo.wiki/images/students/%E8%B5%A4%E5%8F%B8%20%E7%BA%AF%E5%AD%90/%E6%AD%A3%E6%9C%88/avatar.png",
         "spines": [
-          200,
+          1648,
           449
         ],
         "is_install": true,
@@ -4339,7 +4340,7 @@
         "skin_name_tw": "女僕",
         "avatar": "//static.kivo.wiki/images/students/%E5%A4%A9%E7%AB%A5%20%E7%88%B1%E4%B8%BD%E4%B8%9D/%E5%A5%B3%E4%BB%86/avatar.png",
         "spines": [
-          209,
+          1652,
           369,
           903
         ],
@@ -5764,7 +5765,7 @@
         "skin_name_tw": "正月",
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E9%A6%86%20%E6%99%B4%E5%A5%88/%E6%AD%A3%E6%9C%88/avatar.png",
         "spines": [
-          199,
+          1647,
           448
         ],
         "is_install": true,
@@ -5959,8 +5960,8 @@
         "spines": [
           334,
           491,
-          307,
-          305
+          1671,
+          1672
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -6170,7 +6171,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E6%AD%A3%E4%B9%89%E5%A7%94%E6%9D%82%E9%B1%BC%E9%85%B1/avatar.png",
         "spines": [
-          312,
+          1663,
           219,
           936,
           937,
@@ -6240,7 +6241,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%B7%A8%E5%8C%A0/avatar.png",
         "spines": [
-          340,
+          1664,
           86
         ],
         "is_install": false,
@@ -6428,7 +6429,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%B4%9D%E9%98%BF%E6%9C%B5%E8%8E%89%E5%88%87/avatar.png",
         "spines": [
-          271
+          1689
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -6506,7 +6507,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%87%AF%E6%92%92PMC%20%E7%90%86%E4%BA%8B/%E5%BA%A6%E5%81%87/avatar.png",
         "spines": [
-          264
+          1691
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -6565,7 +6566,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%91%9B%E5%8F%B6/avatar.png",
         "spines": [
-          260
+          1693
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -7629,7 +7630,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%8C%B6%E4%BC%9A%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
-          281
+          1682
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -7658,7 +7659,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E6%95%91%E6%80%A5%E5%8C%BB%E5%AD%A6%E9%83%A8%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
-          280
+          1683
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -7687,7 +7688,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%9C%A3%E4%B8%89%E4%B8%80%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
-          278
+          1684
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -7716,7 +7717,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E4%BF%AE%E5%A5%B3%E4%BC%9A%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
-          276
+          1685
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -7745,7 +7746,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E6%A0%BC%E8%B5%AB%E5%A8%9C%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
-          274
+          1686
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -7774,7 +7775,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%87%E9%AD%94%E6%AE%BF%EF%BC%88%EF%BC%9F%EF%BC%89%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F1/avatar.png",
         "spines": [
-          273
+          1687
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -7803,7 +7804,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%8C%B6%E4%BC%9A%E6%99%AE%E9%80%9A%E5%AD%A6%E7%94%9F2/avatar.png",
         "spines": [
-          272
+          1688
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8360,7 +8361,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%8D%83%E7%A6%A7%20%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
-          261
+          1692
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8389,7 +8390,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E7%AC%9B%E5%8D%A1%E5%B0%94/avatar.png",
         "spines": [
-          269,
+          1690,
           1625
         ],
         "is_install": false,
@@ -8506,7 +8507,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E6%B8%85%E6%BE%84%20%E6%99%B6/avatar.png",
         "spines": [
-          222
+          1655
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8606,7 +8607,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%9F%8E%E5%B8%82%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
-          228
+          1695
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8635,7 +8636,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E7%9C%BC%E7%BD%A9%E7%8C%AB%E7%8C%AB/avatar.png",
         "spines": [
-          235
+          1657
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8664,7 +8665,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%92%8C%E6%9C%8D%E7%8C%AB%E7%8C%AB/avatar.png",
         "spines": [
-          237
+          1658
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8693,7 +8694,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E7%BB%B7%E5%B8%A6%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
-          239
+          1659
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8722,7 +8723,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%B4%9D%E9%9B%B7%E5%B8%BD%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
-          240
+          1660
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8751,7 +8752,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E8%89%B2%E5%92%8C%E6%9C%8D%E7%8B%97%E7%8B%97/avatar.png",
         "spines": [
-          242
+          1661
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8780,7 +8781,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%B8%82%E6%B0%91%E6%9C%BA%E5%99%A8%E4%BA%BA/avatar.png",
         "spines": [
-          243
+          1696
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8809,7 +8810,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%B5%84%E6%9C%AC%E6%9C%BA%E5%99%A8%E4%BA%BA/avatar.png",
         "spines": [
-          245
+          1697
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -8838,7 +8839,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E5%B1%B1%E6%B5%B7%E7%BB%8F%E5%BA%97%E5%91%98/avatar.png",
         "spines": [
-          248
+          1662
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -12501,6 +12502,33 @@
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 596,
+    "name": "千惠留",
+    "name_cn": "",
+    "name_jp": "チエル",
+    "name_en": "",
+    "name_kr": "치에루",
+    "name_tw": "",
+    "school_id": 2,
+    "pages": [
+      {
+        "page_id": 596,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%8D%83%E6%83%A0%E7%95%99/original/avatar.png",
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
         "rarity": 0,
         "limited": false
       }
