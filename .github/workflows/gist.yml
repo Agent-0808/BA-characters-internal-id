@@ -1,0 +1,117 @@
+name: 发布数据到 Gist
+
+# 触发机制配置
+on:
+  # 允许手动触发
+  workflow_dispatch:
+
+# 权限配置
+permissions:
+  contents: read
+
+jobs:
+  publish-to-gist:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 检出 main 分支代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      # 从 data 分支获取最新数据
+      - name: 获取最新数据
+        run: |
+          mkdir -p output
+          
+          if git fetch origin data 2>/dev/null; then
+            git checkout origin/data -- output/ 2>/dev/null || true
+          fi
+          
+          if [ ! -f "output/students_data.csv" ]; then
+            echo "错误: 未找到 students_data.csv 文件"
+            exit 1
+          fi
+          
+          echo "成功获取数据文件"
+
+      # 读取版本号
+      - name: 读取版本号
+        working-directory: ./crawler
+        run: echo "CODE_VERSION=$(cat VERSION)" >> $GITHUB_ENV
+
+      # 获取最新 Release 信息
+      - name: 获取 Release 信息
+        id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_INFO=$(gh api repos/${{ github.repository }}/releases/latest 2>/dev/null || echo "{}")
+          
+          UPDATE_DATE=$(echo "$RELEASE_INFO" | jq -r '.published_at // empty' | cut -dT -f1)
+          RELEASE_URL=$(echo "$RELEASE_INFO" | jq -r '.html_url // empty')
+          RELEASE_NAME=$(echo "$RELEASE_INFO" | jq -r '.name // empty')
+          
+          if [ -z "$UPDATE_DATE" ] || [ "$UPDATE_DATE" = "null" ]; then
+            UPDATE_DATE=$(date +'%Y-%m-%d')
+          fi
+          if [ -z "$RELEASE_URL" ] || [ "$RELEASE_URL" = "null" ]; then
+            RELEASE_URL="https://github.com/${{ github.repository }}/releases"
+          fi
+          if [ -z "$RELEASE_NAME" ] || [ "$RELEASE_NAME" = "null" ]; then
+            RELEASE_NAME=$UPDATE_DATE
+          fi
+          
+          echo "update_date=${UPDATE_DATE}" >> $GITHUB_OUTPUT
+          echo "release_url=${RELEASE_URL}" >> $GITHUB_OUTPUT
+          echo "release_name=${RELEASE_NAME}" >> $GITHUB_OUTPUT
+          
+          echo "更新日期: ${UPDATE_DATE}"
+          echo "Release URL: ${RELEASE_URL}"
+
+      # 读取 CSV 文件内容
+      - name: 读取 CSV 文件
+        id: csv
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./output/students_data.csv
+
+      # 将 CSV 转换为 Markdown 表格
+      - name: 转换为 Markdown 表格
+        uses: petems/csv-to-md-table-action@master
+        id: csv-table-output
+        with:
+          csvinput: ${{ steps.csv.outputs.content }}
+
+      # 构建完整的 Markdown 文件
+      - name: 构建 Markdown 文件
+        run: |
+          cat > students_data.md << EOF
+          # BA-Characters-Internal-ID
+          
+          Blue Archive 角色数据表，包含角色的内部 ID，用于搜索 Spine 素材的文件名。
+          A table of Blue Archive characters' internal IDs, for reference in Spine asset names.
+
+          Repository: [${{ github.repository }}](https://github.com/${{ github.repository }})
+          Data Source: [基沃托斯古书馆](https://kivo.wiki)
+
+          
+          > **Update Date**: ${{ steps.release.outputs.update_date }}  
+          > **Code Version**: ${{ env.CODE_VERSION }}  
+          > **Release**: [${{ steps.release.outputs.release_name }}](${{ steps.release.outputs.release_url }})
+          
+          ---
+          
+          ${{ steps.csv-table-output.outputs.markdown-table }}
+          EOF
+          
+          echo "生成的 Markdown 文件预览:"
+          head -20 students_data.md
+
+      # 发布到 Gist
+      - name: 发布到 Gist
+        uses: exuanbo/actions-deploy-gist@v1
+        with:
+          token: ${{ secrets.GIST_TOKEN }}
+          gist_id: ${{ secrets.GIST_ID }}
+          gist_description: "Blue Archive 角色数据表 - 更新于 ${{ steps.release.outputs.update_date }}"
+          file_path: students_data.md
