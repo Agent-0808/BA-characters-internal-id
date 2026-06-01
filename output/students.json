@@ -227,7 +227,8 @@
           1627,
           189,
           598,
-          506
+          506,
+          1678
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -325,7 +326,8 @@
         "spines": [
           1597,
           416,
-          184
+          184,
+          1678
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -978,7 +980,7 @@
         "skin_name_cn": "",
         "skin_name_jp": "制服",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E5%AE%A4%E7%AC%A0%20%E8%8C%9C/%E6%A0%A1%E6%9C%8D/akane.png",
+        "avatar": "//static.kivo.wiki/images/students/%E5%AE%A4%E7%AC%A0%20%E8%8C%9C/%E5%88%B6%E6%9C%8D/Student_Portrait_CH0307_Collection.png",
         "spines": [
           1307,
           1563
@@ -1191,7 +1193,7 @@
       {
         "page_id": 506,
         "skin_name": "睡衣",
-        "skin_name_cn": "",
+        "skin_name_cn": "睡衣",
         "skin_name_jp": "パジャマ",
         "skin_name_tw": "睡衣",
         "avatar": "//static.kivo.wiki/images/students/%E7%94%9F%E7%9B%90%20%E8%AF%BA%E4%BA%9A/%E7%9D%A1%E8%A1%A3/Student_Portrait_CH0285_Collection.png",
@@ -1201,7 +1203,7 @@
           883
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -2330,7 +2332,7 @@
         "skin_name_tw": "應援團",
         "avatar": "//static.kivo.wiki/images/students/%E7%8C%AB%E5%A1%9A%20%E5%93%8D/avatar.png",
         "spines": [
-          186,
+          1640,
           433
         ],
         "is_install": true,
@@ -2396,7 +2398,7 @@
       {
         "page_id": 505,
         "skin_name": "睡衣",
-        "skin_name_cn": "",
+        "skin_name_cn": "睡衣",
         "skin_name_jp": "パジャマ",
         "skin_name_tw": "睡衣",
         "avatar": "//static.kivo.wiki/images/students/%E6%97%A9%E6%BF%91%20%E4%BC%98%E9%A6%99/%E7%9D%A1%E8%A1%A3/Student_Portrait_CH0284_Collection.png",
@@ -2406,7 +2408,7 @@
           882
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -2914,7 +2916,7 @@
           1610,
           1622,
           1564,
-          1570
+          1639
         ],
         "is_install": true,
         "is_install_cn": false,
@@ -4125,7 +4127,7 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%98%BF%E7%BD%97%E5%A8%9C/avatar.png",
         "spines": [
           1234,
-          518
+          1568
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -4271,7 +4273,7 @@
         "skin_name_cn": "礼服",
         "skin_name_jp": "ドレス",
         "skin_name_tw": "禮服",
-        "avatar": "//static.kivo.wiki/images/students/%E6%B5%85%E9%BB%84%20%E7%9D%A6%E6%9C%88/%E7%A4%BC%E6%9C%8D/avatar.png",
+        "avatar": "//static.kivo.wiki/images/students/%E6%B5%85%E9%BB%84%20%E7%9D%A6%E6%9C%88/%E7%A4%BC%E6%9C%8D/Student_Portrait_CH0246_Collection.png",
         "spines": [
           1492,
           1634
@@ -4921,7 +4923,7 @@
         "skin_name_cn": "礼服",
         "skin_name_jp": "ドレス",
         "skin_name_tw": "禮服",
-        "avatar": "//static.kivo.wiki/images/students/%E4%BC%8A%E8%8D%89%20%E9%81%A5%E9%A6%99/%E7%A4%BC%E6%9C%8D/avatar.png",
+        "avatar": "//static.kivo.wiki/images/students/%E4%BC%8A%E8%8D%89%20%E9%81%A5%E9%A6%99/%E7%A4%BC%E6%9C%8D/Student_Portrait_CH0247_Collection.png",
         "spines": [
           1493,
           1635

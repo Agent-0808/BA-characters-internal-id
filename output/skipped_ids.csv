@@ -131,6 +131,7 @@
 49,443,类型 (home),Fuuka_home,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
 49,590,后缀 (cbt),fuuka_cbt,CBT旧绘废案,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
 49,727,类型 (home),Fuuka_home_CN,国服,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
+49,1430,类型 (home),Fuuka_Scene_HD,,爱清 枫香,愛清 フウカ,Aikiyo Fuuka,3,格赫娜学园
 50,432,类型 (home),CH0180_home,,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
 50,465,类型 (home),Shizuko_home,,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
 50,601,后缀 (cbt),orihime_cbt,CBT旧绘废案,河和 静子,河和 シズコ,Kawawa Shizuko,9,百鬼夜行联合学园
@@ -251,9 +252,11 @@
 102,384,类型 (home),Aru_newyear_home,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
 102,681,类型 (home),CH0240_home,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
 102,1055,后缀 (steam),aru_spr_Steam,Steam版初始立绘,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
+102,1427,类型 (home),Aru_home_HD,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
+102,1428,类型 (home),Aru_Scene_HD,,陆八魔 阿露,陸八魔 アル,Rikuhachima Aru,3,格赫娜学园
 103,390,类型 (home),Zunko_home,,赤司 纯子,赤司 ジュンコ,Akashi Junko,3,格赫娜学园
 103,449,类型 (home),CH0192_home,,赤司 纯子,赤司 ジュンコ,Akashi Junko,3,格赫娜学园
-104,518,类型 (home),arona_workpage_daytime,,阿罗娜,アロナ,Arona,6,夏莱
+104,1568,类型 (home),Arona_workpage_daytime_02,,阿罗娜,アロナ,Arona,6,夏莱
 105,540,类型 (home),sora_shop,,空,ソラ,Sora,16,天使24便利店
 105,734,类型 (home),sora_CN,国服,空,ソラ,Sora,16,天使24便利店
 106,472,类型 (home),Shigure_home,,间宵 时雨,間宵 シグレ,Mayoi Shigure,5,红冬联邦学园
@@ -278,6 +281,7 @@
 110,1020,后缀 (steam),akari_spr_Steam,Steam版初始立绘,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,1058,类型 (home),Akari_home_Combined,回忆大厅,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 110,1178,类型 (home),CH0196_home_CN,国服,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
+110,1429,类型 (home),Akari_Scene_HD,,鳄渊 明里,鰐渕 アカリ,Wanibuchi Akari,3,格赫娜学园
 113,386,类型 (home),Asuna_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
 113,402,类型 (home),CH0098_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
 113,890,类型 (home),CH0281_home,,一之濑 明日奈,一之瀬 アスナ,Ichinose Asuna,4,千禧科学学院
@@ -336,6 +340,7 @@
 138,600,后缀 (cbt),neru_cbt,CBT旧绘废案,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 138,889,类型 (home),CH0280_home,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 138,901,类型 (home),CH0280_home_fix,光线修复,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
+138,1431,类型 (home),Neru_home_HD,,美甘 妮禄,美甘 ネル,Mikamo Neru,4,千禧科学学院
 139,373,类型 (home),CH0155_home,,柚鸟 夏,柚鳥 ナツ,Yutori Natsu,2,圣三一综合学园
 139,721,类型 (home),CH0155_home_CN,国服,柚鸟 夏,柚鳥 ナツ,Yutori Natsu,2,圣三一综合学园
 139,1006,类型 (home),CH0221_home,,柚鸟 夏,柚鳥 ナツ,Yutori Natsu,2,圣三一综合学园

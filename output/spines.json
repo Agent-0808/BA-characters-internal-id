@@ -576,12 +576,6 @@
     "type": "spr"
   },
   {
-    "id": 186,
-    "name": "CH0181_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 189,
     "name": "NP0070_spr",
     "remark": "运动服",
@@ -1922,12 +1916,6 @@
   {
     "id": 511,
     "name": "CH0135_home",
-    "remark": "",
-    "type": "home"
-  },
-  {
-    "id": 518,
-    "name": "arona_workpage_daytime",
     "remark": "",
     "type": "home"
   },
@@ -5253,31 +5241,31 @@
     "id": 1427,
     "name": "Aru_home_HD",
     "remark": "",
-    "type": "spr"
+    "type": "home"
   },
   {
     "id": 1428,
     "name": "Aru_Scene_HD",
     "remark": "",
-    "type": "spr"
+    "type": "home"
   },
   {
     "id": 1429,
     "name": "Akari_Scene_HD",
     "remark": "",
-    "type": "spr"
+    "type": "home"
   },
   {
     "id": 1430,
     "name": "Fuuka_Scene_HD",
     "remark": "",
-    "type": "spr"
+    "type": "home"
   },
   {
     "id": 1431,
     "name": "Neru_home_HD",
     "remark": "",
-    "type": "spr"
+    "type": "home"
   },
   {
     "id": 1432,
@@ -6048,6 +6036,12 @@
     "type": "home"
   },
   {
+    "id": 1568,
+    "name": "Arona_workpage_daytime_02",
+    "remark": "",
+    "type": "home"
+  },
+  {
     "id": 1569,
     "name": "Arona_workpage_nighttime_02",
     "remark": "",
@@ -6462,6 +6456,18 @@
     "type": "home"
   },
   {
+    "id": 1639,
+    "name": "NP0283_spr",
+    "remark": "FOX EATS",
+    "type": "spr"
+  },
+  {
+    "id": 1640,
+    "name": "CH0181_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
     "id": 1641,
     "name": "CH0182_spr_HD",
     "remark": "初始立绘",
@@ -6681,6 +6687,12 @@
     "id": 1677,
     "name": "NP0014_spr_HD",
     "remark": "和服",
+    "type": "spr"
+  },
+  {
+    "id": 1678,
+    "name": "NP0018_spr_HD",
+    "remark": "油桶伪装",
     "type": "spr"
   },
   {
