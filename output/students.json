@@ -5183,7 +5183,7 @@
           1363
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -11411,7 +11411,7 @@
   {
     "id": 515,
     "name": "吾妻 未来",
-    "name_cn": "",
+    "name_cn": "未来",
     "name_jp": "吾妻 ミライ",
     "name_en": "Azuma Mirai",
     "name_kr": "아즈마 미라이",
@@ -12531,6 +12531,33 @@
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 597,
+    "name": "油桶蟹",
+    "name_cn": "",
+    "name_jp": "ドラム缶油桶ガ",
+    "name_en": "Drumbarka",
+    "name_kr": "",
+    "name_tw": "",
+    "school_id": 23,
+    "pages": [
+      {
+        "page_id": 597,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E6%B2%B9%E6%A1%B6%E8%9F%B9/original/drumbarka.png",
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
         "rarity": 0,
         "limited": false
       }
