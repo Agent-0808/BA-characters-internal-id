@@ -1,6 +1,6 @@
 # BA-characters-internal-id
 
-整理了《碧蓝档案》/《蔚蓝档案》/Blue Archive 中角色对应的文件ID，方便解包时确定对应文件名。
+整理了《碧蓝档案》/《蔚蓝档案》/Blue Archive 中角色对应的 Spine 文件ID，方便解包时确定对应文件名。
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/Agent-0808/BA-characters-internal-id/total)](https://github.com/Agent-0808/BA-characters-internal-id/releases)
 [![GitHub Downloads](https://img.shields.io/github/downloads/Agent-0808/BA-characters-internal-id/latest/total)](https://github.com/Agent-0808/BA-characters-internal-id/releases)
@@ -10,15 +10,17 @@
 
 ### 部署
 
-部署页面：[Github Pages](https://agent-0808.github.io/BA-characters-internal-id/)
+在 [Github Pages](https://agent-0808.github.io/BA-characters-internal-id/) 网页在线预览
+
+在 [Github Gist](https://gist.github.com/Agent-0808/c487982029230a9d046e32aaf4d3beb7) 在线预览纯文本 Markdown 表格
 
 - 每天北京时间3点（UTC 19:00）自动检查，如有更新则会发布新release
-- 配有缓存机制，减少API请求次数
-- 请求频率真的很低
+- 配有缓存机制，非必要不请求，减少API请求次数
+- 请求频率真的很低，3秒只发1次请求
 
 ### 使用示例
 
-Steam版的文件储存路径为`BlueArchive\BlueArchive_Data\StreamingAssets\PUB\Resource\GameData\Windows\`目录
+Steam 版的文件储存路径为`BlueArchive\BlueArchive_Data\StreamingAssets\PUB\Resource\GameData\Windows\`目录
 
 - 查表得，`霞沢 ミユ`的文件ID为 `CH0145`，则可以获取其对应文件为：
   - 人物模型：`assets-_mx-characters-ch0145-_mxdependency-*_assets_all_*.bundle`
