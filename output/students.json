@@ -2757,6 +2757,21 @@
         "is_npc": false,
         "rarity": 3,
         "limited": false
+      },
+      {
+        "page_id": 599,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳裝",
+        "avatar": "//static.kivo.wiki/images/students/%E9%BE%99%E5%8D%8E%20%E5%A6%83%E5%92%B2/%E6%B3%B3%E8%A3%85/ksk.png",
+        "spines": [],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
       }
     ]
   },
@@ -3566,6 +3581,21 @@
         "is_install": true,
         "is_install_cn": true,
         "is_install_global": true,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
+      },
+      {
+        "page_id": 598,
+        "skin_name": "泳装 ",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳裝",
+        "avatar": "//static.kivo.wiki/images/students/%E6%98%A5%E5%8E%9F%20%E7%9E%AC/%E6%B3%B3%E8%A3%85%20/D6DD0C85219194E7ED3AD022F5AACC9F.jpg",
+        "spines": [],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -5462,7 +5492,7 @@
       {
         "page_id": 514,
         "skin_name": "制服",
-        "skin_name_cn": "",
+        "skin_name_cn": "制服",
         "skin_name_jp": "制服",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E7%BE%8E%E7%94%98%20%E5%A6%AE%E7%A6%84/%E6%A0%A1%E6%9C%8D/Student_Portrait_CH0280_Collection.png",
@@ -5472,7 +5502,7 @@
           889
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -6671,7 +6701,7 @@
           912
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -8580,13 +8610,14 @@
         "skin_name_tw": "泳裝",
         "avatar": "//static.kivo.wiki/images/students/%E5%BE%A1%E7%A8%9C%20%E5%90%8D%E8%8D%89/%E6%B3%B3%E8%A3%85/CH0303_avatar.png",
         "spines": [
-          1304
+          1304,
+          1698
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false
       }
     ]
@@ -12538,9 +12569,9 @@
   },
   {
     "id": 597,
-    "name": "油桶蟹",
+    "name": "钢桶蟹",
     "name_cn": "",
-    "name_jp": "ドラム缶油桶ガ",
+    "name_jp": "ドラム缶ガニ",
     "name_en": "Drumbarka",
     "name_kr": "",
     "name_tw": "",

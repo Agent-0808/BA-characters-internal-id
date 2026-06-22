@@ -6808,5 +6808,11 @@
     "name": "citizen_borot2_spr_HD",
     "remark": "初始立绘",
     "type": "spr"
+  },
+  {
+    "id": 1698,
+    "name": "CH0303_home",
+    "remark": "",
+    "type": "home"
   }
 ]
