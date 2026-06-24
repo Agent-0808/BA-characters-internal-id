@@ -34,11 +34,16 @@
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="搜索角色名称...">
             </div>
-            <div class="filter-group">
-                <label>学校:</label>
-                <select id="schoolFilter">
-                    <option value="">全部</option>
-                </select>
+            <!-- 学校多选筛选 -->
+            <div class="school-filter-dropdown">
+                <button class="school-filter-btn" id="schoolFilterBtn">
+                    <span class="school-filter-label">学校</span>
+                    <span class="school-filter-count" id="schoolFilterCount"></span>
+                    <span class="school-filter-arrow">▼</span>
+                </button>
+                <div class="school-filter-content" id="schoolDropdown">
+                    <!-- 动态生成学校选项 -->
+                </div>
             </div>
             <!-- 列显示控制 -->
             <div class="column-dropdown">

@@ -140,6 +140,133 @@ body {
   background: #f1f5f9;
 }
 
+/* 学校筛选下拉 */
+.school-filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.school-filter-btn {
+  padding: 8px 12px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+}
+
+.school-filter-btn:hover {
+  border-color: #4f46e5;
+  background: #f1f5f9;
+}
+
+.school-filter-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.school-filter-count {
+  background: #4f46e5;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.school-filter-count:empty {
+  display: none;
+}
+
+.school-filter-arrow {
+  color: #94a3b8;
+  font-size: 10px;
+  margin-left: auto;
+}
+
+.school-filter-content {
+  display: none;
+  position: fixed;
+  background: white;
+  min-width: 200px;
+  max-width: 300px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  z-index: 1000;
+  padding: 8px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.school-filter-content.show {
+  display: block;
+}
+
+.school-filter-item {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #334155;
+  transition: background 0.2s;
+}
+
+.school-filter-item:hover {
+  background: #f1f5f9;
+}
+
+.school-filter-item.selected {
+  background: #e0e7ff;
+}
+
+.school-filter-item input[type="checkbox"] {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.school-filter-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.school-filter-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.school-filter-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.school-filter-clear {
+  color: #4f46e5;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.school-filter-clear:hover {
+  background: #f1f5f9;
+}
+
 /* 列选择下拉菜单 */
 .column-dropdown {
   position: relative;
@@ -148,15 +275,12 @@ body {
 
 .column-dropdown-content {
   display: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  margin-top: 5px;
+  position: fixed;
   background: white;
   min-width: 180px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   border-radius: 8px;
-  z-index: 100;
+  z-index: 1000;
   padding: 10px 0;
   max-height: 400px;
   overflow-y: auto;
