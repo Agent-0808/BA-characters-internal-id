@@ -120,6 +120,7 @@ class StudentForm:
     full_name: str
     name: str
     skin_name: str
+    spine_remark: str
     name_cn: str
     name_jp: str
     name_tw: str

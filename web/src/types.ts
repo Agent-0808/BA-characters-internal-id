@@ -7,6 +7,7 @@ export interface StudentData {
   full_name: string;
   name: string;
   skin_name: string;
+  spine_remark: string;
   name_cn: string;
   name_jp: string;
   name_tw: string;

@@ -74,6 +74,17 @@ jobs:
             mkdir -p cache
           fi
 
+      # 备份旧数据用于对比
+      # 在运行爬虫前备份旧的output目录，用于生成变更报告
+      - name: 备份旧数据用于对比
+        run: |
+          if [ -d "output" ]; then
+            echo "备份旧数据到 prev_output..."
+            cp -r output prev_output
+          else
+            echo "无旧数据，跳过备份"
+          fi
+
       # 记录运行前的状态文件指纹
       # 通过计算 students_data.csv 的 MD5 哈希值来判断数据是否进行了更新
       - name: 记录运行前状态
@@ -122,6 +133,12 @@ jobs:
             echo "✅ 检测到新数据！准备提交和发布。"
           fi
 
+      # 生成变更报告
+      # 对比新旧JSON文件，生成Markdown格式的变更报告
+      - name: 生成变更报告
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: python -m crawler.diff_report
+
       # 准备要发布到 data 分支的文件
       # 仅当检测到变化或总是推送时运行
       - name: 准备发布文件
@@ -164,13 +181,7 @@ jobs:
           tag_name: ${{ steps.date.outputs.date }}-${{ env.CODE_VERSION }}
           name: ${{ steps.date.outputs.date }}
           target_commitish: data
-          body: |
-            检测到数据变动，已生成新的文件和缓存。
-
-            - **更新日期**: ${{ steps.date.outputs.date }}
-            - **代码版本**: ${{ env.CODE_VERSION }}
-            - **数据分支**: [查看 data 分支](https://github.com/${{ github.repository }}/tree/data)
-
+          body_path: output/diff_report.md
           files: |
             output/students_data.csv
             output/skipped_ids.csv

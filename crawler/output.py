@@ -501,10 +501,8 @@ class CsvGenerator:
                     name_jp = build_full_name(base_name_jp, skin_name_jp, "")
                     name_tw = build_full_name(base_name_tw, skin_name_tw, "")
 
-                    # 构建skin_name字段
-                    skin_parts = [s for s in [skin_name, processed_remark] if s]
-                    final_skin = ",".join(skin_parts)
-
+                    # skin_name: 只使用页面的皮肤名
+                    # spine_remark: 使用处理后的spine备注
                     form = StudentForm(
                         file_id=file_id,
                         student_id=student_id,
@@ -512,7 +510,8 @@ class CsvGenerator:
                         spine_id=spine_id,
                         full_name=full_name,
                         name=base_name,
-                        skin_name=final_skin,
+                        skin_name=skin_name,
+                        spine_remark=processed_remark,
                         name_cn=name_cn,
                         name_jp=name_jp,
                         name_tw=name_tw,

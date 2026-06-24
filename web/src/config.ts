@@ -19,6 +19,7 @@ export const COLUMN_CONFIG: ColumnConfig[] = [
   { key: 'full_name', label: '完整名称', defaultVisible: true },
   { key: 'name', label: '角色名', defaultVisible: false },
   { key: 'skin_name', label: '皮肤名', defaultVisible: false },
+  { key: 'spine_remark', label: '备注', defaultVisible: false },
   { key: 'name_cn', label: '国服名称', defaultVisible: false },
   { key: 'name_jp', label: '日本語', defaultVisible: true },
   { key: 'name_tw', label: '繁體中文', defaultVisible: false },
