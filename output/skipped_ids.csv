@@ -172,6 +172,7 @@
 60,1057,后缀 (steam),hasumi_spr_Steam,Steam版初始立绘,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
 60,1070,类型 (home),CH0291_home,,羽川 莲见,羽川 ハスミ,Hanekawa Hasumi,2,圣三一综合学园
 61,826,类型 (home),CH0139_home,,龙华 妃咲,竜華 キサキ,Ryuuge Kisaki,7,山海经高级中学
+61,1710,类型 (home),CH0356_home,,龙华 妃咲,竜華 キサキ,Ryuuge Kisaki,7,山海经高级中学
 62,420,类型 (home),CH0159_home,,明星 日鞠,明星 ヒマリ,Akeboshi Himari,4,千禧科学学院
 62,820,类型 (home),CH0159_home_CN,国服,明星 日鞠,明星 ヒマリ,Akeboshi Himari,4,千禧科学学院
 62,1208,类型 (home),CH0332_home,,明星 日鞠,明星 ヒマリ,Akeboshi Himari,4,千禧科学学院
@@ -224,6 +225,7 @@
 90,463,类型 (home),Shun_home,,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
 90,731,类型 (home),CH0066_home_CN,国服,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
 90,1047,后缀 (steam),shun_spr_Steam,Steam版初始立绘,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
+90,1709,类型 (home),CH0355_home,,春原 瞬,春原 シュン,Sunohara Shun,7,山海经高级中学
 91,451,类型 (home),CH0194_home,,鹫见 芹娜,鷲見 セリナ,Sumi Serina,2,圣三一综合学园
 91,477,类型 (home),serina_home,,鹫见 芹娜,鷲見 セリナ,Sumi Serina,2,圣三一综合学园
 92,453,类型 (home),Hanako_home,,浦和 花子,浦和 ハナコ,Urawa Hanako,2,圣三一综合学园
@@ -507,3 +509,4 @@
 561,1175,类型 (home),CH0319_home,,薄叶 律,薄葉 リツ,Usuba Ritsu,14,狂猎艺术学院
 581,1224,包含 (ui_),Ui_IAWorldBoss_EN0012,钢铁大陆攻略战,达阿特,ダアト,Daath,21,神名十文字
 583,1436,包含 (ui_),Ui_IAWorldBoss_EN0020,钢铁大陆攻略战,神名十文字,デカグラマトン,Decagrammaton,21,神名十文字
+606,1709,类型 (home),CH0355_home,,雪玲,シュエリン,Shunling,7,山海经高级中学

@@ -203,6 +203,23 @@
         "is_npc": false,
         "rarity": 3,
         "limited": false
+      },
+      {
+        "page_id": 603,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳裝",
+        "avatar": "//static.kivo.wiki/images/students/%E6%98%A5%E5%8E%9F%20%E5%BF%83%E5%A5%88/%E6%B3%B3%E8%A3%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20210800.png",
+        "spines": [
+          1702
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -2764,8 +2781,12 @@
         "skin_name_cn": "泳装",
         "skin_name_jp": "水着",
         "skin_name_tw": "泳裝",
-        "avatar": "//static.kivo.wiki/images/students/%E9%BE%99%E5%8D%8E%20%E5%A6%83%E5%92%B2/%E6%B3%B3%E8%A3%85/ksk.png",
-        "spines": [],
+        "avatar": "//static.kivo.wiki/images/students/%E9%BE%99%E5%8D%8E%20%E5%A6%83%E5%92%B2/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0356_Collection.png",
+        "spines": [
+          1701,
+          1710,
+          1707
+        ],
         "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
@@ -3481,7 +3502,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -3591,8 +3612,11 @@
         "skin_name_cn": "泳装",
         "skin_name_jp": "水着",
         "skin_name_tw": "泳裝",
-        "avatar": "//static.kivo.wiki/images/students/%E6%98%A5%E5%8E%9F%20%E7%9E%AC/%E6%B3%B3%E8%A3%85%20/D6DD0C85219194E7ED3AD022F5AACC9F.jpg",
-        "spines": [],
+        "avatar": "//static.kivo.wiki/images/students/%E6%98%A5%E5%8E%9F%20%E7%9E%AC/%E6%B3%B3%E8%A3%85%20/Student_Portrait_CH0355_Collection.png",
+        "spines": [
+          1700,
+          1709
+        ],
         "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
@@ -5105,6 +5129,23 @@
         "is_npc": false,
         "rarity": 3,
         "limited": false
+      },
+      {
+        "page_id": 604,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳裝",
+        "avatar": "//static.kivo.wiki/images/students/%E6%9C%B1%E5%9F%8E%20%E7%95%99%E7%BE%8E/%E6%B3%B3%E8%A3%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20212319.png",
+        "spines": [
+          1703
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
       }
     ]
   },
@@ -6082,7 +6123,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -12590,6 +12631,152 @@
         "is_install_global": false,
         "is_npc": true,
         "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 600,
+    "name": "鹰野主 翠子",
+    "name_cn": "",
+    "name_jp": "鷹野主 スイコ",
+    "name_en": "",
+    "name_kr": "타카노스 스이코",
+    "name_tw": "",
+    "school_id": 7,
+    "pages": [
+      {
+        "page_id": 600,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E7%BF%A0%E5%AD%90/original/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20205046.png",
+        "spines": [
+          1704
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 601,
+    "name": "五百雀 和美",
+    "name_cn": "",
+    "name_jp": "五百雀 ナゴミ",
+    "name_en": "",
+    "name_kr": "이오쟈쿠 나고미",
+    "name_tw": "",
+    "school_id": 7,
+    "pages": [
+      {
+        "page_id": 601,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%92%8C%E7%BE%8E/original/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20204828.png",
+        "spines": [
+          1705
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 602,
+    "name": "乌头尾 阳子",
+    "name_cn": "",
+    "name_jp": "烏頭尾 ヨウコ",
+    "name_en": "",
+    "name_kr": "우토 요코",
+    "name_tw": "",
+    "school_id": 7,
+    "pages": [
+      {
+        "page_id": 602,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E9%98%B3%E5%AD%90/original/367.png",
+        "spines": [
+          1706
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 605,
+    "name": "叶惠",
+    "name_cn": "",
+    "name_jp": "カナエ",
+    "name_en": "",
+    "name_kr": "카나에",
+    "name_tw": "",
+    "school_id": 7,
+    "pages": [
+      {
+        "page_id": 605,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%8F%B6%E6%83%A0/original/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20212646.png",
+        "spines": [
+          1699
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 606,
+    "name": "雪玲",
+    "name_cn": "",
+    "name_jp": "シュエリン",
+    "name_en": "Shunling",
+    "name_kr": "슈에링",
+    "name_tw": "小旬",
+    "school_id": 7,
+    "pages": [
+      {
+        "page_id": 606,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳装",
+        "avatar": "//static.kivo.wiki/images/students/%20%E9%9B%AA%E7%8E%B2/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0355_01_Collection.png",
+        "spines": [
+          1708,
+          1709
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
         "limited": false
       }
     ]
