@@ -210,7 +210,7 @@
         "skin_name_cn": "泳装",
         "skin_name_jp": "水着",
         "skin_name_tw": "泳裝",
-        "avatar": "//static.kivo.wiki/images/students/%E6%98%A5%E5%8E%9F%20%E5%BF%83%E5%A5%88/%E6%B3%B3%E8%A3%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20210800.png",
+        "avatar": "//static.kivo.wiki/images/students/%E6%98%A5%E5%8E%9F%20%E5%BF%83%E5%A5%88/%E6%B3%B3%E8%A3%85/kkn.png",
         "spines": [
           1702
         ],
@@ -2766,7 +2766,8 @@
         "spines": [
           1246,
           826,
-          1346
+          1346,
+          1711
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -3608,7 +3609,7 @@
       },
       {
         "page_id": 598,
-        "skin_name": "泳装 ",
+        "skin_name": "泳装",
         "skin_name_cn": "泳装",
         "skin_name_jp": "水着",
         "skin_name_tw": "泳裝",
@@ -5136,7 +5137,7 @@
         "skin_name_cn": "泳装",
         "skin_name_jp": "水着",
         "skin_name_tw": "泳裝",
-        "avatar": "//static.kivo.wiki/images/students/%E6%9C%B1%E5%9F%8E%20%E7%95%99%E7%BE%8E/%E6%B3%B3%E8%A3%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20212319.png",
+        "avatar": "//static.kivo.wiki/images/students/%E6%9C%B1%E5%9F%8E%20%E7%95%99%E7%BE%8E/%E6%B3%B3%E8%A3%85/%E3%83%AB%E3%83%9F.png",
         "spines": [
           1703
         ],
@@ -12651,7 +12652,7 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E7%BF%A0%E5%AD%90/original/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20205046.png",
+        "avatar": "//static.kivo.wiki/images/students/%E9%B9%B0%E9%87%8E%E4%B8%BB%20%E7%BF%A0%E5%AD%90/original/%E3%82%B9%E3%82%A4%E3%82%B3.png",
         "spines": [
           1704
         ],
@@ -12680,7 +12681,7 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E5%92%8C%E7%BE%8E/original/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20204828.png",
+        "avatar": "//static.kivo.wiki/images/students/%E4%BA%94%E7%99%BE%E9%9B%80%20%E5%92%8C%E7%BE%8E/original/%E3%83%8A%E3%82%B4%E3%83%9F.png",
         "spines": [
           1705
         ],
@@ -12709,7 +12710,7 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E9%98%B3%E5%AD%90/original/367.png",
+        "avatar": "//static.kivo.wiki/images/students/%E4%B9%8C%E5%A4%B4%E5%B0%BE%20%E9%98%B3%E5%AD%90/original/%E3%83%A8%E3%82%A6%E3%82%B3.png",
         "spines": [
           1706
         ],
@@ -12724,11 +12725,11 @@
   },
   {
     "id": 605,
-    "name": "叶惠",
+    "name": "宫内 叶",
     "name_cn": "",
-    "name_jp": "カナエ",
-    "name_en": "",
-    "name_kr": "카나에",
+    "name_jp": "宮内 カナエ",
+    "name_en": "Miyauchi Kanae",
+    "name_kr": "미야우치 카나에",
     "name_tw": "",
     "school_id": 7,
     "pages": [
@@ -12738,7 +12739,7 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E5%8F%B6%E6%83%A0/original/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-06-24%20212646.png",
+        "avatar": "//static.kivo.wiki/images/students/%E5%AE%AB%E5%86%85%20%E5%8F%B6/original/%E3%82%AB%E3%83%8A%E3%82%A8.png",
         "spines": [
           1699
         ],

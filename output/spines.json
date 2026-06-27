@@ -6886,5 +6886,11 @@
     "name": "CH0356_home",
     "remark": "",
     "type": "home"
+  },
+  {
+    "id": 1711,
+    "name": "NP0216_spr_CN",
+    "remark": "国服",
+    "type": "spr"
   }
 ]
