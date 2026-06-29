@@ -2,17 +2,1489 @@
 
 ### 学生数据变更
 
-  * 龙华 妃咲 - 默认 (page_id: 61): +spines:[1711]
-* 宫内 叶: name [叶惠] → [宫内 叶]
-* 宫内 叶: name_jp [カナエ] → [宮内 カナエ]
-* 宫内 叶: name_en [] → [Miyauchi Kanae]
-* 宫内 叶: name_kr [카나에] → [미야우치 카나에]
++ 圣园 未花 (student_id: 1)
++ 才羽 桃井 (student_id: 2)
++ 白洲 梓 (student_id: 3)
++ 春原 心奈 (student_id: 4)
++ 月雪 宫子 (student_id: 6)
++ 风仓 萌绘 (student_id: 7)
++ 空井 咲 (student_id: 8)
++ 霞泽 美游 (student_id: 9)
++ 栗村 爱莉 (student_id: 10)
++ 狐坂 若藻 (student_id: 11)
++ 阿里乌斯学生A (student_id: 12)
++ 神名十字机器人A (student_id: 13)
++ 黑龟组机器人A (student_id: 14)
++ 凯撒机器人A (student_id: 15)
++ 老师 (student_id: 16)
++ 联邦学生会长 (student_id: 17)
++ 冰室 濑名 (student_id: 18)
++ 戈尔孔达&印花釉法 (student_id: 19)
++ 各务 千寻 (student_id: 20)
++ 水羽 弥守 (student_id: 22)
++ 古关 忧 (student_id: 23)
++ 室笠 茜 (student_id: 24)
++ 桐藤 渚 (student_id: 25)
++ 若叶 日向 (student_id: 26)
++ 才羽 绿 (student_id: 27)
++ 生盐 诺亚 (student_id: 28)
++ 勇美 枫 (student_id: 29)
++ 大野 月咏 (student_id: 32)
++ 戒野 美咲 (student_id: 33)
++ 槌永 日和 (student_id: 34)
++ 秤 亚津子 (student_id: 35)
++ 锭前 纱织 (student_id: 36)
++ 杏山 和纱 (student_id: 37)
++ 枣 伊吕波 (student_id: 38)
++ 天雨 亚子 (student_id: 39)
++ 十六夜 野宫 (student_id: 40)
++ 小鸟游 星野 (student_id: 42)
++ 百合园 圣娅 (student_id: 43)
++ 黑见 芹香 (student_id: 44)
++ 池仓 玛丽娜 (student_id: 45)
++ 久田 泉奈 (student_id: 46)
++ 奥空 绫音 (student_id: 47)
++ 和乐 千世 (student_id: 48)
++ 爱清 枫香 (student_id: 49)
++ 河和 静子 (student_id: 50)
++ 猫冢 响 (student_id: 51)
++ 早濑 优香 (student_id: 52)
++ 白石 歌原 (student_id: 53)
++ 伊落 玛丽 (student_id: 55)
++ 丰见 小鸟 (student_id: 57)
++ 砂狼 白子 (student_id: 58)
++ 羽川 莲见 (student_id: 60)
++ 龙华 妃咲 (student_id: 61)
++ 明星 日鞠 (student_id: 62)
++ 合欢垣 吹雪 (student_id: 63)
++ 七度 雪乃 (student_id: 64)
++ 吉野 妮可 (student_id: 65)
++ 高仓 胡桃 (student_id: 66)
++ 天神山 音葵 (student_id: 67)
++ 初音未来 (student_id: 68)
++ 阿慈谷 日富美 (student_id: 70)
++ 空崎 日奈 (student_id: 71)
++ 银镜 伊织 (student_id: 72)
++ 狮子堂 泉 (student_id: 73)
++ 飞鸟马 时 (student_id: 77)
++ 静山 真白 (student_id: 79)
++ 花冈 柚子 (student_id: 81)
++ 药子 纱绫 (student_id: 88)
++ 春原 瞬 (student_id: 90)
++ 鹫见 芹娜 (student_id: 91)
++ 浦和 花子 (student_id: 92)
++ 春日 椿 (student_id: 93)
++ 剑先 鹤城 (student_id: 94)
++ 佐城 智惠 (student_id: 95)
++ 朝颜 花江 (student_id: 98)
++ 中务 桐乃 (student_id: 100)
++ 黑崎 小雪 (student_id: 101)
++ 陆八魔 阿露 (student_id: 102)
++ 赤司 纯子 (student_id: 103)
++ 阿罗娜 (student_id: 104)
++ 空 (student_id: 105)
++ 间宵 时雨 (student_id: 106)
++ 浅黄 睦月 (student_id: 107)
++ 天童 爱丽丝 (student_id: 108)
++ 鳄渊 明里 (student_id: 110)
++ 一之濑 明日奈 (student_id: 113)
++ 仲正 一花 (student_id: 114)
++ 羽沼 真琴 (student_id: 115)
++ 鬼怒川 霞 (student_id: 116)
++ 火宫 千夏 (student_id: 117)
++ 伊原木 好美 (student_id: 118)
++ 天见 和香 (student_id: 119)
++ 鬼方 佳代子 (student_id: 123)
++ 伊草 遥香 (student_id: 124)
++ 黑服 (student_id: 125)
++ 天地 尼娅 (student_id: 126)
++ 里滨 海夏 (student_id: 127)
++ 朱城 留美 (student_id: 128)
++ 苍森 美弥 (student_id: 129)
++ 近卫 南 (student_id: 131)
++ 调月 莉音 (student_id: 133)
++ 河驹风 兰舞 (student_id: 134)
++ 砂狼 白子*恐怖 (student_id: 135)
++ 丹花 伊吹 (student_id: 136)
++ 角楯 花凛 (student_id: 137)
++ 美甘 妮禄 (student_id: 138)
++ 柚鸟 夏 (student_id: 139)
++ 连河 切里诺 (student_id: 141)
++ 宇泽 玲纱 (student_id: 142)
++ 桑上 果穗 (student_id: 143)
++ 尾刃 叶渚 (student_id: 144)
++ 黑馆 晴奈 (student_id: 145)
++ 回转黑 (student_id: 147)
++ 回转绿 (student_id: 148)
++ 回转粉 (student_id: 149)
++ 回转红 (student_id: 150)
++ 回转黄 (student_id: 151)
++ 下江 小春 (student_id: 157)
++ 和泉元 艾米 (student_id: 158)
++ 旗见 绘里香 (student_id: 159)
++ 小钩 晴 (student_id: 160)
++ 正义实现委员会部员A (student_id: 162)
++ 夜樱 绮良 (student_id: 163)
++ 巨匠 (student_id: 164)
++ 风卷 舞 (student_id: 165)
++ 安守 实梨 (student_id: 166)
++ 秋泉 红叶 (student_id: 167)
++ 岩柜 步美 (student_id: 168)
++ 不知火 花耶 (student_id: 169)
++ 贝阿朵莉切 (student_id: 170)
++ 扇喜 葵 (student_id: 171)
++ 凯撒PMC 理事 (student_id: 172)
++ 普拉娜 (student_id: 173)
++ 葛叶 (student_id: 174)
++ 守月 铃美 (student_id: 181)
++ 小涂 真纪 (student_id: 182)
++ 七神 凛 (student_id: 183)
++ 由良木 桃香 (student_id: 184)
++ 牛牧 朱莉 (student_id: 186)
++ 乙花 堇 (student_id: 187)
++ 不良学生A (student_id: 188)
++ 不良学生B (student_id: 189)
++ 不良学生C (student_id: 190)
++ 温泉开发部部员A (student_id: 191)
++ 川流 诗乃 (student_id: 193)
++ 圆堂 志美子 (student_id: 194)
++ 柴老板 (student_id: 196)
++ 不良学生D (student_id: 197)
++ 不良学生E (student_id: 198)
++ 红冬亲卫队成员A (student_id: 199)
++ 瓦尔基里学生A (student_id: 200)
++ 佩洛洛 (student_id: 202)
++ 歌住 樱子 (student_id: 203)
++ 玄龙门成员A (student_id: 204)
++ 弗朗西斯 (student_id: 205)
++ 联邦学生会行政人员A (student_id: 208)
++ 联邦学生会行政官A (student_id: 209)
++ 音濑 小玉 (student_id: 212)
++ 千鸟 满 (student_id: 214)
++ 朝比奈 菲娜 (student_id: 215)
++ 京极 皋月 (student_id: 216)
++ 茶话会成员A (student_id: 217)
++ 救急医学部部员A (student_id: 218)
++ 圣三一学生A (student_id: 219)
++ 修女会成员A (student_id: 220)
++ 格赫娜学生A (student_id: 221)
++ 万魔殿成员A (student_id: 222)
++ 茶话会成员B (student_id: 223)
++ 钢盔团成员B (student_id: 224)
++ 钢盔团成员A (student_id: 225)
++ 风纪委员A (student_id: 226)
++ 下仓 惠 (student_id: 229)
++ 魑魅一座部员 (student_id: 231)
++ 尤斯蒂娜圣徒 (student_id: 232)
++ 魑魅一座队长 (student_id: 233)
++ 劳务部部员A (student_id: 234)
++ 兼职佣兵学生A (student_id: 235)
++ 凯撒特种部队成员A (student_id: 238)
++ 凯撒 将军 (student_id: 239)
++ 凯撒 总裁 (student_id: 240)
++ 料理麻雀 (student_id: 241)
++ 和服麻雀 (student_id: 242)
++ 千禧学生A (student_id: 244)
++ 圣女 芭尔芭拉 (student_id: 245)
++ 无名司祭 (student_id: 247)
++ 千禧学生B (student_id: 248)
++ 笛卡尔 (student_id: 249)
++ 商店老板狗狗 (student_id: 250)
++ 工程师狗狗 (student_id: 251)
++ 奥德赛的兔女郎A (student_id: 252)
++ 清澄 晶 (student_id: 253)
++ 御稜 名草 (student_id: 254)
++ 城市狗狗 (student_id: 255)
++ 眼罩猫猫 (student_id: 256)
++ 和服猫猫 (student_id: 257)
++ 绷带狗狗 (student_id: 258)
++ 贝雷帽狗狗 (student_id: 259)
++ 和服狗狗 (student_id: 260)
++ 市民机器人 (student_id: 261)
++ 资本机器人 (student_id: 262)
++ 玄武商会店员 (student_id: 263)
++ 姬木 梅露 (student_id: 264)
++ 贝雷帽小山雀 (student_id: 266)
++ 蝴蝶结小山雀 (student_id: 267)
++ 黄帽小山雀 (student_id: 268)
++ 申谷 海 (student_id: 270)
++ 鹿山 丽情 (student_id: 271)
++ 普雷那帕特斯 (student_id: 272)
++ 机器人 (student_id: 273)
++ 守卫机器人 (student_id: 274)
++ 灰音 (student_id: 275)
++ 李 (student_id: 276)
++ 假日北极熊 (student_id: 281)
++ 工人花栗鼠 (student_id: 282)
++ 头带狗狗 (student_id: 284)
++ 打渔小熊猫 (student_id: 285)
++ 栀子 梦 (student_id: 288)
++ 康娜（CBT） (student_id: 289)
++ 米莉亚（CBT） (student_id: 290)
++ 奈央（CBT） (student_id: 291)
++ 裴（CBT） (student_id: 292)
++ 露音（CBT） (student_id: 293)
++ 由加利（CBT） (student_id: 294)
++ 比纳 (student_id: 295)
++ 凯赛德 (student_id: 296)
++ 霍德 (student_id: 297)
++ 凯瑟 (student_id: 298)
++ 凛华 (student_id: 304)
++ KAITEN FX MK.0 (student_id: 305)
++ 白&黑 (student_id: 306)
++ 佩洛洛斯拉 (student_id: 307)
++ 三善 贵音 (student_id: 308)
++ 荒槙 八云 (student_id: 309)
++ 黑市组织成员A (student_id: 310)
++ 列车乘务员B (student_id: 311)
++ 列车修理工A (student_id: 312)
++ 列车乘务员A (student_id: 313)
++ 列车乘务员C (student_id: 314)
++ 御坂 美琴 (student_id: 315)
++ 食蜂 操祈 (student_id: 316)
++ 佐天 泪子 (student_id: 317)
++ 勘解由小路 紫 (student_id: 318)
++ 不破 莲华 (student_id: 319)
++ 桐生 桔梗 (student_id: 320)
++ 箭吹 棕榈 (student_id: 321)
++ 新 (student_id: 322)
++ 百鬼夜行学生A (student_id: 323)
++ 百鬼夜行学生C (student_id: 324)
++ 百鬼夜行学生B (student_id: 325)
++ 山海经学生A (student_id: 326)
++ 山海经学生B (student_id: 327)
++ 希罗尼穆斯 (student_id: 328)
++ 戈兹 (student_id: 329)
++ 格里高利 (student_id: 330)
++ 勘解由小路 虞美人 (student_id: 331)
++ 猫鬼黑影 (student_id: 333)
++ 艾茵 (student_id: 335)
++ 奥茹 (student_id: 336)
++ 索芙 (student_id: 337)
++ 盖布拉 (student_id: 338)
++ 色彩 (student_id: 339)
++ 野正 莱依 (student_id: 342)
++ 元宫 千明 (student_id: 347)
++ 地下生活者 (student_id: 349)
++ 黑帮组员A (student_id: 358)
++ 黑帮机器人A (student_id: 359)
++ 浅草 夏树 (student_id: 363)
++ 赛特 (student_id: 364)
++ 橘 光 (student_id: 365)
++ 橘 望 (student_id: 366)
++ 朝雾 周防 (student_id: 367)
++ 椎名 纺 (student_id: 372)
++ 「雷帝」 (student_id: 374)
++ 志真 心华 (student_id: 378)
++ 小鸟游 星野*恐怖 (student_id: 380)
++ 栗滨 明美 (student_id: 385)
++ 微笑教授 (student_id: 386)
++ DJ狗狗 (student_id: 387)
++ 漆原 辉夜 (student_id: 390)
++ 京剧部员A (student_id: 392)
++ 京剧部员B (student_id: 393)
++ 幻魉付丧神 (student_id: 395)
++ 无貌替身 (student_id: 396)
++ 霍克玛 (student_id: 501)
++ 马路库特 (student_id: 502)
++ 吾妻 未来 (student_id: 515)
++ 天童 凯伊 (student_id: 518)
++ 棒球狗狗 (student_id: 524)
++ 内海 青叶 (student_id: 525)
++ 暴走族A (student_id: 526)
++ 暴走族老大 (student_id: 527)
++ 提法勒特 (student_id: 528)
++ 七稜 菖蒲 (student_id: 529)
++ 土生 蓟 (student_id: 530)
++ 最强独角狮 (student_id: 532)
++ 板垣 庚 (student_id: 548)
++ 白尾 艾利 (student_id: 549)
++ 衣斐 莱娜 (student_id: 550)
++ 舍监队成员A (student_id: 552)
++ 狂猎学生A (student_id: 553)
++ 樱井 美代 (student_id: 554)
++ 云类鹫 爱美 (student_id: 555)
++ 阿里乌斯学生B (student_id: 556)
++ 启示录的天使 (student_id: 557)
++ 立木 迈亚 (student_id: 558)
++ 梯 昴 (student_id: 559)
++ 若狭 冬 (student_id: 560)
++ 薄叶 律 (student_id: 561)
++ 裕美 (student_id: 562)
++ 耶索德 (student_id: 564)
++ 劳工机器人A (student_id: 578)
++ 达阿特 (student_id: 581)
++ 内察赫 (student_id: 582)
++ 神名十文字 (student_id: 583)
++ 羽咋 翼 (student_id: 587)
++ 监原 美铃 (student_id: 588)
++ 密井 京子 (student_id: 589)
++ 联邦学生会长？ (student_id: 592)
++ 奥威尔 (student_id: 593)
++ 田径部员A (student_id: 594)
++ ？？？ (student_id: 595)
++ 千惠留 (student_id: 596)
++ 钢桶蟹 (student_id: 597)
++ 鹰野主 翠子 (student_id: 600)
++ 五百雀 和美 (student_id: 601)
++ 乌头尾 阳子 (student_id: 602)
++ 宫内 叶 (student_id: 605)
++ 雪玲 (student_id: 606)
++ 谢玛塔 (student_id: 607)
 
 ### Spine数据变更
 
++ 1: aris_spr (初始立绘)
++ 8: wakamo_spr (初始立绘)
++ 10: zunko_spr (初始立绘)
++ 11: yuzu_spr (初始立绘)
++ 12: Yustina_SR1_spr (初始立绘)
++ 13: Yukata_StreetGhostes_RL_spr (初始立绘)
++ 14: Yukata_StreetGhostes_MG_spr (初始立绘)
++ 16: yoheki_redwinter1_spr (初始立绘)
++ 17: yoheki_normal1_spr (初始立绘)
++ 18: wakamo_mask_spr (面具)
++ 19: utahaturret_spr (雷酱)
++ 25: sukeban_SR_spr (初始立绘)
++ 27: sukeban_HMG_spr (初始立绘)
++ 29: Soldier_OnsenDev_RL_spr (初始立绘)
++ 31: shizuko_spr (初始立绘)
++ 33: shiroko_robber_spr (头套)
++ 34: shiroko_ridingsuit_spr (初始立绘)
++ 35: shinon_spr (初始立绘)
++ 39: shigure_spr (初始立绘)
++ 40: shibasekimaster_spr (初始立绘)
++ 42: serina_spr (初始立绘)
++ 43: ako_spr (初始立绘)
++ 45: serika_shibaseki_spr (打工制服)
++ 46: serika_robber_spr (头套)
++ 47: aru_newyear_spr (初始立绘)
++ 48: serika_newyear_spr (初始立绘)
++ 50: schoolGirl02_SukebanSwim_MG_spr (初始立绘)
++ 51: schoolGirl01_SukebanSwim_SMG_spr (初始立绘)
++ 52: saya_spr (初始立绘)
++ 53: aris_noweapon_spr (无武器)
++ 54: saya_casual_spr (初始立绘)
++ 56: sakurako_spr (初始立绘)
++ 58: royalguard_redwinter1_spr (初始立绘)
++ 59: robot2_division_spr (初始立绘)
++ 60: aru_spr (初始立绘)
++ 61: Police_Valkyrie_SG_spr (初始立绘)
++ 63: pmcdirector_spr (初始立绘)
++ 64: atsuko_spr (初始立绘)
++ 67: peroro_spr (初始立绘)
++ 69: NP0126_spr (箱子)
++ 71: NP0125_spr (战损)
++ 72: ayane_robber_spr (头套)
++ 74: NP0123_spr (战损(机甲))
++ 76: NP0122_spr (AMAS小机器人)
++ 79: NP0118_spr (领航服)
++ 80: azusa_swimsuit_spr (初始立绘)
++ 81: blacksuit_spr (初始立绘)
++ 82: NP0116_spr (初始立绘)
++ 84: NP0115_spr (初始立绘)
++ 86: NP0114_spr (战损)
++ 87: NP0113_spr (战损)
++ 88: NP0112_spr (领航服)
++ 89: NP0111_spr (领航服)
++ 90: NP0110_spr (领航服)
++ 95: NP0109_spr (领航服)
++ 96: NP0108_spr (领航服)
++ 98: NP0107_spr (初始立绘)
++ 99: CH0079_spr (初始立绘（更新至实装立绘）)
++ 100: NP0106_spr (初始立绘)
++ 104: NP0105_spr (战损)
++ 106: NP0104_spr (初始立绘)
++ 111: NP0103_spr (头盔)
++ 116: NP0102_spr (运动服)
++ 118: NP0101_spr (学校泳装)
++ 119: CH0110_spr (旧立绘)
++ 120: NP0100_spr (无披肩)
++ 123: CH0123_spr (初始立绘)
++ 126: NP0099_spr (领航服)
++ 128: NP0098_spr (领航服)
++ 129: NP0097_spr (领航服)
++ 130: NP0096_spr (初始立绘)
++ 132: NP0095_spr (初始立绘)
++ 135: NP0094_spr (初始立绘)
++ 137: NP0093_spr (初始立绘)
++ 139: NP0092_spr (初始立绘)
++ 140: NP0091_spr (初始立绘)
++ 143: NP0090_spr (圣徒会制服)
++ 146: NP0089_spr (包扎)
++ 148: NP0088_spr (流血)
++ 149: NP0087_spr (初始立绘)
++ 150: CH0159_spr (初始立绘)
++ 151: NP0086_spr (初始立绘)
++ 153: NP0085_spr (AMAS战斗机器人)
++ 155: NP0084_spr (初始立绘)
++ 160: NP0082_spr (制服)
++ 161: NP0081_spr (制服)
++ 164: NP0080_spr (包扎)
++ 166: NP0079_spr (阿比舒机甲)
++ 168: NP0078_spr (战斗模式)
++ 170: NP0077_spr (紧身衣)
++ 172: NP0076_spr (应援团)
++ 174: NP0075_spr (护士服（运动会）)
++ 176: NP0074_spr (初始立绘)
++ 178: NP0073_spr (运动服)
++ 184: NP0072_spr (运动服)
++ 185: NP0071_spr (运动服)
++ 189: NP0070_spr (运动服)
++ 192: NP0069_spr (运动服)
++ 196: NP0068_spr (运动服)
++ 201: CH0193_spr (初始立绘)
++ 204: NP0067_spr (头套)
++ 205: CH0196_spr (初始立绘)
++ 208: CH0199_spr (初始立绘)
++ 210: NP0066_spr (头套)
++ 211: NP0065_spr (头套)
++ 212: NP0064_spr (头套)
++ 213: NP0063_spr (头套)
++ 214: NP0062_spr (运动服)
++ 216: NP0061_spr (运动服)
++ 219: NP0060_spr (运动服)
++ 221: NP0059_spr (运动服)
++ 223: CH0222_spr (23.11.08之前)
++ 225: NP0058_spr (运动服)
++ 227: chise_spr (初始立绘)
++ 229: NP0057_spr (运动服)
++ 230: NP0056_spr (运动服)
++ 231: NP0055_spr (运动服)
++ 232: NP0054_spr (运动服)
++ 233: NP0053_spr (运动服)
++ 234: NP0052_spr (运动服)
++ 236: NP0051_spr (运动服)
++ 238: NP0050_spr (运动服)
++ 241: NP0049_spr (运动服)
++ 244: NP0048_spr (运动服)
++ 246: NP0047_spr (运动服)
++ 247: NP0046_spr (运动服)
++ 249: NP0045_spr (运动服)
++ 251: NP0044_spr (运动服)
++ 252: engineer_animal3_spr (初始立绘)
++ 253: NP0043_spr (运动服)
++ 254: NP0042_spr (初始立绘)
++ 257: fuuka_spr (初始立绘)
++ 259: fuuki_normal1_spr (初始立绘)
++ 262: hanae_spr (初始立绘)
++ 263: NP0035_spr (初始立绘)
++ 265: hanako_spr (初始立绘)
++ 266: hare_spr (初始立绘)
++ 268: haruka_spr (初始立绘)
++ 270: haruna_spr (初始立绘)
++ 275: helmetdan_black1_spr (初始立绘)
++ 277: helmetdan_red1_spr (初始立绘)
++ 279: hibiki_spr (初始立绘)
++ 283: hihumi_robber_spr (头套)
++ 284: hihumi_spr (初始立绘)
++ 288: hina_spr (初始立绘)
++ 290: hiyori_spr (初始立绘)
++ 291: NP0017_spr (战损)
++ 292: hoshino_robber_spr (头套)
++ 297: hoshino_swimsuit_spr (初始立绘)
++ 306: izumi_swimsuit_spr (初始立绘)
++ 314: kaede_spr (初始立绘)
++ 317: kaitenranger_black_spr (初始立绘)
++ 319: kaitenranger_green_spr (初始立绘)
++ 320: kaitenranger_pink_spr (初始立绘)
++ 322: kaitenranger_red_spr (初始立绘)
++ 323: nonomi_robber_spr (头套)
++ 324: kaitenranger_yellow_spr (初始立绘)
++ 325: nodoka_spr (初始立绘)
++ 326: neru_spr (初始立绘)
++ 328: kayoko_spr (初始立绘)
++ 329: nagisa_spr (初始立绘)
++ 330: kazusa_spr (初始立绘)
++ 333: kirino_spr (初始立绘)
++ 334: koharu_spr (初始立绘)
++ 337: momoi_spr (初始立绘)
++ 341: mai_spr (初始立绘)
++ 342: maki_spr (初始立绘)
++ 343: moe_spr (初始立绘)
++ 346: misaki_spr (初始立绘)
++ 348: minori_spr (旧立绘)
++ 349: market_animal2_spr (初始立绘)
++ 350: mashiro_spr (初始立绘)
++ 351: mashiro_swimsuit_spr (初始立绘)
++ 353: mimori_spr (初始立绘)
++ 354: CH0069_spr (初始立绘)
++ 357: Akane_home (Akane_home)
++ 360: CH0069_home
++ 361: Nagisa_home
++ 362: Momoi_home
++ 363: Momoi_Scene
++ 364: Yuzu_home
++ 365: yuzu_bg
++ 366: Midori_home
++ 367: Aris_home
++ 368: CH0203_home
++ 369: CH0200_home
++ 370: Azusa_home
++ 371: Azusa_swimsuit_home
++ 373: CH0155_home
++ 374: kazusa_home
++ 375: Yoshimi_home
++ 376: CH0167_home
++ 377: CH0113_home
++ 378: Airi_home
++ 379: Ako_home
++ 381: akari_bg
++ 382: akari_home
++ 384: Aru_newyear_home
++ 386: Asuna_home
++ 387: Atsuko_home
++ 388: Ayane_home
++ 389: Yuuka_home
++ 390: Zunko_home
++ 391: Wakamo_Scene_0
++ 392: Wakamo_home
++ 393: Utaha_home
++ 394: Tsurugi_home
++ 395: Tsubaki_home
++ 396: CH0088_home
++ 397: CH0092_home
++ 398: CH0095_home
++ 399: CH0081_home
++ 400: CH0086_home
++ 401: CH0087_home
++ 402: CH0098_home
++ 403: CH0099_home
++ 404: CH0100_home
++ 405: CH0101_home
++ 406: CH0107_home
++ 407: CH0063_home
++ 408: CH0064_home
++ 409: CH0066_home
++ 412: CH0058_home
++ 413: CH0114_home
++ 414: CH0137_home
++ 415: CH0141_home
++ 416: CH0144_home
++ 417: CH0145_home
++ 418: CH0152_home
++ 419: CH0156_home
++ 420: CH0159_home
++ 421: CH0160_home
++ 422: CH0163_home
++ 423: CH0164_home
++ 424: CH0165_home
++ 425: CH0169_home
++ 426: CH0170_home
++ 427: CH0175_home
++ 428: CH0176_home
++ 429: CH0177_home
++ 430: CH0178_home
++ 431: CH0179_home
++ 432: CH0180_home
++ 433: CH0181_home
++ 434: CH0211_home
++ 435: CH0182_home
++ 436: CH0184_00
++ 437: CH9999_home
++ 438: Cherino_home
++ 439: CH0184_home
++ 440: Chinatsu_home
++ 441: Chise_home
++ 442: Eimi_home
++ 443: Fuuka_home
++ 445: CH0186_home
++ 446: CH0187_home
++ 447: CH0190_home
++ 448: CH0191_home
++ 449: CH0192_home
++ 450: Hanae_home
++ 451: CH0194_home
++ 452: CH0195_home
++ 453: Hanako_home
++ 454: CH0198_home
++ 455: Hare_home
++ 456: Haruka_home
++ 457: Tomoe_home
++ 458: Haruna_home
++ 459: Suzumi_home
++ 460: Hasumi_home
++ 461: Sumire_home
++ 462: Hibiki_home
++ 463: Shun_home
++ 464: Hihumi_home
++ 465: Shizuko_home
++ 466: Shiroko_ridingsuit_home
++ 467: Shiroko_home
++ 468: Hinata_home
++ 469: Shimiko_home
++ 470: Hina_home
++ 471: Hiyori_home
++ 472: Shigure_home
++ 473: Shigure_01
++ 474: Shigure_00
++ 475: Hoshino_swimsuit_home
++ 476: Iori_home
++ 477: serina_home
++ 478: Izumi_home
++ 479: Izumi_swimsuit_home
++ 480: Izuna_home
++ 481: Saya_casual_home
++ 482: Saya_home
++ 483: Juri_home
++ 484: Serika_home
++ 485: Kaede_home
++ 486: Karin_home
++ 487: Serika_Newyear_home
++ 488: Kayoko_home
++ 489: Saori_home
++ 490: kirino_home
++ 491: Koharu_home
++ 492: Sakurako_home
++ 493: Kotama_home
++ 494: Pina_home
++ 495: Kotori_home
++ 496: Maki_home
++ 497: Nonomi_home
++ 498: Marina_home
++ 499: mari_home
++ 500: Nodoka_home
++ 501: Mashiro_home
++ 503: Mashiro_swimsuit_home
++ 504: Mimori_home
++ 505: Misaki_home
++ 506: Miyako_home
++ 507: Moe_home
++ 508: Mutsuki_home
++ 509: mutsuki_newyear_home
++ 510: CH0138_home
++ 511: CH0135_home
++ 524: CH0217_home
++ 525: CH0218_home
++ 526: CH0215_home
++ 532: Hoshino_home
++ 536: CH0214_home
++ 540: sora_shop
++ 541: kazusa_old (旧立绘)
++ 542: sakurako_old (旧立绘)
++ 543: CH0188_home
++ 544: Ui_RaidBoss_Binah (初始立绘)
++ 545: Ui_RaidBoss_Kaitenger (初始立绘)
++ 546: Ui_RaidBoss_ShiroKuro (初始立绘)
++ 547: Ui_RaidBoss_Perorozilla (初始立绘)
++ 549: CH0210_home
++ 550: CH0205_home
++ 552: CH0204_home
++ 554: CH0209_home
++ 558: CH0183_home
++ 559: CH0124_home
++ 560: momiji_home
++ 562: CH0229_spr (初始立绘)
++ 563: Old_CH0124_spr (旧立绘)
++ 564: New_CH0124_spr (初始立绘)
++ 565: CH0185_home
++ 566: CH0193_home
++ 567: CH0071_home
++ 568: CH0089_home
++ 573: CH0123_home
++ 577: CH0996_home (初始立绘)
++ 578: CH9997_home (初始立绘)
++ 579: CH9998_home (初始立绘)
++ 589: Erika_CBT (CBT旧绘废案)
++ 590: fuuka_cbt (CBT旧绘废案)
++ 591: kanna_cbt (CBT旧绘废案)
++ 592: kirara_cbt (CBT旧绘废案)
++ 593: kirino_cbt (CBT旧绘废案)
++ 594: makoto_cbt (CBT旧绘废案)
++ 595: mari_cbt (CBT旧绘废案)
++ 596: marina_old (CBT旧绘废案)
++ 597: miria_cbt (CBT旧绘废案)
++ 598: miyako_cbt (CBT旧绘废案)
++ 599: nao_cbt (CBT旧绘废案)
++ 600: neru_cbt (CBT旧绘废案)
++ 601: orihime_cbt (CBT旧绘废案)
++ 602: pei_cbt (CBT旧绘废案)
++ 603: reizyo_cbt (CBT旧绘废案)
++ 605: rone_CBT (CBT旧绘废案)
++ 606: satsuki_cbt (CBT旧绘废案)
++ 607: serika_newyear_old (CBT旧绘废案)
++ 608: yukari_cbt (CBT旧绘废案)
++ 609: Wakamo_Scene_02 (CBT旧绘废案1)
++ 610: Wakamo_Scene_01 (CBT旧绘废案2)
++ 623: CH0161_home
++ 624: Ui_RaidBoss_Hod
++ 625: CH0174_spr-2 (23.11.08之后)
++ 627: NP0160_spr (幻魉百物语)
++ 629: NP0163_spr (无貌替身)
++ 630: CH0225_home
++ 631: CH0224_home
++ 632: CH0226_spr
++ 633: Ui_RaidBoss_Goz
++ 637: nagisa_old_spr (23年1月22日前)
++ 642: CH0219_spr
++ 643: CH0219_home
++ 648: CH0233_home
++ 650: CH0232_home
++ 653: CH0079_home (真琴)
++ 654: Ibuki_home (伊吹)
++ 655: CH0231_home (礼服亚子)
++ 656: CH0230_home (礼服日奈)
++ 660: CH0253_spr (礼服立绘)
++ 661: CH0254_spr (礼服立绘)
++ 669: Ui_RaidBoss_EN0005
++ 676: CH0259_spr (礼服立绘)
++ 677: NP0164_spr (正面立绘)
++ 681: CH0240_home
++ 682: CH0239_home
++ 684: CH0239_home_fix (光线修复)
++ 687: CH0196_home
++ 692: NP0182_spr (初始立绘)
++ 693: CH0110_Home
++ 694: CH0255_home
++ 707: CH0220_home
++ 708: CH0250_home
++ 709: CH0251_home
++ 711: NP0188_spr (白背心)
++ 713: NP0190_spr (白背心)
++ 714: SC51000_01 (Vol5.1)
++ 715: SC51000_02 (Vol5.1)
++ 716: CH0081_home_CN (国服)
++ 717: CH0164_spr_CN (国服)
++ 718: CH0164_home_CN (国服)
++ 719: CH0156_home_CN (国服)
++ 720: CH0160_home_CN (国服)
++ 721: CH0155_home_CN (国服)
++ 722: suzumi_home_CN (国服)
++ 723: saya_casual_home_CN (国服)
++ 724: shiroko_home_CN (国服)
++ 725: Hina_home_CN (国服)
++ 726: Hina_spr_CN (国服)
++ 727: Fuuka_home_CN (国服)
++ 729: CH0063_home_CN (国服)
++ 730: CH0063_spr_CN (国服)
++ 731: CH0066_home_CN (国服)
++ 732: NP0017_spr_CN (国服战损)
++ 733: iori_spr_CN (国服)
++ 734: sora_CN (国服)
++ 735: CH0058_home_CN (国服)
++ 736: yuuka_home_CN (国服)
++ 737: chinatsu_spr_CN (国服)
++ 738: Kirara_home
++ 739: Ui_RaidBoss_Hieronymus
++ 740: CH0202_home
++ 741: CH0201_home
++ 742: Ui_RaidBoss_HoverCraft
++ 745: CH0189_home
++ 750: NP0198_spr (单持霰弹枪)
++ 751: CH0258_spr (初始立绘)
++ 761: CH0261_home
++ 763: CH0262_home
++ 764: CH0260_home
++ 766: CH0261_home_fix (光线修复)
++ 768: kaede_home_CN (国服)
++ 769: CH0114_home_CN (国服)
++ 771: CH0180_home_CN (国服)
++ 773: kazusa_home_CN (国服)
++ 774: CH0216_home
++ 776: CH0263_spr (光环修复)
++ 777: CH0263_home
++ 779: CH0266_home
++ 781: CH0267_home
++ 784: CH0269_home
++ 785: CH0258_home
++ 793: NP0231_spr (头套（破碎光环）差分)
++ 794: NP0232_spr (头套（修复光环）差分)
++ 795: CH0267_home_fix (光线修复)
++ 796: NP0179_spr (霰弹枪持盾战损差分)
++ 797: CH0269_home_fix (光线修复)
++ 798: CH0263_home_fix (光线修复)
++ 799: CH0258_home_fix (光线修复)
++ 802: CH0184_spr_CN (国服)
++ 811: CH0270_home
++ 812: CH0271_home
++ 813: LobbyShiroko_multi (TV动画)
++ 815: CH0270_home_fix (光线修复)
++ 816: CH0271_home_fix (光线修复)
++ 820: CH0159_home_CN (国服)
++ 822: LobbySerika_multi (TV动画BD特典)
++ 825: Ui_RaidBoss_EN0006
++ 826: CH0139_home
++ 827: reizyo_home
++ 828: CH0141_home_Halofix (24.09.25修正)
++ 829: CH0100_home_Halofix (24.09.25修正)
++ 830: reizyo_home_fix (光线修复)
++ 831: LobbyNonomi_multi
++ 832: CH0201_spr_fixed (修正版)
++ 833: Ui_RaidBoss_Chesed
++ 837: CH0273_home_
++ 838: CH0274_home
++ 839: CH0275_home
++ 846: NP0223_spr (演出服)
++ 852: Hanako_home_fix (光线修复)
++ 853: Ibuki_home_fix (光线修复)
++ 854: CH0274_home_fix (光线修复)
++ 860: momoka_glitch_spr (2024.10.23更新错版)
++ 862: CH0165_spr_new (24.11.06更新立绘)
++ 863: LobbyAyane_multi (TV动画特典)
++ 864: LobbyHoshino_multi (TV动画特典)
++ 866: CH0170_home_CN (国服)
++ 868: CH0080_home
++ 869: CH0238_home
++ 871: CH0238_home_fix (光线修复)
++ 872: SC11000_01
++ 873: SC12000_01
++ 874: SC12000_02
++ 882: CH0284_home
++ 883: CH0285_home
++ 884: CH0285_home_fix (光线修复)
++ 885: CH0284_home_fix (光线修复)
++ 887: CH0070_home
++ 888: CH0158_home
++ 889: CH0280_home
++ 890: CH0281_home
++ 891: CH0282_home
++ 899: CH0070_home_fix (光线修复)
++ 900: CH0158_home_fix (光线修复)
++ 901: CH0280_home_fix (光线修复)
++ 902: CH0281_home_fix (光线修复)
++ 903: CH0200_home_CN (国服)
++ 904: NP0030_spr (帽子立绘)
++ 905: NP0119_spr (初始立绘)
++ 912: CH0235_home
++ 914: CH0235_home_fix (光线修复)
++ 918: CH0082_home
++ 919: CH0286_home
++ 922: CH0286_home_fix (光线修复)
++ 923: CH0197_home
++ 924: CH0214_home_CN (国服)
++ 925: CH0214_spr_CN (国服)
++ 926: minori_spr_CN (国服)
++ 929: CH0245_home
++ 930: CH0287_home
++ 931: CH0245_home_fix (光线修复)
++ 933: CH0259_home
++ 934: CH0259_home_fix (光线修复)
++ 936: ToSchool_JTFMobMaid1 (女仆装站姿)
++ 937: ToSchool_JTFMobMaid2 (女仆装叉手)
++ 938: ToSchool_JTFMobSports1 (运动服站姿)
++ 939: ToSchool_JTFMobSports2 (运动服叉手)
++ 940: ToSchool_JTFMobSuit1 (制服站姿)
++ 941: ToSchool_JTFMobSuit2 (制服叉手)
++ 942: ToSchool_JTFMobSwimsuit1 (泳装站姿)
++ 943: ToSchool_JTFMobSwimsuit2 (泳装叉手)
++ 944: Momoka_weekdungeon_CN (国服)
++ 945: NP0013_quest_CN (国服)
++ 946: NP0032_npc_CN (国服)
++ 947: Rin_raiddungeon_CN (国服)
++ 948: momoka_spr_CN (国服)
++ 949: NP0013_spr_CN (国服)
++ 950: NP0015_spr_CN (国服)
++ 951: NP0032_spr_CN (国服)
++ 952: NP0033_spr_CN (国服)
++ 953: NP0037_spr_CN (国服)
++ 954: NP0040_spr_CN (国服)
++ 955: NP0106_spr_CN (国服)
++ 956: NP0107_spr_CN (国服)
++ 957: rin_spr_CN (国服)
++ 958: Asuna_home_fix (光线修复)
++ 959: CH0079_home_fix (光线修复)
++ 961: CH0107_home_fix (光线修复)
++ 962: CH0164_home_fix (光线修复)
++ 963: CH0165_home_fix (光线修复)
++ 964: CH0183_home_fix (光线修复)
++ 965: CH0185_home_CN (国服)
++ 966: CH0201_home_fix (光线修复)
++ 967: CH0232_home_fix (光线修复)
++ 968: CH0255_home_fix (光线修复)
++ 969: CH0260_home_fix (光线修复)
++ 970: CH0262_home_fix (光线修复)
++ 971: CH0275_home_fix (光线修复)
++ 972: Kirara_home_fix (光线修复)
++ 973: Shizuko_home_fix (光线修复)
++ 977: CH0288_home
++ 978: CH0242_home
++ 979: CH0243_home
++ 980: CH0243_home_fix (光线修复)
++ 981: CH0288_home_fix (光线修复)
++ 982: momiji_spr_halofix (光环修正)
++ 983: CH0257_home
++ 984: CH0257_home_fix (光线修复)
++ 995: SC52000_02 (Vol5.2)
++ 996: CH0109_home
++ 997: CH0222_home
++ 999: NP0162_spr_update (展现右臂（25.05.21调整后）)
++ 1000: CH0109_home_fix (光线修复)
++ 1001: CH0222_home_fix (光线修复)
++ 1003: SC52000_01_fix (Vol5.2 光线修复)
++ 1006: CH0221_home
++ 1007: CH0300_home
++ 1008: CH0301_home
++ 1009: CH0302_home
++ 1015: NP0255_spr (泳装立绘)
++ 1016: CH0302_home_fix (光线修复)
++ 1017: suzumi_spr_steam (Steam初始立绘)
++ 1018: airi_spr_Steam (Steam初始立绘)
++ 1019: akane_spr_Steam (Steam版初始立绘)
++ 1020: akari_spr_Steam (Steam版初始立绘)
++ 1021: asuna_spr_Steam (Steam版初始立绘)
++ 1022: azusa_spr_Steam (Steam版初始立绘)
++ 1023: azusa_swimsuit_spr_Steam (Steam版初始立绘)
++ 1024: CH0063_spr_Steam (Steam版初始立绘)
++ 1025: CH0095_spr_Steam (Steam版初始立绘)
++ 1026: CH0098_spr_Steam (Steam版初始立绘)
++ 1027: CH0141_spr_Steam (Steam版初始立绘)
++ 1028: CH0230_spr_Steam (Steam版初始立绘)
++ 1029: chinatsu_spr_Steam (Steam版初始立绘)
++ 1030: eimi_spr_Steam (Steam版初始立绘)
++ 1031: hinata_spr_Steam (Steam版初始立绘)
++ 1032: hoshino_spr_Steam (Steam版初始立绘)
++ 1033: iori_spr_Steam (Steam版初始立绘)
++ 1034: izumi_spr_Steam (Steam版初始立绘)
++ 1035: izuna_spr_Steam (Steam版初始立绘)
++ 1036: juri_spr_Steam (Steam版初始立绘)
++ 1037: karin_spr_Steam (Steam版初始立绘)
++ 1038: kotama_spr_Steam (Steam版初始立绘)
++ 1039: kotori_spr_Steam (Steam版初始立绘)
++ 1040: marina_spr_Steam (Steam版初始立绘)
++ 1041: mutsuki_newyear_spr_Steam (Steam版初始立绘)
++ 1042: mutsuki_spr_Steam (Steam版初始立绘)
++ 1043: nonomi_spr_Steam (Steam版初始立绘)
++ 1044: pina_spr_Steam (Steam版初始立绘)
++ 1045: sena_spr_Steam (Steam版初始立绘)
++ 1046: serika_spr_Steam (Steam版初始立绘)
++ 1047: shun_spr_Steam (Steam版初始立绘)
++ 1048: sumire_spr_Steam (Steam版初始立绘)
++ 1049: tomoe_spr_Steam (Steam版初始立绘)
++ 1050: tsubaki_spr_Steam (Steam版初始立绘)
++ 1051: tsurugi_spr_Steam (Steam版初始立绘)
++ 1052: utaha_spr_Steam (Steam版初始立绘)
++ 1053: yoshimi_spr_Steam (Steam版初始立绘)
++ 1054: yuuka_spr_Steam (Steam版初始立绘)
++ 1055: aru_spr_Steam (Steam版初始立绘)
++ 1056: haruka_spr_Steam (Steam版初始立绘)
++ 1057: hasumi_spr_Steam (Steam版初始立绘)
++ 1058: Akari_home_Combined (回忆大厅)
++ 1059: CH0060_Home_Combined (回忆大厅)
++ 1060: Hoshino_home_Combined (回忆大厅)
++ 1061: Yuzu_home_Combined (回忆大厅)
++ 1062: CH0220_home_fix (光线修复)
++ 1063: Serika_home_fix (光线修复)
++ 1064: Serika_Newyear_home_fix (光线修复)
++ 1065: Shiroko_ridingsuit_home_fix (光线修复)
++ 1066: Azusa_swimsuit_home_fix (光线修复)
++ 1067: Mimori_home_fix (光线修复)
++ 1068: Atsuko_home_fix (光线修复)
++ 1069: CH0156_home_fix (光线修复)
++ 1070: CH0291_home
++ 1071: CH0292_home
++ 1072: CH0293_home
++ 1073: CH0294_home
++ 1074: CH0295_home
++ 1083: CH0304_spr (初始立绘)
++ 1090: CH0304_home
++ 1091: CH0306_home
++ 1161: CH0268_home
++ 1162: Midori_spr_update (初始立绘)
++ 1163: SC61000_01 (Vol.6.1)
++ 1168: NP0263_spr (初始立绘)
++ 1169: SC62000_01 (Vol.6.2)
++ 1173: CH0317_home
++ 1174: CH0318_home
++ 1175: CH0319_home
++ 1176: CH0167_spr_Steam (Steam版初始立绘)
++ 1177: mari_spr_Steam (Steam版初始立绘)
++ 1178: CH0196_home_CN (国服)
++ 1183: CH0166_home
++ 1184: CH0325_home
++ 1185: CH0326_home
++ 1186: CH0309_home
++ 1187: SC63000_01 (Vol.6.3)
++ 1188: NP0264_spr (吹响号角的天使)
++ 1189: CH0228_home
++ 1190: CH0229_home
++ 1191: Hoshino_default_MidAutumn (中秋)
++ 1195: CH0296_home
++ 1196: CH0297_home
++ 1207: CH0331_home
++ 1208: CH0332_home
++ 1209: CH0333_home
++ 1216: CH0334_home
++ 1217: CH0335_home
++ 1224: Ui_IAWorldBoss_EN0012 (钢铁大陆攻略战)
++ 1226: airi_spr_HD (初始立绘)
++ 1227: CH0335_noweapon_spr_HD (无武器立绘)
++ 1228: CH0335_spr_HD (初始立绘)
++ 1229: NP0241_spr_HD (AMAS身体立绘)
++ 1230: NP0269_spr_HD (神名十文字身体立绘)
++ 1231: NP0227_spr_HD (鬼屋装扮)
++ 1232: akane_spr_HD (初始立绘)
++ 1233: akari_spr_HD (初始立绘)
++ 1234: arona_spr_HD (初始立绘)
++ 1235: asuna_spr_HD (初始立绘)
++ 1236: azusa_spr_HD (初始立绘)
++ 1237: CH0063_spr_HD (初始立绘)
++ 1238: CH0070_spr_HD (初始立绘)
++ 1239: CH0080_spr_HD (初始立绘)
++ 1240: CH0082_spr_HD (初始立绘)
++ 1241: CH0095_spr_HD (初始立绘)
++ 1242: CH0098_spr_HD (初始立绘)
++ 1243: CH0109_spr_HD (初始立绘)
++ 1244: CH0113_spr_HD (初始立绘)
++ 1245: CH0114_spr_HD (初始立绘)
++ 1246: CH0139_spr_HD (初始立绘)
++ 1247: CH0141_spr_HD (初始立绘)
++ 1248: CH0158_spr_HD (初始立绘)
++ 1249: CH0166_spr_HD (初始立绘)
++ 1250: CH0167_spr_HD (初始立绘)
++ 1251: CH0197_spr_HD (初始立绘)
++ 1252: CH0221_spr_HD (初始立绘)
++ 1253: CH0222_spr_HD (23.11.08版本修改)
++ 1254: CH0223_spr_HD (初始立绘)
++ 1255: CH0230_spr_HD (礼服日奈)
++ 1256: CH0235_spr_HD (初始立绘)
++ 1257: CH0238_spr_HD (初始立绘)
++ 1258: CH0242_spr_HD (初始立绘)
++ 1259: CH0243_spr_HD (初始立绘)
++ 1260: CH0245_spr_HD (初始立绘)
++ 1261: CH0252_spr_HD (初始立绘)
++ 1262: CH0257_spr_HD (初始立绘)
++ 1263: CH0260_spr_HD (初始立绘)
++ 1264: CH0261_spr_HD (初始立绘)
++ 1265: CH0262_spr_HD (初始立绘)
++ 1266: CH0264_spr_HD (初始立绘)
++ 1267: CH0265_spr_HD (初始立绘)
++ 1268: CH0266_spr_HD (初始立绘)
++ 1269: CH0267_spr_HD (初始立绘)
++ 1270: CH0268_spr_HD (初始立绘)
++ 1271: CH0269_spr_HD (初始立绘)
++ 1272: CH0270_spr_HD (初始立绘)
++ 1273: CH0271_spr_HD (初始立绘)
++ 1274: CH0272_spr_HD (初始立绘)
++ 1275: CH0273_spr_HD (初始立绘)
++ 1276: CH0274_spr_HD (初始立绘)
++ 1277: CH0275_spr_HD (初始立绘)
++ 1278: CH0276_spr_HD (初始立绘)
++ 1279: CH0277_spr_HD (初始立绘)
++ 1280: CH0278_spr_HD (初始立绘)
++ 1281: CH0279_spr_HD (初始立绘)
++ 1282: CH0280_spr_HD (初始立绘)
++ 1283: CH0281_spr_HD (初始立绘)
++ 1284: CH0282_spr_HD (初始立绘)
++ 1285: CH0283_spr_HD (初始立绘)
++ 1286: CH0284_spr_HD (初始立绘)
++ 1287: CH0285_spr_HD (初始立绘)
++ 1288: CH0286_spr_HD (初始立绘)
++ 1289: CH0287_spr_HD (初始立绘)
++ 1290: CH0288_spr_HD (初始立绘)
++ 1291: CH0289_spr_HD (初始立绘)
++ 1292: CH0290_spr_HD (初始立绘)
++ 1293: CH0291_spr_HD (初始立绘)
++ 1294: CH0292_spr_HD (初始立绘)
++ 1295: CH0293_spr_HD (初始立绘)
++ 1296: CH0294_spr_HD (初始立绘)
++ 1297: CH0295_spr_HD (初始立绘)
++ 1298: CH0296_spr_HD (初始立绘)
++ 1299: CH0297_spr_HD (初始立绘)
++ 1300: CH0298_spr_HD (初始立绘)
++ 1301: CH0300_spr_HD (初始立绘)
++ 1302: CH0301_spr_HD (初始立绘)
++ 1303: CH0302_spr_HD (初始立绘)
++ 1304: CH0303_spr_HD (初始立绘)
++ 1305: CH0305_spr_HD (初始立绘)
++ 1306: CH0306_spr_HD (初始立绘)
++ 1307: CH0307_spr_HD (初始立绘)
++ 1308: CH0308_spr_HD (初始立绘)
++ 1309: CH0309_spr_HD (初始立绘)
++ 1310: CH0310_spr_HD (初始立绘)
++ 1311: CH0311_spr_HD (初始立绘)
++ 1312: CH0312_spr_HD (初始立绘)
++ 1313: CH0313_spr_HD (初始立绘)
++ 1314: CH0314_spr_HD (初始立绘)
++ 1315: CH0316_spr_HD (初始立绘)
++ 1316: CH0318_spr_HD (初始立绘)
++ 1317: CH0317_spr_HD (初始立绘)
++ 1318: CH0319_spr_HD (初始立绘)
++ 1319: CH0323_spr_HD (初始立绘)
++ 1320: CH0324_spr_HD (初始立绘)
++ 1321: CH0325_spr_HD (初始立绘)
++ 1322: CH0326_spr_HD (初始立绘)
++ 1323: CH0327_spr_HD (初始立绘)
++ 1324: CH0328_spr_HD (初始立绘)
++ 1325: CH0329_spr_HD (初始立绘)
++ 1326: CH0331_spr_HD (初始立绘)
++ 1327: CH0332_spr_HD (初始立绘)
++ 1328: CH0333_spr_HD (初始立绘)
++ 1329: CH0334_spr_HD (初始立绘)
++ 1330: CH0336_spr_HD (初始立绘)
++ 1331: CH0337_spr_HD (初始立绘)
++ 1332: NP0013_spr_HD (初始立绘)
++ 1333: NP0032_spr_HD (初始立绘)
++ 1334: NP0083_spr_HD (站立)
++ 1335: NP0124_spr_HD (战损)
++ 1336: NP0129_spr_HD (初始立绘)
++ 1337: NP0131_spr_HD (初始立绘)
++ 1338: NP0130_spr_HD (初始立绘)
++ 1339: NP0200_spr_HD (手枪持盾战损差分)
++ 1340: NP0201_spr_HD (双持战损差分)
++ 1341: NP0202_spr_HD (单持霰弹枪战损差分)
++ 1342: NP0203_spr_HD (初始立绘)
++ 1343: NP0206_spr_HD (黑化立绘)
++ 1344: NP0207_spr_HD (初始立绘)
++ 1345: NP0208_spr_HD (初始立绘)
++ 1346: NP0216_spr_HD (幼儿园立绘)
++ 1347: NP0217_spr_HD (偶像服)
++ 1348: NP0218_spr_HD (偶像服)
++ 1349: NP0219_spr_HD (偶像服)
++ 1350: NP0220_spr_HD (偶像服)
++ 1351: NP0221_spr_HD (和服)
++ 1352: NP0222_spr_HD (燕尾服)
++ 1353: NP0225_spr_HD (鬼屋装扮)
++ 1354: NP0226_spr_HD (鬼屋装扮)
++ 1355: NP0228_spr_HD (鬼屋装扮)
++ 1356: NP0229_spr_HD (黄昏立绘)
++ 1357: NP0230_spr_HD (无外套立绘)
++ 1358: NP0233_spr_HD (幼儿园立绘)
++ 1359: NP0234_spr_HD (防寒服)
++ 1360: NP0235_spr_HD (防寒服)
++ 1361: NP0236_spr_HD (防寒服)
++ 1362: NP0237_spr_HD (防寒服)
++ 1363: NP0240_spr_HD (防寒服)
++ 1364: NP0242_spr_HD (脸谱)
++ 1365: NP0243_spr_HD (持扇)
++ 1366: NP0244_spr_HD (纸箱)
++ 1367: NP0245_spr_HD (初始立绘)
++ 1368: NP0246_spr_HD (初始立绘)
++ 1369: NP0247_spr_HD (初始立绘)
++ 1370: NP0248_spr_HD (战损)
++ 1371: NP0249_spr_HD (无绷带)
++ 1372: NP0250_spr_HD (涂鸦)
++ 1373: NP0251_spr_HD (墨镜)
++ 1374: NP0252_spr_HD (初始立绘)
++ 1375: NP0253_spr_HD (初始立绘)
++ 1376: NP0254_spr_HD (泳装立绘)
++ 1377: NP0255_spr_HD (泳装立绘)
++ 1378: NP0256_spr_HD (初始立绘)
++ 1379: NP0257_spr_HD (初始立绘)
++ 1380: NP0262_spr_HD (玩偶服立绘)
++ 1381: NP0266_spr_HD (钢盔立绘)
++ 1382: NP0267_spr_HD (太空服)
++ 1383: NP0268_spr_HD (太空服)
++ 1384: NP0276_spr_HD (像素画)
++ 1385: NP0278_spr_HD (轮椅立绘)
++ 1386: NP0280_spr_HD (摘下外套)
++ 1387: NP0281_spr_HD (战损立绘)
++ 1388: NP0282_spr_HD (初始立绘)
++ 1389: cherino_spr_HD (初始立绘)
++ 1390: chinatsu_spr_HD (初始立绘)
++ 1391: eimi_spr_HD (初始立绘)
++ 1392: hasumi_spr_HD (初始立绘)
++ 1393: hinata_spr_HD (初始立绘)
++ 1394: hoshino_spr_HD (初始立绘)
++ 1395: iori_spr_HD (初始立绘)
++ 1396: izumi_spr_HD (初始立绘)
++ 1397: izuna_spr_HD (初始立绘)
++ 1398: juri_spr_HD (初始立绘)
++ 1399: karin_spr_HD (初始立绘)
++ 1400: kotama_spr_HD (初始立绘)
++ 1401: kotori_spr_HD (初始立绘)
++ 1402: mari_spr_HD (初始立绘)
++ 1403: marina_spr_HD (初始立绘)
++ 1404: midori_spr_HD (2025年7月之前)
++ 1405: momoka_spr_HD (初始立绘)
++ 1406: mutsuki_newyear_spr_HD (初始立绘)
++ 1407: mutsuki_spr_HD (初始立绘)
++ 1408: nonomi_spr_HD (初始立绘)
++ 1409: pina_spr_HD (初始立绘)
++ 1410: reizyo_spr_HD (初始立绘)
++ 1411: rin_spr_HD (初始立绘)
++ 1412: saori_spr_HD (初始立绘)
++ 1413: sena_spr_HD (初始立绘)
++ 1414: serika_spr_HD (初始立绘)
++ 1415: shimiko_spr_HD (初始立绘)
++ 1416: shun_spr_HD (初始立绘)
++ 1417: sora_spr_HD (初始立绘)
++ 1418: sukeban_SMG_spr_HD (初始立绘)
++ 1419: sumire_spr_HD (初始立绘)
++ 1420: suzumi_spr_HD (初始立绘)
++ 1421: tomoe_spr_HD (初始立绘)
++ 1422: tsubaki_spr_HD (初始立绘)
++ 1423: tsurugi_spr_HD (初始立绘)
++ 1424: utaha_spr_HD (初始立绘)
++ 1425: yoshimi_spr_HD (初始立绘)
++ 1426: yuuka_spr_HD (初始立绘)
++ 1427: Aru_home_HD
++ 1428: Aru_Scene_HD
++ 1429: Akari_Scene_HD
++ 1430: Fuuka_Scene_HD
++ 1431: Neru_home_HD
++ 1432: CH0333_Emoji (技能弹出动画)
++ 1433: Momoka_weekdungeon_HD
++ 1434: NP0032_npc_HD
++ 1435: Ui_IAWorldBoss_EN0015 (钢铁大陆攻略战)
++ 1436: Ui_IAWorldBoss_EN0020 (钢铁大陆攻略战)
++ 1437: SC90002000_01 (Vol.Ex - 1)
++ 1438: SC90002000_02 (Vol.Ex - 2)
++ 1439: SC90002000_03 (Vol.Ex - 3)
++ 1440: SC90002000_04 (Vol.Ex - 4)
++ 1441: CH0336_home
++ 1442: CH0337_home
++ 1446: NP0273_spr (战损)
++ 1447: NP0274_spr (初始立绘)
++ 1449: CH0310_home
++ 1450: CH0305_home
++ 1451: CH0264_home
++ 1454: CH0071_spr_HD (初始立绘)
++ 1455: CH0089_spr_HD (初始立绘)
++ 1456: CH0110_spr_HD (新初始立绘)
++ 1458: CH0135_spr_HD (初始立绘)
++ 1459: CH0138_spr_HD (初始立绘)
++ 1460: CH0157_spr_HD (初始立绘)
++ 1461: CH0161_spr_HD (初始立绘)
++ 1462: CH0183_spr_HD (初始立绘)
++ 1463: CH0185_spr_HD (初始立绘)
++ 1464: CH0189_spr_HD (初始立绘)
++ 1465: CH0201_spr_HD (修正版)
++ 1466: CH0202_spr_HD (初始立绘)
++ 1467: CH0204_spr_HD (初始立绘)
++ 1468: CH0205_spr_HD (初始立绘)
++ 1469: CH0209_spr_HD (初始立绘)
++ 1470: CH0210_spr_HD (初始立绘)
++ 1471: CH0213_spr_HD (初始立绘)
++ 1472: CH0214_spr_HD (初始立绘)
++ 1473: CH0215_spr_HD (初始立绘)
++ 1474: CH0216_spr_HD (初始立绘)
++ 1475: CH0217_spr_HD (初始立绘)
++ 1476: CH0218_spr_HD (初始立绘)
++ 1477: CH0220_spr_HD (初始立绘)
++ 1478: CH0224_spr_HD (初始立绘)
++ 1479: CH0225_spr_HD (初始立绘)
++ 1480: CH0226_spr_HD (25.05.21立绘修正（高清）)
++ 1481: CH0227_spr_HD (初始立绘)
++ 1482: CH0228_spr_HD (初始立绘)
++ 1483: CH0231_spr_HD (初始立绘)
++ 1484: CH0232_spr_HD (初始立绘)
++ 1485: CH0233_spr_HD (初始立绘)
++ 1486: CH0234_spr_HD (初始立绘)
++ 1487: CH0236_spr_HD (初始立绘)
++ 1488: CH0239_spr_HD (初始立绘)
++ 1489: CH0240_spr_HD (初始立绘)
++ 1490: CH0241_spr_HD (初始立绘)
++ 1491: CH0244_spr_HD (初始立绘)
++ 1492: CH0246_spr_HD (初始立绘)
++ 1493: CH0247_spr_HD (初始立绘)
++ 1494: CH0248_spr_HD (西服立绘)
++ 1495: CH0249_spr_HD (西服立绘)
++ 1496: CH0250_spr_HD (初始立绘)
++ 1497: CH0251_spr_HD (初始立绘)
++ 1498: CH0253_spr_HD (初始立绘)
++ 1499: CH0254_spr_HD (初始立绘)
++ 1500: CH0255_spr_HD (初始立绘)
++ 1501: CH0256_spr_HD (初始立绘)
++ 1502: CH0351_spr_HD (初始立绘)
++ 1503: CH0352_spr_HD (初始立绘)
++ 1504: CH9996_spr_HD (初始立绘)
++ 1505: CH9997_spr_HD (初始立绘)
++ 1506: CH9998_spr_HD (初始立绘)
++ 1507: NP0033_spr_HD (初始立绘)
++ 1508: NP0121_spr_HD (初始立绘)
++ 1509: NP0132_spr_HD (初始立绘)
++ 1510: NP0133_spr_HD (初始立绘)
++ 1511: NP0134_spr_HD (初始立绘)
++ 1512: NP0135_spr_HD (初始立绘)
++ 1513: NP0136_spr_HD (初始立绘)
++ 1514: NP0137_spr_HD (初始立绘)
++ 1515: NP0138_spr_HD (初始立绘)
++ 1516: NP0143_spr_HD (初始立绘)
++ 1517: NP0147_spr_HD (中学时期)
++ 1518: NP0148_spr_HD (巫女服)
++ 1519: NP0149_spr_HD (初始立绘)
++ 1520: NP0150_spr_HD (初始立绘)
++ 1521: NP0151_spr_HD (无水管)
++ 1522: NP0152_spr_HD (初始立绘)
++ 1523: NP0156_spr_HD (初始立绘)
++ 1524: NP0157_spr_HD (初始立绘)
++ 1525: NP0158_spr_HD (初始立绘)
++ 1526: NP0159_spr_HD (初始立绘)
++ 1527: NP0160_spr_HD (幻魉百物语)
++ 1528: NP0161_spr_HD (防寒棉袄)
++ 1529: NP0162_spr_HD (展现右臂)
++ 1530: NP0163_spr_HD (无貌替身)
++ 1531: NP0165_spr_HD (地下生活者)
++ 1532: NP0166_spr_HD (学校泳装)
++ 1533: NP0167_spr_HD (学校泳装)
++ 1534: NP0168_spr_HD (无武器)
++ 1535: NP0169_spr_HD (无武器)
++ 1536: NP0170_spr_HD (无武器)
++ 1537: NP0171_spr_HD (旧冬装)
++ 1538: NP0172_spr_HD (一年级)
++ 1539: NP0173_spr_HD (旧冬装)
++ 1540: NP0174_spr_HD (战损)
++ 1541: NP0175_spr_HD (战损)
++ 1542: NP0176_spr_HD (战损)
++ 1543: NP0177_spr_HD (临战)
++ 1544: NP0178_spr_HD (战损)
++ 1545: NP0180_spr_HD (初始立绘)
++ 1546: NP0181_spr_HD (初始立绘)
++ 1547: NP0186_spr_HD (反转)
++ 1548: NP0187_spr_HD (白背心)
++ 1549: NP0189_spr_HD (白背心)
++ 1550: NP0195_spr_HD (一年级)
++ 1551: NP0196_spr_HD (手枪持盾)
++ 1552: NP0197_spr_HD (双持)
++ 1553: NP0204_spr_HD (旧冬装（无围巾）)
++ 1554: NP0205_spr_HD (睡衣)
++ 1555: NP0270_spr_HD (初始立绘)
++ 1556: NP0271_spr_HD (初始立绘)
++ 1557: NP0272_spr_HD (初始立绘)
++ 1558: ayane_spr_HD (初始立绘)
++ 1559: ibuki_spr_HD (初始立绘（已更新至实装）)
++ 1560: kirara_spr_HD (初始立绘)
++ 1561: momiji_spr_HD (初始立绘)
++ 1562: shiroko_spr_HD (初始立绘)
++ 1563: CH0307_home
++ 1564: CH0172_home
++ 1565: CH0173_home
++ 1566: CH0174_home
++ 1568: Arona_workpage_daytime_02
++ 1569: Arona_workpage_nighttime_02
++ 1570: NP0265_spr (初始立绘)
++ 1571: NP0289_spr (初始立绘)
++ 1572: NP0290_spr (初始立绘)
++ 1573: NP0291_spr (私服立绘)
++ 1574: NP0292_spr (囚服立绘)
++ 1575: NP0293_spr (无武器)
++ 1576: NP0294_spr (初始立绘)
++ 1577: NP0295_spr (初始立绘)
++ 1578: Arius_GL1_spr_HD (初始立绘)
++ 1579: Automata_Decagrammaton1_spr_HD (初始立绘)
++ 1580: Automata_Kurokamegumi1_spr_HD (初始立绘)
++ 1581: Automata_PMC1_spr_HD (初始立绘)
++ 1582: BunnyGirl_SR_spr_HD (初始立绘)
++ 1583: CH0058_spr_HD (初始立绘)
++ 1584: CH0060_spr_HD (初始立绘)
++ 1585: CH0064_spr_HD (初始立绘)
++ 1586: CH0066_spr_HD (初始立绘)
++ 1587: CH0086_spr_HD (初始立绘)
++ 1588: CH0087_spr_HD (初始立绘)
++ 1589: CH0088_spr_HD (初始立绘)
++ 1590: CH0092_spr_HD (初始立绘)
++ 1591: CH0099_spr_HD (初始立绘)
++ 1592: CH0100_spr_HD (初始立绘)
++ 1593: CH0101_spr_HD (初始立绘)
++ 1594: CH0107_spr_HD (初始立绘)
++ 1595: CH0125_spr_HD (初始立绘)
++ 1596: CH0137_spr_HD (初始立绘)
++ 1597: CH0144_spr_HD (初始立绘)
++ 1598: CH0145_spr_HD (初始立绘)
++ 1599: CH0152_spr_HD (初始立绘)
++ 1600: CH0155_spr_HD (初始立绘)
++ 1601: CH0156_spr_HD (初始立绘)
++ 1602: CH0160_spr_HD (初始立绘)
++ 1603: CH0162_spr_HD (初始立绘)
++ 1604: CH0163_spr_HD (初始立绘)
++ 1605: CH0165_spr_HD (24.11.06更新立绘)
++ 1606: CH0169_spr_HD (初始立绘)
++ 1607: CH0164_spr_HD (初始立绘)
++ 1608: CH0170_spr_HD (初始立绘)
++ 1609: CH0171_spr_HD (初始立绘)
++ 1610: CH0172_spr_HD (初始立绘)
++ 1611: CH0173_spr_HD (初始立绘)
++ 1612: CH0174_spr_HD (23.11.08之后)
++ 1613: CH0175_spr_HD (初始立绘)
++ 1614: CH0176_spr_HD (初始立绘)
++ 1615: CH0177_spr_HD (初始立绘)
++ 1616: CH0178_spr_HD (初始立绘)
++ 1617: CH0179_spr_HD (初始立绘)
++ 1618: CH0180_spr_HD (初始立绘)
++ 1619: NP0015_spr_HD (初始立绘)
++ 1620: NP0037_spr_HD (初始立绘)
++ 1621: NP0040_spr_HD (初始立绘)
++ 1622: NP0139_spr_HD (无武器)
++ 1623: NP0140_spr_HD (无武器)
++ 1624: NP0141_spr_HD (无武器)
++ 1625: NP0142_spr_HD (警卫服)
++ 1626: erika_spr_HD (初始立绘)
++ 1627: miyako_spr_HD (初始立绘)
++ 1628: erika_home
++ 1629: CH0201_home_CN (国服)
++ 1630: CH0274_home_CN (国服)
++ 1631: CH0255_spr_CN (国服)
++ 1632: CH0256_spr_CN (国服)
++ 1633: CH0257_spr_CN (国服)
++ 1634: CH0246_home
++ 1635: CH0247_home
++ 1636: NP0013_quest_HD
++ 1637: Rin_raiddungeon_HD
++ 1639: NP0283_spr (FOX EATS)
++ 1640: CH0181_spr_HD (初始立绘)
++ 1641: CH0182_spr_HD (初始立绘)
++ 1642: CH0184_spr_HD (初始立绘)
++ 1643: CH0186_spr_HD (初始立绘)
++ 1644: CH0187_spr_HD (初始立绘)
++ 1645: CH0188_spr_HD (初始立绘)
++ 1646: CH0190_spr_HD (初始立绘)
++ 1647: CH0191_spr_HD (初始立绘)
++ 1648: CH0192_spr_HD (初始立绘)
++ 1649: CH0194_spr_HD (初始立绘)
++ 1650: CH0195_spr_HD (初始立绘)
++ 1651: CH0198_spr_HD (初始立绘)
++ 1652: CH0200_spr_HD (初始立绘)
++ 1653: CH0203_spr_HD (初始立绘)
++ 1654: CH0211_spr_HD (初始立绘)
++ 1655: CH0212_spr_HD (初始立绘)
++ 1656: CH9999_spr_HD (初始立绘)
++ 1657: Citizen_animal5_eyepatch_spr_HD (初始立绘)
++ 1658: Citizen_animal5_spr_HD (初始立绘)
++ 1659: Citizen_animal6_bandagespr_HD (初始立绘)
++ 1660: Citizen_animal6_spr_HD (初始立绘)
++ 1661: Citizen_animal7_spr_HD (初始立绘)
++ 1662: Cook_GenbuStore_SG_spr_HD (初始立绘)
++ 1663: Justice_normal1_spr_HD (初始立绘)
++ 1664: Maestro_spr_HD (初始立绘)
++ 1665: NP0001_spr_HD (运动服)
++ 1666: NP0002_spr_HD (学校泳装)
++ 1667: NP0003_spr_HD (运动服)
++ 1668: NP0004_spr_HD (学校泳装)
++ 1669: NP0005_spr_HD (运动服)
++ 1670: NP0006_spr_HD (学校泳装)
++ 1671: NP0007_spr_HD (运动服)
++ 1672: NP0008_spr_HD (学校泳装)
++ 1673: NP0009_spr_HD (睡衣)
++ 1674: NP0010_spr_HD (无武器)
++ 1675: NP0011_spr_HD (初始立绘)
++ 1676: NP0012_spr_HD (战损)
++ 1677: NP0014_spr_HD (和服)
++ 1678: NP0018_spr_HD (油桶伪装)
++ 1679: NP0019_spr_HD (战损)
++ 1680: NP0020_spr_HD (战损)
++ 1681: NP0021_spr_HD (战损)
++ 1682: NP0022_spr_HD (初始立绘)
++ 1683: NP0023_spr_HD (初始立绘)
++ 1684: NP0024_spr_HD (初始立绘)
++ 1685: NP0025_spr_HD (初始立绘)
++ 1686: NP0026_spr_HD (初始立绘)
++ 1687: NP0027_spr_HD (初始立绘)
++ 1688: NP0028_spr_HD (初始立绘)
++ 1689: NP0029_spr_HD (初始立绘)
++ 1690: NP0031_spr_HD (初始立绘)
++ 1691: NP0034_spr_HD (初始立绘)
++ 1692: NP0036_spr_HD (初始立绘)
++ 1693: NP0038_spr_HD (初始立绘)
++ 1694: NP0041_spr_HD (战损)
++ 1695: citizen_animal1_spr_HD (初始立绘)
++ 1696: citizen_borot1_spr_HD (初始立绘)
++ 1697: citizen_borot2_spr_HD (初始立绘)
++ 1698: CH0303_home
++ 1699: CH0354_spr (初始立绘)
++ 1700: CH0355_spr (初始立绘)
++ 1701: CH0356_spr (初始立绘)
++ 1702: CH0357_spr (初始立绘)
++ 1703: CH0361_spr (初始立绘)
++ 1704: CH0365_spr (初始立绘)
++ 1705: CH0366_spr (初始立绘)
++ 1706: CH0367_spr (初始立绘)
++ 1707: NP0284_spr (幼儿园泳装立绘)
++ 1708: NP0288_spr (初始立绘)
++ 1709: CH0355_home
++ 1710: CH0356_home
 + 1711: NP0216_spr_CN (国服)
 
 ### 统计
 
-- 学生总数: 329→329 (*5)
-- Spine总数: 1148→1149 (+1)
+- 学生总数: 0→329 (+329)
+- Spine总数: 0→1149 (+1149)
