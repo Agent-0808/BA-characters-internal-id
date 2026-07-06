@@ -372,56 +372,14 @@
     "type": "spr"
   },
   {
-    "id": 116,
-    "name": "NP0102_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 118,
-    "name": "NP0101_spr",
-    "remark": "学校泳装",
-    "type": "spr"
-  },
-  {
     "id": 119,
     "name": "CH0110_spr",
     "remark": "旧立绘",
     "type": "spr"
   },
   {
-    "id": 120,
-    "name": "NP0100_spr",
-    "remark": "无披肩",
-    "type": "spr"
-  },
-  {
     "id": 123,
     "name": "CH0123_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 126,
-    "name": "NP0099_spr",
-    "remark": "领航服",
-    "type": "spr"
-  },
-  {
-    "id": 128,
-    "name": "NP0098_spr",
-    "remark": "领航服",
-    "type": "spr"
-  },
-  {
-    "id": 129,
-    "name": "NP0097_spr",
-    "remark": "领航服",
-    "type": "spr"
-  },
-  {
-    "id": 130,
-    "name": "NP0096_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -432,74 +390,8 @@
     "type": "spr"
   },
   {
-    "id": 135,
-    "name": "NP0094_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 137,
-    "name": "NP0093_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 139,
-    "name": "NP0092_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 140,
-    "name": "NP0091_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 143,
-    "name": "NP0090_spr",
-    "remark": "圣徒会制服",
-    "type": "spr"
-  },
-  {
-    "id": 146,
-    "name": "NP0089_spr",
-    "remark": "包扎",
-    "type": "spr"
-  },
-  {
-    "id": 148,
-    "name": "NP0088_spr",
-    "remark": "流血",
-    "type": "spr"
-  },
-  {
-    "id": 149,
-    "name": "NP0087_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 150,
     "name": "CH0159_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 151,
-    "name": "NP0086_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 153,
-    "name": "NP0085_spr",
-    "remark": "AMAS战斗机器人",
-    "type": "spr"
-  },
-  {
-    "id": 155,
-    "name": "NP0084_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -516,42 +408,6 @@
     "type": "spr"
   },
   {
-    "id": 164,
-    "name": "NP0080_spr",
-    "remark": "包扎",
-    "type": "spr"
-  },
-  {
-    "id": 166,
-    "name": "NP0079_spr",
-    "remark": "阿比舒机甲",
-    "type": "spr"
-  },
-  {
-    "id": 168,
-    "name": "NP0078_spr",
-    "remark": "战斗模式",
-    "type": "spr"
-  },
-  {
-    "id": 170,
-    "name": "NP0077_spr",
-    "remark": "紧身衣",
-    "type": "spr"
-  },
-  {
-    "id": 172,
-    "name": "NP0076_spr",
-    "remark": "应援团",
-    "type": "spr"
-  },
-  {
-    "id": 174,
-    "name": "NP0075_spr",
-    "remark": "护士服（运动会）",
-    "type": "spr"
-  },
-  {
     "id": 176,
     "name": "NP0074_spr",
     "remark": "初始立绘",
@@ -564,32 +420,8 @@
     "type": "spr"
   },
   {
-    "id": 184,
-    "name": "NP0072_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 185,
-    "name": "NP0071_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
     "id": 189,
     "name": "NP0070_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 192,
-    "name": "NP0069_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 196,
-    "name": "NP0068_spr",
     "remark": "运动服",
     "type": "spr"
   },
@@ -597,12 +429,6 @@
     "id": 201,
     "name": "CH0193_spr",
     "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 204,
-    "name": "NP0067_spr",
-    "remark": "头套",
     "type": "spr"
   },
   {
@@ -618,63 +444,9 @@
     "type": "spr"
   },
   {
-    "id": 210,
-    "name": "NP0066_spr",
-    "remark": "头套",
-    "type": "spr"
-  },
-  {
-    "id": 211,
-    "name": "NP0065_spr",
-    "remark": "头套",
-    "type": "spr"
-  },
-  {
-    "id": 212,
-    "name": "NP0064_spr",
-    "remark": "头套",
-    "type": "spr"
-  },
-  {
-    "id": 213,
-    "name": "NP0063_spr",
-    "remark": "头套",
-    "type": "spr"
-  },
-  {
-    "id": 214,
-    "name": "NP0062_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 216,
-    "name": "NP0061_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 219,
-    "name": "NP0060_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 221,
-    "name": "NP0059_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
     "id": 223,
     "name": "CH0222_spr",
     "remark": "23.11.08之前",
-    "type": "spr"
-  },
-  {
-    "id": 225,
-    "name": "NP0058_spr",
-    "remark": "运动服",
     "type": "spr"
   },
   {
@@ -684,99 +456,9 @@
     "type": "spr"
   },
   {
-    "id": 229,
-    "name": "NP0057_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 230,
-    "name": "NP0056_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 231,
-    "name": "NP0055_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 232,
-    "name": "NP0054_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 233,
-    "name": "NP0053_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 234,
-    "name": "NP0052_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 236,
-    "name": "NP0051_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 238,
-    "name": "NP0050_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 241,
-    "name": "NP0049_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 244,
-    "name": "NP0048_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 246,
-    "name": "NP0047_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 247,
-    "name": "NP0046_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 249,
-    "name": "NP0045_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
-    "id": 251,
-    "name": "NP0044_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
     "id": 252,
     "name": "engineer_animal3_spr",
     "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 253,
-    "name": "NP0043_spr",
-    "remark": "运动服",
     "type": "spr"
   },
   {
@@ -6891,6 +6573,336 @@
     "id": 1711,
     "name": "NP0216_spr_CN",
     "remark": "国服",
+    "type": "spr"
+  },
+  {
+    "id": 1713,
+    "name": "NP0043_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1714,
+    "name": "NP0044_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1715,
+    "name": "NP0045_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1716,
+    "name": "NP0046_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1717,
+    "name": "NP0047_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1718,
+    "name": "NP0048_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1719,
+    "name": "NP0049_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1720,
+    "name": "NP0050_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1721,
+    "name": "NP0052_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1722,
+    "name": "NP0053_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1723,
+    "name": "NP0054_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1724,
+    "name": "NP0055_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1725,
+    "name": "NP0056_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1726,
+    "name": "NP0057_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1727,
+    "name": "NP0058_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1728,
+    "name": "NP0059_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1729,
+    "name": "NP0060_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1730,
+    "name": "NP0061_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1731,
+    "name": "NP0062_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1732,
+    "name": "NP0063_spr_HD",
+    "remark": "头套",
+    "type": "spr"
+  },
+  {
+    "id": 1733,
+    "name": "NP0064_spr_HD",
+    "remark": "头套",
+    "type": "spr"
+  },
+  {
+    "id": 1734,
+    "name": "NP0065_spr_HD",
+    "remark": "头套",
+    "type": "spr"
+  },
+  {
+    "id": 1735,
+    "name": "NP0066_spr_HD",
+    "remark": "头套",
+    "type": "spr"
+  },
+  {
+    "id": 1736,
+    "name": "NP0067_spr_HD",
+    "remark": "头套",
+    "type": "spr"
+  },
+  {
+    "id": 1737,
+    "name": "NP0068_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1738,
+    "name": "NP0069_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1740,
+    "name": "NP0071_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1741,
+    "name": "NP0072_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1743,
+    "name": "NP0075_spr_HD",
+    "remark": "护士服（运动会）",
+    "type": "spr"
+  },
+  {
+    "id": 1744,
+    "name": "NP0076_spr_HD",
+    "remark": "应援团",
+    "type": "spr"
+  },
+  {
+    "id": 1745,
+    "name": "NP0077_spr_HD",
+    "remark": "紧身衣",
+    "type": "spr"
+  },
+  {
+    "id": 1746,
+    "name": "NP0078_spr_HD",
+    "remark": "战斗模式",
+    "type": "spr"
+  },
+  {
+    "id": 1747,
+    "name": "NP0079_spr_HD",
+    "remark": "阿比舒机甲",
+    "type": "spr"
+  },
+  {
+    "id": 1748,
+    "name": "NP0080_spr_HD",
+    "remark": "包扎",
+    "type": "spr"
+  },
+  {
+    "id": 1749,
+    "name": "NP0081_spr_HD",
+    "remark": "NPC时期立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1750,
+    "name": "NP0082_spr_HD",
+    "remark": "NPC时期立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1751,
+    "name": "NP0084_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1752,
+    "name": "NP0085_spr_HD",
+    "remark": "AMAS战斗机器人",
+    "type": "spr"
+  },
+  {
+    "id": 1753,
+    "name": "NP0086_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1754,
+    "name": "NP0087_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1755,
+    "name": "NP0088_spr_HD",
+    "remark": "流血",
+    "type": "spr"
+  },
+  {
+    "id": 1756,
+    "name": "NP0089_spr_HD",
+    "remark": "包扎",
+    "type": "spr"
+  },
+  {
+    "id": 1757,
+    "name": "NP0090_spr_HD",
+    "remark": "圣徒会制服",
+    "type": "spr"
+  },
+  {
+    "id": 1758,
+    "name": "NP0091_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1759,
+    "name": "NP0092_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1760,
+    "name": "NP0093_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1761,
+    "name": "NP0094_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1762,
+    "name": "NP0096_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1763,
+    "name": "NP0097_spr_HD",
+    "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1764,
+    "name": "NP0098_spr_HD",
+    "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1765,
+    "name": "NP0099_spr_HD",
+    "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1766,
+    "name": "NP0100_spr_HD",
+    "remark": "无披肩",
+    "type": "spr"
+  },
+  {
+    "id": 1767,
+    "name": "NP0101_spr_HD",
+    "remark": "学校泳装",
+    "type": "spr"
+  },
+  {
+    "id": 1768,
+    "name": "NP0102_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1769,
+    "name": "NP0051_spr_HD",
+    "remark": "运动服",
     "type": "spr"
   }
 ]
