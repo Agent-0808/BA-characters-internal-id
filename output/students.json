@@ -1414,7 +1414,8 @@
         "spines": [
           1271,
           797,
-          784
+          784,
+          1771
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -6741,7 +6742,8 @@
         "spines": [
           1256,
           914,
-          912
+          912,
+          1770
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -12529,7 +12531,7 @@
   },
   {
     "id": 595,
-    "name": "？？？",
+    "name": "扭来扭去",
     "name_cn": "",
     "name_jp": "くねくね",
     "name_en": "",

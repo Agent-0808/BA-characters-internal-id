@@ -6904,5 +6904,17 @@
     "name": "NP0051_spr_HD",
     "remark": "运动服",
     "type": "spr"
+  },
+  {
+    "id": 1770,
+    "name": "CH0235_home_CN",
+    "remark": "国服",
+    "type": "home"
+  },
+  {
+    "id": 1771,
+    "name": "CH0269_home_CN",
+    "remark": "国服",
+    "type": "home"
   }
 ]
