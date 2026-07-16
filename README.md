@@ -3,10 +3,14 @@
 整理了《碧蓝档案》/《蔚蓝档案》/Blue Archive 中角色对应的 Spine 文件ID，方便解包时确定对应文件名。
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/Agent-0808/BA-characters-internal-id/total)](https://github.com/Agent-0808/BA-characters-internal-id/releases)
-[![GitHub Downloads](https://img.shields.io/github/downloads/Agent-0808/BA-characters-internal-id/latest/total)](https://github.com/Agent-0808/BA-characters-internal-id/releases)
+[![GitHub Downloads (latest)](https://img.shields.io/github/downloads/Agent-0808/BA-characters-internal-id/latest/total)](https://github.com/Agent-0808/BA-characters-internal-id/releases)
 
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Agent-0808/BA-characters-internal-id/data)
+![GitHub Release](https://img.shields.io/github/v/release/Agent-0808/BA-characters-internal-id?display_name=release)
 
-可以从 [Release](https://github.com/Agent-0808/BA-characters-internal-id/releases) 中下载最新版本的`students_data.csv`文件。
+- 可以从 [Release](https://github.com/Agent-0808/BA-characters-internal-id/releases) 中下载最新版本的`students_data.csv`文件。
+- 也可以下载 [Github Pages](https://agent-0808.github.io/BA-characters-internal-id/data/) 中托管的其他形式的数据文件，如`students.json`与`spines.json`。
+
 
 ### 部署
 
@@ -28,7 +32,7 @@ Steam 版的文件储存路径为`BlueArchive\BlueArchive_Data\StreamingAssets\P
   - 回忆大厅：`assets-_mx-spinelobbies-ch0145_home-_mxdependency-*_assets_all_*.bundle`
   - .....
 
-手机版文件名同理
+手机版文件名同理。
 
 ### 致谢
 
