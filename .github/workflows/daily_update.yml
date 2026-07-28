@@ -78,6 +78,14 @@ jobs:
       # 在运行爬虫前备份旧的output目录，用于生成变更报告
       - name: 备份旧数据用于对比
         run: |
+          # 即使跳过缓存，也要从 data 分支获取旧数据用于对比
+          if [ ! -d "output" ] && [ "${{ github.event.inputs.skip_cache }}" == "true" ]; then
+            echo "跳过缓存模式：从 data 分支获取旧数据用于对比..."
+            if git fetch origin data >/dev/null 2>&1; then
+              git checkout origin/data -- output/ 2>/dev/null || true
+            fi
+          fi
+
           if [ -d "output" ]; then
             echo "备份旧数据到 prev_output..."
             cp -r output prev_output
@@ -86,13 +94,12 @@ jobs:
           fi
 
       # 记录运行前的状态文件指纹
-      # 通过计算 students_data.csv 的 MD5 哈希值来判断数据是否进行了更新
+      # 通过计算 students.json 的 MD5 哈希值来判断数据是否进行了更新
       - name: 记录运行前状态
         id: pre_state
         run: |
-          if [ -f "output/students_data.csv" ]; then
-            # 计算文件哈希并保存到临时文件
-            md5sum output/students_data.csv | awk '{print $1}' > pre_hash.txt
+          if [ -f "output/students.json" ]; then
+            md5sum output/students.json | awk '{print $1}' > pre_hash.txt
           else
             echo "empty" > pre_hash.txt
           fi
@@ -110,20 +117,20 @@ jobs:
         run: python -m crawler -m 1 -d 3
 
       # 检测数据是否发生变化
-      # 对比运行前后的 students_data.csv 哈希值
+      # 对比运行前后的 students.json 哈希值
       - name: 检测是否有数据更新
         id: check_changes
         run: |
           # 计算运行后的哈希
-          if [ -f "output/students_data.csv" ]; then
-            md5sum output/students_data.csv | awk '{print $1}' > post_hash.txt
+          if [ -f "output/students.json" ]; then
+            md5sum output/students.json | awk '{print $1}' > post_hash.txt
           else
             echo "empty" > post_hash.txt
           fi
-          
+
           echo "运行前 Hash: $(cat pre_hash.txt)"
           echo "运行后 Hash: $(cat post_hash.txt)"
-          
+
           # 比较两个哈希文件，-s 表示静默模式
           if cmp -s pre_hash.txt post_hash.txt; then
             echo "changes_detected=false" >> $GITHUB_OUTPUT
@@ -133,27 +140,23 @@ jobs:
             echo "✅ 检测到新数据！准备提交和发布。"
           fi
 
-      # 生成变更报告
-      # 对比新旧JSON文件，生成Markdown格式的变更报告
-      - name: 生成变更报告
-        if: steps.check_changes.outputs.changes_detected == 'true'
-        run: python -m crawler.diff_report
-
       # 准备要发布到 data 分支的文件
       # 仅当检测到变化或总是推送时运行
       - name: 准备发布文件
         if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.always_push == 'true'
         run: |
           mkdir -p deployment_folder
-          
+
           if [ -d "output" ]; then
             cp -r output deployment_folder/
+            # 删除 diff_report.md，不提交到 data 分支
+            rm -f deployment_folder/output/diff_report.md || true
           fi
-          
+
           if [ -d "cache" ]; then
             cp -r cache deployment_folder/
           fi
-          
+
           echo "以下文件将被推送到 data 分支："
           ls -R deployment_folder
 
@@ -172,6 +175,12 @@ jobs:
           keep_files: false
           enable_jekyll: true
 
+      # 生成变更报告（仅用于 Release）
+      # 在创建 Release 前临时生成，用后自动清理
+      - name: 生成变更报告
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: python -m crawler.diff_report
+
       # 创建 Release 发布
       # 仅当检测到变化时运行
       - name: 创建 Release 版本
@@ -185,6 +194,8 @@ jobs:
           files: |
             output/students_data.csv
             output/skipped_ids.csv
+            output/students.json
+            output/spines.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

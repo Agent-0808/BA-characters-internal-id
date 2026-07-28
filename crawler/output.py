@@ -204,10 +204,15 @@ class StudentAggregator:
 
             # 收集该角色的所有页面ID
             page_ids = [item["id"] for item in skin_list if isinstance(item.get("id"), int)]
-            
+
+            # 检查是否有任何一个页面已经被其他角色包含（避免重复）
+            if any(pid in processed_ids for pid in page_ids):
+                processed_ids.add(kivowiki_id)
+                continue
+
             # 角色ID取最小的ID
             student_id = min(page_ids)
-            
+
             # 标记所有页面为已处理
             processed_ids.update(page_ids)
 
