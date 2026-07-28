@@ -1634,53 +1634,6 @@
     ]
   },
   {
-    "id": 38,
-    "name": "枣 伊吕波",
-    "name_cn": "枣 伊吕波",
-    "name_jp": "棗 イロハ",
-    "name_en": "Natsume Iroha",
-    "name_kr": "나츠메 이로하",
-    "name_tw": "棗 伊呂波",
-    "school_id": 3,
-    "pages": [
-      {
-        "page_id": 38,
-        "skin_name": "",
-        "skin_name_cn": "",
-        "skin_name_jp": "",
-        "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E6%9E%A3%20%E4%BC%8A%E5%90%95%E6%B3%A2/avatar.png",
-        "spines": [
-          1601,
-          1069,
-          419,
-          719
-        ],
-        "is_install": true,
-        "is_install_cn": true,
-        "is_install_global": true,
-        "is_npc": false,
-        "rarity": 3,
-        "limited": false
-      },
-      {
-        "page_id": 612,
-        "skin_name": "泳装",
-        "skin_name_cn": "泳装",
-        "skin_name_jp": "水着",
-        "skin_name_tw": "泳裝",
-        "avatar": "//static.kivo.wiki/images/students/%E6%9E%A3%20%E4%BC%8A%E5%90%95%E6%B3%A2/%E6%B3%B3%E8%A3%85/%E5%A4%B4%E5%83%8F.png",
-        "spines": [],
-        "is_install": true,
-        "is_install_cn": false,
-        "is_install_global": false,
-        "is_npc": false,
-        "rarity": 3,
-        "limited": true
-      }
-    ]
-  },
-  {
     "id": 39,
     "name": "天雨 亚子",
     "name_cn": "天雨 亚子",
@@ -4706,71 +4659,6 @@
     ]
   },
   {
-    "id": 115,
-    "name": "羽沼 真琴",
-    "name_cn": "",
-    "name_jp": "羽沼 マコト",
-    "name_en": "Hanuma Makoto",
-    "name_kr": "하누마 마코토",
-    "name_tw": "羽沼 真琴",
-    "school_id": 3,
-    "pages": [
-      {
-        "page_id": 115,
-        "skin_name": "",
-        "skin_name_cn": "",
-        "skin_name_jp": "",
-        "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E7%BE%BD%E6%B2%BC%20%E7%9C%9F%E7%90%B4/avatar.png",
-        "spines": [
-          99,
-          594,
-          660,
-          959,
-          653
-        ],
-        "is_install": true,
-        "is_install_cn": true,
-        "is_install_global": true,
-        "is_npc": false,
-        "rarity": 3,
-        "limited": true
-      },
-      {
-        "page_id": 539,
-        "skin_name": "礼服",
-        "skin_name_cn": "礼服",
-        "skin_name_jp": "ドレス",
-        "skin_name_tw": "禮服",
-        "avatar": "//static.kivo.wiki/images/students/%E7%BE%BD%E6%B2%BC%20%E7%9C%9F%E7%90%B4/%E7%A4%BC%E6%9C%8D/%E7%BE%BD%E6%B2%BC%E7%9C%9F%E7%90%B4%28%E7%A4%BC%E6%9C%8D%29.png",
-        "spines": [
-          1498
-        ],
-        "is_install": false,
-        "is_install_cn": false,
-        "is_install_global": false,
-        "is_npc": false,
-        "rarity": 0,
-        "limited": false
-      },
-      {
-        "page_id": 610,
-        "skin_name": "泳装",
-        "skin_name_cn": "泳装",
-        "skin_name_jp": "水着",
-        "skin_name_tw": "泳装",
-        "avatar": "//static.kivo.wiki/images/students/%E7%BE%BD%E6%B2%BC%20%E7%9C%9F%E7%90%B4/%E6%B3%B3%E8%A3%85/Screenshot%20From%202026-07-26%2020-00-03.png",
-        "spines": [],
-        "is_install": true,
-        "is_install_cn": false,
-        "is_install_global": false,
-        "is_npc": false,
-        "rarity": 3,
-        "limited": true
-      }
-    ]
-  },
-  {
     "id": 116,
     "name": "鬼怒川 霞",
     "name_cn": "鬼怒川 霞",
@@ -5523,70 +5411,6 @@
         "is_npc": false,
         "rarity": 0,
         "limited": false
-      }
-    ]
-  },
-  {
-    "id": 136,
-    "name": "丹花 伊吹",
-    "name_cn": "丹花 伊吹",
-    "name_jp": "丹花 イブキ",
-    "name_en": "Tanga Ibuki",
-    "name_kr": "탄가 이부키",
-    "name_tw": "丹花 伊吹",
-    "school_id": 3,
-    "pages": [
-      {
-        "page_id": 136,
-        "skin_name": "",
-        "skin_name_cn": "",
-        "skin_name_jp": "",
-        "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E4%B8%B9%E8%8A%B1%20%E4%BC%8A%E5%90%B9/avatar.png",
-        "spines": [
-          1559,
-          1499,
-          853,
-          654
-        ],
-        "is_install": true,
-        "is_install_cn": true,
-        "is_install_global": true,
-        "is_npc": false,
-        "rarity": 1,
-        "limited": false
-      },
-      {
-        "page_id": 538,
-        "skin_name": "礼服",
-        "skin_name_cn": "礼服",
-        "skin_name_jp": "ドレス",
-        "skin_name_tw": "禮服",
-        "avatar": "//static.kivo.wiki/images/students/%E4%B8%B9%E8%8A%B1%20%E4%BC%8A%E5%90%B9/%E7%A4%BC%E6%9C%8D/%E4%B8%B9%E8%8A%B1%E4%BC%8A%E5%90%B9%28%E7%A4%BC%E6%9C%8D%29.png",
-        "spines": [
-          661
-        ],
-        "is_install": false,
-        "is_install_cn": false,
-        "is_install_global": false,
-        "is_npc": false,
-        "rarity": 0,
-        "limited": false
-      },
-      {
-        "page_id": 609,
-        "skin_name": "泳装",
-        "skin_name_cn": "泳装",
-        "skin_name_jp": "水着",
-        "skin_name_tw": "泳裝",
-        "avatar": "//static.kivo.wiki/images/students/%E4%B8%B9%E8%8A%B1%20%E4%BC%8A%E5%90%B9/%E6%B3%B3%E8%A3%85/%E5%9B%BE%E7%89%871.png",
-        "spines": [],
-        "is_install": true,
-        "is_install_cn": false,
-        "is_install_global": false,
-        "is_npc": false,
-        "rarity": 3,
-        "limited": true
       }
     ]
   },
@@ -7862,52 +7686,6 @@
         "is_npc": false,
         "rarity": 3,
         "limited": false
-      }
-    ]
-  },
-  {
-    "id": 216,
-    "name": "京极 皋月",
-    "name_cn": "京极 皋月",
-    "name_jp": "京極 サツキ",
-    "name_en": "Kyougoku Satsuki",
-    "name_kr": "쿄고쿠 사츠키",
-    "name_tw": "京極 皐月",
-    "school_id": 3,
-    "pages": [
-      {
-        "page_id": 216,
-        "skin_name": "",
-        "skin_name_cn": "",
-        "skin_name_jp": "",
-        "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E4%BA%AC%E6%9E%81%20%E7%9A%8B%E6%9C%88/original/Student_Portrait_CH0080_Collection.png",
-        "spines": [
-          1239,
-          606,
-          868
-        ],
-        "is_install": true,
-        "is_install_cn": true,
-        "is_install_global": true,
-        "is_npc": false,
-        "rarity": 3,
-        "limited": false
-      },
-      {
-        "page_id": 608,
-        "skin_name": "泳装",
-        "skin_name_cn": "泳装",
-        "skin_name_jp": "水着",
-        "skin_name_tw": "泳裝",
-        "avatar": "//static.kivo.wiki/images/students/%E4%BA%AC%E6%9E%81%20%E7%9A%8B%E6%9C%88/%E6%B3%B3%E8%A3%85/c3913cb4c97e47bafbf74d623549d531.png",
-        "spines": [],
-        "is_install": true,
-        "is_install_cn": false,
-        "is_install_global": false,
-        "is_npc": false,
-        "rarity": 3,
-        "limited": true
       }
     ]
   },
@@ -11060,52 +10838,6 @@
         "is_npc": false,
         "rarity": 3,
         "limited": false
-      }
-    ]
-  },
-  {
-    "id": 347,
-    "name": "元宫 千明",
-    "name_cn": "元宫 千明",
-    "name_jp": "元宮 チアキ",
-    "name_en": "Motomiya Chiaki",
-    "name_kr": "모토미야 치아키",
-    "name_tw": "元宮 千秋",
-    "school_id": 3,
-    "pages": [
-      {
-        "page_id": 347,
-        "skin_name": "",
-        "skin_name_cn": "",
-        "skin_name_jp": "",
-        "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E5%85%83%E5%AE%AB%20%E5%8D%83%E6%98%8E/original/Student_Portrait_CH0238_Collection.png",
-        "spines": [
-          1257,
-          871,
-          869
-        ],
-        "is_install": true,
-        "is_install_cn": true,
-        "is_install_global": true,
-        "is_npc": false,
-        "rarity": 3,
-        "limited": false
-      },
-      {
-        "page_id": 611,
-        "skin_name": "泳装",
-        "skin_name_cn": "泳装",
-        "skin_name_jp": "水着",
-        "skin_name_tw": "泳裝",
-        "avatar": "//static.kivo.wiki/images/students/%E5%85%83%E5%AE%AB%20%E5%8D%83%E6%98%8E/%E6%B3%B3%E8%A3%85/11FFA8A35CBE08854F021D64083ACFD2.png",
-        "spines": [],
-        "is_install": true,
-        "is_install_cn": false,
-        "is_install_global": false,
-        "is_npc": false,
-        "rarity": 1,
-        "limited": true
       }
     ]
   },
