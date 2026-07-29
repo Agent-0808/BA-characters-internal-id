@@ -414,12 +414,6 @@
     "type": "spr"
   },
   {
-    "id": 178,
-    "name": "NP0073_spr",
-    "remark": "运动服",
-    "type": "spr"
-  },
-  {
     "id": 189,
     "name": "NP0070_spr",
     "remark": "运动服",
@@ -6744,6 +6738,12 @@
     "type": "spr"
   },
   {
+    "id": 1742,
+    "name": "NP0073_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
     "id": 1743,
     "name": "NP0075_spr_HD",
     "remark": "护士服（运动会）",
@@ -6916,5 +6916,59 @@
     "name": "CH0269_home_CN",
     "remark": "国服",
     "type": "home"
+  },
+  {
+    "id": 1773,
+    "name": "CH0344_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1774,
+    "name": "CH0345_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1778,
+    "name": "NP0296_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1779,
+    "name": "NP0297_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1780,
+    "name": "NP0298_spr",
+    "remark": "海盗装",
+    "type": "spr"
+  },
+  {
+    "id": 1781,
+    "name": "NP0299_spr",
+    "remark": "海盗装",
+    "type": "spr"
+  },
+  {
+    "id": 1785,
+    "name": "CH0344_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1786,
+    "name": "CH0345_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1793,
+    "name": "CH0383_spr",
+    "remark": "初始立绘",
+    "type": "spr"
   }
 ]

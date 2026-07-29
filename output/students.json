@@ -294,7 +294,7 @@
         "spines": [
           507,
           343,
-          178
+          1742
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -1630,6 +1630,21 @@
         "is_npc": false,
         "rarity": 3,
         "limited": false
+      },
+      {
+        "page_id": 612,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳裝",
+        "avatar": "//static.kivo.wiki/images/students/%E6%9E%A3%20%E4%BC%8A%E5%90%95%E6%B3%A2/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0346_Collection.png",
+        "spines": [],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -4655,6 +4670,25 @@
         "is_npc": false,
         "rarity": 0,
         "limited": false
+      },
+      {
+        "page_id": 610,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳装",
+        "avatar": "//static.kivo.wiki/images/students/%E7%BE%BD%E6%B2%BC%20%E7%9C%9F%E7%90%B4/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0344_Collection.png",
+        "spines": [
+          1785,
+          1773,
+          1780
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -7686,6 +7720,25 @@
         "is_npc": false,
         "rarity": 3,
         "limited": false
+      },
+      {
+        "page_id": 608,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳裝",
+        "avatar": "//static.kivo.wiki/images/students/%E4%BA%AC%E6%9E%81%20%E7%9A%8B%E6%9C%88/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0345_Collection.png",
+        "spines": [
+          1786,
+          1774,
+          1781
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -12422,7 +12475,7 @@
     "name_jp": "密井 キョウコ",
     "name_en": "Mitsui Kyouko",
     "name_kr": "미츠이 쿄코",
-    "name_tw": "",
+    "name_tw": "密井 響子",
     "school_id": 17,
     "pages": [
       {
@@ -12776,6 +12829,93 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%20%E8%B0%A2%E7%8E%9B%E5%A1%94/original/avatar.png",
         "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 613,
+    "name": "小森 纯夏",
+    "name_cn": "",
+    "name_jp": "小森 スミカ",
+    "name_en": "Komori Sumika",
+    "name_kr": "코모리 스미카",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 613,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%201/original/%E3%82%B9%E3%83%9F%E3%82%AB.png",
+        "spines": [
+          1793
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 614,
+    "name": "三叉戟部员A",
+    "name_cn": "",
+    "name_jp": "トライデントの部員",
+    "name_en": "",
+    "name_kr": "트라이던트 부원",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 614,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E4%B8%89%E5%8F%89%E6%88%9F%E9%83%A8%E5%91%98A/original/Trident.png",
+        "spines": [
+          1778
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 615,
+    "name": "海盗A",
+    "name_cn": "",
+    "name_jp": "海賊",
+    "name_en": "",
+    "name_kr": "해적",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 615,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E6%B5%B7%E7%9B%97A/original/%E6%B5%B7%E7%9B%97A.png",
+        "spines": [
+          1779
+        ],
         "is_install": false,
         "is_install_cn": false,
         "is_install_global": false,
