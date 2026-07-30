@@ -199,20 +199,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 触发 Pages 部署工作流
-      # 仅当检测到变化时运行
-      - name: 触发 Pages 部署
-        if: steps.check_changes.outputs.changes_detected == 'true'
+      # 触发 部署与发布 工作流
+      - name: 触发部署与发布
+        if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.always_push == 'true'
         run: |
-          gh workflow run pages.yml --ref main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # 触发 Gist 发布工作流
-      # 仅当检测到变化时运行
-      - name: 触发 Gist 发布
-        if: steps.check_changes.outputs.changes_detected == 'true'
-        run: |
-          gh workflow run gist.yml --ref main
+          gh workflow run deploy.yml --ref main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
