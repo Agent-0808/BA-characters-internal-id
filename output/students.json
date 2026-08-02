@@ -1638,7 +1638,10 @@
         "skin_name_jp": "水着",
         "skin_name_tw": "泳裝",
         "avatar": "//static.kivo.wiki/images/students/%E6%9E%A3%20%E4%BC%8A%E5%90%95%E6%B3%A2/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0346_Collection.png",
-        "spines": [],
+        "spines": [
+          1787,
+          1782
+        ],
         "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
@@ -4643,7 +4646,6 @@
         "spines": [
           99,
           594,
-          660,
           959,
           653
         ],
@@ -5418,7 +5420,6 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%B9%E8%8A%B1%20%E4%BC%8A%E5%90%B9/avatar.png",
         "spines": [
           1559,
-          1499,
           853,
           654
         ],
@@ -5437,7 +5438,7 @@
         "skin_name_tw": "禮服",
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%B9%E8%8A%B1%20%E4%BC%8A%E5%90%B9/%E7%A4%BC%E6%9C%8D/%E4%B8%B9%E8%8A%B1%E4%BC%8A%E5%90%B9%28%E7%A4%BC%E6%9C%8D%29.png",
         "spines": [
-          661
+          1499
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -5445,6 +5446,24 @@
         "is_npc": false,
         "rarity": 0,
         "limited": false
+      },
+      {
+        "page_id": 609,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳裝",
+        "avatar": "//static.kivo.wiki/images/students/%E4%B8%B9%E8%8A%B1%20%E4%BC%8A%E5%90%B9/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0347_Collection.png",
+        "spines": [
+          1788,
+          1783
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -10335,8 +10354,6 @@
         "avatar": "//static.kivo.wiki/images/students/%E7%AE%AD%E5%90%B9%20%E6%A3%95%E6%A6%88/avatar.png",
         "spines": [
           1481,
-          1527,
-          1530,
           714
         ],
         "is_install": false,
@@ -10891,6 +10908,25 @@
         "is_npc": false,
         "rarity": 3,
         "limited": false
+      },
+      {
+        "page_id": 611,
+        "skin_name": "泳装",
+        "skin_name_cn": "泳装",
+        "skin_name_jp": "水着",
+        "skin_name_tw": "泳裝",
+        "avatar": "//static.kivo.wiki/images/students/%E5%85%83%E5%AE%AB%20%E5%8D%83%E6%98%8E/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0348_Collection.png",
+        "spines": [
+          1789,
+          1777,
+          1784
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 1,
+        "limited": true
       }
     ]
   },
@@ -11059,7 +11095,7 @@
           978
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -11090,7 +11126,7 @@
           979
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -11633,11 +11669,11 @@
   {
     "id": 525,
     "name": "内海 青叶",
-    "name_cn": "",
+    "name_cn": "内海 青叶",
     "name_jp": "内海 アオバ",
     "name_en": "Utsumi Aoba",
     "name_kr": "우츠미 아오바",
-    "name_tw": "",
+    "name_tw": "內海 青葉",
     "school_id": 24,
     "pages": [
       {
@@ -11653,7 +11689,7 @@
           977
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 1,
@@ -11722,11 +11758,11 @@
   {
     "id": 528,
     "name": "提法勒特",
-    "name_cn": "",
+    "name_cn": "提翡瑞",
     "name_jp": "ティファレト",
     "name_en": "TIPHARETH",
     "name_kr": "티페레트",
-    "name_tw": "",
+    "name_tw": "提法瑞特",
     "school_id": 21,
     "pages": [
       {

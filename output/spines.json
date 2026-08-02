@@ -2016,18 +2016,6 @@
     "type": "home"
   },
   {
-    "id": 660,
-    "name": "CH0253_spr",
-    "remark": "礼服立绘",
-    "type": "spr"
-  },
-  {
-    "id": 661,
-    "name": "CH0254_spr",
-    "remark": "礼服立绘",
-    "type": "spr"
-  },
-  {
     "id": 669,
     "name": "Ui_RaidBoss_EN0005",
     "remark": "",
@@ -5472,12 +5460,6 @@
     "type": "spr"
   },
   {
-    "id": 1527,
-    "name": "NP0160_spr_HD",
-    "remark": "幻魉百物语",
-    "type": "spr"
-  },
-  {
     "id": 1528,
     "name": "NP0161_spr_HD",
     "remark": "防寒棉袄",
@@ -5487,12 +5469,6 @@
     "id": 1529,
     "name": "NP0162_spr_HD",
     "remark": "展现右臂",
-    "type": "spr"
-  },
-  {
-    "id": 1530,
-    "name": "NP0163_spr_HD",
-    "remark": "无貌替身",
     "type": "spr"
   },
   {
@@ -6930,6 +6906,12 @@
     "type": "home"
   },
   {
+    "id": 1777,
+    "name": "CH0348_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
     "id": 1778,
     "name": "NP0296_spr",
     "remark": "初始立绘",
@@ -6954,6 +6936,24 @@
     "type": "spr"
   },
   {
+    "id": 1782,
+    "name": "NP0300_spr",
+    "remark": "海盗装",
+    "type": "spr"
+  },
+  {
+    "id": 1783,
+    "name": "NP0301_spr",
+    "remark": "海盗装",
+    "type": "spr"
+  },
+  {
+    "id": 1784,
+    "name": "NP0302_spr",
+    "remark": "海盗装",
+    "type": "spr"
+  },
+  {
     "id": 1785,
     "name": "CH0344_spr",
     "remark": "初始立绘",
@@ -6962,6 +6962,24 @@
   {
     "id": 1786,
     "name": "CH0345_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1787,
+    "name": "CH0346_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1788,
+    "name": "CH0347_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1789,
+    "name": "CH0348_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
