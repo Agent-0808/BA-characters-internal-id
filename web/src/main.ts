@@ -1,7 +1,11 @@
 import './style.css';
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
+import { initClickFX } from './clickFx.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
+
+// 初始化蔚蓝档案点击特效
+initClickFX();
 
 // 状态管理
 let allData: StudentData[] = [];

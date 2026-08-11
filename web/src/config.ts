@@ -1,4 +1,4 @@
-import type { AppConfig, ColumnConfig } from './types.js';
+import type { AppConfig, ColumnConfig, ClickFXConfig } from './types.js';
 
 // 配置 - 使用本地嵌入的数据
 export const CONFIG: AppConfig = {
@@ -8,6 +8,17 @@ export const CONFIG: AppConfig = {
   studentsUrl: './data/students.json',
   repoOwner: 'Agent-0808',
   repoName: 'BA-characters-internal-id'
+};
+
+// 蔚蓝档案点击特效配置 (ba-click-fx)
+export const CLICK_FX_CONFIG: ClickFXConfig = {
+  enabled: true,
+  themeColor: '#4ca7ff', // 默认蓝色主题
+  clickEnabled: true,
+  trailEnabled: true,
+  trailAlways: false, // 默认只在按下时显示拖尾
+  opacity: 1,
+  scale: 1,
 };
 
 // 列配置 - 定义所有列的信息

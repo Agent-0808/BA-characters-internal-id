@@ -1,6 +1,10 @@
 import './style.css';
 import { CONFIG } from './config.js';
+import { initClickFX } from './clickFx.js';
 import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
+
+// 初始化蔚蓝档案点击特效
+initClickFX();
 
 // 状态管理
 let allStudents: Student[] = [];

@@ -57,6 +57,18 @@ export interface AppConfig {
   repoName: string;
 }
 
+// 蔚蓝档案点击特效配置 (ba-click-fx)
+// 关闭特效时把 enabled 置为 false 即可，无需改其它代码
+export interface ClickFXConfig {
+  enabled: boolean;
+  themeColor: string; // 主题色，6位十六进制，例如 '#4ca7ff'
+  clickEnabled: boolean; // 是否启用点击特效
+  trailEnabled: boolean; // 是否启用鼠标拖尾
+  trailAlways: boolean; // true：仅移动鼠标也会显示拖尾（无需按下）
+  opacity: number; // 整体不透明度 0~1
+  scale: number; // 全局缩放
+}
+
 // 学校数据
 export interface School {
   id: number;
