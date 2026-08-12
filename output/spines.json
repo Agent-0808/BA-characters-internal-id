@@ -1,11 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "aris_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 8,
     "name": "wakamo_spr",
     "remark": "初始立绘",
@@ -20,24 +14,6 @@
   {
     "id": 11,
     "name": "yuzu_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 12,
-    "name": "Yustina_SR1_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 13,
-    "name": "Yukata_StreetGhostes_RL_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 14,
-    "name": "Yukata_StreetGhostes_MG_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -74,12 +50,6 @@
   {
     "id": 27,
     "name": "sukeban_HMG_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 29,
-    "name": "Soldier_OnsenDev_RL_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -126,12 +96,6 @@
     "type": "spr"
   },
   {
-    "id": 43,
-    "name": "ako_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 45,
     "name": "serika_shibaseki_spr",
     "remark": "打工制服",
@@ -144,26 +108,8 @@
     "type": "spr"
   },
   {
-    "id": 47,
-    "name": "aru_newyear_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 48,
     "name": "serika_newyear_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 50,
-    "name": "schoolGirl02_SukebanSwim_MG_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 51,
-    "name": "schoolGirl01_SukebanSwim_SMG_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -171,12 +117,6 @@
     "id": 52,
     "name": "saya_spr",
     "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 53,
-    "name": "aris_noweapon_spr",
-    "remark": "无武器",
     "type": "spr"
   },
   {
@@ -204,26 +144,8 @@
     "type": "spr"
   },
   {
-    "id": 60,
-    "name": "aru_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 61,
-    "name": "Police_Valkyrie_SG_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 63,
     "name": "pmcdirector_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 64,
-    "name": "atsuko_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -234,21 +156,9 @@
     "type": "spr"
   },
   {
-    "id": 69,
-    "name": "NP0126_spr",
-    "remark": "箱子",
-    "type": "spr"
-  },
-  {
     "id": 71,
     "name": "NP0125_spr",
     "remark": "战损",
-    "type": "spr"
-  },
-  {
-    "id": 72,
-    "name": "ayane_robber_spr",
-    "remark": "头套",
     "type": "spr"
   },
   {
@@ -264,26 +174,8 @@
     "type": "spr"
   },
   {
-    "id": 79,
-    "name": "NP0118_spr",
-    "remark": "领航服",
-    "type": "spr"
-  },
-  {
     "id": 80,
     "name": "azusa_swimsuit_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 81,
-    "name": "blacksuit_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 82,
-    "name": "NP0116_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -300,63 +192,15 @@
     "type": "spr"
   },
   {
-    "id": 87,
-    "name": "NP0113_spr",
-    "remark": "战损",
-    "type": "spr"
-  },
-  {
     "id": 88,
     "name": "NP0112_spr",
     "remark": "领航服",
     "type": "spr"
   },
   {
-    "id": 89,
-    "name": "NP0111_spr",
-    "remark": "领航服",
-    "type": "spr"
-  },
-  {
-    "id": 90,
-    "name": "NP0110_spr",
-    "remark": "领航服",
-    "type": "spr"
-  },
-  {
-    "id": 95,
-    "name": "NP0109_spr",
-    "remark": "领航服",
-    "type": "spr"
-  },
-  {
-    "id": 96,
-    "name": "NP0108_spr",
-    "remark": "领航服",
-    "type": "spr"
-  },
-  {
-    "id": 98,
-    "name": "NP0107_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 99,
     "name": "CH0079_spr",
     "remark": "初始立绘（更新至实装立绘）",
-    "type": "spr"
-  },
-  {
-    "id": 100,
-    "name": "NP0106_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 104,
-    "name": "NP0105_spr",
-    "remark": "战损",
     "type": "spr"
   },
   {
@@ -444,98 +288,14 @@
     "type": "spr"
   },
   {
-    "id": 227,
-    "name": "chise_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 252,
-    "name": "engineer_animal3_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 254,
     "name": "NP0042_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
   {
-    "id": 257,
-    "name": "fuuka_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 259,
-    "name": "fuuki_normal1_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 262,
-    "name": "hanae_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 263,
     "name": "NP0035_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 265,
-    "name": "hanako_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 266,
-    "name": "hare_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 268,
-    "name": "haruka_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 270,
-    "name": "haruna_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 275,
-    "name": "helmetdan_black1_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 277,
-    "name": "helmetdan_red1_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 279,
-    "name": "hibiki_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 283,
-    "name": "hihumi_robber_spr",
-    "remark": "头套",
-    "type": "spr"
-  },
-  {
-    "id": 284,
-    "name": "hihumi_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -561,12 +321,6 @@
     "id": 292,
     "name": "hoshino_robber_spr",
     "remark": "头套",
-    "type": "spr"
-  },
-  {
-    "id": 297,
-    "name": "hoshino_swimsuit_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -6894,6 +6648,12 @@
     "type": "home"
   },
   {
+    "id": 1772,
+    "name": "SC211000_01",
+    "remark": "第二部Vol.1.1",
+    "type": "home"
+  },
+  {
     "id": 1773,
     "name": "CH0344_home",
     "remark": "",
@@ -6984,8 +6744,266 @@
     "type": "spr"
   },
   {
+    "id": 1790,
+    "name": "CH0362_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1791,
+    "name": "CH0363_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1792,
+    "name": "CH0364_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
     "id": 1793,
     "name": "CH0383_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1796,
+    "name": "NP0105_spr_HD",
+    "remark": "战损",
+    "type": "spr"
+  },
+  {
+    "id": 1797,
+    "name": "NP0106_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1798,
+    "name": "NP0107_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1799,
+    "name": "NP0108_spr_HD",
+    "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1800,
+    "name": "NP0109_spr_HD",
+    "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1801,
+    "name": "NP0110_spr_HD",
+    "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1802,
+    "name": "NP0111_spr_HD",
+    "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1806,
+    "name": "NP0116_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1807,
+    "name": "NP0118_spr_HD",
+    "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1808,
+    "name": "NP0126_spr_HD",
+    "remark": "箱子",
+    "type": "spr"
+  },
+  {
+    "id": 1809,
+    "name": "Police_Valkyrie_SG_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1810,
+    "name": "Soldier_OnsenDev_RL_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1811,
+    "name": "Yukata_StreetGhostes_MG_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1812,
+    "name": "Yukata_StreetGhostes_RL_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1813,
+    "name": "Yustina_SR1_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1814,
+    "name": "ako_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1815,
+    "name": "aris_noweapon_spr_HD",
+    "remark": "无武器",
+    "type": "spr"
+  },
+  {
+    "id": 1816,
+    "name": "aris_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1817,
+    "name": "aru_newyear_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1818,
+    "name": "aru_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1819,
+    "name": "atsuko_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1820,
+    "name": "ayane_robber_spr_HD",
+    "remark": "头套",
+    "type": "spr"
+  },
+  {
+    "id": 1821,
+    "name": "blacksuit_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1822,
+    "name": "chise_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1823,
+    "name": "engineer_animal3_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1824,
+    "name": "fuuka_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1825,
+    "name": "fuuki_normal1_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1826,
+    "name": "hanae_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1827,
+    "name": "hanako_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1828,
+    "name": "hare_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1829,
+    "name": "haruka_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1830,
+    "name": "haruna_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1831,
+    "name": "helmetdan_black1_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1832,
+    "name": "helmetdan_red1_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1833,
+    "name": "hibiki_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1834,
+    "name": "hihumi_robber_spr_HD",
+    "remark": "头套",
+    "type": "spr"
+  },
+  {
+    "id": 1835,
+    "name": "hihumi_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1836,
+    "name": "hoshino_swimsuit_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1837,
+    "name": "schoolGirl01_SukebanSwim_SMG_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1838,
+    "name": "schoolGirl02_SukebanSwim_MG_spr_HD",
     "remark": "初始立绘",
     "type": "spr"
   }
