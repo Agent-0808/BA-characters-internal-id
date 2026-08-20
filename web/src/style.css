@@ -7,17 +7,21 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background: linear-gradient(135deg, #2a90d8 0%, #07c7ee 100%);
-  min-height: 100vh;
+  height: 100vh;
   padding: 15px;
+  overflow: hidden;
 }
 
 .container {
   max-width: 1400px;
+  height: calc(100vh - 30px);
   margin: 0 auto;
   background: white;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -25,6 +29,7 @@ body {
   color: white;
   padding: 20px 30px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .header h1 {
@@ -67,6 +72,7 @@ body {
   gap: 15px;
   flex-wrap: wrap;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .search-box {
@@ -310,8 +316,9 @@ body {
 
 .table-container {
   overflow-x: auto;
-  max-height: 70vh;
   overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 table {
@@ -439,6 +446,7 @@ tr:hover {
   text-align: center;
   font-size: 12px;
   color: #64748b;
+  flex-shrink: 0;
 }
 
 .footer a {
@@ -475,21 +483,58 @@ th[data-col="spine_id"] {
 }
 
 @media (max-width: 768px) {
+  /* 移动端使用动态视口高度，适配浏览器地址栏 */
+  body {
+    height: 100dvh;
+    padding: 8px;
+  }
+
+  .container {
+    height: calc(100dvh - 16px);
+    border-radius: 12px;
+  }
+
+  /* 压缩 header 区域 */
+  .header {
+    padding: 12px 16px;
+  }
+
   .header h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 3px;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .nav-links {
+    gap: 10px;
   }
 
   .stats {
-    gap: 20px;
+    gap: 12px;
+    margin-top: 10px;
   }
 
   .stat-value {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  /* 压缩 controls 区域 */
   .controls {
-    flex-direction: column;
-    align-items: stretch;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  /* 压缩 footer 区域 */
+  .footer {
+    padding: 10px 16px;
+    font-size: 11px;
   }
 
   .search-box {
@@ -501,7 +546,7 @@ th[data-col="spine_id"] {
   }
 
   th, td {
-    padding: 10px 8px;
+    padding: 8px 6px;
     font-size: 12px;
   }
 }
@@ -510,8 +555,9 @@ th[data-col="spine_id"] {
 
 .students-container {
   padding: 20px 30px;
-  max-height: 70vh;
   overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 .students-grid {
