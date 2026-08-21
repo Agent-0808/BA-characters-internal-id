@@ -252,6 +252,12 @@
     "type": "spr"
   },
   {
+    "id": 175,
+    "name": "CH0174_spr",
+    "remark": "23.11.08之前",
+    "type": "spr"
+  },
+  {
     "id": 176,
     "name": "NP0074_spr",
     "remark": "初始立绘",
@@ -1672,12 +1678,6 @@
     "name": "Ui_RaidBoss_Hod",
     "remark": "",
     "type": "home"
-  },
-  {
-    "id": 625,
-    "name": "CH0174_spr-2",
-    "remark": "23.11.08之后",
-    "type": "spr"
   },
   {
     "id": 627,
@@ -6662,6 +6662,12 @@
   {
     "id": 1774,
     "name": "CH0345_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1775,
+    "name": "CH0346_home",
     "remark": "",
     "type": "home"
   },

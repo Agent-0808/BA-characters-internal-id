@@ -1004,7 +1004,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -1640,7 +1640,8 @@
         "avatar": "//static.kivo.wiki/images/students/%E6%9E%A3%20%E4%BC%8A%E5%90%95%E6%B3%A2/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0346_Collection.png",
         "spines": [
           1787,
-          1782
+          1782,
+          1775
         ],
         "is_install": true,
         "is_install_cn": false,
@@ -3033,9 +3034,9 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A4%A9%E7%A5%9E%E5%B1%B1%20%E9%9F%B3%E8%91%B5/original/Student_Portrait_CH0174_Collection.png",
         "spines": [
           1612,
-          625,
           1624,
-          1566
+          1566,
+          175
         ],
         "is_install": true,
         "is_install_cn": false,
@@ -5064,8 +5065,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E9%BB%91%E6%9C%8D/avatar.png",
         "spines": [
-          1821,
-          1244
+          1821
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -5100,7 +5100,7 @@
           1370
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -7703,7 +7703,7 @@
           1633
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -8687,11 +8687,11 @@
   {
     "id": 254,
     "name": "御稜 名草",
-    "name_cn": "",
+    "name_cn": "御稜 名草",
     "name_jp": "御稜 ナグサ",
     "name_en": "Goryou Nagusa",
     "name_kr": "고료 나구사",
-    "name_tw": "御棱 名草",
+    "name_tw": "御稜 名草",
     "school_id": 9,
     "pages": [
       {
@@ -8713,7 +8713,7 @@
           995
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -12876,7 +12876,7 @@
   },
   {
     "id": 613,
-    "name": "小森 纯夏",
+    "name": "小森 墨华",
     "name_cn": "",
     "name_jp": "小森 スミカ",
     "name_en": "Komori Sumika",
@@ -13023,7 +13023,7 @@
   },
   {
     "id": 618,
-    "name": "五十岚 翔子",
+    "name": "五十岚 憧子",
     "name_cn": "",
     "name_jp": "五十嵐 ショウコ",
     "name_en": "Igarashi Shouko",
@@ -13042,6 +13042,114 @@
           1792,
           1772
         ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 619,
+    "name": "小百合",
+    "name_cn": "",
+    "name_jp": "サユリ",
+    "name_en": "",
+    "name_kr": "",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 619,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%B0%8F%E7%99%BE%E5%90%88/original/sayuri.png",
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 620,
+    "name": "心",
+    "name_cn": "",
+    "name_jp": "ココロ",
+    "name_en": "",
+    "name_kr": "",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 620,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%BF%83/original/kokoro2.png",
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 621,
+    "name": "琴音",
+    "name_cn": "",
+    "name_jp": "コトネ",
+    "name_en": "",
+    "name_kr": "",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 621,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E7%90%B4%E9%9F%B3/original/kotone2.png",
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 622,
+    "name": "真希奈",
+    "name_cn": "",
+    "name_jp": "マキナ",
+    "name_en": "",
+    "name_kr": "",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 622,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E7%9C%9F%E5%B8%8C%E5%A5%88/original/makina2.png",
+        "spines": [],
         "is_install": false,
         "is_install_cn": false,
         "is_install_global": false,

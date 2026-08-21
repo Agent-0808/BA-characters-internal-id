@@ -86,6 +86,7 @@
 38,419,类型 (home),CH0156_home,,枣 伊吕波,棗 イロハ,Natsume Iroha,3,格赫娜学园
 38,719,类型 (home),CH0156_home_CN,国服,枣 伊吕波,棗 イロハ,Natsume Iroha,3,格赫娜学园
 38,1069,类型 (home),CH0156_home_fix,光线修复,枣 伊吕波,棗 イロハ,Natsume Iroha,3,格赫娜学园
+38,1775,类型 (home),CH0346_home,,枣 伊吕波,棗 イロハ,Natsume Iroha,3,格赫娜学园
 39,379,类型 (home),Ako_home,,天雨 亚子,天雨 アコ,Amau Ako,3,格赫娜学园
 39,655,类型 (home),CH0231_home,礼服亚子,天雨 亚子,天雨 アコ,Amau Ako,3,格赫娜学园
 40,397,类型 (home),CH0092_home,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
@@ -185,7 +186,6 @@
 63,1027,后缀 (steam),CH0141_spr_Steam,Steam版初始立绘,合欢垣 吹雪,合歓垣 フブキ,Nemugaki Fubuki,8,瓦尔基里警察学校
 65,1564,类型 (home),CH0172_home,,吉野 妮可,吉野 ニコ,Yoshino Niko,11,SRT特殊学园
 66,1565,类型 (home),CH0173_home,,高仓 胡桃,高倉 クルミ,Takakura Kurumi,11,SRT特殊学园
-67,625,后缀 (spr-2),CH0174_spr-2,23.11.08之后,天神山 音葵,天神山 オトギ,Tenjinyama Otogi,11,SRT特殊学园
 67,1566,类型 (home),CH0174_home,,天神山 音葵,天神山 オトギ,Tenjinyama Otogi,11,SRT特殊学园
 68,437,类型 (home),CH9999_home,,初音未来,初音 ミク,Hatsune Miku,26,联动作品
 70,412,类型 (home),CH0058_home,,阿慈谷 日富美,阿慈谷 ヒフミ,Ajitani Hifumi,2,圣三一综合学园
@@ -518,4 +518,4 @@
 606,1709,类型 (home),CH0355_home,,雪玲,シュエリン,Shunling,7,山海经高级中学
 616,1772,类型 (home),SC211000_01,第二部Vol.1.1,降旗 真由美,降旗 マユミ,Furihata Mayumi,3,格赫娜学园
 617,1772,类型 (home),SC211000_01,第二部Vol.1.1,明乐 可怜,明楽 カレン,Myouraku Karen,3,格赫娜学园
-618,1772,类型 (home),SC211000_01,第二部Vol.1.1,五十岚 翔子,五十嵐 ショウコ,Igarashi Shouko,3,格赫娜学园
+618,1772,类型 (home),SC211000_01,第二部Vol.1.1,五十岚 憧子,五十嵐 ショウコ,Igarashi Shouko,3,格赫娜学园
