@@ -1498,7 +1498,7 @@
         "spines": [
           1412,
           489,
-          111,
+          1794,
           1676
         ],
         "is_install": true,
@@ -2977,7 +2977,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": true
@@ -3008,7 +3008,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": true
@@ -3040,7 +3040,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 1,
         "limited": true
@@ -5456,7 +5456,8 @@
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%B9%E8%8A%B1%20%E4%BC%8A%E5%90%B9/%E6%B3%B3%E8%A3%85/Student_Portrait_CH0347_Collection.png",
         "spines": [
           1788,
-          1783
+          1783,
+          1776
         ],
         "is_install": true,
         "is_install_cn": false,
@@ -13134,7 +13135,7 @@
   },
   {
     "id": 622,
-    "name": "真希奈",
+    "name": "玛琪娜",
     "name_cn": "",
     "name_jp": "マキナ",
     "name_en": "",
