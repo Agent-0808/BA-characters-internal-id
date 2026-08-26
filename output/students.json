@@ -6935,7 +6935,7 @@
           919
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -13069,7 +13069,9 @@
         "skin_name_jp": "",
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%20%E5%B0%8F%E7%99%BE%E5%90%88/original/sayuri.png",
-        "spines": [],
+        "spines": [
+          1847
+        ],
         "is_install": false,
         "is_install_cn": false,
         "is_install_global": false,
@@ -13081,11 +13083,11 @@
   },
   {
     "id": 620,
-    "name": "心",
+    "name": "渡海 心",
     "name_cn": "",
-    "name_jp": "ココロ",
-    "name_en": "",
-    "name_kr": "",
+    "name_jp": "渡海 ココロ",
+    "name_en": "Toumi Kokoro",
+    "name_kr": "토미 코코로",
     "name_tw": "",
     "school_id": 15,
     "pages": [
@@ -13095,24 +13097,27 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E5%BF%83/original/kokoro2.png",
-        "spines": [],
-        "is_install": false,
+        "avatar": "//static.kivo.wiki/images/students/%E6%B8%A1%E6%B5%B7%20%E5%BF%83/original/Student_Portrait_CH0368_Collection.png",
+        "spines": [
+          1839,
+          1844
+        ],
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false
       }
     ]
   },
   {
     "id": 621,
-    "name": "琴音",
+    "name": "渊上 琴音",
     "name_cn": "",
-    "name_jp": "コトネ",
-    "name_en": "",
-    "name_kr": "",
+    "name_jp": "淵上 コトネ",
+    "name_en": "Fuchigami Kotone",
+    "name_kr": "후치가미  코토네",
     "name_tw": "",
     "school_id": 15,
     "pages": [
@@ -13122,13 +13127,16 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E7%90%B4%E9%9F%B3/original/kotone2.png",
-        "spines": [],
-        "is_install": false,
+        "avatar": "//static.kivo.wiki/images/students/%E6%B8%8A%E4%B8%8A%20%E7%90%B4%E9%9F%B3/original/Student_Portrait_CH0369_Collection.png",
+        "spines": [
+          1845,
+          1840
+        ],
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false
       }
     ]
@@ -13149,7 +13157,268 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E7%9C%9F%E5%B8%8C%E5%A5%88/original/makina2.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E7%8E%9B%E7%90%AA%E5%A8%9C/original/makina.png",
+        "spines": [
+          1846
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 627,
+    "name": "护守 七海",
+    "name_cn": "",
+    "name_jp": "護守 ナナミ",
+    "name_en": "Gonokami Nanami",
+    "name_kr": "고노카미 나나미",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 627,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%E6%8A%A4%E5%AE%88%20%E4%B8%83%E6%B5%B7/original/Nanami.png",
+        "spines": [
+          1849
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 628,
+    "name": "海路 凑",
+    "name_cn": "",
+    "name_jp": "海路 ミナト",
+    "name_en": "Umiji Minato",
+    "name_kr": "우미지 미나토",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 628,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%E6%B5%B7%E8%B7%AF%20%E5%87%91/original/Minato.png",
+        "spines": [
+          1841
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 629,
+    "name": "灯下 亚美",
+    "name_cn": "",
+    "name_jp": "灯下 アミ",
+    "name_en": "Tomoshita Ami",
+    "name_kr": "토모시타 아미",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 629,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%E7%81%AF%E4%B8%8B%20%E4%BA%9A%E7%BE%8E/original/Ami.png",
+        "spines": [
+          1842
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 630,
+    "name": "船守 早苗",
+    "name_cn": "",
+    "name_jp": "船守 サナエ",
+    "name_en": "Funamori Sanae",
+    "name_kr": "후나모리 사나에",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 630,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%E8%88%B9%E5%AE%88%20%E6%97%A9%E8%8B%97/original/Sanae.png",
+        "spines": [
+          1843
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 631,
+    "name": "千石 美月",
+    "name_cn": "",
+    "name_jp": "千石 ミツキ",
+    "name_en": "Sengoku Mitsuki",
+    "name_kr": "센고쿠 미츠키",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 631,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%E5%8D%83%E7%9F%B3%20%E7%BE%8E%E6%9C%88/original/Mitsuki.png",
+        "spines": [
+          1848
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 632,
+    "name": "奥德赛学生A",
+    "name_cn": "",
+    "name_jp": "オデュッセイアの生徒",
+    "name_en": "",
+    "name_kr": "오디세이아 학생 A",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 632,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FA/original/OdesseyStuA.png",
+        "spines": [
+          1850
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 633,
+    "name": "奥德赛学生B",
+    "name_cn": "",
+    "name_jp": "オデュッセイアの生徒B",
+    "name_en": "",
+    "name_kr": "오디세이아 학생 B",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 633,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FB/original/OdesseyStuB.png",
+        "spines": [
+          1851
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 634,
+    "name": "奥德赛学生C",
+    "name_cn": "",
+    "name_jp": "オデュッセイアの生徒C",
+    "name_en": "",
+    "name_kr": "오디세이아 학생 C",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 634,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FC/original/OdesseyStuC.png",
+        "spines": [
+          1852
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 635,
+    "name": "透",
+    "name_cn": "",
+    "name_jp": "トオル",
+    "name_en": "",
+    "name_kr": "",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 635,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "",
         "spines": [],
         "is_install": false,
         "is_install_cn": false,

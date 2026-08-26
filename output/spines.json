@@ -7018,5 +7018,89 @@
     "name": "schoolGirl02_SukebanSwim_MG_spr_HD",
     "remark": "初始立绘",
     "type": "spr"
+  },
+  {
+    "id": 1839,
+    "name": "CH0368_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1840,
+    "name": "CH0369_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1841,
+    "name": "CH0342_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1842,
+    "name": "CH0343_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1843,
+    "name": "CH0350_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1844,
+    "name": "CH0368_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1845,
+    "name": "CH0369_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1846,
+    "name": "CH0370_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1847,
+    "name": "CH0371_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1848,
+    "name": "CH0372_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1849,
+    "name": "CH0374_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1850,
+    "name": "NP0259_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1851,
+    "name": "NP0260_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1852,
+    "name": "NP0309_spr",
+    "remark": "初始立绘",
+    "type": "spr"
   }
 ]
