@@ -180,18 +180,6 @@
     "type": "spr"
   },
   {
-    "id": 84,
-    "name": "NP0115_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 86,
-    "name": "NP0114_spr",
-    "remark": "战损",
-    "type": "spr"
-  },
-  {
     "id": 88,
     "name": "NP0112_spr",
     "remark": "领航服",
@@ -201,12 +189,6 @@
     "id": 99,
     "name": "CH0079_spr",
     "remark": "初始立绘（更新至实装立绘）",
-    "type": "spr"
-  },
-  {
-    "id": 106,
-    "name": "NP0104_spr",
-    "remark": "初始立绘",
     "type": "spr"
   },
   {
@@ -255,12 +237,6 @@
     "id": 176,
     "name": "NP0074_spr",
     "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 189,
-    "name": "NP0070_spr",
-    "remark": "运动服",
     "type": "spr"
   },
   {
@@ -6294,6 +6270,12 @@
     "type": "spr"
   },
   {
+    "id": 1712,
+    "name": "NP0042_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
     "id": 1713,
     "name": "NP0043_spr_HD",
     "remark": "运动服",
@@ -6446,6 +6428,12 @@
   {
     "id": 1738,
     "name": "NP0069_spr_HD",
+    "remark": "运动服",
+    "type": "spr"
+  },
+  {
+    "id": 1739,
+    "name": "NP0070_spr_HD",
     "remark": "运动服",
     "type": "spr"
   },
@@ -6780,6 +6768,12 @@
     "type": "spr"
   },
   {
+    "id": 1795,
+    "name": "NP0104_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
     "id": 1796,
     "name": "NP0105_spr_HD",
     "remark": "战损",
@@ -6819,6 +6813,18 @@
     "id": 1802,
     "name": "NP0111_spr_HD",
     "remark": "领航服",
+    "type": "spr"
+  },
+  {
+    "id": 1804,
+    "name": "NP0114_spr_HD",
+    "remark": "战损",
+    "type": "spr"
+  },
+  {
+    "id": 1805,
+    "name": "NP0115_spr_HD",
+    "remark": "初始立绘",
     "type": "spr"
   },
   {
