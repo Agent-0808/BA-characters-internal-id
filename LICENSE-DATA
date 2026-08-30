@@ -1,4 +1,5 @@
 BA-Characters-Internal-ID 数据许可协议
+https://github.com/Agent-0808/BA-characters-internal-id
 ======================================
 
 适用文件:  本项目中的数据文件（students.json、schools.json、
@@ -59,6 +60,7 @@ BA-Characters-Internal-ID 数据许可协议
 
 
 BA-Characters-Internal-ID DATA LICENSE
+https://github.com/Agent-0808/BA-characters-internal-id
 ======================================
 
 *The following English version is provided for reference only.
@@ -67,7 +69,7 @@ In case of any discrepancy, the Chinese version above shall prevail.*
 Applicable files: The data files in this project (students.json,
                   schools.json, spines.json, students_data.csv, etc.)
 
-Data source:      Kivoto Grand Library (基沃托斯古书馆)
+Data source:      KivoWiki (基沃托斯古书馆)
                   https://kivo.wiki
 
 Data license:     Creative Commons Attribution-ShareAlike 4.0
