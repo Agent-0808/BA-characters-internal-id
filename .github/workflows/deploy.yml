@@ -57,6 +57,9 @@ jobs:
             fi
           fi
 
+          # 发布数据许可文本到数据目录
+          cp LICENSE-DATA web/public/data/LICENSE-DATA.txt
+
       - name: 生成元数据
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -169,7 +172,7 @@ jobs:
 
           View in Github Pages: [${{ github.event.repository.name }}](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)
 
-          Data Source: [基沃托斯古书馆](https://kivo.wiki)
+          Data Source: [基沃托斯古书馆](https://kivo.wiki)（[License](https://kivo.wiki/license)）
           
           > **Update Date**: ${{ steps.release.outputs.update_date }}  
           > **Code Version**: ${{ env.CODE_VERSION }}  

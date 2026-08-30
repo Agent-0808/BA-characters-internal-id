@@ -62,6 +62,6 @@ Steam 版的文件储存路径为`BlueArchive\BlueArchive_Data\StreamingAssets\P
 本项目采用双许可协议：
 
 - **代码**：采用 [MIT 协议](LICENSE)，您可以自由使用、修改和分发代码
-- **数据**：采用 [CC BY-SA 4.0 协议](LICENSE-DATA)，与数据源 [基沃托斯古书馆](https://kivo.wiki) 保持一致
+- **数据**：采用 [CC BY-SA 4.0 协议](LICENSE-DATA)，与数据源 [基沃托斯古书馆](https://kivo.wiki)（ [数据许可协议](https://kivo.wiki/license)）保持一致
 
 本项目仅缓存和处理文本数据，不包含任何游戏内的图像、模型、音频等二进制资源。所有《蔚蓝档案》游戏素材版权归 Nexon 和 Yostar 所有。
