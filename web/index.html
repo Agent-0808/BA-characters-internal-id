@@ -7,74 +7,131 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>📚 蔚蓝档案角色内部ID速查表</h1>
-            <p>Blue Archive Characters Internal ID Database</p>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html" class="active">📊 文件ID</a>
-                <a href="kivonavi.html">🎴 KivoWiki导航</a>
+        <!-- 视图一：文件ID速查表 -->
+        <section class="view" id="view-index">
+            <div class="header">
+                <h1>📚 蔚蓝档案角色内部ID速查表</h1>
+                <p>Blue Archive Characters Internal ID Database</p>
+                <div class="nav-links">
+                    <a href="#index" class="active">📊 文件ID</a>
+                    <a href="#kivonavi">🎴 KivoWiki导航</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalCount">-</div>
+                        <div class="stat-label">总记录</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="studentCount">-</div>
+                        <div class="stat-label">学生数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="updateTime">-</div>
+                        <div class="stat-label">数据更新时间</div>
+                    </div>
+                </div>
             </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="totalCount">-</div>
-                    <div class="stat-label">总记录</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="studentCount">-</div>
-                    <div class="stat-label">学生数</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="updateTime">-</div>
-                    <div class="stat-label">数据更新时间</div>
-                </div>
-            </div>
-        </div>
 
-        <div class="controls">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索角色名称...">
-            </div>
-            <!-- 学校多选筛选 -->
-            <div class="school-filter-dropdown">
-                <button class="school-filter-btn" id="schoolFilterBtn">
-                    <span class="school-filter-label">学校</span>
-                    <span class="school-filter-count" id="schoolFilterCount"></span>
-                    <span class="school-filter-arrow">▼</span>
-                </button>
-                <div class="school-filter-content" id="schoolDropdown">
-                    <!-- 动态生成学校选项 -->
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索角色名称...">
+                </div>
+                <!-- 学校多选筛选 -->
+                <div class="school-filter-dropdown">
+                    <button class="school-filter-btn" id="schoolFilterBtn">
+                        <span class="school-filter-label">学校</span>
+                        <span class="school-filter-count" id="schoolFilterCount"></span>
+                        <span class="school-filter-arrow">▼</span>
+                    </button>
+                    <div class="school-filter-content" id="schoolDropdown">
+                        <!-- 动态生成学校选项 -->
+                    </div>
+                </div>
+                <!-- 列显示控制 -->
+                <div class="column-dropdown">
+                    <button class="column-toggle-btn">显示/隐藏列 ▼</button>
+                    <div class="column-dropdown-content" id="columnDropdown">
+                        <!-- 动态生成列选项 -->
+                    </div>
                 </div>
             </div>
-            <!-- 列显示控制 -->
-            <div class="column-dropdown">
-                <button class="column-toggle-btn">显示/隐藏列 ▼</button>
-                <div class="column-dropdown-content" id="columnDropdown">
-                    <!-- 动态生成列选项 -->
-                </div>
-            </div>
-        </div>
 
-        <div class="table-container" id="tableContainer">
-            <div class="loading">
-                <div class="loading-spinner"></div>
-                <p>正在加载数据...</p>
+            <div class="table-container" id="tableContainer">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>正在加载数据...</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- 视图二：KivoWiki 导航 -->
+        <section class="view" id="view-kivonavi" hidden>
+            <div class="header">
+                <h1>📚 KivoWiki 角色数据导航</h1>
+                <p>KivoWiki Characters Navigation</p>
+                <div class="nav-links">
+                    <a href="#index">📊 文件ID</a>
+                    <a href="#kivonavi" class="active">🎴 KivoWiki导航</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="kivoTotalCount">-</div>
+                        <div class="stat-label">学生数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="kivoPageCount">-</div>
+                        <div class="stat-label">页面数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="kivoUpdateTime">-</div>
+                        <div class="stat-label">数据更新时间</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="kivoSearchInput" placeholder="搜索学生名称...">
+                </div>
+                <div class="filter-group">
+                    <label>学校:</label>
+                    <select id="schoolFilter">
+                        <option value="">全部</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>实装:</label>
+                    <select id="installFilter">
+                        <option value="">全部</option>
+                        <option value="jp">日服</option>
+                        <option value="cn">国服</option>
+                        <option value="global">国际服</option>
+                        <option value="npc">NPC</option>
+                    </select>
+                </div>
+                <div class="controls-extra">
+                    <button class="btn btn-secondary" id="expandAllBtn">展开全部</button>
+                    <button class="btn btn-secondary" id="collapseAllBtn">折叠全部</button>
+                </div>
+            </div>
+
+            <div class="students-container" id="studentsContainer">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>正在加载数据...</p>
+                </div>
+            </div>
+        </section>
 
         <div class="footer">
             <p>
-                <a href="https://github.com/Agent-0808/BA-characters-internal-id" target="_blank">GitHub 仓库</a> | 
-                <a id="dataFileLink" href="./data/" target="_blank">数据文件</a> | 
+                <a href="https://github.com/Agent-0808/BA-characters-internal-id" target="_blank">GitHub 仓库</a> |
+                <a id="dataFileLink" href="./data/" target="_blank">数据文件</a> |
                 <a href="https://kivo.wiki" target="_blank">基沃托斯古书馆</a>
             </p>
         </div>
     </div>
 
-    <script>
-      document.querySelectorAll('#navLinks a').forEach(a => {
-        a.href += window.location.search;
-      });
-    </script>
     <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

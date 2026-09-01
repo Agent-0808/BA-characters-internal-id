@@ -1,11 +1,6 @@
-import './style.css';
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
-import { initClickFX } from './clickFx.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
-
-// 初始化蔚蓝档案点击特效
-initClickFX();
 
 // 状态管理
 let allData: StudentData[] = [];
@@ -192,8 +187,8 @@ function applyFilters(): void {
 function generateColumnDropdown(): void {
   elements.columnDropdown.innerHTML = COLUMN_CONFIG.map(col => `
     <label class="column-dropdown-item">
-      <input type="checkbox" 
-             ${columnVisibility[col.key] ? 'checked' : ''} 
+      <input type="checkbox"
+             ${columnVisibility[col.key] ? 'checked' : ''}
              data-column="${col.key}">
       ${col.label}
     </label>
@@ -232,7 +227,7 @@ function toggleColumnDropdown(): void {
 }
 
 // 点击外部关闭下拉菜单
-document.addEventListener('click', (event) => {
+function onDocumentClick(event: Event): void {
   const target = event.target as HTMLElement;
   const columnBtn = document.querySelector('.column-toggle-btn');
   const schoolBtn = elements.schoolFilterBtn;
@@ -246,7 +241,7 @@ document.addEventListener('click', (event) => {
   if (!elements.schoolDropdown.contains(target) && !schoolBtn?.contains(target)) {
     elements.schoolDropdown.classList.remove('show');
   }
-});
+}
 
 // 更新统计
 function updateStats(data: StudentData[]): void {
@@ -433,14 +428,20 @@ async function loadData(): Promise<void> {
   }
 }
 
-// 事件监听
-elements.searchInput.addEventListener('input', applyFilters);
+// 初始化文件ID表格视图（懒加载：首次切换到该视图时调用）
+export function initTableView(): void {
+  // 事件监听
+  elements.searchInput.addEventListener('input', applyFilters);
 
-// 绑定学校筛选按钮
-elements.schoolFilterBtn.addEventListener('click', toggleSchoolDropdown);
+  // 绑定学校筛选按钮
+  elements.schoolFilterBtn.addEventListener('click', toggleSchoolDropdown);
 
-// 绑定列切换按钮
-document.querySelector('.column-toggle-btn')?.addEventListener('click', toggleColumnDropdown);
+  // 绑定列切换按钮
+  document.querySelector('.column-toggle-btn')?.addEventListener('click', toggleColumnDropdown);
 
-// 初始化
-loadData();
+  // 点击外部关闭下拉菜单
+  document.addEventListener('click', onDocumentClick);
+
+  // 加载数据
+  loadData();
+}

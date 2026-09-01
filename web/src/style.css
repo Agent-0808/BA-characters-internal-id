@@ -24,6 +24,19 @@ body {
   flex-direction: column;
 }
 
+/* 单页双视图容器：占满剩余空间，让内部数据区域（表格/卡片列表）恢复 flex:1 滚动 */
+.view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* hidden 属性需覆盖视图的 flex 布局，否则隐藏视图仍会显示 */
+.view[hidden] {
+  display: none;
+}
+
 .header {
   background: linear-gradient(90deg, #345a8a 0%, #2f5074 100%);
   color: white;

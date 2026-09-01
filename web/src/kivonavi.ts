@@ -1,10 +1,5 @@
-import './style.css';
 import { CONFIG } from './config.js';
-import { initClickFX } from './clickFx.js';
 import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
-
-// 初始化蔚蓝档案点击特效
-initClickFX();
 
 // 状态管理
 let allStudents: Student[] = [];
@@ -15,15 +10,15 @@ const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_
 
 // DOM 元素引用
 const elements = {
-  searchInput: document.getElementById('searchInput') as HTMLInputElement,
+  searchInput: document.getElementById('kivoSearchInput') as HTMLInputElement,
   schoolFilter: document.getElementById('schoolFilter') as HTMLSelectElement,
   installFilter: document.getElementById('installFilter') as HTMLSelectElement,
   studentsContainer: document.getElementById('studentsContainer') as HTMLDivElement,
   expandAllBtn: document.getElementById('expandAllBtn') as HTMLButtonElement,
   collapseAllBtn: document.getElementById('collapseAllBtn') as HTMLButtonElement,
-  totalCount: document.getElementById('totalCount') as HTMLDivElement,
-  pageCount: document.getElementById('pageCount') as HTMLDivElement,
-  updateTime: document.getElementById('updateTime') as HTMLDivElement,
+  totalCount: document.getElementById('kivoTotalCount') as HTMLDivElement,
+  pageCount: document.getElementById('kivoPageCount') as HTMLDivElement,
+  updateTime: document.getElementById('kivoUpdateTime') as HTMLDivElement,
 };
 
 // 获取学校名称
@@ -342,12 +337,15 @@ async function loadData(): Promise<void> {
   }
 }
 
-// 事件监听
-elements.searchInput.addEventListener('input', applyFilters);
-elements.schoolFilter.addEventListener('change', applyFilters);
-elements.installFilter.addEventListener('change', applyFilters);
-elements.expandAllBtn.addEventListener('click', expandAll);
-elements.collapseAllBtn.addEventListener('click', collapseAll);
+// 初始化 KivoWiki 导航视图（懒加载：首次切换到该视图时调用）
+export function initKivoView(): void {
+  // 事件监听
+  elements.searchInput.addEventListener('input', applyFilters);
+  elements.schoolFilter.addEventListener('change', applyFilters);
+  elements.installFilter.addEventListener('change', applyFilters);
+  elements.expandAllBtn.addEventListener('click', expandAll);
+  elements.collapseAllBtn.addEventListener('click', collapseAll);
 
-// 初始化
-loadData();
+  // 加载数据
+  loadData();
+}
