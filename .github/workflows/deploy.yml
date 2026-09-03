@@ -64,7 +64,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION=$(cat crawler/VERSION)
+          CODE_VERSION=$(cat crawler/VERSION)
           RELEASE_INFO=$(gh api repos/${{ github.repository }}/releases/latest 2>/dev/null || echo "{}")
           
           UPDATE_DATE=$(echo "$RELEASE_INFO" | jq -r '.published_at // empty' | cut -dT -f1)
@@ -77,12 +77,15 @@ jobs:
             RELEASE_URL="https://github.com/${{ github.repository }}/releases"
           fi
           
-          # 将 dataCommitHash 加入 metadata.json
+          # 将仓库地址 / 爬虫版本 / web提交hash / dataCommitHash 加入 metadata.json
+          # webCommitHash 为本次触发部署的 main 提交，前端展示时截取前6位
           cat > web/public/data/metadata.json << EOF
           {
+            "repoUrl": "https://github.com/${{ github.repository }}",
             "updateDate": "${UPDATE_DATE}",
-            "version": "${VERSION}",
+            "codeVersion": "${CODE_VERSION}",
             "releaseUrl": "${RELEASE_URL}",
+            "webCommitHash": "${GITHUB_SHA}",
             "dataCommitHash": "${DATA_COMMIT_HASH:-unknown}"
           }
           EOF

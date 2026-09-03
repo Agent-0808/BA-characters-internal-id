@@ -42,9 +42,12 @@ export interface ReleaseInfo {
 
 // 元数据
 export interface Metadata {
+  repoUrl: string;
   updateDate: string;
-  version: string;
+  codeVersion: string;  // 爬虫版本（crawler/VERSION）
   releaseUrl: string;
+  webCommitHash: string;  // 页面部署对应的 main 提交，展示时截取前6位
+  dataCommitHash: string;  // data 分支最新提交，展示时截取前6位
 }
 
 // 应用配置

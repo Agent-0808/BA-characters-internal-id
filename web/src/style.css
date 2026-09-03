@@ -453,6 +453,7 @@ tr:hover {
 }
 
 .footer {
+  position: relative;
   padding: 15px 30px;
   background: #f8fafc;
   border-top: 1px solid #e2e8f0;
@@ -460,6 +461,18 @@ tr:hover {
   font-size: 12px;
   color: #64748b;
   flex-shrink: 0;
+}
+
+/* 页脚右侧的提交 hash 显示（web / 数据） */
+.footer-hashes {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
 }
 
 .footer a {
@@ -548,6 +561,11 @@ th[data-col="spine_id"] {
   .footer {
     padding: 10px 16px;
     font-size: 11px;
+  }
+
+  /* 移动端 footer 空间有限，隐藏右侧 hash */
+  .footer-hashes {
+    display: none;
   }
 
   .search-box {
