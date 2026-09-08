@@ -1,5 +1,7 @@
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
+import { createSchoolFilter } from './schoolFilter.js';
+import type { SchoolFilter, SchoolOption } from './schoolFilter.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
 
 // 状态管理
@@ -8,7 +10,7 @@ let filteredData: StudentData[] = [];
 let currentSort: SortState = { column: null, direction: 'asc' };
 let columnVisibility: ColumnVisibility = {} as ColumnVisibility;
 let schoolsMap: Map<number, School> = new Map();
-let selectedSchools: Set<string> = new Set();  // 多选学校筛选
+let schoolFilter: SchoolFilter | null = null;  // 学校多选筛选组件
 const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_link');
 
 // DOM 元素引用
@@ -168,8 +170,9 @@ function applyFilters(): void {
       row.name_kr?.toLowerCase().includes(searchTerm) ||
       row.file_id?.toLowerCase().includes(searchTerm);
 
-    // 学校筛选（多选）
-    const matchSchool = selectedSchools.size === 0 || selectedSchools.has(row.school_name);
+    // 学校筛选（多选，来自共享组件）
+    const selected = schoolFilter?.selected;
+    const matchSchool = !selected || selected.size === 0 || selected.has(row.school_name);
 
     return matchSearch && matchSchool;
   });
@@ -226,20 +229,13 @@ function toggleColumnDropdown(): void {
   dropdown.classList.toggle('show');
 }
 
-// 点击外部关闭下拉菜单
+// 点击外部关闭列下拉菜单
 function onDocumentClick(event: Event): void {
   const target = event.target as HTMLElement;
   const columnBtn = document.querySelector('.column-toggle-btn');
-  const schoolBtn = elements.schoolFilterBtn;
 
-  // 关闭列下拉菜单
   if (!elements.columnDropdown.contains(target) && !columnBtn?.contains(target)) {
     elements.columnDropdown.classList.remove('show');
-  }
-
-  // 关闭学校下拉菜单
-  if (!elements.schoolDropdown.contains(target) && !schoolBtn?.contains(target)) {
-    elements.schoolDropdown.classList.remove('show');
   }
 }
 
@@ -251,99 +247,14 @@ function updateStats(data: StudentData[]): void {
   elements.studentCount.textContent = uniqueStudents.toString();
 }
 
-// 填充学校筛选器（多选）
-function populateSchoolFilter(data: StudentData[]): void {
-  // 获取所有学校名称并排序
-  const schools = [...new Set(data.map(d => d.school_name).filter(Boolean))].sort();
-
-  // 生成下拉内容
-  let html = `
-    <div class="school-filter-header">
-      <span style="font-size: 12px; color: #64748b;">选择学校</span>
-      <span class="school-filter-clear" id="schoolFilterClear">清除全部</span>
-    </div>
-  `;
-
-  schools.forEach(schoolName => {
-    // 从数据中找到该学校的school_id
-    const schoolData = data.find(d => d.school_name === schoolName);
-    const schoolId = schoolData ? parseInt(schoolData.school_id) : 0;
-    const school = schoolsMap.get(schoolId);
-    const logoHtml = school?.logo
-      ? `<img src="https:${school.logo}" class="school-filter-logo" alt="">`
-      : '';
-
-    html += `
-      <label class="school-filter-item" data-school="${schoolName}">
-        <input type="checkbox" data-school="${schoolName}">
-        ${logoHtml}
-        <span class="school-filter-name">${schoolName}</span>
-      </label>
-    `;
-  });
-
-  elements.schoolDropdown.innerHTML = html;
-
-  // 绑定复选框事件
-  elements.schoolDropdown.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', (e) => {
-      const target = e.target as HTMLInputElement;
-      const schoolName = target.getAttribute('data-school') as string;
-      toggleSchoolFilter(schoolName, target.checked);
+// 从数据行构建学校选项列表（去重排序并附带 logo），供共享筛选组件使用
+function buildSchoolOptions(data: StudentData[]): SchoolOption[] {
+  return [...new Set(data.map(d => d.school_name).filter(Boolean))].sort()
+    .map(name => {
+      const row = data.find(d => d.school_name === name);
+      const school = row ? schoolsMap.get(parseInt(row.school_id)) : undefined;
+      return { name, logo: school?.logo || null };
     });
-  });
-
-  // 绑定清除按钮
-  document.getElementById('schoolFilterClear')?.addEventListener('click', clearSchoolFilter);
-}
-
-// 切换学校筛选
-function toggleSchoolFilter(schoolName: string, selected: boolean): void {
-  if (selected) {
-    selectedSchools.add(schoolName);
-  } else {
-    selectedSchools.delete(schoolName);
-  }
-  updateSchoolFilterUI();
-  applyFilters();
-}
-
-// 清除学校筛选
-function clearSchoolFilter(): void {
-  selectedSchools.clear();
-  updateSchoolFilterUI();
-  applyFilters();
-}
-
-// 更新学校筛选UI
-function updateSchoolFilterUI(): void {
-  // 更新计数显示
-  elements.schoolFilterCount.textContent = selectedSchools.size > 0 ? selectedSchools.size.toString() : '';
-
-  // 更新复选框状态
-  elements.schoolDropdown.querySelectorAll('.school-filter-item').forEach(item => {
-    const schoolName = item.getAttribute('data-school') as string;
-    const checkbox = item.querySelector('input[type="checkbox"]') as HTMLInputElement;
-    const isSelected = selectedSchools.has(schoolName);
-    checkbox.checked = isSelected;
-    item.classList.toggle('selected', isSelected);
-  });
-}
-
-// 显示/隐藏学校下拉菜单
-function toggleSchoolDropdown(): void {
-  const btn = elements.schoolFilterBtn;
-  const dropdown = elements.schoolDropdown;
-  const isShowing = dropdown.classList.contains('show');
-
-  if (!isShowing) {
-    // 计算按钮位置
-    const rect = btn.getBoundingClientRect();
-    dropdown.style.top = `${rect.bottom + 5}px`;
-    dropdown.style.left = `${rect.left}px`;
-  }
-
-  dropdown.classList.toggle('show');
 }
 
 // 获取元数据
@@ -405,7 +316,12 @@ async function loadData(): Promise<void> {
     filteredData = allData;
 
     updateStats(allData);
-    populateSchoolFilter(allData);
+    // 创建学校多选筛选组件
+    schoolFilter = createSchoolFilter(
+      { btn: elements.schoolFilterBtn, dropdown: elements.schoolDropdown, count: elements.schoolFilterCount },
+      buildSchoolOptions(allData),
+      applyFilters
+    );
     renderTable(allData);
 
     if (metadata && metadata.updateDate) {
@@ -433,13 +349,10 @@ export function initTableView(): void {
   // 事件监听
   elements.searchInput.addEventListener('input', applyFilters);
 
-  // 绑定学校筛选按钮
-  elements.schoolFilterBtn.addEventListener('click', toggleSchoolDropdown);
-
   // 绑定列切换按钮
   document.querySelector('.column-toggle-btn')?.addEventListener('click', toggleColumnDropdown);
 
-  // 点击外部关闭下拉菜单
+  // 点击外部关闭下拉菜单（学校下拉由共享组件自行处理）
   document.addEventListener('click', onDocumentClick);
 
   // 加载数据

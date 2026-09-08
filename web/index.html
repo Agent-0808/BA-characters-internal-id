@@ -93,11 +93,16 @@
                 <div class="search-box">
                     <input type="text" id="kivoSearchInput" placeholder="搜索学生名称...">
                 </div>
-                <div class="filter-group">
-                    <label>学校:</label>
-                    <select id="schoolFilter">
-                        <option value="">全部</option>
-                    </select>
+                <!-- 学校多选筛选（与文件ID页共用样式和逻辑） -->
+                <div class="school-filter-dropdown">
+                    <button class="school-filter-btn" id="kivoSchoolFilterBtn">
+                        <span class="school-filter-label">学校</span>
+                        <span class="school-filter-count" id="kivoSchoolFilterCount"></span>
+                        <span class="school-filter-arrow">▼</span>
+                    </button>
+                    <div class="school-filter-content" id="kivoSchoolDropdown">
+                        <!-- 动态生成学校选项 -->
+                    </div>
                 </div>
                 <div class="filter-group">
                     <label>实装:</label>

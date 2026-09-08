@@ -1,4 +1,6 @@
 import { CONFIG } from './config.js';
+import { createSchoolFilter } from './schoolFilter.js';
+import type { SchoolFilter } from './schoolFilter.js';
 import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
 
 // 状态管理
@@ -6,12 +8,15 @@ let allStudents: Student[] = [];
 let filteredStudents: Student[] = [];
 let schoolsMap: Map<number, School> = new Map();
 let expandState: ExpandState = {};
+let schoolFilter: SchoolFilter | null = null;  // 学校多选筛选组件
 const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_link');
 
 // DOM 元素引用
 const elements = {
   searchInput: document.getElementById('kivoSearchInput') as HTMLInputElement,
-  schoolFilter: document.getElementById('schoolFilter') as HTMLSelectElement,
+  schoolFilterBtn: document.getElementById('kivoSchoolFilterBtn') as HTMLButtonElement,
+  schoolDropdown: document.getElementById('kivoSchoolDropdown') as HTMLDivElement,
+  schoolFilterCount: document.getElementById('kivoSchoolFilterCount') as HTMLSpanElement,
   installFilter: document.getElementById('installFilter') as HTMLSelectElement,
   studentsContainer: document.getElementById('studentsContainer') as HTMLDivElement,
   expandAllBtn: document.getElementById('expandAllBtn') as HTMLButtonElement,
@@ -203,7 +208,6 @@ function collapseAll(): void {
 // 应用筛选
 function applyFilters(): void {
   const searchTerm = elements.searchInput.value.toLowerCase().trim();
-  const schoolFilter = elements.schoolFilter.value;
   const installFilter = elements.installFilter.value;
 
   filteredStudents = allStudents.filter(student => {
@@ -217,8 +221,10 @@ function applyFilters(): void {
       student.name_tw?.toLowerCase().includes(searchTerm) ||
       student.id.toString().includes(searchTerm);
 
-    // 学校过滤
-    const matchSchool = !schoolFilter || student.school_id.toString() === schoolFilter;
+    // 学校过滤（多选，来自共享组件）
+    const selected = schoolFilter?.selected;
+    const matchSchool = !selected || selected.size === 0 ||
+      selected.has(getSchoolName(student.school_id));
 
     // 实装状态过滤
     let matchInstall = true;
@@ -246,16 +252,17 @@ function updateStats(students: Student[]): void {
   elements.pageCount.textContent = totalPages.toString();
 }
 
-// 填充学校筛选器
-function populateSchoolFilter(): void {
-  const schools = Array.from(schoolsMap.values()).sort((a, b) => a.id - b.id);
+// 创建学校多选筛选组件
+function setupSchoolFilter(): void {
+  const options = Array.from(schoolsMap.values())
+    .sort((a, b) => a.id - b.id)
+    .map(s => ({ name: s.name || s.name_cn || '未知', logo: s.logo || null }));
 
-  schools.forEach(school => {
-    const option = document.createElement('option');
-    option.value = school.id.toString();
-    option.textContent = school.name || school.name_cn || '未知';
-    elements.schoolFilter.appendChild(option);
-  });
+  schoolFilter = createSchoolFilter(
+    { btn: elements.schoolFilterBtn, dropdown: elements.schoolDropdown, count: elements.schoolFilterCount },
+    options,
+    applyFilters
+  );
 }
 
 // 获取元数据
@@ -315,7 +322,7 @@ async function loadData(): Promise<void> {
     filteredStudents = students;
 
     updateStats(allStudents);
-    populateSchoolFilter();
+    setupSchoolFilter();
     renderStudents(allStudents);
 
     if (metadata?.updateDate) {
@@ -339,9 +346,8 @@ async function loadData(): Promise<void> {
 
 // 初始化 KivoWiki 导航视图（懒加载：首次切换到该视图时调用）
 export function initKivoView(): void {
-  // 事件监听
+  // 事件监听（学校筛选按钮由共享组件绑定）
   elements.searchInput.addEventListener('input', applyFilters);
-  elements.schoolFilter.addEventListener('change', applyFilters);
   elements.installFilter.addEventListener('change', applyFilters);
   elements.expandAllBtn.addEventListener('click', expandAll);
   elements.collapseAllBtn.addEventListener('click', collapseAll);
