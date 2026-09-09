@@ -78,7 +78,6 @@
 36,489,类型 (home),Saori_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
 36,779,类型 (home),CH0266_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
 36,933,类型 (home),CH0259_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
-36,934,类型 (home),CH0259_home_fix,光线修复,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
 37,374,类型 (home),kazusa_home,,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
 37,541,后缀 (old),kazusa_old,旧立绘,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
 37,708,类型 (home),CH0250_home,,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
@@ -300,6 +299,7 @@
 115,959,类型 (home),CH0079_home_fix,光线修复,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 115,1773,类型 (home),CH0344_home,,羽沼 真琴,羽沼 マコト,Hanuma Makoto,3,格赫娜学园
 116,568,类型 (home),CH0089_home,,鬼怒川 霞,鬼怒川 カスミ,Kinugawa Kasumi,3,格赫娜学园
+116,1903,类型 (home),CH0328_home,,鬼怒川 霞,鬼怒川 カスミ,Kinugawa Kasumi,3,格赫娜学园
 117,422,类型 (home),CH0163_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,440,类型 (home),Chinatsu_home,,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
 117,737,后缀 (cn),chinatsu_spr_CN,国服,火宫 千夏,火宮 チナツ,Hinomiya Chinatsu,3,格赫娜学园
@@ -373,8 +373,8 @@
 158,643,类型 (home),CH0219_home,,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
 158,1030,后缀 (steam),eimi_spr_Steam,Steam版初始立绘,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
 158,1442,类型 (home),CH0337_home,,和泉元 艾米,和泉元 エイミ,Izumimoto Eimi,4,千禧科学学院
-159,589,后缀 (cbt),Erika_CBT,CBT旧绘废案,旗见 绘里香,旗見 エリカ,hatami erika,3,格赫娜学园
-159,1628,类型 (home),erika_home,,旗见 绘里香,旗見 エリカ,hatami erika,3,格赫娜学园
+159,589,后缀 (cbt),Erika_CBT,CBT旧绘废案,旗见 绘里香,旗見 エリカ,Hatami Erika,3,格赫娜学园
+159,1628,类型 (home),erika_home,,旗见 绘里香,旗見 エリカ,Hatami Erika,3,格赫娜学园
 160,455,类型 (home),Hare_home,,小钩 晴,小鈎 ハレ,Omagari Hare,4,千禧科学学院
 160,648,类型 (home),CH0233_home,,小钩 晴,小鈎 ハレ,Omagari Hare,4,千禧科学学院
 162,936,包含 (toschool),ToSchool_JTFMobMaid1,女仆装站姿,正义实现委员会部员A,正義実現委員会部員,,2,圣三一综合学园

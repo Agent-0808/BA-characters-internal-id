@@ -12,12 +12,6 @@
     "type": "spr"
   },
   {
-    "id": 11,
-    "name": "yuzu_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 16,
     "name": "yoheki_redwinter1_spr",
     "remark": "初始立绘",
@@ -348,12 +342,6 @@
     "type": "spr"
   },
   {
-    "id": 325,
-    "name": "nodoka_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
     "id": 326,
     "name": "neru_spr",
     "remark": "初始立绘",
@@ -380,18 +368,6 @@
   {
     "id": 333,
     "name": "kirino_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 334,
-    "name": "koharu_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 337,
-    "name": "momoi_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -434,12 +410,6 @@
   {
     "id": 350,
     "name": "mashiro_spr",
-    "remark": "初始立绘",
-    "type": "spr"
-  },
-  {
-    "id": 351,
-    "name": "mashiro_swimsuit_spr",
     "remark": "初始立绘",
     "type": "spr"
   },
@@ -2529,12 +2499,6 @@
     "id": 933,
     "name": "CH0259_home",
     "remark": "",
-    "type": "home"
-  },
-  {
-    "id": 934,
-    "name": "CH0259_home_fix",
-    "remark": "光线修复",
     "type": "home"
   },
   {
@@ -7108,5 +7072,41 @@
     "name": "NP0309_spr",
     "remark": "初始立绘",
     "type": "spr"
+  },
+  {
+    "id": 1864,
+    "name": "koharu_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1869,
+    "name": "mashiro_swimsuit_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1873,
+    "name": "momoi_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1875,
+    "name": "nodoka_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1899,
+    "name": "yuzu_spr_HD",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1903,
+    "name": "CH0328_home",
+    "remark": "",
+    "type": "home"
   }
 ]

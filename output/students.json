@@ -70,7 +70,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E6%89%8D%E7%BE%BD%E6%A1%83%E4%BA%95/avatar.png",
         "spines": [
-          337,
+          1873,
           362,
           363,
           1360
@@ -1518,11 +1518,10 @@
         "spines": [
           676,
           677,
-          934,
           933
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -2877,7 +2876,7 @@
     "name_jp": "合歓垣 フブキ",
     "name_en": "Nemugaki Fubuki",
     "name_kr": "네무가키 후부키",
-    "name_tw": "合歓垣 吹雪",
+    "name_tw": "合歡垣 吹雪",
     "school_id": 8,
     "pages": [
       {
@@ -3448,7 +3447,7 @@
         "skin_name_tw": "泳裝",
         "avatar": "//static.kivo.wiki/images/students/%E9%9D%99%E5%B1%B1%20%E7%9C%9F%E7%99%BD/%E6%B3%B3%E8%A3%85/avatar.png",
         "spines": [
-          351,
+          1869,
           503
         ],
         "is_install": true,
@@ -3478,7 +3477,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E8%8A%B1%E5%86%88%20%E6%9F%9A%E5%AD%90/avatar.png",
         "spines": [
-          11,
+          1899,
           1362,
           1061,
           364,
@@ -4732,14 +4731,15 @@
         "avatar": "//static.kivo.wiki/images/students/%E9%AC%BC%E6%80%92%E5%B7%9D%20%E9%9C%9E/%E6%B3%B3%E8%A3%85/1.png",
         "spines": [
           1324,
-          1386
+          1386,
+          1903
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
-        "limited": false
+        "rarity": 3,
+        "limited": true
       }
     ]
   },
@@ -4864,7 +4864,7 @@
         "avatar": "//static.kivo.wiki/images/students/%E5%A4%A9%E8%A7%81%20%E5%92%8C%E9%A6%99/avatar.png",
         "spines": [
           500,
-          325
+          1875
         ],
         "is_install": true,
         "is_install_cn": true,
@@ -6088,7 +6088,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E4%B8%8B%E6%B1%9F%20%E5%B0%8F%E6%98%A5/avatar.png",
         "spines": [
-          334,
+          1864,
           491,
           1671,
           1672
@@ -6192,7 +6192,7 @@
     "name": "旗见 绘里香",
     "name_cn": "旗见 绘梨香",
     "name_jp": "旗見 エリカ",
-    "name_en": "hatami erika",
+    "name_en": "Hatami Erika",
     "name_kr": "하타미 에리카",
     "name_tw": "旗見 繪里香",
     "school_id": 3,
@@ -6211,7 +6211,7 @@
         ],
         "is_install": true,
         "is_install_cn": false,
-        "is_install_global": false,
+        "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
         "limited": false
@@ -12705,7 +12705,7 @@
   },
   {
     "id": 600,
-    "name": "鹰野主 翠子",
+    "name": "鹰野主 水子",
     "name_cn": "",
     "name_jp": "鷹野主 スイコ",
     "name_en": "",
@@ -12734,7 +12734,7 @@
   },
   {
     "id": 601,
-    "name": "五百雀 和美",
+    "name": "五百雀 和",
     "name_cn": "",
     "name_jp": "五百雀 ナゴミ",
     "name_en": "",
@@ -12763,7 +12763,7 @@
   },
   {
     "id": 602,
-    "name": "乌头尾 阳子",
+    "name": "乌头尾 耀子",
     "name_cn": "",
     "name_jp": "烏頭尾 ヨウコ",
     "name_en": "",
