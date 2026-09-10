@@ -56,20 +56,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install httpx
 
-      # 尝试从 data 分支拉取上次的缓存文件
-      # 从远程的 data 分支恢复到当前工作目录，实现增量更新
-      - name: 从 data 分支恢复数据
+      # 尝试从 snapshot 分支拉取上次的缓存文件
+      # snapshot 每次运行后都会推送，始终保存最新的缓存状态
+      # snapshot 不存在时回退到 data 分支恢复（兼容首次迁移）
+      - name: 从 snapshot 分支恢复数据
         if: github.event.inputs.skip_cache != 'true'
         run: |
-          echo "正在检查远程 data 分支..."
+          echo "正在检查远程缓存分支..."
           
-          # 判断 fetch 是否成功，如果分支不存在会进入 else
-          if git fetch origin data >/dev/null 2>&1; then
-            echo "发现缓存，正在恢复..."
-            # 把 origin/data 分支下的所有文件检出到当前目录
+          # 判断 fetch 是否成功，如果分支不存在会尝试回退
+          if git fetch origin snapshot >/dev/null 2>&1; then
+            echo "发现 snapshot 缓存，正在恢复..."
+            # 把 origin/snapshot 分支下的所有文件检出到当前目录
+            git checkout origin/snapshot -- .
+          elif git fetch origin data >/dev/null 2>&1; then
+            echo "snapshot 分支不存在，从 data 分支恢复..."
             git checkout origin/data -- .
           else
-            echo "远程 data 分支不存在。"
+            echo "远程缓存分支均不存在。"
             echo "未发现缓存，将建立新缓存目录。"
             mkdir -p cache
           fi
@@ -78,10 +82,12 @@ jobs:
       # 在运行爬虫前备份旧的output目录，用于生成变更报告
       - name: 备份旧数据用于对比
         run: |
-          # 即使跳过缓存，也要从 data 分支获取旧数据用于对比
+          # 即使跳过缓存，也要从缓存分支获取旧数据用于对比
           if [ ! -d "output" ] && [ "${{ github.event.inputs.skip_cache }}" == "true" ]; then
-            echo "跳过缓存模式：从 data 分支获取旧数据用于对比..."
-            if git fetch origin data >/dev/null 2>&1; then
+            echo "跳过缓存模式：从缓存分支获取旧数据用于对比..."
+            if git fetch origin snapshot >/dev/null 2>&1; then
+              git checkout origin/snapshot -- output/ 2>/dev/null || true
+            elif git fetch origin data >/dev/null 2>&1; then
               git checkout origin/data -- output/ 2>/dev/null || true
             fi
           fi
@@ -140,10 +146,8 @@ jobs:
             echo "✅ 检测到新数据！准备提交和发布。"
           fi
 
-      # 准备要发布到 data 分支的文件
-      # 仅当检测到变化或总是推送时运行
+      # 准备要发布到缓存分支的文件
       - name: 准备发布文件
-        if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.always_push == 'true'
         run: |
           mkdir -p deployment_folder
 
@@ -157,10 +161,23 @@ jobs:
             cp -r cache deployment_folder/
           fi
 
-          echo "以下文件将被推送到 data 分支："
+          echo "以下文件将被推送到 snapshot / data 分支："
           ls -R deployment_folder
 
-      # 将数据和缓存推送到 data 分支
+      # 将数据和缓存推送到 snapshot 分支
+      # 每次运行都推送，滚动保存最新缓存，避免无变化时丢失增量刷新记录
+      - name: 将数据和缓存推送到 snapshot 分支
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deployment_folder
+          publish_branch: snapshot
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: "Cache snapshot: ${{ env.CODE_VERSION }}-${{ steps.date.outputs.date }}"
+          keep_files: false
+
+      # 将数据推送到 data 分支（保持干净的增量变更历史）
       # 仅当检测到变化或总是推送时运行
       - name: 将数据和缓存推送到 data 分支
         if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.always_push == 'true'
