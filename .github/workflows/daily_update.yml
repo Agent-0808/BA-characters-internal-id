@@ -99,24 +99,22 @@ jobs:
             echo "无旧数据，跳过备份"
           fi
 
-      # 记录运行前的状态文件指纹
-      # 通过计算 students.json 的 MD5 哈希值来判断数据是否进行了更新
-      - name: 记录运行前状态
-        id: pre_state
+      # 获取当前日期并记录运行前状态
+      # 日期用于 commit 和 Release 标签命名
+      # students.json 的 MD5 哈希用于后续对比，判断数据是否更新
+      - name: 获取日期并记录运行前状态
+        id: meta
         run: |
+          echo "当前日期: $(date +'%Y-%m-%d')"
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+          # 记录运行前的状态文件指纹
           if [ -f "output/students.json" ]; then
             md5sum output/students.json | awk '{print $1}' > pre_hash.txt
           else
             echo "empty" > pre_hash.txt
           fi
           echo "运行前 Hash: $(cat pre_hash.txt)"
-
-      # 获取当前日期
-      - name: 获取当前日期
-        id: date
-        run: |
-          echo "当前日期: $(date +'%Y-%m-%d')"
-          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       # 运行主程序
       - name: 运行爬虫脚本
@@ -174,7 +172,7 @@ jobs:
           publish_branch: snapshot
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: "Cache snapshot: ${{ env.CODE_VERSION }}-${{ steps.date.outputs.date }}"
+          commit_message: "Cache snapshot: ${{ env.CODE_VERSION }}-${{ steps.meta.outputs.date }}"
           keep_files: false
 
       # 将数据推送到 data 分支（保持干净的增量变更历史）
@@ -188,7 +186,7 @@ jobs:
           publish_branch: data
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: "Auto-update: ${{ env.CODE_VERSION }}-${{ steps.date.outputs.date }}"
+          commit_message: "Auto-update: ${{ env.CODE_VERSION }}-${{ steps.meta.outputs.date }}"
           keep_files: false
           enable_jekyll: true
 
@@ -198,14 +196,31 @@ jobs:
         if: steps.check_changes.outputs.changes_detected == 'true'
         run: python -m crawler.diff_report
 
+      # 生成唯一的 Release 标签名
+      # 当天同名 tag 再次创建时追加 -2、-3 后缀，避免互相覆盖
+      - name: 生成唯一 Release 标签
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        id: release_tag
+        run: |
+          base_tag="${{ steps.meta.outputs.date }}-${{ env.CODE_VERSION }}"
+          tag="$base_tag"
+          num=1
+          # 检查同名 tag 是否存在，存在则递增后缀
+          while gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$tag" >/dev/null 2>&1; do
+            num=$((num+1))
+            tag="${base_tag}-${num}"
+          done
+          echo "唯一标签: $tag"
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+
       # 创建 Release 发布
       # 仅当检测到变化时运行
       - name: 创建 Release 版本
         if: steps.check_changes.outputs.changes_detected == 'true'
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.date.outputs.date }}-${{ env.CODE_VERSION }}
-          name: ${{ steps.date.outputs.date }}
+          tag_name: ${{ steps.release_tag.outputs.tag }}
+          name: ${{ steps.meta.outputs.date }}
           target_commitish: data
           body_path: output/diff_report.md
           files: |
