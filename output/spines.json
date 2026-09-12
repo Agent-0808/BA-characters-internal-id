@@ -7108,5 +7108,11 @@
     "name": "CH0328_home",
     "remark": "",
     "type": "home"
+  },
+  {
+    "id": 1904,
+    "name": "SC221000_01",
+    "remark": "",
+    "type": "home"
   }
 ]
