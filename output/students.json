@@ -3021,7 +3021,7 @@
     "name_jp": "天神山 オトギ",
     "name_en": "Tenjinyama Otogi",
     "name_kr": "텐진야마 오토기",
-    "name_tw": "御伽",
+    "name_tw": "天神山 御伽",
     "school_id": 11,
     "pages": [
       {
@@ -5325,7 +5325,7 @@
     "name_jp": "河駒風 ラブ",
     "name_en": "Komakaze Rabu",
     "name_kr": "코마카제 라브",
-    "name_tw": "河驹风 良舞",
+    "name_tw": "河駒風 良舞",
     "school_id": 2,
     "pages": [
       {
@@ -10232,7 +10232,7 @@
           1008
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -10281,7 +10281,7 @@
           1009
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 2,
@@ -10329,7 +10329,7 @@
           1007
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -11228,7 +11228,7 @@
     "name": "志真 心华",
     "name_cn": "",
     "name_jp": "志真 コノカ",
-    "name_en": "Shima konoka",
+    "name_en": "Shima Konoka",
     "name_kr": "시마 코노카",
     "name_tw": "志真 木乃香",
     "school_id": 8,
@@ -13425,6 +13425,35 @@
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 640,
+    "name": "萨米",
+    "name_cn": "",
+    "name_jp": "サミー",
+    "name_en": "",
+    "name_kr": "새미",
+    "name_tw": "",
+    "school_id": 15,
+    "pages": [
+      {
+        "page_id": 640,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E8%90%A8%E7%B1%B3/original/sami-.png",
+        "spines": [
+          1904
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
         "rarity": 0,
         "limited": false
       }

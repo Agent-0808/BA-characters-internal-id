@@ -496,7 +496,7 @@
 365,978,类型 (home),CH0242_home,,橘 光,橘 ヒカリ,Tachibana Hikari,24,海兰德铁道学园
 366,979,类型 (home),CH0243_home,,橘 望,橘 ノゾミ,Tachibana Nozomi,24,海兰德铁道学园
 366,980,类型 (home),CH0243_home_fix,光线修复,橘 望,橘 ノゾミ,Tachibana Nozomi,24,海兰德铁道学园
-378,1451,类型 (home),CH0264_home,,志真 心华,志真 コノカ,Shima konoka,8,瓦尔基里警察学校
+378,1451,类型 (home),CH0264_home,,志真 心华,志真 コノカ,Shima Konoka,8,瓦尔基里警察学校
 502,1435,包含 (ui_),Ui_IAWorldBoss_EN0015,钢铁大陆攻略战,马路库特,マルクト,Malkuth,21,神名十文字
 518,1217,类型 (home),CH0335_home,,天童 凯伊,天童 ケイ,Tendou Kei,4,千禧科学学院
 518,1438,类型 (home),SC90002000_02,Vol.Ex - 2,天童 凯伊,天童 ケイ,Tendou Kei,4,千禧科学学院
@@ -522,3 +522,4 @@
 618,1772,类型 (home),SC211000_01,第二部Vol.1.1,五十岚 憧子,五十嵐 ショウコ,Igarashi Shouko,3,格赫娜学园
 620,1839,类型 (home),CH0368_home,,渡海 心,渡海 ココロ,Toumi Kokoro,15,奥德赛海洋学校
 621,1840,类型 (home),CH0369_home,,渊上 琴音,淵上 コトネ,Fuchigami Kotone,15,奥德赛海洋学校
+640,1904,类型 (home),SC221000_01,,萨米,サミー,,15,奥德赛海洋学校
