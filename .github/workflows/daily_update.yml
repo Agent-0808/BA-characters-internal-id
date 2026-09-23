@@ -14,8 +14,8 @@ on:
         required: false
         default: false
         type: boolean
-      always_push:
-        description: '总是推送（即使CSV未改变也推送）'
+      force_deploy:
+        description: '强制重新部署（不推送数据，仅触发部署与发布）'
         required: false
         default: false
         type: boolean
@@ -29,6 +29,11 @@ on:
 permissions:
   contents: write
   actions: write
+
+# 并发控制：避免定时任务与手动触发同时运行，导致并发推送同一分支
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
 
 jobs:
   update-and-deploy:
@@ -56,38 +61,42 @@ jobs:
           python -m pip install --upgrade pip
           pip install httpx
 
-      # 尝试从 snapshot 分支拉取上次的缓存文件
-      # snapshot 每次运行后都会推送，始终保存最新的缓存状态
-      # snapshot 不存在时回退到 data 分支恢复（兼容首次迁移）
-      - name: 从 snapshot 分支恢复数据
+      # 恢复 cache 与已发布的 output
+      # cache 取自 snapshot（每日滚动，保存最新增量状态），不存在时回退 data（首次迁移兼容）
+      # output 始终取自 data，代表「已发布版本」，作为变更检测与变更报告的基线
+      - name: 恢复缓存与已发布数据
         if: github.event.inputs.skip_cache != 'true'
         run: |
-          echo "正在检查远程缓存分支..."
-          
-          # 判断 fetch 是否成功，如果分支不存在会尝试回退
+          echo "正在检查远程分支..."
+
+          # 1. cache：优先从 snapshot 恢复
           if git fetch origin snapshot >/dev/null 2>&1; then
-            echo "发现 snapshot 缓存，正在恢复..."
-            # 把 origin/snapshot 分支下的所有文件检出到当前目录
-            git checkout origin/snapshot -- .
+            echo "从 snapshot 分支恢复缓存..."
+            git checkout origin/snapshot -- cache/ 2>/dev/null || true
           elif git fetch origin data >/dev/null 2>&1; then
-            echo "snapshot 分支不存在，从 data 分支恢复..."
-            git checkout origin/data -- .
+            echo "snapshot 分支不存在，从 data 分支恢复缓存..."
+            git checkout origin/data -- cache/ 2>/dev/null || true
           else
-            echo "远程缓存分支均不存在。"
-            echo "未发现缓存，将建立新缓存目录。"
-            mkdir -p cache
+            echo "未发现缓存分支，将建立新缓存目录。"
+          fi
+          mkdir -p cache
+
+          # 2. output：以 data 分支的已发布版本为准
+          if git fetch origin data >/dev/null 2>&1; then
+            echo "从 data 分支恢复已发布数据..."
+            git checkout origin/data -- output/ 2>/dev/null || true
+          else
+            echo "data 分支不存在，无已发布数据。"
           fi
 
       # 备份旧数据用于对比
       # 在运行爬虫前备份旧的output目录，用于生成变更报告
       - name: 备份旧数据用于对比
         run: |
-          # 即使跳过缓存，也要从缓存分支获取旧数据用于对比
+          # 跳过缓存模式下未恢复 output，需从 data 分支获取已发布数据作为对比基线
           if [ ! -d "output" ] && [ "${{ github.event.inputs.skip_cache }}" == "true" ]; then
-            echo "跳过缓存模式：从缓存分支获取旧数据用于对比..."
-            if git fetch origin snapshot >/dev/null 2>&1; then
-              git checkout origin/snapshot -- output/ 2>/dev/null || true
-            elif git fetch origin data >/dev/null 2>&1; then
+            echo "跳过缓存模式：从 data 分支获取已发布数据用于对比..."
+            if git fetch origin data >/dev/null 2>&1; then
               git checkout origin/data -- output/ 2>/dev/null || true
             fi
           fi
@@ -176,9 +185,9 @@ jobs:
           keep_files: false
 
       # 将数据推送到 data 分支（保持干净的增量变更历史）
-      # 仅当检测到变化或总是推送时运行
+      # 仅当检测到变化时运行，保证 data 分支前进必有对应的 Release
       - name: 将数据和缓存推送到 data 分支
-        if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.always_push == 'true'
+        if: steps.check_changes.outputs.changes_detected == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -232,8 +241,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # 触发 部署与发布 工作流
+      # 数据更新时自动触发；也可用 force_deploy 手动重新部署
       - name: 触发部署与发布
-        if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.always_push == 'true'
+        if: steps.check_changes.outputs.changes_detected == 'true' || github.event.inputs.force_deploy == 'true'
         run: |
           gh workflow run deploy.yml --ref main
         env:
