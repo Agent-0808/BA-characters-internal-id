@@ -6925,9 +6925,9 @@
       {
         "page_id": 521,
         "skin_name": "打工",
-        "skin_name_cn": "",
+        "skin_name_cn": "打工",
         "skin_name_jp": "アルバイト",
-        "skin_name_tw": "",
+        "skin_name_tw": "打工",
         "avatar": "//static.kivo.wiki/images/students/%E7%89%9B%E7%89%A7%20%E6%9C%B1%E8%8E%89/%E6%89%93%E5%B7%A5/Student_Portrait_CH0286_Collection.png",
         "spines": [
           1288,
@@ -6978,7 +6978,7 @@
         "skin_name": "打工",
         "skin_name_cn": "打工",
         "skin_name_jp": "アルバイト",
-        "skin_name_tw": "",
+        "skin_name_tw": "打工",
         "avatar": "//static.kivo.wiki/images/students/%E4%B9%99%E8%8A%B1%20%E5%A0%87/%E6%89%93%E5%B7%A5/Student_Portrait_CH0287_Collection.png",
         "spines": [
           1289,
@@ -13455,6 +13455,124 @@
         "is_install_global": false,
         "is_npc": true,
         "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 641,
+    "name": "二木 叶莲娜",
+    "name_cn": "",
+    "name_jp": "二木 エリナ",
+    "name_en": "Niki Erina",
+    "name_kr": "니키 에리나",
+    "name_tw": "",
+    "school_id": 5,
+    "pages": [
+      {
+        "page_id": 641,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%E4%BA%8C%E6%9C%A8%20%E5%8F%B6%E8%8E%B2%E5%A8%9C/original/Student_Portrait_CH0321_Collection.png",
+        "spines": [
+          1906,
+          1910
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 642,
+    "name": "古畑 兰娜",
+    "name_cn": "",
+    "name_jp": "古畑 ラナ",
+    "name_en": "Furuhata Rana",
+    "name_kr": "후루하타 라나",
+    "name_tw": "",
+    "school_id": 5,
+    "pages": [
+      {
+        "page_id": 642,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%E5%8F%A4%E7%95%91%20%E3%83%A9%E3%83%8A/original/0233.jpg",
+        "spines": [
+          1907
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 643,
+    "name": "红冬学生A",
+    "name_cn": "",
+    "name_jp": "レッドウィンターの生徒A",
+    "name_en": "",
+    "name_kr": "붉은겨울 학생 A",
+    "name_tw": "",
+    "school_id": 5,
+    "pages": [
+      {
+        "page_id": 643,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E7%BA%A2%E5%86%AC%E5%AD%A6%E7%94%9FA/original/np0309.jpg",
+        "spines": [
+          1908
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false
+      }
+    ]
+  },
+  {
+    "id": 644,
+    "name": "仁木 安娜",
+    "name_cn": "仁木 安娜",
+    "name_jp": "仁木 アンナ",
+    "name_en": "Niki Anna",
+    "name_kr": "니키 안나",
+    "name_tw": "",
+    "school_id": 5,
+    "pages": [
+      {
+        "page_id": 644,
+        "skin_name": "",
+        "skin_name_cn": "",
+        "skin_name_jp": "",
+        "skin_name_tw": "",
+        "avatar": "//static.kivo.wiki/images/students/%E4%BB%81%E6%9C%A8%20%E5%AE%89%E5%A8%9C/original/Student_Portrait_CH0320_Collection.png",
+        "spines": [
+          1905,
+          1909
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
         "limited": false
       }
     ]

@@ -7114,5 +7114,41 @@
     "name": "SC221000_01",
     "remark": "",
     "type": "home"
+  },
+  {
+    "id": 1905,
+    "name": "CH0320_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1906,
+    "name": "CH0321_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1907,
+    "name": "CH0322_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1908,
+    "name": "NP0305_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1909,
+    "name": "CH0320_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1910,
+    "name": "CH0321_home",
+    "remark": "",
+    "type": "home"
   }
 ]
