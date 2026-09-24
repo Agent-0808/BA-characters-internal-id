@@ -1903,7 +1903,7 @@
           1074
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -2642,7 +2642,7 @@
         "spines": [
           467,
           1562,
-          33,
+          1892,
           1716,
           1335,
           724,
@@ -2757,7 +2757,7 @@
           1070
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -4618,7 +4618,7 @@
           1071
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 1,
@@ -10416,8 +10416,7 @@
         "skin_name_tw": "",
         "avatar": "//static.kivo.wiki/images/students/%E7%99%BE%E9%AC%BC%E4%B8%80%E8%88%AC%E5%AD%A6%E7%94%9FA/avatar.png",
         "spines": [
-          1519,
-          1377
+          1519
         ],
         "is_install": false,
         "is_install_cn": false,
@@ -10434,7 +10433,7 @@
         "skin_name_tw": "泳裝",
         "avatar": "//static.kivo.wiki/images/students/%20%E7%99%BE%E9%AC%BC%E5%A4%9C%E8%A1%8C%E5%AD%A6%E7%94%9FA/%E6%B3%B3%E8%A3%85/NP0255_avatar.png",
         "spines": [
-          1015
+          1377
         ],
         "is_install": false,
         "is_install_cn": false,

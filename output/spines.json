@@ -54,12 +54,6 @@
     "type": "spr"
   },
   {
-    "id": 33,
-    "name": "shiroko_robber_spr",
-    "remark": "头套",
-    "type": "spr"
-  },
-  {
     "id": 34,
     "name": "shiroko_ridingsuit_spr",
     "remark": "初始立绘",
@@ -2836,12 +2830,6 @@
     "name": "CH0302_home",
     "remark": "",
     "type": "home"
-  },
-  {
-    "id": 1015,
-    "name": "NP0255_spr",
-    "remark": "泳装立绘",
-    "type": "spr"
   },
   {
     "id": 1016,
@@ -7095,6 +7083,12 @@
     "id": 1875,
     "name": "nodoka_spr_HD",
     "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1892,
+    "name": "shiroko_robber_spr_HD",
+    "remark": "头套",
     "type": "spr"
   },
   {
