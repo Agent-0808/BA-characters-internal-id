@@ -19,9 +19,15 @@ async function loadFooterHashes(): Promise<void> {
     const short = (hash: string): string =>
       hash && hash.length > 7 ? hash.slice(0, 6) : (hash || 'unknown');
     el.textContent = `web ${short(metadata.webCommitHash)} · data ${short(metadata.dataCommitHash)}`;
-    if (metadata.repoUrl) {
-      el.title = `${metadata.repoUrl}\n爬虫版本: ${metadata.codeVersion || 'unknown'}`;
-    }
+    // 悬浮时显示完整 commit hash（而非截断的短 hash）
+    const orUnknown = (value: string): string => value || 'unknown';
+    const lines = [
+      `web: ${orUnknown(metadata.webCommitHash)}`,
+      `data: ${orUnknown(metadata.dataCommitHash)}`,
+      `crawler: ${orUnknown(metadata.codeVersion)}`,
+    ];
+    if (metadata.repoUrl) lines.push(metadata.repoUrl);
+    el.title = lines.join('\n');
   } catch {
     // 元数据加载失败时静默处理，页脚 hash 留空
   }
