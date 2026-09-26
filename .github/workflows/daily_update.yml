@@ -168,6 +168,11 @@ jobs:
             cp -r cache deployment_folder/
           fi
 
+          # 发布 data 分支说明文档与数据许可到分支根目录
+          # 源文件维护在 main 分支，data 分支内容整体由本步骤生成
+          cp docs/readme-data-branch.md deployment_folder/README.md
+          cp LICENSE-DATA deployment_folder/LICENSE-DATA
+
           echo "以下文件将被推送到 snapshot / data 分支："
           ls -R deployment_folder
 
