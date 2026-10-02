@@ -1,5 +1,7 @@
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
+import { getUiSettings } from './settings.js';
+import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter, SchoolOption } from './schoolFilter.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
@@ -11,7 +13,6 @@ let currentSort: SortState = { column: null, direction: 'asc' };
 let columnVisibility: ColumnVisibility = {} as ColumnVisibility;
 let schoolsMap: Map<number, School> = new Map();
 let schoolFilter: SchoolFilter | null = null;  // 学校多选筛选组件
-const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_link');
 
 // DOM 元素引用
 const elements = {
@@ -27,10 +28,42 @@ const elements = {
   dataFileLink: document.getElementById('dataFileLink') as HTMLAnchorElement,
 };
 
-// 初始化列显示状态
+// 列显示配置的 localStorage key
+const COLUMN_VISIBILITY_KEY = 'ba-column-visibility';
+
+// 从 localStorage 读取已保存的列显示配置（含废弃 key，由调用方过滤）
+function loadSavedColumnVisibility(): Partial<ColumnVisibility> | null {
+  try {
+    const raw = localStorage.getItem(COLUMN_VISIBILITY_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) return null;
+    return parsed as Partial<ColumnVisibility>;
+  } catch {
+    return null; // 解析失败时静默退回默认配置
+  }
+}
+
+// 保存列显示配置到 localStorage（不可用时静默跳过）
+function saveColumnVisibility(): void {
+  try {
+    localStorage.setItem(COLUMN_VISIBILITY_KEY, JSON.stringify(columnVisibility));
+  } catch {
+    // localStorage 不可用（如隐私模式），忽略
+  }
+}
+
+// 初始化列显示状态：默认值为基底，再应用保存值（仅限仍存在的列 key）
 function initColumnVisibility(): void {
   COLUMN_CONFIG.forEach(col => {
     columnVisibility[col.key] = col.defaultVisible;
+  });
+  const saved = loadSavedColumnVisibility();
+  if (!saved) return;
+  COLUMN_CONFIG.forEach(col => {
+    if (typeof saved[col.key] === 'boolean') {
+      columnVisibility[col.key] = saved[col.key] as boolean;
+    }
   });
 }
 
@@ -67,7 +100,7 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'page_id') {
       const url = `https://kivo.wiki/data/character/${value}?mode=appreciation`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
-    } else if (col.key === 'spine_id' && spineLinkEnabled) {
+    } else if (col.key === 'spine_id' && getUiSettings().spineLink) {
       const url = `https://api.kivo.wiki/api/v1/data/spines/${value}`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
     } else if (col.key === 'name') {
@@ -75,13 +108,15 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'skin_name') {
       return `<td data-col="${col.key}">${value || '-'}</td>`;
     } else if (col.key === 'school_name') {
-      // 渲染学校 logo + 名称
+      // 渲染学校 logo + 名称，标签底色/文字色按学校 id 着色（见 schoolColors.ts）
       const schoolId = parseInt(row.school_id);
       const school = schoolsMap.get(schoolId);
+      const color = getSchoolColor(schoolId);
+      const colorStyle = ` style="background:${color.bg};color:${color.text}"`;
       if (school && school.logo) {
-        return `<td data-col="${col.key}"><span class="school-tag"><img src="https:${school.logo}" class="school-logo" alt="">${value}</span></td>`;
+        return `<td data-col="${col.key}"><span class="school-tag"${colorStyle}><img src="https:${school.logo}" class="school-logo" alt="">${value}</span></td>`;
       }
-      return `<td data-col="${col.key}"><span class="school-tag">${value}</span></td>`;
+      return `<td data-col="${col.key}"><span class="school-tag"${colorStyle}>${value}</span></td>`;
     } else {
       return `<td data-col="${col.key}">${value}</td>`;
     }
@@ -210,6 +245,7 @@ function generateColumnDropdown(): void {
 // 切换列显示/隐藏
 function toggleColumn(column: keyof StudentData, visible: boolean): void {
   columnVisibility[column] = visible;
+  saveColumnVisibility();
   renderTable(filteredData);
 }
 
@@ -247,14 +283,11 @@ function updateStats(data: StudentData[]): void {
   elements.studentCount.textContent = uniqueStudents.toString();
 }
 
-// 从数据行构建学校选项列表（去重排序并附带 logo），供共享筛选组件使用
-function buildSchoolOptions(data: StudentData[]): SchoolOption[] {
-  return [...new Set(data.map(d => d.school_name).filter(Boolean))].sort()
-    .map(name => {
-      const row = data.find(d => d.school_name === name);
-      const school = row ? schoolsMap.get(parseInt(row.school_id)) : undefined;
-      return { name, logo: school?.logo || null };
-    });
+// 构建学校过滤器选项：以 schools.json 为准按 id 排序（与 kivonavi 页一致）
+function buildSchoolOptions(): SchoolOption[] {
+  return Array.from(schoolsMap.values())
+    .sort((a, b) => a.id - b.id)
+    .map(s => ({ name: s.name || '未知', logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
 }
 
 // 获取元数据
@@ -319,7 +352,7 @@ async function loadData(): Promise<void> {
     // 创建学校多选筛选组件
     schoolFilter = createSchoolFilter(
       { btn: elements.schoolFilterBtn, dropdown: elements.schoolDropdown, count: elements.schoolFilterCount },
-      buildSchoolOptions(allData),
+      buildSchoolOptions(),
       applyFilters
     );
     renderTable(allData);
@@ -348,6 +381,11 @@ async function loadData(): Promise<void> {
 export function initTableView(): void {
   // 事件监听
   elements.searchInput.addEventListener('input', applyFilters);
+
+  // 界面设置变更（如 spine 链接开关）时重渲染表格
+  window.addEventListener('ui-settings-changed', () => {
+    renderTable(filteredData);
+  });
 
   // 绑定列切换按钮
   document.querySelector('.column-toggle-btn')?.addEventListener('click', toggleColumnDropdown);

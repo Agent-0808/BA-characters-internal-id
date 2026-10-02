@@ -37,44 +37,84 @@ body {
   display: none;
 }
 
+/* 紧凑单行 header：标题居左，统计徽章与导航居右 */
 .header {
   background: linear-gradient(90deg, #345a8a 0%, #2f5074 100%);
   color: white;
-  padding: 20px 30px;
-  text-align: center;
+  padding: 10px 20px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
 }
 
 .header h1 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
+  font-size: 1.15rem;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .header p {
-  opacity: 0.9;
-  font-size: 0.9rem;
+  opacity: 0.75;
+  font-size: 0.75rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .stats {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 15px;
+  gap: 8px;
+  margin: 0;
   flex-wrap: wrap;
 }
 
 .stat-item {
-  text-align: center;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
 }
 
 .stat-value {
-  font-size: 1.6rem;
+  font-size: 0.85rem;
   font-weight: bold;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-label {
-  font-size: 0.85rem;
-  opacity: 0.8;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+/* 容器失去 max-width 居中后，给右上角固定设置按钮留出空间 */
+@media (max-width: 1430px) {
+  .header { padding-right: 52px; }
+}
+
+@media (max-width: 640px) {
+  .header { padding: 10px 52px 10px 16px; }
+  .header-left { flex-direction: column; gap: 2px; }
 }
 
 .controls {
@@ -217,9 +257,7 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   border-radius: 8px;
   z-index: 1000;
-  padding: 8px 0;
-  max-height: 400px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .school-filter-content.show {
@@ -263,6 +301,12 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* 下拉列表滚动区域：仅条目部分滚动，头部固定在外层容器 */
+.school-filter-list {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .school-filter-header {
@@ -520,35 +564,25 @@ th[data-col="spine_id"] {
     border-radius: 12px;
   }
 
-  /* 压缩 header 区域 */
+  /* 压缩 header 区域（单行布局：标题列排，统计徽章与导航换行居左） */
   .header {
-    padding: 12px 16px;
+    padding: 8px 52px 8px 16px;
   }
 
   .header h1 {
-    font-size: 1.3rem;
-    margin-bottom: 3px;
+    font-size: 1.05rem;
   }
 
-  .header p {
-    font-size: 0.8rem;
-  }
-
-  .nav-links {
-    gap: 10px;
+  .header-right {
+    gap: 8px;
   }
 
   .stats {
-    gap: 12px;
-    margin-top: 10px;
+    gap: 6px;
   }
 
-  .stat-value {
-    font-size: 1.3rem;
-  }
-
-  .stat-label {
-    font-size: 0.75rem;
+  .nav-links {
+    gap: 4px;
   }
 
   /* 压缩 controls 区域 */
@@ -691,6 +725,17 @@ th[data-col="spine_id"] {
   width: 36px;
   height: 36px;
   object-fit: contain;
+  display: block;
+}
+
+/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts） */
+.student-school-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
 }
 
 .expand-icon {
@@ -945,3 +990,145 @@ th[data-col="spine_id"] {
   color: white;
   font-weight: 500;
 }
+
+/* ===== 设置面板（Click FX 配置） ===== */
+
+.settings-btn {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 1100;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  line-height: 1;
+  color: #334155;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid #e2e8f0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.settings-btn:hover {
+  background: white;
+  transform: rotate(30deg);
+}
+
+.settings-panel {
+  position: fixed;
+  top: 66px;
+  right: 22px;
+  z-index: 1100;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.settings-close {
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.settings-close:hover {
+  color: #334155;
+  background: #f1f5f9;
+}
+
+.settings-body {
+  padding: 10px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 设置分组：小标题 + 分隔线 */
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-group-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #334155;
+  cursor: pointer;
+}
+
+.settings-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.settings-item input:disabled {
+  cursor: not-allowed;
+}
+
+.settings-item.settings-range span:first-child {
+  flex-shrink: 0;
+}
+
+.settings-item input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+}
+
+.range-value {
+  min-width: 36px;
+  text-align: right;
+  font-size: 12px;
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-item input[type="color"] {
+  width: 36px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+}
+
+.settings-reset {
+  margin-top: 4px;
+  align-self: flex-end;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+

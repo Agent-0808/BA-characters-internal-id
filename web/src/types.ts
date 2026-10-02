@@ -60,6 +60,11 @@ export interface AppConfig {
   repoName: string;
 }
 
+// 界面设置（localStorage 持久化，与特效无关的通用开关）
+export interface UiSettings {
+  spineLink: boolean;  // spine_id 是否渲染为 KivoWiki API 链接
+}
+
 // 蔚蓝档案点击特效配置 (ba-click-fx)
 // 关闭特效时把 enabled 置为 false 即可，无需改其它代码
 export interface ClickFXConfig {

@@ -1,10 +1,13 @@
 // 学校多选筛选下拉组件（table 与 kivonavi 共用）
 // 封装：下拉渲染、多选状态、按钮计数、清除全部、按钮定位、点击外部关闭
 
-// 学校选项（名称 + logo）
+import type { SchoolColor } from './schoolColors.js';
+
+// 学校选项（名称 + logo + 可选配色）
 export interface SchoolOption {
   name: string;
   logo: string | null;
+  color?: SchoolColor | null;  // 学校配色；未配置时不应用（见 schoolColors.ts）
 }
 
 // 组件所需的 DOM 元素
@@ -27,23 +30,27 @@ export function createSchoolFilter(
 ): SchoolFilter {
   const selected: Set<string> = new Set();
 
-  // 生成下拉内容
+  // 生成下拉内容（头部固定在外层容器，列表单独滚动，见 .school-filter-list）
   let html = `
     <div class="school-filter-header">
       <span style="font-size: 12px; color: #64748b;">选择学校</span>
       <span class="school-filter-clear">清除全部</span>
     </div>
+    <div class="school-filter-list">
   `;
-  schools.forEach(({ name, logo }) => {
+  schools.forEach(({ name, logo, color }) => {
     const logoHtml = logo ? `<img src="https:${logo}" class="school-filter-logo" alt="">` : '';
+    // 配置了配色的学校：选项行平铺底色 + 文字色；未配置则保持默认样式
+    const colorStyle = color ? ` style="background:${color.bg};color:${color.text}"` : '';
     html += `
-      <label class="school-filter-item" data-school="${name}">
+      <label class="school-filter-item" data-school="${name}"${colorStyle}>
         <input type="checkbox" data-school="${name}">
         ${logoHtml}
         <span class="school-filter-name">${name}</span>
       </label>
     `;
   });
+  html += '</div>';
   elements.dropdown.innerHTML = html;
 
   // 更新按钮计数与选项选中态

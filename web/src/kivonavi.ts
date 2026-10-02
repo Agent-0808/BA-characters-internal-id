@@ -1,4 +1,6 @@
 import { CONFIG } from './config.js';
+import { getUiSettings } from './settings.js';
+import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter } from './schoolFilter.js';
 import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
@@ -9,7 +11,6 @@ let filteredStudents: Student[] = [];
 let schoolsMap: Map<number, School> = new Map();
 let expandState: ExpandState = {};
 let schoolFilter: SchoolFilter | null = null;  // 学校多选筛选组件
-const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_link');
 
 // DOM 元素引用
 const elements = {
@@ -83,7 +84,7 @@ function generatePageHTML(page: KivoPage): string {
   const installGlobalIcon = page.is_install_global ? '🌐' : '❌';
 
   const spinesHTML = page.spines.map(spineId =>
-    spineLinkEnabled
+    getUiSettings().spineLink
       ? `<a href="${spineUrl(spineId)}" target="_blank" rel="noopener" class="spine-id">${spineId}</a>`
       : `<span class="spine-id">${spineId}</span>`
   ).join('');
@@ -123,12 +124,14 @@ function generateStudentCard(student: Student): string {
   const avatar = getStudentAvatar(student);
   const schoolName = getSchoolName(student.school_id);
   const schoolLogo = getSchoolLogo(student.school_id);
+  // 学校配色：左侧色条用深色 text，校徽底座用 bg（配色与图片适配已由配置保证，见 schoolColors.ts）
+  const schoolColor = getSchoolColor(student.school_id);
   const isExpanded = expandState[student.id] || false;
 
   const pagesHTML = student.pages.map(page => generatePageHTML(page)).join('');
 
   return `
-    <div class="student-card ${isExpanded ? 'expanded' : ''}" data-student-id="${student.id}">
+    <div class="student-card ${isExpanded ? 'expanded' : ''}" data-student-id="${student.id}" style="border-left:5px solid ${schoolColor.text}">
       <div class="student-header">
         ${avatar ? `<img src="${avatar}" class="student-avatar" alt="" loading="lazy">` : '<div class="student-avatar" style="background:#e2e8f0;"></div>'}
         <div class="student-info">
@@ -137,7 +140,7 @@ function generateStudentCard(student: Student): string {
           <div class="student-meta">ID: ${student.id} | ${student.pages.length} 个页面</div>
         </div>
         <div class="student-school">
-          ${schoolLogo ? `<img src="https:${schoolLogo}" class="student-school-logo" alt="" title="${schoolName}">` : ''}
+          ${schoolLogo ? `<span class="student-school-badge" style="background:${schoolColor.bg}"><img src="https:${schoolLogo}" class="student-school-logo" alt="" title="${schoolName}"></span>` : ''}
         </div>
         <span class="expand-icon">▼</span>
       </div>
@@ -256,7 +259,7 @@ function updateStats(students: Student[]): void {
 function setupSchoolFilter(): void {
   const options = Array.from(schoolsMap.values())
     .sort((a, b) => a.id - b.id)
-    .map(s => ({ name: s.name || s.name_cn || '未知', logo: s.logo || null }));
+    .map(s => ({ name: s.name || s.name_cn || '未知', logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
 
   schoolFilter = createSchoolFilter(
     { btn: elements.schoolFilterBtn, dropdown: elements.schoolDropdown, count: elements.schoolFilterCount },
@@ -351,6 +354,11 @@ export function initKivoView(): void {
   elements.installFilter.addEventListener('change', applyFilters);
   elements.expandAllBtn.addEventListener('click', expandAll);
   elements.collapseAllBtn.addEventListener('click', collapseAll);
+
+  // 界面设置变更（如 spine 链接开关）时重渲染学生列表
+  window.addEventListener('ui-settings-changed', () => {
+    renderStudents(filteredStudents);
+  });
 
   // 加载数据
   loadData();

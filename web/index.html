@@ -6,28 +6,26 @@
     <title>BA Characters Internal ID</title>
 </head>
 <body>
+    <!-- 全局设置按钮（固定右上角，两个视图共用） -->
+    <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置">⚙️</button>
+
     <div class="container">
         <!-- 视图一：文件ID速查表 -->
         <section class="view" id="view-index">
             <div class="header">
-                <h1>📚 蔚蓝档案角色内部ID速查表</h1>
-                <p>Blue Archive Characters Internal ID Database</p>
-                <div class="nav-links">
-                    <a href="#index" class="active">📊 文件ID</a>
-                    <a href="#kivonavi">🎴 KivoWiki导航</a>
+                <div class="header-left">
+                    <h1>📚 蔚蓝档案角色内部ID速查表</h1>
+                    <p>Blue Archive Characters Internal ID Database</p>
                 </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-value" id="totalCount">-</div>
-                        <div class="stat-label">总记录</div>
+                <div class="header-right">
+                    <div class="stats">
+                        <span class="stat-item"><span class="stat-value" id="totalCount">-</span><span class="stat-label">总记录</span></span>
+                        <span class="stat-item"><span class="stat-value" id="studentCount">-</span><span class="stat-label">学生数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="updateTime">-</span><span class="stat-label">数据更新时间</span></span>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="studentCount">-</div>
-                        <div class="stat-label">学生数</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="updateTime">-</div>
-                        <div class="stat-label">数据更新时间</div>
+                    <div class="nav-links">
+                        <a href="#index" class="active">📊 文件ID</a>
+                        <a href="#kivonavi">🎴 KivoWiki导航</a>
                     </div>
                 </div>
             </div>
@@ -67,24 +65,19 @@
         <!-- 视图二：KivoWiki 导航 -->
         <section class="view" id="view-kivonavi" hidden>
             <div class="header">
-                <h1>📚 KivoWiki 角色数据导航</h1>
-                <p>KivoWiki Characters Navigation</p>
-                <div class="nav-links">
-                    <a href="#index">📊 文件ID</a>
-                    <a href="#kivonavi" class="active">🎴 KivoWiki导航</a>
+                <div class="header-left">
+                    <h1>📚 KivoWiki 角色数据导航</h1>
+                    <p>KivoWiki Characters Navigation</p>
                 </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-value" id="kivoTotalCount">-</div>
-                        <div class="stat-label">学生数</div>
+                <div class="header-right">
+                    <div class="stats">
+                        <span class="stat-item"><span class="stat-value" id="kivoTotalCount">-</span><span class="stat-label">学生数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="kivoPageCount">-</span><span class="stat-label">页面数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="kivoUpdateTime">-</span><span class="stat-label">数据更新时间</span></span>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="kivoPageCount">-</div>
-                        <div class="stat-label">页面数</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="kivoUpdateTime">-</div>
-                        <div class="stat-label">数据更新时间</div>
+                    <div class="nav-links">
+                        <a href="#index">📊 文件ID</a>
+                        <a href="#kivonavi" class="active">🎴 KivoWiki导航</a>
                     </div>
                 </div>
             </div>
@@ -136,6 +129,57 @@
             </p>
             <!-- 右侧显示 web / 数据 提交 hash（来自 metadata.json，截取前6位） -->
             <p class="footer-hashes" id="footerHashes" title="web / 数据 提交 hash"></p>
+        </div>
+    </div>
+
+    <!-- 设置面板（Click FX 配置，默认隐藏） -->
+    <div class="settings-panel" id="settingsPanel" hidden>
+        <div class="settings-header">
+            <span>设置</span>
+            <button class="settings-close" id="settingsClose" aria-label="关闭">✕</button>
+        </div>
+        <div class="settings-body">
+            <div class="settings-group">
+                <div class="settings-group-title">界面</div>
+                <label class="settings-item" title="勾选后表格中的 spine_id 与导航页的 Spine 编号将显示为可点击链接">
+                    <input type="checkbox" id="uiSpineLink">
+                    Spine ID 显示为链接
+                </label>
+            </div>
+            <div class="settings-group">
+                <div class="settings-group-title">点击特效</div>
+                <label class="settings-item">
+                    <input type="checkbox" id="fxEnabled">
+                    启用点击特效
+                </label>
+                <label class="settings-item">
+                    <input type="checkbox" id="fxClickEnabled">
+                    点击特效
+                </label>
+                <label class="settings-item">
+                    <input type="checkbox" id="fxTrailEnabled">
+                    拖尾特效
+                </label>
+                <label class="settings-item">
+                    <input type="checkbox" id="fxTrailAlways">
+                    移动鼠标时也显示拖尾
+                </label>
+                <label class="settings-item settings-range">
+                    <span>不透明度</span>
+                    <input type="range" id="fxOpacity" min="0" max="1" step="0.05">
+                    <span class="range-value" id="fxOpacityValue">1.00</span>
+                </label>
+                <label class="settings-item settings-range">
+                    <span>缩放</span>
+                    <input type="range" id="fxScale" min="0.1" max="3" step="0.05">
+                    <span class="range-value" id="fxScaleValue">1.00</span>
+                </label>
+                <label class="settings-item settings-color">
+                    <span>主题色</span>
+                    <input type="color" id="fxThemeColor" value="#4ca7ff">
+                </label>
+            </div>
+            <button class="btn btn-secondary settings-reset" id="settingsReset">恢复默认</button>
         </div>
     </div>
 

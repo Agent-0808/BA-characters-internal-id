@@ -1,12 +1,14 @@
 import './style.css';
 import { initClickFX } from './clickFx.js';
+import { initSettingsPanel } from './settings.js';
 import { initTableView } from './table.js';
 import { initKivoView } from './kivonavi.js';
 import { CONFIG } from './config.js';
 import type { Metadata } from './types.js';
 
-// 初始化蔚蓝档案点击特效（全局一次）
+// 初始化蔚蓝档案点击特效（全局一次），随后初始化设置面板
 initClickFX();
+initSettingsPanel();
 
 // 更新页脚右侧的 web / 数据 提交 hash（截取前6位）
 async function loadFooterHashes(): Promise<void> {
