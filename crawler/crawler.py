@@ -19,12 +19,13 @@ async def process_page_id(
     delay: float,
     force_refresh: bool = False,
     schools_map: dict[int, dict[str, Any]] | None = None
-) -> tuple[int, str, bool]:
+) -> tuple[int, str, bool, int | None]:
     """
     获取单个KivoWiki页面ID的数据并更新缓存。
     
     Returns:
-        (page_id, status, from_cache) - 状态为 "success" 或错误信息
+        (page_id, status, from_cache, updated_at) - 状态为 "success" 或错误信息，
+        updated_at 为页面数据的更新时间戳（Unix秒），失败时为 None
     """
     schools_map = schools_map or {}
     async with semaphore:
@@ -41,7 +42,7 @@ async def process_page_id(
             await asyncio.sleep(delay)
 
         if not json_data:
-            return page_id, fetch_reason or "未知网络原因", from_cache
+            return page_id, fetch_reason or "未知网络原因", from_cache, None
 
         # 获取学校名称（用于日志）
         school_name = ""
@@ -63,8 +64,11 @@ async def process_page_id(
             if gn := data.get('given_name'):
                 name_parts.append(gn)
         name = ' '.join(name_parts) if name_parts else f"ID {page_id}"
-        
-        return page_id, f"success: {name} ({school_name})", from_cache
+
+        # 提取页面更新时间戳（供增量探测做水位线判断）
+        updated_at = json_data.get('data', {}).get('updated_at')
+
+        return page_id, f"success: {name} ({school_name})", from_cache, updated_at
 
 
 class Crawler:
@@ -76,21 +80,27 @@ class Crawler:
         self.max_concurrent = max_concurrent
         self.delay = delay
 
-    async def run(self, page_ids: list[int], force_refresh_ids: set[int] | None = None) -> tuple[int, int]:
+    async def run(
+        self,
+        page_ids: list[int],
+        force_refresh_ids: set[int] | None = None,
+        force_refresh_schools: bool | None = None
+    ) -> tuple[int, int]:
         """
         执行爬取或缓存读取流程，仅更新缓存。
 
         Args:
             page_ids: 需要处理的KivoWiki页面ID列表
             force_refresh_ids: 需要强制刷新的页面ID集合
+            force_refresh_schools: 是否强制刷新学校数据，None 时按 force_refresh_ids 是否非空判断
 
         Returns:
             (成功数量, 失败数量)
         """
         if force_refresh_ids is None:
             force_refresh_ids = set()
-
-        force_refresh_schools = len(force_refresh_ids) > 0
+        if force_refresh_schools is None:
+            force_refresh_schools = len(force_refresh_ids) > 0
 
         # 1. 获取学校列表
         schools_map, error = await self.client.fetch_schools_data(force_refresh=force_refresh_schools)
@@ -123,7 +133,7 @@ class Crawler:
         # 3. 执行并收集结果
         total_count = len(page_ids)
         for i, future in enumerate(asyncio.as_completed(tasks), 1):
-            page_id, status, from_cache = await future
+            page_id, status, from_cache, _ = await future
 
             progress_prefix = f"[{i}/{total_count}]"
             refresh_status = "强制刷新" if page_id in force_refresh_ids else "缓存"
@@ -136,3 +146,57 @@ class Crawler:
                 fail_count += 1
 
         return success_count, fail_count
+
+    async def probe_updated_pages(
+        self,
+        candidate_ids: list[int],
+        watermark: int | None,
+        window_size: int
+    ) -> tuple[set[int], bool]:
+        """
+        增量探测最近更新的页面（探测即刷新）。
+
+        候选列表按 updated_at 降序排列，逐个强制刷新并写缓存；一旦某页面的
+        updated_at 不晚于水位线，可断定后续页面均无更新，立即停止探测。
+        由此无新增ID时的内容修改也能被捕获，且请求数约等于实际更新数 + 1。
+
+        Args:
+            candidate_ids: 按更新时间降序排列的候选页面ID
+            watermark: 上次运行记录的水位线（服务器Unix时间戳），None 表示首次探测
+            window_size: 候选窗口大小，用于判断候选是否已覆盖全部最近更新
+
+        Returns:
+            (已刷新的页面ID集合, 是否可推进水位线)
+            可推进 = 全部候选探测顺利，且（触及边界 或 候选数未满窗口）
+        """
+        if not candidate_ids:
+            return set(), True
+
+        refreshed: set[int] = set()
+        failed = False
+        boundary_hit = False
+        semaphore = asyncio.Semaphore(1)
+
+        logging.info(f"开始增量探测最近更新的页面（候选 {len(candidate_ids)} 个，水位线: {watermark}）...")
+
+        for page_id in candidate_ids:
+            _, status, _, updated_at = await process_page_id(
+                page_id, self.client, semaphore, self.delay, force_refresh=True
+            )
+            if not status.startswith("success"):
+                logging.warning(f"探测页面 {page_id} 失败: {status}，跳过")
+                failed = True
+                continue
+
+            refreshed.add(page_id)
+
+            # 触及边界：该页面自上次运行后无更新，后续页面必然更旧
+            if watermark is not None and updated_at is not None and updated_at <= watermark:
+                logging.info(f"页面 {page_id} 的 updated_at ({updated_at}) 不晚于水位线，探测结束")
+                boundary_hit = True
+                break
+
+        # 存在失败时不推进水位线，已刷新页面下次运行会再次探测（无副作用）
+        advance = not failed and (boundary_hit or len(candidate_ids) < window_size)
+        logging.info(f"增量探测完成: 刷新 {len(refreshed)} 个页面, 水位线{'可' if advance else '不可'}推进")
+        return refreshed, advance

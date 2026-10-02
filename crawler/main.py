@@ -18,6 +18,8 @@ import httpx
 from .config import (
     MAX_CONCURRENT_REQUESTS,
     REQUEST_DELAY_SECONDS,
+    RECENT_UPDATED_WINDOW,
+    RECENT_UPDATED_WINDOW_WITH_NEW_IDS,
     OUTPUT_DIR,
 )
 from .cache import CacheManager
@@ -118,46 +120,55 @@ async def run_crawler(
         
         logging.info(f"配置: 最大并发请求数 {max_concurrent}, 请求延迟 {delay} 秒")
         
-        # 3. 比较状态并构建需要强制刷新的ID集合
-        ids_to_force_refresh: set[int] = set()
-
+        # 3. 比较状态并找出新增页面ID
+        new_ids: set[int] = set()
         if remote_max_student_id > local_max_student_id:
             new_ids = set(range(local_max_student_id + 1, remote_max_student_id + 1))
-            ids_to_force_refresh.update(new_ids)
             logging.info(f"检测到新增页面ID: {local_max_student_id + 1} ~ {remote_max_student_id} (共 {len(new_ids)} 个)")
 
-        if remote_max_student_id > local_max_student_id or remote_max_spine_id > local_max_spine_id:
-            recently_updated_ids = await client.fetch_recently_updated_ids()
-            if recently_updated_ids:
-                ids_to_force_refresh.update(recently_updated_ids)
-                logging.info(f"获取到最近更新的页面ID: {len(recently_updated_ids)} 个")
-
-        logging.info(f"需要强制刷新的页面ID总数: {len(ids_to_force_refresh)}")
-        
         # 模式二：检查更新模式
         if check_mode:
             logging.info("检查更新模式已启用，跳过后续爬取和写入操作。")
             return
-        
-        # 模式三：执行爬取（仅更新缓存）
+
         crawler = Crawler(client, cache_manager, max_concurrent, delay)
+
+        # 4. 基于水位线的增量探测
+        # 有新增ID时可能积压较多修改，扩大探测窗口；本地无缓存时全量爬取会覆盖一切，跳过探测
+        watermark: int | None = local_state.get("last_updated_at")
+        probed_ids: set[int] = set()
+        new_watermark: int | None = watermark
+        if local_max_student_id > 0:
+            window_size = RECENT_UPDATED_WINDOW_WITH_NEW_IDS if new_ids else RECENT_UPDATED_WINDOW
+            candidates, server_time = await client.fetch_recently_updated_ids(page_size=window_size)
+            probed_ids, advance = await crawler.probe_updated_pages(candidates, watermark, window_size)
+            # 探测顺利（触及边界或候选未满窗口）才推进水位线，否则下次运行重新探测
+            if server_time is not None and advance:
+                new_watermark = server_time
+
+        # 模式三：执行爬取（仅更新缓存）
         page_ids = list(range(1, remote_max_student_id + 1))
 
-        if ids_to_force_refresh:
+        if new_ids or probed_ids:
             logging.info("检测到更新，开始增量刷新数据...")
         else:
             logging.info("当前数据已是最新，从缓存加载。")
 
-        success_count, fail_count = await crawler.run(page_ids, force_refresh_ids=ids_to_force_refresh)
+        # 探测过的页面缓存已新鲜，仅需强制刷新新增ID
+        success_count, fail_count = await crawler.run(
+            page_ids,
+            force_refresh_ids=new_ids,
+            force_refresh_schools=bool(new_ids or probed_ids),
+        )
 
-        if ids_to_force_refresh:
-            logging.info("更新完成，保存状态...")
-            await cache_manager.save_state(remote_max_student_id, remote_max_spine_id)
-        
         logging.info("-" * 40)
         logging.info(f"学生数据请求: {client.student_req_count}")
         logging.info(f"Spine 数据请求: {client.spine_req_count}")
         logging.info(f"成功: {success_count}, 失败: {fail_count}")
+
+        # 保存状态（记录最大ID与水位线，供下次运行做增量探测）
+        logging.info("更新完成，保存状态...")
+        await cache_manager.save_state(remote_max_student_id, remote_max_spine_id, new_watermark)
 
     # --- 文件写入部分 ---
     

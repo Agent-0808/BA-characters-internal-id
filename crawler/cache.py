@@ -118,15 +118,20 @@ class CacheManager:
         return {
             "max_student_id": 0,
             "max_spine_id": 0,
-            "last_updated": None
+            "last_updated_at": None
         }
 
-    async def save_state(self, max_student_id: int, max_spine_id: int):
-        """保存状态文件"""
+    async def save_state(self, max_student_id: int, max_spine_id: int, last_updated_at: int | None = None):
+        """保存状态文件
+
+        Args:
+            last_updated_at: 增量探测水位线（服务器Unix时间戳），
+                表示该时间之前的修改已全部同步到本地缓存
+        """
         state = {
             "max_student_id": max_student_id,
             "max_spine_id": max_spine_id,
-            "last_updated": asyncio.get_event_loop().time()
+            "last_updated_at": last_updated_at
         }
         await self._write_json(self.state_file, state)
 

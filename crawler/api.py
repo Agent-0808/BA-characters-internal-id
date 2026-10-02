@@ -181,27 +181,37 @@ class APIClient:
         # 3. 缓存未命中，从 API 获取
         return await self.fetch_schools_data(force_refresh=True)
 
-    async def fetch_recently_updated_ids(self) -> set[int]:
+    async def fetch_recently_updated_ids(self, page_size: int = 50) -> tuple[list[int], int | None]:
         """
-        获取最近修改过的学生ID列表（按更新时间降序，取前100个）。
-        返回去重后的学生ID集合。
+        获取最近修改过的学生ID列表（按 updated_at 降序排列）。
+
+        Args:
+            page_size: 拉取的候选数量（增量探测窗口大小）
+
+        Returns:
+            (按更新时间降序的页面ID列表, 服务器响应时间戳)
+            服务器时间戳用作增量探测的水位线；请求失败时返回 ([], None)
         """
         try:
-            response = await self.client.get(STUDENTS_UPDATED_API_URL, timeout=10.0)
+            response = await self.client.get(
+                STUDENTS_UPDATED_API_URL,
+                params={"updated_at_sort": "desc", "page": 1, "page_size": page_size},
+                timeout=10.0
+            )
             response.raise_for_status()
             json_data = response.json()
-            
+
             if json_data and json_data.get('code') == 2000:
-                if 'data' in json_data and 'students' in json_data['data']:
-                    students = json_data['data']['students']
-                    # 提取所有ID并返回集合
-                    return {student['id'] for student in students if 'id' in student}
-            
+                students = json_data.get('data', {}).get('students', [])
+                # 保持接口返回的降序顺序，供增量探测做边界判断
+                ids = [student['id'] for student in students if 'id' in student]
+                return ids, json_data.get('time')
+
             logging.warning("获取最近更新的学生ID失败：响应格式无效")
-            return set()
+            return [], None
         except httpx.RequestError as e:
             logging.error(f"获取最近更新的学生ID失败（网络错误）: {e}")
-            return set()
+            return [], None
         except Exception as e:
             logging.error(f"获取最近更新的学生ID失败（未知错误）: {e}")
-            return set()
+            return [], None

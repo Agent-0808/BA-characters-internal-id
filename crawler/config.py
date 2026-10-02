@@ -11,7 +11,7 @@ SPINE_API_BASE_URL: str = f"{BASE_API_URL}/spines/{{spine_id}}"
 STUDENTS_LIST_API_URL: str = f"{BASE_API_URL}/students/?id_sort=desc"
 SPINES_LIST_API_URL: str = f"{BASE_API_URL}/spines/"
 SCHOOLS_API_URL: str = f"{BASE_API_URL}/schools/?page_size=40"
-STUDENTS_UPDATED_API_URL: str = f"{BASE_API_URL}/students/?updated_at_sort=desc&page=1&page_size=50"
+STUDENTS_UPDATED_API_URL: str = f"{BASE_API_URL}/students/"
 
 # 动态ID范围（将在main中更新）
 FINAL_STUDENT_ID: int = 0
@@ -42,6 +42,12 @@ CACHE_DIR: Path = _CACHE_DIR
 MAX_CONCURRENT_REQUESTS: int = 3  # 最大并发请求数
 REQUEST_DELAY_SECONDS: float = 2  # 两次请求之间的间隔（秒）
 PAGE_SIZE: int = 1  # API请求页大小，用于获取最新数据
+
+# 增量探测窗口（最近更新列表的 page_size）
+# 有新增页面ID时可能积压较多修改，使用更大窗口追平；日常运行使用较小窗口，
+# 日常实际请求数由水位线边界控制（约等于更新页面数 + 1 次边界探测）
+RECENT_UPDATED_WINDOW_WITH_NEW_IDS: int = 200
+RECENT_UPDATED_WINDOW: int = 50
 
 # 运行模式配置
 TEST_MODE: bool = False  # 测试模式：True 表示只检测更新，不执行完整爬取
