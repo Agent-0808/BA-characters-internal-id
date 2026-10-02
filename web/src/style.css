@@ -1042,7 +1042,23 @@ th[data-col="spine_id"] {
   padding: 10px 15px 15px;
   display: flex;
   flex-direction: column;
+  gap: 14px;
+}
+
+/* 设置分组：小标题 + 分隔线 */
+.settings-group {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+}
+
+.settings-group-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .settings-item {
