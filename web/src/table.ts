@@ -1,6 +1,7 @@
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
 import { getUiSettings } from './settings.js';
+import { getSchoolColor } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter, SchoolOption } from './schoolFilter.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
@@ -107,13 +108,15 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'skin_name') {
       return `<td data-col="${col.key}">${value || '-'}</td>`;
     } else if (col.key === 'school_name') {
-      // 渲染学校 logo + 名称
+      // 渲染学校 logo + 名称，标签底色/文字色按学校 id 着色（见 schoolColors.ts）
       const schoolId = parseInt(row.school_id);
       const school = schoolsMap.get(schoolId);
+      const color = getSchoolColor(schoolId);
+      const colorStyle = ` style="background:${color.bg};color:${color.text}"`;
       if (school && school.logo) {
-        return `<td data-col="${col.key}"><span class="school-tag"><img src="https:${school.logo}" class="school-logo" alt="">${value}</span></td>`;
+        return `<td data-col="${col.key}"><span class="school-tag"${colorStyle}><img src="https:${school.logo}" class="school-logo" alt="">${value}</span></td>`;
       }
-      return `<td data-col="${col.key}"><span class="school-tag">${value}</span></td>`;
+      return `<td data-col="${col.key}"><span class="school-tag"${colorStyle}>${value}</span></td>`;
     } else {
       return `<td data-col="${col.key}">${value}</td>`;
     }
