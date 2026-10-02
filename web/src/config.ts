@@ -1,4 +1,4 @@
-import type { AppConfig, ColumnConfig, ClickFXConfig } from './types.js';
+import type { AppConfig, ColumnConfig, ClickFXConfig, UiSettings } from './types.js';
 
 // 配置 - 使用本地嵌入的数据
 export const CONFIG: AppConfig = {
@@ -77,6 +77,40 @@ export function clearClickFxConfig(): void {
     localStorage.removeItem(CLICK_FX_STORAGE_KEY);
   } catch {
     // 忽略
+  }
+}
+
+// 界面设置默认值
+export const UI_SETTINGS_DEFAULT: UiSettings = {
+  spineLink: false,
+};
+
+// 界面设置的 localStorage key
+const UI_SETTINGS_STORAGE_KEY = 'ba-ui-settings';
+
+// 读取界面设置（缺失/非法字段回落默认；不可用时返回默认）
+export function loadUiSettings(): UiSettings {
+  const settings: UiSettings = { ...UI_SETTINGS_DEFAULT };
+  try {
+    const raw = localStorage.getItem(UI_SETTINGS_STORAGE_KEY);
+    if (!raw) return settings;
+    const saved = JSON.parse(raw) as Record<string, unknown>;
+    if (typeof saved !== 'object' || saved === null) return settings;
+    if (typeof saved.spineLink === 'boolean') {
+      settings.spineLink = saved.spineLink;
+    }
+  } catch {
+    // localStorage 不可用或数据损坏时使用默认设置
+  }
+  return settings;
+}
+
+// 保存界面设置到 localStorage（不可用时静默跳过）
+export function saveUiSettings(settings: UiSettings): void {
+  try {
+    localStorage.setItem(UI_SETTINGS_STORAGE_KEY, JSON.stringify(settings));
+  } catch {
+    // localStorage 不可用（如隐私模式），忽略
   }
 }
 

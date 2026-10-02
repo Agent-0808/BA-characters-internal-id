@@ -1,14 +1,34 @@
 // 设置面板：BA Click FX 运行时配置与持久化
 // 变更即时生效（无确认按钮），同时写入 localStorage；「恢复默认」清除存储并还原控件与实例
 
-import { CLICK_FX_CONFIG, saveClickFxConfig, clearClickFxConfig } from './config.js';
+import {
+  CLICK_FX_CONFIG,
+  UI_SETTINGS_DEFAULT,
+  loadUiSettings,
+  saveUiSettings,
+  saveClickFxConfig,
+  clearClickFxConfig,
+} from './config.js';
 import {
   setClickFxEnabled,
   updateClickFxConfig,
   setClickFxThemeColor,
   getActiveClickFxConfig,
 } from './clickFx.js';
-import type { ClickFXConfig } from './types.js';
+import type { ClickFXConfig, UiSettings } from './types.js';
+
+// 界面设置状态（单一来源，供其他模块查询）
+let uiSettings: UiSettings = loadUiSettings();
+
+// 获取当前界面设置（spine 链接等）
+export function getUiSettings(): UiSettings {
+  return uiSettings;
+}
+
+// 界面设置变更后广播，视图监听并重渲染
+function notifyUiSettingsChanged(): void {
+  window.dispatchEvent(new Event('ui-settings-changed'));
+}
 
 // DOM 元素引用
 const elements = {
@@ -16,6 +36,7 @@ const elements = {
   panel: document.getElementById('settingsPanel') as HTMLDivElement,
   closeBtn: document.getElementById('settingsClose') as HTMLButtonElement,
   resetBtn: document.getElementById('settingsReset') as HTMLButtonElement,
+  spineLink: document.getElementById('uiSpineLink') as HTMLInputElement,
   enabled: document.getElementById('fxEnabled') as HTMLInputElement,
   clickEnabled: document.getElementById('fxClickEnabled') as HTMLInputElement,
   trailEnabled: document.getElementById('fxTrailEnabled') as HTMLInputElement,
@@ -86,16 +107,29 @@ function resetToDefaults(): void {
   });
   setClickFxThemeColor(CLICK_FX_CONFIG.themeColor);
   syncControls(CLICK_FX_CONFIG);
+
+  uiSettings = { ...UI_SETTINGS_DEFAULT };
+  saveUiSettings(uiSettings);
+  elements.spineLink.checked = uiSettings.spineLink;
+  notifyUiSettingsChanged();
 }
 
 // 初始化设置面板（全局调用一次）
 export function initSettingsPanel(): void {
   syncControls(getActiveClickFxConfig());
+  elements.spineLink.checked = uiSettings.spineLink;
 
   // 齿轮按钮 / 关闭按钮 / 恢复默认
   elements.settingsBtn.addEventListener('click', () => togglePanel());
   elements.closeBtn.addEventListener('click', () => togglePanel(false));
   elements.resetBtn.addEventListener('click', resetToDefaults);
+
+  // 界面设置：spine 链接开关（保存 + 广播重渲染）
+  elements.spineLink.addEventListener('change', () => {
+    uiSettings.spineLink = elements.spineLink.checked;
+    saveUiSettings(uiSettings);
+    notifyUiSettingsChanged();
+  });
 
   // 控件变更：应用运行时 + 持久化
   elements.enabled.addEventListener('change', () => {

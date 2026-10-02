@@ -1,5 +1,6 @@
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
+import { getUiSettings } from './settings.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter, SchoolOption } from './schoolFilter.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
@@ -11,7 +12,6 @@ let currentSort: SortState = { column: null, direction: 'asc' };
 let columnVisibility: ColumnVisibility = {} as ColumnVisibility;
 let schoolsMap: Map<number, School> = new Map();
 let schoolFilter: SchoolFilter | null = null;  // 学校多选筛选组件
-const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_link');
 
 // DOM 元素引用
 const elements = {
@@ -99,7 +99,7 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'page_id') {
       const url = `https://kivo.wiki/data/character/${value}?mode=appreciation`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
-    } else if (col.key === 'spine_id' && spineLinkEnabled) {
+    } else if (col.key === 'spine_id' && getUiSettings().spineLink) {
       const url = `https://api.kivo.wiki/api/v1/data/spines/${value}`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
     } else if (col.key === 'name') {
@@ -381,6 +381,11 @@ async function loadData(): Promise<void> {
 export function initTableView(): void {
   // 事件监听
   elements.searchInput.addEventListener('input', applyFilters);
+
+  // 界面设置变更（如 spine 链接开关）时重渲染表格
+  window.addEventListener('ui-settings-changed', () => {
+    renderTable(filteredData);
+  });
 
   // 绑定列切换按钮
   document.querySelector('.column-toggle-btn')?.addEventListener('click', toggleColumnDropdown);

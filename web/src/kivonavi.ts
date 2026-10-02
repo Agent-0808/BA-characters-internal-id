@@ -1,4 +1,5 @@
 import { CONFIG } from './config.js';
+import { getUiSettings } from './settings.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter } from './schoolFilter.js';
 import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
@@ -9,7 +10,6 @@ let filteredStudents: Student[] = [];
 let schoolsMap: Map<number, School> = new Map();
 let expandState: ExpandState = {};
 let schoolFilter: SchoolFilter | null = null;  // 学校多选筛选组件
-const spineLinkEnabled = new URLSearchParams(window.location.search).has('spine_link');
 
 // DOM 元素引用
 const elements = {
@@ -83,7 +83,7 @@ function generatePageHTML(page: KivoPage): string {
   const installGlobalIcon = page.is_install_global ? '🌐' : '❌';
 
   const spinesHTML = page.spines.map(spineId =>
-    spineLinkEnabled
+    getUiSettings().spineLink
       ? `<a href="${spineUrl(spineId)}" target="_blank" rel="noopener" class="spine-id">${spineId}</a>`
       : `<span class="spine-id">${spineId}</span>`
   ).join('');
@@ -351,6 +351,11 @@ export function initKivoView(): void {
   elements.installFilter.addEventListener('change', applyFilters);
   elements.expandAllBtn.addEventListener('click', expandAll);
   elements.collapseAllBtn.addEventListener('click', collapseAll);
+
+  // 界面设置变更（如 spine 链接开关）时重渲染学生列表
+  window.addEventListener('ui-settings-changed', () => {
+    renderStudents(filteredStudents);
+  });
 
   // 加载数据
   loadData();
