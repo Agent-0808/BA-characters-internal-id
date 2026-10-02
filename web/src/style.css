@@ -721,6 +721,17 @@ th[data-col="spine_id"] {
   width: 36px;
   height: 36px;
   object-fit: contain;
+  display: block;
+}
+
+/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts） */
+.student-school-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
 }
 
 .expand-icon {
