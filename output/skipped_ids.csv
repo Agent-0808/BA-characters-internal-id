@@ -62,9 +62,9 @@
 29,485,类型 (home),Kaede_home,,勇美 枫,勇美 カエデ,Isami Kaede,9,百鬼夜行联合学园
 29,768,类型 (home),kaede_home_CN,国服,勇美 枫,勇美 カエデ,Isami Kaede,9,百鬼夜行联合学园
 29,1632,后缀 (cn),CH0256_spr_CN,国服,勇美 枫,勇美 カエデ,Isami Kaede,9,百鬼夜行联合学园
-32,413,类型 (home),CH0114_home,,大野 月咏,大野 ツクヨ,Ōno Tsukuyo,9,百鬼夜行联合学园
-32,769,类型 (home),CH0114_home_CN,国服,大野 月咏,大野 ツクヨ,Ōno Tsukuyo,9,百鬼夜行联合学园
-32,1196,类型 (home),CH0297_home,,大野 月咏,大野 ツクヨ,Ōno Tsukuyo,9,百鬼夜行联合学园
+32,413,类型 (home),CH0114_home,,大野 月咏,大野 ツクヨ,Ono Tsukuyo,9,百鬼夜行联合学园
+32,769,类型 (home),CH0114_home_CN,国服,大野 月咏,大野 ツクヨ,Ono Tsukuyo,9,百鬼夜行联合学园
+32,1196,类型 (home),CH0297_home,,大野 月咏,大野 ツクヨ,Ono Tsukuyo,9,百鬼夜行联合学园
 33,505,类型 (home),Misaki_home,,戒野 美咲,戒野 ミサキ,Imashino Misaki,10,阿里乌斯分校
 33,1161,类型 (home),CH0268_home,,戒野 美咲,戒野 ミサキ,Imashino Misaki,10,阿里乌斯分校
 34,471,类型 (home),Hiyori_home,,槌永 日和,槌永 ヒヨリ,Tsuchinaga Hiyori,10,阿里乌斯分校
@@ -75,9 +75,9 @@
 35,781,类型 (home),CH0267_home,,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
 35,795,类型 (home),CH0267_home_fix,光线修复,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
 35,1068,类型 (home),Atsuko_home_fix,光线修复,秤 亚津子,秤 アツコ,Hakari Atsuko,10,阿里乌斯分校
-36,489,类型 (home),Saori_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
-36,779,类型 (home),CH0266_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
-36,933,类型 (home),CH0259_home,,锭前 纱织,錠前 サオリ,Jomae Saori,10,阿里乌斯分校
+36,489,类型 (home),Saori_home,,锭前 纱织,錠前 サオリ,Joumae Saori,10,阿里乌斯分校
+36,779,类型 (home),CH0266_home,,锭前 纱织,錠前 サオリ,Joumae Saori,10,阿里乌斯分校
+36,933,类型 (home),CH0259_home,,锭前 纱织,錠前 サオリ,Joumae Saori,10,阿里乌斯分校
 37,374,类型 (home),kazusa_home,,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
 37,541,后缀 (old),kazusa_old,旧立绘,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
 37,708,类型 (home),CH0250_home,,杏山 和纱,杏山 カズサ,Kyoyama Kazusa,2,圣三一综合学园
@@ -90,7 +90,7 @@
 39,655,类型 (home),CH0231_home,礼服亚子,天雨 亚子,天雨 アコ,Amau Ako,3,格赫娜学园
 40,397,类型 (home),CH0092_home,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
 40,497,类型 (home),Nonomi_home,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
-40,831,类型 (home),LobbyNonomi_multi,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
+40,865,类型 (home),LobbyNonomi_multi,TV动画特典,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
 40,873,类型 (home),SC12000_01,,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
 40,1043,后缀 (steam),nonomi_spr_Steam,Steam版初始立绘,十六夜 野宫,十六夜 ノノミ,Izayoi Nonomi,1,阿比多斯高中
 42,475,类型 (home),Hoshino_swimsuit_home,,小鸟游 星野,小鳥遊 ホシノ,Takanashi Hoshino,1,阿比多斯高中
