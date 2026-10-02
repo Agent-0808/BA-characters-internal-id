@@ -37,44 +37,84 @@ body {
   display: none;
 }
 
+/* 紧凑单行 header：标题居左，统计徽章与导航居右 */
 .header {
   background: linear-gradient(90deg, #345a8a 0%, #2f5074 100%);
   color: white;
-  padding: 20px 30px;
-  text-align: center;
+  padding: 10px 20px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
 }
 
 .header h1 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
+  font-size: 1.15rem;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .header p {
-  opacity: 0.9;
-  font-size: 0.9rem;
+  opacity: 0.75;
+  font-size: 0.75rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .stats {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 15px;
+  gap: 8px;
+  margin: 0;
   flex-wrap: wrap;
 }
 
 .stat-item {
-  text-align: center;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
 }
 
 .stat-value {
-  font-size: 1.6rem;
+  font-size: 0.85rem;
   font-weight: bold;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-label {
-  font-size: 0.85rem;
-  opacity: 0.8;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+/* 容器失去 max-width 居中后，给右上角固定设置按钮留出空间 */
+@media (max-width: 1430px) {
+  .header { padding-right: 52px; }
+}
+
+@media (max-width: 640px) {
+  .header { padding: 10px 52px 10px 16px; }
+  .header-left { flex-direction: column; gap: 2px; }
 }
 
 .controls {
@@ -520,35 +560,25 @@ th[data-col="spine_id"] {
     border-radius: 12px;
   }
 
-  /* 压缩 header 区域 */
+  /* 压缩 header 区域（单行布局：标题列排，统计徽章与导航换行居左） */
   .header {
-    padding: 12px 16px;
+    padding: 8px 52px 8px 16px;
   }
 
   .header h1 {
-    font-size: 1.3rem;
-    margin-bottom: 3px;
+    font-size: 1.05rem;
   }
 
-  .header p {
-    font-size: 0.8rem;
-  }
-
-  .nav-links {
-    gap: 10px;
+  .header-right {
+    gap: 8px;
   }
 
   .stats {
-    gap: 12px;
-    margin-top: 10px;
+    gap: 6px;
   }
 
-  .stat-value {
-    font-size: 1.3rem;
-  }
-
-  .stat-label {
-    font-size: 0.75rem;
+  .nav-links {
+    gap: 4px;
   }
 
   /* 压缩 controls 区域 */

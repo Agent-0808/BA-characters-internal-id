@@ -13,24 +13,19 @@
         <!-- 视图一：文件ID速查表 -->
         <section class="view" id="view-index">
             <div class="header">
-                <h1>📚 蔚蓝档案角色内部ID速查表</h1>
-                <p>Blue Archive Characters Internal ID Database</p>
-                <div class="nav-links">
-                    <a href="#index" class="active">📊 文件ID</a>
-                    <a href="#kivonavi">🎴 KivoWiki导航</a>
+                <div class="header-left">
+                    <h1>📚 蔚蓝档案角色内部ID速查表</h1>
+                    <p>Blue Archive Characters Internal ID Database</p>
                 </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-value" id="totalCount">-</div>
-                        <div class="stat-label">总记录</div>
+                <div class="header-right">
+                    <div class="stats">
+                        <span class="stat-item"><span class="stat-value" id="totalCount">-</span><span class="stat-label">总记录</span></span>
+                        <span class="stat-item"><span class="stat-value" id="studentCount">-</span><span class="stat-label">学生数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="updateTime">-</span><span class="stat-label">数据更新时间</span></span>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="studentCount">-</div>
-                        <div class="stat-label">学生数</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="updateTime">-</div>
-                        <div class="stat-label">数据更新时间</div>
+                    <div class="nav-links">
+                        <a href="#index" class="active">📊 文件ID</a>
+                        <a href="#kivonavi">🎴 KivoWiki导航</a>
                     </div>
                 </div>
             </div>
@@ -70,24 +65,19 @@
         <!-- 视图二：KivoWiki 导航 -->
         <section class="view" id="view-kivonavi" hidden>
             <div class="header">
-                <h1>📚 KivoWiki 角色数据导航</h1>
-                <p>KivoWiki Characters Navigation</p>
-                <div class="nav-links">
-                    <a href="#index">📊 文件ID</a>
-                    <a href="#kivonavi" class="active">🎴 KivoWiki导航</a>
+                <div class="header-left">
+                    <h1>📚 KivoWiki 角色数据导航</h1>
+                    <p>KivoWiki Characters Navigation</p>
                 </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-value" id="kivoTotalCount">-</div>
-                        <div class="stat-label">学生数</div>
+                <div class="header-right">
+                    <div class="stats">
+                        <span class="stat-item"><span class="stat-value" id="kivoTotalCount">-</span><span class="stat-label">学生数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="kivoPageCount">-</span><span class="stat-label">页面数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="kivoUpdateTime">-</span><span class="stat-label">数据更新时间</span></span>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="kivoPageCount">-</div>
-                        <div class="stat-label">页面数</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="kivoUpdateTime">-</div>
-                        <div class="stat-label">数据更新时间</div>
+                    <div class="nav-links">
+                        <a href="#index">📊 文件ID</a>
+                        <a href="#kivonavi" class="active">🎴 KivoWiki导航</a>
                     </div>
                 </div>
             </div>
