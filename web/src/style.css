@@ -257,9 +257,7 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   border-radius: 8px;
   z-index: 1000;
-  padding: 8px 0;
-  max-height: 400px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .school-filter-content.show {
@@ -303,6 +301,12 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* 下拉列表滚动区域：仅条目部分滚动，头部固定在外层容器 */
+.school-filter-list {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .school-filter-header {

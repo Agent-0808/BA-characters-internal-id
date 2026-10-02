@@ -1,7 +1,7 @@
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
 import { getUiSettings } from './settings.js';
-import { getSchoolColor } from './schoolColors.js';
+import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter, SchoolOption } from './schoolFilter.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
@@ -283,14 +283,11 @@ function updateStats(data: StudentData[]): void {
   elements.studentCount.textContent = uniqueStudents.toString();
 }
 
-// 从数据行构建学校选项列表（去重排序并附带 logo），供共享筛选组件使用
-function buildSchoolOptions(data: StudentData[]): SchoolOption[] {
-  return [...new Set(data.map(d => d.school_name).filter(Boolean))].sort()
-    .map(name => {
-      const row = data.find(d => d.school_name === name);
-      const school = row ? schoolsMap.get(parseInt(row.school_id)) : undefined;
-      return { name, logo: school?.logo || null };
-    });
+// 构建学校过滤器选项：以 schools.json 为准按 id 排序（与 kivonavi 页一致）
+function buildSchoolOptions(): SchoolOption[] {
+  return Array.from(schoolsMap.values())
+    .sort((a, b) => a.id - b.id)
+    .map(s => ({ name: s.name || '未知', logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
 }
 
 // 获取元数据
@@ -355,7 +352,7 @@ async function loadData(): Promise<void> {
     // 创建学校多选筛选组件
     schoolFilter = createSchoolFilter(
       { btn: elements.schoolFilterBtn, dropdown: elements.schoolDropdown, count: elements.schoolFilterCount },
-      buildSchoolOptions(allData),
+      buildSchoolOptions(),
       applyFilters
     );
     renderTable(allData);

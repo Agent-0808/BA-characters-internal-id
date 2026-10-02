@@ -1,6 +1,6 @@
 import { CONFIG } from './config.js';
 import { getUiSettings } from './settings.js';
-import { getSchoolColor } from './schoolColors.js';
+import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter } from './schoolFilter.js';
 import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
@@ -259,7 +259,7 @@ function updateStats(students: Student[]): void {
 function setupSchoolFilter(): void {
   const options = Array.from(schoolsMap.values())
     .sort((a, b) => a.id - b.id)
-    .map(s => ({ name: s.name || s.name_cn || '未知', logo: s.logo || null }));
+    .map(s => ({ name: s.name || s.name_cn || '未知', logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
 
   schoolFilter = createSchoolFilter(
     { btn: elements.schoolFilterBtn, dropdown: elements.schoolDropdown, count: elements.schoolFilterCount },

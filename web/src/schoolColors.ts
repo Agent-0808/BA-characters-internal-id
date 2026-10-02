@@ -53,3 +53,9 @@ export function getSchoolColor(schoolId: number): SchoolColor {
   if (!Number.isInteger(schoolId)) return SCHOOL_COLOR_FALLBACK;
   return SCHOOL_COLORS[schoolId] ?? SCHOOL_COLOR_FALLBACK;
 }
+
+// 查询学校配色：未配置或 id 无效时返回 null（调用方不应用配色，如过滤器选项）
+export function getSchoolColorOrNull(schoolId: number): SchoolColor | null {
+  if (!Number.isInteger(schoolId)) return null;
+  return SCHOOL_COLORS[schoolId] ?? null;
+}
