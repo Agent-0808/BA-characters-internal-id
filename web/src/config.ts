@@ -21,6 +21,65 @@ export const CLICK_FX_CONFIG: ClickFXConfig = {
   scale: 1,
 };
 
+// Click FX 用户配置的 localStorage key
+const CLICK_FX_STORAGE_KEY = 'ba-click-fx-config';
+
+// 校验单个 Click FX 字段值是否合法（类型 + 取值范围）
+function isValidClickFxValue(key: keyof ClickFXConfig, value: unknown): boolean {
+  switch (key) {
+    case 'enabled':
+    case 'clickEnabled':
+    case 'trailEnabled':
+    case 'trailAlways':
+      return typeof value === 'boolean';
+    case 'opacity':
+      return typeof value === 'number' && value >= 0 && value <= 1;
+    case 'scale':
+      return typeof value === 'number' && value >= 0.1 && value <= 3;
+    case 'themeColor':
+      return typeof value === 'string' && /^#[0-9a-fA-F]{6}$/.test(value);
+  }
+}
+
+// 从 localStorage 读取用户 Click FX 配置并与默认值合并（非法字段/值回落默认；不可用时返回默认）
+export function loadClickFxConfig(): ClickFXConfig {
+  const cfg: ClickFXConfig = { ...CLICK_FX_CONFIG };
+  try {
+    const raw = localStorage.getItem(CLICK_FX_STORAGE_KEY);
+    if (!raw) return cfg;
+    const saved = JSON.parse(raw) as Record<string, unknown>;
+    if (typeof saved !== 'object' || saved === null) return cfg;
+    (Object.keys(cfg) as (keyof ClickFXConfig)[]).forEach(key => {
+      const value = saved[key];
+      if (isValidClickFxValue(key, value)) {
+        // 已通过 isValidClickFxValue 按字段校验类型
+        (cfg as unknown as Record<string, unknown>)[key] = value;
+      }
+    });
+  } catch {
+    // localStorage 不可用或数据损坏时使用默认配置
+  }
+  return cfg;
+}
+
+// 保存用户 Click FX 配置到 localStorage（不可用时静默跳过）
+export function saveClickFxConfig(cfg: ClickFXConfig): void {
+  try {
+    localStorage.setItem(CLICK_FX_STORAGE_KEY, JSON.stringify(cfg));
+  } catch {
+    // localStorage 不可用（如隐私模式），忽略
+  }
+}
+
+// 清除用户 Click FX 配置（恢复默认）
+export function clearClickFxConfig(): void {
+  try {
+    localStorage.removeItem(CLICK_FX_STORAGE_KEY);
+  } catch {
+    // 忽略
+  }
+}
+
 // 列配置 - 定义所有列的信息
 export const COLUMN_CONFIG: ColumnConfig[] = [
   { key: 'file_id', label: '文件ID', defaultVisible: true },

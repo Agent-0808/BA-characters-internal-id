@@ -6,6 +6,9 @@
     <title>BA Characters Internal ID</title>
 </head>
 <body>
+    <!-- 全局设置按钮（固定右上角，两个视图共用） -->
+    <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置">⚙️</button>
+
     <div class="container">
         <!-- 视图一：文件ID速查表 -->
         <section class="view" id="view-index">
@@ -136,6 +139,47 @@
             </p>
             <!-- 右侧显示 web / 数据 提交 hash（来自 metadata.json，截取前6位） -->
             <p class="footer-hashes" id="footerHashes" title="web / 数据 提交 hash"></p>
+        </div>
+    </div>
+
+    <!-- 设置面板（Click FX 配置，默认隐藏） -->
+    <div class="settings-panel" id="settingsPanel" hidden>
+        <div class="settings-header">
+            <span>设置</span>
+            <button class="settings-close" id="settingsClose" aria-label="关闭">✕</button>
+        </div>
+        <div class="settings-body">
+            <label class="settings-item">
+                <input type="checkbox" id="fxEnabled">
+                启用点击特效
+            </label>
+            <label class="settings-item">
+                <input type="checkbox" id="fxClickEnabled">
+                点击特效
+            </label>
+            <label class="settings-item">
+                <input type="checkbox" id="fxTrailEnabled">
+                拖尾特效
+            </label>
+            <label class="settings-item">
+                <input type="checkbox" id="fxTrailAlways">
+                移动鼠标时也显示拖尾
+            </label>
+            <label class="settings-item settings-range">
+                <span>不透明度</span>
+                <input type="range" id="fxOpacity" min="0" max="1" step="0.05">
+                <span class="range-value" id="fxOpacityValue">1.00</span>
+            </label>
+            <label class="settings-item settings-range">
+                <span>缩放</span>
+                <input type="range" id="fxScale" min="0.1" max="3" step="0.05">
+                <span class="range-value" id="fxScaleValue">1.00</span>
+            </label>
+            <label class="settings-item settings-color">
+                <span>主题色</span>
+                <input type="color" id="fxThemeColor" value="#4ca7ff">
+            </label>
+            <button class="btn btn-secondary settings-reset" id="settingsReset">恢复默认</button>
         </div>
     </div>
 

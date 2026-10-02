@@ -945,3 +945,129 @@ th[data-col="spine_id"] {
   color: white;
   font-weight: 500;
 }
+
+/* ===== 设置面板（Click FX 配置） ===== */
+
+.settings-btn {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 1100;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  line-height: 1;
+  color: #334155;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid #e2e8f0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.settings-btn:hover {
+  background: white;
+  transform: rotate(30deg);
+}
+
+.settings-panel {
+  position: fixed;
+  top: 66px;
+  right: 22px;
+  z-index: 1100;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.settings-close {
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.settings-close:hover {
+  color: #334155;
+  background: #f1f5f9;
+}
+
+.settings-body {
+  padding: 10px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #334155;
+  cursor: pointer;
+}
+
+.settings-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.settings-item input:disabled {
+  cursor: not-allowed;
+}
+
+.settings-item.settings-range span:first-child {
+  flex-shrink: 0;
+}
+
+.settings-item input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+}
+
+.range-value {
+  min-width: 36px;
+  text-align: right;
+  font-size: 12px;
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-item input[type="color"] {
+  width: 36px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+}
+
+.settings-reset {
+  margin-top: 4px;
+  align-self: flex-end;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+

@@ -27,10 +27,42 @@ const elements = {
   dataFileLink: document.getElementById('dataFileLink') as HTMLAnchorElement,
 };
 
-// 初始化列显示状态
+// 列显示配置的 localStorage key
+const COLUMN_VISIBILITY_KEY = 'ba-column-visibility';
+
+// 从 localStorage 读取已保存的列显示配置（含废弃 key，由调用方过滤）
+function loadSavedColumnVisibility(): Partial<ColumnVisibility> | null {
+  try {
+    const raw = localStorage.getItem(COLUMN_VISIBILITY_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) return null;
+    return parsed as Partial<ColumnVisibility>;
+  } catch {
+    return null; // 解析失败时静默退回默认配置
+  }
+}
+
+// 保存列显示配置到 localStorage（不可用时静默跳过）
+function saveColumnVisibility(): void {
+  try {
+    localStorage.setItem(COLUMN_VISIBILITY_KEY, JSON.stringify(columnVisibility));
+  } catch {
+    // localStorage 不可用（如隐私模式），忽略
+  }
+}
+
+// 初始化列显示状态：默认值为基底，再应用保存值（仅限仍存在的列 key）
 function initColumnVisibility(): void {
   COLUMN_CONFIG.forEach(col => {
     columnVisibility[col.key] = col.defaultVisible;
+  });
+  const saved = loadSavedColumnVisibility();
+  if (!saved) return;
+  COLUMN_CONFIG.forEach(col => {
+    if (typeof saved[col.key] === 'boolean') {
+      columnVisibility[col.key] = saved[col.key] as boolean;
+    }
   });
 }
 
@@ -210,6 +242,7 @@ function generateColumnDropdown(): void {
 // 切换列显示/隐藏
 function toggleColumn(column: keyof StudentData, visible: boolean): void {
   columnVisibility[column] = visible;
+  saveColumnVisibility();
   renderTable(filteredData);
 }
 
