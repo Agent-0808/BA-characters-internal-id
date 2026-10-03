@@ -1,13 +1,58 @@
 {
   "common": {
-    "close": "关闭"
+    "settings": "设置",
+    "close": "关闭",
+    "loading": "正在加载数据...",
+    "school": "学校"
+  },
+  "nav": {
+    "index": "📊 文件ID",
+    "kivonavi": "🎴 KivoWiki导航"
+  },
+  "header": {
+    "indexTitle": "📚 蔚蓝档案角色内部ID速查表",
+    "kivoTitle": "📚 KivoWiki 角色数据导航",
+    "totalRecords": "总记录",
+    "studentCount": "学生数",
+    "pageCount": "页面数",
+    "updateTime": "数据更新时间"
+  },
+  "table": {
+    "searchPlaceholder": "搜索角色名称...",
+    "toggleColumns": "显示/隐藏列 ▼"
+  },
+  "kivo": {
+    "searchPlaceholder": "搜索学生名称...",
+    "install": "实装:",
+    "installAll": "全部",
+    "installJp": "日服",
+    "installCn": "国服",
+    "installGlobal": "国际服",
+    "installNpc": "NPC",
+    "expandAll": "展开全部",
+    "collapseAll": "折叠全部"
+  },
+  "footer": {
+    "github": "GitHub 仓库",
+    "dataFiles": "数据文件",
+    "kivoLibrary": "基沃托斯古书馆",
+    "hashesHint": "web / 数据 提交 hash"
   },
   "settings": {
     "title": "设置",
     "groupUi": "界面",
     "language": "语言",
     "spineLink": "Spine ID 显示为链接",
-    "spineLinkHint": "勾选后表格中的 spine_id 与导航页的 Spine 编号将显示为可点击链接"
+    "spineLinkHint": "勾选后表格中的 spine_id 与导航页的 Spine 编号将显示为可点击链接",
+    "groupClickFx": "点击特效",
+    "fxEnabled": "启用点击特效",
+    "fxClick": "点击特效",
+    "fxTrail": "拖尾特效",
+    "fxTrailAlways": "移动鼠标时也显示拖尾",
+    "opacity": "不透明度",
+    "scale": "缩放",
+    "themeColor": "主题色",
+    "reset": "恢复默认"
   },
   "schoolFilter": {
     "title": "选择学校",

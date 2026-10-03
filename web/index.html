@@ -7,37 +7,37 @@
 </head>
 <body>
     <!-- 全局设置按钮（固定右上角，两个视图共用） -->
-    <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置">⚙️</button>
+    <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置" data-i18n-attrs="title:common.settings,aria-label:common.settings">⚙️</button>
 
     <div class="container">
         <!-- 视图一：文件ID速查表 -->
         <section class="view" id="view-index">
             <div class="header">
                 <div class="header-left">
-                    <h1>📚 蔚蓝档案角色内部ID速查表</h1>
+                    <h1 data-i18n="header.indexTitle">📚 蔚蓝档案角色内部ID速查表</h1>
                     <p>Blue Archive Characters Internal ID Database</p>
                 </div>
                 <div class="header-right">
                     <div class="stats">
-                        <span class="stat-item"><span class="stat-value" id="totalCount">-</span><span class="stat-label">总记录</span></span>
-                        <span class="stat-item"><span class="stat-value" id="studentCount">-</span><span class="stat-label">学生数</span></span>
-                        <span class="stat-item"><span class="stat-value" id="updateTime">-</span><span class="stat-label">数据更新时间</span></span>
+                        <span class="stat-item"><span class="stat-value" id="totalCount">-</span><span class="stat-label" data-i18n="header.totalRecords">总记录</span></span>
+                        <span class="stat-item"><span class="stat-value" id="studentCount">-</span><span class="stat-label" data-i18n="header.studentCount">学生数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="updateTime">-</span><span class="stat-label" data-i18n="header.updateTime">数据更新时间</span></span>
                     </div>
                     <div class="nav-links">
-                        <a href="#index" class="active">📊 文件ID</a>
-                        <a href="#kivonavi">🎴 KivoWiki导航</a>
+                        <a href="#index" class="active" data-i18n="nav.index">📊 文件ID</a>
+                        <a href="#kivonavi" data-i18n="nav.kivonavi">🎴 KivoWiki导航</a>
                     </div>
                 </div>
             </div>
 
             <div class="controls">
                 <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="搜索角色名称...">
+                    <input type="text" id="searchInput" placeholder="搜索角色名称..." data-i18n-attrs="placeholder:table.searchPlaceholder">
                 </div>
                 <!-- 学校多选筛选 -->
                 <div class="school-filter-dropdown">
                     <button class="school-filter-btn" id="schoolFilterBtn">
-                        <span class="school-filter-label">学校</span>
+                        <span class="school-filter-label" data-i18n="common.school">学校</span>
                         <span class="school-filter-count" id="schoolFilterCount"></span>
                         <span class="school-filter-arrow">▼</span>
                     </button>
@@ -47,7 +47,7 @@
                 </div>
                 <!-- 列显示控制 -->
                 <div class="column-dropdown">
-                    <button class="column-toggle-btn">显示/隐藏列 ▼</button>
+                    <button class="column-toggle-btn" data-i18n="table.toggleColumns">显示/隐藏列 ▼</button>
                     <div class="column-dropdown-content" id="columnDropdown">
                         <!-- 动态生成列选项 -->
                     </div>
@@ -57,7 +57,7 @@
             <div class="table-container" id="tableContainer">
                 <div class="loading">
                     <div class="loading-spinner"></div>
-                    <p>正在加载数据...</p>
+                    <p data-i18n="common.loading">正在加载数据...</p>
                 </div>
             </div>
         </section>
@@ -66,30 +66,30 @@
         <section class="view" id="view-kivonavi" hidden>
             <div class="header">
                 <div class="header-left">
-                    <h1>📚 KivoWiki 角色数据导航</h1>
+                    <h1 data-i18n="header.kivoTitle">📚 KivoWiki 角色数据导航</h1>
                     <p>KivoWiki Characters Navigation</p>
                 </div>
                 <div class="header-right">
                     <div class="stats">
-                        <span class="stat-item"><span class="stat-value" id="kivoTotalCount">-</span><span class="stat-label">学生数</span></span>
-                        <span class="stat-item"><span class="stat-value" id="kivoPageCount">-</span><span class="stat-label">页面数</span></span>
-                        <span class="stat-item"><span class="stat-value" id="kivoUpdateTime">-</span><span class="stat-label">数据更新时间</span></span>
+                        <span class="stat-item"><span class="stat-value" id="kivoTotalCount">-</span><span class="stat-label" data-i18n="header.studentCount">学生数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="kivoPageCount">-</span><span class="stat-label" data-i18n="header.pageCount">页面数</span></span>
+                        <span class="stat-item"><span class="stat-value" id="kivoUpdateTime">-</span><span class="stat-label" data-i18n="header.updateTime">数据更新时间</span></span>
                     </div>
                     <div class="nav-links">
-                        <a href="#index">📊 文件ID</a>
-                        <a href="#kivonavi" class="active">🎴 KivoWiki导航</a>
+                        <a href="#index" data-i18n="nav.index">📊 文件ID</a>
+                        <a href="#kivonavi" class="active" data-i18n="nav.kivonavi">🎴 KivoWiki导航</a>
                     </div>
                 </div>
             </div>
 
             <div class="controls">
                 <div class="search-box">
-                    <input type="text" id="kivoSearchInput" placeholder="搜索学生名称...">
+                    <input type="text" id="kivoSearchInput" placeholder="搜索学生名称..." data-i18n-attrs="placeholder:kivo.searchPlaceholder">
                 </div>
                 <!-- 学校多选筛选（与文件ID页共用样式和逻辑） -->
                 <div class="school-filter-dropdown">
                     <button class="school-filter-btn" id="kivoSchoolFilterBtn">
-                        <span class="school-filter-label">学校</span>
+                        <span class="school-filter-label" data-i18n="common.school">学校</span>
                         <span class="school-filter-count" id="kivoSchoolFilterCount"></span>
                         <span class="school-filter-arrow">▼</span>
                     </button>
@@ -98,37 +98,37 @@
                     </div>
                 </div>
                 <div class="filter-group">
-                    <label>实装:</label>
+                    <label data-i18n="kivo.install">实装:</label>
                     <select id="installFilter">
-                        <option value="">全部</option>
-                        <option value="jp">日服</option>
-                        <option value="cn">国服</option>
-                        <option value="global">国际服</option>
-                        <option value="npc">NPC</option>
+                        <option value="" data-i18n="kivo.installAll">全部</option>
+                        <option value="jp" data-i18n="kivo.installJp">日服</option>
+                        <option value="cn" data-i18n="kivo.installCn">国服</option>
+                        <option value="global" data-i18n="kivo.installGlobal">国际服</option>
+                        <option value="npc" data-i18n="kivo.installNpc">NPC</option>
                     </select>
                 </div>
                 <div class="controls-extra">
-                    <button class="btn btn-secondary" id="expandAllBtn">展开全部</button>
-                    <button class="btn btn-secondary" id="collapseAllBtn">折叠全部</button>
+                    <button class="btn btn-secondary" id="expandAllBtn" data-i18n="kivo.expandAll">展开全部</button>
+                    <button class="btn btn-secondary" id="collapseAllBtn" data-i18n="kivo.collapseAll">折叠全部</button>
                 </div>
             </div>
 
             <div class="students-container" id="studentsContainer">
                 <div class="loading">
                     <div class="loading-spinner"></div>
-                    <p>正在加载数据...</p>
+                    <p data-i18n="common.loading">正在加载数据...</p>
                 </div>
             </div>
         </section>
 
         <div class="footer">
             <p>
-                <a href="https://github.com/Agent-0808/BA-characters-internal-id" target="_blank">GitHub 仓库</a> |
-                <a id="dataFileLink" href="./data/" target="_blank">数据文件</a> |
-                <a href="https://kivo.wiki" target="_blank">基沃托斯古书馆</a>
+                <a href="https://github.com/Agent-0808/BA-characters-internal-id" target="_blank" data-i18n="footer.github">GitHub 仓库</a> |
+                <a id="dataFileLink" href="./data/" target="_blank" data-i18n="footer.dataFiles">数据文件</a> |
+                <a href="https://kivo.wiki" target="_blank" data-i18n="footer.kivoLibrary">基沃托斯古书馆</a>
             </p>
             <!-- 右侧显示 web / 数据 提交 hash（来自 metadata.json，截取前6位） -->
-            <p class="footer-hashes" id="footerHashes" title="web / 数据 提交 hash"></p>
+            <p class="footer-hashes" id="footerHashes" title="web / 数据 提交 hash" data-i18n-attrs="title:footer.hashesHint"></p>
         </div>
     </div>
 
@@ -151,39 +151,39 @@
                 </label>
             </div>
             <div class="settings-group">
-                <div class="settings-group-title">点击特效</div>
+                <div class="settings-group-title" data-i18n="settings.groupClickFx">点击特效</div>
                 <label class="settings-item">
                     <input type="checkbox" id="fxEnabled">
-                    启用点击特效
+                    <span data-i18n="settings.fxEnabled">启用点击特效</span>
                 </label>
                 <label class="settings-item">
                     <input type="checkbox" id="fxClickEnabled">
-                    点击特效
+                    <span data-i18n="settings.fxClick">点击特效</span>
                 </label>
                 <label class="settings-item">
                     <input type="checkbox" id="fxTrailEnabled">
-                    拖尾特效
+                    <span data-i18n="settings.fxTrail">拖尾特效</span>
                 </label>
                 <label class="settings-item">
                     <input type="checkbox" id="fxTrailAlways">
-                    移动鼠标时也显示拖尾
+                    <span data-i18n="settings.fxTrailAlways">移动鼠标时也显示拖尾</span>
                 </label>
                 <label class="settings-item settings-range">
-                    <span>不透明度</span>
+                    <span data-i18n="settings.opacity">不透明度</span>
                     <input type="range" id="fxOpacity" min="0" max="1" step="0.05">
                     <span class="range-value" id="fxOpacityValue">1.00</span>
                 </label>
                 <label class="settings-item settings-range">
-                    <span>缩放</span>
+                    <span data-i18n="settings.scale">缩放</span>
                     <input type="range" id="fxScale" min="0.1" max="3" step="0.05">
                     <span class="range-value" id="fxScaleValue">1.00</span>
                 </label>
                 <label class="settings-item settings-color">
-                    <span>主题色</span>
+                    <span data-i18n="settings.themeColor">主题色</span>
                     <input type="color" id="fxThemeColor" value="#4ca7ff">
                 </label>
             </div>
-            <button class="btn btn-secondary settings-reset" id="settingsReset">恢复默认</button>
+            <button class="btn btn-secondary settings-reset" id="settingsReset" data-i18n="settings.reset">恢复默认</button>
         </div>
     </div>
 
