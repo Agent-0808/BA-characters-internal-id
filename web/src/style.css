@@ -1095,6 +1095,17 @@ th[data-col="spine_id"] {
   cursor: not-allowed;
 }
 
+/* 设置面板：语言等下拉控件（右侧对齐） */
+.settings-item select.settings-select {
+  margin-left: auto;
+  padding: 4px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 12px;
+  background: white;
+  cursor: pointer;
+}
+
 .settings-item.settings-range span:first-child {
   flex-shrink: 0;
 }

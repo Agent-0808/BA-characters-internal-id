@@ -80,9 +80,15 @@ export function clearClickFxConfig(): void {
   }
 }
 
+// 支持的界面语言（设置面板下拉选项，单一来源；debug / en-US 在后续阶段加入）
+export const UI_LANGS: { code: string; label: string }[] = [
+  { code: 'zh-CN', label: '简体中文' },
+];
+
 // 界面设置默认值
 export const UI_SETTINGS_DEFAULT: UiSettings = {
   spineLink: false,
+  lang: 'zh-CN',
 };
 
 // 界面设置的 localStorage key
@@ -98,6 +104,9 @@ export function loadUiSettings(): UiSettings {
     if (typeof saved !== 'object' || saved === null) return settings;
     if (typeof saved.spineLink === 'boolean') {
       settings.spineLink = saved.spineLink;
+    }
+    if (typeof saved.lang === 'string' && UI_LANGS.some(l => l.code === saved.lang)) {
+      settings.lang = saved.lang;
     }
   } catch {
     // localStorage 不可用或数据损坏时使用默认设置

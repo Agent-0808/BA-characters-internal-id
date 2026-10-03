@@ -63,6 +63,7 @@ export interface AppConfig {
 // 界面设置（localStorage 持久化，与特效无关的通用开关）
 export interface UiSettings {
   spineLink: boolean;  // spine_id 是否渲染为 KivoWiki API 链接
+  lang: string;        // 界面语言代码（zh-CN / en-US；debug 为显示键名的调试伪语言）
 }
 
 // 蔚蓝档案点击特效配置 (ba-click-fx)

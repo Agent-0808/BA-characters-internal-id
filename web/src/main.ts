@@ -1,12 +1,14 @@
 import './style.css';
 import { initClickFX } from './clickFx.js';
-import { initSettingsPanel } from './settings.js';
+import { initSettingsPanel, getUiSettings } from './settings.js';
+import { initI18n } from './i18n.js';
 import { initTableView } from './table.js';
 import { initKivoView } from './kivonavi.js';
 import { CONFIG } from './config.js';
 import type { Metadata } from './types.js';
 
-// 初始化蔚蓝档案点击特效（全局一次），随后初始化设置面板
+// 初始化 i18n（需在设置面板与其他视图之前），随后初始化点击特效与设置面板
+initI18n(getUiSettings().lang);
 initClickFX();
 initSettingsPanel();
 
