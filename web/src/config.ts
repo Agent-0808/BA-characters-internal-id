@@ -80,9 +80,10 @@ export function clearClickFxConfig(): void {
   }
 }
 
-// 支持的界面语言（设置面板下拉选项，单一来源；debug / en-US 在后续阶段加入）
+// 支持的界面语言（设置面板下拉选项，单一来源；debug 为显示键名的调试伪语言，en-US 后续加入）
 export const UI_LANGS: { code: string; label: string }[] = [
   { code: 'zh-CN', label: '简体中文' },
+  { code: 'debug', label: '🔧 DEBUG' },
 ];
 
 // 界面设置默认值

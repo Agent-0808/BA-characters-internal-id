@@ -7,14 +7,17 @@ import zhCN from './locales/zh-CN.json';
 export function initI18n(lang: string): void {
   void i18next.init({
     lng: lang,
-    fallbackLng: 'zh-CN',
+    // debug 伪语言不回落 zh-CN：缺失 key 原样返回键名，实现「显示键」调试模式
+    fallbackLng: (code) => (code === 'debug' ? [] : ['zh-CN']),
     resources: {
       'zh-CN': { translation: zhCN },
       // en-US 词典最后统一补全后再注册
     },
     parseMissingKeyHandler: (key) => {
-      // 缺失词条时回落显示 key 本身，并汇总警告便于发现漏翻
-      console.warn(`[i18n] 缺失词条: ${key}`);
+      // 缺失词条时回落显示 key 本身并汇总警告；debug 语言下缺失是预期行为，不警告
+      if (i18next.language !== 'debug') {
+        console.warn(`[i18n] 缺失词条: ${key}`);
+      }
       return key;
     },
   });
