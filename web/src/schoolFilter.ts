@@ -48,7 +48,7 @@ export function createSchoolFilter(
     let html = `
       <div class="school-filter-header">
         <span style="font-size: 12px; color: #64748b;">${t('schoolFilter.title')}</span>
-        <span class="school-filter-clear">${t('schoolFilter.clearAll')}</span>
+        <span class="school-filter-clear">${t('action.clearAll')}</span>
       </div>
       <div class="school-filter-list">
     `;

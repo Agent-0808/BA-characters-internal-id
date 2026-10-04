@@ -3,11 +3,18 @@
     "settings": "设置",
     "close": "关闭",
     "loading": "正在加载数据...",
-    "school": "学校",
+    "searchPlaceholder": "搜索名称...",
     "unknown": "未知",
     "unknownError": "未知错误",
     "loadFailed": "❌ 加载数据失败",
-    "loadFailedHint": "数据文件可能尚未生成，请稍后再试"
+    "loadFailedHint": "数据文件可能尚未生成，请稍后再试",
+    "noResults": "没有找到匹配的结果"
+  },
+  "action": {
+    "expandAll": "展开全部",
+    "collapseAll": "折叠全部",
+    "reset": "恢复默认",
+    "clearAll": "清除全部"
   },
   "nav": {
     "index": "📊 文件ID",
@@ -24,9 +31,7 @@
     "updateTime": "数据更新时间"
   },
   "table": {
-    "searchPlaceholder": "搜索角色名称...",
-    "toggleColumns": "显示/隐藏列 ▼",
-    "noResults": "没有找到匹配的数据"
+    "toggleColumns": "显示/隐藏列 ▼"
   },
   "col": {
     "file_id": "文件ID",
@@ -45,29 +50,24 @@
     "school_name": "学校"
   },
   "kivo": {
-    "searchPlaceholder": "搜索学生名称...",
     "install": "实装:",
     "installAll": "全部",
     "installJp": "日服",
     "installCn": "国服",
     "installGlobal": "国际服",
     "installNpc": "NPC",
-    "expandAll": "展开全部",
-    "collapseAll": "折叠全部",
     "defaultPage": "默认",
     "limited": "🌟 限定",
     "none": "无",
     "spinesLabel": "🎬 Spine ({{n}}个)",
     "pagesLabel": "📄 Pages ({{n}}个页面)",
     "studentMeta": "ID: {{id}} | {{n}} 个页面",
-    "noResults": "没有找到匹配的学生",
     "noResultsHint": "请尝试调整搜索条件"
   },
   "footer": {
     "github": "GitHub 仓库",
     "dataFiles": "数据文件",
     "downloadData": "下载数据",
-    "hashesHint": "web / 数据 提交 hash",
     "kivowiki": "KivoWiki"
   },
   "settings": {
@@ -83,11 +83,10 @@
     "fxTrailAlways": "移动鼠标时也显示拖尾",
     "opacity": "不透明度",
     "scale": "缩放",
-    "themeColor": "主题色",
-    "reset": "恢复默认"
+    "themeColor": "主题色"
   },
   "schoolFilter": {
-    "title": "选择学校",
-    "clearAll": "清除全部"
+    "school": "学校",
+    "title": "选择学校"
   }
 }

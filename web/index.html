@@ -32,12 +32,12 @@
 
             <div class="controls">
                 <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="搜索角色名称..." data-i18n-attrs="placeholder:table.searchPlaceholder">
+                    <input type="text" id="searchInput" placeholder="搜索名称..." data-i18n-attrs="placeholder:common.searchPlaceholder">
                 </div>
                 <!-- 学校多选筛选 -->
                 <div class="school-filter-dropdown">
                     <button class="school-filter-btn" id="schoolFilterBtn">
-                        <span class="school-filter-label" data-i18n="common.school">学校</span>
+                        <span class="school-filter-label" data-i18n="schoolFilter.school">学校</span>
                         <span class="school-filter-count" id="schoolFilterCount"></span>
                         <span class="school-filter-arrow">▼</span>
                     </button>
@@ -84,12 +84,12 @@
 
             <div class="controls">
                 <div class="search-box">
-                    <input type="text" id="kivoSearchInput" placeholder="搜索学生名称..." data-i18n-attrs="placeholder:kivo.searchPlaceholder">
+                    <input type="text" id="kivoSearchInput" placeholder="搜索名称..." data-i18n-attrs="placeholder:common.searchPlaceholder">
                 </div>
                 <!-- 学校多选筛选（与文件ID页共用样式和逻辑） -->
                 <div class="school-filter-dropdown">
                     <button class="school-filter-btn" id="kivoSchoolFilterBtn">
-                        <span class="school-filter-label" data-i18n="common.school">学校</span>
+                        <span class="school-filter-label" data-i18n="schoolFilter.school">学校</span>
                         <span class="school-filter-count" id="kivoSchoolFilterCount"></span>
                         <span class="school-filter-arrow">▼</span>
                     </button>
@@ -108,8 +108,8 @@
                     </select>
                 </div>
                 <div class="controls-extra">
-                    <button class="btn btn-secondary" id="expandAllBtn" data-i18n="kivo.expandAll">展开全部</button>
-                    <button class="btn btn-secondary" id="collapseAllBtn" data-i18n="kivo.collapseAll">折叠全部</button>
+                    <button class="btn btn-secondary" id="expandAllBtn" data-i18n="action.expandAll">展开全部</button>
+                    <button class="btn btn-secondary" id="collapseAllBtn" data-i18n="action.collapseAll">折叠全部</button>
                 </div>
             </div>
 
@@ -127,8 +127,8 @@
                 <a id="dataFileLink" href="./data/" target="_blank" data-i18n="footer.dataFiles">数据文件</a> |
                 <a href="https://kivo.wiki" target="_blank" data-i18n="footer.kivowiki">KivoWiki</a>
             </p>
-            <!-- 右侧显示 web / 数据 提交 hash（来自 metadata.json，截取前6位） -->
-            <p class="footer-hashes" id="footerHashes" title="web / 数据 提交 hash" data-i18n-attrs="title:footer.hashesHint"></p>
+            <!-- 右侧显示 web / 数据 提交 hash（来自 metadata.json，截取前6位；title 由 JS 动态写入完整明细，不走 i18n） -->
+            <p class="footer-hashes" id="footerHashes"></p>
         </div>
     </div>
 
@@ -183,7 +183,7 @@
                     <input type="color" id="fxThemeColor" value="#4ca7ff">
                 </label>
             </div>
-            <button class="btn btn-secondary settings-reset" id="settingsReset" data-i18n="settings.reset">恢复默认</button>
+            <button class="btn btn-secondary settings-reset" id="settingsReset" data-i18n="action.reset">恢复默认</button>
         </div>
     </div>
 

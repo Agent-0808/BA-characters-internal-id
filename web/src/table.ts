@@ -127,7 +127,7 @@ function generateRowHTML(row: StudentData): string {
 // 渲染表格
 function renderTable(data: StudentData[]): void {
   if (data.length === 0) {
-    elements.tableContainer.innerHTML = `<div class="empty"><p>${t('table.noResults')}</p></div>`;
+    elements.tableContainer.innerHTML = `<div class="empty"><p>${t('common.noResults')}</p></div>`;
     return;
   }
 

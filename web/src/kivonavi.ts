@@ -161,7 +161,7 @@ function renderStudents(students: Student[]): void {
     elements.studentsContainer.innerHTML = `
       <div class="empty-state">
         <div class="empty-state-icon">🔍</div>
-        <p>${t('kivo.noResults')}</p>
+        <p>${t('common.noResults')}</p>
         <p style="font-size: 0.85rem; margin-top: 8px; color: #94a3b8;">${t('kivo.noResultsHint')}</p>
       </div>
     `;
