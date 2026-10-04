@@ -1,0 +1,92 @@
+{
+  "common": {
+    "settings": "Settings",
+    "close": "Close",
+    "loading": "Loading data...",
+    "searchPlaceholder": "Search names...",
+    "unknown": "Unknown",
+    "unknownError": "Unknown error",
+    "loadFailed": "❌ Failed to load data",
+    "loadFailedHint": "Data files may not have been generated yet, please try again later",
+    "noResults": "No matching results found"
+  },
+  "action": {
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All",
+    "reset": "Reset to Defaults",
+    "clearAll": "Clear All"
+  },
+  "nav": {
+    "index": "📊 File IDs",
+    "kivonavi": "🎴 KivoWiki Navigation",
+    "docTitleIndex": "BA Characters Internal ID",
+    "docTitleKivo": "KivoWiki Navigation"
+  },
+  "header": {
+    "indexTitle": "📚 Blue Archive Characters Internal ID Database",
+    "kivoTitle": "📚 KivoWiki Characters Navigation",
+    "totalRecords": "Total Records",
+    "studentCount": "Students",
+    "pageCount": "Pages",
+    "updateTime": "Data Updated"
+  },
+  "table": {
+    "toggleColumns": "Columns ▼"
+  },
+  "col": {
+    "file_id": "File ID",
+    "student_id": "ID",
+    "page_id": "Page",
+    "spine_id": "Spine",
+    "full_name": "Full Name",
+    "name": "Name(KivoWiki)",
+    "skin_name": "Skin",
+    "spine_remark": "Remark",
+    "name_cn": "Chinese(Mainland)",
+    "name_jp": "Japanese",
+    "name_tw": "Chinese(Traditional)",
+    "name_en": "English",
+    "name_kr": "Korean",
+    "school_name": "School"
+  },
+  "kivo": {
+    "install": "Availability:",
+    "installAll": "All",
+    "installJp": "JP",
+    "installCn": "CN",
+    "installGlobal": "Global",
+    "installNpc": "NPC",
+    "defaultPage": "Default",
+    "limited": "🌟 Limited",
+    "none": "None",
+    "spinesLabel": "🎬 Spines ({{n}})",
+    "pagesLabel": "📄 Pages ({{n}})",
+    "studentMeta": "ID: {{id}} | {{n}} pages",
+    "noResultsHint": "Try adjusting your search"
+  },
+  "footer": {
+    "github": "GitHub Repository",
+    "dataFiles": "Data Files",
+    "downloadData": "Download Data",
+    "kivowiki": "KivoWiki"
+  },
+  "settings": {
+    "title": "Settings",
+    "groupUi": "Interface",
+    "language": "Language",
+    "spineLink": "Spine ID as Links",
+    "spineLinkHint": "When checked, spine_id in the table and Spine numbers on the navigation page will be displayed as clickable links",
+    "groupClickFx": "Click Effects",
+    "fxEnabled": "Enable Click Effects",
+    "fxClick": "Click Effect",
+    "fxTrail": "Trail Effect",
+    "fxTrailAlways": "Show trail while moving mouse",
+    "opacity": "Opacity",
+    "scale": "Scale",
+    "themeColor": "Theme Color"
+  },
+  "schoolFilter": {
+    "school": "School",
+    "title": "Select Schools"
+  }
+}

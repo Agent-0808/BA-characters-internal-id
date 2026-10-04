@@ -2,6 +2,7 @@
 // 词典位于 ./locales/，key 采用嵌套风格（如 settings.language）
 import i18next, { type TOptions } from 'i18next';
 import zhCN from './locales/zh-CN.json';
+import enUS from './locales/en-US.json';
 
 // 初始化（main.ts 在其他模块之前调用一次），lang 来自界面设置
 export function initI18n(lang: string): void {
@@ -11,7 +12,7 @@ export function initI18n(lang: string): void {
     fallbackLng: (code) => (code === 'debug' ? [] : ['zh-CN']),
     resources: {
       'zh-CN': { translation: zhCN },
-      // en-US 词典最后统一补全后再注册
+      'en-US': { translation: enUS },
     },
     parseMissingKeyHandler: (key) => {
       // 缺失词条时回落显示 key 本身并汇总警告；debug 语言下缺失是预期行为，不警告
