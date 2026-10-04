@@ -3,7 +3,11 @@
     "settings": "设置",
     "close": "关闭",
     "loading": "正在加载数据...",
-    "school": "学校"
+    "school": "学校",
+    "unknown": "未知",
+    "unknownError": "未知错误",
+    "loadFailed": "❌ 加载数据失败",
+    "loadFailedHint": "数据文件可能尚未生成，请稍后再试"
   },
   "nav": {
     "index": "📊 文件ID",
@@ -19,7 +23,24 @@
   },
   "table": {
     "searchPlaceholder": "搜索角色名称...",
-    "toggleColumns": "显示/隐藏列 ▼"
+    "toggleColumns": "显示/隐藏列 ▼",
+    "noResults": "没有找到匹配的数据"
+  },
+  "col": {
+    "file_id": "文件ID",
+    "student_id": "ID",
+    "page_id": "Page",
+    "spine_id": "Spine",
+    "full_name": "完整名称",
+    "name": "角色名",
+    "skin_name": "皮肤名",
+    "spine_remark": "备注",
+    "name_cn": "国服名称",
+    "name_jp": "日本語",
+    "name_tw": "繁體中文",
+    "name_en": "English",
+    "name_kr": "한국어",
+    "school_name": "学校"
   },
   "kivo": {
     "searchPlaceholder": "搜索学生名称...",
@@ -35,8 +56,9 @@
   "footer": {
     "github": "GitHub 仓库",
     "dataFiles": "数据文件",
-    "kivoLibrary": "基沃托斯古书馆",
-    "hashesHint": "web / 数据 提交 hash"
+    "downloadData": "下载数据",
+    "hashesHint": "web / 数据 提交 hash",
+    "kivowiki": "KivoWiki"
   },
   "settings": {
     "title": "设置",

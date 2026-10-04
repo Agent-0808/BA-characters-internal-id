@@ -21,7 +21,7 @@ export interface StudentData {
 // 列配置
 export interface ColumnConfig {
   key: keyof StudentData;
-  label: string;
+  label: string;  // i18n key（如 col.file_id），渲染时经 t() 翻译
   defaultVisible: boolean;
 }
 

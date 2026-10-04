@@ -1,5 +1,6 @@
 import { CONFIG, COLUMN_CONFIG } from './config.js';
 import { parseCSV } from './csvParser.js';
+import { t } from './i18n.js';
 import { getUiSettings } from './settings.js';
 import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
@@ -78,7 +79,7 @@ function generateHeaderHTML(): string {
     return `
       <th data-col="${col.key}">
         <div class="th-content ${sortClass}" data-sort="${col.key}">
-          ${col.label}
+          ${t(col.label)}
           <span class="sort-arrow">${arrow}</span>
         </div>
       </th>
@@ -126,7 +127,7 @@ function generateRowHTML(row: StudentData): string {
 // 渲染表格
 function renderTable(data: StudentData[]): void {
   if (data.length === 0) {
-    elements.tableContainer.innerHTML = '<div class="empty"><p>没有找到匹配的数据</p></div>';
+    elements.tableContainer.innerHTML = `<div class="empty"><p>${t('table.noResults')}</p></div>`;
     return;
   }
 
@@ -228,7 +229,7 @@ function generateColumnDropdown(): void {
       <input type="checkbox"
              ${columnVisibility[col.key] ? 'checked' : ''}
              data-column="${col.key}">
-      ${col.label}
+      ${t(col.label)}
     </label>
   `).join('');
 
@@ -287,7 +288,7 @@ function updateStats(data: StudentData[]): void {
 function buildSchoolOptions(): SchoolOption[] {
   return Array.from(schoolsMap.values())
     .sort((a, b) => a.id - b.id)
-    .map(s => ({ name: s.name || '未知', logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
+    .map(s => ({ name: s.name || t('common.unknown'), logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
 }
 
 // 获取元数据
@@ -322,7 +323,7 @@ async function fetchSchools(): Promise<void> {
 function updateReleaseLink(): void {
   if (elements.dataFileLink) {
     elements.dataFileLink.href = './data/';
-    elements.dataFileLink.textContent = '下载数据';
+    elements.dataFileLink.textContent = t('footer.downloadData');
   }
 }
 
@@ -360,17 +361,19 @@ async function loadData(): Promise<void> {
     if (metadata && metadata.updateDate) {
       elements.updateTime.textContent = metadata.updateDate;
     } else {
-      elements.updateTime.textContent = new Date().toLocaleDateString('zh-CN');
+      // debug 为伪语言，日期回落 zh-CN 格式
+      const dateLocale = getUiSettings().lang === 'debug' ? 'zh-CN' : getUiSettings().lang;
+      elements.updateTime.textContent = new Date().toLocaleDateString(dateLocale);
     }
     updateReleaseLink();
   } catch (error) {
     console.error('加载数据失败:', error);
     elements.tableContainer.innerHTML = `
       <div class="error">
-        <p>❌ 加载数据失败</p>
-        <p style="font-size: 12px; margin-top: 10px;">${error instanceof Error ? error.message : '未知错误'}</p>
+        <p>${t('common.loadFailed')}</p>
+        <p style="font-size: 12px; margin-top: 10px;">${error instanceof Error ? error.message : t('common.unknownError')}</p>
         <p style="font-size: 12px; margin-top: 10px;">
-          数据文件可能尚未生成，请稍后再试
+          ${t('common.loadFailedHint')}
         </p>
       </div>
     `;
@@ -385,6 +388,12 @@ export function initTableView(): void {
   // 界面设置变更（如 spine 链接开关）时重渲染表格
   window.addEventListener('ui-settings-changed', () => {
     renderTable(filteredData);
+  });
+
+  // 语言切换时重渲染表格与列下拉（列标题、空态、错误文案等）
+  window.addEventListener('lang-changed', () => {
+    renderTable(filteredData);
+    generateColumnDropdown();
   });
 
   // 绑定列切换按钮
