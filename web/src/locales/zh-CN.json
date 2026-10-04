@@ -8,7 +8,8 @@
     "unknownError": "未知错误",
     "loadFailed": "❌ 加载数据失败",
     "loadFailedHint": "数据文件可能尚未生成，请稍后再试",
-    "noResults": "没有找到匹配的结果"
+    "noResults": "没有找到匹配的结果",
+    "noResultsHint": "请尝试调整搜索条件"
   },
   "action": {
     "expandAll": "展开全部",
@@ -61,8 +62,7 @@
     "none": "无",
     "spinesLabel": "🎬 Spine ({{n}}个)",
     "pagesLabel": "📄 Pages ({{n}}个页面)",
-    "studentMeta": "ID: {{id}} | {{n}} 个页面",
-    "noResultsHint": "请尝试调整搜索条件"
+    "studentMeta": "ID: {{id}} | {{n}} 个页面"
   },
   "footer": {
     "github": "GitHub 仓库",

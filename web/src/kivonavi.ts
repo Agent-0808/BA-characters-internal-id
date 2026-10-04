@@ -162,7 +162,7 @@ function renderStudents(students: Student[]): void {
       <div class="empty-state">
         <div class="empty-state-icon">🔍</div>
         <p>${t('common.noResults')}</p>
-        <p style="font-size: 0.85rem; margin-top: 8px; color: #94a3b8;">${t('kivo.noResultsHint')}</p>
+        <p class="empty-state-hint">${t('common.noResultsHint')}</p>
       </div>
     `;
     return;

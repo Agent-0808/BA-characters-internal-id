@@ -8,7 +8,8 @@
     "unknownError": "Unknown error",
     "loadFailed": "❌ Failed to load data",
     "loadFailedHint": "Data files may not have been generated yet, please try again later",
-    "noResults": "No matching results found"
+    "noResults": "No matching results found",
+    "noResultsHint": "Try adjusting your search"
   },
   "action": {
     "expandAll": "Expand All",
@@ -61,8 +62,7 @@
     "none": "None",
     "spinesLabel": "🎬 Spines ({{n}})",
     "pagesLabel": "📄 Pages ({{n}})",
-    "studentMeta": "ID: {{id}} | {{n}} pages",
-    "noResultsHint": "Try adjusting your search"
+    "studentMeta": "ID: {{id}} | {{n}} pages"
   },
   "footer": {
     "github": "GitHub Repository",

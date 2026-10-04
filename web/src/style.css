@@ -490,12 +490,6 @@ tr:hover {
   color: #dc2626;
 }
 
-.empty {
-  text-align: center;
-  padding: 60px;
-  color: #64748b;
-}
-
 .footer {
   position: relative;
   padding: 15px 30px;
@@ -961,6 +955,12 @@ th[data-col="spine_id"] {
 .empty-state-icon {
   font-size: 3rem;
   margin-bottom: 15px;
+}
+
+.empty-state-hint {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: #94a3b8;
 }
 
 /* 导航链接 */
