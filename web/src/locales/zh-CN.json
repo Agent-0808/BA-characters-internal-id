@@ -11,7 +11,9 @@
   },
   "nav": {
     "index": "📊 文件ID",
-    "kivonavi": "🎴 KivoWiki导航"
+    "kivonavi": "🎴 KivoWiki导航",
+    "docTitleIndex": "BA Characters Internal ID",
+    "docTitleKivo": "KivoWiki 导航"
   },
   "header": {
     "indexTitle": "📚 蔚蓝档案角色内部ID速查表",
@@ -51,7 +53,15 @@
     "installGlobal": "国际服",
     "installNpc": "NPC",
     "expandAll": "展开全部",
-    "collapseAll": "折叠全部"
+    "collapseAll": "折叠全部",
+    "defaultPage": "默认",
+    "limited": "🌟 限定",
+    "none": "无",
+    "spinesLabel": "🎬 Spine ({{n}}个)",
+    "pagesLabel": "📄 Pages ({{n}}个页面)",
+    "studentMeta": "ID: {{id}} | {{n}} 个页面",
+    "noResults": "没有找到匹配的学生",
+    "noResultsHint": "请尝试调整搜索条件"
   },
   "footer": {
     "github": "GitHub 仓库",

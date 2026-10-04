@@ -1,4 +1,5 @@
 import { CONFIG } from './config.js';
+import { t } from './i18n.js';
 import { getUiSettings } from './settings.js';
 import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
@@ -30,7 +31,7 @@ const elements = {
 // 获取学校名称
 function getSchoolName(schoolId: number): string {
   const school = schoolsMap.get(schoolId);
-  return school?.name || school?.name_cn || '未知';
+  return school?.name || school?.name_cn || t('common.unknown');
 }
 
 // 获取学校Logo
@@ -65,7 +66,7 @@ function getRarityStars(rarity: number): string {
 // 生成page名称
 function getPageName(page: KivoPage): string {
   if (page.skin_name) return page.skin_name;
-  return '默认';
+  return t('kivo.defaultPage');
 }
 
 // 生成Page HTML
@@ -101,18 +102,18 @@ function generatePageHTML(page: KivoPage): string {
         </div>
       </div>
       <div class="page-tags">
-        ${page.is_npc ? '<span class="tag tag-npc">🚫 NPC</span>' : `
-          <span class="tag tag-install-jp ${installJpClass}">${installJpIcon} 日服</span>
-          <span class="tag tag-install-global ${installGlobalClass}">${installGlobalIcon} 国际服</span>
-          <span class="tag tag-install-cn ${installCnClass}">${installCnIcon} 国服</span>
+        ${page.is_npc ? `<span class="tag tag-npc">🚫 ${t('kivo.installNpc')}</span>` : `
+          <span class="tag tag-install-jp ${installJpClass}">${installJpIcon} ${t('kivo.installJp')}</span>
+          <span class="tag tag-install-global ${installGlobalClass}">${installGlobalIcon} ${t('kivo.installGlobal')}</span>
+          <span class="tag tag-install-cn ${installCnClass}">${installCnIcon} ${t('kivo.installCn')}</span>
         `}
         ${page.rarity > 0 ? `<span class="tag tag-rarity">${rarityStars}</span>` : ''}
-        ${page.limited ? '<span class="tag tag-limited">🌟 限定</span>' : ''}
+        ${page.limited ? `<span class="tag tag-limited">${t('kivo.limited')}</span>` : ''}
       </div>
       <div class="spines-section">
-        <div class="spines-label">🎬 Spine (${page.spines.length}个)</div>
+        <div class="spines-label">${t('kivo.spinesLabel', { n: page.spines.length })}</div>
         <div class="spines-list">
-          ${spinesHTML || '<span style="color:#94a3b8;font-size:0.75rem;">无</span>'}
+          ${spinesHTML || `<span style="color:#94a3b8;font-size:0.75rem;">${t('kivo.none')}</span>`}
         </div>
       </div>
     </div>
@@ -137,7 +138,7 @@ function generateStudentCard(student: Student): string {
         <div class="student-info">
           <div class="student-name">${student.name}</div>
           <div class="student-name-sub">${student.name_jp || ''}</div>
-          <div class="student-meta">ID: ${student.id} | ${student.pages.length} 个页面</div>
+          <div class="student-meta">${t('kivo.studentMeta', { id: student.id, n: student.pages.length })}</div>
         </div>
         <div class="student-school">
           ${schoolLogo ? `<span class="student-school-badge" style="background:${schoolColor.bg}"><img src="https:${schoolLogo}" class="student-school-logo" alt="" title="${schoolName}"></span>` : ''}
@@ -146,7 +147,7 @@ function generateStudentCard(student: Student): string {
       </div>
       <div class="student-content">
         <div class="pages-container">
-          <div class="pages-title">📄 Pages (${student.pages.length}个页面)</div>
+          <div class="pages-title">${t('kivo.pagesLabel', { n: student.pages.length })}</div>
           ${pagesHTML}
         </div>
       </div>
@@ -160,8 +161,8 @@ function renderStudents(students: Student[]): void {
     elements.studentsContainer.innerHTML = `
       <div class="empty-state">
         <div class="empty-state-icon">🔍</div>
-        <p>没有找到匹配的学生</p>
-        <p style="font-size: 0.85rem; margin-top: 8px; color: #94a3b8;">请尝试调整搜索条件</p>
+        <p>${t('kivo.noResults')}</p>
+        <p style="font-size: 0.85rem; margin-top: 8px; color: #94a3b8;">${t('kivo.noResultsHint')}</p>
       </div>
     `;
     return;
@@ -259,7 +260,7 @@ function updateStats(students: Student[]): void {
 function setupSchoolFilter(): void {
   const options = Array.from(schoolsMap.values())
     .sort((a, b) => a.id - b.id)
-    .map(s => ({ name: s.name || s.name_cn || '未知', logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
+    .map(s => ({ name: s.name || s.name_cn || t('common.unknown'), logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
 
   schoolFilter = createSchoolFilter(
     { btn: elements.schoolFilterBtn, dropdown: elements.schoolDropdown, count: elements.schoolFilterCount },
@@ -331,16 +332,18 @@ async function loadData(): Promise<void> {
     if (metadata?.updateDate) {
       elements.updateTime.textContent = metadata.updateDate;
     } else {
-      elements.updateTime.textContent = new Date().toLocaleDateString('zh-CN');
+      // debug 为伪语言，日期回落 zh-CN 格式
+      const dateLocale = getUiSettings().lang === 'debug' ? 'zh-CN' : getUiSettings().lang;
+      elements.updateTime.textContent = new Date().toLocaleDateString(dateLocale);
     }
   } catch (error) {
     console.error('加载数据失败:', error);
     elements.studentsContainer.innerHTML = `
       <div class="error">
-        <p>❌ 加载数据失败</p>
-        <p style="font-size: 12px; margin-top: 10px;">${error instanceof Error ? error.message : '未知错误'}</p>
+        <p>${t('common.loadFailed')}</p>
+        <p style="font-size: 12px; margin-top: 10px;">${error instanceof Error ? error.message : t('common.unknownError')}</p>
         <p style="font-size: 12px; margin-top: 10px;">
-          数据文件可能尚未生成，请稍后再试
+          ${t('common.loadFailedHint')}
         </p>
       </div>
     `;
@@ -357,6 +360,11 @@ export function initKivoView(): void {
 
   // 界面设置变更（如 spine 链接开关）时重渲染学生列表
   window.addEventListener('ui-settings-changed', () => {
+    renderStudents(filteredStudents);
+  });
+
+  // 语言切换时重渲染学生列表
+  window.addEventListener('lang-changed', () => {
     renderStudents(filteredStudents);
   });
 
