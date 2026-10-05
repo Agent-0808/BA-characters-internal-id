@@ -17,6 +17,7 @@ from typing import Any
 from .config import (
     OUTPUT_DIR,
     OUTPUT_FILENAME,
+    SCHOOL_NAMES_FILENAME,
     SKIPPED_FILENAME,
     SCHOOLS_OUTPUT_FILENAME,
     STUDENTS_OUTPUT_FILENAME,
@@ -40,18 +41,39 @@ class OutputWriter:
     # --- JSON 输出方法 ---
 
     def write_schools_json(self, schools: list[School]):
-        """写入学校JSON文件"""
+        """写入学校JSON文件（合并手动词表的多语言名，生成 name_{lang} 字段）"""
         if not schools:
             logging.warning("没有可供写入的学校数据。")
             return
 
+        translations = self._load_school_names()
+        data = []
+        for s in schools:
+            item: dict[str, Any] = {
+                "id": s.id, "name": s.name, "name_cn": s.name_cn, "logo": s.logo
+            }
+            # 按语言键扩展合并（词表值如 {"en": ..., "jp": ...} -> name_en / name_jp）
+            for lang, name in translations.get(str(s.id), {}).items():
+                item[f"name_{lang}"] = name
+            data.append(item)
+
+        missing = sorted(s.id for s in schools if str(s.id) not in translations)
+        if missing:
+            logging.warning(f"school_names.json 未覆盖 {len(missing)} 所学校 id: {missing}")
+
         filepath = OUTPUT_DIR / SCHOOLS_OUTPUT_FILENAME
-        data = [
-            {"id": s.id, "name": s.name, "name_cn": s.name_cn, "logo": s.logo}
-            for s in schools
-        ]
         self._write_json(filepath, data)
-        logging.info(f"学校数据成功写入 {filepath}，共 {len(schools)} 条记录")
+        logging.info(f"学校数据成功写入 {filepath}，共 {len(data)} 条记录")
+
+    @staticmethod
+    def _load_school_names() -> dict[str, dict[str, str]]:
+        """加载学校名翻译词表（手动维护，随代码走），缺失时返回空 dict 并告警"""
+        filepath = Path(__file__).parent / SCHOOL_NAMES_FILENAME
+        if not filepath.exists():
+            logging.warning(f"学校名翻译词表不存在: {filepath}，schools.json 将不含多语言字段")
+            return {}
+        with open(filepath, 'r', encoding='utf-8') as f:
+            return json.load(f)
 
     def write_students_json(self, students: list[Student]):
         """写入学生JSON文件"""

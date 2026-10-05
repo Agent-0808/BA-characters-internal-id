@@ -83,6 +83,7 @@ export interface School {
   id: number;
   name: string;
   name_cn: string;
+  name_en?: string;  // 多语言字段由爬虫从 school_names.json 合并，后续语言按需扩展（name_jp 等）
   logo: string;
 }
 

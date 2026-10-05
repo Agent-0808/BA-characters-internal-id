@@ -32,6 +32,11 @@ SCHOOLS_OUTPUT_FILENAME: str = "schools.json"
 STUDENTS_OUTPUT_FILENAME: str = "students.json"
 SPINES_OUTPUT_FILENAME: str = "spines.json"
 
+# 手动维护的翻译词表（main 分支，勿写入爬虫产物）
+# 学校名多语言：键为学校 id（字符串），值按语言键扩展（如 {"en": ..., "jp": ...}），
+# 合并到 schools.json 时生成 name_{lang} 字段，未覆盖 id 的字段输出空串
+SCHOOL_NAMES_FILENAME: str = "school_names.json"
+
 # 缓存目录配置
 _CACHE_DIR = Path("cache")
 if Path.cwd().name == "crawler":

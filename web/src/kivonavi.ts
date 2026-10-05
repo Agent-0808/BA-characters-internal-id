@@ -4,6 +4,7 @@ import { getUiSettings } from './settings.js';
 import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter } from './schoolFilter.js';
+import { getSchoolDisplayName } from './schoolNames.js';
 import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
 
 // 状态管理
@@ -28,10 +29,9 @@ const elements = {
   updateTime: document.getElementById('kivoUpdateTime') as HTMLDivElement,
 };
 
-// 获取学校名称
+// 获取学校名称（按当前界面语言取名，见 schoolNames.ts）
 function getSchoolName(schoolId: number): string {
-  const school = schoolsMap.get(schoolId);
-  return school?.name || school?.name_cn || t('common.unknown');
+  return getSchoolDisplayName(schoolsMap.get(schoolId));
 }
 
 // 获取学校Logo
@@ -228,7 +228,7 @@ function applyFilters(): void {
     // 学校过滤（多选，来自共享组件）
     const selected = schoolFilter?.selected;
     const matchSchool = !selected || selected.size === 0 ||
-      selected.has(getSchoolName(student.school_id));
+      selected.has(String(student.school_id));
 
     // 实装状态过滤
     let matchInstall = true;
@@ -260,7 +260,7 @@ function updateStats(students: Student[]): void {
 function setupSchoolFilter(): void {
   const options = Array.from(schoolsMap.values())
     .sort((a, b) => a.id - b.id)
-    .map(s => ({ name: s.name || s.name_cn || t('common.unknown'), logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
+    .map(s => ({ school: s, color: getSchoolColorOrNull(s.id) }));
 
   schoolFilter = createSchoolFilter(
     { btn: elements.schoolFilterBtn, dropdown: elements.schoolDropdown, count: elements.schoolFilterCount },

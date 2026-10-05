@@ -5,6 +5,7 @@ import { getUiSettings } from './settings.js';
 import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter, SchoolOption } from './schoolFilter.js';
+import { getSchoolDisplayName } from './schoolNames.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
 
 // 状态管理
@@ -109,15 +110,17 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'skin_name') {
       return `<td data-col="${col.key}">${value || '-'}</td>`;
     } else if (col.key === 'school_name') {
-      // 渲染学校 logo + 名称，标签底色/文字色按学校 id 着色（见 schoolColors.ts）
+      // 渲染学校 logo + 名称（名称按当前界面语言取名，见 schoolNames.ts），
+      // 标签底色/文字色按学校 id 着色（见 schoolColors.ts）
       const schoolId = parseInt(row.school_id);
       const school = schoolsMap.get(schoolId);
+      const displayName = getSchoolDisplayName(school);
       const color = getSchoolColor(schoolId);
       const colorStyle = ` style="background:${color.bg};color:${color.text}"`;
       if (school && school.logo) {
-        return `<td data-col="${col.key}"><span class="school-tag"${colorStyle}><img src="https:${school.logo}" class="school-logo" alt="">${value}</span></td>`;
+        return `<td data-col="${col.key}"><span class="school-tag"${colorStyle}><img src="https:${school.logo}" class="school-logo" alt="">${displayName}</span></td>`;
       }
-      return `<td data-col="${col.key}"><span class="school-tag"${colorStyle}>${value}</span></td>`;
+      return `<td data-col="${col.key}"><span class="school-tag"${colorStyle}>${displayName}</span></td>`;
     } else {
       return `<td data-col="${col.key}">${value}</td>`;
     }
@@ -208,7 +211,7 @@ function applyFilters(): void {
 
     // 学校筛选（多选，来自共享组件）
     const selected = schoolFilter?.selected;
-    const matchSchool = !selected || selected.size === 0 || selected.has(row.school_name);
+    const matchSchool = !selected || selected.size === 0 || selected.has(row.school_id);
 
     return matchSearch && matchSchool;
   });
@@ -288,7 +291,7 @@ function updateStats(data: StudentData[]): void {
 function buildSchoolOptions(): SchoolOption[] {
   return Array.from(schoolsMap.values())
     .sort((a, b) => a.id - b.id)
-    .map(s => ({ name: s.name || t('common.unknown'), logo: s.logo || null, color: getSchoolColorOrNull(s.id) }));
+    .map(s => ({ school: s, color: getSchoolColorOrNull(s.id) }));
 }
 
 // 获取元数据

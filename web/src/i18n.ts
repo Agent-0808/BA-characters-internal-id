@@ -34,6 +34,11 @@ export function t(key: string, params?: TOptions): string {
   return i18next.t(key, params);
 }
 
+// 当前界面语言（用于数据侧多语言取名，如学校名）
+export function getCurrentLang(): string {
+  return i18next.language;
+}
+
 // 切换语言：changeLanguage + 同步 <html lang> + 广播 lang-changed（视图监听后重渲染动态文案）
 export async function setLang(lang: string): Promise<void> {
   await i18next.changeLanguage(lang);

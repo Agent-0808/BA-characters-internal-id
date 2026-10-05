@@ -2,12 +2,13 @@
 // 封装：下拉渲染、多选状态、按钮计数、清除全部、按钮定位、点击外部关闭
 
 import { t } from './i18n.js';
+import type { School } from './types.js';
+import { getSchoolDisplayName } from './schoolNames.js';
 import type { SchoolColor } from './schoolColors.js';
 
-// 学校选项（名称 + logo + 可选配色）
+// 学校选项（学校数据 + 可选配色）；名称在渲染时按当前语言实时取名（见 schoolNames.ts）
 export interface SchoolOption {
-  name: string;
-  logo: string | null;
+  school: School;
   color?: SchoolColor | null;  // 学校配色；未配置时不应用（见 schoolColors.ts）
 }
 
@@ -52,13 +53,15 @@ export function createSchoolFilter(
       </div>
       <div class="school-filter-list">
     `;
-    schools.forEach(({ name, logo, color }) => {
-      const logoHtml = logo ? `<img src="https:${logo}" class="school-filter-logo" alt="">` : '';
+    schools.forEach(({ school, color }) => {
+      const name = getSchoolDisplayName(school);
+      const logoHtml = school.logo ? `<img src="https:${school.logo}" class="school-filter-logo" alt="">` : '';
       // 配置了配色的学校：选项行平铺底色 + 文字色；未配置则保持默认样式
       const colorStyle = color ? ` style="background:${color.bg};color:${color.text}"` : '';
+      // data-school / 选中态以学校 id（字符串）为键，与界面语言解耦
       html += `
-        <label class="school-filter-item" data-school="${name}"${colorStyle}>
-          <input type="checkbox" data-school="${name}">
+        <label class="school-filter-item" data-school="${school.id}"${colorStyle}>
+          <input type="checkbox" data-school="${school.id}">
           ${logoHtml}
           <span class="school-filter-name">${name}</span>
         </label>
