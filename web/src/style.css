@@ -490,12 +490,6 @@ tr:hover {
   color: #dc2626;
 }
 
-.empty {
-  text-align: center;
-  padding: 60px;
-  color: #64748b;
-}
-
 .footer {
   position: relative;
   padding: 15px 30px;
@@ -963,6 +957,12 @@ th[data-col="spine_id"] {
   margin-bottom: 15px;
 }
 
+.empty-state-hint {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: #94a3b8;
+}
+
 /* 导航链接 */
 .nav-links {
   display: flex;
@@ -1093,6 +1093,17 @@ th[data-col="spine_id"] {
 
 .settings-item input:disabled {
   cursor: not-allowed;
+}
+
+/* 设置面板：语言等下拉控件（右侧对齐） */
+.settings-item select.settings-select {
+  margin-left: auto;
+  padding: 4px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 12px;
+  background: white;
+  cursor: pointer;
 }
 
 .settings-item.settings-range span:first-child {

@@ -4,6 +4,7 @@
 import {
   CLICK_FX_CONFIG,
   UI_SETTINGS_DEFAULT,
+  UI_LANGS,
   loadUiSettings,
   saveUiSettings,
   saveClickFxConfig,
@@ -15,6 +16,7 @@ import {
   setClickFxThemeColor,
   getActiveClickFxConfig,
 } from './clickFx.js';
+import { setLang } from './i18n.js';
 import type { ClickFXConfig, UiSettings } from './types.js';
 
 // 界面设置状态（单一来源，供其他模块查询）
@@ -36,6 +38,7 @@ const elements = {
   panel: document.getElementById('settingsPanel') as HTMLDivElement,
   closeBtn: document.getElementById('settingsClose') as HTMLButtonElement,
   resetBtn: document.getElementById('settingsReset') as HTMLButtonElement,
+  langSelect: document.getElementById('uiLang') as HTMLSelectElement,
   spineLink: document.getElementById('uiSpineLink') as HTMLInputElement,
   enabled: document.getElementById('fxEnabled') as HTMLInputElement,
   clickEnabled: document.getElementById('fxClickEnabled') as HTMLInputElement,
@@ -111,18 +114,39 @@ function resetToDefaults(): void {
   uiSettings = { ...UI_SETTINGS_DEFAULT };
   saveUiSettings(uiSettings);
   elements.spineLink.checked = uiSettings.spineLink;
+  elements.langSelect.value = uiSettings.lang;
+  void setLang(uiSettings.lang);
   notifyUiSettingsChanged();
+}
+
+// 初始化语言下拉：选项来自 UI_LANGS 单一来源，选中当前设置
+function initLangSelect(): void {
+  UI_LANGS.forEach(({ code, label }) => {
+    const option = document.createElement('option');
+    option.value = code;
+    option.textContent = label;
+    elements.langSelect.appendChild(option);
+  });
+  elements.langSelect.value = uiSettings.lang;
 }
 
 // 初始化设置面板（全局调用一次）
 export function initSettingsPanel(): void {
   syncControls(getActiveClickFxConfig());
+  initLangSelect();
   elements.spineLink.checked = uiSettings.spineLink;
 
   // 齿轮按钮 / 关闭按钮 / 恢复默认
   elements.settingsBtn.addEventListener('click', () => togglePanel());
   elements.closeBtn.addEventListener('click', () => togglePanel(false));
   elements.resetBtn.addEventListener('click', resetToDefaults);
+
+  // 界面设置：语言切换（持久化 + i18next 切换 + lang-changed 广播）
+  elements.langSelect.addEventListener('change', () => {
+    uiSettings.lang = elements.langSelect.value;
+    saveUiSettings(uiSettings);
+    void setLang(uiSettings.lang);
+  });
 
   // 界面设置：spine 链接开关（保存 + 广播重渲染）
   elements.spineLink.addEventListener('change', () => {

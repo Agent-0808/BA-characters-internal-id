@@ -1,12 +1,14 @@
 import './style.css';
 import { initClickFX } from './clickFx.js';
-import { initSettingsPanel } from './settings.js';
+import { initSettingsPanel, getUiSettings } from './settings.js';
+import { initI18n, t } from './i18n.js';
 import { initTableView } from './table.js';
 import { initKivoView } from './kivonavi.js';
 import { CONFIG } from './config.js';
 import type { Metadata } from './types.js';
 
-// 初始化蔚蓝档案点击特效（全局一次），随后初始化设置面板
+// 初始化 i18n（需先于其他模块发起；内部 await init 完成后自动应用静态文案），随后初始化点击特效与设置面板
+void initI18n(getUiSettings().lang);
 initClickFX();
 initSettingsPanel();
 
@@ -55,7 +57,7 @@ function switchView(): void {
   const kivoEl = document.getElementById('view-kivonavi') as HTMLElement;
   indexEl.hidden = view !== 'index';
   kivoEl.hidden = view !== 'kivonavi';
-  document.title = view === 'kivonavi' ? 'KivoWiki 导航' : 'BA Characters Internal ID';
+  document.title = view === 'kivonavi' ? t('nav.docTitleKivo') : t('nav.docTitleIndex');
   if (!initializedViews.has(view)) {
     initializedViews.add(view);
     viewInits[view]();
@@ -73,6 +75,11 @@ document.querySelectorAll<HTMLAnchorElement>('.nav-links a').forEach(a => {
 });
 
 window.addEventListener('hashchange', switchView);
+
+// 语言切换时同步更新标题
+window.addEventListener('lang-changed', () => {
+  document.title = currentView() === 'kivonavi' ? t('nav.docTitleKivo') : t('nav.docTitleIndex');
+});
 
 // 初始视图
 switchView();

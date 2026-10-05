@@ -1,6 +1,7 @@
 // 学校多选筛选下拉组件（table 与 kivonavi 共用）
 // 封装：下拉渲染、多选状态、按钮计数、清除全部、按钮定位、点击外部关闭
 
+import { t } from './i18n.js';
 import type { SchoolColor } from './schoolColors.js';
 
 // 学校选项（名称 + logo + 可选配色）
@@ -30,29 +31,6 @@ export function createSchoolFilter(
 ): SchoolFilter {
   const selected: Set<string> = new Set();
 
-  // 生成下拉内容（头部固定在外层容器，列表单独滚动，见 .school-filter-list）
-  let html = `
-    <div class="school-filter-header">
-      <span style="font-size: 12px; color: #64748b;">选择学校</span>
-      <span class="school-filter-clear">清除全部</span>
-    </div>
-    <div class="school-filter-list">
-  `;
-  schools.forEach(({ name, logo, color }) => {
-    const logoHtml = logo ? `<img src="https:${logo}" class="school-filter-logo" alt="">` : '';
-    // 配置了配色的学校：选项行平铺底色 + 文字色；未配置则保持默认样式
-    const colorStyle = color ? ` style="background:${color.bg};color:${color.text}"` : '';
-    html += `
-      <label class="school-filter-item" data-school="${name}"${colorStyle}>
-        <input type="checkbox" data-school="${name}">
-        ${logoHtml}
-        <span class="school-filter-name">${name}</span>
-      </label>
-    `;
-  });
-  html += '</div>';
-  elements.dropdown.innerHTML = html;
-
   // 更新按钮计数与选项选中态
   function updateUI(): void {
     elements.count.textContent = selected.size > 0 ? selected.size.toString() : '';
@@ -63,6 +41,41 @@ export function createSchoolFilter(
       checkbox.checked = isSelected;
       item.classList.toggle('selected', isSelected);
     });
+  }
+
+  // 渲染下拉内容并绑定选项事件（语言切换时整体重渲染，选中态由 selected 集合恢复）
+  function render(): void {
+    let html = `
+      <div class="school-filter-header">
+        <span style="font-size: 12px; color: #64748b;">${t('schoolFilter.title')}</span>
+        <span class="school-filter-clear">${t('action.clearAll')}</span>
+      </div>
+      <div class="school-filter-list">
+    `;
+    schools.forEach(({ name, logo, color }) => {
+      const logoHtml = logo ? `<img src="https:${logo}" class="school-filter-logo" alt="">` : '';
+      // 配置了配色的学校：选项行平铺底色 + 文字色；未配置则保持默认样式
+      const colorStyle = color ? ` style="background:${color.bg};color:${color.text}"` : '';
+      html += `
+        <label class="school-filter-item" data-school="${name}"${colorStyle}>
+          <input type="checkbox" data-school="${name}">
+          ${logoHtml}
+          <span class="school-filter-name">${name}</span>
+        </label>
+      `;
+    });
+    html += '</div>';
+    elements.dropdown.innerHTML = html;
+
+    elements.dropdown.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', (e) => {
+        const target = e.target as HTMLInputElement;
+        toggleSchool(target.getAttribute('data-school') as string, target.checked);
+      });
+    });
+    elements.dropdown.querySelector('.school-filter-clear')?.addEventListener('click', clearAll);
+
+    updateUI();
   }
 
   // 切换学校选中状态
@@ -102,16 +115,15 @@ export function createSchoolFilter(
     }
   }
 
-  // 绑定事件
+  // 绑定事件（下拉选项事件在 render() 内绑定）
   elements.btn.addEventListener('click', toggleDropdown);
-  elements.dropdown.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', (e) => {
-      const target = e.target as HTMLInputElement;
-      toggleSchool(target.getAttribute('data-school') as string, target.checked);
-    });
-  });
-  elements.dropdown.querySelector('.school-filter-clear')?.addEventListener('click', clearAll);
   document.addEventListener('click', onDocumentClick);
+
+  // 语言切换时重渲染下拉文案
+  window.addEventListener('lang-changed', render);
+
+  // 首次渲染
+  render();
 
   return { selected };
 }

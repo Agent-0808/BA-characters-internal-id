@@ -1,0 +1,92 @@
+{
+  "common": {
+    "settings": "设置",
+    "close": "关闭",
+    "loading": "正在加载数据...",
+    "searchPlaceholder": "搜索名称...",
+    "unknown": "未知",
+    "unknownError": "未知错误",
+    "loadFailed": "❌ 加载数据失败",
+    "loadFailedHint": "数据文件可能尚未生成，请稍后再试",
+    "noResults": "没有找到匹配的结果",
+    "noResultsHint": "请尝试调整搜索条件"
+  },
+  "action": {
+    "expandAll": "展开全部",
+    "collapseAll": "折叠全部",
+    "reset": "恢复默认",
+    "clearAll": "清除全部"
+  },
+  "nav": {
+    "index": "📊 文件ID",
+    "kivonavi": "🎴 KivoWiki导航",
+    "docTitleIndex": "BA Characters Internal ID",
+    "docTitleKivo": "KivoWiki 导航"
+  },
+  "header": {
+    "indexTitle": "📚 蔚蓝档案角色内部ID速查表",
+    "kivoTitle": "📚 KivoWiki 角色数据导航",
+    "totalRecords": "总记录",
+    "studentCount": "学生数",
+    "pageCount": "页面数",
+    "updateTime": "数据更新时间"
+  },
+  "table": {
+    "toggleColumns": "显示/隐藏列 ▼"
+  },
+  "col": {
+    "file_id": "文件ID",
+    "student_id": "ID",
+    "page_id": "Page",
+    "spine_id": "Spine",
+    "full_name": "完整名称",
+    "name": "角色名",
+    "skin_name": "皮肤名",
+    "spine_remark": "备注",
+    "name_cn": "国服名称",
+    "name_jp": "日本語",
+    "name_tw": "繁體中文",
+    "name_en": "English",
+    "name_kr": "한국어",
+    "school_name": "学校"
+  },
+  "kivo": {
+    "install": "实装:",
+    "installAll": "全部",
+    "installJp": "日服",
+    "installCn": "国服",
+    "installGlobal": "国际服",
+    "installNpc": "NPC",
+    "defaultPage": "默认",
+    "limited": "🌟 限定",
+    "none": "无",
+    "spinesLabel": "🎬 Spine ({{n}}个)",
+    "pagesLabel": "📄 Pages ({{n}}个页面)",
+    "studentMeta": "ID: {{id}} | {{n}} 个页面"
+  },
+  "footer": {
+    "github": "GitHub 仓库",
+    "dataFiles": "数据文件",
+    "downloadData": "下载数据",
+    "kivowiki": "基沃托斯古书馆"
+  },
+  "settings": {
+    "title": "设置",
+    "groupUi": "界面",
+    "language": "🌏 语言",
+    "spineLink": "Spine ID 显示为链接",
+    "spineLinkHint": "勾选后表格中的 spine_id 与导航页的 Spine 编号将显示为可点击链接",
+    "groupClickFx": "点击特效",
+    "fxEnabled": "启用点击特效",
+    "fxClick": "点击特效",
+    "fxTrail": "拖尾特效",
+    "fxTrailAlways": "移动鼠标时也显示拖尾",
+    "opacity": "不透明度",
+    "scale": "缩放",
+    "themeColor": "主题色"
+  },
+  "schoolFilter": {
+    "school": "学校",
+    "title": "选择学校"
+  }
+}
