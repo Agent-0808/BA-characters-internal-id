@@ -7,8 +7,8 @@ import { initKivoView } from './kivonavi.js';
 import { CONFIG } from './config.js';
 import type { Metadata } from './types.js';
 
-// 初始化 i18n（需在设置面板与其他视图之前），随后初始化点击特效与设置面板
-initI18n(getUiSettings().lang);
+// 初始化 i18n（需先于其他模块发起；内部 await init 完成后自动应用静态文案），随后初始化点击特效与设置面板
+void initI18n(getUiSettings().lang);
 initClickFX();
 initSettingsPanel();
 

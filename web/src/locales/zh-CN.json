@@ -68,12 +68,12 @@
     "github": "GitHub 仓库",
     "dataFiles": "数据文件",
     "downloadData": "下载数据",
-    "kivowiki": "KivoWiki"
+    "kivowiki": "基沃托斯古书馆"
   },
   "settings": {
     "title": "设置",
     "groupUi": "界面",
-    "language": "语言",
+    "language": "🌏 语言",
     "spineLink": "Spine ID 显示为链接",
     "spineLinkHint": "勾选后表格中的 spine_id 与导航页的 Spine 编号将显示为可点击链接",
     "groupClickFx": "点击特效",

@@ -5,8 +5,9 @@ import zhCN from './locales/zh-CN.json';
 import enUS from './locales/en-US.json';
 
 // 初始化（main.ts 在其他模块之前调用一次），lang 来自界面设置
-export function initI18n(lang: string): void {
-  void i18next.init({
+// init 是异步的：await 完成后再执行首次 applyI18n，否则 t() 会回落中文占位（刷新恢复语言时的加载顺序问题）
+export async function initI18n(lang: string): Promise<void> {
+  await i18next.init({
     lng: lang,
     // debug 伪语言不回落 zh-CN：缺失 key 原样返回键名，实现「显示键」调试模式
     fallbackLng: (code) => (code === 'debug' ? [] : ['zh-CN']),
@@ -22,8 +23,10 @@ export function initI18n(lang: string): void {
       return key;
     },
   });
-  // 语言切换时同步刷新静态标注文案（与 init 时各执行一次）
+  document.documentElement.lang = lang;
+  // 首次应用静态标注文案；此后语言切换时由 languageChanged 再次触发
   i18next.on('languageChanged', () => applyI18n());
+  applyI18n();
 }
 
 // 翻译函数透传（params 为插值参数，如 t('kivo.spineCount', { n: 3 })）
