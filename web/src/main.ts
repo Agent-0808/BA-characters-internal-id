@@ -2,6 +2,7 @@ import './style.css';
 import { initClickFX } from './clickFx.js';
 import { initSettingsPanel, getUiSettings } from './settings.js';
 import { initI18n, t } from './i18n.js';
+import { countView } from './goatcounter.js';
 import { initTableView } from './table.js';
 import { initKivoView } from './kivonavi.js';
 import { CONFIG } from './config.js';
@@ -58,6 +59,8 @@ function switchView(): void {
   indexEl.hidden = view !== 'index';
   kivoEl.hidden = view !== 'kivonavi';
   document.title = view === 'kivonavi' ? t('nav.docTitleKivo') : t('nav.docTitleIndex');
+  // 按视图上报访问统计（初始加载与 hash 切换都会经过这里）
+  countView(view);
   if (!initializedViews.has(view)) {
     initializedViews.add(view);
     viewInits[view]();

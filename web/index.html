@@ -190,5 +190,11 @@
     </div>
 
     <script type="module" src="/src/main.ts"></script>
+
+    <!-- GoatCounter 访问统计（async 加载，视图上报见 goatcounter.ts）
+         no_onload 关闭脚本默认的整站上报，改为按视图手动上报以区分子页面；localhost 默认不计入 -->
+    <script data-goatcounter="https://agent-8.goatcounter.com/count"
+            data-goatcounter-settings='{"no_onload": true}'
+            async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -87,10 +87,16 @@ export const UI_LANGS: { code: string; label: string }[] = [
   { code: 'debug', label: '🔧 DEBUG' },
 ];
 
-// 界面设置默认值
+// 根据浏览器语言推断默认界面语言（仅无已保存设置时生效；中文环境→zh-CN，其余→en-US）
+function detectLang(): string {
+  const langs = navigator.languages ?? [navigator.language];
+  return langs.some(l => l.toLowerCase().startsWith('zh')) ? 'zh-CN' : 'en-US';
+}
+
+// 界面设置默认值（lang 由浏览器语言自动检测）
 export const UI_SETTINGS_DEFAULT: UiSettings = {
   spineLink: false,
-  lang: 'zh-CN',
+  lang: detectLang(),
 };
 
 // 界面设置的 localStorage key
