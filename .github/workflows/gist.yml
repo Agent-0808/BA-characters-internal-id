@@ -1,0 +1,105 @@
+name: 发布到 Gist
+
+# 触发机制配置
+on:
+  # 仅允许手动触发（日常更新工作流会在数据实际发布后调用）
+  # Gist 内容只依赖 data 分支的数据，前端改动无需重新发布
+  workflow_dispatch:
+
+# 权限配置
+permissions:
+  contents: read
+
+# 并发控制
+concurrency:
+  group: "gist"
+  cancel-in-progress: false
+
+jobs:
+  # ====================
+  # Job: 发布到 Gist
+  # ====================
+  publish-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 获取最新数据并提取 Commit Hash
+        run: |
+          mkdir -p output
+          if git fetch origin data 2>/dev/null; then
+            # 提取 data 分支的最新的 Commit Hash 并存入环境变量
+            DATA_COMMIT_HASH=$(git rev-parse origin/data)
+            echo "DATA_COMMIT_HASH=${DATA_COMMIT_HASH}" >> $GITHUB_ENV
+
+            git checkout origin/data -- output/ 2>/dev/null || true
+          fi
+
+      - name: 读取版本号
+        working-directory: ./crawler
+        run: echo "CODE_VERSION=$(cat VERSION)" >> $GITHUB_ENV
+
+      - name: 获取 Release 信息
+        id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_INFO=$(gh api repos/${{ github.repository }}/releases/latest 2>/dev/null || echo "{}")
+          UPDATE_DATE=$(echo "$RELEASE_INFO" | jq -r '.published_at // empty' | cut -dT -f1)
+          RELEASE_URL=$(echo "$RELEASE_INFO" | jq -r '.html_url // empty')
+          RELEASE_NAME=$(echo "$RELEASE_INFO" | jq -r '.name // empty')
+
+          echo "update_date=${UPDATE_DATE:-$(date +'%Y-%m-%d')}" >> $GITHUB_OUTPUT
+          echo "release_url=${RELEASE_URL:-https://github.com/${{ github.repository }}/releases}" >> $GITHUB_OUTPUT
+          echo "release_name=${RELEASE_NAME:-${UPDATE_DATE}}" >> $GITHUB_OUTPUT
+
+      - name: 读取 CSV 文件
+        id: csv
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./output/students_data.csv
+
+      - name: 转换为 Markdown 表格
+        uses: petems/csv-to-md-table-action@master
+        id: csv-table-output
+        with:
+          csvinput: ${{ steps.csv.outputs.content }}
+
+      - name: 构建 Markdown 文件
+        env:
+          REPO_FULL_NAME: ${{ github.repository }}
+          REPO_URL: https://github.com/${{ github.repository }}
+          REPO_NAME: ${{ github.event.repository.name }}
+          PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          UPDATE_DATE: ${{ steps.release.outputs.update_date }}
+          CODE_VERSION: ${{ env.CODE_VERSION }}
+          DATA_COMMIT: ${{ env.DATA_COMMIT_HASH }}
+          RELEASE_NAME: ${{ steps.release.outputs.release_name }}
+          RELEASE_URL: ${{ steps.release.outputs.release_url }}
+        run: |
+          # 生成 markdown 表格临时文件（内容为多行，先落盘再用 sed 插入）
+          echo "${{ steps.csv-table-output.outputs.markdown-table }}" > /tmp/table.md
+
+          # 复制模板并替换占位符（注意 REPO_FULL_NAME 需在 REPO_NAME 之前替换）
+          cp docs/gist_template.md students_data.md
+          sed -i \
+            -e "s|{{REPO_FULL_NAME}}|${REPO_FULL_NAME}|g" \
+            -e "s|{{REPO_URL}}|${REPO_URL}|g" \
+            -e "s|{{REPO_NAME}}|${REPO_NAME}|g" \
+            -e "s|{{PAGES_URL}}|${PAGES_URL}|g" \
+            -e "s|{{UPDATE_DATE}}|${UPDATE_DATE}|g" \
+            -e "s|{{CODE_VERSION}}|${CODE_VERSION}|g" \
+            -e "s|{{DATA_COMMIT}}|${DATA_COMMIT}|g" \
+            -e "s|{{RELEASE_NAME}}|${RELEASE_NAME}|g" \
+            -e "s|{{RELEASE_URL}}|${RELEASE_URL}|g" \
+            students_data.md
+          sed -i -e '/{{MARKDOWN_TABLE}}/r /tmp/table.md' -e '/{{MARKDOWN_TABLE}}/d' students_data.md
+
+      - name: 发布到 Gist
+        uses: exuanbo/actions-deploy-gist@v1
+        with:
+          token: ${{ secrets.GIST_TOKEN }}
+          gist_id: ${{ secrets.GIST_ID }}
+          gist_description: "Blue Archive 角色数据表 - 更新于 ${{ steps.release.outputs.update_date }}"
+          file_path: students_data.md

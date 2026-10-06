@@ -273,12 +273,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 触发 部署与发布 工作流
-      # 数据更新或手动强制推送时自动触发；也可用 force_deploy 手动重新部署
-      - name: 触发部署与发布
+      # 触发 部署 / 发布 工作流
+      # Pages：数据更新或手动强制时重新部署（前端数据来自 data 分支）
+      # Gist：仅在数据实际发布（推送 data 分支并创建 Release）时更新，前端改动不会触发
+      - name: 触发 Pages 部署
         if: steps.check_changes.outputs.should_deploy == 'true'
         run: |
-          echo "▶️ 触发 deploy.yml 部署工作流（should_deploy=true）"
-          gh workflow run deploy.yml --ref main
+          echo "▶️ 触发 pages.yml 部署工作流（should_deploy=true）"
+          gh workflow run pages.yml --ref main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 触发 Gist 发布
+        if: steps.check_changes.outputs.should_publish == 'true'
+        run: |
+          echo "▶️ 触发 gist.yml 发布工作流（should_publish=true）"
+          gh workflow run gist.yml --ref main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,115 @@
+name: 部署 Github Pages
+
+# 触发机制配置
+on:
+  # 当 main 分支的 web 目录更新时触发
+  push:
+    branches:
+      - main
+    paths:
+      - 'web/**'
+
+  # 允许手动触发（日常更新工作流也会在数据变化时调用）
+  workflow_dispatch:
+
+# 权限配置
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 并发控制
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # ====================
+  # Job: 部署 Github Pages
+  # ====================
+  deploy-pages:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 获取最新数据并提取 Commit Hash
+        run: |
+          mkdir -p web/public/data
+          
+          if git fetch origin data 2>/dev/null; then
+            # 提取 data 分支的最新的 Commit Hash 并存入环境变量
+            DATA_COMMIT_HASH=$(git rev-parse origin/data)
+            echo "DATA_COMMIT_HASH=${DATA_COMMIT_HASH}" >> $GITHUB_ENV
+            
+            git checkout origin/data -- output/ 2>/dev/null || true
+            if [ -d "output" ]; then
+              cp -r output/* web/public/data/
+            fi
+          fi
+
+          # 发布数据许可文本到数据目录
+          cp LICENSE-DATA web/public/data/LICENSE-DATA.txt
+
+      - name: 生成元数据
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CODE_VERSION=$(cat crawler/VERSION)
+          RELEASE_INFO=$(gh api repos/${{ github.repository }}/releases/latest 2>/dev/null || echo "{}")
+          
+          UPDATE_DATE=$(echo "$RELEASE_INFO" | jq -r '.published_at // empty' | cut -dT -f1)
+          RELEASE_URL=$(echo "$RELEASE_INFO" | jq -r '.html_url // empty')
+          
+          if [ -z "$UPDATE_DATE" ] || [ "$UPDATE_DATE" = "null" ]; then
+            UPDATE_DATE=$(date +'%Y-%m-%d')
+          fi
+          if [ -z "$RELEASE_URL" ] || [ "$RELEASE_URL" = "null" ]; then
+            RELEASE_URL="https://github.com/${{ github.repository }}/releases"
+          fi
+          
+          # 将仓库地址 / 爬虫版本 / web提交hash / dataCommitHash 加入 metadata.json
+          # webCommitHash 为本次触发部署的 main 提交，前端展示时截取前6位
+          cat > web/public/data/metadata.json << EOF
+          {
+            "repoUrl": "https://github.com/${{ github.repository }}",
+            "updateDate": "${UPDATE_DATE}",
+            "codeVersion": "${CODE_VERSION}",
+            "releaseUrl": "${RELEASE_URL}",
+            "webCommitHash": "${GITHUB_SHA}",
+            "dataCommitHash": "${DATA_COMMIT_HASH:-unknown}"
+          }
+          EOF
+
+      - name: 构建项目
+        working-directory: ./web
+        run: |
+          npm ci
+          npm run build
+
+      - name: 生成数据目录列表
+        uses: gacts/directory-listing@v1
+        with:
+          target: ./web/dist/data
+          ignore: .gitkeep
+
+      - name: 设置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传页面文件
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './web/dist'
+
+      - name: 部署到 Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
