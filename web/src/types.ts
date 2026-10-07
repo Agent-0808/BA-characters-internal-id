@@ -94,6 +94,8 @@ export interface KivoPage {
   skin_cn: string;
   skin_jp: string;
   skin_tw: string;
+  skin_en: string;
+  skin_kr: string;
   avatar: string;
   spines: number[];
   is_install: boolean;

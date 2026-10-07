@@ -52,6 +52,8 @@ class KivoWikiPage:
     skin_cn: str
     skin_jp: str
     skin_tw: str
+    skin_en: str
+    skin_kr: str
     avatar: str
     spines: list[int]
     is_install: bool = False
@@ -69,6 +71,8 @@ class KivoWikiPage:
             "skin_cn": self.skin_cn,
             "skin_jp": self.skin_jp,
             "skin_tw": self.skin_tw,
+            "skin_en": self.skin_en,
+            "skin_kr": self.skin_kr,
             "avatar": self.avatar,
             "spines": self.spines,
             "is_install": self.is_install,

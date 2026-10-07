@@ -24,6 +24,7 @@ from .config import (
     SPINES_OUTPUT_FILENAME,
 )
 from .models import Student, School, Spine, KivoWikiPage, StudentForm, SkippedRecord
+from .skin_map import get_skin_map, translate_skin
 
 
 class OutputWriter:
@@ -194,6 +195,8 @@ class StudentAggregator:
         students: list[Student] = []
         spines: list[Spine] = []
         seen_spine_ids: set[int] = set()
+        # 词表未覆盖的皮肤名（去重），方法末尾汇总告警
+        uncovered_skins: set[str] = set()
 
         # 按ID排序处理，确保稳定性
         sorted_ids = sorted(student_cache_data.keys())
@@ -265,12 +268,16 @@ class StudentAggregator:
                     rarity = first_char_data.get("rarity", 0)
                     limited = first_char_data.get("limited", False)
 
+                # 各语言皮肤名：优先用网站数据，为空时查词表兜底
+                skin = page_data.get("skin", "")
                 pages.append(KivoWikiPage(
                     page_id=page_id,
-                    skin=page_data.get("skin", ""),
-                    skin_cn=page_data.get("skin_cn", ""),
-                    skin_jp=page_data.get("skin_jp", ""),
-                    skin_tw=page_data.get("skin_zh_tw", ""),
+                    skin=skin,
+                    skin_cn=page_data.get("skin_cn", "") or translate_skin(skin, "cn"),
+                    skin_jp=page_data.get("skin_jp", "") or translate_skin(skin, "jp"),
+                    skin_tw=page_data.get("skin_zh_tw", "") or translate_skin(skin, "tw"),
+                    skin_en=translate_skin(skin, "en"),
+                    skin_kr=translate_skin(skin, "kr"),
                     avatar=avatar,
                     spines=spine_ids,
                     is_install=page_data.get("is_install", False),
@@ -280,6 +287,11 @@ class StudentAggregator:
                     rarity=rarity,
                     limited=limited
                 ))
+
+                # 记录词表未覆盖的非空皮肤名
+                skin = page_data.get("skin", "")
+                if skin and skin not in get_skin_map():
+                    uncovered_skins.add(skin)
 
                 # 收集Spine数据
                 for spine_id in spine_ids:
@@ -320,6 +332,10 @@ class StudentAggregator:
         # 按ID排序
         students.sort(key=lambda s: s.id)
         spines.sort(key=lambda s: s.id)
+
+        # 汇总告警词表未覆盖的皮肤名，便于数据源新增皮肤时补表
+        if uncovered_skins:
+            logging.warning(f"skin_map.json 未覆盖 {len(uncovered_skins)} 个皮肤名: {sorted(uncovered_skins)}")
 
         return students, spines
 
