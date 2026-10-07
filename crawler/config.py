@@ -37,6 +37,10 @@ SPINES_OUTPUT_FILENAME: str = "spines.json"
 # 合并到 schools.json 时生成 name_{lang} 字段，未覆盖 id 的字段输出空串
 SCHOOL_NAMES_FILENAME: str = "school_names.json"
 
+# 皮肤名多语言：键为 API 的 `skin` 值，值为 {"en": ..., "kr": ...}，
+# 由 crawler/skin_map.py 的 translate_skin() 查询，未覆盖词条输出空串
+SKIN_MAP_FILENAME: str = "skin_map.json"
+
 # 缓存目录配置
 _CACHE_DIR = Path("cache")
 if Path.cwd().name == "crawler":
