@@ -11182,15 +11182,17 @@
         "skin_name_cn": "",
         "skin_name_jp": "",
         "skin_name_tw": "",
-        "avatar": "//static.kivo.wiki/images/students/%E6%A4%8E%E5%90%8D%20%E7%BA%BA/original/tmg.png",
+        "avatar": "//static.kivo.wiki/images/students/%E6%A4%8E%E5%90%8D%20%E7%BA%BA/original/Student_Portrait_CH0252_Collection.png",
         "spines": [
+          1914,
+          1913,
           1261
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false
       }
     ]

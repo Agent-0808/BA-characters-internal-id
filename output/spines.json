@@ -7150,5 +7150,17 @@
     "name": "CH0321_home",
     "remark": "",
     "type": "home"
+  },
+  {
+    "id": 1913,
+    "name": "CH0252_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1914,
+    "name": "CH0252_spr_new",
+    "remark": "初始立绘",
+    "type": "spr"
   }
 ]
