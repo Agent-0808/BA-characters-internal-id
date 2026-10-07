@@ -107,7 +107,7 @@ function generateRowHTML(row: StudentData): string {
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
     } else if (col.key === 'name') {
       return `<td data-col="${col.key}"><strong>${value}</strong></td>`;
-    } else if (col.key === 'skin_name') {
+    } else if (col.key === 'skin_kivo') {
       return `<td data-col="${col.key}">${value || '-'}</td>`;
     } else if (col.key === 'school_name') {
       // 渲染学校 logo + 名称（名称按当前界面语言取名，见 schoolNames.ts），

@@ -139,7 +139,7 @@ export const COLUMN_CONFIG: ColumnConfig[] = [
   { key: 'spine_id', label: 'col.spine_id', defaultVisible: true },
   { key: 'full_name', label: 'col.full_name', defaultVisible: true },
   { key: 'name', label: 'col.name', defaultVisible: false },
-  { key: 'skin_name', label: 'col.skin_name', defaultVisible: false },
+  { key: 'skin_kivo', label: 'col.skin_kivo', defaultVisible: false },
   { key: 'spine_remark', label: 'col.spine_remark', defaultVisible: false },
   { key: 'name_cn', label: 'col.name_cn', defaultVisible: false },
   { key: 'name_jp', label: 'col.name_jp', defaultVisible: true },

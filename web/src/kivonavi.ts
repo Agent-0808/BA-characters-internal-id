@@ -65,7 +65,7 @@ function getRarityStars(rarity: number): string {
 
 // 生成page名称
 function getPageName(page: KivoPage): string {
-  if (page.skin_name) return page.skin_name;
+  if (page.skin) return page.skin;
   return t('kivo.defaultPage');
 }
 

@@ -48,10 +48,10 @@ class Spine:
 class KivoWikiPage:
     """KivoWiki页面数据"""
     page_id: int
-    skin_name: str
-    skin_name_cn: str
-    skin_name_jp: str
-    skin_name_tw: str
+    skin: str
+    skin_cn: str
+    skin_jp: str
+    skin_tw: str
     avatar: str
     spines: list[int]
     is_install: bool = False
@@ -65,10 +65,10 @@ class KivoWikiPage:
         """转换为字典格式"""
         return {
             "page_id": self.page_id,
-            "skin_name": self.skin_name,
-            "skin_name_cn": self.skin_name_cn,
-            "skin_name_jp": self.skin_name_jp,
-            "skin_name_tw": self.skin_name_tw,
+            "skin": self.skin,
+            "skin_cn": self.skin_cn,
+            "skin_jp": self.skin_jp,
+            "skin_tw": self.skin_tw,
             "avatar": self.avatar,
             "spines": self.spines,
             "is_install": self.is_install,
@@ -119,7 +119,7 @@ class StudentForm:
     spine_id: int | None
     full_name: str
     name: str
-    skin_name: str
+    skin_kivo: str
     spine_remark: str
     name_cn: str
     name_jp: str

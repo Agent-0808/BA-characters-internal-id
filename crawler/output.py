@@ -267,10 +267,10 @@ class StudentAggregator:
 
                 pages.append(KivoWikiPage(
                     page_id=page_id,
-                    skin_name=page_data.get("skin", ""),
-                    skin_name_cn=page_data.get("skin_cn", ""),
-                    skin_name_jp=page_data.get("skin_jp", ""),
-                    skin_name_tw=page_data.get("skin_zh_tw", ""),
+                    skin=page_data.get("skin", ""),
+                    skin_cn=page_data.get("skin_cn", ""),
+                    skin_jp=page_data.get("skin_jp", ""),
+                    skin_tw=page_data.get("skin_zh_tw", ""),
                     avatar=avatar,
                     spines=spine_ids,
                     is_install=page_data.get("is_install", False),
@@ -462,10 +462,10 @@ class CsvGenerator:
 
             for page in student.get("pages", []):
                 page_id = page["page_id"]
-                skin_name = page.get("skin_name", "")
-                skin_name_cn = page.get("skin_name_cn", "")
-                skin_name_jp = page.get("skin_name_jp", "")
-                skin_name_tw = page.get("skin_name_tw", "")
+                skin = page.get("skin", "")
+                skin_cn = page.get("skin_cn", "")
+                skin_jp = page.get("skin_jp", "")
+                skin_tw = page.get("skin_tw", "")
 
 
                 # 处理该页面的所有spine
@@ -507,7 +507,7 @@ class CsvGenerator:
                     base_name_kr = student.get("name_kr", "")
 
                     # 处理备注（用于full_name）
-                    exclude_list = [skin_name, skin_name_cn, skin_name_jp, skin_name_tw,
+                    exclude_list = [skin, skin_cn, skin_jp, skin_tw,
                                     base_name, base_name_cn, base_name_jp, base_name_tw,
                                     base_name_en, base_name_kr]
                     processed_remark = self._process_spine_remark(spine_remark, exclude_list)
@@ -521,14 +521,14 @@ class CsvGenerator:
                             return f"{base}（{','.join(parts)}）"
                         return base
 
-                    # full_name: 使用 skin_name + remark
-                    full_name = build_full_name(base_name, skin_name, processed_remark)
+                    # full_name: 使用 skin + remark
+                    full_name = build_full_name(base_name, skin, processed_remark)
                     # name_cn/jp/tw: 只使用对应语言的皮肤名，不加remark
-                    name_cn = build_full_name(base_name_cn, skin_name_cn, "")
-                    name_jp = build_full_name(base_name_jp, skin_name_jp, "")
-                    name_tw = build_full_name(base_name_tw, skin_name_tw, "")
+                    name_cn = build_full_name(base_name_cn, skin_cn, "")
+                    name_jp = build_full_name(base_name_jp, skin_jp, "")
+                    name_tw = build_full_name(base_name_tw, skin_tw, "")
 
-                    # skin_name: 只使用页面的皮肤名
+                    # skin_kivo: 只使用页面的皮肤名
                     # spine_remark: 使用处理后的spine备注
                     form = StudentForm(
                         file_id=file_id,
@@ -537,7 +537,7 @@ class CsvGenerator:
                         spine_id=spine_id,
                         full_name=full_name,
                         name=base_name,
-                        skin_name=skin_name,
+                        skin_kivo=skin,
                         spine_remark=processed_remark,
                         name_cn=name_cn,
                         name_jp=name_jp,

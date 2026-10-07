@@ -6,7 +6,7 @@ export interface StudentData {
   spine_id: string;
   full_name: string;
   name: string;
-  skin_name: string;
+  skin_kivo: string;
   spine_remark: string;
   name_cn: string;
   name_jp: string;
@@ -90,10 +90,10 @@ export interface School {
 // Page (页面) 数据结构
 export interface KivoPage {
   page_id: number;
-  skin_name: string;
-  skin_name_cn: string;
-  skin_name_jp: string;
-  skin_name_tw: string;
+  skin: string;
+  skin_cn: string;
+  skin_jp: string;
+  skin_tw: string;
   avatar: string;
   spines: number[];
   is_install: boolean;
