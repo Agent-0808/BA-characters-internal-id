@@ -44,9 +44,8 @@ class CacheManager:
         # keys_to_strip: 需要清洗的字段
         keys_to_remove = [
             # 大文本 / 列表
-            'gallery', 'more', 
-            'sd_model_image', 'avatar',
-            'recollection_lobby_image',
+            'gallery', 'more',
+            'avatar',
             'introduction', 'introduction_cn',
             'voice_play_icon', 'voice_pause_icon',
             'source', 'contributor'
