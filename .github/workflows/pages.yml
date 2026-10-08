@@ -90,6 +90,15 @@ jobs:
           }
           EOF
 
+      # 打包数据 zip：与 Release 附件相同的完整数据包
+      # zip 仅存在于 Pages 构建产物中，不进入 data 分支
+      - name: 打包数据 zip
+        run: |
+          cd web/public/data
+          zip -q BA-Characters-Internal-ID.zip students.json spines.json students_data.csv skipped_ids.csv LICENSE-DATA.txt metadata.json
+          echo "数据 zip 打包完成："
+          ls -lh BA-Characters-Internal-ID.zip
+
       - name: 构建项目
         working-directory: ./web
         run: |

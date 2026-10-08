@@ -255,7 +255,41 @@ jobs:
           echo "唯一标签: $tag"
           echo "tag=$tag" >> $GITHUB_OUTPUT
 
-      # 创建 Release 发布
+      # 打包 Release 附件：数据文件 + 许可 + 元数据打包为 zip
+      # zip 仅作为 Release 附件与 Pages data/ 目录的下载项，不进入任何 git 分支
+      - name: 打包 Release 附件
+        if: steps.check_changes.outputs.should_publish == 'true'
+        run: |
+          mkdir -p release_assets
+          cp output/students.json output/spines.json output/students_data.csv output/skipped_ids.csv release_assets/
+
+          # zip 内统一命名为 LICENSE-DATA.txt，与 Pages 的 data/ 目录保持一致
+          cp LICENSE-DATA release_assets/LICENSE-DATA.txt
+
+          # 查询推送后的 data 分支 commit hash
+          DATA_COMMIT_HASH=$(gh api "repos/$GITHUB_REPOSITORY/branches/data" --jq '.object.sha' 2>/dev/null || echo "unknown")
+
+          # metadata.json 字段与 pages.yml 生成的 data/metadata.json 保持一致
+          cat > release_assets/metadata.json << EOF
+          {
+            "repoUrl": "https://github.com/${{ github.repository }}",
+            "updateDate": "${{ steps.meta.outputs.date }}",
+            "codeVersion": "${{ env.CODE_VERSION }}",
+            "releaseUrl": "https://github.com/${{ github.repository }}/releases/tag/${{ steps.release_tag.outputs.tag }}",
+            "webCommitHash": "${{ github.sha }}",
+            "dataCommitHash": "${DATA_COMMIT_HASH}"
+          }
+          EOF
+
+          # 文件名固定，保证 Pages 侧下载 URL 稳定
+          cd release_assets
+          zip -q BA-Characters-Internal-ID.zip students.json spines.json students_data.csv skipped_ids.csv LICENSE-DATA.txt metadata.json
+          echo "Release 附件打包完成："
+          ls -lh BA-Characters-Internal-ID.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 创建 Release 版本
       # 仅当检测到变化或手动强制时运行
       - name: 创建 Release 版本
         if: steps.check_changes.outputs.should_publish == 'true'
@@ -270,6 +304,7 @@ jobs:
             output/skipped_ids.csv
             output/students.json
             output/spines.json
+            release_assets/BA-Characters-Internal-ID.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
