@@ -285,7 +285,12 @@ class StudentAggregator:
                     is_install_global=page_data.get("is_install_global", False),
                     is_npc=page_data.get("is_npc", False),
                     rarity=rarity,
-                    limited=limited
+                    limited=limited,
+                    # 资产 URL 为 null 时输出空串；game_id/dev_name 取自 character_datas[0]
+                    sd_model_image=page_data.get("sd_model_image") or "",
+                    recollection_lobby_image=page_data.get("recollection_lobby_image") or "",
+                    game_id=first_char_data.get("character_id") or 0,
+                    dev_name=first_char_data.get("dev_name") or ""
                 ))
 
                 # 记录词表未覆盖的非空皮肤名

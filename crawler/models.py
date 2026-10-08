@@ -62,6 +62,10 @@ class KivoWikiPage:
     is_npc: bool = False
     rarity: int = 0
     limited: bool = False
+    sd_model_image: str = ""  # SD模型立绘 URL（页面级资产，缓存未更新时为空）
+    recollection_lobby_image: str = ""  # 回忆大厅背景 URL（页面级资产）
+    game_id: int = 0  # API character_datas.character_id，游戏机制侧 ID（非资产 ID）
+    dev_name: str = ""  # API character_datas.dev_name，部分与主file_id一致，用途未知
 
     def to_dict(self) -> dict[str, Any]:
         """转换为字典格式"""
@@ -80,7 +84,11 @@ class KivoWikiPage:
             "is_install_global": self.is_install_global,
             "is_npc": self.is_npc,
             "rarity": self.rarity,
-            "limited": self.limited
+            "limited": self.limited,
+            "sd_model_image": self.sd_model_image,
+            "recollection_lobby_image": self.recollection_lobby_image,
+            "game_id": self.game_id,
+            "dev_name": self.dev_name
         }
 
 

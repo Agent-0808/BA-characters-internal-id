@@ -115,6 +115,10 @@ export interface KivoPage {
   is_npc: boolean;
   rarity: number;
   limited: boolean;
+  sd_model_image: string;
+  recollection_lobby_image: string;  // 回忆大厅背景 URL
+  game_id: number;  // API character_datas.character_id，游戏机制侧 ID
+  dev_name: string;  // API character_datas.dev_name，资源命名
 }
 
 // 学生数据结构 (来自 students.json)
