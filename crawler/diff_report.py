@@ -102,7 +102,7 @@ def diff_pages(prev_student: dict, curr_student: dict) -> tuple[list[str], int, 
     added_count = len(added_page_ids)
     for page_id in sorted(added_page_ids):
         p = curr_pages[page_id]
-        skin_name = p.get("skin_name", "") or "默认"
+        skin_name = p.get("skin", "") or "默认"
         lines.append(f"  + {student_name} - {skin_name} (page_id: {page_id})")
 
     # 页面信息变化（放在中间）
@@ -116,7 +116,7 @@ def diff_pages(prev_student: dict, curr_student: dict) -> tuple[list[str], int, 
         curr_spines = curr_p.get("spines", [])
         if prev_spines != curr_spines:
             changed_count += 1
-            skin_name = curr_p.get("skin_name", "") or "默认"
+            skin_name = curr_p.get("skin", "") or "默认"
             # 显示新增/删除的spine id
             added_spines = set(curr_spines) - set(prev_spines)
             removed_spines = set(prev_spines) - set(curr_spines)
@@ -132,7 +132,7 @@ def diff_pages(prev_student: dict, curr_student: dict) -> tuple[list[str], int, 
     removed_count = len(removed_page_ids)
     for page_id in sorted(removed_page_ids):
         p = prev_pages[page_id]
-        skin_name = p.get("skin_name", "") or "默认"
+        skin_name = p.get("skin", "") or "默认"
         lines.append(f"  - {student_name} - {skin_name} (page_id: {page_id})")
 
     return lines, added_count, removed_count, changed_count

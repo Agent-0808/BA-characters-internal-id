@@ -1,18 +1,29 @@
-// 学生数据结构
+// 学生数据结构（CSV 行，25 列；语言列按数据可得性递减：kivo → jp → kr → en → tw → cn，
+// 每种语言一组 full/name/skin 三元组，full = name + skin，仅 full_kivo 额外拼入 spine_remark）
 export interface StudentData {
   file_id: string;
   student_id: string;
   page_id: string;
   spine_id: string;
-  full_name: string;
-  name: string;
-  skin_name: string;
   spine_remark: string;
-  name_cn: string;
+  full_kivo: string;
+  name_kivo: string;
+  skin_kivo: string;
+  full_jp: string;
   name_jp: string;
-  name_tw: string;
-  name_en: string;
+  skin_jp: string;
+  full_kr: string;
   name_kr: string;
+  skin_kr: string;
+  full_en: string;
+  name_en: string;
+  skin_en: string;
+  full_tw: string;
+  name_tw: string;
+  skin_tw: string;
+  full_cn: string;
+  name_cn: string;
+  skin_cn: string;
   school_id: string;
   school_name: string;
   [key: string]: string;  // 允许其他字符串属性
@@ -90,10 +101,12 @@ export interface School {
 // Page (页面) 数据结构
 export interface KivoPage {
   page_id: number;
-  skin_name: string;
-  skin_name_cn: string;
-  skin_name_jp: string;
-  skin_name_tw: string;
+  skin: string;
+  skin_cn: string;
+  skin_jp: string;
+  skin_tw: string;
+  skin_en: string;
+  skin_kr: string;
   avatar: string;
   spines: number[];
   is_install: boolean;
@@ -102,6 +115,10 @@ export interface KivoPage {
   is_npc: boolean;
   rarity: number;
   limited: boolean;
+  sd_model_image: string;
+  recollection_lobby_image: string;  // 回忆大厅背景 URL
+  game_id: number;  // API character_datas.character_id，游戏机制侧 ID
+  dev_name: string;  // API character_datas.dev_name，资源命名
 }
 
 // 学生数据结构 (来自 students.json)

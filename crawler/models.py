@@ -46,12 +46,14 @@ class Spine:
 
 @dataclass
 class KivoWikiPage:
-    """KivoWiki页面数据"""
+    """KivoWiki页面数据（皮肤名字段按数据可得性递减排列：jp > kr > en > tw > cn）"""
     page_id: int
-    skin_name: str
-    skin_name_cn: str
-    skin_name_jp: str
-    skin_name_tw: str
+    skin: str
+    skin_jp: str
+    skin_kr: str
+    skin_en: str
+    skin_tw: str
+    skin_cn: str
     avatar: str
     spines: list[int]
     is_install: bool = False
@@ -60,15 +62,21 @@ class KivoWikiPage:
     is_npc: bool = False
     rarity: int = 0
     limited: bool = False
+    sd_model_image: str = ""  # SD模型立绘 URL（页面级资产，缓存未更新时为空）
+    recollection_lobby_image: str = ""  # 回忆大厅背景 URL（页面级资产）
+    game_id: int = 0  # API character_datas.character_id，游戏机制侧 ID（非资产 ID）
+    dev_name: str = ""  # API character_datas.dev_name，部分与主file_id一致，用途未知
 
     def to_dict(self) -> dict[str, Any]:
         """转换为字典格式"""
         return {
             "page_id": self.page_id,
-            "skin_name": self.skin_name,
-            "skin_name_cn": self.skin_name_cn,
-            "skin_name_jp": self.skin_name_jp,
-            "skin_name_tw": self.skin_name_tw,
+            "skin": self.skin,
+            "skin_jp": self.skin_jp,
+            "skin_kr": self.skin_kr,
+            "skin_en": self.skin_en,
+            "skin_tw": self.skin_tw,
+            "skin_cn": self.skin_cn,
             "avatar": self.avatar,
             "spines": self.spines,
             "is_install": self.is_install,
@@ -76,20 +84,24 @@ class KivoWikiPage:
             "is_install_global": self.is_install_global,
             "is_npc": self.is_npc,
             "rarity": self.rarity,
-            "limited": self.limited
+            "limited": self.limited,
+            "sd_model_image": self.sd_model_image,
+            "recollection_lobby_image": self.recollection_lobby_image,
+            "game_id": self.game_id,
+            "dev_name": self.dev_name
         }
 
 
 @dataclass
 class Student:
-    """学生（角色）数据，包含多个KivoWiki页面"""
+    """学生（角色）数据，包含多个KivoWiki页面（名字段按数据可得性递减排列：jp > kr > en > tw > cn）"""
     id: int
     name: str
-    name_cn: str
     name_jp: str
-    name_en: str
     name_kr: str
+    name_en: str
     name_tw: str
+    name_cn: str
     school_id: int
     pages: list[KivoWikiPage]
 
@@ -98,11 +110,11 @@ class Student:
         return {
             "id": self.id,
             "name": self.name,
-            "name_cn": self.name_cn,
             "name_jp": self.name_jp,
-            "name_en": self.name_en,
             "name_kr": self.name_kr,
+            "name_en": self.name_en,
             "name_tw": self.name_tw,
+            "name_cn": self.name_cn,
             "school_id": self.school_id,
             "pages": [p.to_dict() for p in self.pages]
         }
@@ -112,20 +124,35 @@ class Student:
 
 @dataclass
 class StudentForm:
-    """用于存储单个角色形态结构化数据的类"""
+    """用于存储单个角色形态结构化数据的类（25列，字段顺序即CSV列序）
+
+    语言列按数据可得性递减排列（kivo → jp → kr → en → tw → cn），
+    每种语言一组 full/name/skin 三元组：full = name + skin（仅 full_kivo 额外拼入 spine_remark），
+    name_x 为学生级基础名（不含皮肤名），skin_x 为页面级皮肤名。
+    """
     file_id: str
     student_id: int
     page_id: int
     spine_id: int | None
-    full_name: str
-    name: str
-    skin_name: str
     spine_remark: str
-    name_cn: str
+    full_kivo: str
+    name_kivo: str
+    skin_kivo: str
+    full_jp: str
     name_jp: str
-    name_tw: str
-    name_en: str
+    skin_jp: str
+    full_kr: str
     name_kr: str
+    skin_kr: str
+    full_en: str
+    name_en: str
+    skin_en: str
+    full_tw: str
+    name_tw: str
+    skin_tw: str
+    full_cn: str
+    name_cn: str
+    skin_cn: str
     school_id: int
     school_name: str
 

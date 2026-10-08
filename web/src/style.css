@@ -522,12 +522,17 @@ tr:hover {
   text-decoration: underline;
 }
 
-/* 文件ID列限制宽度 */
-/* td[data-col="file_id"],
-th[data-col="file_id"] {
-  max-width: 200px;
-  width: 120px;
-} */
+/* 文件ID列限制宽度（约 7 个字符，如 CH0294）；过长 ID 按字符断行 */
+td[data-col="file_id"] {
+  width: 7ch;
+  max-width: 7ch;
+  word-break: break-all;
+}
+
+/* 学校名列禁止换行，保证 logo 与名称始终一行显示 */
+td[data-col="school_name"] {
+  white-space: nowrap;
+}
 
 /* 学生ID、页面ID 和 Spine ID 列限制宽度 */
 td[data-col="student_id"],

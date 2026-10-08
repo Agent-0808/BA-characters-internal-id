@@ -24,6 +24,7 @@ from .config import (
     SPINES_OUTPUT_FILENAME,
 )
 from .models import Student, School, Spine, KivoWikiPage, StudentForm, SkippedRecord
+from .skin_map import get_skin_map, translate_skin
 
 
 class OutputWriter:
@@ -194,6 +195,8 @@ class StudentAggregator:
         students: list[Student] = []
         spines: list[Spine] = []
         seen_spine_ids: set[int] = set()
+        # 词表未覆盖的皮肤名（去重），方法末尾汇总告警
+        uncovered_skins: set[str] = set()
 
         # 按ID排序处理，确保稳定性
         sorted_ids = sorted(student_cache_data.keys())
@@ -265,12 +268,16 @@ class StudentAggregator:
                     rarity = first_char_data.get("rarity", 0)
                     limited = first_char_data.get("limited", False)
 
+                # 各语言皮肤名：优先用网站数据，为空时查词表兜底
+                skin = page_data.get("skin", "")
                 pages.append(KivoWikiPage(
                     page_id=page_id,
-                    skin_name=page_data.get("skin", ""),
-                    skin_name_cn=page_data.get("skin_cn", ""),
-                    skin_name_jp=page_data.get("skin_jp", ""),
-                    skin_name_tw=page_data.get("skin_zh_tw", ""),
+                    skin=skin,
+                    skin_cn=page_data.get("skin_cn", "") or translate_skin(skin, "cn"),
+                    skin_jp=page_data.get("skin_jp", "") or translate_skin(skin, "jp"),
+                    skin_tw=page_data.get("skin_zh_tw", "") or translate_skin(skin, "tw"),
+                    skin_en=translate_skin(skin, "en"),
+                    skin_kr=translate_skin(skin, "kr"),
                     avatar=avatar,
                     spines=spine_ids,
                     is_install=page_data.get("is_install", False),
@@ -278,8 +285,18 @@ class StudentAggregator:
                     is_install_global=page_data.get("is_install_global", False),
                     is_npc=page_data.get("is_npc", False),
                     rarity=rarity,
-                    limited=limited
+                    limited=limited,
+                    # 资产 URL 为 null 时输出空串；game_id/dev_name 取自 character_datas[0]
+                    sd_model_image=page_data.get("sd_model_image") or "",
+                    recollection_lobby_image=page_data.get("recollection_lobby_image") or "",
+                    game_id=first_char_data.get("character_id") or 0,
+                    dev_name=first_char_data.get("dev_name") or ""
                 ))
+
+                # 记录词表未覆盖的非空皮肤名
+                skin = page_data.get("skin", "")
+                if skin and skin not in get_skin_map():
+                    uncovered_skins.add(skin)
 
                 # 收集Spine数据
                 for spine_id in spine_ids:
@@ -321,11 +338,18 @@ class StudentAggregator:
         students.sort(key=lambda s: s.id)
         spines.sort(key=lambda s: s.id)
 
+        # 汇总告警词表未覆盖的皮肤名，便于数据源新增皮肤时补表
+        if uncovered_skins:
+            logging.warning(f"skin_map.json 未覆盖 {len(uncovered_skins)} 个皮肤名: {sorted(uncovered_skins)}")
+
         return students, spines
 
 
 class CsvGenerator:
     """从中间JSON文件生成最终CSV"""
+
+    # CSV 语言列顺序（kivo 为源数据置于最前，其余按数据可得性递减）
+    CSV_LANGS: tuple[str, ...] = ("jp", "kr", "en", "tw", "cn")
 
     # Spine跳过规则
     SPINE_KEYWORDS_TO_SKIP: list[str] = ["toschool", "minori", "ui_"]
@@ -460,13 +484,16 @@ class CsvGenerator:
             school_id = student.get("school_id", 0)
             school_name = self.schools_map.get(school_id, "")
 
+            # 学生级各语言基础名（kivo 为源数据，不含皮肤名；语言缺翻译时为空串）
+            names: dict[str, str] = {"kivo": student.get("name", "")}
+            names.update({lang: student.get(f"name_{lang}", "") for lang in self.CSV_LANGS})
+
             for page in student.get("pages", []):
                 page_id = page["page_id"]
-                skin_name = page.get("skin_name", "")
-                skin_name_cn = page.get("skin_name_cn", "")
-                skin_name_jp = page.get("skin_name_jp", "")
-                skin_name_tw = page.get("skin_name_tw", "")
 
+                # 页面级各语言皮肤名（kivo 为源数据）
+                skins: dict[str, str] = {"kivo": page.get("skin", "")}
+                skins.update({lang: page.get(f"skin_{lang}", "") for lang in self.CSV_LANGS})
 
                 # 处理该页面的所有spine
                 forms_map: dict[str, StudentForm] = {}
@@ -498,52 +525,36 @@ class CsvGenerator:
 
                     spine_remark = spine_data.get("remark", "")
 
-                    # 构建各语言名称
-                    base_name = student.get("name", "")
-                    base_name_cn = student.get("name_cn", "")
-                    base_name_jp = student.get("name_jp", "")
-                    base_name_tw = student.get("name_tw", "")
-                    base_name_en = student.get("name_en", "")
-                    base_name_kr = student.get("name_kr", "")
-
-                    # 处理备注（用于full_name）
-                    exclude_list = [skin_name, skin_name_cn, skin_name_jp, skin_name_tw,
-                                    base_name, base_name_cn, base_name_jp, base_name_tw,
-                                    base_name_en, base_name_kr]
+                    # 处理备注（用于full_kivo）：结果与任一名字/皮肤名相同时置空
+                    exclude_list = list(names.values()) + list(skins.values())
                     processed_remark = self._process_spine_remark(spine_remark, exclude_list)
 
-                    # 构建完整名称（包含皮肤）
-                    def build_full_name(base: str, skin: str, remark: str) -> str:
+                    # 构建完整名称（包含皮肤）：英文用半角括号且括号前带空格（空格同时是断行点），其余语言用全角
+                    def build_full_name(base: str, skin: str, remark: str, lang: str) -> str:
                         if not base:
                             return ""
                         parts = [s for s in [skin, remark] if s]
                         if parts:
-                            return f"{base}（{','.join(parts)}）"
+                            l, r = (" (", ")") if lang == "en" else ("（", "）")
+                            return f"{base}{l}{','.join(parts)}{r}"
                         return base
 
-                    # full_name: 使用 skin_name + remark
-                    full_name = build_full_name(base_name, skin_name, processed_remark)
-                    # name_cn/jp/tw: 只使用对应语言的皮肤名，不加remark
-                    name_cn = build_full_name(base_name_cn, skin_name_cn, "")
-                    name_jp = build_full_name(base_name_jp, skin_name_jp, "")
-                    name_tw = build_full_name(base_name_tw, skin_name_tw, "")
+                    # 按语言构造 full/name/skin 三元组：
+                    # full_x = name_x + skin_x，仅 full_kivo 额外拼入备注；语言缺翻译时 full_x/name_x 输出空串
+                    triple: dict[str, str] = {}
+                    for lang in ("kivo", *self.CSV_LANGS):
+                        remark = processed_remark if lang == "kivo" else ""
+                        triple[f"full_{lang}"] = build_full_name(names[lang], skins[lang], remark, lang)
+                        triple[f"name_{lang}"] = names[lang]
+                        triple[f"skin_{lang}"] = skins[lang]
 
-                    # skin_name: 只使用页面的皮肤名
-                    # spine_remark: 使用处理后的spine备注
                     form = StudentForm(
                         file_id=file_id,
                         student_id=student_id,
                         page_id=page_id,
                         spine_id=spine_id,
-                        full_name=full_name,
-                        name=base_name,
-                        skin_name=skin_name,
                         spine_remark=processed_remark,
-                        name_cn=name_cn,
-                        name_jp=name_jp,
-                        name_tw=name_tw,
-                        name_en=base_name_en,
-                        name_kr=base_name_kr,
+                        **triple,
                         school_id=school_id,
                         school_name=school_name
                     )
