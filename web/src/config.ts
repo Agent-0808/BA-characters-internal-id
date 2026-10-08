@@ -17,7 +17,7 @@ export const CLICK_FX_CONFIG: ClickFXConfig = {
   clickEnabled: true,
   trailEnabled: true,
   trailAlways: false, // 默认只在按下时显示拖尾
-  opacity: 1,
+  opacity: 0.2,
   scale: 1,
 };
 
@@ -128,6 +128,7 @@ export function saveUiSettings(settings: UiSettings): void {
     localStorage.setItem(UI_SETTINGS_STORAGE_KEY, JSON.stringify(settings));
   } catch {
     // localStorage 不可用（如隐私模式），忽略
+    console.warn('localStorage 不可用，无法保存界面设置');
   }
 }
 
@@ -137,8 +138,8 @@ export const COLUMN_CONFIG: ColumnConfig[] = [
   { key: 'file_id', label: 'col.file_id', defaultVisible: true },
   { key: 'student_id', label: 'col.student_id', defaultVisible: true },
   { key: 'page_id', label: 'col.page_id', defaultVisible: true },
-  { key: 'spine_id', label: 'col.spine_id', defaultVisible: true },
-  { key: 'spine_remark', label: 'col.spine_remark', defaultVisible: false },
+  { key: 'spine_id', label: 'col.spine_id', defaultVisible: false },
+  { key: 'spine_remark', label: 'col.spine_remark', defaultVisible: true },
   { key: 'full_kivo', label: 'col.full_kivo', defaultVisible: true },
   { key: 'name_kivo', label: 'col.name_kivo', defaultVisible: false },
   { key: 'skin_kivo', label: 'col.skin_kivo', defaultVisible: false },
