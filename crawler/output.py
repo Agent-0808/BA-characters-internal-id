@@ -529,13 +529,13 @@ class CsvGenerator:
                     exclude_list = list(names.values()) + list(skins.values())
                     processed_remark = self._process_spine_remark(spine_remark, exclude_list)
 
-                    # 构建完整名称（包含皮肤）：英文用半角括号，其余语言用全角
+                    # 构建完整名称（包含皮肤）：英文用半角括号且括号前带空格（空格同时是断行点），其余语言用全角
                     def build_full_name(base: str, skin: str, remark: str, lang: str) -> str:
                         if not base:
                             return ""
                         parts = [s for s in [skin, remark] if s]
                         if parts:
-                            l, r = ("(", ")") if lang == "en" else ("（", "）")
+                            l, r = (" (", ")") if lang == "en" else ("（", "）")
                             return f"{base}{l}{','.join(parts)}{r}"
                         return base
 
