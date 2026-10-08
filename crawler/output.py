@@ -524,13 +524,14 @@ class CsvGenerator:
                     exclude_list = list(names.values()) + list(skins.values())
                     processed_remark = self._process_spine_remark(spine_remark, exclude_list)
 
-                    # 构建完整名称（包含皮肤）
-                    def build_full_name(base: str, skin: str, remark: str) -> str:
+                    # 构建完整名称（包含皮肤）：英文用半角括号，其余语言用全角
+                    def build_full_name(base: str, skin: str, remark: str, lang: str) -> str:
                         if not base:
                             return ""
                         parts = [s for s in [skin, remark] if s]
                         if parts:
-                            return f"{base}（{','.join(parts)}）"
+                            l, r = ("(", ")") if lang == "en" else ("（", "）")
+                            return f"{base}{l}{','.join(parts)}{r}"
                         return base
 
                     # 按语言构造 full/name/skin 三元组：
@@ -538,7 +539,7 @@ class CsvGenerator:
                     triple: dict[str, str] = {}
                     for lang in ("kivo", *self.CSV_LANGS):
                         remark = processed_remark if lang == "kivo" else ""
-                        triple[f"full_{lang}"] = build_full_name(names[lang], skins[lang], remark)
+                        triple[f"full_{lang}"] = build_full_name(names[lang], skins[lang], remark, lang)
                         triple[f"name_{lang}"] = names[lang]
                         triple[f"skin_{lang}"] = skins[lang]
 
