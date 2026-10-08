@@ -26,7 +26,7 @@ README.md           本文件
 
 ## students_data.csv
 
-扁平化的角色信息列表，一行对应一个 Spine 文件，共 15 列。
+扁平化的角色信息列表，一行对应一个 Spine 文件，共 25 列。语言列按数据可得性递减排列（kivo → jp → kr → en → tw → cn），每种语言一组 `full_*` / `name_*` / `skin_*` 三元组。
 
 | 列              | 说明                                 |
 | -------------- | ---------------------------------- |
@@ -34,47 +34,59 @@ README.md           本文件
 | `student_id`   | 角色 ID，取该角色所有页面 ID 的最小值             |
 | `page_id`      | KivoWiki 页面 ID，一个角色可能有多个页面（对应不同皮肤） |
 | `spine_id`     | Spine 资源 ID，一个页面可能有多个 Spine        |
-| `full_name`    | 完整名称，由角色名、皮肤名与备注拼接而成               |
-| `name`         | 角色名                                |
-| `skin_name`    | 皮肤名                                |
-| `spine_remark` | Spine 备注，数据源提供的原始中文备注              |
-| `name_cn`      | 国服名称，角色名与皮肤名拼接                     |
-| `name_jp`      | 日服名称，角色名与皮肤名拼接                     |
-| `name_tw`      | 繁中服名称，角色名与皮肤名拼接                    |
-| `name_en`      | 国际服角色名（数据源未提供英文皮肤名，因此不含皮肤名）        |
-| `name_kr`      | 韩服角色名（数据源未提供韩文皮肤名，因此不含皮肤名）         |
+| `spine_remark` | Spine 备注，数据源提供的中文备注经规则清洗后的结果（仅拼入 `full_kivo`） |
+| `full_kivo`    | 完整名称（kivo 源语言），角色名 + 皮肤名 + 备注      |
+| `name_kivo`    | 角色名（kivo 源数据，不含皮肤名）                |
+| `skin_kivo`    | 皮肤名（kivo 源数据）                      |
+| `full_jp`      | 日文完整名，角色名 + 皮肤名（不含备注）              |
+| `name_jp`      | 日文角色名                              |
+| `skin_jp`      | 日文皮肤名                              |
+| `full_kr`      | 韩文完整名，角色名 + 皮肤名（不含备注）              |
+| `name_kr`      | 韩文角色名                              |
+| `skin_kr`      | 韩文皮肤名                              |
+| `full_en`      | 英文完整名，角色名 + 皮肤名（不含备注）              |
+| `name_en`      | 英文角色名                              |
+| `skin_en`      | 英文皮肤名（由词表映射）                       |
+| `full_tw`      | 繁体中文完整名，角色名 + 皮肤名（不含备注）            |
+| `name_tw`      | 繁体中文角色名                            |
+| `skin_tw`      | 繁体中文皮肤名                            |
+| `full_cn`      | 简体中文（国服）完整名，角色名 + 皮肤名（不含备注）        |
+| `name_cn`      | 简体中文（国服）角色名                        |
+| `skin_cn`      | 简体中文（国服）皮肤名                        |
 | `school_id`    | 学校 ID                              |
 | `school_name`  | 学校名称                               |
 
 拼接规则：
 
-- `full_name` = 角色名 + 皮肤名 + 备注；
-- `name_cn` / `name_jp` / `name_tw` = 对应语言角色名 + 对应语言皮肤名。
-- `name_en` / `name_kr` : 仅包含角色名
-- 皮肤名为空时，拼接结果即角色名本身。
+- `full_kivo` = `name_kivo` + `skin_kivo` + `spine_remark`，格式为「角色名（皮肤名,备注）」；
+- 其余 `full_x` = `name_x` + `skin_x`，格式同上但不拼备注（备注为数据源人工标注的中文，难以对应翻译）；英文 `full_en` 使用半角括号，其余语言使用全角括号；
+- 皮肤名或备注为空时自动省略对应部分，皮肤名为空时 `full_x` 即纯角色名；
+- 某语言角色名缺失时，该语言的 `name_x` / `full_x` 输出空串（`name_kivo` 必有值）。
 
 
 ## students.json
 
-角色信息列表，字段化组织，页面的 `spines` 数组引用 `spines.json` 中的 ID。以下为一个角色的示例：
+角色信息列表，字段化组织，页面的 `spines` 数组引用 `spines.json` 中的 ID。名字段按数据可得性递减排列（jp → kr → en → tw → cn）。以下为一个角色的示例：
 
 ```json
 {
   "id": 6,
   "name": "月雪 宫子",
-  "name_cn": "月雪 宫子",
   "name_jp": "月雪 ミヤコ",
-  "name_en": "Tsukiyuki Miyako",
   "name_kr": "츠키유키 미야코",
+  "name_en": "Tsukiyuki Miyako",
   "name_tw": "月雪 都子",
+  "name_cn": "月雪 宫子",
   "school_id": 11,
   "pages": [
     {
       "page_id": 6,
-      "skin_name": "",
-      "skin_name_cn": "",
-      "skin_name_jp": "",
-      "skin_name_tw": "",
+      "skin": "",
+      "skin_jp": "",
+      "skin_kr": "",
+      "skin_en": "",
+      "skin_tw": "",
+      "skin_cn": "",
       "avatar": "//static.kivo.wiki/images/students/%E6%9C%88%E9%9B%AA%E5%AE%AB%E5%AD%90/avatar.png",
       "spines": [506, 345, 189, 598],
       "is_install": true,
@@ -86,10 +98,12 @@ README.md           本文件
     },
     {
       "page_id": 280,
-      "skin_name": "泳装",
-      "skin_name_cn": "泳装",
-      "skin_name_jp": "水着",
-      "skin_name_tw": "泳裝",
+      "skin": "泳装",
+      "skin_jp": "水着",
+      "skin_kr": "수영복",
+      "skin_en": "Swimsuit",
+      "skin_tw": "泳裝",
+      "skin_cn": "泳装",
       "avatar": "//static.kivo.wiki/images/students/%E6%9C%88%E9%9B%AA%20%E5%AE%AB%E5%AD%90/%E6%B3%B3%E8%A3%85/avatar.png",
       "spines": [1473, 526],
       "is_install": true,
@@ -103,9 +117,9 @@ README.md           本文件
 }
 ```
 
-- 角色级字段：`id`（角色 ID）、`name` / `name_cn` / `name_jp` / `name_en` / `name_kr` / `name_tw`（角色名）、`school_id`、`pages`。
-- 页面级字段：`page_id`、`skin_name` 与各语言皮肤名、`avatar`（头像 URL）、`spines`（Spine ID 列表）、`is_install` / `is_install_cn` / `is_install_global`（各服实装状态）、`is_npc`、`rarity`（星级）、`limited`（是否限定）。
-- 页面级皮肤名：`skin_name` 为数据源原始命名，`skin_name_cn` / `skin_name_jp` / `skin_name_tw` 为各语言皮肤名；角色默认形态或数据源未提供对应语言时为空字符串。
+- 角色级字段：`id`（角色 ID）、`name`（kivo 源数据角色名）与 `name_jp` / `name_kr` / `name_en` / `name_tw` / `name_cn`（各语言角色名）、`school_id`、`pages`。
+- 页面级字段：`page_id`、`skin` 与各语言皮肤名、`avatar`（头像 URL）、`spines`（Spine ID 列表）、`is_install` / `is_install_cn` / `is_install_global`（各服实装状态）、`is_npc`、`rarity`（星级）、`limited`（是否限定）。
+- 页面级皮肤名：`skin` 为数据源原始命名（中文），`skin_jp` / `skin_kr` / `skin_en` / `skin_tw` / `skin_cn` 为各语言皮肤名（顺序同为数据可得性递减；en/kr 由维护词表映射，其余语言网站数据优先、词表兜底）；角色默认形态或未覆盖时为空字符串。
 
 ## 其他文件
 
