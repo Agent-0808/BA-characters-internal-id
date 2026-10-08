@@ -33,6 +33,17 @@ const elements = {
 // 列显示配置的 localStorage key
 const COLUMN_VISIBILITY_KEY = 'ba-column-visibility';
 
+// 全局搜索覆盖的列（文件ID + 各语言的 full/name/skin 三元组）
+const SEARCH_KEYS: (keyof StudentData)[] = [
+  'file_id',
+  'full_kivo', 'name_kivo', 'skin_kivo',
+  'full_jp', 'name_jp', 'skin_jp',
+  'full_kr', 'name_kr', 'skin_kr',
+  'full_en', 'name_en', 'skin_en',
+  'full_tw', 'name_tw', 'skin_tw',
+  'full_cn', 'name_cn', 'skin_cn',
+];
+
 // 从 localStorage 读取已保存的列显示配置（含废弃 key，由调用方过滤）
 function loadSavedColumnVisibility(): Partial<ColumnVisibility> | null {
   try {
@@ -105,9 +116,9 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'spine_id' && getUiSettings().spineLink) {
       const url = `https://api.kivo.wiki/api/v1/data/spines/${value}`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
-    } else if (col.key === 'name') {
+    } else if (col.key === 'name_kivo') {
       return `<td data-col="${col.key}"><strong>${value}</strong></td>`;
-    } else if (col.key === 'skin_kivo') {
+    } else if (typeof col.key === 'string' && col.key.startsWith('skin_')) {
       return `<td data-col="${col.key}">${value || '-'}</td>`;
     } else if (col.key === 'school_name') {
       // 渲染学校 logo + 名称（名称按当前界面语言取名，见 schoolNames.ts），
@@ -198,16 +209,9 @@ function applyFilters(): void {
   const searchTerm = elements.searchInput.value.toLowerCase();
 
   filteredData = allData.filter(row => {
-    // 全局搜索
+    // 全局搜索（覆盖 full_* / name_* / skin_* 与 file_id）
     const matchSearch = !searchTerm ||
-      row.name?.toLowerCase().includes(searchTerm) ||
-      row.full_name?.toLowerCase().includes(searchTerm) ||
-      row.name_cn?.toLowerCase().includes(searchTerm) ||
-      row.name_jp?.toLowerCase().includes(searchTerm) ||
-      row.name_tw?.toLowerCase().includes(searchTerm) ||
-      row.name_en?.toLowerCase().includes(searchTerm) ||
-      row.name_kr?.toLowerCase().includes(searchTerm) ||
-      row.file_id?.toLowerCase().includes(searchTerm);
+      SEARCH_KEYS.some(key => row[key]?.toLowerCase().includes(searchTerm));
 
     // 学校筛选（多选，来自共享组件）
     const selected = schoolFilter?.selected;

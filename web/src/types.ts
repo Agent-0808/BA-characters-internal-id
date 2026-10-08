@@ -1,18 +1,29 @@
-// 学生数据结构
+// 学生数据结构（CSV 行，25 列；语言列按数据可得性递减：kivo → jp → kr → en → tw → cn，
+// 每种语言一组 full/name/skin 三元组，full = name + skin，仅 full_kivo 额外拼入 spine_remark）
 export interface StudentData {
   file_id: string;
   student_id: string;
   page_id: string;
   spine_id: string;
-  full_name: string;
-  name: string;
-  skin_kivo: string;
   spine_remark: string;
-  name_cn: string;
+  full_kivo: string;
+  name_kivo: string;
+  skin_kivo: string;
+  full_jp: string;
   name_jp: string;
-  name_tw: string;
-  name_en: string;
+  skin_jp: string;
+  full_kr: string;
   name_kr: string;
+  skin_kr: string;
+  full_en: string;
+  name_en: string;
+  skin_en: string;
+  full_tw: string;
+  name_tw: string;
+  skin_tw: string;
+  full_cn: string;
+  name_cn: string;
+  skin_cn: string;
   school_id: string;
   school_name: string;
   [key: string]: string;  // 允许其他字符串属性

@@ -343,6 +343,9 @@ class StudentAggregator:
 class CsvGenerator:
     """从中间JSON文件生成最终CSV"""
 
+    # CSV 语言列顺序（kivo 为源数据置于最前，其余按数据可得性递减）
+    CSV_LANGS: tuple[str, ...] = ("jp", "kr", "en", "tw", "cn")
+
     # Spine跳过规则
     SPINE_KEYWORDS_TO_SKIP: list[str] = ["toschool", "minori", "ui_"]
     SPINE_SUFFIXES_TO_SKIP: list[str] = [
@@ -476,13 +479,16 @@ class CsvGenerator:
             school_id = student.get("school_id", 0)
             school_name = self.schools_map.get(school_id, "")
 
+            # 学生级各语言基础名（kivo 为源数据，不含皮肤名；语言缺翻译时为空串）
+            names: dict[str, str] = {"kivo": student.get("name", "")}
+            names.update({lang: student.get(f"name_{lang}", "") for lang in self.CSV_LANGS})
+
             for page in student.get("pages", []):
                 page_id = page["page_id"]
-                skin = page.get("skin", "")
-                skin_cn = page.get("skin_cn", "")
-                skin_jp = page.get("skin_jp", "")
-                skin_tw = page.get("skin_tw", "")
 
+                # 页面级各语言皮肤名（kivo 为源数据）
+                skins: dict[str, str] = {"kivo": page.get("skin", "")}
+                skins.update({lang: page.get(f"skin_{lang}", "") for lang in self.CSV_LANGS})
 
                 # 处理该页面的所有spine
                 forms_map: dict[str, StudentForm] = {}
@@ -514,18 +520,8 @@ class CsvGenerator:
 
                     spine_remark = spine_data.get("remark", "")
 
-                    # 构建各语言名称
-                    base_name = student.get("name", "")
-                    base_name_cn = student.get("name_cn", "")
-                    base_name_jp = student.get("name_jp", "")
-                    base_name_tw = student.get("name_tw", "")
-                    base_name_en = student.get("name_en", "")
-                    base_name_kr = student.get("name_kr", "")
-
-                    # 处理备注（用于full_name）
-                    exclude_list = [skin, skin_cn, skin_jp, skin_tw,
-                                    base_name, base_name_cn, base_name_jp, base_name_tw,
-                                    base_name_en, base_name_kr]
+                    # 处理备注（用于full_kivo）：结果与任一名字/皮肤名相同时置空
+                    exclude_list = list(names.values()) + list(skins.values())
                     processed_remark = self._process_spine_remark(spine_remark, exclude_list)
 
                     # 构建完整名称（包含皮肤）
@@ -537,29 +533,22 @@ class CsvGenerator:
                             return f"{base}（{','.join(parts)}）"
                         return base
 
-                    # full_name: 使用 skin + remark
-                    full_name = build_full_name(base_name, skin, processed_remark)
-                    # name_cn/jp/tw: 只使用对应语言的皮肤名，不加remark
-                    name_cn = build_full_name(base_name_cn, skin_cn, "")
-                    name_jp = build_full_name(base_name_jp, skin_jp, "")
-                    name_tw = build_full_name(base_name_tw, skin_tw, "")
+                    # 按语言构造 full/name/skin 三元组：
+                    # full_x = name_x + skin_x，仅 full_kivo 额外拼入备注；语言缺翻译时 full_x/name_x 输出空串
+                    triple: dict[str, str] = {}
+                    for lang in ("kivo", *self.CSV_LANGS):
+                        remark = processed_remark if lang == "kivo" else ""
+                        triple[f"full_{lang}"] = build_full_name(names[lang], skins[lang], remark)
+                        triple[f"name_{lang}"] = names[lang]
+                        triple[f"skin_{lang}"] = skins[lang]
 
-                    # skin_kivo: 只使用页面的皮肤名
-                    # spine_remark: 使用处理后的spine备注
                     form = StudentForm(
                         file_id=file_id,
                         student_id=student_id,
                         page_id=page_id,
                         spine_id=spine_id,
-                        full_name=full_name,
-                        name=base_name,
-                        skin_kivo=skin,
                         spine_remark=processed_remark,
-                        name_cn=name_cn,
-                        name_jp=name_jp,
-                        name_tw=name_tw,
-                        name_en=base_name_en,
-                        name_kr=base_name_kr,
+                        **triple,
                         school_id=school_id,
                         school_name=school_name
                     )
