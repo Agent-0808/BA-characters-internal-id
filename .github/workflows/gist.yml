@@ -54,17 +54,31 @@ jobs:
           echo "release_url=${RELEASE_URL:-https://github.com/${{ github.repository }}/releases}" >> $GITHUB_OUTPUT
           echo "release_name=${RELEASE_NAME:-${UPDATE_DATE}}" >> $GITHUB_OUTPUT
 
-      - name: 读取 CSV 文件
-        id: csv
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./output/students_data.csv
-
+      # 直接从文件读取 CSV 转换为 Markdown 表格，避免通过 action 输入传递大内容
+      # （action 输入会作为进程参数传递，超过 Linux 单参数 128KiB 限制会报错）
       - name: 转换为 Markdown 表格
-        uses: petems/csv-to-md-table-action@master
-        id: csv-table-output
-        with:
-          csvinput: ${{ steps.csv.outputs.content }}
+        run: |
+          python3 - <<'EOF'
+          import csv
+
+          def esc(cell: str) -> str:
+              # 转义 Markdown 表格中的竖线，换行替换为空格
+              return cell.replace('|', '\\|').replace('\n', ' ').replace('\r', '')
+
+          with open('output/students_data.csv', encoding='utf-8-sig') as f:
+              reader = csv.reader(f)
+              rows = [[esc(cell) for cell in row] for row in reader]
+
+          header, *body = rows
+          lines = [
+              '| ' + ' | '.join(header) + ' |',
+              '| ' + ' | '.join(['---'] * len(header)) + ' |',
+          ]
+          lines += ['| ' + ' | '.join(row) + ' |' for row in body]
+
+          with open('/tmp/table.md', 'w', encoding='utf-8') as f:
+              f.write('\n'.join(lines) + '\n')
+          EOF
 
       - name: 构建 Markdown 文件
         env:
@@ -78,9 +92,7 @@ jobs:
           RELEASE_NAME: ${{ steps.release.outputs.release_name }}
           RELEASE_URL: ${{ steps.release.outputs.release_url }}
         run: |
-          # 生成 markdown 表格临时文件（内容为多行，先落盘再用 sed 插入）
-          echo "${{ steps.csv-table-output.outputs.markdown-table }}" > /tmp/table.md
-
+          # 表格已在上一步生成到 /tmp/table.md
           # 复制模板并替换占位符（注意 REPO_FULL_NAME 需在 REPO_NAME 之前替换）
           cp docs/gist_template.md students_data.md
           sed -i \
@@ -101,5 +113,5 @@ jobs:
         with:
           token: ${{ secrets.GIST_TOKEN }}
           gist_id: ${{ secrets.GIST_ID }}
-          gist_description: "Blue Archive 角色数据表 - 更新于 ${{ steps.release.outputs.update_date }}"
+          gist_description: "Blue Archive Spine Assets Data - Updated on ${{ steps.release.outputs.update_date }}"
           file_path: students_data.md
