@@ -1406,7 +1406,7 @@
         "rarity": 3,
         "limited": false,
         "sd_model_image": "//static.kivo.wiki/images/students/%E6%89%8D%E7%BE%BD%E7%BB%BF/sd_model.png",
-        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E6%89%8D%E7%BE%BD%E7%BB%BF/recollection_lobby_image.jpg",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E6%89%8D%E7%BE%BD%20%E7%BB%BF/original/Image_1791684932332_907.jpg",
         "game_id": 10016,
         "dev_name": "Midori_default"
       },
@@ -2218,7 +2218,7 @@
         "rarity": 3,
         "limited": false,
         "sd_model_image": "//static.kivo.wiki/images/students/%E5%B0%8F%E9%B8%9F%E6%B8%B8%20%E6%98%9F%E9%87%8E/sd_model.png",
-        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E5%B0%8F%E9%B8%9F%E6%B8%B8%20%E6%98%9F%E9%87%8E/original/1.png",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E5%B0%8F%E9%B8%9F%E6%B8%B8%20%E6%98%9F%E9%87%8E/original/Hoshino_home_fix3_Idle_01_1.3726000000000058.jpg",
         "game_id": 10005,
         "dev_name": "Hoshino_default"
       },
@@ -6910,7 +6910,7 @@
         "rarity": 3,
         "limited": false,
         "sd_model_image": "//static.kivo.wiki/images/students/%E7%BE%8E%E7%94%98%20%E5%B0%BC%E7%A6%84/sd_model.png",
-        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E7%BE%8E%E7%94%98%20%E5%A6%AE%E7%A6%84/original/Neru_home_Idle_01_1.0665000000000002.jpg",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E7%BE%8E%E7%94%98%20%E5%A6%AE%E7%A6%84/original/Neru_1.jpg",
         "game_id": 10008,
         "dev_name": "Neru_default"
       },
@@ -9450,7 +9450,7 @@
         "rarity": 1,
         "limited": true,
         "sd_model_image": "",
-        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E5%8D%83%E9%B8%9F%20%E6%BB%A1/original/2.png",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E5%8D%83%E9%B8%9F%20%E6%BB%A1/original/2.jpg",
         "game_id": 16009,
         "dev_name": "CH0113"
       },
