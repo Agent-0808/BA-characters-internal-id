@@ -44,6 +44,21 @@ const SEARCH_KEYS: (keyof StudentData)[] = [
   'full_cn', 'name_cn', 'skin_cn',
 ];
 
+// 词前缀匹配的拉丁字母列：分词后要求查询词命中某个词的开头，
+// 使搜索 Mika 命中 Misono Mika，但不意外命中 Umika / Sumika / Mikamo 中的子串
+const WORD_PREFIX_KEYS: (keyof StudentData)[] = ['full_en', 'name_en', 'skin_en'];
+// 子串匹配的列：中日韩文本与 file_id 无空格分词语义，保留子串匹配
+const SUBSTRING_KEYS: (keyof StudentData)[] = SEARCH_KEYS.filter(k => !WORD_PREFIX_KEYS.includes(k));
+
+// 单个查询词是否命中一行：子串列包含该词，或拉丁列的任一 token 以该词开头
+function matchTerm(row: StudentData, term: string): boolean {
+  if (SUBSTRING_KEYS.some(key => row[key]?.toLowerCase().includes(term))) return true;
+  return WORD_PREFIX_KEYS.some(key => {
+    const value = row[key]?.toLowerCase() ?? '';
+    return value.split(/[^a-z0-9]+/).some(token => token.startsWith(term));
+  });
+}
+
 // 从 localStorage 读取已保存的列显示配置（含废弃 key，由调用方过滤）
 function loadSavedColumnVisibility(): Partial<ColumnVisibility> | null {
   try {
@@ -206,12 +221,12 @@ function sortBy(column: keyof StudentData): void {
 
 // 应用所有筛选条件
 function applyFilters(): void {
-  const searchTerm = elements.searchInput.value.toLowerCase();
+  // 查询按空白分词，各词都需命中（AND）；单字段内匹配规则见 matchTerm
+  const terms = elements.searchInput.value.toLowerCase().split(/\s+/).filter(Boolean);
 
   filteredData = allData.filter(row => {
     // 全局搜索（覆盖 full_* / name_* / skin_* 与 file_id）
-    const matchSearch = !searchTerm ||
-      SEARCH_KEYS.some(key => row[key]?.toLowerCase().includes(searchTerm));
+    const matchSearch = terms.length === 0 || terms.every(term => matchTerm(row, term));
 
     // 学校筛选（多选，来自共享组件）
     const selected = schoolFilter?.selected;
