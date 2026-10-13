@@ -1,5 +1,6 @@
 import { CONFIG } from './config.js';
 import { t } from './i18n.js';
+import { matchesSearch } from './search.js';
 import { getUiSettings } from './settings.js';
 import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
@@ -211,19 +212,20 @@ function collapseAll(): void {
 
 // 应用筛选
 function applyFilters(): void {
-  const searchTerm = elements.searchInput.value.toLowerCase().trim();
   const installFilter = elements.installFilter.value;
 
   filteredStudents = allStudents.filter(student => {
-    // 搜索过滤
-    const matchSearch = !searchTerm ||
-      student.name?.toLowerCase().includes(searchTerm) ||
-      student.name_cn?.toLowerCase().includes(searchTerm) ||
-      student.name_jp?.toLowerCase().includes(searchTerm) ||
-      student.name_en?.toLowerCase().includes(searchTerm) ||
-      student.name_kr?.toLowerCase().includes(searchTerm) ||
-      student.name_tw?.toLowerCase().includes(searchTerm) ||
-      student.id.toString().includes(searchTerm);
+    // 搜索过滤（覆盖各语言名字与 ID），分词 AND 规则见 search.ts，
+    // name_en 做词前缀匹配：搜 Mika 命中 Misono Mika，不意外命中 Umika / Sumika
+    const matchSearch = matchesSearch(
+      [
+        student.name,
+        student.name_cn, student.name_jp, student.name_kr, student.name_tw,
+        student.id.toString(),
+      ],
+      [student.name_en],
+      elements.searchInput.value
+    );
 
     // 学校过滤（多选，来自共享组件）
     const selected = schoolFilter?.selected;
