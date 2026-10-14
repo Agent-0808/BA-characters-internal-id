@@ -133,8 +133,8 @@ function generateStudentCard(student: Student): string {
   const pagesHTML = student.pages.map(page => generatePageHTML(page)).join('');
 
   return `
-    <div class="student-card ${isExpanded ? 'expanded' : ''}" data-student-id="${student.id}" style="border-left:5px solid ${schoolColor.text}">
-      <div class="student-header">
+    <div class="student-card ${isExpanded ? 'expanded' : ''}" data-student-id="${student.id}">
+      <div class="student-header" style="border-left:5px solid ${schoolColor.text}">
         ${avatar ? `<img src="${avatar}" class="student-avatar" alt="" loading="lazy">` : '<div class="student-avatar" style="background:#e2e8f0;"></div>'}
         <div class="student-info">
           <div class="student-name">${student.name}</div>
