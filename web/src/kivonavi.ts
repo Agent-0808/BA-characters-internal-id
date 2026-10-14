@@ -242,6 +242,8 @@ function applyFilters(): void {
       matchInstall = student.pages.some(p => p.is_install_global);
     } else if (installFilter === 'npc') {
       matchInstall = student.pages.some(p => p.is_npc);
+    } else if (installFilter === 'not_npc') {
+      matchInstall = student.pages.some(p => !p.is_npc);
     }
 
     return matchSearch && matchSchool && matchInstall;

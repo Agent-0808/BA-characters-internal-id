@@ -68,6 +68,7 @@
     "installCn": "CN",
     "installGlobal": "Global",
     "installNpc": "NPC",
+    "installNotNpc": "Not NPC",
     "defaultPage": "Default",
     "limited": "🌟 Limited",
     "none": "None",

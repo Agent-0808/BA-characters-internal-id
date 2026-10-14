@@ -68,6 +68,7 @@
     "installCn": "国服",
     "installGlobal": "国际服",
     "installNpc": "NPC",
+    "installNotNpc": "非NPC",
     "defaultPage": "默认",
     "limited": "🌟 限定",
     "none": "无",
