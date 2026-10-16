@@ -5881,7 +5881,7 @@
         "is_install_global": false,
         "is_npc": false,
         "rarity": 3,
-        "limited": true,
+        "limited": false,
         "sd_model_image": "//static.kivo.wiki/images/students/%E9%AC%BC%E6%80%92%E5%B7%9D%20%E9%9C%9E/%E6%B3%B3%E8%A3%85/EnemyInfo_CH0328.png",
         "recollection_lobby_image": "//static.kivo.wiki/images/students/%E9%AC%BC%E6%80%92%E5%B7%9D%20%E9%9C%9E/%E6%B3%B3%E8%A3%85/kasumi_swimsuit_memoriallobby_jp.jpg",
         "game_id": 20061,
