@@ -13,7 +13,11 @@ body {
 }
 
 .container {
-  max-width: 1400px;
+  /* 宽度可由用户拖右缘调整（main.ts initContainerResize），默认宽度与原 max-width 居中效果一致 */
+  position: relative;
+  width: min(1400px, calc(100vw - 30px));
+  min-width: 800px;
+  max-width: calc(100vw - 30px);
   height: calc(100vh - 30px);
   margin: 0 auto;
   background: white;
@@ -22,6 +26,22 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+/* 左右缘拖拽条：不用原生 resize，因其锚定左上角，居中布局下右缘只有一半跟手 */
+.container-resizer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 100%;
+  cursor: ew-resize;
+  z-index: 10;
+}
+
+.container-resizer.left {
+  right: auto;
+  left: 0;
 }
 
 /* 单页双视图容器：占满剩余空间，让内部数据区域（表格/卡片列表）恢复 flex:1 滚动 */
@@ -561,6 +581,13 @@ th[data-col="spine_id"] {
   .container {
     height: calc(100dvh - 16px);
     border-radius: 12px;
+    /* 小屏撑满视口，隐藏拖拽条 */
+    width: auto;
+    min-width: 0;
+  }
+
+  .container-resizer {
+    display: none;
   }
 
   /* 压缩 header 区域（单行布局：标题列排，统计徽章与导航换行居左） */

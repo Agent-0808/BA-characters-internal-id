@@ -12,6 +12,48 @@ import type { Metadata } from './types.js';
 void initI18n(getUiSettings().lang);
 initClickFX();
 initSettingsPanel();
+initContainerResize();
+
+// 容器宽度拖拽：容器 margin auto 居中（中心恒为视口中心），
+// 拖左右缘时按 2*(鼠标x-中心x) 计算宽度，使拖拽侧边缘精确跟随鼠标
+function initContainerResize(): void {
+  const container = document.querySelector('.container') as HTMLElement | null;
+  const resizers = document.querySelectorAll('.container-resizer');
+  if (!container || resizers.length === 0) return;
+
+  let dragging = false;
+  let fromLeft = false;
+  const isMobile = window.matchMedia('(max-width: 768px)');
+
+  resizers.forEach(resizer => {
+    resizer.addEventListener('mousedown', (e) => {
+      if (isMobile.matches) return;
+      e.preventDefault();
+      dragging = true;
+      fromLeft = resizer.classList.contains('left');
+      document.body.style.cursor = 'ew-resize';
+      document.body.style.userSelect = 'none';
+    });
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    // body 左右 padding 各 15px，宽度上限为视口减去该边距
+    const max = document.documentElement.clientWidth - 30;
+    const offset = fromLeft
+      ? document.documentElement.clientWidth / 2 - e.clientX
+      : e.clientX - document.documentElement.clientWidth / 2;
+    const width = Math.min(max, Math.max(800, 2 * offset));
+    container.style.width = `${width}px`;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  });
+}
 
 // 更新页脚右侧的 web / 数据 提交 hash（截取前6位）
 async function loadFooterHashes(): Promise<void> {
