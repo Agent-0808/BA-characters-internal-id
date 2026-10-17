@@ -37,12 +37,16 @@ function getCounter(): Promise<GoatCounter['count'] | null> {
 // 每个页面加载（session）内，每个视图只上报一次（a → b → a 只计 a、b 各一次）
 const countedViews = new Set<string>();
 
-// 上报一次视图访问：index 使用原路径，其余视图追加 /view/视图名 后缀以示区分
+// 规范化基础路径：去掉结尾的 index.html 与尾部斜杠，
+// 避免 /、/index.html、双斜杠等不同访问形态把同一视图的统计拆散
+const BASE_PATH = location.pathname.replace(/\/index\.html?$/i, '').replace(/\/+$/, '');
+
+// 上报一次视图访问：index 使用规范化路径，其余视图追加 /view/视图名 后缀以示区分
 export function countView(view: string): void {
   if (countedViews.has(view)) return;
   countedViews.add(view);
   void getCounter().then((count) => {
     if (!count) return;
-    count({ path: view === 'index' ? location.pathname : `${location.pathname}/view/${view}` });
+    count({ path: view === 'index' ? BASE_PATH : `${BASE_PATH}/view/${view}` });
   });
 }
