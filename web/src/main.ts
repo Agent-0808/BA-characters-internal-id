@@ -1,12 +1,16 @@
 import './style.css';
 import { initClickFX } from './clickFx.js';
 import { initSettingsPanel, getUiSettings } from './settings.js';
+import { CONFIG, saveUiSettings } from './config.js';
 import { initI18n, t } from './i18n.js';
 import { countView } from './goatcounter.js';
 import { initTableView } from './table.js';
 import { initKivoView } from './kivonavi.js';
-import { CONFIG } from './config.js';
 import type { Metadata } from './types.js';
+
+// 容器宽度拖拽的常量（需在下方 initContainerResize() 调用前声明，避免 const TDZ 异常）
+const CONTAINER_MIN_WIDTH = 800;
+const CONTAINER_BODY_PADDING = 30; // body 左右 padding 各 15px
 
 // 初始化 i18n（需先于其他模块发起；内部 await init 完成后自动应用静态文案），随后初始化点击特效与设置面板
 void initI18n(getUiSettings().lang);
@@ -15,11 +19,31 @@ initSettingsPanel();
 initContainerResize();
 
 // 容器宽度拖拽：容器 margin auto 居中（中心恒为视口中心），
-// 拖左右缘时按 2*(鼠标x-中心x) 计算宽度，使拖拽侧边缘精确跟随鼠标
-function initContainerResize(): void {
+// 拖左右缘时按 2*(鼠标x-中心x) 计算宽度，使拖拽侧边缘精确跟随鼠标；
+// 宽度持久化到 UiSettings.containerWidth（0 = 使用 CSS 默认），恢复默认设置时自动还原
+
+// 宽度夹取：下限防过窄，上限不超过视口
+function clampContainerWidth(width: number): number {
+  const max = document.documentElement.clientWidth - CONTAINER_BODY_PADDING;
+  return Math.min(max, Math.max(CONTAINER_MIN_WIDTH, width));
+}
+
+// 应用容器宽度（width <= 0 时清除内联样式，回落 CSS 默认）
+function applyContainerWidth(width: number): void {
   const container = document.querySelector('.container') as HTMLElement | null;
+  if (!container) return;
+  container.style.width = width > 0 ? `${clampContainerWidth(width)}px` : '';
+}
+
+function initContainerResize(): void {
   const resizers = document.querySelectorAll('.container-resizer');
-  if (!container || resizers.length === 0) return;
+  if (resizers.length === 0) return;
+
+  // 启动时恢复持久化的宽度；设置变更（含「恢复默认」）后重新应用
+  applyContainerWidth(getUiSettings().containerWidth);
+  window.addEventListener('ui-settings-changed', () => {
+    applyContainerWidth(getUiSettings().containerWidth);
+  });
 
   let dragging = false;
   let fromLeft = false;
@@ -38,13 +62,10 @@ function initContainerResize(): void {
 
   window.addEventListener('mousemove', (e) => {
     if (!dragging) return;
-    // body 左右 padding 各 15px，宽度上限为视口减去该边距
-    const max = document.documentElement.clientWidth - 30;
     const offset = fromLeft
       ? document.documentElement.clientWidth / 2 - e.clientX
       : e.clientX - document.documentElement.clientWidth / 2;
-    const width = Math.min(max, Math.max(800, 2 * offset));
-    container.style.width = `${width}px`;
+    applyContainerWidth(2 * offset);
   });
 
   window.addEventListener('mouseup', () => {
@@ -52,6 +73,14 @@ function initContainerResize(): void {
     dragging = false;
     document.body.style.cursor = '';
     document.body.style.userSelect = '';
+    // 拖拽结束持久化当前宽度（移动端不触发 dragging，无需额外判断）
+    const container = document.querySelector('.container') as HTMLElement | null;
+    if (container) {
+      const width = clampContainerWidth(parseFloat(container.style.width) || 0);
+      const settings = getUiSettings();
+      settings.containerWidth = width;
+      saveUiSettings(settings);
+    }
   });
 }
 

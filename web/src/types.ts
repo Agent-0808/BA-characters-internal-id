@@ -75,6 +75,7 @@ export interface AppConfig {
 export interface UiSettings {
   spineLink: boolean;  // spine_id 是否渲染为 KivoWiki API 链接
   lang: string;        // 界面语言代码（zh-CN / en-US；debug 为显示键名的调试伪语言）
+  containerWidth: number; // 主容器宽度 px（0 表示未自定义，使用 CSS 默认）
 }
 
 // 蔚蓝档案点击特效配置 (ba-click-fx)

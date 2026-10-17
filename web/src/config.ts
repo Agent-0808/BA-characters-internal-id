@@ -97,6 +97,7 @@ function detectLang(): string {
 export const UI_SETTINGS_DEFAULT: UiSettings = {
   spineLink: false,
   lang: detectLang(),
+  containerWidth: 0,
 };
 
 // 界面设置的 localStorage key
@@ -115,6 +116,9 @@ export function loadUiSettings(): UiSettings {
     }
     if (typeof saved.lang === 'string' && UI_LANGS.some(l => l.code === saved.lang)) {
       settings.lang = saved.lang;
+    }
+    if (typeof saved.containerWidth === 'number' && saved.containerWidth >= 0) {
+      settings.containerWidth = saved.containerWidth;
     }
   } catch {
     // localStorage 不可用或数据损坏时使用默认设置
