@@ -1,5 +1,7 @@
 # BA-characters-internal-id 数据分支
 
+> [回到 main 分支](../main/)
+
 > 本分支由 GitHub Actions 自动生成，请勿直接修改。任何手工提交都会在下一次数据更新时被整体覆盖。
 
 整理了《碧蓝档案》/《蔚蓝档案》/Blue Archive 中角色对应的 Spine 文件 ID，方便解包时确定对应文件名。
@@ -22,39 +24,51 @@ LICENSE-DATA        数据许可协议（CC BY-SA 4.0）
 README.md           本文件
 ```
 
+## 数据源信息说明
+
 数据来源：[基沃托斯古书馆](https://kivo.wiki)（[数据许可协议](https://kivo.wiki/license)）。
 
-## students_data.csv
+- **`name_kivo`** **必有值**：数据源为百科网站，`name_kivo` 取自页面名称，因此能够保证所有条目都拥有该名称。
+- **`spine_remark`** **字段**：`spine_remark` 是数据源为每个 Spine 文件人工标注的中文备注，使得 `file_id` 能够真正被文本描述，是区分同一角色多个 Spine 文件时最有价值的字段。但它同样由百科编辑人工命名，存在随意性，且部分属于差分的变体也没有被标注。
+- **信息完整度**：可玩学生角色的信息基本完整。NPC 类角色（各类市民、杂鱼酱等）的其他语言名称缺失较大，因为它们并没有官方名称。部分 NPC 角色的官方名称见于官方出版的设定集。
+  - 部分早期页面信息填写较随意，例如存在许多将 `file_id` 填入 `name_jp` 的情况，本仓库难以逐一处理，只能等待数据源更新。
+- **各语言名称的出现顺序**：新角色登场后，通常 `name_jp` 最先确定（日服进度最快）；随后是 `name_kr` 与 `name_en`（游戏开发团队为韩国团队，且日服游戏内含完整韩语脚本，因此可获得韩文名；英文名通常可由日语罗马字转写得到，故也较快）；`name_tw` 需等国际服更新后才能确定；`name_cn` 来自进度最慢的国服，最为滞后。
+  - 这也是各文件中语言列按「数据可得性递减」排列的依据。
+- **手动维护的译名**：数据源仅提供 `skin`、`skin_jp`、`skin_tw`、`skin_cn` 四个皮肤名字段，学校名也只有 `name` 与 `name_cn`。因此 `skin_kr` / `skin_en` 由本项目手动维护的翻译词表直接映射，`skin_jp` / `skin_tw` / `skin_cn` 以数据源为准、缺失时由该词表兜底，学校英文名（`schools.json` 的 `name_en` 等）同样由手动维护的词表合并生成。翻译词表存放在 main 分支。
+
+## students\_data.csv
 
 扁平化的角色信息列表，一行对应一个 Spine 文件，共 25 列。语言列按数据可得性递减排列（kivo → jp → kr → en → tw → cn），每种语言一组 `full_*` / `name_*` / `skin_*` 三元组。
 
-| 列              | 说明                                 |
-| -------------- | ---------------------------------- |
-| `file_id`      | 文件 ID，与 Spine 文件一一对应             |
-| `student_id`   | 角色 ID，取该角色所有页面 ID 的最小值             |
-| `page_id`      | KivoWiki 页面 ID，一个角色可能有多个页面（对应不同皮肤） |
-| `spine_id`     | Spine 资源 ID，一个页面可能有多个 Spine        |
-| `spine_remark` | Spine 备注，数据源提供的中文备注经规则清洗后的结果（仅拼入 `full_kivo`） |
-| `full_kivo`    | 完整名称（kivo 源语言），角色名 + 皮肤名 + 备注      |
-| `name_kivo`    | 角色名（kivo 源数据，不含皮肤名）                |
-| `skin_kivo`    | 皮肤名（kivo 源数据）                      |
-| `full_jp`      | 日文完整名，角色名 + 皮肤名（不含备注）              |
-| `name_jp`      | 日文角色名                              |
-| `skin_jp`      | 日文皮肤名                              |
-| `full_kr`      | 韩文完整名，角色名 + 皮肤名（不含备注）              |
-| `name_kr`      | 韩文角色名                              |
-| `skin_kr`      | 韩文皮肤名                              |
-| `full_en`      | 英文完整名，角色名 + 皮肤名（不含备注）              |
-| `name_en`      | 英文角色名                              |
-| `skin_en`      | 英文皮肤名（由词表映射）                       |
-| `full_tw`      | 繁体中文完整名，角色名 + 皮肤名（不含备注）            |
-| `name_tw`      | 繁体中文角色名                            |
-| `skin_tw`      | 繁体中文皮肤名                            |
-| `full_cn`      | 简体中文（国服）完整名，角色名 + 皮肤名（不含备注）        |
-| `name_cn`      | 简体中文（国服）角色名                        |
-| `skin_cn`      | 简体中文（国服）皮肤名                        |
-| `school_id`    | 学校 ID                              |
-| `school_name`  | 学校名称                               |
+`kivo` 列为基沃托斯古书馆（KivoWiki）的主要使用名称，为简体中文的民间名称。由于其含有独有的`spine_remark`，因此其信息最充足，推荐使用此字段作为简体中文名称。
+
+| 列              | 说明                                             |
+| -------------- | ---------------------------------------------- |
+| `file_id`      | 文件 ID，与 Spine 文件一一对应                           |
+| `student_id`   | 角色 ID，取该角色所有页面 ID 的最小值                         |
+| `page_id`      | KivoWiki 页面 ID，一个角色可能有多个页面（对应不同皮肤）             |
+| `spine_id`     | Spine 资源 ID，一个页面可能有多个 Spine                    |
+| `spine_remark` | Spine 备注，数据源提供的中文备注经规则清洗后的结果（用于拼入 `full_kivo`） |
+| `full_kivo`    | 完整名称（KivoWiki 源语言），角色名 + 皮肤名 + 备注              |
+| `name_kivo`    | 角色名（KivoWiki 源数据）                              |
+| `skin_kivo`    | 皮肤名（KivoWiki 源数据）                              |
+| `full_jp`      | 日文完整名，角色名 + 皮肤名                                |
+| `name_jp`      | 日文角色名                                          |
+| `skin_jp`      | 日文皮肤名                                          |
+| `full_kr`      | 韩文完整名，角色名 + 皮肤名                                |
+| `name_kr`      | 韩文角色名                                          |
+| `skin_kr`      | 韩文皮肤名（手动维护）                                    |
+| `full_en`      | 英文完整名，角色名 + 皮肤名                                |
+| `name_en`      | 英文角色名                                          |
+| `skin_en`      | 英文皮肤名（手动维护）                                    |
+| `full_tw`      | 繁体中文完整名，角色名 + 皮肤名                              |
+| `name_tw`      | 繁体中文角色名                                        |
+| `skin_tw`      | 繁体中文皮肤名                                        |
+| `full_cn`      | 简体中文（国服）完整名，角色名 + 皮肤名                          |
+| `name_cn`      | 简体中文（国服）角色名                                    |
+| `skin_cn`      | 简体中文（国服）皮肤名                                    |
+| `school_id`    | 学校 ID                                          |
+| `school_name`  | 学校名称                                           |
 
 拼接规则：
 
@@ -62,7 +76,6 @@ README.md           本文件
 - 其余 `full_x` = `name_x` + `skin_x`，格式同上但不拼备注（备注为数据源人工标注的中文，难以对应翻译）；英文 `full_en` 使用半角括号，其余语言使用全角括号；
 - 皮肤名或备注为空时自动省略对应部分，皮肤名为空时 `full_x` 即纯角色名；
 - 某语言角色名缺失时，该语言的 `name_x` / `full_x` 输出空串（`name_kivo` 必有值）。
-
 
 ## students.json
 
@@ -117,13 +130,13 @@ README.md           本文件
 }
 ```
 
-- 角色级字段：`id`（角色 ID）、`name`（kivo 源数据角色名）与 `name_jp` / `name_kr` / `name_en` / `name_tw` / `name_cn`（各语言角色名）、`school_id`、`pages`。
+- 角色级字段：`id`（角色 ID）、`name`（KivoWiki 源数据角色名）与 `name_jp` / `name_kr` / `name_en` / `name_tw` / `name_cn`（各语言角色名）、`school_id`、`pages`。
 - 页面级字段：`page_id`、`skin` 与各语言皮肤名、`avatar`（头像 URL）、`spines`（Spine ID 列表）、`is_install` / `is_install_cn` / `is_install_global`（各服实装状态）、`is_npc`、`rarity`（星级）、`limited`（是否限定）。
-- 页面级皮肤名：`skin` 为数据源原始命名（中文），`skin_jp` / `skin_kr` / `skin_en` / `skin_tw` / `skin_cn` 为各语言皮肤名（顺序同为数据可得性递减；en/kr 由维护词表映射，其余语言网站数据优先、词表兜底）；角色默认形态或未覆盖时为空字符串。
+- 页面级皮肤名：`skin` 为 KivoWiki 数据源原始命名（中文），`skin_jp` / `skin_kr` / `skin_en` / `skin_tw` / `skin_cn` 为各语言皮肤名（顺序同为数据可得性递减；en/kr 由本项目手动维护的翻译词表映射，其余语言网站数据优先、词表兜底）；角色默认形态或未覆盖时为空字符串。
 
 ## 其他文件
 
-- `schools.json`：学校 ID、名称与徽标 URL 的对应表，用于展示学校 logo。
+- `schools.json`：学校 ID、名称与徽标 URL 的对应表，用于展示学校 logo。多语言学校名（如 `name_en`）由本项目手动维护的翻译词表合并生成，数据源未提供译名。
 - `spines.json`：全部 Spine ID 与变体编号、名称的对应表。
 - `skipped_ids.csv`：爬取过程中被跳过的 ID 及原因，仅供参考。
 

@@ -1212,12 +1212,6 @@
     "type": "spr"
   },
   {
-    "id": 591,
-    "name": "kanna_cbt",
-    "remark": "CBT旧绘废案",
-    "type": "spr"
-  },
-  {
     "id": 592,
     "name": "kirara_cbt",
     "remark": "CBT旧绘废案",
@@ -1248,20 +1242,8 @@
     "type": "spr"
   },
   {
-    "id": 597,
-    "name": "miria_cbt",
-    "remark": "CBT旧绘废案",
-    "type": "spr"
-  },
-  {
     "id": 598,
     "name": "miyako_cbt",
-    "remark": "CBT旧绘废案",
-    "type": "spr"
-  },
-  {
-    "id": 599,
-    "name": "nao_cbt",
     "remark": "CBT旧绘废案",
     "type": "spr"
   },
@@ -1278,20 +1260,8 @@
     "type": "spr"
   },
   {
-    "id": 602,
-    "name": "pei_cbt",
-    "remark": "CBT旧绘废案",
-    "type": "spr"
-  },
-  {
     "id": 603,
     "name": "reizyo_cbt",
-    "remark": "CBT旧绘废案",
-    "type": "spr"
-  },
-  {
-    "id": 605,
-    "name": "rone_CBT",
     "remark": "CBT旧绘废案",
     "type": "spr"
   },
@@ -1304,12 +1274,6 @@
   {
     "id": 607,
     "name": "serika_newyear_old",
-    "remark": "CBT旧绘废案",
-    "type": "spr"
-  },
-  {
-    "id": 608,
-    "name": "yukari_cbt",
     "remark": "CBT旧绘废案",
     "type": "spr"
   },
