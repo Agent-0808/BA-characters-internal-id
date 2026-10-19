@@ -159,8 +159,8 @@ class StudentForm:
 
 @dataclass
 class SkippedRecord:
-    """用于存储跳过的ID及其原因的类"""
-    student_id: int = 0
+    """用于存储跳过的页面ID及其原因的类"""
+    page_id: int = 0
     spine_id: int | None = None
     reason: str = ""
     spine_name: str | None = None

@@ -174,11 +174,26 @@ class StudentAggregator:
     def __init__(self, schools_map: dict[int, dict[str, Any]]):
         self.schools_map = schools_map
 
+    def _student_skip_record(self, kivowiki_id: int, data: dict[str, Any], reason: str) -> SkippedRecord:
+        """构建学生级跳过记录"""
+        school_id = data.get("school", 0)
+        family = data.get("family_name", "")
+        given = data.get("given_name", "")
+        return SkippedRecord(
+            page_id=kivowiki_id,
+            reason=reason,
+            name=f"{family} {given}".strip() if family else given,
+            name_jp=f"{data.get('family_name_jp', '')} {data.get('given_name_jp', '')}".strip(),
+            name_en=f"{data.get('family_name_en', '')} {data.get('given_name_en', '')}".strip(),
+            school=school_id,
+            school_name=self.schools_map.get(school_id, {}).get("name", "")
+        )
+
     def aggregate(
         self, 
         student_cache_data: dict[int, dict[str, Any]],
         spine_cache_data: dict[int, dict[str, Any]]
-    ) -> tuple[list[Student], list[Spine]]:
+    ) -> tuple[list[Student], list[Spine], list[SkippedRecord]]:
         """
         从缓存数据聚合生成学生列表和Spine列表
         
@@ -187,13 +202,14 @@ class StudentAggregator:
             spine_cache_data: Spine ID -> Spine JSON数据
         
         Returns:
-            (学生列表, Spine列表)
+            (学生列表, Spine列表, 学生级跳过记录)
         """
         # 1. 使用 skin_list 进行角色聚合
         # skin_list 中的所有ID属于同一个角色
         processed_ids: set[int] = set()
         students: list[Student] = []
         spines: list[Spine] = []
+        student_skipped: list[SkippedRecord] = []
         seen_spine_ids: set[int] = set()
         # 词表未覆盖的皮肤名（去重），方法末尾汇总告警
         uncovered_skins: set[str] = set()
@@ -213,11 +229,19 @@ class StudentAggregator:
             
             # 跳过特定学校ID（官方账号）
             if data.get("school") == 30:
+                student_skipped.append(self._student_skip_record(kivowiki_id, data, "官方账号"))
                 processed_ids.add(kivowiki_id)
                 continue
             
             # 跳过彩蛋
-            if data.get("id") == 348:
+            if data.get("id") in (16, 348):
+                student_skipped.append(self._student_skip_record(kivowiki_id, data, "彩蛋"))
+                processed_ids.add(kivowiki_id)
+                continue
+
+            # 跳过非正式角色：CBT内测解包角色（main_relation=81 为 CBT 角色专属值）
+            if data.get("main_relation") == 81:
+                student_skipped.append(self._student_skip_record(kivowiki_id, data, "CBT角色"))
                 processed_ids.add(kivowiki_id)
                 continue
 
@@ -342,7 +366,7 @@ class StudentAggregator:
         if uncovered_skins:
             logging.warning(f"skin_map.json 未覆盖 {len(uncovered_skins)} 个皮肤名: {sorted(uncovered_skins)}")
 
-        return students, spines
+        return students, spines, student_skipped
 
 
 class CsvGenerator:
@@ -401,10 +425,13 @@ class CsvGenerator:
         if not remark:
             return ""
 
+        # 含「初始立绘」即为默认立绘，备注无区分意义（含日期后缀变体），直接置空
+        if "初始立绘" in remark:
+            return ""
+
         processed = remark
 
         patterns = [
-            r"初始立绘",
             r"立绘",
             r"差分",
             r"[\(（][^\)）]*?\d{2,4}[年\.][^\)）]*?[\)）]",
@@ -422,10 +449,14 @@ class CsvGenerator:
             processed = re.sub(pat, "", processed)
 
         processed = processed.replace("()", "").replace("（）", "").strip()
-        processed = processed.strip(",， ")
+        processed = processed.strip(",， -–—")
         processed = re.sub(r"[,，]\s*[,，]", ",", processed)
         processed = re.sub(r"[\(（]\s*([^)）]+?)\s*[\)）]", r",\1", processed)
-        processed = processed.strip(",，")
+        processed = processed.strip(",， -–—")
+
+        # 剩余内容全是标点/符号时视为无效备注
+        if not re.search(r"[\w\u4e00-\u9fff]", processed):
+            return ""
 
         replacement_rules = [
             (r"礼服(?:日奈|亚子)", "礼服"),
@@ -464,8 +495,14 @@ class CsvGenerator:
 
         return None
 
-    def generate_student_forms(self) -> tuple[list[StudentForm], list[SkippedRecord]]:
-        """从中间JSON生成StudentForm列表"""
+    def generate_student_forms(
+        self, student_skipped: list[SkippedRecord] | None = None
+    ) -> tuple[list[StudentForm], list[SkippedRecord]]:
+        """从中间JSON生成StudentForm列表
+
+        Args:
+            student_skipped: 聚合阶段产生的学生级跳过记录，合并进跳过列表
+        """
         self.load_intermediate_files()
 
         students_path = OUTPUT_DIR / STUDENTS_OUTPUT_FILENAME
@@ -504,7 +541,7 @@ class CsvGenerator:
                     # 检查是否跳过
                     if skip_reason := self._should_skip_spine(spine_data):
                         all_skipped.append(SkippedRecord(
-                            student_id=student_id,
+                            page_id=page_id,
                             spine_id=spine_id,
                             reason=skip_reason,
                             spine_name=spine_data.get("name"),
@@ -571,6 +608,8 @@ class CsvGenerator:
 
         # 排序
         all_forms.sort(key=lambda x: (x.student_id, x.page_id, x.file_id))
-        all_skipped.sort(key=lambda x: (x.student_id, x.spine_id or -1))
+        # 合并聚合阶段的学生级跳过记录后统一排序
+        all_skipped.extend(student_skipped or [])
+        all_skipped.sort(key=lambda x: (x.page_id, x.spine_id or -1))
 
         return all_forms, all_skipped

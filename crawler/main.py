@@ -26,7 +26,7 @@ from .cache import CacheManager
 from .api import APIClient
 from .output import OutputWriter, StudentAggregator, CsvGenerator
 from .crawler import Crawler
-from .models import School
+from .models import School, SkippedRecord
 
 
 # 日志配置
@@ -36,9 +36,9 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 
 # --- 从缓存生成中间文件 ---
 
-async def generate_intermediate_files(cache_manager: CacheManager):
+async def generate_intermediate_files(cache_manager: CacheManager) -> list[SkippedRecord]:
     """
-    从缓存数据生成中间JSON文件
+    从缓存数据生成中间JSON文件，返回学生级跳过记录
     """
     logging.info("正在从缓存生成中间文件...")
     
@@ -69,7 +69,7 @@ async def generate_intermediate_files(cache_manager: CacheManager):
     
     # 4. 聚合数据
     aggregator = StudentAggregator(schools_map)
-    students, spines = aggregator.aggregate(student_cache_data, spine_cache_data)
+    students, spines, student_skipped = aggregator.aggregate(student_cache_data, spine_cache_data)
     
     # 5. 写入文件
     writer = OutputWriter()
@@ -78,7 +78,7 @@ async def generate_intermediate_files(cache_manager: CacheManager):
     writer.write_spines_json(spines)
     
     logging.info(f"中间文件生成完成：{len(schools_list)} 学校, {len(students)} 学生, {len(spines)} Spine")
-
+    return student_skipped
 
 # --- 爬虫主流程 ---
 
@@ -173,11 +173,11 @@ async def run_crawler(
     # --- 文件写入部分 ---
     
     # 1. 从缓存生成中间文件
-    await generate_intermediate_files(cache_manager)
+    student_skipped = await generate_intermediate_files(cache_manager)
     
     # 2. 从中间文件生成最终CSV
     csv_generator = CsvGenerator()
-    all_student_forms, skipped_records = csv_generator.generate_student_forms()
+    all_student_forms, skipped_records = csv_generator.generate_student_forms(student_skipped)
     
     # 写入 CSV
     writer = OutputWriter()
@@ -242,11 +242,11 @@ async def generate_only():
     cache_manager = CacheManager()
     
     # 1. 生成中间文件
-    await generate_intermediate_files(cache_manager)
+    student_skipped = await generate_intermediate_files(cache_manager)
     
     # 2. 从中间文件生成最终CSV
     csv_generator = CsvGenerator()
-    all_student_forms, skipped_records = csv_generator.generate_student_forms()
+    all_student_forms, skipped_records = csv_generator.generate_student_forms(student_skipped)
     
     # 写入 CSV
     writer = OutputWriter()
