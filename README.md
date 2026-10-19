@@ -1,7 +1,8 @@
 # BA-characters-internal-id 数据分支
 
-> [回到 main 分支](../main/)
+> [回到 main 分支](../../tree/main/)
 
+> [!NOTE]
 > 本分支由 GitHub Actions 自动生成，请勿直接修改。任何手工提交都会在下一次数据更新时被整体覆盖。
 
 整理了《碧蓝档案》/《蔚蓝档案》/Blue Archive 中角色对应的 Spine 文件 ID，方便解包时确定对应文件名。
