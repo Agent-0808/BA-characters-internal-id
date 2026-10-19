@@ -216,6 +216,7 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: "Cache snapshot: ${{ env.CODE_VERSION }}-${{ steps.meta.outputs.date }}"
           keep_files: false
+          enable_jekyll: true
 
       # 将数据推送到 data 分支（保持干净的增量变更历史）
       # 仅当检测到变化或手动强制时运行，保证 data 分支前进必有对应的 Release

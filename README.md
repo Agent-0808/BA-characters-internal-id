@@ -13,7 +13,7 @@
 
 ### 数据
 
-- 本项目的数据文件（包括缓存内容与输出文件）在 `data` 分支中保存。
+- 本项目的数据文件（包括缓存内容与输出文件）在 [data](../data/) 分支中保存。
 - 可以从 [Release](https://github.com/Agent-0808/BA-characters-internal-id/releases) 中下载各版本的数据文件。
 - 数据文件也在 [Github Pages](https://agent-0808.github.io/BA-characters-internal-id/data/) 中托管。
 - 如果您需要直接从URL获取数据（例如被其他项目引用），推荐使用 Github Pages 链接以绕过 Github API 限制。
@@ -31,6 +31,7 @@
 - [students_data.csv](https://agent-0808.github.io/BA-characters-internal-id/data/students_data.csv)：扁平化的角色信息列表，将 Spine 信息进行合并。（主要使用）
 - [skipped_ids.csv](https://agent-0808.github.io/BA-characters-internal-id/data/skipped_ids.csv)：因各种因素跳过不获取信息的列表，仅做参考，不受支持。
 
+详细说明请参考 [数据分支](../data/)。
 
 ### 部署
 
