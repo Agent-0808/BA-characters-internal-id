@@ -13,7 +13,7 @@
 
 ### 数据
 
-- 本项目的数据文件（包括缓存内容与输出文件）在 [data](../data/) 分支中保存。
+- 本项目的数据文件（包括缓存内容与输出文件）在 [data](../../tree/data/) 分支中保存。
 - 可以从 [Release](https://github.com/Agent-0808/BA-characters-internal-id/releases) 中下载各版本的数据文件。
 - 数据文件也在 [Github Pages](https://agent-0808.github.io/BA-characters-internal-id/data/) 中托管。
 - 如果您需要直接从URL获取数据（例如被其他项目引用），推荐使用 Github Pages 链接以绕过 Github API 限制。
