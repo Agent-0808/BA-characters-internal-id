@@ -7126,5 +7126,17 @@
     "name": "CH0252_spr_new",
     "remark": "初始立绘",
     "type": "spr"
+  },
+  {
+    "id": 1915,
+    "name": "NP0306_spr",
+    "remark": "乘务员",
+    "type": "spr"
+  },
+  {
+    "id": 1916,
+    "name": "NP0307_spr",
+    "remark": "乘务员",
+    "type": "spr"
   }
 ]
