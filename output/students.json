@@ -3838,6 +3838,27 @@
         "recollection_lobby_image": "//static.kivo.wiki/images/students/%E9%98%BF%E6%85%88%E8%B0%B7%20%E6%97%A5%E5%AF%8C%E7%BE%8E/%E6%B3%B3%E8%A3%85/CH0058_home_Idle_01_1.7998000000000016.jpg",
         "game_id": 20005,
         "dev_name": "Hihumi_Swimsuit"
+      },
+      {
+        "page_id": 646,
+        "skin": "赛车",
+        "skin_jp": "レーシング",
+        "skin_kr": "",
+        "skin_en": "",
+        "skin_tw": "",
+        "skin_cn": "",
+        "avatar": "//static.kivo.wiki/images/students/%E9%98%BF%E6%85%88%E8%B0%B7%20%E6%97%A5%E5%AF%8C%E7%BE%8E/%E8%B5%9B%E8%BD%A6/1.jpg",
+        "spines": [],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": false,
+        "rarity": 3,
+        "limited": true,
+        "sd_model_image": "",
+        "recollection_lobby_image": "",
+        "game_id": 0,
+        "dev_name": ""
       }
     ]
   },
@@ -11249,7 +11270,7 @@
     "name_kr": "신타니 카이",
     "name_en": "Shintani Kai",
     "name_tw": "申谷 誡",
-    "name_cn": "",
+    "name_cn": "申谷 海",
     "school_id": 7,
     "pages": [
       {
@@ -11428,7 +11449,7 @@
     "name_kr": "하이네",
     "name_en": "Haine",
     "name_tw": "灰音",
-    "name_cn": "",
+    "name_cn": "灰音",
     "school_id": 12,
     "pages": [
       {
@@ -12527,7 +12548,7 @@
     "name_kr": "아라타",
     "name_en": "Arata",
     "name_tw": "新",
-    "name_cn": "",
+    "name_cn": "新",
     "school_id": 9,
     "pages": [
       {
@@ -13079,7 +13100,7 @@
     "name_kr": "색채",
     "name_en": "Chroma",
     "name_tw": "色彩",
-    "name_cn": "",
+    "name_cn": "色彩",
     "school_id": 25,
     "pages": [
       {
@@ -13315,7 +13336,7 @@
     "name_jp": "浅草 ナツキ",
     "name_kr": "아사쿠사 나츠키",
     "name_en": "Asakusa Natsuki",
-    "name_tw": "",
+    "name_tw": "淺草 夏樹",
     "name_cn": "",
     "school_id": 9,
     "pages": [
@@ -13564,7 +13585,7 @@
     "name_kr": "시마 코노카",
     "name_en": "Shima Konoka",
     "name_tw": "志真 木乃香",
-    "name_cn": "",
+    "name_cn": "心华",
     "school_id": 8,
     "pages": [
       {
@@ -13740,7 +13761,7 @@
     "name_kr": "우루시바라 카구야",
     "name_en": "Urushibara Kaguya",
     "name_tw": "漆原 輝夜",
-    "name_cn": "",
+    "name_cn": "漆原 辉夜",
     "school_id": 7,
     "pages": [
       {
@@ -13987,7 +14008,7 @@
     "name_jp": "吾妻 ミライ",
     "name_kr": "아즈마 미라이",
     "name_en": "Azuma Mirai",
-    "name_tw": "未來",
+    "name_tw": "吾妻 未來",
     "name_cn": "未来",
     "school_id": 4,
     "pages": [
@@ -14239,7 +14260,7 @@
     "name_kr": "나나카도 아야메",
     "name_en": "Nanakado Ayame",
     "name_tw": "七稜 菖蒲",
-    "name_cn": "",
+    "name_cn": "七稜 菖蒲",
     "school_id": 9,
     "pages": [
       {
@@ -14276,8 +14297,8 @@
     "name_jp": "土生 アザミ",
     "name_kr": "하부 아자미",
     "name_en": "Habu Azami",
-    "name_tw": "",
-    "name_cn": "",
+    "name_tw": "土生 薊",
+    "name_cn": "土生 蓟",
     "school_id": 9,
     "pages": [
       {
@@ -14335,7 +14356,7 @@
     "name_kr": "최강 일각 라이온",
     "name_en": "SAIKYO IKKAKU RAION",
     "name_tw": "",
-    "name_cn": "",
+    "name_cn": "最强独角狮",
     "school_id": 28,
     "pages": [
       {
@@ -14866,9 +14887,9 @@
     "id": 564,
     "name": "耶索德",
     "name_jp": "イェソド",
-    "name_kr": "",
+    "name_kr": "예소드",
     "name_en": "Yesod",
-    "name_tw": "",
+    "name_tw": "耶索德",
     "name_cn": "",
     "school_id": 21,
     "pages": [
@@ -14899,9 +14920,9 @@
     "id": 578,
     "name": "劳工机器人A",
     "name_jp": "レイバー",
-    "name_kr": "",
-    "name_en": "",
-    "name_tw": "",
+    "name_kr": "레이버",
+    "name_en": "Laborer",
+    "name_tw": "工人",
     "name_cn": "",
     "school_id": 21,
     "pages": [
@@ -14936,7 +14957,7 @@
     "name_jp": "ダアト",
     "name_kr": "다아트",
     "name_en": "Daath",
-    "name_tw": "",
+    "name_tw": "達阿特",
     "name_cn": "",
     "school_id": 21,
     "pages": [
@@ -15041,7 +15062,7 @@
     "name_jp": "羽咋 ツバサ",
     "name_kr": "하네모토 츠바사",
     "name_en": "Hanemoto Tsubasa",
-    "name_tw": "",
+    "name_tw": "羽咋 翼",
     "name_cn": "",
     "school_id": 4,
     "pages": [
@@ -15076,7 +15097,7 @@
     "name_jp": "監原 ミスズ",
     "name_kr": "간바라 미스즈",
     "name_en": "Kanbara Misuzu",
-    "name_tw": "",
+    "name_tw": "監原 美鈴",
     "name_cn": "",
     "school_id": 8,
     "pages": [
@@ -15143,8 +15164,8 @@
     "name": "联邦学生会长？",
     "name_jp": "連邦生徒会長",
     "name_kr": "총학생회장",
-    "name_en": "",
-    "name_tw": "",
+    "name_en": "GSC President",
+    "name_tw": "聯邦學生會長",
     "name_cn": "",
     "school_id": 12,
     "pages": [
@@ -15179,7 +15200,7 @@
     "name_jp": "オーウェル",
     "name_kr": "오웰",
     "name_en": "Orwell",
-    "name_tw": "",
+    "name_tw": "歐威爾",
     "name_cn": "",
     "school_id": 20,
     "pages": [
@@ -15247,9 +15268,9 @@
     "id": 595,
     "name": "扭来扭去",
     "name_jp": "くねくね",
-    "name_kr": "",
-    "name_en": "",
-    "name_tw": "",
+    "name_kr": "쿠네쿠네",
+    "name_en": "Squirming",
+    "name_tw": "扭來扭去",
     "name_cn": "",
     "school_id": 0,
     "pages": [
@@ -15283,8 +15304,8 @@
     "name": "千惠留",
     "name_jp": "チエル",
     "name_kr": "치에루",
-    "name_en": "",
-    "name_tw": "",
+    "name_en": "Chieru",
+    "name_tw": "知繪琉",
     "name_cn": "",
     "school_id": 2,
     "pages": [
@@ -15315,9 +15336,9 @@
     "id": 597,
     "name": "钢桶蟹",
     "name_jp": "ドラム缶ガニ",
-    "name_kr": "",
+    "name_kr": "드럼통 게",
     "name_en": "Drumbarka",
-    "name_tw": "",
+    "name_tw": "鐵桶蟹",
     "name_cn": "",
     "school_id": 23,
     "pages": [
@@ -15349,7 +15370,7 @@
     "name": "鹰野主 水子",
     "name_jp": "鷹野主 スイコ",
     "name_kr": "타카노스 스이코",
-    "name_en": "",
+    "name_en": "Takanosu Suiko",
     "name_tw": "鷹野主 翠子",
     "name_cn": "",
     "school_id": 7,
@@ -15384,7 +15405,7 @@
     "name": "五百雀 和",
     "name_jp": "五百雀 ナゴミ",
     "name_kr": "이오쟈쿠 나고미",
-    "name_en": "",
+    "name_en": "Iojaku Nagomi",
     "name_tw": "五百雀 和美",
     "name_cn": "",
     "school_id": 7,
@@ -15419,7 +15440,7 @@
     "name": "乌头尾 耀子",
     "name_jp": "烏頭尾 ヨウコ",
     "name_kr": "우토 요코",
-    "name_en": "",
+    "name_en": "Utou Youko",
     "name_tw": "烏頭尾 陽子",
     "name_cn": "",
     "school_id": 7,
@@ -16314,12 +16335,12 @@
         "spines": [
           1907
         ],
-        "is_install": false,
+        "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
-        "rarity": 0,
-        "limited": false,
+        "rarity": 1,
+        "limited": true,
         "sd_model_image": "",
         "recollection_lobby_image": "",
         "game_id": 0,
