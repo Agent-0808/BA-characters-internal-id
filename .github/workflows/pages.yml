@@ -57,6 +57,9 @@ jobs:
             fi
           fi
 
+          # 皮肤译名词表以 main 分支最新版本为准（数据分支的副本可能滞后于词表更新）
+          cp crawler/skin_map.json web/public/data/skin_map.json
+
           # 发布数据许可文本到数据目录
           cp LICENSE-DATA web/public/data/LICENSE-DATA.txt
 
@@ -95,7 +98,7 @@ jobs:
       - name: 打包数据 zip
         run: |
           cd web/public/data
-          zip -q BA-Characters-Internal-ID.zip students.json spines.json students_data.csv skipped_ids.csv LICENSE-DATA.txt metadata.json
+          zip -q BA-Characters-Internal-ID.zip students.json spines.json students_data.csv skipped_ids.csv skin_map.json LICENSE-DATA.txt metadata.json
           echo "数据 zip 打包完成："
           ls -lh BA-Characters-Internal-ID.zip
 

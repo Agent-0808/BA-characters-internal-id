@@ -196,6 +196,9 @@ jobs:
             cp -r cache deployment_folder/
           fi
 
+          # 手动维护的皮肤译名词表随数据发布（维护在 main 分支，供下游翻译等场景使用）
+          cp crawler/skin_map.json deployment_folder/output/
+
           # 发布 data 分支说明文档与数据许可到分支根目录
           # 源文件维护在 main 分支，data 分支内容整体由本步骤生成
           cp docs/readme-data-branch.md deployment_folder/README.md
@@ -263,12 +266,13 @@ jobs:
         run: |
           mkdir -p release_assets
           cp output/students.json output/spines.json output/students_data.csv output/skipped_ids.csv release_assets/
+          cp crawler/skin_map.json release_assets/
 
           # zip 内统一命名为 LICENSE-DATA.txt，与 Pages 的 data/ 目录保持一致
           cp LICENSE-DATA release_assets/LICENSE-DATA.txt
 
-          # 查询推送后的 data 分支 commit hash
-          DATA_COMMIT_HASH=$(gh api "repos/$GITHUB_REPOSITORY/branches/data" --jq '.object.sha' 2>/dev/null || echo "unknown")
+          # 查询推送后的 data 分支 commit hash（branches API 的字段为 commit.sha）
+          DATA_COMMIT_HASH=$(gh api "repos/$GITHUB_REPOSITORY/branches/data" --jq '.commit.sha' 2>/dev/null || echo "unknown")
 
           # metadata.json 字段与 pages.yml 生成的 data/metadata.json 保持一致
           cat > release_assets/metadata.json << EOF
@@ -284,7 +288,7 @@ jobs:
 
           # 文件名固定，保证 Pages 侧下载 URL 稳定
           cd release_assets
-          zip -q BA-Characters-Internal-ID.zip students.json spines.json students_data.csv skipped_ids.csv LICENSE-DATA.txt metadata.json
+          zip -q BA-Characters-Internal-ID.zip students.json spines.json students_data.csv skipped_ids.csv skin_map.json LICENSE-DATA.txt metadata.json
           echo "Release 附件打包完成："
           ls -lh BA-Characters-Internal-ID.zip
         env:
@@ -305,6 +309,7 @@ jobs:
             output/skipped_ids.csv
             output/students.json
             output/spines.json
+            release_assets/skin_map.json
             release_assets/BA-Characters-Internal-ID.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
