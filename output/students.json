@@ -1682,7 +1682,7 @@
           1161
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -14429,7 +14429,7 @@
           1091
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -14465,7 +14465,7 @@
           1090
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -14607,7 +14607,7 @@
           1173
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -14821,7 +14821,7 @@
           1174
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
@@ -14857,7 +14857,7 @@
           1175
         ],
         "is_install": true,
-        "is_install_cn": false,
+        "is_install_cn": true,
         "is_install_global": true,
         "is_npc": false,
         "rarity": 3,
