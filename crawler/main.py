@@ -142,12 +142,16 @@ async def run_crawler(
             window_size = RECENT_UPDATED_WINDOW_WITH_NEW_IDS if new_ids else RECENT_UPDATED_WINDOW
             candidates, server_time = await client.fetch_recently_updated_ids(page_size=window_size)
             probed_ids, advance = await crawler.probe_updated_pages(candidates, watermark, window_size)
-            # 探测顺利（触及边界或候选未满窗口）才推进水位线，否则下次运行重新探测
+            # 探测顺利（触及边界、候选未满窗口或首次探测）才推进水位线，否则下次运行重新探测
             if server_time is not None and advance:
                 new_watermark = server_time
 
         # 模式三：执行爬取（仅更新缓存）
         page_ids = list(range(1, remote_max_student_id + 1))
+
+        # 刷不到持有 skin_list 的父页面，需展开新增页面所属角色的全部页面
+        if new_ids:
+            new_ids = await crawler.expand_new_page_ids(new_ids)
 
         if new_ids or probed_ids:
             logging.info("检测到更新，开始增量刷新数据...")

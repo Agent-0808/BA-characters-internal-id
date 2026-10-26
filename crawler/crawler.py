@@ -147,6 +147,30 @@ class Crawler:
 
         return success_count, fail_count
 
+    async def expand_new_page_ids(self, new_ids: set[int]) -> set[int]:
+        """展开新增页面所属角色的全部页面ID。
+
+        Kivo 新增皮肤页时不会更新同角色其他页面的 updated_at（例如学生 3
+        新增赛车皮肤页 645 时，页面 3 的 updated_at 保持不变），增量探测按
+        updated_at 降序取候选会漏掉这些页面，因此强制刷新新增页面并展开
+        其 skin_list 中的所有同角色页面一并强制刷新。
+
+        Returns:
+            新增页面及其同角色页面的并集（包含原新增页面）
+        """
+        expanded = set(new_ids)
+        for page_id in sorted(new_ids):
+            json_data, error, _ = await self.client.fetch_student_data(page_id, force_refresh=True)
+            await asyncio.sleep(self.delay)
+            if not json_data:
+                logging.warning(f"展开新增页面 {page_id} 失败: {error}，跳过该页面的角色展开")
+                continue
+            skin_list = json_data.get("data", {}).get("skin_list", [])
+            sibling_ids = {item["id"] for item in skin_list if isinstance(item.get("id"), int)}
+            expanded.update(sibling_ids)
+            logging.info(f"新增页面 {page_id} 所属角色共 {len(sibling_ids)} 个页面: {sorted(sibling_ids)}")
+        return expanded
+
     async def probe_updated_pages(
         self,
         candidate_ids: list[int],
@@ -167,7 +191,7 @@ class Crawler:
 
         Returns:
             (已刷新的页面ID集合, 是否可推进水位线)
-            可推进 = 全部候选探测顺利，且（触及边界 或 候选数未满窗口）
+            可推进 = 全部候选探测顺利，且（触及边界 或 候选数未满窗口 或 水位线为 None 的首次探测）
         """
         if not candidate_ids:
             return set(), True
@@ -196,7 +220,12 @@ class Crawler:
                 boundary_hit = True
                 break
 
-        # 存在失败时不推进水位线，已刷新页面下次运行会再次探测（无副作用）
-        advance = not failed and (boundary_hit or len(candidate_ids) < window_size)
+        # 存在失败时不推进水位线，已刷新页面下次运行会再次探测（无副作用）；
+        # 首次探测（水位线为 None）无法触发边界判断，若候选全部成功则以本次
+        # 服务器时间作为新水位线（候选已覆盖窗口内全部更新），解除水位线
+        # 永远为 None 的死锁
+        advance = not failed and (
+            boundary_hit or len(candidate_ids) < window_size or watermark is None
+        )
         logging.info(f"增量探测完成: 刷新 {len(refreshed)} 个页面, 水位线{'可' if advance else '不可'}推进")
         return refreshed, advance
