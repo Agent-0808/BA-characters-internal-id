@@ -20,6 +20,7 @@ output/             已发布的数据产物
   schools.json        学校信息，包含名称与徽标 URL
   spines.json         所有 Spine 文件 ID 的列表，包含变体的编号与名称
   skipped_ids.csv     因各种因素跳过不获取信息的列表，仅做参考，不受支持
+  skin_map.json       皮肤译名词表，原始皮肤名到各语言译名的映射（手动维护）
 cache/              爬取缓存（增量更新用，不属于数据产物）
 LICENSE-DATA        数据许可协议（CC BY-SA 4.0）
 README.md           本文件
@@ -140,6 +141,7 @@ README.md           本文件
 - `schools.json`：学校 ID、名称与徽标 URL 的对应表，用于展示学校 logo。多语言学校名（如 `name_en`）由本项目手动维护的翻译词表合并生成，数据源未提供译名。
 - `spines.json`：全部 Spine ID 与变体编号、名称的对应表。
 - `skipped_ids.csv`：爬取过程中被跳过的 ID 及原因，仅供参考。
+- `skin_map.json`：手动维护的皮肤译名词表，键为数据源的原始皮肤名（`skin` 字段），值为 `jp` / `kr` / `en` / `tw` / `cn` 各语言译名的映射，维护于 main 分支的 `crawler/skin_map.json`。适用于翻译项目、游戏内显示等需要查询原始皮肤名对应译名的场景；`students.json` 与 `students_data.csv` 中的皮肤译名即由该词表兜底生成。
 
 ## 更新机制
 
