@@ -225,17 +225,20 @@
         "skin_tw": "賽車",
         "skin_cn": "赛车",
         "avatar": "//static.kivo.wiki/images/students/%E7%99%BD%E6%B4%B2%20%E6%A2%93/original/8EAB83518515B360020F309E3659A183.png",
-        "spines": [],
+        "spines": [
+          1922,
+          1920
+        ],
         "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
         "rarity": 3,
         "limited": true,
-        "sd_model_image": "",
-        "recollection_lobby_image": "",
-        "game_id": 0,
-        "dev_name": ""
+        "sd_model_image": "//static.kivo.wiki/images/students/%E7%99%BD%E6%B4%B2%20%E6%A2%93/%E8%B5%9B%E8%BD%A6/EnemyInfo_CH0380.png",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E7%99%BD%E6%B4%B2%20%E6%A2%93/%E8%B5%9B%E8%BD%A6/CH0380_home_Idle_01_3.655138030883794.jpg",
+        "game_id": 20063,
+        "dev_name": "CH0380"
       }
     ]
   },
@@ -3869,17 +3872,20 @@
         "skin_tw": "賽車",
         "skin_cn": "赛车",
         "avatar": "//static.kivo.wiki/images/students/%E9%98%BF%E6%85%88%E8%B0%B7%20%E6%97%A5%E5%AF%8C%E7%BE%8E/%E8%B5%9B%E8%BD%A6/1.jpg",
-        "spines": [],
+        "spines": [
+          1921,
+          1918
+        ],
         "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
         "is_npc": false,
         "rarity": 3,
         "limited": true,
-        "sd_model_image": "",
-        "recollection_lobby_image": "",
-        "game_id": 0,
-        "dev_name": ""
+        "sd_model_image": "//static.kivo.wiki/images/students/%E9%98%BF%E6%85%88%E8%B0%B7%20%E6%97%A5%E5%AF%8C%E7%BE%8E/%E8%B5%9B%E8%BD%A6/EnemyInfo_CH0379.png",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E9%98%BF%E6%85%88%E8%B0%B7%20%E6%97%A5%E5%AF%8C%E7%BE%8E/%E8%B5%9B%E8%BD%A6/CH0379_home_Idle_01_1.jpg",
+        "game_id": 10153,
+        "dev_name": "CH0379"
       }
     ]
   },
@@ -16352,9 +16358,10 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%E5%8F%A4%E7%95%91%20%E3%83%A9%E3%83%8A/original/0233.jpg",
+        "avatar": "//static.kivo.wiki/images/students/%E5%8F%A4%E7%95%91%20%E5%85%B0%E5%A8%9C/original/Student_Portrait_CH0322_Collection.png",
         "spines": [
-          1907
+          1907,
+          1919
         ],
         "is_install": true,
         "is_install_cn": false,
@@ -16362,9 +16369,9 @@
         "is_npc": false,
         "rarity": 1,
         "limited": true,
-        "sd_model_image": "",
-        "recollection_lobby_image": "",
-        "game_id": 0,
+        "sd_model_image": "//static.kivo.wiki/images/students/%E5%8F%A4%E7%95%91%20%E5%85%B0%E5%A8%9C/original/EnemyInfo_CH0322.png",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E5%8F%A4%E7%95%91%20%E5%85%B0%E5%A8%9C/original/CH0322_home_Idle_01_1.jpg",
+        "game_id": 26017,
         "dev_name": "CH0322"
       }
     ]

@@ -7138,5 +7138,35 @@
     "name": "NP0307_spr",
     "remark": "乘务员",
     "type": "spr"
+  },
+  {
+    "id": 1918,
+    "name": "CH0379_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1919,
+    "name": "CH0322_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1920,
+    "name": "CH0380_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1921,
+    "name": "CH0379_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1922,
+    "name": "CH0380_spr",
+    "remark": "初始立绘",
+    "type": "spr"
   }
 ]
