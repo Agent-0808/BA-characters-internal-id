@@ -341,19 +341,21 @@ class StudentAggregator:
             # 构建学生数据
             school_id = data.get("school", 0)
             
-            # 构建名称
-            family_name = data.get("family_name", "")
-            given_name = data.get("given_name", "")
-            name = f"{family_name} {given_name}".strip() if family_name else given_name
-
+            # 姓与名分离存储（tw 取源字段 *_zh_tw，cn 单独输出不做省略合并）
             students.append(Student(
                 id=student_id,
-                name=name,
-                name_cn=f"{data.get('family_name_cn', '')} {data.get('given_name_cn', '')}".strip(),
-                name_jp=f"{data.get('family_name_jp', '')} {data.get('given_name_jp', '')}".strip(),
-                name_en=f"{data.get('family_name_en', '')} {data.get('given_name_en', '')}".strip(),
-                name_kr=f"{data.get('family_name_kr', '')} {data.get('given_name_kr', '')}".strip(),
-                name_tw=f"{data.get('family_name_zh_tw', '')} {data.get('given_name_zh_tw', '')}".strip(),
+                family_name=data.get("family_name", ""),
+                given_name=data.get("given_name", ""),
+                family_name_jp=data.get("family_name_jp", ""),
+                given_name_jp=data.get("given_name_jp", ""),
+                family_name_kr=data.get("family_name_kr", ""),
+                given_name_kr=data.get("given_name_kr", ""),
+                family_name_en=data.get("family_name_en", ""),
+                given_name_en=data.get("given_name_en", ""),
+                family_name_tw=data.get("family_name_zh_tw", ""),
+                given_name_tw=data.get("given_name_zh_tw", ""),
+                family_name_cn=data.get("family_name_cn", ""),
+                given_name_cn=data.get("given_name_cn", ""),
                 school_id=school_id,
                 pages=pages
             ))
@@ -374,6 +376,34 @@ class CsvGenerator:
 
     # CSV 语言列顺序（kivo 为源数据置于最前，其余按数据可得性递减）
     CSV_LANGS: tuple[str, ...] = ("jp", "kr", "en", "tw", "cn")
+
+    # 各语言完整名称拼接规则（与 web/src/nameFormat.ts 保持一致）：
+    # lang: (姓与名连接符, 左括号, 右括号, 括号前是否有空格)；kivo 按 cn 规则
+    NAME_FORMATS: dict[str, tuple[str, str, str, bool]] = {
+        "jp": ("", "（", "）", False),
+        "tw": ("", "(", ")", False),
+        "cn": ("", "(", ")", False),
+        "kr": (" ", "(", ")", False),
+        "en": (" ", "(", ")", True),
+    }
+
+    @classmethod
+    def build_full_name(cls, lang: str, family: str, given: str, skin: str, remark: str = "") -> str:
+        """拼接完整名称（full_x 派生列）：姓+名 + 括号包裹的[皮肤名,备注]（均空则不加括号）"""
+        separator, left, right, space_before = cls.NAME_FORMATS.get(lang, cls.NAME_FORMATS["cn"])
+        if not family:
+            base = given
+        elif not given:
+            base = family
+        else:
+            base = family + separator + given
+        if not base:
+            return ""
+        parts = [p for p in (skin, remark) if p]
+        if not parts:
+            return base
+        space = " " if space_before else ""
+        return f"{base}{space}{left}{','.join(parts)}{right}"
 
     # Spine跳过规则
     SPINE_KEYWORDS_TO_SKIP: list[str] = ["toschool", "minori", "ui_"]
@@ -521,9 +551,18 @@ class CsvGenerator:
             school_id = student.get("school_id", 0)
             school_name = self.schools_map.get(school_id, "")
 
-            # 学生级各语言基础名（kivo 为源数据，不含皮肤名；语言缺翻译时为空串）
-            names: dict[str, str] = {"kivo": student.get("name", "")}
-            names.update({lang: student.get(f"name_{lang}", "") for lang in self.CSV_LANGS})
+            # 学生级各语言姓/名（kivo 为源数据，不含皮肤名；语言缺翻译时为空串）
+            families: dict[str, str] = {"kivo": student.get("family_name", "")}
+            givens: dict[str, str] = {"kivo": student.get("given_name", "")}
+            for lang in self.CSV_LANGS:
+                # tw 后缀在 students.json 中统一为 _tw（取自源字段 *_zh_tw）
+                families[lang] = student.get(f"family_name_{lang}", "")
+                givens[lang] = student.get(f"given_name_{lang}", "")
+
+            # 诊断用拼接名（skipped_ids.csv 保留原有格式：空格连接，缺姓时仅名）
+            def join_name(lang: str) -> str:
+                family, given = families[lang], givens[lang]
+                return f"{family} {given}".strip() if family else given
 
             for page in student.get("pages", []):
                 page_id = page["page_id"]
@@ -546,9 +585,9 @@ class CsvGenerator:
                             reason=skip_reason,
                             spine_name=spine_data.get("name"),
                             spine_remark=spine_data.get("remark", ""),
-                            name=student.get("name", ""),
-                            name_jp=student.get("name_jp", ""),
-                            name_en=student.get("name_en", ""),
+                            name=join_name("kivo"),
+                            name_jp=join_name("jp"),
+                            name_en=join_name("en"),
                             school=school_id,
                             school_name=school_name
                         ))
@@ -562,28 +601,20 @@ class CsvGenerator:
 
                     spine_remark = spine_data.get("remark", "")
 
-                    # 处理备注（用于full_kivo）：结果与任一名字/皮肤名相同时置空
-                    exclude_list = list(names.values()) + list(skins.values())
+                    # 处理备注（用于kivo展示时的拼接去重）：结果与任一姓/名/皮肤名相同时置空
+                    exclude_list = list(families.values()) + list(givens.values()) + list(skins.values())
                     processed_remark = self._process_spine_remark(spine_remark, exclude_list)
 
-                    # 构建完整名称（包含皮肤）：英文用半角括号且括号前带空格（空格同时是断行点），其余语言用全角
-                    def build_full_name(base: str, skin: str, remark: str, lang: str) -> str:
-                        if not base:
-                            return ""
-                        parts = [s for s in [skin, remark] if s]
-                        if parts:
-                            l, r = (" (", ")") if lang == "en" else ("（", "）")
-                            return f"{base}{l}{','.join(parts)}{r}"
-                        return base
-
-                    # 按语言构造 full/name/skin 三元组：
-                    # full_x = name_x + skin_x，仅 full_kivo 额外拼入备注；语言缺翻译时 full_x/name_x 输出空串
-                    triple: dict[str, str] = {}
+                    # 按语言构造 full/family/given/skin（full 为便利派生列，仅 kivo 组拼接备注）
+                    cols: dict[str, str] = {}
                     for lang in ("kivo", *self.CSV_LANGS):
-                        remark = processed_remark if lang == "kivo" else ""
-                        triple[f"full_{lang}"] = build_full_name(names[lang], skins[lang], remark, lang)
-                        triple[f"name_{lang}"] = names[lang]
-                        triple[f"skin_{lang}"] = skins[lang]
+                        cols[f"full_{lang}"] = self.build_full_name(
+                            lang, families[lang], givens[lang], skins[lang],
+                            processed_remark if lang == "kivo" else ""
+                        )
+                        cols[f"family_{lang}"] = families[lang]
+                        cols[f"given_{lang}"] = givens[lang]
+                        cols[f"skin_{lang}"] = skins[lang]
 
                     form = StudentForm(
                         file_id=file_id,
@@ -591,7 +622,7 @@ class CsvGenerator:
                         page_id=page_id,
                         spine_id=spine_id,
                         spine_remark=processed_remark,
-                        **triple,
+                        **cols,
                         school_id=school_id,
                         school_name=school_name
                     )

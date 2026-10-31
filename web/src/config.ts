@@ -96,6 +96,7 @@ function detectLang(): string {
 // 界面设置默认值（lang 由浏览器语言自动检测）
 export const UI_SETTINGS_DEFAULT: UiSettings = {
   spineLink: false,
+  showFamilyName: true,
   lang: detectLang(),
   containerWidth: 0,
 };
@@ -113,6 +114,9 @@ export function loadUiSettings(): UiSettings {
     if (typeof saved !== 'object' || saved === null) return settings;
     if (typeof saved.spineLink === 'boolean') {
       settings.spineLink = saved.spineLink;
+    }
+    if (typeof saved.showFamilyName === 'boolean') {
+      settings.showFamilyName = saved.showFamilyName;
     }
     if (typeof saved.lang === 'string' && UI_LANGS.some(l => l.code === saved.lang)) {
       settings.lang = saved.lang;
@@ -137,7 +141,8 @@ export function saveUiSettings(settings: UiSettings): void {
 }
 
 // 列配置 - 定义所有列的信息（label 为 i18n key，渲染时经 t() 翻译）
-// 列顺序与 students_data.csv 的 25 列一致（kivo → jp → kr → en → tw → cn）
+// 列顺序与 students_data.csv 的 25 列一致（kivo → jp → kr → en → tw → cn）；
+// full_* 为计算列（CSV 中不存在，渲染/排序时经 nameFormat.ts 由 family/given/skin/remark 现算）
 export const COLUMN_CONFIG: ColumnConfig[] = [
   { key: 'file_id', label: 'col.file_id', defaultVisible: true },
   { key: 'student_id', label: 'col.student_id', defaultVisible: true },
@@ -145,22 +150,28 @@ export const COLUMN_CONFIG: ColumnConfig[] = [
   { key: 'spine_id', label: 'col.spine_id', defaultVisible: false },
   { key: 'spine_remark', label: 'col.spine_remark', defaultVisible: true },
   { key: 'full_kivo', label: 'col.full_kivo', defaultVisible: true },
-  { key: 'name_kivo', label: 'col.name_kivo', defaultVisible: false },
+  { key: 'family_kivo', label: 'col.family_kivo', defaultVisible: false },
+  { key: 'given_kivo', label: 'col.given_kivo', defaultVisible: false },
   { key: 'skin_kivo', label: 'col.skin_kivo', defaultVisible: false },
   { key: 'full_jp', label: 'col.full_jp', defaultVisible: true },
-  { key: 'name_jp', label: 'col.name_jp', defaultVisible: false },
+  { key: 'family_jp', label: 'col.family_jp', defaultVisible: false },
+  { key: 'given_jp', label: 'col.given_jp', defaultVisible: false },
   { key: 'skin_jp', label: 'col.skin_jp', defaultVisible: false },
   { key: 'full_kr', label: 'col.full_kr', defaultVisible: false },
-  { key: 'name_kr', label: 'col.name_kr', defaultVisible: false },
+  { key: 'family_kr', label: 'col.family_kr', defaultVisible: false },
+  { key: 'given_kr', label: 'col.given_kr', defaultVisible: false },
   { key: 'skin_kr', label: 'col.skin_kr', defaultVisible: false },
   { key: 'full_en', label: 'col.full_en', defaultVisible: true },
-  { key: 'name_en', label: 'col.name_en', defaultVisible: false },
+  { key: 'family_en', label: 'col.family_en', defaultVisible: false },
+  { key: 'given_en', label: 'col.given_en', defaultVisible: false },
   { key: 'skin_en', label: 'col.skin_en', defaultVisible: false },
   { key: 'full_tw', label: 'col.full_tw', defaultVisible: false },
-  { key: 'name_tw', label: 'col.name_tw', defaultVisible: false },
+  { key: 'family_tw', label: 'col.family_tw', defaultVisible: false },
+  { key: 'given_tw', label: 'col.given_tw', defaultVisible: false },
   { key: 'skin_tw', label: 'col.skin_tw', defaultVisible: false },
   { key: 'full_cn', label: 'col.full_cn', defaultVisible: false },
-  { key: 'name_cn', label: 'col.name_cn', defaultVisible: false },
+  { key: 'family_cn', label: 'col.family_cn', defaultVisible: false },
+  { key: 'given_cn', label: 'col.given_cn', defaultVisible: false },
   { key: 'skin_cn', label: 'col.skin_cn', defaultVisible: false },
   { key: 'school_id', label: 'col.school_id', defaultVisible: false },
   { key: 'school_name', label: 'col.school_name', defaultVisible: true }

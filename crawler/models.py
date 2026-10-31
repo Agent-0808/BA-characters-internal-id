@@ -94,14 +94,24 @@ class KivoWikiPage:
 
 @dataclass
 class Student:
-    """学生（角色）数据，包含多个KivoWiki页面（名字段按数据可得性递减排列：jp > kr > en > tw > cn）"""
+    """学生（角色）数据，包含多个KivoWiki页面
+
+    姓与名分离存储（不做拼接），字段后缀按数据可得性递减排列：jp > kr > en > tw > cn；
+    无后缀字段为 kivo 字段（kivowiki 源数据，简体中文民译）。
+    """
     id: int
-    name: str
-    name_jp: str
-    name_kr: str
-    name_en: str
-    name_tw: str
-    name_cn: str
+    family_name: str
+    given_name: str
+    family_name_jp: str
+    given_name_jp: str
+    family_name_kr: str
+    given_name_kr: str
+    family_name_en: str
+    given_name_en: str
+    family_name_tw: str
+    given_name_tw: str
+    family_name_cn: str
+    given_name_cn: str
     school_id: int
     pages: list[KivoWikiPage]
 
@@ -109,12 +119,18 @@ class Student:
         """转换为字典格式，用于JSON输出"""
         return {
             "id": self.id,
-            "name": self.name,
-            "name_jp": self.name_jp,
-            "name_kr": self.name_kr,
-            "name_en": self.name_en,
-            "name_tw": self.name_tw,
-            "name_cn": self.name_cn,
+            "family_name": self.family_name,
+            "given_name": self.given_name,
+            "family_name_jp": self.family_name_jp,
+            "given_name_jp": self.given_name_jp,
+            "family_name_kr": self.family_name_kr,
+            "given_name_kr": self.given_name_kr,
+            "family_name_en": self.family_name_en,
+            "given_name_en": self.given_name_en,
+            "family_name_tw": self.family_name_tw,
+            "given_name_tw": self.given_name_tw,
+            "family_name_cn": self.family_name_cn,
+            "given_name_cn": self.given_name_cn,
             "school_id": self.school_id,
             "pages": [p.to_dict() for p in self.pages]
         }
@@ -124,11 +140,14 @@ class Student:
 
 @dataclass
 class StudentForm:
-    """用于存储单个角色形态结构化数据的类（25列，字段顺序即CSV列序）
+    """用于存储单个角色形态结构化数据的类（31列，字段顺序即CSV列序）
 
     语言列按数据可得性递减排列（kivo → jp → kr → en → tw → cn），
-    每种语言一组 full/name/skin 三元组：full = name + skin（仅 full_kivo 额外拼入 spine_remark），
-    name_x 为学生级基础名（不含皮肤名），skin_x 为页面级皮肤名。
+    每种语言一组 full/family/given/skin 四元组（姓与名分离存储），
+    family_x 为学生级姓氏，given_x 为学生级名字，skin_x 为页面级皮肤名；
+    full_x 为便利派生列，由分量列按各语言的括号/空格规则拼接（规则与
+    web/src/nameFormat.ts 保持一致，仅 kivo 组额外拼接 spine_remark），
+    供外部消费直接使用，也可用分量列自行拼接。
     """
     file_id: str
     student_id: int
@@ -136,22 +155,28 @@ class StudentForm:
     spine_id: int | None
     spine_remark: str
     full_kivo: str
-    name_kivo: str
+    family_kivo: str
+    given_kivo: str
     skin_kivo: str
     full_jp: str
-    name_jp: str
+    family_jp: str
+    given_jp: str
     skin_jp: str
     full_kr: str
-    name_kr: str
+    family_kr: str
+    given_kr: str
     skin_kr: str
     full_en: str
-    name_en: str
+    family_en: str
+    given_en: str
     skin_en: str
     full_tw: str
-    name_tw: str
+    family_tw: str
+    given_tw: str
     skin_tw: str
     full_cn: str
-    name_cn: str
+    family_cn: str
+    given_cn: str
     skin_cn: str
     school_id: int
     school_name: str

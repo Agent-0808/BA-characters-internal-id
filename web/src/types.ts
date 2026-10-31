@@ -1,28 +1,29 @@
 // 学生数据结构（CSV 行，25 列；语言列按数据可得性递减：kivo → jp → kr → en → tw → cn，
-// 每种语言一组 full/name/skin 三元组，full = name + skin，仅 full_kivo 额外拼入 spine_remark）
+// 每种语言一组 family/given/skin 三元组，姓与名分离存储（不做拼接），
+// 完整名称由前端经 nameFormat.ts 按各语言的括号/空格规则现算，仅 kivo 拼接时额外计入 spine_remark）
 export interface StudentData {
   file_id: string;
   student_id: string;
   page_id: string;
   spine_id: string;
   spine_remark: string;
-  full_kivo: string;
-  name_kivo: string;
+  family_kivo: string;
+  given_kivo: string;
   skin_kivo: string;
-  full_jp: string;
-  name_jp: string;
+  family_jp: string;
+  given_jp: string;
   skin_jp: string;
-  full_kr: string;
-  name_kr: string;
+  family_kr: string;
+  given_kr: string;
   skin_kr: string;
-  full_en: string;
-  name_en: string;
+  family_en: string;
+  given_en: string;
   skin_en: string;
-  full_tw: string;
-  name_tw: string;
+  family_tw: string;
+  given_tw: string;
   skin_tw: string;
-  full_cn: string;
-  name_cn: string;
+  family_cn: string;
+  given_cn: string;
   skin_cn: string;
   school_id: string;
   school_name: string;
@@ -74,6 +75,7 @@ export interface AppConfig {
 // 界面设置（localStorage 持久化，与特效无关的通用开关）
 export interface UiSettings {
   spineLink: boolean;  // spine_id 是否渲染为 KivoWiki API 链接
+  showFamilyName: boolean;  // 完整名称中是否显示姓氏（关闭时仅显示名，为游戏内常态）
   lang: string;        // 界面语言代码（zh-CN / en-US；debug 为显示键名的调试伪语言）
   containerWidth: number; // 主容器宽度 px（0 表示未自定义，使用 CSS 默认）
 }
@@ -122,15 +124,22 @@ export interface KivoPage {
   dev_name: string;  // API character_datas.dev_name，资源命名
 }
 
-// 学生数据结构 (来自 students.json)
+// 学生数据结构 (来自 students.json，姓与名分离存储，后缀语言与 skin_x 一致：
+// 无后缀/jp/kr/en/tw/cn；tw 取自 kivo 源字段 *_zh_tw)
 export interface Student {
   id: number;
-  name: string;
-  name_cn: string;
-  name_jp: string;
-  name_en: string;
-  name_kr: string;
-  name_tw: string;
+  family_name: string;
+  given_name: string;
+  family_name_jp: string;
+  given_name_jp: string;
+  family_name_kr: string;
+  given_name_kr: string;
+  family_name_en: string;
+  given_name_en: string;
+  family_name_tw: string;
+  given_name_tw: string;
+  family_name_cn: string;
+  given_name_cn: string;
   school_id: number;
   pages: KivoPage[];
 }

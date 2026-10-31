@@ -7,6 +7,7 @@ import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter, SchoolOption } from './schoolFilter.js';
 import { getSchoolDisplayName } from './schoolNames.js';
+import { fullNameOf } from './nameFormat.js';
 import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
 
 // 状态管理
@@ -34,20 +35,34 @@ const elements = {
 // 列显示配置的 localStorage key
 const COLUMN_VISIBILITY_KEY = 'ba-column-visibility';
 
-// 全局搜索覆盖的列（文件ID + 各语言的 full/name/skin 三元组）
+// 全局搜索覆盖的列（文件ID + 各语言的 family/given/skin 三元组 + 备注；
+// full_* 为拼接结果，分量已全覆盖，无需重复搜索）
 const SEARCH_KEYS: (keyof StudentData)[] = [
-  'file_id',
-  'full_kivo', 'name_kivo', 'skin_kivo',
-  'full_jp', 'name_jp', 'skin_jp',
-  'full_kr', 'name_kr', 'skin_kr',
-  'full_en', 'name_en', 'skin_en',
-  'full_tw', 'name_tw', 'skin_tw',
-  'full_cn', 'name_cn', 'skin_cn',
+  'file_id', 'spine_remark',
+  'family_kivo', 'given_kivo', 'skin_kivo',
+  'family_jp', 'given_jp', 'skin_jp',
+  'family_kr', 'given_kr', 'skin_kr',
+  'family_en', 'given_en', 'skin_en',
+  'family_tw', 'given_tw', 'skin_tw',
+  'family_cn', 'given_cn', 'skin_cn',
 ];
 
 // 词前缀匹配的拉丁字母列（其余 SEARCH_KEYS 列做子串匹配），匹配规则见 search.ts
-const WORD_PREFIX_KEYS: (keyof StudentData)[] = ['full_en', 'name_en', 'skin_en'];
+const WORD_PREFIX_KEYS: (keyof StudentData)[] = ['family_en', 'given_en', 'skin_en'];
 const SUBSTRING_KEYS: (keyof StudentData)[] = SEARCH_KEYS.filter(k => !WORD_PREFIX_KEYS.includes(k));
+
+// full_* 为计算列：由 family/given/skin（kivo 另加 spine_remark）经 nameFormat.ts 现算
+function getCell(row: StudentData, key: keyof StudentData): string {
+  if (typeof key === 'string' && key.startsWith('full_')) {
+    const lang = key.slice('full_'.length);
+    return fullNameOf(
+      row[`family_${lang}`] || '', row[`given_${lang}`] || '',
+      row[`skin_${lang}`] || '', lang === 'kivo' ? row.spine_remark : '',
+      lang, getUiSettings().showFamilyName
+    );
+  }
+  return row[key] || '';
+}
 
 // 从 localStorage 读取已保存的列显示配置（含废弃 key，由调用方过滤）
 function loadSavedColumnVisibility(): Partial<ColumnVisibility> | null {
@@ -108,7 +123,7 @@ function generateHeaderHTML(): string {
 function generateRowHTML(row: StudentData): string {
   return COLUMN_CONFIG.map(col => {
     if (!columnVisibility[col.key]) return '';
-    const value = row[col.key] || '';
+    const value = getCell(row, col.key);
 
     // 特殊处理某些列
     if (col.key === 'file_id') {
@@ -121,7 +136,7 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'spine_id' && getUiSettings().spineLink) {
       const url = `https://api.kivo.wiki/api/v1/data/spines/${value}`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
-    } else if (col.key === 'name_kivo') {
+    } else if (col.key === 'full_kivo') {
       return `<td data-col="${col.key}"><strong>${value}</strong></td>`;
     } else if (typeof col.key === 'string' && col.key.startsWith('skin_')) {
       return `<td data-col="${col.key}">${value || '-'}</td>`;
@@ -186,8 +201,8 @@ function sortBy(column: keyof StudentData): void {
 
   // 排序数据
   filteredData.sort((a, b) => {
-    let valA = a[column] || '';
-    let valB = b[column] || '';
+    let valA = getCell(a, column);
+    let valB = getCell(b, column);
 
     // 尝试数字排序
     const numA = parseFloat(valA);

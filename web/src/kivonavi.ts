@@ -6,6 +6,7 @@ import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
 import { createSchoolFilter } from './schoolFilter.js';
 import type { SchoolFilter } from './schoolFilter.js';
 import { getSchoolDisplayName } from './schoolNames.js';
+import { joinName } from './nameFormat.js';
 import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
 
 // 状态管理
@@ -129,6 +130,8 @@ function generateStudentCard(student: Student): string {
   // 学校配色：左侧色条用深色 text，校徽底座用 bg（配色与图片适配已由配置保证，见 schoolColors.ts）
   const schoolColor = getSchoolColor(student.school_id);
   const isExpanded = expandState[student.id] || false;
+  // 完整名称是否显示姓氏由界面设置控制（见 nameFormat.ts 与设置面板）
+  const showFamily = getUiSettings().showFamilyName;
 
   const pagesHTML = student.pages.map(page => generatePageHTML(page)).join('');
 
@@ -137,8 +140,8 @@ function generateStudentCard(student: Student): string {
       <div class="student-header" style="border-left:5px solid ${schoolColor.text}">
         ${avatar ? `<img src="${avatar}" class="student-avatar" alt="" loading="lazy">` : '<div class="student-avatar" style="background:#e2e8f0;"></div>'}
         <div class="student-info">
-          <div class="student-name">${student.name}</div>
-          <div class="student-name-sub">${student.name_jp || ''}</div>
+          <div class="student-name">${joinName(student.family_name, student.given_name, 'cn', showFamily)}</div>
+          <div class="student-name-sub">${joinName(student.family_name_jp, student.given_name_jp, 'jp', showFamily)}</div>
           <div class="student-meta">${t('kivo.studentMeta', { id: student.id, n: student.pages.length })}</div>
         </div>
         <div class="student-school">
@@ -216,14 +219,18 @@ function applyFilters(): void {
 
   filteredStudents = allStudents.filter(student => {
     // 搜索过滤（覆盖各语言名字与 ID），分词 AND 规则见 search.ts，
-    // name_en 做词前缀匹配：搜 Mika 命中 Misono Mika，不意外命中 Umika / Sumika
+    // en 做词前缀匹配：搜 Mika 命中 Misono Mika，不意外命中 Umika / Sumika
+    const showFamily = getUiSettings().showFamilyName;
     const matchSearch = matchesSearch(
       [
-        student.name,
-        student.name_cn, student.name_jp, student.name_kr, student.name_tw,
+        joinName(student.family_name, student.given_name, 'cn', showFamily),
+        joinName(student.family_name_cn, student.given_name_cn, 'cn', true),
+        joinName(student.family_name_jp, student.given_name_jp, 'jp', true),
+        joinName(student.family_name_kr, student.given_name_kr, 'kr', true),
+        joinName(student.family_name_tw, student.given_name_tw, 'tw', true),
         student.id.toString(),
       ],
-      [student.name_en],
+      [joinName(student.family_name_en, student.given_name_en, 'en', true)],
       elements.searchInput.value
     );
 

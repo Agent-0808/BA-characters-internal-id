@@ -25,13 +25,13 @@
 
 #### 文件内容
 
-- [students.json](https://agent-0808.github.io/BA-characters-internal-id/data/students.json)：所有角色的信息列表，字段化，作为中间格式，引用spine文件ID。
+- [students.json](https://agent-0808.github.io/BA-characters-internal-id/data/students.json)：所有角色的信息列表，字段化（姓与名分离存储），引用spine文件ID。
 - [spines.json](https://agent-0808.github.io/BA-characters-internal-id/data/spines.json)：所有spine文件ID的列表，包含 Spine 变体的编号与名称。
 - [schools.json](https://agent-0808.github.io/BA-characters-internal-id/data/schools.json)：学校信息，包含名称与徽标（URL）。
-- [students_data.csv](https://agent-0808.github.io/BA-characters-internal-id/data/students_data.csv)：扁平化的角色信息列表，将 Spine 信息进行合并。（主要使用）
+- [students_data.csv](https://agent-0808.github.io/BA-characters-internal-id/data/students_data.csv)：扁平化的角色信息列表，将 Spine 信息进行合并，姓与名分离存储，含拼接好的完整名称列。（主要使用）
 - [skipped_ids.csv](https://agent-0808.github.io/BA-characters-internal-id/data/skipped_ids.csv)：因各种因素跳过不获取信息的列表，仅做参考，不受支持。
 
-详细说明请参考 [数据分支](../data/)。
+详细说明请参考 [数据分支](../../tree/data/)。
 
 ### 部署
 

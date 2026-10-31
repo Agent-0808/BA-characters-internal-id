@@ -28,6 +28,13 @@ def load_json(filepath: Path) -> list[dict[str, Any]]:
         return json.load(f)
 
 
+def student_display_name(s: dict[str, Any]) -> str:
+    """学生的显示名（姓+名空格拼接，用于报告展示）"""
+    family = s.get("family_name", "")
+    given = s.get("given_name", "")
+    return f"{family} {given}".strip() if family else given
+
+
 def diff_students(prev_students: list, curr_students: list) -> tuple[list[str], int, int, int]:
     """
     对比students.json变更
@@ -50,7 +57,7 @@ def diff_students(prev_students: list, curr_students: list) -> tuple[list[str], 
     added_count = len(added_ids)
     for sid in sorted(added_ids):
         s = curr_map[sid]
-        lines.append(f"+ {s['name']} (student_id: {sid})")
+        lines.append(f"+ {student_display_name(s)} (student_id: {sid})")
 
     # 学生信息变化（放在中间）
     common_ids = prev_ids & curr_ids
@@ -58,12 +65,12 @@ def diff_students(prev_students: list, curr_students: list) -> tuple[list[str], 
         prev_s = prev_map[sid]
         curr_s = curr_map[sid]
 
-        # 检查学生级别字段变化（排除pages）
-        student_fields = ["name", "name_cn", "name_jp", "name_en", "name_kr", "name_tw", "school_id"]
+        # 检查学生级别字段变化（排除 id 与 pages，覆盖全部姓名/学校字段）
+        student_fields = [k for k in curr_s if k not in ("id", "pages")]
         for field in student_fields:
             if prev_s.get(field) != curr_s.get(field):
                 changed_count += 1
-                lines.append(f"* {curr_s['name']}: {field} [{prev_s.get(field, '')}] → [{curr_s.get(field, '')}]")
+                lines.append(f"* {student_display_name(curr_s)}: {field} [{prev_s.get(field, '')}] → [{curr_s.get(field, '')}]")
 
         # 页面级别变化
         pages_diff, pages_added, pages_removed, pages_changed = diff_pages(prev_s, curr_s)
@@ -75,7 +82,7 @@ def diff_students(prev_students: list, curr_students: list) -> tuple[list[str], 
     removed_count = len(removed_ids)
     for sid in sorted(removed_ids):
         s = prev_map[sid]
-        lines.append(f"- {s['name']} (student_id: {sid})")
+        lines.append(f"- {student_display_name(s)} (student_id: {sid})")
 
     return lines, added_count, removed_count, changed_count
 
@@ -89,7 +96,7 @@ def diff_pages(prev_student: dict, curr_student: dict) -> tuple[list[str], int, 
     added_count = 0
     removed_count = 0
     changed_count = 0
-    student_name = curr_student["name"]
+    student_name = student_display_name(curr_student)
 
     prev_pages = {p["page_id"]: p for p in prev_student.get("pages", [])}
     curr_pages = {p["page_id"]: p for p in curr_student.get("pages", [])}
