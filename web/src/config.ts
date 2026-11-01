@@ -97,6 +97,7 @@ function detectLang(): string {
 export const UI_SETTINGS_DEFAULT: UiSettings = {
   spineLink: false,
   showFamilyName: true,
+  boldFullName: false,
   lang: detectLang(),
   containerWidth: 0,
 };
@@ -117,6 +118,9 @@ export function loadUiSettings(): UiSettings {
     }
     if (typeof saved.showFamilyName === 'boolean') {
       settings.showFamilyName = saved.showFamilyName;
+    }
+    if (typeof saved.boldFullName === 'boolean') {
+      settings.boldFullName = saved.boldFullName;
     }
     if (typeof saved.lang === 'string' && UI_LANGS.some(l => l.code === saved.lang)) {
       settings.lang = saved.lang;

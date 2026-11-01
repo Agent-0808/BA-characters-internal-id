@@ -136,8 +136,10 @@ function generateRowHTML(row: StudentData): string {
     } else if (col.key === 'spine_id' && getUiSettings().spineLink) {
       const url = `https://api.kivo.wiki/api/v1/data/spines/${value}`;
       return `<td data-col="${col.key}"><a href="${url}" target="_blank" rel="noopener">${value}</a></td>`;
-    } else if (col.key === 'full_kivo') {
-      return `<td data-col="${col.key}"><strong>${value}</strong></td>`;
+    } else if (typeof col.key === 'string' && col.key.startsWith('full_')) {
+      // full_* 完整名称列默认不加粗，可经设置开启（full_kivo 为主名称列）
+      const cell = getUiSettings().boldFullName ? `<strong>${value}</strong>` : value;
+      return `<td data-col="${col.key}">${cell}</td>`;
     } else if (typeof col.key === 'string' && col.key.startsWith('skin_')) {
       return `<td data-col="${col.key}">${value || '-'}</td>`;
     } else if (col.key === 'school_name') {

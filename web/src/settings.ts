@@ -41,6 +41,7 @@ const elements = {
   langSelect: document.getElementById('uiLang') as HTMLSelectElement,
   spineLink: document.getElementById('uiSpineLink') as HTMLInputElement,
   showFamilyName: document.getElementById('uiFamilyName') as HTMLInputElement,
+  boldFullName: document.getElementById('uiBoldFullName') as HTMLInputElement,
   enabled: document.getElementById('fxEnabled') as HTMLInputElement,
   clickEnabled: document.getElementById('fxClickEnabled') as HTMLInputElement,
   trailEnabled: document.getElementById('fxTrailEnabled') as HTMLInputElement,
@@ -116,6 +117,7 @@ function resetToDefaults(): void {
   saveUiSettings(uiSettings);
   elements.spineLink.checked = uiSettings.spineLink;
   elements.showFamilyName.checked = uiSettings.showFamilyName;
+  elements.boldFullName.checked = uiSettings.boldFullName;
   elements.langSelect.value = uiSettings.lang;
   void setLang(uiSettings.lang);
   notifyUiSettingsChanged();
@@ -138,6 +140,7 @@ export function initSettingsPanel(): void {
   initLangSelect();
   elements.spineLink.checked = uiSettings.spineLink;
   elements.showFamilyName.checked = uiSettings.showFamilyName;
+  elements.boldFullName.checked = uiSettings.boldFullName;
 
   // 齿轮按钮 / 关闭按钮 / 恢复默认
   elements.settingsBtn.addEventListener('click', () => togglePanel());
@@ -161,6 +164,13 @@ export function initSettingsPanel(): void {
   // 界面设置：完整名称显示姓氏开关（保存 + 广播重渲染）
   elements.showFamilyName.addEventListener('change', () => {
     uiSettings.showFamilyName = elements.showFamilyName.checked;
+    saveUiSettings(uiSettings);
+    notifyUiSettingsChanged();
+  });
+
+  // 界面设置：完整名称加粗开关（保存 + 广播重渲染）
+  elements.boldFullName.addEventListener('change', () => {
+    uiSettings.boldFullName = elements.boldFullName.checked;
     saveUiSettings(uiSettings);
     notifyUiSettingsChanged();
   });

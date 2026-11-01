@@ -96,6 +96,8 @@
     "spineLinkHint": "When checked, spine_id in the table and Spine numbers on the navigation page will be displayed as clickable links",
     "showFamilyName": "Show Family Name in Full Name",
     "showFamilyNameHint": "When checked, full names include the family name; when unchecked, only the given name is shown (consistent with most in-game screens)",
+    "boldFullName": "Bold Full Name",
+    "boldFullNameHint": "When checked, full name columns in the table are displayed in bold",
     "groupClickFx": "Click Effects",
     "fxEnabled": "Enable Click Effects",
     "fxClick": "Click Effect",

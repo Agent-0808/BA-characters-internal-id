@@ -76,6 +76,7 @@ export interface AppConfig {
 export interface UiSettings {
   spineLink: boolean;  // spine_id 是否渲染为 KivoWiki API 链接
   showFamilyName: boolean;  // 完整名称中是否显示姓氏（关闭时仅显示名，为游戏内常态）
+  boldFullName: boolean;  // 表格中 full_* 完整名称列是否加粗
   lang: string;        // 界面语言代码（zh-CN / en-US；debug 为显示键名的调试伪语言）
   containerWidth: number; // 主容器宽度 px（0 表示未自定义，使用 CSS 默认）
 }
