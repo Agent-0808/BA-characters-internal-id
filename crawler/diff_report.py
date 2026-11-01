@@ -19,6 +19,10 @@ PREV_OUTPUT_DIR = Path("prev_output")
 # 报告输出文件名
 DIFF_REPORT_FILENAME = "diff_report.md"
 
+# 报告明细最大行数（GitHub Release body 上限 125000 字符，行数截断留足余量；
+# 大版本结构变更时全量学生都会命中 diff，需防止超限）
+MAX_REPORT_LINES = 800
+
 
 def load_json(filepath: Path) -> list[dict[str, Any]]:
     """加载JSON文件"""
@@ -57,7 +61,7 @@ def diff_students(prev_students: list, curr_students: list) -> tuple[list[str], 
     added_count = len(added_ids)
     for sid in sorted(added_ids):
         s = curr_map[sid]
-        lines.append(f"+ {student_display_name(s)} (student_id: {sid})")
+        lines.append(f"- ➕ {student_display_name(s)} (student_id: {sid})")
 
     # 学生信息变化（放在中间）
     common_ids = prev_ids & curr_ids
@@ -70,7 +74,7 @@ def diff_students(prev_students: list, curr_students: list) -> tuple[list[str], 
         for field in student_fields:
             if prev_s.get(field) != curr_s.get(field):
                 changed_count += 1
-                lines.append(f"* {student_display_name(curr_s)}: {field} [{prev_s.get(field, '')}] → [{curr_s.get(field, '')}]")
+                lines.append(f"- ✏️ {student_display_name(curr_s)}: {field} [{prev_s.get(field, '')}] → [{curr_s.get(field, '')}]")
 
         # 页面级别变化
         pages_diff, pages_added, pages_removed, pages_changed = diff_pages(prev_s, curr_s)
@@ -82,7 +86,7 @@ def diff_students(prev_students: list, curr_students: list) -> tuple[list[str], 
     removed_count = len(removed_ids)
     for sid in sorted(removed_ids):
         s = prev_map[sid]
-        lines.append(f"- {student_display_name(s)} (student_id: {sid})")
+        lines.append(f"- ➖ {student_display_name(s)} (student_id: {sid})")
 
     return lines, added_count, removed_count, changed_count
 
@@ -110,7 +114,7 @@ def diff_pages(prev_student: dict, curr_student: dict) -> tuple[list[str], int, 
     for page_id in sorted(added_page_ids):
         p = curr_pages[page_id]
         skin_name = p.get("skin", "") or "默认"
-        lines.append(f"  + {student_name} - {skin_name} (page_id: {page_id})")
+        lines.append(f"  - ➕ {student_name} - {skin_name} (page_id: {page_id})")
 
     # 页面信息变化（放在中间）
     common_page_ids = prev_page_ids & curr_page_ids
@@ -132,7 +136,7 @@ def diff_pages(prev_student: dict, curr_student: dict) -> tuple[list[str], int, 
                 change_desc.append(f"+spines:{sorted(added_spines)}")
             if removed_spines:
                 change_desc.append(f"-spines:{sorted(removed_spines)}")
-            lines.append(f"  * {student_name} - {skin_name} (page_id: {page_id}): {', '.join(change_desc)}")
+            lines.append(f"  - ✏️ {student_name} - {skin_name} (page_id: {page_id}): {', '.join(change_desc)}")
 
     # 删除页面（放在最后）
     removed_page_ids = prev_page_ids - curr_page_ids
@@ -140,7 +144,7 @@ def diff_pages(prev_student: dict, curr_student: dict) -> tuple[list[str], int, 
     for page_id in sorted(removed_page_ids):
         p = prev_pages[page_id]
         skin_name = p.get("skin", "") or "默认"
-        lines.append(f"  - {student_name} - {skin_name} (page_id: {page_id})")
+        lines.append(f"  - ➖ {student_name} - {skin_name} (page_id: {page_id})")
 
     return lines, added_count, removed_count, changed_count
 
@@ -165,7 +169,7 @@ def diff_spines(prev_spines: list, curr_spines: list) -> tuple[list[str], list[s
         s = curr_map[sid]
         remark = s.get("remark", "")
         remark_str = f" ({remark})" if remark else ""
-        added_lines.append(f"+ {sid}: {s['name']}{remark_str}")
+        added_lines.append(f"- ➕ {sid}: {s['name']}{remark_str}")
 
     # 删除spine（放在最后）
     removed_ids = prev_ids - curr_ids
@@ -173,7 +177,7 @@ def diff_spines(prev_spines: list, curr_spines: list) -> tuple[list[str], list[s
         s = prev_map[sid]
         remark = s.get("remark", "")
         remark_str = f" ({remark})" if remark else ""
-        removed_lines.append(f"- {sid}: {s['name']}{remark_str}")
+        removed_lines.append(f"- ➖ {sid}: {s['name']}{remark_str}")
 
     return added_lines, removed_lines, len(added_ids), len(removed_ids)
 
@@ -193,38 +197,44 @@ def generate_diff_report(prev_dir: Path = PREV_OUTPUT_DIR, curr_dir: Path = OUTP
     student_changes, stu_added, stu_removed, stu_changed = diff_students(prev_students, curr_students)
     spine_added_lines, spine_removed_lines, spine_added, spine_removed = diff_spines(prev_spines, curr_spines)
 
-    # 构建报告
-    report_lines: list[str] = []
+    # 明细部分（大 diff 时可能超长，超出 MAX_REPORT_LINES 统一截断）
+    body_lines: list[str] = []
 
-    report_lines.append("## 数据变更报告")
-    report_lines.append("")
+    body_lines.append("## 数据变更报告")
+    body_lines.append("")
 
     # students变更
-    report_lines.append("### 学生数据变更")
-    report_lines.append("")
+    body_lines.append("### 学生数据变更")
+    body_lines.append("")
     if student_changes:
-        report_lines.extend(student_changes)
+        body_lines.extend(student_changes)
     else:
-        report_lines.append("无变更")
-    report_lines.append("")
+        body_lines.append("无变更")
+    body_lines.append("")
 
     # spines变更
-    report_lines.append("### Spine数据变更")
-    report_lines.append("")
+    body_lines.append("### Spine数据变更")
+    body_lines.append("")
     if spine_added_lines or spine_removed_lines:
         # 新增在前
         if spine_added_lines:
-            report_lines.extend(spine_added_lines)
+            body_lines.extend(spine_added_lines)
         # 删除在后
         if spine_removed_lines:
-            report_lines.extend(spine_removed_lines)
+            body_lines.extend(spine_removed_lines)
     else:
-        report_lines.append("无变更")
-    report_lines.append("")
+        body_lines.append("无变更")
+    body_lines.append("")
+
+    # 超出上限时截断明细（统计部分始终保留）
+    if len(body_lines) > MAX_REPORT_LINES:
+        omitted = len(body_lines) - MAX_REPORT_LINES
+        body_lines = body_lines[:MAX_REPORT_LINES]
+        body_lines.append(f"……变更过多，已省略 {omitted} 条明细")
 
     # 统计信息
-    report_lines.append("### 统计")
-    report_lines.append("")
+    body_lines.append("### 统计")
+    body_lines.append("")
     # 格式: prev→curr (+added -removed *changed)
     def format_stat(prev: int, curr: int, added: int, removed: int, changed: int) -> str:
         if added == 0 and removed == 0 and changed == 0:
@@ -238,10 +248,10 @@ def generate_diff_report(prev_dir: Path = PREV_OUTPUT_DIR, curr_dir: Path = OUTP
             parts.append(f"*{changed}")
         return f"{prev}→{curr} ({' '.join(parts)})"
 
-    report_lines.append(f"- 学生总数: {format_stat(len(prev_students), len(curr_students), stu_added, stu_removed, stu_changed)}")
-    report_lines.append(f"- Spine总数: {format_stat(len(prev_spines), len(curr_spines), spine_added, spine_removed, 0)}")
+    body_lines.append(f"- 学生总数: {format_stat(len(prev_students), len(curr_students), stu_added, stu_removed, stu_changed)}")
+    body_lines.append(f"- Spine总数: {format_stat(len(prev_spines), len(curr_spines), spine_added, spine_removed, 0)}")
 
-    return "\n".join(report_lines)
+    return "\n".join(body_lines)
 
 
 def write_report(report: str, output_path: Path = OUTPUT_DIR / DIFF_REPORT_FILENAME):
