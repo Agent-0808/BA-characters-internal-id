@@ -67,6 +67,14 @@ export function createSchoolFilter(
         </label>
       `;
     });
+    // 末尾固定追加 id=0 的"无数据"选项（schools.json 无该条目；匹配 CSV 中 school_id 为 0 的行）
+    html += `
+      <label class="school-filter-item" data-school="0">
+        <input type="checkbox" data-school="0">
+        <span class="school-filter-logo-placeholder"></span>
+        <span class="school-filter-name">${t('schoolFilter.noSchool')}</span>
+      </label>
+    `;
     html += '</div>';
     elements.dropdown.innerHTML = html;
 

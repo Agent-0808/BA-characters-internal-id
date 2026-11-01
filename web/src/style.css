@@ -316,6 +316,13 @@ body {
   flex-shrink: 0;
 }
 
+/* 无 logo 选项（如 id=0 无数据）的占位，与 logo 尺寸一致以对齐名称 */
+.school-filter-logo-placeholder {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
 .school-filter-name {
   flex: 1;
   white-space: nowrap;

@@ -146,6 +146,10 @@ function generateRowHTML(row: StudentData): string {
       // 渲染学校 logo + 名称（名称按当前界面语言取名，见 schoolNames.ts），
       // 标签底色/文字色按学校 id 着色（见 schoolColors.ts）
       const schoolId = parseInt(row.school_id);
+      if (schoolId === 0) {
+        // 无所属学校（如 くねくね）显示为空单元格
+        return `<td data-col="${col.key}"></td>`;
+      }
       const school = schoolsMap.get(schoolId);
       const displayName = getSchoolDisplayName(school);
       const color = getSchoolColor(schoolId);

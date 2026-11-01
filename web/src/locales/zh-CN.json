@@ -109,6 +109,7 @@
   },
   "schoolFilter": {
     "school": "学校",
-    "title": "选择学校"
+    "title": "选择学校",
+    "noSchool": "无数据"
   }
 }

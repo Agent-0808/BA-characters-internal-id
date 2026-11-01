@@ -109,6 +109,7 @@
   },
   "schoolFilter": {
     "school": "School",
-    "title": "Select Schools"
+    "title": "Select Schools",
+    "noSchool": "No Data"
   }
 }
