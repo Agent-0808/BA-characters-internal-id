@@ -247,6 +247,8 @@ jobs:
       - name: 生成唯一 Release 标签
         if: steps.check_changes.outputs.should_publish == 'true'
         id: release_tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           base_tag="${{ steps.meta.outputs.date }}-${{ env.CODE_VERSION }}"
           tag="$base_tag"
