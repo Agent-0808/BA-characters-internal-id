@@ -18522,5 +18522,44 @@
         "dev_name": "CH0320"
       }
     ]
+  },
+  {
+    "id": 647,
+    "family_name": "",
+    "given_name": "噩梦急行",
+    "family_name_jp": "",
+    "given_name_jp": "ナイトメアトレイン",
+    "family_name_kr": "",
+    "given_name_kr": "",
+    "family_name_en": "",
+    "given_name_en": "Nightmare Train",
+    "family_name_tw": "",
+    "given_name_tw": "悪夢急行",
+    "family_name_cn": "",
+    "given_name_cn": "",
+    "school_id": 23,
+    "pages": [
+      {
+        "page_id": 647,
+        "skin": "",
+        "skin_jp": "",
+        "skin_kr": "",
+        "skin_en": "",
+        "skin_tw": "",
+        "skin_cn": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%99%A9%E6%A2%A6%E6%80%A5%E8%A1%8C/original/EnemyInfo_EN0023_Core.png",
+        "spines": [],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false,
+        "sd_model_image": "//static.kivo.wiki/images/students/%20%E5%99%A9%E6%A2%A6%E6%80%A5%E8%A1%8C/original/EnemyInfo_EN0023_Core.png",
+        "recollection_lobby_image": "",
+        "game_id": 0,
+        "dev_name": ""
+      }
+    ]
   }
 ]
