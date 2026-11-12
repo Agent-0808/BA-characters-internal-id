@@ -18561,5 +18561,46 @@
         "dev_name": ""
       }
     ]
+  },
+  {
+    "id": 648,
+    "family_name": "",
+    "given_name": "气垫船",
+    "family_name_jp": "",
+    "given_name_jp": "ホバ一クラフト",
+    "family_name_kr": "",
+    "given_name_kr": "호버크래프트",
+    "family_name_en": "",
+    "given_name_en": "HoverCraft",
+    "family_name_tw": "",
+    "given_name_tw": "氣墊船",
+    "family_name_cn": "",
+    "given_name_cn": "气垫船",
+    "school_id": 0,
+    "pages": [
+      {
+        "page_id": 648,
+        "skin": "",
+        "skin_jp": "",
+        "skin_kr": "",
+        "skin_en": "",
+        "skin_tw": "",
+        "skin_cn": "",
+        "avatar": "//static.kivo.wiki/images/students/%20%E6%B0%94%E5%9E%AB%E8%88%B9/original/Wakamo_HoverCraft_Original.png",
+        "spines": [
+          742
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "is_npc": true,
+        "rarity": 0,
+        "limited": false,
+        "sd_model_image": "//static.kivo.wiki/images/students/%20%E6%B0%94%E5%9E%AB%E8%88%B9/original/EnemyInfo_Wakamo_HoverCraft_Original.png",
+        "recollection_lobby_image": "",
+        "game_id": 0,
+        "dev_name": ""
+      }
+    ]
   }
 ]
