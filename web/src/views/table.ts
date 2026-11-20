@@ -1,14 +1,14 @@
-import { CONFIG, COLUMN_CONFIG } from './config.js';
-import { parseCSV } from './csvParser.js';
-import { t } from './i18n.js';
-import { matchesSearch } from './search.js';
-import { getUiSettings } from './settings.js';
-import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
-import { createSchoolFilter } from './schoolFilter.js';
-import type { SchoolFilter, SchoolOption } from './schoolFilter.js';
-import { getSchoolDisplayName } from './schoolNames.js';
-import { fullNameOf } from './nameFormat.js';
-import type { StudentData, ColumnVisibility, SortState, Metadata, School } from './types.js';
+import { CONFIG, COLUMN_CONFIG } from '../core/config.js';
+import { parseCSV } from '../utils/csvParser.js';
+import { t } from '../core/i18n.js';
+import { matchesSearch } from '../utils/search.js';
+import { getUiSettings } from '../core/settings.js';
+import { getSchoolColor, getSchoolColorOrNull } from '../utils/schoolColors.js';
+import { createSchoolFilter } from '../ui/schoolFilter.js';
+import type { SchoolFilter, SchoolOption } from '../ui/schoolFilter.js';
+import { getSchoolDisplayName } from '../utils/schoolNames.js';
+import { fullNameOf } from '../utils/nameFormat.js';
+import type { StudentData, ColumnVisibility, SortState, Metadata, School } from '../core/types.js';
 
 // 状态管理
 let allData: StudentData[] = [];

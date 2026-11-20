@@ -377,7 +377,7 @@ class CsvGenerator:
     # CSV 语言列顺序（kivo 为源数据置于最前，其余按数据可得性递减）
     CSV_LANGS: tuple[str, ...] = ("jp", "kr", "en", "tw", "cn")
 
-    # 各语言完整名称拼接规则（与 web/src/nameFormat.ts 保持一致）：
+    # 各语言完整名称拼接规则（与 web/src/utils/nameFormat.ts 保持一致）：
     # lang: (姓与名连接符, 左括号, 右括号, 括号前是否有空格)；kivo 按 cn 规则
     NAME_FORMATS: dict[str, tuple[str, str, str, bool]] = {
         "jp": ("", "（", "）", False),

@@ -146,7 +146,7 @@ class StudentForm:
     每种语言一组 full/family/given/skin 四元组（姓与名分离存储），
     family_x 为学生级姓氏，given_x 为学生级名字，skin_x 为页面级皮肤名；
     full_x 为便利派生列，由分量列按各语言的括号/空格规则拼接（规则与
-    web/src/nameFormat.ts 保持一致，仅 kivo 组额外拼接 spine_remark），
+    web/src/utils/nameFormat.ts 保持一致，仅 kivo 组额外拼接 spine_remark），
     供外部消费直接使用，也可用分量列自行拼接。
     """
     file_id: str

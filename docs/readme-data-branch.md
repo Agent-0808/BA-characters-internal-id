@@ -86,7 +86,7 @@ README.md           本文件
 - 某语言姓名缺失时，该语言的 `family_x` / `given_x` 输出空串（`family_kivo` / `given_kivo` 必有值）。
 
 > [!TIP]
-> 名称拼接规则详见主分支中的 [nameFormat.ts](../../tree/main/web/src/nameFormat.ts)
+> 名称拼接规则详见主分支中的 [nameFormat.ts](../../tree/main/web/src/utils/nameFormat.ts)
 
 ## students.json
 

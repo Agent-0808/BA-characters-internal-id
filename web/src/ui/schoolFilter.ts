@@ -1,10 +1,10 @@
 // 学校多选筛选下拉组件（table 与 kivonavi 共用）
 // 封装：下拉渲染、多选状态、按钮计数、清除全部、按钮定位、点击外部关闭
 
-import { t } from './i18n.js';
-import type { School } from './types.js';
-import { getSchoolDisplayName } from './schoolNames.js';
-import type { SchoolColor } from './schoolColors.js';
+import { t } from '../core/i18n.js';
+import type { School } from '../core/types.js';
+import { getSchoolDisplayName } from '../utils/schoolNames.js';
+import type { SchoolColor } from '../utils/schoolColors.js';
 
 // 学校选项（学校数据 + 可选配色）；名称在渲染时按当前语言实时取名（见 schoolNames.ts）
 export interface SchoolOption {

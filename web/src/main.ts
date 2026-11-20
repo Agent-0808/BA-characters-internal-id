@@ -1,12 +1,12 @@
 import './style.css';
-import { initClickFX } from './clickFx.js';
-import { initSettingsPanel, getUiSettings } from './settings.js';
-import { CONFIG, saveUiSettings } from './config.js';
-import { initI18n, t } from './i18n.js';
-import { countView } from './goatcounter.js';
-import { initTableView } from './table.js';
-import { initKivoView } from './kivonavi.js';
-import type { Metadata } from './types.js';
+import { initClickFX } from './core/clickFx.js';
+import { initSettingsPanel, getUiSettings } from './core/settings.js';
+import { CONFIG, saveUiSettings } from './core/config.js';
+import { initI18n, t } from './core/i18n.js';
+import { countView } from './core/analytics.js';
+import { initTableView } from './views/table.js';
+import { initKivoView } from './views/kivonavi.js';
+import type { Metadata } from './core/types.js';
 
 // 容器宽度拖拽的常量（需在下方 initContainerResize() 调用前声明，避免 const TDZ 异常）
 const CONTAINER_MIN_WIDTH = 800;

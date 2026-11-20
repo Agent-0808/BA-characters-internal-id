@@ -1,13 +1,13 @@
-import { CONFIG } from './config.js';
-import { t } from './i18n.js';
-import { matchesSearch } from './search.js';
-import { getUiSettings } from './settings.js';
-import { getSchoolColor, getSchoolColorOrNull } from './schoolColors.js';
-import { createSchoolFilter } from './schoolFilter.js';
-import type { SchoolFilter } from './schoolFilter.js';
-import { getSchoolDisplayName } from './schoolNames.js';
-import { joinName } from './nameFormat.js';
-import type { Student, KivoPage, School, ExpandState, Metadata } from './types.js';
+import { CONFIG } from '../core/config.js';
+import { t } from '../core/i18n.js';
+import { matchesSearch } from '../utils/search.js';
+import { getUiSettings } from '../core/settings.js';
+import { getSchoolColor, getSchoolColorOrNull } from '../utils/schoolColors.js';
+import { createSchoolFilter } from '../ui/schoolFilter.js';
+import type { SchoolFilter } from '../ui/schoolFilter.js';
+import { getSchoolDisplayName } from '../utils/schoolNames.js';
+import { joinName } from '../utils/nameFormat.js';
+import type { Student, KivoPage, School, ExpandState, Metadata } from '../core/types.js';
 
 // 状态管理
 let allStudents: Student[] = [];
