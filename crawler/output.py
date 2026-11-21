@@ -307,7 +307,6 @@ class StudentAggregator:
                     is_install=page_data.get("is_install", False),
                     is_install_cn=page_data.get("is_install_cn", False),
                     is_install_global=page_data.get("is_install_global", False),
-                    is_npc=page_data.get("is_npc", False),
                     rarity=rarity,
                     limited=limited,
                     # 资产 URL 为 null 时输出空串；game_id/dev_name 取自 character_datas[0]
@@ -357,7 +356,8 @@ class StudentAggregator:
                 family_name_cn=data.get("family_name_cn", ""),
                 given_name_cn=data.get("given_name_cn", ""),
                 school_id=school_id,
-                pages=pages
+                pages=pages,
+                is_npc=data.get("is_npc", False)
             ))
 
         # 按ID排序

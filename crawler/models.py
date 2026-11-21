@@ -59,7 +59,6 @@ class KivoWikiPage:
     is_install: bool = False
     is_install_cn: bool = False
     is_install_global: bool = False
-    is_npc: bool = False
     rarity: int = 0
     limited: bool = False
     sd_model_image: str = ""  # SD模型立绘 URL（页面级资产，缓存未更新时为空）
@@ -82,7 +81,6 @@ class KivoWikiPage:
             "is_install": self.is_install,
             "is_install_cn": self.is_install_cn,
             "is_install_global": self.is_install_global,
-            "is_npc": self.is_npc,
             "rarity": self.rarity,
             "limited": self.limited,
             "sd_model_image": self.sd_model_image,
@@ -114,6 +112,7 @@ class Student:
     given_name_cn: str
     school_id: int
     pages: list[KivoWikiPage]
+    is_npc: bool = False  # 是否 NPC（角色级属性，与皮肤无关）
 
     def to_dict(self) -> dict[str, Any]:
         """转换为字典格式，用于JSON输出"""
@@ -132,6 +131,7 @@ class Student:
             "family_name_cn": self.family_name_cn,
             "given_name_cn": self.given_name_cn,
             "school_id": self.school_id,
+            "is_npc": self.is_npc,
             "pages": [p.to_dict() for p in self.pages]
         }
 

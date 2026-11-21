@@ -116,7 +116,6 @@ export interface KivoPage {
   is_install: boolean;
   is_install_cn: boolean;
   is_install_global: boolean;
-  is_npc: boolean;
   rarity: number;
   limited: boolean;
   sd_model_image: string;
@@ -142,6 +141,7 @@ export interface Student {
   family_name_cn: string;
   given_name_cn: string;
   school_id: number;
+  is_npc: boolean;  // 是否 NPC（角色级属性，与皮肤无关）
   pages: KivoPage[];
 }
 

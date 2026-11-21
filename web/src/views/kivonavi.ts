@@ -72,7 +72,7 @@ function getPageName(page: KivoPage): string {
 }
 
 // 生成Page HTML
-function generatePageHTML(page: KivoPage): string {
+function generatePageHTML(page: KivoPage, isNpc: boolean): string {
   const avatar = getPageAvatar(page);
   const pageName = getPageName(page);
   const kivoUrl = `https://kivo.wiki/data/character/${page.page_id}?mode=appreciation`;
@@ -104,7 +104,7 @@ function generatePageHTML(page: KivoPage): string {
         </div>
       </div>
       <div class="page-tags">
-        ${page.is_npc ? `<span class="tag tag-npc">🚫 ${t('kivo.installNpc')}</span>` : `
+        ${isNpc ? `<span class="tag tag-npc">🚫 ${t('kivo.installNpc')}</span>` : `
           <span class="tag tag-install-jp ${installJpClass}">${installJpIcon} ${t('kivo.installJp')}</span>
           <span class="tag tag-install-global ${installGlobalClass}">${installGlobalIcon} ${t('kivo.installGlobal')}</span>
           <span class="tag tag-install-cn ${installCnClass}">${installCnIcon} ${t('kivo.installCn')}</span>
@@ -133,7 +133,7 @@ function generateStudentCard(student: Student): string {
   // 完整名称是否显示姓氏由界面设置控制（见 nameFormat.ts 与设置面板）
   const showFamily = getUiSettings().showFamilyName;
 
-  const pagesHTML = student.pages.map(page => generatePageHTML(page)).join('');
+  const pagesHTML = student.pages.map(page => generatePageHTML(page, student.is_npc)).join('');
 
   return `
     <div class="student-card ${isExpanded ? 'expanded' : ''}" data-student-id="${student.id}">
@@ -248,9 +248,9 @@ function applyFilters(): void {
     } else if (installFilter === 'global') {
       matchInstall = student.pages.some(p => p.is_install_global);
     } else if (installFilter === 'npc') {
-      matchInstall = student.pages.some(p => p.is_npc);
+      matchInstall = student.is_npc;
     } else if (installFilter === 'not_npc') {
-      matchInstall = student.pages.some(p => !p.is_npc);
+      matchInstall = !student.is_npc;
     }
 
     return matchSearch && matchSchool && matchInstall;
