@@ -407,23 +407,3 @@ a.spine-id:hover {
   gap: 10px;
   flex-wrap: wrap;
 }
-
-.btn {
-  padding: 8px 18px;
-  border: none;
-  border-radius: var(--radius-pill);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.btn-secondary {
-  background: var(--color-surface);
-  color: var(--ba-accent);
-  border: 1.5px solid var(--ba-accent);
-}
-
-.btn-secondary:hover {
-  background: var(--ba-row-hover);
-}

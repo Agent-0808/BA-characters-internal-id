@@ -91,6 +91,8 @@
   "settings": {
     "title": "Settings",
     "groupUi": "Interface",
+    "enabled": "On",
+    "disabled": "Off",
     "language": "🌏 Language",
     "spineLink": "Spine ID as Links",
     "spineLinkHint": "When checked, spine_id in the table and Spine numbers on the navigation page will be displayed as clickable links",

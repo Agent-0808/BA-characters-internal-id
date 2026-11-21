@@ -56,22 +56,7 @@
   border-color: var(--color-accent);
 }
 
-/* 列显示控制按钮（ghost 款胶囊） */
-.column-toggle-btn {
-  padding: 8px 18px;
-  background: var(--color-surface);
-  border: 1.5px solid var(--ba-accent);
-  border-radius: var(--radius-pill);
-  color: var(--ba-accent);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.column-toggle-btn:hover {
-  background: var(--ba-row-hover);
-}
+/* 列显示控制按钮：造型由 .ba-btn--ghost 提供 */
 
 /* 学校筛选下拉 */
 .school-filter-dropdown {
@@ -79,26 +64,11 @@
   display: inline-block;
 }
 
+/* 学校多选按钮：斜切填充造型由 .ba-btn 提供，这里只保留布局 */
 .school-filter-btn {
-  padding: 8px 18px;
-  /* BA 风格：主按钮使用蓝色渐变 */
-  background: var(--gradient-accent);
-  border: 1.5px solid var(--ba-accent-deep);
-  border-radius: var(--radius-pill);
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
+  min-width: 120px;
   gap: 8px;
-  min-width: 100px;
-  box-shadow: 0 2px 6px var(--shadow-card);
-}
-
-.school-filter-btn:hover {
-  filter: brightness(1.06);
+  justify-content: center;
 }
 
 .school-filter-label {
