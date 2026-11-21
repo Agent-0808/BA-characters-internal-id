@@ -1,4 +1,4 @@
-/* ========== 学生卡片页面样式 ========== */
+/* ========== 学生卡片页面样式（BA 风格：斜切头像瓦片 + 整行详情面板） ========== */
 
 .students-container {
   padding: 20px 30px;
@@ -9,217 +9,303 @@
 
 .students-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 14px 12px;
   align-items: start;
 }
 
 @media (max-width: 768px) {
-  .students-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .students-container {
     padding: 15px;
   }
+
+  /* 小屏详情面板改为上下堆叠 */
+  .student-detail {
+    flex-direction: column;
+  }
+
+  .detail-left {
+    width: 100%;
+    text-align: left;
+  }
+
+  .detail-avatar {
+    width: 96px;
+  }
 }
 
-/* 学生卡片 */
-.student-card {
-  background: var(--color-surface);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+/* ---------- 折叠态：头像瓦片 ---------- */
+
+.student-tile {
+  position: relative;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
-  transition: all 0.3s ease;
-  border: 1px solid var(--color-border);
-}
-
-.student-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
-}
-
-.student-card.expanded {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-}
-
-/* 卡片头部 */
-.student-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
   cursor: pointer;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  transition: background 0.2s;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  /* BA 风格斜切；子元素反向斜切补偿 */
+  transform: skewX(-6deg);
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-.student-header:hover {
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+.student-tile:hover {
+  border-color: var(--ba-accent);
+  box-shadow: 0 3px 10px var(--shadow-card);
 }
 
-.student-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+.student-tile.selected {
+  border-color: var(--ba-highlight);
+  box-shadow: 0 0 0 1px var(--ba-highlight), 0 3px 10px var(--shadow-card);
+}
+
+.tile-avatar {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border: 3px solid var(--color-surface);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  flex-shrink: 0;
-}
-
-.student-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.student-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.student-name-sub {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.student-meta {
-  font-size: 0.75rem;
-  color: var(--color-text-subtle);
-  margin-top: 4px;
-}
-
-.student-school {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
-}
-
-.student-school-logo {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
   display: block;
+  /* 反向斜切 + 放大，避免斜切后四角露出背景 */
+  transform: skewX(6deg) scale(1.18);
 }
 
-/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts） */
-.student-school-badge {
+.tile-avatar-empty {
+  background: var(--color-input);
+}
+
+.tile-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 4px 0 5px;
+  background: var(--ba-band);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  transform: skewX(6deg) scale(1.18);
+  transform-origin: bottom center;
+}
+
+.tile-badge {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  z-index: 2;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(28, 44, 80, 0.75);
+  color: var(--ba-highlight);
+  font-size: 11px;
+  /* 角标只做反向斜切，不放大 */
+  transform: skewX(6deg);
+}
+
+/* ---------- 展开态：整行详情面板 ---------- */
+
+.student-detail {
+  grid-column: 1 / -1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px;
+  background: #f4f9fe;
+  border: 1.5px solid var(--ba-accent-2);
+  border-radius: 12px;
+}
+
+.detail-left {
+  flex: none;
+  width: 120px;
+  text-align: center;
+}
+
+.detail-avatar {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 2px solid var(--ba-accent);
   border-radius: 10px;
 }
 
-.expand-icon {
-  font-size: 1.2rem;
-  color: var(--color-text-subtle);
-  transition: transform 0.3s;
-  margin-left: 10px;
-}
-
-.student-card.expanded .expand-icon {
-  transform: rotate(180deg);
-}
-
-/* 卡片内容 */
-.student-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.student-card.expanded .student-content {
-  max-height: 2000px;
-}
-
-.pages-container {
-  padding: 15px;
-  background: #fafafa;
-}
-
-.pages-title {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  margin-bottom: 12px;
-  font-weight: 500;
-}
-
-/* Page 项目 */
-.page-item {
-  background: var(--color-surface);
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid var(--color-border);
-  transition: all 0.2s;
-}
-
-.page-item:last-child {
-  margin-bottom: 0;
-}
-
-.page-item:hover {
-  border-color: var(--color-border-strong);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.page-header {
-  display: flex;
+/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts） */
+.school-chip {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.page-avatar {
-  width: 45px;
-  height: 45px;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 3px 12px;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
-  object-fit: cover;
-  flex-shrink: 0;
+  background: var(--color-surface);
+  transform: skewX(-8deg);
 }
 
-.page-info {
+.school-chip > span {
+  display: inline-block;
+  transform: skewX(8deg);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ba-title);
+}
+
+.school-chip-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  transform: skewX(8deg);
+}
+
+.detail-right {
   flex: 1;
   min-width: 0;
 }
 
-.page-name {
-  font-weight: 600;
-  color: var(--color-text);
-  font-size: 0.95rem;
+.detail-name {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ba-title);
 }
 
-.page-id {
-  font-size: 0.75rem;
-  color: var(--color-text-subtle);
+/* 学生 ID 用等宽字体，与名称区分 */
+.detail-sid {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ba-accent-deep);
 }
 
-.page-link {
-  color: var(--color-accent);
+/* 多语言姓名胶囊 */
+.lang-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.lang-pill {
+  padding: 2px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  transform: skewX(-8deg);
+}
+
+.lang-pill > span {
+  display: inline-block;
+  transform: skewX(8deg);
+}
+
+.lang-pill b {
+  margin-right: 4px;
+  color: var(--ba-accent-deep);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.pages-title {
+  margin: 12px 0 2px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Page 行 ---------- */
+
+.page-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+/* 相邻 page 行之间用虚线分隔（首行不留分隔线） */
+.page-row + .page-row {
+  border-top: 1px dashed var(--color-border);
+}
+
+.page-avatar {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--ba-accent-2);
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.page-avatar-empty {
+  background: var(--color-input);
+}
+
+/* 皮肤名胶囊：page_id 通过 hover tooltip 展示 */
+.page-chip {
+  position: relative;
+  padding: 4px 16px;
+  border-radius: 6px;
+  background: var(--gradient-accent);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
   text-decoration: none;
+  cursor: pointer;
+  transform: skewX(-8deg);
 }
 
-.page-link:hover {
-  text-decoration: underline;
+.page-chip > span {
+  display: inline-block;
+  transform: skewX(8deg);
 }
 
-/* Page 标签 */
+.page-chip::after {
+  content: 'page_id ' attr(data-pid);
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  padding: 3px 10px;
+  border-radius: 5px;
+  background: rgba(28, 44, 80, 0.92);
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) skewX(8deg);
+  transition: opacity 0.15s;
+}
+
+.page-chip:hover::after {
+  opacity: 1;
+}
+
+/* Page 标签（斜切胶囊） */
 .page-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 10px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transform: skewX(-8deg);
+}
+
+.tag > span {
+  display: inline-block;
+  transform: skewX(8deg);
 }
 
 .tag-install-jp {
@@ -267,18 +353,7 @@
   color: #be185d;
 }
 
-/* Spine 列表 */
-.spines-section {
-  margin-top: 8px;
-  padding-top: 10px;
-  border-top: 1px dashed var(--color-border);
-}
-
-.spines-label {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  margin-bottom: 6px;
-}
+/* ---------- Spine 芯片 ---------- */
 
 .spines-list {
   display: flex;
@@ -288,16 +363,33 @@
 
 .spine-id {
   display: inline-block;
-  padding: 4px 10px;
-  background: var(--color-surface-alt);
+  padding: 2px 8px;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 0.8rem;
   font-family: 'Courier New', monospace;
   color: var(--color-text-secondary);
+  text-decoration: none;
 }
 
-/* 控制按钮 */
+a.spine-id {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}
+
+a.spine-id:hover {
+  border-color: var(--ba-accent);
+  color: var(--ba-accent-deep);
+}
+
+.spine-empty {
+  font-size: 0.75rem;
+  color: var(--color-text-subtle);
+}
+
+/* ---------- 控制按钮 ---------- */
+
 .controls-extra {
   display: flex;
   gap: 10px;
@@ -305,21 +397,21 @@
 }
 
 .btn {
-  padding: 8px 16px;
+  padding: 8px 18px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-pill);
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
-  font-weight: 500;
 }
 
 .btn-secondary {
-  background: var(--color-surface-alt);
-  color: var(--color-text-secondary);
-  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--ba-accent);
+  border: 1.5px solid var(--ba-accent);
 }
 
 .btn-secondary:hover {
-  background: var(--color-border);
+  background: var(--ba-row-hover);
 }

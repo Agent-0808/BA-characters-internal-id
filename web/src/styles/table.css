@@ -17,14 +17,14 @@ thead {
   z-index: 10;
 }
 
-/* 表头样式 - 支持排序 */
+/* 表头样式 - 支持排序（BA 风格浅蓝底深蓝字） */
 th {
-  background: var(--color-surface-alt);
+  background: var(--ba-th-bg);
   padding: 0;
   text-align: left;
   font-weight: 600;
-  color: var(--color-text-secondary);
-  border-bottom: 2px solid var(--color-border);
+  color: var(--ba-th-text);
+  border-bottom: 1px solid var(--color-border);
   white-space: nowrap;
   vertical-align: top;
 }
@@ -42,7 +42,7 @@ th {
 }
 
 .th-content:hover {
-  background: var(--color-border);
+  background: var(--ba-row-hover);
 }
 
 /* 排序箭头 */
@@ -64,7 +64,7 @@ td {
 }
 
 tr:hover {
-  background: var(--color-bg);
+  background: var(--ba-row-hover);
 }
 
 .school-tag {

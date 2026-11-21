@@ -1,14 +1,34 @@
 :root {
-  --color-bg: #f8fafc;
+  /* ===== 基础色（BA 风格：浅蓝白底 + 深蓝文字） ===== */
+  --color-bg: #eef3f8;
   --color-surface: #ffffff;
-  --color-surface-alt: #f1f5f9;
-  --color-input: #f3f4f6;
-  --color-border: #e2e8f0;
-  --color-border-strong: #cbd5e1;
-  --color-text: #334155;
-  --color-text-secondary: #475569;
-  --color-text-muted: #64748b;
-  --color-text-subtle: #94a3b8;
-  --color-text-neutral: #6b7280;
-  --color-accent: #4f46e5;
+  --color-surface-alt: #f2f7fc;
+  --color-input: #eef2f7;
+  --color-border: #d5e2f1;
+  --color-border-strong: #b8cee5;
+  --color-text: #3d4a6b;
+  --color-text-secondary: #4b5c80;
+  --color-text-muted: #7c8bab;
+  --color-text-subtle: #94a3bd;
+  --color-text-neutral: #8a97ad;
+  --color-accent: #1287ff;
+
+  /* ===== BA 专属配色 ===== */
+  --ba-accent: #1287ff;
+  --ba-accent-2: #64c4f0;
+  --ba-accent-deep: #0d6cd0;
+  --ba-title: #2c3e6b;
+  --ba-highlight: #ffe17a;
+  --ba-header-a: #dbeefc;
+  --ba-header-b: #f6fbff;
+  --ba-band: rgba(28, 44, 80, 0.85);
+  --ba-th-bg: #e3f0fb;
+  --ba-th-text: #2c5d9c;
+  --ba-row-hover: #e8f3fd;
+
+  /* ===== 造型 ===== */
+  --radius-card: 14px;
+  --radius-pill: 15px;
+  --shadow-card: 0 4px 18px rgba(47, 84, 137, 0.14);
+  --gradient-accent: linear-gradient(135deg, var(--ba-accent) 0%, var(--ba-accent-2) 100%);
 }

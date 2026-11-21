@@ -45,8 +45,9 @@
 
 /* 紧凑单行 header：标题居左，统计徽章与导航居右 */
 .header {
-  background: linear-gradient(90deg, #345a8a 0%, #2f5074 100%);
-  color: var(--color-surface);
+  /* BA 风格：浅蓝渐变色条 + 深蓝文字 */
+  background: linear-gradient(180deg, var(--ba-header-a) 0%, var(--ba-header-b) 100%);
+  color: var(--color-text);
   padding: 10px 20px;
   flex-shrink: 0;
   display: flex;
@@ -54,6 +55,7 @@
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-left {
@@ -67,6 +69,9 @@
   font-size: 1.15rem;
   margin: 0;
   white-space: nowrap;
+  color: var(--ba-title);
+  padding-bottom: 3px;
+  border-bottom: 3px solid var(--ba-highlight);
 }
 
 .header p {
@@ -96,21 +101,30 @@
   display: flex;
   align-items: baseline;
   gap: 5px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 999px;
-  padding: 3px 10px;
+  /* BA 风格：斜切平行四边形小卡片 */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 3px 12px;
   font-size: 0.75rem;
+  transform: skewX(-8deg);
+}
+
+/* 斜切补偿，保证文字水平 */
+.stat-item > * {
+  transform: skewX(8deg);
 }
 
 .stat-value {
   font-size: 0.85rem;
   font-weight: bold;
   font-variant-numeric: tabular-nums;
+  color: var(--ba-title);
 }
 
 .stat-label {
   font-size: 0.75rem;
-  opacity: 0.75;
+  color: var(--color-text-muted);
 }
 
 /* 容器失去 max-width 居中后，给右上角固定设置按钮留出空间 */
@@ -218,30 +232,33 @@
   }
 }
 
-/* 导航链接 */
+/* 导航链接：BA 风格胶囊 tab */
 .nav-links {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 10px;
+  gap: 8px;
+  margin-top: 0;
 }
 
 .nav-links a {
-  color: rgba(255,255,255,0.9);
+  color: var(--ba-accent);
   text-decoration: none;
   font-size: 0.9rem;
-  padding: 5px 12px;
-  border-radius: 6px;
+  padding: 5px 18px;
+  border: 1.5px solid var(--ba-accent);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
   transition: all 0.2s;
 }
 
 .nav-links a:hover {
-  background: rgba(255,255,255,0.15);
-  color: var(--color-surface);
+  background: var(--ba-row-hover);
 }
 
 .nav-links a.active {
-  background: rgba(255,255,255,0.2);
-  color: var(--color-surface);
+  background: var(--gradient-accent);
+  border-color: var(--ba-accent-deep);
+  color: #ffffff;
   font-weight: 500;
+  box-shadow: 0 2px 6px var(--shadow-card);
 }

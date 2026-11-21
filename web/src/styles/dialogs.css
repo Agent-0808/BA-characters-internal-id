@@ -9,16 +9,18 @@
   height: 38px;
   font-size: 18px;
   line-height: 1;
-  color: var(--color-text);
-  background: rgba(255,255,255,0.9);
-  border: 2px solid var(--color-border);
+  color: #ffffff;
+  /* BA 风格：蓝色渐变圆形按钮 */
+  background: var(--gradient-accent);
+  border: 2px solid var(--ba-accent-deep);
   border-radius: 50%;
+  box-shadow: 0 2px 6px var(--shadow-card);
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .settings-btn:hover {
-  background: var(--color-surface);
+  filter: brightness(1.08);
   transform: rotate(30deg);
 }
 
@@ -29,8 +31,9 @@
   z-index: 1100;
   width: 280px;
   background: var(--color-surface);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 10px 25px rgba(47, 84, 137, 0.18);
   overflow: hidden;
 }
 
@@ -41,8 +44,16 @@
   padding: 10px 15px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--ba-title);
+  /* 与页面头部一致的浅蓝渐变 */
+  background: linear-gradient(180deg, var(--ba-header-a) 0%, var(--ba-header-b) 100%);
   border-bottom: 1px solid var(--color-border);
+}
+
+/* BA 风格：标题下的黄色短下划线 */
+.settings-header > span {
+  padding-bottom: 3px;
+  border-bottom: 3px solid var(--ba-highlight);
 }
 
 .settings-close {
@@ -77,7 +88,7 @@
 .settings-group-title {
   font-size: 11px;
   font-weight: 600;
-  color: var(--color-text-subtle);
+  color: var(--ba-th-text);
   letter-spacing: 0.08em;
   padding-bottom: 5px;
   border-bottom: 1px solid var(--color-border);
@@ -96,19 +107,21 @@
   width: 15px;
   height: 15px;
   cursor: pointer;
+  accent-color: var(--ba-accent);
 }
 
 .settings-item input:disabled {
   cursor: not-allowed;
 }
 
-/* 设置面板：语言等下拉控件（右侧对齐） */
+/* 设置面板：语言等下拉控件（右侧对齐，BA 胶囊款） */
 .settings-item select.settings-select {
   margin-left: auto;
-  padding: 4px 8px;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
+  padding: 4px 12px;
+  border: 1.5px solid var(--ba-accent);
+  border-radius: var(--radius-pill);
   font-size: 12px;
+  color: var(--ba-accent-deep);
   background: var(--color-surface);
   cursor: pointer;
 }
@@ -120,6 +133,7 @@
 .settings-item input[type="range"] {
   flex: 1;
   cursor: pointer;
+  accent-color: var(--ba-accent);
 }
 
 .range-value {
@@ -144,8 +158,15 @@
   margin-top: 4px;
   align-self: flex-end;
   font-size: 12px;
-  padding: 5px 10px;
+  padding: 5px 14px;
+  color: var(--ba-accent);
+  background: var(--color-surface);
+  border: 1.5px solid var(--ba-accent);
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  border-radius: 6px;
   transition: all 0.2s;
+}
+
+.settings-reset:hover {
+  background: var(--ba-row-hover);
 }
