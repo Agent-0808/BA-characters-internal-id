@@ -1,0 +1,151 @@
+/* ===== 设置面板（Click FX 配置） ===== */
+
+.settings-btn {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 1100;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--color-text);
+  background: rgba(255,255,255,0.9);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.settings-btn:hover {
+  background: var(--color-surface);
+  transform: rotate(30deg);
+}
+
+.settings-panel {
+  position: fixed;
+  top: 66px;
+  right: 22px;
+  z-index: 1100;
+  width: 280px;
+  background: var(--color-surface);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.settings-close {
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.settings-close:hover {
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+}
+
+.settings-body {
+  padding: 10px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 设置分组：小标题 + 分隔线 */
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-group-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  letter-spacing: 0.08em;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.settings-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.settings-item input:disabled {
+  cursor: not-allowed;
+}
+
+/* 设置面板：语言等下拉控件（右侧对齐） */
+.settings-item select.settings-select {
+  margin-left: auto;
+  padding: 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 12px;
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.settings-item.settings-range span:first-child {
+  flex-shrink: 0;
+}
+
+.settings-item input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+}
+
+.range-value {
+  min-width: 36px;
+  text-align: right;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-item input[type="color"] {
+  width: 36px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+}
+
+.settings-reset {
+  margin-top: 4px;
+  align-self: flex-end;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}

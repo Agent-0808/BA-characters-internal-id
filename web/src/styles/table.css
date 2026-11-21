@@ -1,0 +1,127 @@
+.table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* 表头样式 - 支持排序 */
+th {
+  background: var(--color-surface-alt);
+  padding: 0;
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+/* 表头内容容器 */
+.th-content {
+  padding: 10px 12px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s;
+  height: 40px;
+}
+
+.th-content:hover {
+  background: var(--color-border);
+}
+
+/* 排序箭头 */
+.sort-arrow {
+  font-size: 10px;
+  color: var(--color-text-subtle);
+  transition: color 0.2s;
+}
+
+.th-content.sort-asc .sort-arrow,
+.th-content.sort-desc .sort-arrow {
+  color: var(--color-accent);
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+tr:hover {
+  background: var(--color-bg);
+}
+
+.school-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px 3px 40px;
+  background: #fef3c7;
+  color: #92400e;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.school-logo {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  object-fit: contain;
+}
+
+/* 文件ID列限制宽度（约 7 个字符，如 CH0294）；过长 ID 按字符断行 */
+td[data-col="file_id"] {
+  width: 7ch;
+  max-width: 7ch;
+  word-break: break-all;
+}
+
+/* 学校名列禁止换行，保证 logo 与名称始终一行显示 */
+td[data-col="school_name"] {
+  white-space: nowrap;
+}
+
+/* 学生ID、页面ID 和 Spine ID 列限制宽度 */
+td[data-col="student_id"],
+th[data-col="student_id"],
+td[data-col="page_id"],
+th[data-col="page_id"],
+td[data-col="spine_id"],
+th[data-col="spine_id"] {
+  max-width: 80px;
+  width: 40px;
+  text-align: center;
+}
+
+/* 隐藏列的样式 */
+.col-hidden {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  th, td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+}

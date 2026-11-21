@@ -1,4 +1,4 @@
-import './style.css';
+import './styles/index.css';
 import { initClickFX } from './core/clickFx.js';
 import { initSettingsPanel, getUiSettings } from './core/settings.js';
 import { CONFIG, saveUiSettings } from './core/config.js';

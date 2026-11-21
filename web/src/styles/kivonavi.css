@@ -1,0 +1,325 @@
+/* ========== 学生卡片页面样式 ========== */
+
+.students-container {
+  padding: 20px 30px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .students-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .students-container {
+    padding: 15px;
+  }
+}
+
+/* 学生卡片 */
+.student-card {
+  background: var(--color-surface);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
+}
+
+.student-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+.student-card.expanded {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* 卡片头部 */
+.student-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  transition: background 0.2s;
+}
+
+.student-header:hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.student-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-surface);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+
+.student-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.student-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.student-name-sub {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.student-meta {
+  font-size: 0.75rem;
+  color: var(--color-text-subtle);
+  margin-top: 4px;
+}
+
+.student-school {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.student-school-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts） */
+.student-school-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+}
+
+.expand-icon {
+  font-size: 1.2rem;
+  color: var(--color-text-subtle);
+  transition: transform 0.3s;
+  margin-left: 10px;
+}
+
+.student-card.expanded .expand-icon {
+  transform: rotate(180deg);
+}
+
+/* 卡片内容 */
+.student-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.student-card.expanded .student-content {
+  max-height: 2000px;
+}
+
+.pages-container {
+  padding: 15px;
+  background: #fafafa;
+}
+
+.pages-title {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* Page 项目 */
+.page-item {
+  background: var(--color-surface);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid var(--color-border);
+  transition: all 0.2s;
+}
+
+.page-item:last-child {
+  margin-bottom: 0;
+}
+
+.page-item:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.page-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.page-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-name {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.page-id {
+  font-size: 0.75rem;
+  color: var(--color-text-subtle);
+}
+
+.page-link {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.page-link:hover {
+  text-decoration: underline;
+}
+
+/* Page 标签 */
+.page-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tag-install-jp {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.tag-install-jp.not-installed {
+  background: var(--color-input);
+  color: var(--color-text-neutral);
+}
+
+.tag-install-cn {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.tag-install-cn.not-installed {
+  background: var(--color-input);
+  color: var(--color-text-neutral);
+}
+
+.tag-install-global {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.tag-install-global.not-installed {
+  background: var(--color-input);
+  color: var(--color-text-neutral);
+}
+
+.tag-npc {
+  background: var(--color-input);
+  color: var(--color-text-neutral);
+}
+
+.tag-rarity {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.tag-limited {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+/* Spine 列表 */
+.spines-section {
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--color-border);
+}
+
+.spines-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.spines-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.spine-id {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: 'Courier New', monospace;
+  color: var(--color-text-secondary);
+}
+
+/* 控制按钮 */
+.controls-extra {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background: var(--color-surface-alt);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-border);
+}

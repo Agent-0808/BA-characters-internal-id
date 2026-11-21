@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, #2a90d8 0%, #07c7ee 100%);
+  height: 100vh;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: var(--color-text-muted);
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error {
+  text-align: center;
+  padding: 60px;
+  color: #dc2626;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-muted);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.empty-state-hint {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: var(--color-text-subtle);
+}
+
+@media (max-width: 768px) {
+  /* 移动端使用动态视口高度，适配浏览器地址栏 */
+  body {
+    height: 100dvh;
+    padding: 8px;
+  }
+}

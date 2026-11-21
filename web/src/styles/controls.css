@@ -1,0 +1,269 @@
+.search-box {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.search-box::before {
+  content: "🔍";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.filter-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-group label {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.filter-group select {
+  padding: 8px 12px;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* 列显示控制按钮 */
+.column-toggle-btn {
+  padding: 8px 12px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.column-toggle-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-alt);
+}
+
+/* 学校筛选下拉 */
+.school-filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.school-filter-btn {
+  padding: 8px 12px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+}
+
+.school-filter-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-alt);
+}
+
+.school-filter-label {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.school-filter-count {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.school-filter-count:empty {
+  display: none;
+}
+
+.school-filter-arrow {
+  color: var(--color-text-subtle);
+  font-size: 10px;
+  margin-left: auto;
+}
+
+.school-filter-content {
+  display: none;
+  position: fixed;
+  background: var(--color-surface);
+  min-width: 200px;
+  max-width: 300px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.school-filter-content.show {
+  display: block;
+}
+
+.school-filter-item {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-text);
+  transition: background 0.2s;
+}
+
+.school-filter-item:hover {
+  background: var(--color-surface-alt);
+}
+
+.school-filter-item.selected {
+  background: #e0e7ff;
+}
+
+.school-filter-item input[type="checkbox"] {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.school-filter-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* 无 logo 选项（如 id=0 无数据）的占位，与 logo 尺寸一致以对齐名称 */
+.school-filter-logo-placeholder {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.school-filter-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 下拉列表滚动区域：仅条目部分滚动，头部固定在外层容器 */
+.school-filter-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.school-filter-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.school-filter-clear {
+  color: var(--color-accent);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.school-filter-clear:hover {
+  background: var(--color-surface-alt);
+}
+
+/* 列选择下拉菜单 */
+.column-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.column-dropdown-content {
+  display: none;
+  position: fixed;
+  background: var(--color-surface);
+  min-width: 180px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  z-index: 1000;
+  padding: 10px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.column-dropdown-content.show {
+  display: block;
+}
+
+.column-dropdown-item {
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.column-dropdown-item:hover {
+  background: var(--color-surface-alt);
+}
+
+.column-dropdown-item input[type="checkbox"] {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    min-width: 100%;
+  }
+
+  .filter-group {
+    justify-content: space-between;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
