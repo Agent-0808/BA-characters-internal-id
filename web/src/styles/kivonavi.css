@@ -9,8 +9,8 @@
 
 .students-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
-  gap: 14px 12px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px 14px;
   align-items: start;
 }
 
@@ -38,7 +38,8 @@
 
 .student-tile {
   position: relative;
-  aspect-ratio: 3 / 4;
+  /* 头像原图为 404×456，瓦片按原始比例避免裁切 */
+  aspect-ratio: 404 / 456;
   overflow: hidden;
   cursor: pointer;
   background: var(--color-surface);
@@ -64,8 +65,8 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  /* 反向斜切 + 放大，避免斜切后四角露出背景 */
-  transform: skewX(6deg) scale(1.18);
+  /* 反向斜切 + 轻微放大，恰好覆盖斜切后的四角（按 404:456 推算最小约 1.12） */
+  transform: skewX(6deg) scale(1.14);
 }
 
 .tile-avatar-empty {
@@ -77,13 +78,18 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 4px 0 5px;
+  padding: 5px 6px;
   background: var(--ba-band);
   color: #ffffff;
   font-size: 12px;
+  line-height: 1.3;
   font-weight: 500;
   text-align: center;
-  transform: skewX(6deg) scale(1.18);
+  /* 单行显示：超长名称先由 JS 缩小字号，仍放不下则省略号截断 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform: skewX(6deg) scale(1.14);
   transform-origin: bottom center;
 }
 
@@ -122,10 +128,15 @@
 
 .detail-avatar {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 404 / 456;
   overflow: hidden;
   border: 2px solid var(--ba-accent);
   border-radius: 10px;
+}
+
+/* 详情面板内头像无需斜切补偿，恢复正常直立显示 */
+.student-detail .tile-avatar {
+  transform: none;
 }
 
 /* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts） */
@@ -146,7 +157,8 @@
   transform: skewX(8deg);
   font-size: 12px;
   font-weight: 500;
-  color: var(--ba-title);
+  /* 文字颜色跟随学校配色（由渲染时内联指定） */
+  color: inherit;
 }
 
 .school-chip-logo {

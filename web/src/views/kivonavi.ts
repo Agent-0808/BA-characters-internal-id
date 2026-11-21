@@ -136,12 +136,9 @@ function generateStudentCard(student: Student): string {
   const isExpanded = expandState[student.id] || false;
   // 完整名称是否显示姓氏由界面设置控制（见 nameFormat.ts 与设置面板）
   const showFamily = getUiSettings().showFamilyName;
-  // 角标：任一时装为限定则显示限定，全部页面为 NPC 时显示 NPC
-  const isLimited = student.pages.some(p => p.limited);
+  // 角标：全部页面为 NPC 时显示 NPC（限定标志不再展示在卡片上）
   const isNpc = student.pages.length > 0 && student.pages.every(p => p.is_npc);
-  const badge = isLimited
-    ? '<span class="tile-badge">★限定</span>'
-    : isNpc ? '<span class="tile-badge">🚫NPC</span>' : '';
+  const badge = isNpc ? '<span class="tile-badge">🚫NPC</span>' : '';
 
   const tile = `
     <div class="student-tile ${isExpanded ? 'selected' : ''}" data-student-id="${student.id}">
@@ -154,7 +151,7 @@ function generateStudentCard(student: Student): string {
   if (!isExpanded) return tile;
 
   const schoolChip = `
-    <span class="school-chip" ${schoolLogo ? `style="background:${schoolColor.bg}"` : ''}>
+    <span class="school-chip" style="background:${schoolColor.bg};color:${schoolColor.text}">
       ${schoolLogo ? `<img src="https:${schoolLogo}" class="school-chip-logo" alt="" title="${schoolName}">` : ''}
       <span>${schoolName}</span>
     </span>
@@ -207,6 +204,22 @@ function renderStudents(students: Student[]): void {
     tile.addEventListener('click', () => {
       toggleExpand(parseInt(tile.dataset.studentId || '0'));
     });
+  });
+
+  fitTileNames();
+}
+
+// 瓦片名牌保持单行：按可用宽度逐级缩小字号（最小 9px），仍超出则由 CSS 省略号截断
+function fitTileNames(): void {
+  const MIN_FONT_SIZE = 9;
+  const DEFAULT_FONT_SIZE = 12;
+  document.querySelectorAll<HTMLElement>('.tile-name').forEach(el => {
+    let size = DEFAULT_FONT_SIZE;
+    el.style.fontSize = `${size}px`;
+    while (el.scrollWidth > el.clientWidth && size > MIN_FONT_SIZE) {
+      size -= 1;
+      el.style.fontSize = `${size}px`;
+    }
   });
 }
 
