@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- 全局设置按钮（固定右上角，两个视图共用） -->
-    <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置" data-i18n-attrs="title:common.settings,aria-label:common.settings">&#9881;&#65038;</button>
+    <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置" data-i18n-attrs="title:common.settings,aria-label:common.settings"><span class="settings-icon">&#9881;&#65038;</span></button>
 
     <div class="container">
         <!-- 视图一：文件ID速查表 -->
@@ -97,17 +97,18 @@
                 </div>
                 <div class="filter-group">
                     <label data-i18n="kivo.install">实装:</label>
-                    <select id="installFilter">
-                        <option value="" data-i18n="kivo.installAll">全部</option>
-                        <option value="jp" data-i18n="kivo.installJp">日服</option>
-                        <option value="global" data-i18n="kivo.installGlobal">国际服</option>
-                        <option value="cn" data-i18n="kivo.installCn">国服</option>
-                        <option value="not_npc" data-i18n="kivo.installNotNpc">非NPC</option>
-                        <option value="npc" data-i18n="kivo.installNpc">NPC</option>
-                    </select>
+                    <span class="select-shell">
+                        <select id="installFilter">
+                            <option value="" data-i18n="kivo.installAll">全部</option>
+                            <option value="jp" data-i18n="kivo.installJp">日服</option>
+                            <option value="global" data-i18n="kivo.installGlobal">国际服</option>
+                            <option value="cn" data-i18n="kivo.installCn">国服</option>
+                            <option value="not_npc" data-i18n="kivo.installNotNpc">非NPC</option>
+                            <option value="npc" data-i18n="kivo.installNpc">NPC</option>
+                        </select>
+                    </span>
                 </div>
                 <div class="controls-extra">
-                    <button class="ba-btn ba-btn--ghost" id="expandAllBtn" data-i18n="action.expandAll">展开全部</button>
                     <button class="ba-btn ba-btn--ghost" id="collapseAllBtn" data-i18n="action.collapseAll">折叠全部</button>
                 </div>
             </div>

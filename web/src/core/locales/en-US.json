@@ -12,7 +12,6 @@
     "noResultsHint": "Try adjusting your search"
   },
   "action": {
-    "expandAll": "Expand All",
     "collapseAll": "Collapse All",
     "reset": "Reset to Defaults",
     "clearAll": "Clear All"
@@ -73,12 +72,15 @@
     "installJp": "JP",
     "installCn": "CN",
     "installGlobal": "Global",
+    "installNpc": "NPC",
     "installNotNpc": "Not NPC",
     "defaultPage": "Default",
     "limited": "Limited",
     "none": "None",
     "spinesLabel": "🎬 Spines ({{n}})",
     "pagesLabel": "Pages ({{n}})",
+    "skinLabel": "Skin",
+    "pageLabel": "Page",
     "studentMeta": "ID: {{id}} | {{n}} pages"
   },
   "footer": {

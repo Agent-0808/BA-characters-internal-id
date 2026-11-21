@@ -12,6 +12,8 @@
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 16px 14px;
   align-items: start;
+  /* dense：详情面板独占下一行时，后续瓦片回填当前行剩余空位，卡片位置保持不变 */
+  grid-auto-flow: row dense;
 }
 
 @media (max-width: 768px) {
@@ -297,53 +299,73 @@
 
 .page-main {
   display: flex;
-  flex: 1;
+  flex: none;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   min-width: 0;
 }
 
-.page-head {
+/* 信息条与三服状态并排，间距收紧 */
+.page-meta {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
-  flex-wrap: wrap;
 }
 
-/* 皮肤名胶囊：page_id 通过 hover tooltip 展示（链接已移到头像卡） */
-.page-chip {
-  position: relative;
-  display: inline-block;
-  padding: 4px 16px;
-  border-radius: 6px;
-  background: var(--gradient-accent);
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 500;
-  transform: skewX(-8deg);
+/* 皮肤 / 页面两条信息条：整组斜切，上下条的左缘、灰色分界线、右缘共用同一条斜线 */
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: max-content;
+  min-width: 150px;
+  /* 两条 24px + 4px 间距 = 52px，与右侧三服状态卡等高 */
+  height: 52px;
+  transform: skewX(-6deg);
 }
 
-.page-chip::after {
-  content: 'page_id ' attr(data-pid);
-  position: absolute;
-  bottom: calc(100% + 7px);
-  left: 50%;
-  padding: 3px 10px;
+.fact {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
   border-radius: 5px;
-  background: rgba(28, 44, 80, 0.92);
-  color: #ffffff;
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  font-weight: 400;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-50%) skewX(8deg);
-  transition: opacity 0.15s;
 }
 
-.page-chip:hover::after {
-  opacity: 1;
+.fact-key {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  color: #6b7a8c;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fact-val {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  max-width: 150px;
+  padding: 0 8px;
+  background: #e8f4fe;
+  color: #2476b8;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 标签与数值文字反向斜切，保持正视 */
+.fact-key > span,
+.fact-val > span {
+  transform: skewX(6deg);
 }
 
 /* 三服实装状态：1:2 竖长小卡，斜切为平行四边形；上半深灰底放图标，下半放 ✓/✕ */
@@ -356,8 +378,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 24px;
-  height: 48px;
+  width: 26px;
+  height: 52px;
   padding: 0;
   overflow: hidden;
   background: var(--color-surface);
@@ -371,13 +393,13 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 22px;
+  height: 24px;
   background: #99a2ac;
 }
 
 .server .ico {
   transform: skewX(6deg);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1;
 }
 
@@ -386,7 +408,7 @@
   flex: 1;
   align-items: center;
   transform: skewX(6deg);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1;
 }
@@ -443,7 +465,7 @@
 
 .spine-id {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 2px 10px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 4px;
@@ -451,6 +473,14 @@
   font-family: 'Courier New', monospace;
   color: var(--color-text-secondary);
   text-decoration: none;
+  /* 与页面行其余元素保持同一倾斜方向 */
+  transform: skewX(-6deg);
+}
+
+/* 数字反向斜切，保持正视 */
+.spine-id > span {
+  display: inline-block;
+  transform: skewX(6deg);
 }
 
 a.spine-id {

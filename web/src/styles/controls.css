@@ -40,20 +40,29 @@
   font-weight: 500;
 }
 
+/* 斜切下拉框：外壳斜切，原生 select 反向补偿保持文字正视 */
+.select-shell {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+  overflow: hidden;
+  transform: skewX(-6deg);
+}
+
 .filter-group select {
   padding: 8px 14px;
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
   font-size: 14px;
   color: var(--color-text);
-  background: var(--color-surface);
   cursor: pointer;
-  transition: all 0.3s;
+  transform: skewX(6deg);
 }
 
 .filter-group select:focus {
   outline: none;
-  border-color: var(--color-accent);
 }
 
 /* 列显示控制按钮：造型由 .ba-btn--ghost 提供 */

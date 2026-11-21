@@ -12,19 +12,26 @@
   height: 46px;
   font-size: 20px;
   line-height: 1;
-  color: var(--ba-accent);
-  /* 白色圆角图标按钮，与统计牌同一视觉语言 */
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px var(--shadow-card);
+  color: #ffffff;
+  /* 蓝底白字的斜切按钮 */
+  background: var(--gradient-accent);
+  border: 1px solid var(--ba-accent-deep);
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(20, 60, 110, 0.25);
   cursor: pointer;
-  transition: color 0.2s, box-shadow 0.2s;
+  transform: skewX(-6deg);
+  transition: filter 0.2s, box-shadow 0.2s;
+}
+
+/* 图标反向斜切，保持正视 */
+.settings-icon {
+  display: inline-block;
+  transform: skewX(6deg);
 }
 
 .settings-btn:hover {
-  color: var(--ba-accent-deep);
-  box-shadow: 0 4px 12px rgba(20, 60, 110, 0.2);
+  filter: brightness(1.08);
+  box-shadow: 0 5px 14px rgba(20, 60, 110, 0.3);
 }
 
 /* 半透明遮罩，点击空白处关闭 */

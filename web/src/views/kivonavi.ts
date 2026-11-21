@@ -24,7 +24,6 @@ const elements = {
   schoolFilterCount: document.getElementById('kivoSchoolFilterCount') as HTMLSpanElement,
   installFilter: document.getElementById('installFilter') as HTMLSelectElement,
   studentsContainer: document.getElementById('studentsContainer') as HTMLDivElement,
-  expandAllBtn: document.getElementById('expandAllBtn') as HTMLButtonElement,
   collapseAllBtn: document.getElementById('collapseAllBtn') as HTMLButtonElement,
   totalCount: document.getElementById('kivoTotalCount') as HTMLDivElement,
   pageCount: document.getElementById('kivoPageCount') as HTMLDivElement,
@@ -103,8 +102,8 @@ function generatePageHTML(page: KivoPage, studentIsNpc: boolean): string {
 
   const spinesHTML = page.spines.map(spineId =>
     getUiSettings().spineLink
-      ? `<a href="${spineUrl(spineId)}" target="_blank" rel="noopener" class="spine-id">${spineId}</a>`
-      : `<span class="spine-id">${spineId}</span>`
+      ? `<a href="${spineUrl(spineId)}" target="_blank" rel="noopener" class="spine-id"><span>${spineId}</span></a>`
+      : `<span class="spine-id"><span>${spineId}</span></span>`
   ).join('');
 
   return `
@@ -119,10 +118,19 @@ function generatePageHTML(page: KivoPage, studentIsNpc: boolean): string {
         </a>
       </div>
       <div class="page-main">
-        <div class="page-head">
-          <span class="page-chip" data-pid="${page.page_id}">${pageName}</span>
+        <div class="page-meta">
+          <div class="facts">
+            <div class="fact">
+              <span class="fact-key"><span>${t('kivo.skinLabel')}</span></span>
+              <span class="fact-val"><span>${pageName}</span></span>
+            </div>
+            <div class="fact">
+              <span class="fact-key"><span>${t('kivo.pageLabel')}</span></span>
+              <span class="fact-val"><span>${page.page_id}</span></span>
+            </div>
+          </div>
+          ${servers}
         </div>
-        ${servers}
         <div class="spine-line">
           <div class="spines-list">${spinesHTML || `<span class="spine-empty">${t('kivo.none')}</span>`}</div>
         </div>
@@ -243,14 +251,6 @@ function fitTileNames(): void {
 // 切换展开状态（展开态由整行详情面板承载，需重渲染列表）
 function toggleExpand(studentId: number): void {
   expandState[studentId] = !expandState[studentId];
-  renderStudents(filteredStudents);
-}
-
-// 展开全部
-function expandAll(): void {
-  filteredStudents.forEach(student => {
-    expandState[student.id] = true;
-  });
   renderStudents(filteredStudents);
 }
 
@@ -413,7 +413,6 @@ export function initKivoView(): void {
   // 事件监听（学校筛选按钮由共享组件绑定）
   elements.searchInput.addEventListener('input', applyFilters);
   elements.installFilter.addEventListener('change', applyFilters);
-  elements.expandAllBtn.addEventListener('click', expandAll);
   elements.collapseAllBtn.addEventListener('click', collapseAll);
 
   // 界面设置变更（如 spine 链接开关）时重渲染学生列表
