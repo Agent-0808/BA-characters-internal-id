@@ -92,15 +92,24 @@
   flex-wrap: wrap;
 }
 
-/* 图一风格双层数值牌：上层浅底标签、下层深蓝数值带 */
+/* 图一风格双层数值牌：上层浅底标签、下层深蓝数值带；整体斜切，描边与下层同色 */
 .stat-item {
   min-width: 112px;
   background: var(--color-surface);
-  border: 3px solid var(--color-surface);
-  border-radius: 12px;
+  border: 2px solid var(--ba-navy);
+  border-radius: 10px;
   box-shadow: 0 2px 8px var(--shadow-card);
   overflow: hidden;
   text-align: center;
+  transform: skewX(-6deg);
+}
+
+/* 反向斜切让文字正视；加宽覆盖斜切后两侧空隙 */
+.stat-label,
+.stat-value {
+  width: 120%;
+  margin-left: -10%;
+  transform: skewX(6deg);
 }
 
 .stat-label {
@@ -167,11 +176,20 @@
 .hash-plate {
   min-width: 92px;
   background: var(--color-surface);
-  border: 2px solid var(--color-surface);
-  border-radius: 9px;
+  border: 2px solid var(--ba-navy);
+  border-radius: 8px;
   box-shadow: 0 1px 4px var(--shadow-card);
   overflow: hidden;
   text-align: center;
+  transform: skewX(-6deg);
+}
+
+/* 反向斜切让文字正视；加宽覆盖斜切后两侧空隙 */
+.hash-label,
+.hash-value {
+  width: 120%;
+  margin-left: -10%;
+  transform: skewX(6deg);
 }
 
 .hash-label {

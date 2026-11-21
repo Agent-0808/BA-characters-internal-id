@@ -73,13 +73,12 @@
     "installJp": "日服",
     "installCn": "国服",
     "installGlobal": "国际服",
-    "installNpc": "NPC",
     "installNotNpc": "非NPC",
     "defaultPage": "默认",
-    "limited": "🌟 限定",
+    "limited": "限定",
     "none": "无",
     "spinesLabel": "🎬 Spine ({{n}}个)",
-    "pagesLabel": "📄 Pages ({{n}}个页面)",
+    "pagesLabel": "页面与皮肤（{{n}}）",
     "studentMeta": "ID: {{id}} | {{n}} 个页面"
   },
   "footer": {

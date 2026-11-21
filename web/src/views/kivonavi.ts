@@ -59,10 +59,10 @@ function getPageAvatar(page: KivoPage): string | null {
   return null;
 }
 
-// 生成星级字符串
+// 生成星级字符串（页面级属性，用于头像卡底部色条）
 function getRarityStars(rarity: number): string {
-  if (rarity <= 0) return '-';
-  return '⭐'.repeat(Math.min(rarity, 3));
+  if (rarity <= 0) return '';
+  return '★'.repeat(Math.min(rarity, 3));
 }
 
 // 生成page名称
@@ -71,22 +71,35 @@ function getPageName(page: KivoPage): string {
   return t('kivo.defaultPage');
 }
 
-// 生成单个 page 行（皮肤头像 + 皮肤名胶囊 + 实装状态 + 星级 + spine 芯片）
-function generatePageHTML(page: KivoPage): string {
+// 生成单个 page 行：斜切头像卡（限定标记 + 星级条）+ 皮肤名 + 三服实装 + spine
+function generatePageHTML(page: KivoPage, studentIsNpc: boolean): string {
   const avatar = getPageAvatar(page);
   const pageName = getPageName(page);
   const kivoUrl = `https://kivo.wiki/data/character/${page.page_id}?mode=appreciation`;
   const spineUrl = (spineId: number) => `https://api.kivo.wiki/api/v1/data/spines/${spineId}`;
-  const rarityStars = getRarityStars(page.rarity);
+  // 底部深色条：有星级时放星级，无星级（未实装）时放 🔒
+  const stars = getRarityStars(page.rarity);
+  const bandText = stars || '🔒';
+  // 限定是页面级属性；NPC 学生不展示
+  const limitedBadge = page.limited && !studentIsNpc
+    ? `<span class="corner-badge">${t('kivo.limited')}</span>`
+    : '';
 
-  // 实装状态：未实装的服统一置灰（.not-installed）；胶囊内文字包一层 span 便于反向斜切
-  const installTags = page.is_npc
-    ? `<span class="tag tag-npc"><span>🚫 ${t('kivo.installNpc')}</span></span>`
-    : `
-      <span class="tag tag-install-jp ${page.is_install ? '' : 'not-installed'}"><span>${page.is_install ? '🇯🇵' : '❌'} ${t('kivo.installJp')}</span></span>
-      <span class="tag tag-install-global ${page.is_install_global ? '' : 'not-installed'}"><span>${page.is_install_global ? '🌐' : '❌'} ${t('kivo.installGlobal')}</span></span>
-      <span class="tag tag-install-cn ${page.is_install_cn ? '' : 'not-installed'}"><span>${page.is_install_cn ? '🇨🇳' : '❌'} ${t('kivo.installCn')}</span></span>
-    `;
+  // 单服实装状态小卡：上半部分深灰底放图标，下半部分放 ✓/✕
+  const server = (installed: boolean, icon: string, label: string) =>
+    `<span class="server ${installed ? 'on' : 'off'}" title="${label}">
+      <span class="server-head"><span class="ico">${icon}</span></span>
+      <span class="mark">${installed ? '✓' : '✕'}</span>
+    </span>`;
+
+  // NPC 页面不展示实装状态（NPC 属于学生级属性）
+  const servers = page.is_npc ? '' : `
+    <div class="servers">
+      ${server(page.is_install, '⛩️', t('kivo.installJp'))}
+      ${server(page.is_install_global, '🌐', t('kivo.installGlobal'))}
+      ${server(page.is_install_cn, '🀄', t('kivo.installCn'))}
+    </div>
+  `;
 
   const spinesHTML = page.spines.map(spineId =>
     getUiSettings().spineLink
@@ -96,15 +109,23 @@ function generatePageHTML(page: KivoPage): string {
 
   return `
     <div class="page-row">
-      ${avatar ? `<img src="${avatar}" class="page-avatar" alt="" loading="lazy">` : '<div class="page-avatar page-avatar-empty"></div>'}
-      <a href="${kivoUrl}" target="_blank" rel="noopener" class="page-chip" data-pid="${page.page_id}" title="page_id: ${page.page_id}"><span>${pageName}</span></a>
-      <div class="page-tags">
-        ${installTags}
-        ${page.rarity > 0 ? `<span class="tag tag-rarity"><span>${rarityStars}</span></span>` : ''}
-        ${page.limited ? `<span class="tag tag-limited"><span>${t('kivo.limited')}</span></span>` : ''}
+      <div class="page-card">
+        ${limitedBadge}
+        <a class="page-card-inner" href="${kivoUrl}" target="_blank" rel="noopener" title="page_id: ${page.page_id}">
+          ${avatar
+            ? `<img src="${avatar}" alt="" loading="lazy">`
+            : '<div class="page-card-empty"></div>'}
+          <div class="card-band">${bandText}</div>
+        </a>
       </div>
-      <div class="spines-list">
-        ${spinesHTML || `<span class="spine-empty">${t('kivo.none')}</span>`}
+      <div class="page-main">
+        <div class="page-head">
+          <span class="page-chip" data-pid="${page.page_id}">${pageName}</span>
+        </div>
+        ${servers}
+        <div class="spine-line">
+          <div class="spines-list">${spinesHTML || `<span class="spine-empty">${t('kivo.none')}</span>`}</div>
+        </div>
       </div>
     </div>
   `;
@@ -156,24 +177,20 @@ function generateStudentCard(student: Student): string {
       <span>${schoolName}</span>
     </span>
   `;
+  // NPC 是学生级属性，显示在信息头中
+  const npcChip = isNpc ? `<span class="tag tag-npc"><span>🚫NPC</span></span>` : '';
 
   return tile + `
     <div class="student-detail">
-      <div class="detail-left">
-        <div class="detail-avatar">
-          ${avatar ? `<img src="${avatar}" class="tile-avatar" alt="" loading="lazy">` : '<div class="tile-avatar tile-avatar-empty"></div>'}
-        </div>
+      <div class="detail-head">
+        <span class="detail-name">${joinName(student.family_name, student.given_name, 'cn', showFamily)}</span>
+        <span class="detail-sid">ID ${student.id}</span>
+        ${npcChip}
         ${schoolChip}
       </div>
-      <div class="detail-right">
-        <div class="detail-name">
-          <span>${joinName(student.family_name, student.given_name, 'cn', showFamily)}</span>
-          <span class="detail-sid">ID ${student.id}</span>
-        </div>
-        <div class="lang-row">${generateLangPills(student)}</div>
-        <div class="pages-title">${t('kivo.pagesLabel', { n: student.pages.length })}</div>
-        ${student.pages.map(page => generatePageHTML(page)).join('')}
-      </div>
+      <div class="lang-row">${generateLangPills(student)}</div>
+      <div class="section-band">${t('kivo.pagesLabel', { n: student.pages.length })}</div>
+      ${student.pages.map(page => generatePageHTML(page, isNpc)).join('')}
     </div>
   `;
 }

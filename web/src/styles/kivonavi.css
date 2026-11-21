@@ -19,18 +19,9 @@
     padding: 15px;
   }
 
-  /* 小屏详情面板改为上下堆叠 */
-  .student-detail {
-    flex-direction: column;
-  }
-
-  .detail-left {
-    width: 100%;
-    text-align: left;
-  }
-
-  .detail-avatar {
-    width: 96px;
+  /* 小屏时页面行允许换行 */
+  .page-row {
+    flex-wrap: wrap;
   }
 }
 
@@ -111,44 +102,45 @@
 
 .student-detail {
   grid-column: 1 / -1;
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 16px;
+  padding: 14px;
   background: #f4f9fe;
   border: 1.5px solid var(--ba-accent-2);
   border-radius: 12px;
 }
 
-.detail-left {
-  flex: none;
-  width: 120px;
-  text-align: center;
+/* 深蓝信息头：姓名 + ID + NPC + 学校徽章 */
+.detail-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #24406b, #2f5b93);
+  color: #ffffff;
 }
 
-.detail-avatar {
-  position: relative;
-  aspect-ratio: 404 / 456;
-  overflow: hidden;
-  border: 2px solid var(--ba-accent);
-  border-radius: 10px;
+.detail-name {
+  font-size: 18px;
+  font-weight: 700;
 }
 
-/* 详情面板内头像无需斜切补偿，恢复正常直立显示 */
-.student-detail .tile-avatar {
-  transform: none;
+/* 学生 ID 用等宽字体，与名称区分 */
+.detail-sid {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.72);
 }
 
-/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts） */
+/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts），信息头内右对齐 */
 .school-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 10px;
+  margin-left: auto;
   padding: 3px 12px;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  background: var(--color-surface);
   transform: skewX(-8deg);
 }
 
@@ -159,6 +151,8 @@
   font-weight: 500;
   /* 文字颜色跟随学校配色（由渲染时内联指定） */
   color: inherit;
+  /* 校名尽量单行，窄屏时再允许换行 */
+  white-space: nowrap;
 }
 
 .school-chip-logo {
@@ -168,27 +162,11 @@
   transform: skewX(8deg);
 }
 
-.detail-right {
-  flex: 1;
-  min-width: 0;
-}
-
-.detail-name {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ba-title);
-}
-
-/* 学生 ID 用等宽字体，与名称区分 */
-.detail-sid {
-  font-family: 'Courier New', monospace;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--ba-accent-deep);
+@media (max-width: 720px) {
+  .school-chip > span {
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 /* 多语言姓名胶囊 */
@@ -196,7 +174,7 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .lang-pill {
@@ -221,58 +199,128 @@
   font-weight: 500;
 }
 
-.pages-title {
-  margin: 12px 0 2px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--color-text-muted);
+/* 区块标题色带：深蓝、右端斜切收尾 */
+.section-band {
+  margin: 14px 0 8px;
+  padding: 5px 14px;
+  background: linear-gradient(90deg, #24406b, #2f5b93);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 5px 0 0 5px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 22px) 100%, 0 100%);
 }
 
 /* ---------- Page 行 ---------- */
 
 .page-row {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 10px 0;
-}
-
-/* 相邻 page 行之间用虚线分隔（首行不留分隔线） */
-.page-row + .page-row {
-  border-top: 1px dashed var(--color-border);
-}
-
-.page-avatar {
-  flex: none;
-  width: 44px;
-  height: 44px;
-  border: 1.5px solid var(--ba-accent-2);
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  object-fit: cover;
+  background: #f7fbff;
 }
 
-.page-avatar-empty {
+.page-row + .page-row {
+  margin-top: 6px;
+}
+
+/* 页面头像卡：与学生瓦片同款斜切造型，尺寸略小 */
+.page-card {
+  position: relative;
+  flex: none;
+  width: 108px;
+}
+
+.page-card-inner {
+  display: block;
+  position: relative;
+  aspect-ratio: 404 / 456;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  /* 与学生瓦片一致：-6deg 斜切，子元素反向补偿 */
+  transform: skewX(-6deg);
+  box-shadow: 0 2px 6px var(--shadow-card);
+}
+
+.page-card-inner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: skewX(6deg) scale(1.14);
+}
+
+.page-card-empty {
+  width: 100%;
+  height: 100%;
   background: var(--color-input);
 }
 
-/* 皮肤名胶囊：page_id 通过 hover tooltip 展示 */
+/* 头像卡底部深色条：星级（无星级时回退为皮肤名） */
+.card-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px 6px;
+  background: var(--ba-band);
+  color: var(--ba-highlight);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+  transform: skewX(6deg) scale(1.14);
+  transform-origin: bottom center;
+}
+
+/* 限定标记：无底框金色文字，大部分位于头像内、略微溢出左上角，向右倾斜 */
+.corner-badge {
+  position: absolute;
+  top: -12px;
+  left: 0px;
+  z-index: 3;
+  color: var(--ba-highlight);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgb(93, 34, 2);
+  transform: skewX(-6deg);
+}
+
+.page-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.page-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* 皮肤名胶囊：page_id 通过 hover tooltip 展示（链接已移到头像卡） */
 .page-chip {
   position: relative;
+  display: inline-block;
   padding: 4px 16px;
   border-radius: 6px;
   background: var(--gradient-accent);
   color: #ffffff;
   font-size: 13px;
   font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
   transform: skewX(-8deg);
-}
-
-.page-chip > span {
-  display: inline-block;
-  transform: skewX(8deg);
 }
 
 .page-chip::after {
@@ -298,13 +346,73 @@
   opacity: 1;
 }
 
-/* Page 标签（斜切胶囊） */
-.page-tags {
+/* 三服实装状态：1:2 竖长小卡，斜切为平行四边形；上半深灰底放图标，下半放 ✓/✕ */
+.servers {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
 }
 
+.server {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24px;
+  height: 48px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 4px;
+  transform: skewX(-6deg);
+}
+
+.server-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 22px;
+  background: #99a2ac;
+}
+
+.server .ico {
+  transform: skewX(6deg);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.server .mark {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  transform: skewX(6deg);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.server.on {
+  background: #f2f9ff;
+  border-color: #9fc4e8;
+}
+
+.server.on .mark {
+  color: #2fae62;
+}
+
+.server.off {
+  opacity: 0.72;
+}
+
+.server.off .mark {
+  color: #b6c2d1;
+}
+
+.spine-line {
+  display: flex;
+}
+
+/* 通用斜切标签（NPC 等） */
 .tag {
   display: inline-flex;
   align-items: center;
@@ -320,49 +428,9 @@
   transform: skewX(8deg);
 }
 
-.tag-install-jp {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-.tag-install-jp.not-installed {
-  background: var(--color-input);
-  color: var(--color-text-neutral);
-}
-
-.tag-install-cn {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.tag-install-cn.not-installed {
-  background: var(--color-input);
-  color: var(--color-text-neutral);
-}
-
-.tag-install-global {
-  background: #dbeafe;
-  color: #1e40af;
-}
-
-.tag-install-global.not-installed {
-  background: var(--color-input);
-  color: var(--color-text-neutral);
-}
-
 .tag-npc {
   background: var(--color-input);
   color: var(--color-text-neutral);
-}
-
-.tag-rarity {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.tag-limited {
-  background: #fce7f3;
-  color: #be185d;
 }
 
 /* ---------- Spine 芯片 ---------- */

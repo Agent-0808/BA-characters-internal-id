@@ -73,13 +73,12 @@
     "installJp": "JP",
     "installCn": "CN",
     "installGlobal": "Global",
-    "installNpc": "NPC",
     "installNotNpc": "Not NPC",
     "defaultPage": "Default",
-    "limited": "🌟 Limited",
+    "limited": "Limited",
     "none": "None",
     "spinesLabel": "🎬 Spines ({{n}})",
-    "pagesLabel": "📄 Pages ({{n}})",
+    "pagesLabel": "Pages ({{n}})",
     "studentMeta": "ID: {{id}} | {{n}} pages"
   },
   "footer": {
