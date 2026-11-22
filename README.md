@@ -108,6 +108,7 @@ README.md           本文件
   "family_name_cn": "月雪",
   "given_name_cn": "宫子",
   "school_id": 11,
+  "is_npc": false,
   "pages": [
     {
       "page_id": 6,
@@ -122,7 +123,6 @@ README.md           本文件
       "is_install": true,
       "is_install_cn": true,
       "is_install_global": true,
-      "is_npc": false,
       "rarity": 3,
       "limited": false
     },
@@ -139,7 +139,6 @@ README.md           本文件
       "is_install": true,
       "is_install_cn": true,
       "is_install_global": true,
-      "is_npc": false,
       "rarity": 3,
       "limited": false
     }
@@ -147,8 +146,8 @@ README.md           本文件
 }
 ```
 
-- 角色级字段：`id`（角色 ID）、`family_name` / `given_name`（KivoWiki 源数据姓名，简体中文民间译名，无后缀）与 `family_name_jp` / `given_name_jp` 等各语言姓名（后缀 jp / kr / en / tw / cn 按数据可得性递减，`cn` 字段单独输出不做省略合并）、`school_id`、`pages`。
-- 页面级字段：`page_id`、`skin` 与各语言皮肤名、`avatar`（头像 URL）、`spines`（Spine ID 列表）、`is_install` / `is_install_cn` / `is_install_global`（各服实装状态）、`is_npc`、`rarity`（星级）、`limited`（是否限定）。
+- 角色级字段：`id`（角色 ID）、`family_name` / `given_name`（KivoWiki 源数据姓名，简体中文民间译名，无后缀）与 `family_name_jp` / `given_name_jp` 等各语言姓名（后缀 jp / kr / en / tw / cn 按数据可得性递减）、`school_id`、`is_npc`（是否 NPC）、`pages`。
+- 页面级字段：`page_id`、`skin` 与各语言皮肤名、`avatar`（头像 URL）、`spines`（Spine ID 列表）、`is_install` / `is_install_cn` / `is_install_global`（各服实装状态）、`rarity`（星级）、`limited`（是否限定）。
 - 页面级皮肤名：`skin` 为 KivoWiki 数据源原始命名（中文），`skin_jp` / `skin_kr` / `skin_en` / `skin_tw` / `skin_cn` 为各语言皮肤名（顺序同为数据可得性递减；en/kr 由本项目手动维护的翻译词表映射，其余语言网站数据优先、词表兜底）；角色默认形态或未覆盖时为空字符串。
 
 ## 其他文件
