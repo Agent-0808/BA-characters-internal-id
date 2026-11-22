@@ -34,6 +34,17 @@
   box-shadow: 0 5px 14px rgba(20, 60, 110, 0.3);
 }
 
+/* 手机端缩小并贴角，给 header 留出更多横向空间（与 layout.css 的 480px 留白对应） */
+@media (max-width: 480px) {
+  .settings-btn {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
 /* 半透明遮罩，点击空白处关闭 */
 .settings-overlay {
   position: fixed;

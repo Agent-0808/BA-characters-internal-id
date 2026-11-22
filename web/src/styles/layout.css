@@ -136,9 +136,8 @@
 }
 
 @media (max-width: 640px) {
-  .header { padding: 10px 76px 10px 16px; }
-  .header-left { gap: 8px; }
-  .stat-item { min-width: 96px; }
+  /* 手机端隐藏三块统计牌：三块牌至少需要 300px，窄屏下会挤成两行，占用首屏高度 */
+  .stats { display: none; }
 }
 
 .controls {
@@ -234,7 +233,8 @@
 
   /* 压缩 header 区域（两层布局：信息行 + tab 条） */
   .header {
-    padding: 8px 52px 0 16px;
+    /* 右侧留出固定设置按钮（46 + 22）的空间，避免长标题压到按钮下方 */
+    padding: 8px 68px 8px 16px;
   }
 
   .header h1 {
@@ -316,4 +316,30 @@
   background: var(--gradient-accent);
   border-color: var(--ba-accent-deep);
   box-shadow: 0 2px 0 var(--ba-accent-deep);
+}
+
+/* 窄屏（手机）进一步收紧水平留白，并保证两个视图 tab 始终一行 */
+@media (max-width: 480px) {
+  .header {
+    /* 设置按钮同步缩小为 40px、右移 12px，故右侧留白由 68 收到 52 */
+    padding: 8px 52px 8px 12px;
+  }
+
+  /* 长标题不换行、超宽时省略，避免压到设置按钮 */
+  .header h1 {
+    font-size: 0.95rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-links {
+    flex-wrap: nowrap;
+  }
+
+  .nav-links a {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
 }

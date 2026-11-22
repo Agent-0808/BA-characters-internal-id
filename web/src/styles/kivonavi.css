@@ -507,3 +507,44 @@ a.spine-id:hover {
   gap: 10px;
   flex-wrap: wrap;
 }
+
+/* ---------- 窄屏适配 ----------
+ * 必须放在文件末尾：这里的 .students-grid/.page-main 等规则与上面基础规则同级，
+ * 若写在前面会被后面同名的 flex:none、width:108px 等声明覆盖（源码顺序优先）。 */
+
+@media (max-width: 768px) {
+  /* 平板：缩小最小列宽与间距，避免 1fr 把卡片拉得过大 */
+  .students-grid {
+    grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+    gap: 12px 10px;
+  }
+
+  /* 详情区可收缩：基础规则是 flex:none，会按内容宽度撑开导致右侧溢出，spines 也就无法换行 */
+  .page-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* 信息条与三服状态放不下时换行，避免撑破 page-main */
+  .page-meta {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 手机：360px 屏可用宽度约 300px，3×92 + 2×8 = 292，可稳定排 3 列 */
+  .students-grid {
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+    gap: 10px 8px;
+  }
+
+  /* 展开详情里的页面头像卡同步缩小，避免窄屏下挤压详情区 */
+  .page-card {
+    width: 92px;
+  }
+
+  /* 窄屏下详情内容独占一行，避免与头像卡并排时皮肤名被截断 */
+  .page-main {
+    flex: 1 1 100%;
+  }
+}
