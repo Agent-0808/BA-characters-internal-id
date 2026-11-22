@@ -45,12 +45,13 @@
 
 .student-tile:hover {
   border-color: var(--ba-accent);
-  box-shadow: 0 3px 10px var(--shadow-card);
+  /* 注意：--shadow-card 是完整阴影值，不能嵌入到阴影列表中 */
+  box-shadow: 0 0 0 3px var(--ba-accent), 0 4px 14px rgba(47, 84, 137, 0.2);
 }
 
 .student-tile.selected {
   border-color: var(--ba-highlight);
-  box-shadow: 0 0 0 1px var(--ba-highlight), 0 3px 10px var(--shadow-card);
+  box-shadow: 0 0 0 4px var(--ba-highlight), 0 4px 14px rgba(47, 84, 137, 0.2);
 }
 
 .tile-avatar {
@@ -141,7 +142,8 @@
   gap: 6px;
   margin-left: auto;
   padding: 3px 12px;
-  border: 1px solid var(--color-border);
+  /* 四边形外部轮廓跟随学校文字颜色 */
+  border: 1.5px solid currentColor;
   border-radius: 6px;
   transform: skewX(-8deg);
 }
@@ -184,7 +186,7 @@
   border: 1px solid var(--color-border);
   border-radius: 5px;
   background: var(--color-surface);
-  color: var(--color-text-muted);
+  color: var(--ba-navy);
   font-size: 12px;
   transform: skewX(-8deg);
 }
@@ -319,8 +321,8 @@
   gap: 4px;
   width: max-content;
   min-width: 150px;
-  /* 两条 24px + 4px 间距 = 52px，与右侧三服状态卡等高 */
-  height: 52px;
+  /* 两条 28px + 4px 间距 = 60px，与右侧三服状态卡等高 */
+  height: 60px;
   transform: skewX(-6deg);
 }
 
@@ -340,7 +342,7 @@
   width: 52px;
   background: var(--color-surface);
   border-right: 1px solid var(--color-border);
-  color: #6b7a8c;
+  color: var(--ba-navy);
   font-size: 12px;
   font-weight: 700;
 }
@@ -353,8 +355,8 @@
   min-width: 96px;
   max-width: 150px;
   padding: 0 8px;
-  background: #e8f4fe;
-  color: #2476b8;
+  background: var(--gradient-accent);
+  color: #ffffff;
   font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
@@ -378,8 +380,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 26px;
-  height: 52px;
+  width: 28px;
+  height: 60px;
   padding: 0;
   overflow: hidden;
   background: var(--color-surface);
@@ -393,7 +395,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 24px;
+  height: 28px;
   background: #99a2ac;
 }
 
@@ -471,7 +473,7 @@
   border-radius: 4px;
   font-size: 0.8rem;
   font-family: 'Courier New', monospace;
-  color: var(--color-text-secondary);
+  color: var(--ba-navy);
   text-decoration: none;
   /* 与页面行其余元素保持同一倾斜方向 */
   transform: skewX(-6deg);
@@ -484,7 +486,7 @@
 }
 
 a.spine-id {
-  color: var(--color-text-muted);
+  color: var(--ba-navy);
   text-decoration: underline;
 }
 

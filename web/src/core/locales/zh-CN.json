@@ -17,8 +17,8 @@
     "clearAll": "清除全部"
   },
   "nav": {
-    "index": "📊 文件ID",
-    "kivonavi": "🎴 KivoWiki导航",
+    "index": "文件ID",
+    "kivonavi": "KivoWiki导航",
     "docTitleIndex": "BA Characters Internal ID",
     "docTitleKivo": "KivoWiki 导航"
   },
