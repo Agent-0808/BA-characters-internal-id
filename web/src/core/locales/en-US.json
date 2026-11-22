@@ -12,20 +12,19 @@
     "noResultsHint": "Try adjusting your search"
   },
   "action": {
-    "expandAll": "Expand All",
     "collapseAll": "Collapse All",
     "reset": "Reset to Defaults",
     "clearAll": "Clear All"
   },
   "nav": {
-    "index": "📊 File IDs",
-    "kivonavi": "🎴 KivoWiki Navigation",
+    "index": "File IDs",
+    "kivonavi": "KivoWiki Navigation",
     "docTitleIndex": "BA Characters Internal ID",
     "docTitleKivo": "KivoWiki Navigation"
   },
   "header": {
-    "indexTitle": "📚 Blue Archive Characters Internal ID Database",
-    "kivoTitle": "📚 KivoWiki Characters Navigation",
+    "indexTitle": "Blue Archive Characters Internal ID Database",
+    "kivoTitle": "KivoWiki Characters Navigation",
     "totalRecords": "Records",
     "studentCount": "Students",
     "pageCount": "Pages",
@@ -76,21 +75,24 @@
     "installNpc": "NPC",
     "installNotNpc": "Not NPC",
     "defaultPage": "Default",
-    "limited": "🌟 Limited",
+    "limited": "Limited",
     "none": "None",
     "spinesLabel": "🎬 Spines ({{n}})",
-    "pagesLabel": "📄 Pages ({{n}})",
+    "pagesLabel": "Pages ({{n}})",
+    "skinLabel": "Skin",
+    "pageLabel": "Page",
     "studentMeta": "ID: {{id}} | {{n}} pages"
   },
   "footer": {
     "github": "GitHub Repository",
     "dataFiles": "Data Files",
-    "downloadData": "Download Data",
     "kivowiki": "KivoWiki"
   },
   "settings": {
     "title": "Settings",
     "groupUi": "Interface",
+    "enabled": "On",
+    "disabled": "Off",
     "language": "🌏 Language",
     "spineLink": "Spine ID as Links",
     "spineLinkHint": "When checked, spine_id in the table and Spine numbers on the navigation page will be displayed as clickable links",

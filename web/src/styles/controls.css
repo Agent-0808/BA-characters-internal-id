@@ -6,10 +6,12 @@
 
 .search-box input {
   width: 100%;
-  padding: 10px 16px 10px 40px;
-  border: 2px solid var(--color-border);
-  border-radius: 10px;
+  padding: 10px 18px 10px 40px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
   font-size: 14px;
+  background: var(--color-surface);
+  color: var(--color-text);
   transition: all 0.3s;
 }
 
@@ -38,36 +40,32 @@
   font-weight: 500;
 }
 
-.filter-group select {
-  padding: 8px 12px;
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-  font-size: 14px;
+/* 斜切下拉框：外壳斜切，原生 select 反向补偿保持文字正视 */
+.select-shell {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--color-border);
+  border-radius: 6px;
   background: var(--color-surface);
+  overflow: hidden;
+  transform: skewX(-6deg);
+}
+
+.filter-group select {
+  padding: 8px 14px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--ba-navy);
   cursor: pointer;
-  transition: all 0.3s;
+  transform: skewX(6deg);
 }
 
 .filter-group select:focus {
   outline: none;
-  border-color: var(--color-accent);
 }
 
-/* 列显示控制按钮 */
-.column-toggle-btn {
-  padding: 8px 12px;
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.column-toggle-btn:hover {
-  border-color: var(--color-accent);
-  background: var(--color-surface-alt);
-}
+/* 列显示控制按钮：造型由 .ba-btn--ghost 提供 */
 
 /* 学校筛选下拉 */
 .school-filter-dropdown {
@@ -75,33 +73,21 @@
   display: inline-block;
 }
 
+/* 学校多选按钮：斜切填充造型由 .ba-btn 提供，这里只保留布局 */
 .school-filter-btn {
-  padding: 8px 12px;
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
+  min-width: 120px;
   gap: 8px;
-  min-width: 100px;
-}
-
-.school-filter-btn:hover {
-  border-color: var(--color-accent);
-  background: var(--color-surface-alt);
+  justify-content: center;
 }
 
 .school-filter-label {
-  color: var(--color-text-muted);
+  color: #ffffff;
   font-weight: 500;
 }
 
 .school-filter-count {
-  background: var(--color-accent);
-  color: var(--color-surface);
+  background: rgba(255,255,255,0.9);
+  color: var(--ba-accent-deep);
   padding: 2px 6px;
   border-radius: 10px;
   font-size: 12px;
@@ -113,7 +99,7 @@
 }
 
 .school-filter-arrow {
-  color: var(--color-text-subtle);
+  color: rgba(255,255,255,0.85);
   font-size: 10px;
   margin-left: auto;
 }
@@ -124,8 +110,9 @@
   background: var(--color-surface);
   min-width: 200px;
   max-width: 300px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 25px rgba(47, 84, 137, 0.18);
+  border-radius: 12px;
   z-index: 1000;
   overflow: hidden;
 }
@@ -150,7 +137,7 @@
 }
 
 .school-filter-item.selected {
-  background: #e0e7ff;
+  background: var(--ba-row-hover);
 }
 
 .school-filter-item input[type="checkbox"] {
@@ -218,8 +205,9 @@
   position: fixed;
   background: var(--color-surface);
   min-width: 180px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 25px rgba(47, 84, 137, 0.18);
+  border-radius: 12px;
   z-index: 1000;
   padding: 10px 0;
   max-height: 400px;

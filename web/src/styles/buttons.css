@@ -1,0 +1,72 @@
+/* ===== BA 风格斜切填充按钮 =====
+   用伪元素做斜切圆角背景，文字保持水平，宽度自适应 */
+
+.ba-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 26px;
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  isolation: isolate;
+  transition: color 0.15s;
+}
+
+.ba-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--gradient-accent);
+  border-radius: 10px;
+  /* 游戏风格：平行四边形 + 圆角，底部一条深色实边 */
+  transform: skewX(-10deg);
+  box-shadow: 0 2px 0 var(--ba-accent-deep);
+  transition: filter 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.ba-btn:hover::before {
+  filter: brightness(1.08);
+}
+
+.ba-btn:active::before {
+  transform: skewX(-10deg) translateY(2px);
+  box-shadow: none;
+}
+
+/* 次按钮：白底蓝描边 */
+.ba-btn--ghost {
+  color: var(--ba-accent-deep);
+}
+
+.ba-btn--ghost::before {
+  background: var(--color-surface);
+  border: 1.5px solid var(--ba-accent);
+  box-shadow: none;
+}
+
+.ba-btn--ghost:hover::before {
+  background: var(--ba-row-hover);
+  filter: none;
+}
+
+/* 强调按钮：黄色填充（对应游戏里的导入/特殊操作） */
+.ba-btn--accent {
+  color: #6a4a00;
+}
+
+.ba-btn--accent::before {
+  background: linear-gradient(135deg, #ffe27a, #ffcc33);
+  box-shadow: 0 2px 0 #d9a300;
+}
+
+.ba-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

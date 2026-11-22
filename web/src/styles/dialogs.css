@@ -1,116 +1,269 @@
-/* ===== 设置面板（Click FX 配置） ===== */
+/* ===== 设置对话框（按游戏设置界面还原） ===== */
 
 .settings-btn {
   position: fixed;
   top: 22px;
   right: 22px;
   z-index: 1100;
-  width: 38px;
-  height: 38px;
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
   line-height: 1;
-  color: var(--color-text);
-  background: rgba(255,255,255,0.9);
-  border: 2px solid var(--color-border);
-  border-radius: 50%;
+  color: #ffffff;
+  /* 蓝底白字的斜切按钮 */
+  background: var(--gradient-accent);
+  border: 1px solid var(--ba-accent-deep);
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(20, 60, 110, 0.25);
   cursor: pointer;
-  transition: all 0.2s;
+  transform: skewX(-6deg);
+  transition: filter 0.2s, box-shadow 0.2s;
+}
+
+/* 图标反向斜切，保持正视 */
+.settings-icon {
+  display: inline-block;
+  transform: skewX(6deg);
 }
 
 .settings-btn:hover {
-  background: var(--color-surface);
-  transform: rotate(30deg);
+  filter: brightness(1.08);
+  box-shadow: 0 5px 14px rgba(20, 60, 110, 0.3);
 }
 
-.settings-panel {
+/* 半透明遮罩，点击空白处关闭 */
+.settings-overlay {
   position: fixed;
-  top: 66px;
-  right: 22px;
+  inset: 0;
   z-index: 1100;
-  width: 280px;
-  background: var(--color-surface);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(16, 32, 56, 0.45);
+}
+
+/* hidden 属性需覆盖 flex 布局 */
+.settings-overlay[hidden] {
+  display: none;
+}
+
+.settings-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(560px, 100%);
+  max-height: calc(100vh - 60px);
+  background: #eef4f8;
+  border: 1px solid #c9d5e2;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(20, 45, 80, 0.22);
   overflow: hidden;
 }
 
+/* 标题栏：浅灰蓝底、居中深蓝标题、黄色短线 */
 .settings-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text);
-  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  padding: 10px 48px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: #2b4a6f;
+  border-bottom: 1px solid #cfdae6;
+}
+
+.settings-header > span {
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 3px solid var(--ba-highlight);
 }
 
 .settings-close {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
   border: none;
-  background: none;
-  font-size: 14px;
-  color: var(--color-text-subtle);
+  border-radius: 50%;
+  background: transparent;
+  color: #5b7290;
+  font-size: 16px;
   cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 4px;
+  transition: background 0.15s;
 }
 
 .settings-close:hover {
-  color: var(--color-text);
-  background: var(--color-surface-alt);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* 分组 tab：整条浅蓝，选中项白底通栏，中间竖分隔线 */
+.settings-tabs {
+  display: flex;
+  background: #bfe6fa;
+  border-bottom: 1px solid #a9d8f2;
+}
+
+.settings-tab {
+  position: relative;
+  flex: 1;
+  padding: 11px 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #2b4a6f;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.settings-tab + .settings-tab::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 0;
+  width: 1px;
+  background: #8fc7e6;
+}
+
+.settings-tab.active {
+  background: #eef4f8;
 }
 
 .settings-body {
-  padding: 10px 15px 15px;
+  padding: 10px;
+  overflow-y: auto;
+  background: #e3e9ef;
+}
+
+.settings-pane {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
 }
 
-/* 设置分组：小标题 + 分隔线 */
-.settings-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.settings-pane[hidden] {
+  display: none;
 }
 
-.settings-group-title {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-text-subtle);
-  letter-spacing: 0.08em;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--color-border);
-}
-
+/* 行式卡片：浅灰底 + 深灰细边 */
 .settings-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--color-text);
+  gap: 12px;
+  padding: 12px 14px;
+  background: #dde3ea;
+  border: 1px solid #c3ccd6;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #2b4a6f;
   cursor: pointer;
+  transition: border-color 0.15s;
 }
 
-.settings-item input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
+.settings-item:hover {
+  border-color: #aebbc9;
+}
+
+/* 双段启用/禁用开关：选中段深蓝底白字 */
+.seg-toggle {
+  position: relative;
+  display: inline-flex;
+  margin-left: auto;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(30, 90, 140, 0.18);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.seg-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.seg {
+  min-width: 74px;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  background: #ffffff;
+  color: #1e6fb5;
+  transition: background 0.15s, color 0.15s;
+}
+
+/* 未选中的「启用」用红色提示，与游戏一致 */
+.seg-on {
+  color: #e05353;
+}
+
+.seg-toggle input:not(:checked) ~ .seg-off,
+.seg-toggle input:checked ~ .seg-on {
+  background: var(--ba-navy);
+  color: #ffffff;
+}
+
+/* 下拉：亮蓝斜切底板 + 深蓝粗体文字 */
+.gp-select {
+  position: relative;
+  display: inline-flex;
+  margin-left: auto;
+  min-width: 150px;
+  isolation: isolate;
+  flex-shrink: 0;
+}
+
+.gp-select::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #66d0f9, #43bdf2);
+  border-radius: 8px;
+  transform: skewX(-14deg);
+  box-shadow: 0 1px 2px rgba(30, 90, 140, 0.25);
+}
+
+.gp-select::after {
+  content: '▼';
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #124a7d;
+  pointer-events: none;
+}
+
+.gp-select select {
+  appearance: none;
+  width: 100%;
+  padding: 9px 34px 9px 18px;
+  border: none;
+  background: transparent;
+  color: #124a7d;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
 }
 
 .settings-item input:disabled {
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
-/* 设置面板：语言等下拉控件（右侧对齐） */
-.settings-item select.settings-select {
-  margin-left: auto;
-  padding: 4px 8px;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  font-size: 12px;
-  background: var(--color-surface);
-  cursor: pointer;
+/* 特效总开关关闭时，被禁用的控件整体变淡 */
+.settings-item:has(input:disabled) .seg,
+.settings-item:has(input:disabled) input[type="range"],
+.settings-item:has(input:disabled) input[type="color"] {
+  opacity: 0.5;
 }
 
 .settings-item.settings-range span:first-child {
@@ -120,32 +273,38 @@
 .settings-item input[type="range"] {
   flex: 1;
   cursor: pointer;
+  accent-color: var(--ba-accent);
 }
 
 .range-value {
   min-width: 36px;
   text-align: right;
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: #5b7290;
   font-variant-numeric: tabular-nums;
 }
 
 .settings-item input[type="color"] {
+  margin-left: auto;
   width: 36px;
   height: 24px;
   padding: 0;
-  border: 1px solid var(--color-border);
+  border: 1px solid #c3ccd6;
   border-radius: 4px;
   cursor: pointer;
   background: none;
 }
 
-.settings-reset {
-  margin-top: 4px;
-  align-self: flex-end;
-  font-size: 12px;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all 0.2s;
+/* 底部操作区 */
+.settings-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 12px 12px;
+  background: #eef4f8;
+}
+
+@media (max-width: 640px) {
+  .settings-dialog {
+    max-height: calc(100dvh - 32px);
+  }
 }

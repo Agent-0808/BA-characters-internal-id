@@ -43,23 +43,27 @@
   display: none;
 }
 
-/* 紧凑单行 header：标题居左，统计徽章与导航居右 */
+/* BA 风格双层 header：信息行 + 通栏 tab 条 */
 .header {
-  background: linear-gradient(90deg, #345a8a 0%, #2f5074 100%);
-  color: var(--color-surface);
-  padding: 10px 20px;
+  /* 浅蓝渐变色条 + 深蓝文字 */
+  background: linear-gradient(180deg, var(--ba-header-a) 0%, var(--ba-header-b) 100%);
+  color: var(--color-text);
+  padding: 12px 20px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-border);
 }
 
+/* 左列：标题在上、导航 tab 在下；右侧统计牌跨两行垂直居中 */
 .header-left {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   min-width: 0;
 }
 
@@ -67,6 +71,9 @@
   font-size: 1.15rem;
   margin: 0;
   white-space: nowrap;
+  color: var(--ba-title);
+  padding-bottom: 3px;
+  border-bottom: 3px solid var(--ba-highlight);
 }
 
 .header p {
@@ -78,49 +85,60 @@
   text-overflow: ellipsis;
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
 .stats {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   margin: 0;
   flex-wrap: wrap;
 }
 
+/* 图一风格双层数值牌：上层浅底标签、下层深蓝数值带；整体斜切，描边与下层同色 */
 .stat-item {
-  display: flex;
-  align-items: baseline;
-  gap: 5px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 0.75rem;
+  min-width: 112px;
+  background: var(--color-surface);
+  border: 2px solid var(--ba-navy);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--shadow-card);
+  overflow: hidden;
+  text-align: center;
+  transform: skewX(-6deg);
 }
 
+/* 反向斜切让文字正视；加宽覆盖斜切后两侧空隙 */
+.stat-label,
 .stat-value {
-  font-size: 0.85rem;
-  font-weight: bold;
-  font-variant-numeric: tabular-nums;
+  width: 120%;
+  margin-left: -10%;
+  transform: skewX(6deg);
 }
 
 .stat-label {
-  font-size: 0.75rem;
-  opacity: 0.75;
+  display: block;
+  padding: 4px 12px 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2c5d9c;
 }
 
-/* 容器失去 max-width 居中后，给右上角固定设置按钮留出空间 */
+.stat-value {
+  display: block;
+  padding: 3px 12px 5px;
+  background: var(--ba-navy);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 容器失去 max-width 居中后，给右上角固定设置按钮留出空间（按钮宽 46 + 右边距 22） */
 @media (max-width: 1430px) {
-  .header { padding-right: 52px; }
+  .header { padding-right: 76px; }
 }
 
 @media (max-width: 640px) {
-  .header { padding: 10px 52px 10px 16px; }
-  .header-left { flex-direction: column; gap: 2px; }
+  .header { padding: 10px 76px 10px 16px; }
+  .header-left { gap: 8px; }
+  .stat-item { min-width: 96px; }
 }
 
 .controls {
@@ -145,16 +163,51 @@
   flex-shrink: 0;
 }
 
-/* 页脚右侧的提交 hash 显示（web / 数据） */
+/* 页脚右侧的提交 hash：图一风格双层小牌（WEB / DATA） */
 .footer-hashes {
   position: absolute;
   right: 30px;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.hash-plate {
+  min-width: 92px;
+  background: var(--color-surface);
+  border: 2px solid var(--ba-navy);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px var(--shadow-card);
+  overflow: hidden;
+  text-align: center;
+  transform: skewX(-6deg);
+}
+
+/* 反向斜切让文字正视；加宽覆盖斜切后两侧空隙 */
+.hash-label,
+.hash-value {
+  width: 120%;
+  margin-left: -10%;
+  transform: skewX(6deg);
+}
+
+.hash-label {
+  display: block;
+  padding: 3px 10px 1px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #2c5d9c;
+}
+
+.hash-value {
+  display: block;
+  padding: 2px 10px 3px;
+  background: var(--ba-navy);
+  color: #ffffff;
   font-family: 'Courier New', monospace;
-  font-size: 11px;
-  color: var(--color-text-subtle);
-  white-space: nowrap;
+  font-size: 12px;
 }
 
 .footer a {
@@ -179,9 +232,9 @@
     display: none;
   }
 
-  /* 压缩 header 区域（单行布局：标题列排，统计徽章与导航换行居左） */
+  /* 压缩 header 区域（两层布局：信息行 + tab 条） */
   .header {
-    padding: 8px 52px 8px 16px;
+    padding: 8px 52px 0 16px;
   }
 
   .header h1 {
@@ -218,30 +271,49 @@
   }
 }
 
-/* 导航链接 */
+/* 导航链接：BA 风格斜切填充 tab（第二层） */
 .nav-links {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
-  color: rgba(255,255,255,0.9);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 26px;
+  color: var(--ba-accent-deep);
   text-decoration: none;
   font-size: 0.9rem;
-  padding: 5px 12px;
-  border-radius: 6px;
-  transition: all 0.2s;
+  font-weight: 600;
+  isolation: isolate;
+  transition: color 0.15s;
 }
 
-.nav-links a:hover {
-  background: rgba(255,255,255,0.15);
-  color: var(--color-surface);
+/* 斜切圆角背景同按钮，文字保持水平 */
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-surface);
+  border: 1.5px solid var(--ba-accent);
+  border-radius: 9px;
+  transform: skewX(-10deg);
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.nav-links a:hover::before {
+  background: var(--ba-row-hover);
 }
 
 .nav-links a.active {
-  background: rgba(255,255,255,0.2);
-  color: var(--color-surface);
-  font-weight: 500;
+  color: #ffffff;
+}
+
+.nav-links a.active::before {
+  background: var(--gradient-accent);
+  border-color: var(--ba-accent-deep);
+  box-shadow: 0 2px 0 var(--ba-accent-deep);
 }

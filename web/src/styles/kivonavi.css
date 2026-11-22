@@ -1,4 +1,4 @@
-/* ========== 学生卡片页面样式 ========== */
+/* ========== 学生卡片页面样式（BA 风格：斜切头像瓦片 + 整行详情面板） ========== */
 
 .students-container {
   padding: 20px 30px;
@@ -9,247 +9,447 @@
 
 .students-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px 14px;
   align-items: start;
+  /* dense：详情面板独占下一行时，后续瓦片回填当前行剩余空位，卡片位置保持不变 */
+  grid-auto-flow: row dense;
 }
 
 @media (max-width: 768px) {
-  .students-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .students-container {
     padding: 15px;
   }
+
+  /* 小屏时页面行允许换行 */
+  .page-row {
+    flex-wrap: wrap;
+  }
 }
 
-/* 学生卡片 */
-.student-card {
-  background: var(--color-surface);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+/* ---------- 折叠态：头像瓦片 ---------- */
+
+.student-tile {
+  position: relative;
+  /* 头像原图为 404×456，瓦片按原始比例避免裁切 */
+  aspect-ratio: 404 / 456;
   overflow: hidden;
-  transition: all 0.3s ease;
-  border: 1px solid var(--color-border);
+  cursor: pointer;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  /* BA 风格斜切；子元素反向斜切补偿 */
+  transform: skewX(-6deg);
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-.student-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
+.student-tile:hover {
+  border-color: var(--ba-highlight);
+  /* 注意：--shadow-card 是完整阴影值，不能嵌入到阴影列表中 */
+  box-shadow: 0 0 0 3px var(--ba-highlight), 0 4px 14px rgba(47, 84, 137, 0.2);
 }
 
-.student-card.expanded {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+.student-tile.selected {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px #ff91ff, 0 4px 14px rgba(47, 84, 137, 0.2);
 }
 
-/* 卡片头部 */
-.student-header {
+.tile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* 反向斜切 + 轻微放大，恰好覆盖斜切后的四角（按 404:456 推算最小约 1.12） */
+  transform: skewX(6deg) scale(1.14);
+}
+
+.tile-avatar-empty {
+  background: var(--color-input);
+}
+
+.tile-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px 6px;
+  background: var(--ba-band);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 500;
+  text-align: center;
+  /* 单行显示：超长名称先由 JS 缩小字号，仍放不下则省略号截断 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform: skewX(6deg) scale(1.14);
+  transform-origin: bottom center;
+}
+
+.tile-badge {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  z-index: 2;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(28, 44, 80, 0.75);
+  color: var(--ba-highlight);
+  font-size: 11px;
+  /* 角标只做反向斜切，不放大 */
+  transform: skewX(6deg);
+}
+
+/* ---------- 展开态：整行详情面板 ---------- */
+
+.student-detail {
+  grid-column: 1 / -1;
+  padding: 14px;
+  background: #f4f9fe;
+  border: 1.5px solid var(--ba-accent-2);
+  border-radius: 12px;
+}
+
+/* 深蓝信息头：姓名 + ID + NPC + 学校徽章 */
+.detail-head {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 15px;
-  cursor: pointer;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  transition: background 0.2s;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #24406b, #2f5b93);
+  color: #ffffff;
 }
 
-.student-header:hover {
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+.detail-name {
+  font-size: 18px;
+  font-weight: 700;
 }
 
-.student-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--color-surface);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  flex-shrink: 0;
+/* 学生 ID 用等宽字体，与名称区分 */
+.detail-sid {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.72);
 }
 
-.student-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.student-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.student-name-sub {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.student-meta {
-  font-size: 0.75rem;
-  color: var(--color-text-subtle);
-  margin-top: 4px;
-}
-
-.student-school {
-  display: flex;
+/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts），信息头内右对齐 */
+.school-chip {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-  flex-shrink: 0;
+  margin-left: auto;
+  padding: 3px 12px;
+  /* 四边形外部轮廓跟随学校文字颜色 */
+  border: 1.5px solid currentColor;
+  border-radius: 6px;
+  transform: skewX(-8deg);
 }
 
-.student-school-logo {
-  width: 36px;
-  height: 36px;
+.school-chip > span {
+  display: inline-block;
+  transform: skewX(8deg);
+  font-size: 12px;
+  font-weight: 500;
+  /* 文字颜色跟随学校配色（由渲染时内联指定） */
+  color: inherit;
+  /* 校名尽量单行，窄屏时再允许换行 */
+  white-space: nowrap;
+}
+
+.school-chip-logo {
+  width: 18px;
+  height: 18px;
   object-fit: contain;
-  display: block;
+  transform: skewX(8deg);
 }
 
-/* 校徽彩色底座（底色按学校 id 着色，见 schoolColors.ts） */
-.student-school-badge {
+@media (max-width: 720px) {
+  .school-chip > span {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* 多语言姓名胶囊 */
+.lang-row {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-.expand-icon {
-  font-size: 1.2rem;
-  color: var(--color-text-subtle);
-  transition: transform 0.3s;
-  margin-left: 10px;
+.lang-pill {
+  padding: 2px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background: var(--color-surface);
+  color: var(--ba-navy);
+  font-size: 12px;
+  transform: skewX(-8deg);
 }
 
-.student-card.expanded .expand-icon {
-  transform: rotate(180deg);
+.lang-pill > span {
+  display: inline-block;
+  transform: skewX(8deg);
 }
 
-/* 卡片内容 */
-.student-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.student-card.expanded .student-content {
-  max-height: 2000px;
-}
-
-.pages-container {
-  padding: 15px;
-  background: #fafafa;
-}
-
-.pages-title {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  margin-bottom: 12px;
+.lang-pill b {
+  margin-right: 4px;
+  color: var(--ba-accent-deep);
+  font-size: 11px;
   font-weight: 500;
 }
 
-/* Page 项目 */
-.page-item {
-  background: var(--color-surface);
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid var(--color-border);
-  transition: all 0.2s;
+/* 区块标题色带：深蓝、右端斜切收尾 */
+.section-band {
+  margin: 14px 0 8px;
+  padding: 5px 14px;
+  background: linear-gradient(90deg, #24406b, #2f5b93);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 5px 0 0 5px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 22px) 100%, 0 100%);
 }
 
-.page-item:last-child {
-  margin-bottom: 0;
-}
+/* ---------- Page 行 ---------- */
 
-.page-item:hover {
-  border-color: var(--color-border-strong);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.page-header {
+.page-row {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: #f7fbff;
 }
 
-.page-avatar {
-  width: 45px;
-  height: 45px;
-  border-radius: 6px;
+.page-row + .page-row {
+  margin-top: 6px;
+}
+
+/* 页面头像卡：与学生瓦片同款斜切造型，尺寸略小 */
+.page-card {
+  position: relative;
+  flex: none;
+  width: 108px;
+}
+
+.page-card-inner {
+  display: block;
+  position: relative;
+  aspect-ratio: 404 / 456;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  /* 与学生瓦片一致：-6deg 斜切，子元素反向补偿 */
+  transform: skewX(-6deg);
+  box-shadow: 0 2px 6px var(--shadow-card);
+}
+
+.page-card-inner img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
+  transform: skewX(6deg) scale(1.14);
 }
 
-.page-info {
-  flex: 1;
+.page-card-empty {
+  width: 100%;
+  height: 100%;
+  background: var(--color-input);
+}
+
+/* 头像卡底部深色条：星级（无星级时回退为皮肤名） */
+.card-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px 6px;
+  background: var(--ba-band);
+  color: var(--ba-highlight);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+  transform: skewX(6deg) scale(1.14);
+  transform-origin: bottom center;
+}
+
+/* 限定标记：无底框金色文字，大部分位于头像内、略微溢出左上角，向右倾斜 */
+.corner-badge {
+  position: absolute;
+  top: -12px;
+  left: 0px;
+  z-index: 3;
+  color: var(--ba-highlight);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgb(93, 34, 2);
+  transform: skewX(-6deg);
+}
+
+.page-main {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 6px;
   min-width: 0;
 }
 
-.page-name {
-  font-weight: 600;
-  color: var(--color-text);
-  font-size: 0.95rem;
-}
-
-.page-id {
-  font-size: 0.75rem;
-  color: var(--color-text-subtle);
-}
-
-.page-link {
-  color: var(--color-accent);
-  text-decoration: none;
-}
-
-.page-link:hover {
-  text-decoration: underline;
-}
-
-/* Page 标签 */
-.page-tags {
+/* 信息条与三服状态并排，间距收紧 */
+.page-meta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-.tag-install-jp {
-  background: #fee2e2;
-  color: #991b1b;
+/* 皮肤 / 页面两条信息条：整组斜切，上下条的左缘、灰色分界线、右缘共用同一条斜线 */
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: max-content;
+  min-width: 150px;
+  /* 两条 28px + 4px 间距 = 60px，与右侧三服状态卡等高 */
+  height: 60px;
+  transform: skewX(-6deg);
 }
 
-.tag-install-jp.not-installed {
-  background: var(--color-input);
-  color: var(--color-text-neutral);
+.fact {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
 }
 
-.tag-install-cn {
-  background: #dcfce7;
-  color: #166534;
+.fact-key {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  color: var(--ba-navy);
+  font-size: 12px;
+  font-weight: 700;
 }
 
-.tag-install-cn.not-installed {
-  background: var(--color-input);
-  color: var(--color-text-neutral);
+.fact-val {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  max-width: 150px;
+  padding: 0 8px;
+  background: var(--gradient-accent);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.tag-install-global {
-  background: #dbeafe;
-  color: #1e40af;
+/* 标签与数值文字反向斜切，保持正视 */
+.fact-key > span,
+.fact-val > span {
+  transform: skewX(6deg);
 }
 
-.tag-install-global.not-installed {
-  background: var(--color-input);
-  color: var(--color-text-neutral);
+/* 三服实装状态：1:2 竖长小卡，斜切为平行四边形；上半深灰底放图标，下半放 ✓/✕ */
+.servers {
+  display: flex;
+  gap: 4px;
+}
+
+.server {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28px;
+  height: 60px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 4px;
+  transform: skewX(-6deg);
+}
+
+.server-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 28px;
+  background: #99a2ac;
+}
+
+.server .ico {
+  transform: skewX(6deg);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.server .mark {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  transform: skewX(6deg);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.server.on {
+  background: #f2f9ff;
+  border-color: #9fc4e8;
+}
+
+.server.on .mark {
+  color: #2fae62;
+}
+
+.server.off {
+  opacity: 0.72;
+}
+
+.server.off .mark {
+  color: #b6c2d1;
+}
+
+.spine-line {
+  display: flex;
+}
+
+/* 通用斜切标签（NPC 等） */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transform: skewX(-8deg);
+}
+
+.tag > span {
+  display: inline-block;
+  transform: skewX(8deg);
 }
 
 .tag-npc {
@@ -257,28 +457,7 @@
   color: var(--color-text-neutral);
 }
 
-.tag-rarity {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.tag-limited {
-  background: #fce7f3;
-  color: #be185d;
-}
-
-/* Spine 列表 */
-.spines-section {
-  margin-top: 8px;
-  padding-top: 10px;
-  border-top: 1px dashed var(--color-border);
-}
-
-.spines-label {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  margin-bottom: 6px;
-}
+/* ---------- Spine 芯片 ---------- */
 
 .spines-list {
   display: flex;
@@ -288,38 +467,43 @@
 
 .spine-id {
   display: inline-block;
-  padding: 4px 10px;
-  background: var(--color-surface-alt);
+  padding: 2px 10px;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 0.8rem;
   font-family: 'Courier New', monospace;
-  color: var(--color-text-secondary);
+  color: var(--ba-navy);
+  text-decoration: none;
+  /* 与页面行其余元素保持同一倾斜方向 */
+  transform: skewX(-6deg);
 }
 
-/* 控制按钮 */
+/* 数字反向斜切，保持正视 */
+.spine-id > span {
+  display: inline-block;
+  transform: skewX(6deg);
+}
+
+a.spine-id {
+  color: var(--ba-navy);
+  text-decoration: underline;
+}
+
+a.spine-id:hover {
+  border-color: var(--ba-accent);
+  color: var(--ba-accent-deep);
+}
+
+.spine-empty {
+  font-size: 0.75rem;
+  color: var(--color-text-subtle);
+}
+
+/* ---------- 控制按钮 ---------- */
+
 .controls-extra {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-}
-
-.btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-weight: 500;
-}
-
-.btn-secondary {
-  background: var(--color-surface-alt);
-  color: var(--color-text-secondary);
-  border: 1px solid var(--color-border);
-}
-
-.btn-secondary:hover {
-  background: var(--color-border);
 }

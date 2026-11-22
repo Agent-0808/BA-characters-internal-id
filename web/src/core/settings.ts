@@ -90,15 +90,6 @@ function togglePanel(show?: boolean): void {
   elements.panel.hidden = !visible;
 }
 
-// 点击面板外部关闭
-function onDocumentClick(event: Event): void {
-  const target = event.target as HTMLElement;
-  if (!elements.panel.hidden &&
-      !elements.panel.contains(target) && !elements.settingsBtn.contains(target)) {
-    elements.panel.hidden = true;
-  }
-}
-
 // 恢复默认：清除存储，实例与控件还原为硬编码默认值
 function resetToDefaults(): void {
   clearClickFxConfig();
@@ -210,6 +201,19 @@ export function initSettingsPanel(): void {
     persist();
   });
 
-  // 点击外部关闭面板
-  document.addEventListener('click', onDocumentClick);
+  // 点击遮罩关闭对话框（对话框本身在遮罩内，不会误触）
+  elements.panel.addEventListener('click', (event) => {
+    if (event.target === elements.panel) togglePanel(false);
+  });
+
+  // 设置分组 tab 切换
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.settings-tab');
+  const panes = document.querySelectorAll<HTMLElement>('.settings-pane');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.dataset.tab;
+      tabs.forEach(item => item.classList.toggle('active', item === tab));
+      panes.forEach(pane => { pane.hidden = pane.dataset.pane !== key; });
+    });
+  });
 }

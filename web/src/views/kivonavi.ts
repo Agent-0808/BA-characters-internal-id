@@ -24,7 +24,6 @@ const elements = {
   schoolFilterCount: document.getElementById('kivoSchoolFilterCount') as HTMLSpanElement,
   installFilter: document.getElementById('installFilter') as HTMLSelectElement,
   studentsContainer: document.getElementById('studentsContainer') as HTMLDivElement,
-  expandAllBtn: document.getElementById('expandAllBtn') as HTMLButtonElement,
   collapseAllBtn: document.getElementById('collapseAllBtn') as HTMLButtonElement,
   totalCount: document.getElementById('kivoTotalCount') as HTMLDivElement,
   pageCount: document.getElementById('kivoPageCount') as HTMLDivElement,
@@ -59,102 +58,172 @@ function getPageAvatar(page: KivoPage): string | null {
   return null;
 }
 
-// 生成星级字符串
+// 生成星级字符串（页面级属性，用于头像卡底部色条）
 function getRarityStars(rarity: number): string {
-  if (rarity <= 0) return '-';
-  return '⭐'.repeat(Math.min(rarity, 3));
+  if (rarity <= 0) return '';
+  return '★'.repeat(Math.min(rarity, 3));
 }
 
-// 生成page名称
+// 当前界面语言对应的名称来源：中文绑定 KivoWiki 原始数据，debug 不隐藏任何语言
+function getDisplayLang(): 'kivo' | 'en' | null {
+  const lang = getUiSettings().lang;
+  if (lang === 'en-US') return 'en';
+  if (lang === 'zh-CN') return 'kivo';
+  return null;
+}
+
+// 学生名称：按界面语言取名，英文缺失时回落 KivoWiki 原始名称
+function getStudentName(student: Student, showFamily: boolean): string {
+  if (getDisplayLang() === 'en') {
+    return joinName(
+      student.family_name_en || student.family_name,
+      student.given_name_en || student.given_name,
+      'en', showFamily
+    );
+  }
+  return joinName(student.family_name, student.given_name, 'cn', showFamily);
+}
+
+// 生成page名称：按界面语言取皮肤名，缺失时回落原始名称，再缺失显示默认页
 function getPageName(page: KivoPage): string {
-  if (page.skin) return page.skin;
-  return t('kivo.defaultPage');
+  const localized = getDisplayLang() === 'en' ? page.skin_en : page.skin;
+  return localized || t('kivo.defaultPage');
 }
 
-// 生成Page HTML
-function generatePageHTML(page: KivoPage, isNpc: boolean): string {
+// 生成单个 page 行：斜切头像卡（限定标记 + 星级条）+ 皮肤名 + 三服实装 + spine
+function generatePageHTML(page: KivoPage, studentIsNpc: boolean): string {
   const avatar = getPageAvatar(page);
   const pageName = getPageName(page);
   const kivoUrl = `https://kivo.wiki/data/character/${page.page_id}?mode=appreciation`;
   const spineUrl = (spineId: number) => `https://api.kivo.wiki/api/v1/data/spines/${spineId}`;
-  const rarityStars = getRarityStars(page.rarity);
+  // 底部深色条：有星级时放星级，无星级（未实装）时放 🔒
+  const stars = getRarityStars(page.rarity);
+  const bandText = stars || '🔒';
+  // 限定是页面级属性；NPC 学生不展示
+  const limitedBadge = page.limited && !studentIsNpc
+    ? `<span class="corner-badge">${t('kivo.limited')}</span>`
+    : '';
 
-  const installJpClass = page.is_install ? '' : 'not-installed';
-  const installCnClass = page.is_install_cn ? '' : 'not-installed';
-  const installGlobalClass = page.is_install_global ? '' : 'not-installed';
-  const installJpIcon = page.is_install ? '🇯🇵' : '❌';
-  const installCnIcon = page.is_install_cn ? '🇨🇳' : '❌';
-  const installGlobalIcon = page.is_install_global ? '🌐' : '❌';
+  // 单服实装状态小卡：上半部分深灰底放图标，下半部分放 ✓/✕
+  const server = (installed: boolean, icon: string, label: string) =>
+    `<span class="server ${installed ? 'on' : 'off'}" title="${label}">
+      <span class="server-head"><span class="ico">${icon}</span></span>
+      <span class="mark">${installed ? '✓' : '✕'}</span>
+    </span>`;
+
+  // NPC 页面不展示实装状态（NPC 属于学生级属性）
+  const servers = studentIsNpc ? '' : `
+    <div class="servers">
+      ${server(page.is_install, '⛩️', t('kivo.installJp'))}
+      ${server(page.is_install_global, '🌐', t('kivo.installGlobal'))}
+      ${server(page.is_install_cn, '🀄', t('kivo.installCn'))}
+    </div>
+  `;
 
   const spinesHTML = page.spines.map(spineId =>
     getUiSettings().spineLink
-      ? `<a href="${spineUrl(spineId)}" target="_blank" rel="noopener" class="spine-id">${spineId}</a>`
-      : `<span class="spine-id">${spineId}</span>`
+      ? `<a href="${spineUrl(spineId)}" target="_blank" rel="noopener" class="spine-id"><span>${spineId}</span></a>`
+      : `<span class="spine-id"><span>${spineId}</span></span>`
   ).join('');
 
   return `
-    <div class="page-item">
-      <div class="page-header">
-        ${avatar ? `<img src="${avatar}" class="page-avatar" alt="" loading="lazy">` : '<div class="page-avatar" style="background:#e2e8f0;"></div>'}
-        <div class="page-info">
-          <div class="page-name">${pageName}</div>
-          <div class="page-id">
-            page_id: <a href="${kivoUrl}" target="_blank" rel="noopener" class="page-link">${page.page_id}</a>
+    <div class="page-row">
+      <div class="page-card">
+        ${limitedBadge}
+        <a class="page-card-inner" href="${kivoUrl}" target="_blank" rel="noopener" title="page_id: ${page.page_id}">
+          ${avatar
+            ? `<img src="${avatar}" alt="" loading="lazy">`
+            : '<div class="page-card-empty"></div>'}
+          <div class="card-band">${bandText}</div>
+        </a>
+      </div>
+      <div class="page-main">
+        <div class="page-meta">
+          <div class="facts">
+            <div class="fact">
+              <span class="fact-key"><span>${t('kivo.skinLabel')}</span></span>
+              <span class="fact-val"><span>${pageName}</span></span>
+            </div>
+            <div class="fact">
+              <span class="fact-key"><span>${t('kivo.pageLabel')}</span></span>
+              <span class="fact-val"><span>${page.page_id}</span></span>
+            </div>
           </div>
+          ${servers}
         </div>
-      </div>
-      <div class="page-tags">
-        ${isNpc ? `<span class="tag tag-npc">🚫 ${t('kivo.installNpc')}</span>` : `
-          <span class="tag tag-install-jp ${installJpClass}">${installJpIcon} ${t('kivo.installJp')}</span>
-          <span class="tag tag-install-global ${installGlobalClass}">${installGlobalIcon} ${t('kivo.installGlobal')}</span>
-          <span class="tag tag-install-cn ${installCnClass}">${installCnIcon} ${t('kivo.installCn')}</span>
-        `}
-        ${page.rarity > 0 ? `<span class="tag tag-rarity">${rarityStars}</span>` : ''}
-        ${page.limited ? `<span class="tag tag-limited">${t('kivo.limited')}</span>` : ''}
-      </div>
-      <div class="spines-section">
-        <div class="spines-label">${t('kivo.spinesLabel', { n: page.spines.length })}</div>
-        <div class="spines-list">
-          ${spinesHTML || `<span style="color:#94a3b8;font-size:0.75rem;">${t('kivo.none')}</span>`}
+        <div class="spine-line">
+          <div class="spines-list">${spinesHTML || `<span class="spine-empty">${t('kivo.none')}</span>`}</div>
         </div>
       </div>
     </div>
   `;
 }
 
-// 生成学生卡片 HTML
+// 生成语言姓名胶囊（仅显示已填写的语言，姓与名按该语言规则拼接）
+function generateLangPills(student: Student): string {
+  // 当前界面语言已显示在卡片与标题中，胶囊里隐藏对应来源
+  const hidden = getDisplayLang();
+  // 是否显示姓氏同样受界面设置控制
+  const showFamily = getUiSettings().showFamilyName;
+  const langs: { code: string; source: 'kivo' | 'jp' | 'en' | 'kr' | 'tw' | 'cn'; family: string; given: string }[] = [
+    { code: 'KivoWiki', source: 'kivo', family: student.family_name, given: student.given_name },
+    { code: 'JP', source: 'jp', family: student.family_name_jp, given: student.given_name_jp },
+    { code: 'EN', source: 'en', family: student.family_name_en, given: student.given_name_en },
+    { code: 'KR', source: 'kr', family: student.family_name_kr, given: student.given_name_kr },
+    { code: 'TW', source: 'tw', family: student.family_name_tw, given: student.given_name_tw },
+    { code: 'CN', source: 'cn', family: student.family_name_cn, given: student.given_name_cn },
+  ];
+
+  return langs
+    .filter(l => (l.family || l.given) && l.source !== hidden)
+    .map(l => `<span class="lang-pill"><span><b>${l.code}</b>${joinName(l.family, l.given, l.source === 'en' ? 'en' : 'cn', showFamily)}</span></span>`)
+    .join('');
+}
+
+// 生成学生卡片 HTML：折叠态为头像瓦片，展开态在瓦片后追加整行详情面板
 function generateStudentCard(student: Student): string {
   const avatar = getStudentAvatar(student);
   const schoolName = getSchoolName(student.school_id);
   const schoolLogo = getSchoolLogo(student.school_id);
-  // 学校配色：左侧色条用深色 text，校徽底座用 bg（配色与图片适配已由配置保证，见 schoolColors.ts）
+  // 学校配色：校徽底座用 bg（配色与图片适配已由配置保证，见 schoolColors.ts）
   const schoolColor = getSchoolColor(student.school_id);
   const isExpanded = expandState[student.id] || false;
   // 完整名称是否显示姓氏由界面设置控制（见 nameFormat.ts 与设置面板）
   const showFamily = getUiSettings().showFamilyName;
+  // 角标：NPC 学生显示 NPC（限定标志不再展示在卡片上）
+  const isNpc = student.is_npc;
+  const badge = isNpc ? '<span class="tile-badge">🚫NPC</span>' : '';
 
-  const pagesHTML = student.pages.map(page => generatePageHTML(page, student.is_npc)).join('');
+  const tile = `
+    <div class="student-tile ${isExpanded ? 'selected' : ''}" data-student-id="${student.id}">
+      ${avatar ? `<img src="${avatar}" class="tile-avatar" alt="" loading="lazy">` : '<div class="tile-avatar tile-avatar-empty"></div>'}
+      <div class="tile-name">${getStudentName(student, showFamily)}</div>
+      ${badge}
+    </div>
+  `;
 
-  return `
-    <div class="student-card ${isExpanded ? 'expanded' : ''}" data-student-id="${student.id}">
-      <div class="student-header" style="border-left:5px solid ${schoolColor.text}">
-        ${avatar ? `<img src="${avatar}" class="student-avatar" alt="" loading="lazy">` : '<div class="student-avatar" style="background:#e2e8f0;"></div>'}
-        <div class="student-info">
-          <div class="student-name">${joinName(student.family_name, student.given_name, 'cn', showFamily)}</div>
-          <div class="student-name-sub">${joinName(student.family_name_jp, student.given_name_jp, 'jp', showFamily)}</div>
-          <div class="student-meta">${t('kivo.studentMeta', { id: student.id, n: student.pages.length })}</div>
-        </div>
-        <div class="student-school">
-          ${schoolLogo ? `<span class="student-school-badge" style="background:${schoolColor.bg}"><img src="https:${schoolLogo}" class="student-school-logo" alt="" title="${schoolName}"></span>` : ''}
-        </div>
-        <span class="expand-icon">▼</span>
+  if (!isExpanded) return tile;
+
+  const schoolChip = `
+    <span class="school-chip" style="background:${schoolColor.bg};color:${schoolColor.text}">
+      ${schoolLogo ? `<img src="https:${schoolLogo}" class="school-chip-logo" alt="" title="${schoolName}">` : ''}
+      <span>${schoolName}</span>
+    </span>
+  `;
+  // NPC 是学生级属性，显示在信息头中
+  const npcChip = isNpc ? `<span class="tag tag-npc"><span>🚫NPC</span></span>` : '';
+
+  return tile + `
+    <div class="student-detail">
+      <div class="detail-head">
+        <span class="detail-name">${getStudentName(student, showFamily)}</span>
+        <span class="detail-sid">ID ${student.id}</span>
+        ${npcChip}
+        ${schoolChip}
       </div>
-      <div class="student-content">
-        <div class="pages-container">
-          <div class="pages-title">${t('kivo.pagesLabel', { n: student.pages.length })}</div>
-          ${pagesHTML}
-        </div>
-      </div>
+      <div class="lang-row">${generateLangPills(student)}</div>
+      <div class="section-band">${t('kivo.pagesLabel', { n: student.pages.length })}</div>
+      ${student.pages.map(page => generatePageHTML(page, isNpc)).join('')}
     </div>
   `;
 }
@@ -180,30 +249,33 @@ function renderStudents(students: Student[]): void {
 
   elements.studentsContainer.innerHTML = gridHTML;
 
-  // 绑定卡片点击事件
-  document.querySelectorAll('.student-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const card = header.closest('.student-card') as HTMLElement;
-      const studentId = parseInt(card.dataset.studentId || '0');
-      toggleExpand(studentId);
+  // 绑定瓦片点击事件
+  document.querySelectorAll<HTMLElement>('.student-tile').forEach(tile => {
+    tile.addEventListener('click', () => {
+      toggleExpand(parseInt(tile.dataset.studentId || '0'));
     });
   });
+
+  fitTileNames();
 }
 
-// 切换展开状态
+// 瓦片名牌保持单行：按可用宽度逐级缩小字号（最小 9px），仍超出则由 CSS 省略号截断
+function fitTileNames(): void {
+  const MIN_FONT_SIZE = 9;
+  const DEFAULT_FONT_SIZE = 12;
+  document.querySelectorAll<HTMLElement>('.tile-name').forEach(el => {
+    let size = DEFAULT_FONT_SIZE;
+    el.style.fontSize = `${size}px`;
+    while (el.scrollWidth > el.clientWidth && size > MIN_FONT_SIZE) {
+      size -= 1;
+      el.style.fontSize = `${size}px`;
+    }
+  });
+}
+
+// 切换展开状态（展开态由整行详情面板承载，需重渲染列表）
 function toggleExpand(studentId: number): void {
   expandState[studentId] = !expandState[studentId];
-  const card = document.querySelector(`.student-card[data-student-id="${studentId}"]`);
-  if (card) {
-    card.classList.toggle('expanded', expandState[studentId]);
-  }
-}
-
-// 展开全部
-function expandAll(): void {
-  filteredStudents.forEach(student => {
-    expandState[student.id] = true;
-  });
   renderStudents(filteredStudents);
 }
 
@@ -366,7 +438,6 @@ export function initKivoView(): void {
   // 事件监听（学校筛选按钮由共享组件绑定）
   elements.searchInput.addEventListener('input', applyFilters);
   elements.installFilter.addEventListener('change', applyFilters);
-  elements.expandAllBtn.addEventListener('click', expandAll);
   elements.collapseAllBtn.addEventListener('click', collapseAll);
 
   // 界面设置变更（如 spine 链接开关）时重渲染学生列表

@@ -94,7 +94,12 @@ async function loadFooterHashes(): Promise<void> {
     const metadata: Metadata = await response.json();
     const short = (hash: string): string =>
       hash && hash.length > 7 ? hash.slice(0, 6) : (hash || 'unknown');
-    el.textContent = `web ${short(metadata.webCommitHash)} · data ${short(metadata.dataCommitHash)}`;
+    // 双层小牌：上层标签、下层深蓝底短 hash
+    const plate = (label: string, value: string): string =>
+      `<span class="hash-plate"><span class="hash-label">${label}</span><span class="hash-value">${value}</span></span>`;
+    el.innerHTML =
+      plate('WEB', short(metadata.webCommitHash)) +
+      plate('DATA', short(metadata.dataCommitHash));
     // 悬浮时显示完整 commit hash（而非截断的短 hash）
     const orUnknown = (value: string): string => value || 'unknown';
     const lines = [
