@@ -44,14 +44,14 @@
 }
 
 .student-tile:hover {
-  border-color: var(--ba-accent);
+  border-color: var(--ba-highlight);
   /* 注意：--shadow-card 是完整阴影值，不能嵌入到阴影列表中 */
-  box-shadow: 0 0 0 3px var(--ba-accent), 0 4px 14px rgba(47, 84, 137, 0.2);
+  box-shadow: 0 0 0 3px var(--ba-highlight), 0 4px 14px rgba(47, 84, 137, 0.2);
 }
 
 .student-tile.selected {
-  border-color: var(--ba-highlight);
-  box-shadow: 0 0 0 4px var(--ba-highlight), 0 4px 14px rgba(47, 84, 137, 0.2);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px #ff91ff, 0 4px 14px rgba(47, 84, 137, 0.2);
 }
 
 .tile-avatar {

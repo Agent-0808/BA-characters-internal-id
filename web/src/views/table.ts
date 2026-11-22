@@ -29,7 +29,6 @@ const elements = {
   totalCount: document.getElementById('totalCount') as HTMLDivElement,
   studentCount: document.getElementById('studentCount') as HTMLDivElement,
   updateTime: document.getElementById('updateTime') as HTMLDivElement,
-  dataFileLink: document.getElementById('dataFileLink') as HTMLAnchorElement,
 };
 
 // 列显示配置的 localStorage key
@@ -353,14 +352,6 @@ async function fetchSchools(): Promise<void> {
   }
 }
 
-// 更新页面底部的数据文件链接
-function updateReleaseLink(): void {
-  if (elements.dataFileLink) {
-    elements.dataFileLink.href = './data/';
-    elements.dataFileLink.textContent = t('footer.downloadData');
-  }
-}
-
 // 加载数据
 async function loadData(): Promise<void> {
   try {
@@ -399,7 +390,6 @@ async function loadData(): Promise<void> {
       const dateLocale = getUiSettings().lang === 'debug' ? 'zh-CN' : getUiSettings().lang;
       elements.updateTime.textContent = new Date().toLocaleDateString(dateLocale);
     }
-    updateReleaseLink();
   } catch (error) {
     console.error('加载数据失败:', error);
     elements.tableContainer.innerHTML = `

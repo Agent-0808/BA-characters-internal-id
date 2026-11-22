@@ -64,10 +64,30 @@ function getRarityStars(rarity: number): string {
   return '★'.repeat(Math.min(rarity, 3));
 }
 
-// 生成page名称
+// 当前界面语言对应的名称来源：中文绑定 KivoWiki 原始数据，debug 不隐藏任何语言
+function getDisplayLang(): 'kivo' | 'en' | null {
+  const lang = getUiSettings().lang;
+  if (lang === 'en-US') return 'en';
+  if (lang === 'zh-CN') return 'kivo';
+  return null;
+}
+
+// 学生名称：按界面语言取名，英文缺失时回落 KivoWiki 原始名称
+function getStudentName(student: Student, showFamily: boolean): string {
+  if (getDisplayLang() === 'en') {
+    return joinName(
+      student.family_name_en || student.family_name,
+      student.given_name_en || student.given_name,
+      'en', showFamily
+    );
+  }
+  return joinName(student.family_name, student.given_name, 'cn', showFamily);
+}
+
+// 生成page名称：按界面语言取皮肤名，缺失时回落原始名称，再缺失显示默认页
 function getPageName(page: KivoPage): string {
-  if (page.skin) return page.skin;
-  return t('kivo.defaultPage');
+  const localized = getDisplayLang() === 'en' ? page.skin_en : page.skin;
+  return localized || t('kivo.defaultPage');
 }
 
 // 生成单个 page 行：斜切头像卡（限定标记 + 星级条）+ 皮肤名 + 三服实装 + spine
@@ -141,17 +161,22 @@ function generatePageHTML(page: KivoPage, studentIsNpc: boolean): string {
 
 // 生成语言姓名胶囊（仅显示已填写的语言，姓与名按该语言规则拼接）
 function generateLangPills(student: Student): string {
-  const langs: { code: string; lang: string; family: string; given: string }[] = [
-    { code: 'JP', lang: 'jp', family: student.family_name_jp, given: student.given_name_jp },
-    { code: 'EN', lang: 'en', family: student.family_name_en, given: student.given_name_en },
-    { code: 'KR', lang: 'kr', family: student.family_name_kr, given: student.given_name_kr },
-    { code: 'TW', lang: 'tw', family: student.family_name_tw, given: student.given_name_tw },
-    { code: 'CN', lang: 'cn', family: student.family_name_cn, given: student.given_name_cn },
+  // 当前界面语言已显示在卡片与标题中，胶囊里隐藏对应来源
+  const hidden = getDisplayLang();
+  // 是否显示姓氏同样受界面设置控制
+  const showFamily = getUiSettings().showFamilyName;
+  const langs: { code: string; source: 'kivo' | 'jp' | 'en' | 'kr' | 'tw' | 'cn'; family: string; given: string }[] = [
+    { code: 'KivoWiki', source: 'kivo', family: student.family_name, given: student.given_name },
+    { code: 'JP', source: 'jp', family: student.family_name_jp, given: student.given_name_jp },
+    { code: 'EN', source: 'en', family: student.family_name_en, given: student.given_name_en },
+    { code: 'KR', source: 'kr', family: student.family_name_kr, given: student.given_name_kr },
+    { code: 'TW', source: 'tw', family: student.family_name_tw, given: student.given_name_tw },
+    { code: 'CN', source: 'cn', family: student.family_name_cn, given: student.given_name_cn },
   ];
 
   return langs
-    .filter(l => l.family || l.given)
-    .map(l => `<span class="lang-pill"><span><b>${l.code}</b>${joinName(l.family, l.given, l.lang, true)}</span></span>`)
+    .filter(l => (l.family || l.given) && l.source !== hidden)
+    .map(l => `<span class="lang-pill"><span><b>${l.code}</b>${joinName(l.family, l.given, l.source === 'en' ? 'en' : 'cn', showFamily)}</span></span>`)
     .join('');
 }
 
@@ -172,7 +197,7 @@ function generateStudentCard(student: Student): string {
   const tile = `
     <div class="student-tile ${isExpanded ? 'selected' : ''}" data-student-id="${student.id}">
       ${avatar ? `<img src="${avatar}" class="tile-avatar" alt="" loading="lazy">` : '<div class="tile-avatar tile-avatar-empty"></div>'}
-      <div class="tile-name">${joinName(student.family_name, student.given_name, 'cn', showFamily)}</div>
+      <div class="tile-name">${getStudentName(student, showFamily)}</div>
       ${badge}
     </div>
   `;
@@ -191,7 +216,7 @@ function generateStudentCard(student: Student): string {
   return tile + `
     <div class="student-detail">
       <div class="detail-head">
-        <span class="detail-name">${joinName(student.family_name, student.given_name, 'cn', showFamily)}</span>
+        <span class="detail-name">${getStudentName(student, showFamily)}</span>
         <span class="detail-sid">ID ${student.id}</span>
         ${npcChip}
         ${schoolChip}
