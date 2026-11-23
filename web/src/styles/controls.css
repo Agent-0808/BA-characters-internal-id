@@ -40,25 +40,51 @@
   font-weight: 500;
 }
 
-/* 斜切下拉框：外壳斜切，原生 select 反向补偿保持文字正视 */
+/* 下拉框：蓝色斜切底板 + 深蓝粗体文字（与按钮同款造型） */
 .select-shell {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  border: 1.5px solid var(--color-border);
-  border-radius: 6px;
-  background: var(--color-surface);
-  overflow: hidden;
-  transform: skewX(-6deg);
+  height: 38px;
+  isolation: isolate;
+}
+
+.select-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--ba-btn-blue);
+  background-image:
+    linear-gradient(to bottom right, var(--ba-btn-blue-edge) 0%, transparent 50%),
+    linear-gradient(to top left, var(--ba-btn-blue-edge) 0%, transparent 50%);
+  border-radius: var(--radius-btn);
+  box-shadow: var(--ba-btn-shadow);
+  transform: skewX(var(--ba-skew));
+}
+
+/* 自绘下拉箭头，替代各浏览器不一致的原生箭头 */
+.select-shell::after {
+  content: '▼';
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: var(--ba-btn-text);
+  pointer-events: none;
 }
 
 .filter-group select {
-  padding: 8px 14px;
+  appearance: none;
+  height: 100%;
+  padding: 0 32px 0 16px;
   border: none;
   background: transparent;
   font-size: 14px;
-  color: var(--ba-navy);
+  font-weight: 700;
+  color: var(--ba-btn-text);
   cursor: pointer;
-  transform: skewX(6deg);
 }
 
 .filter-group select:focus {
@@ -81,13 +107,13 @@
 }
 
 .school-filter-label {
-  color: #ffffff;
+  color: var(--ba-btn-text);
   font-weight: 500;
 }
 
 .school-filter-count {
-  background: rgba(255,255,255,0.9);
-  color: var(--ba-accent-deep);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ba-btn-text);
   padding: 2px 6px;
   border-radius: 10px;
   font-size: 12px;
@@ -99,7 +125,8 @@
 }
 
 .school-filter-arrow {
-  color: rgba(255,255,255,0.85);
+  color: var(--ba-btn-text);
+  opacity: 0.7;
   font-size: 10px;
   margin-left: auto;
 }
@@ -112,7 +139,7 @@
   max-width: 300px;
   border: 1px solid var(--color-border);
   box-shadow: 0 10px 25px rgba(47, 84, 137, 0.18);
-  border-radius: 12px;
+  border-radius: var(--radius-btn);
   z-index: 1000;
   overflow: hidden;
 }
@@ -207,7 +234,7 @@
   min-width: 180px;
   border: 1px solid var(--color-border);
   box-shadow: 0 10px 25px rgba(47, 84, 137, 0.18);
-  border-radius: 12px;
+  border-radius: var(--radius-btn);
   z-index: 1000;
   padding: 10px 0;
   max-height: 400px;
@@ -244,14 +271,4 @@
   .filter-group {
     justify-content: space-between;
   }
-}
-
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 500;
 }

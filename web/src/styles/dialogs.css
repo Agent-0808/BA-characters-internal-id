@@ -1,37 +1,17 @@
 /* ===== 设置对话框（按游戏设置界面还原） ===== */
 
+/* 设置按钮只负责定位，斜切造型由 .ba-btn--icon 提供 */
 .settings-btn {
   position: fixed;
   top: 22px;
   right: 22px;
   z-index: 1100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  font-size: 20px;
-  line-height: 1;
-  color: #ffffff;
-  /* 蓝底白字的斜切按钮 */
-  background: var(--gradient-accent);
-  border: 1px solid var(--ba-accent-deep);
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(20, 60, 110, 0.25);
-  cursor: pointer;
-  transform: skewX(-6deg);
-  transition: filter 0.2s, box-shadow 0.2s;
 }
 
-/* 图标反向斜切，保持正视 */
 .settings-icon {
   display: inline-block;
-  transform: skewX(6deg);
-}
-
-.settings-btn:hover {
-  filter: brightness(1.08);
-  box-shadow: 0 5px 14px rgba(20, 60, 110, 0.3);
+  font-size: 20px;
+  line-height: 1;
 }
 
 /* 手机端缩小并贴角，给 header 留出更多横向空间（与 layout.css 的 480px 留白对应） */
@@ -39,13 +19,14 @@
   .settings-btn {
     top: 12px;
     right: 12px;
-    width: 40px;
-    height: 40px;
+  }
+
+  .settings-icon {
     font-size: 18px;
   }
 }
 
-/* 半透明遮罩，点击空白处关闭 */
+/* 半透明遮罩 + 背景模糊，点击空白处关闭 */
 .settings-overlay {
   position: fixed;
   inset: 0;
@@ -54,7 +35,8 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(16, 32, 56, 0.45);
+  background: var(--ba-modal-overlay);
+  backdrop-filter: blur(5px);
 }
 
 /* hidden 属性需覆盖 flex 布局 */
@@ -65,130 +47,154 @@
 .settings-dialog {
   display: flex;
   flex-direction: column;
-  width: min(560px, 100%);
+  width: min(600px, 100%);
   max-height: calc(100vh - 60px);
-  background: #eef4f8;
-  border: 1px solid #c9d5e2;
-  border-radius: 14px;
-  box-shadow: 0 16px 40px rgba(20, 45, 80, 0.22);
+  background: var(--ba-modal-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  animation: settings-pop 0.25s ease-out;
 }
 
-/* 标题栏：浅灰蓝底、居中深蓝标题、黄色短线 */
+@keyframes settings-pop {
+  from {
+    transform: translateY(-24px);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* 标题栏：浅蓝渐变、居中深蓝标题、黄色粗下划线 */
 .settings-header {
   position: relative;
-  padding: 10px 48px;
-  text-align: center;
-  font-size: 17px;
-  font-weight: 700;
-  color: #2b4a6f;
-  border-bottom: 1px solid #cfdae6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 5px;
+  background: linear-gradient(45deg, var(--ba-modal-header-a), var(--ba-modal-header-b));
+  border-bottom: 1px solid #dee2e6;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .settings-header > span {
-  display: inline-block;
-  padding-bottom: 2px;
-  border-bottom: 3px solid var(--ba-highlight);
+  padding-bottom: 5px;
+  border-bottom: 5px solid var(--ba-modal-underline);
+  color: var(--ba-modal-title);
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .settings-close {
   position: absolute;
   top: 50%;
-  right: 12px;
+  right: 20px;
   transform: translateY(-50%);
-  width: 28px;
-  height: 28px;
   border: none;
-  border-radius: 50%;
-  background: transparent;
-  color: #5b7290;
-  font-size: 16px;
+  background: none;
+  color: var(--ba-modal-title);
+  font-size: 2rem;
+  line-height: 1;
+  opacity: 0.8;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: opacity 0.2s;
 }
 
 .settings-close:hover {
-  background: rgba(255, 255, 255, 0.7);
+  opacity: 1;
 }
 
 /* 分组 tab：整条浅蓝，选中项白底通栏，中间竖分隔线 */
 .settings-tabs {
   display: flex;
-  background: #bfe6fa;
-  border-bottom: 1px solid #a9d8f2;
+  padding: 6px 6px 0;
+  background: var(--ba-tab-bar);
 }
 
 .settings-tab {
   position: relative;
   flex: 1;
-  padding: 11px 0;
+  padding: 10px 20px;
   border: none;
-  border-radius: 0;
+  border-radius: 4px 4px 0 0;
   background: transparent;
-  color: #2b4a6f;
-  font-size: 14px;
-  font-weight: 700;
+  color: var(--ba-tab-text);
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.2s, color 0.2s;
 }
 
-.settings-tab + .settings-tab::before {
+.settings-tab:not(:last-child)::after {
   content: '';
   position: absolute;
-  top: 12px;
-  bottom: 12px;
-  left: 0;
+  top: 50%;
+  right: -2px;
+  transform: translateY(-50%);
   width: 1px;
-  background: #8fc7e6;
+  height: 60%;
+  background: var(--ba-tab-text);
+  opacity: 0.4;
+}
+
+.settings-tab:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .settings-tab.active {
-  background: #eef4f8;
+  background: var(--ba-modal-bg);
+  color: var(--ba-tab-active-text);
+  font-weight: 700;
 }
 
 .settings-body {
-  padding: 10px;
+  padding: 6px 10px 10px;
   overflow-y: auto;
-  background: #e3e9ef;
+  background: var(--ba-modal-bg);
 }
 
+/* 内容面板：灰色圆角底，内部是行式卡片 */
 .settings-pane {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  padding: 6px;
+  background: var(--ba-panel-bg);
+  border-radius: 9px;
 }
 
 .settings-pane[hidden] {
   display: none;
 }
 
-/* 行式卡片：浅灰底 + 深灰细边 */
+/* 行式卡片：斜向浅灰渐变 + 白色描边 + 底部实边阴影 */
 .settings-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 14px;
-  background: #dde3ea;
-  border: 1px solid #c3ccd6;
-  border-radius: 5px;
-  font-size: 15px;
-  color: #2b4a6f;
+  padding: 14px 12px;
+  background: linear-gradient(45deg, var(--ba-card-a), var(--ba-card-b));
+  border: 2px solid var(--ba-card-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 1px var(--ba-card-shadow);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #2c3e50;
   cursor: pointer;
-  transition: border-color 0.15s;
 }
 
-.settings-item:hover {
-  border-color: #aebbc9;
-}
-
-/* 双段启用/禁用开关：选中段深蓝底白字 */
+/* 双段启用/禁用开关：两段各自斜切，选中段深蓝底白字 */
 .seg-toggle {
   position: relative;
   display: inline-flex;
+  gap: 2px;
   margin-left: auto;
-  border-radius: 7px;
-  overflow: hidden;
-  box-shadow: 0 1px 2px rgba(30, 90, 140, 0.18);
+  padding: 2px;
+  background: var(--ba-seg-bg);
+  border-radius: 8px;
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -200,33 +206,53 @@
 }
 
 .seg {
-  min-width: 74px;
-  padding: 8px 0;
+  position: relative;
+  isolation: isolate;
+  min-width: 72px;
+  padding: 9px 16px;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 700;
-  background: #ffffff;
-  color: #1e6fb5;
-  transition: background 0.15s, color 0.15s;
+  color: var(--ba-seg-off);
+  transition: color 0.2s;
+}
+
+/* 斜切底板放在伪元素上，文字保持正视 */
+.seg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 2px rgba(30, 90, 140, 0.18);
+  transform: skewX(var(--ba-skew));
 }
 
 /* 未选中的「启用」用红色提示，与游戏一致 */
 .seg-on {
-  color: #e05353;
+  color: var(--ba-seg-on);
 }
 
 .seg-toggle input:not(:checked) ~ .seg-off,
 .seg-toggle input:checked ~ .seg-on {
-  background: var(--ba-navy);
   color: #ffffff;
 }
 
-/* 下拉：亮蓝斜切底板 + 深蓝粗体文字 */
+.seg-toggle input:not(:checked) ~ .seg-off::before,
+.seg-toggle input:checked ~ .seg-on::before {
+  background: var(--ba-active);
+  box-shadow: none;
+}
+
+/* 下拉：蓝色斜切底板 + 深蓝粗体文字，与按钮同款 */
 .gp-select {
   position: relative;
   display: inline-flex;
-  margin-left: auto;
+  align-items: center;
   min-width: 150px;
+  height: 38px;
+  margin-left: auto;
   isolation: isolate;
   flex-shrink: 0;
 }
@@ -236,10 +262,13 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, #66d0f9, #43bdf2);
-  border-radius: 8px;
-  transform: skewX(-14deg);
-  box-shadow: 0 1px 2px rgba(30, 90, 140, 0.25);
+  background-color: var(--ba-btn-blue);
+  background-image:
+    linear-gradient(to bottom right, var(--ba-btn-blue-edge) 0%, transparent 50%),
+    linear-gradient(to top left, var(--ba-btn-blue-edge) 0%, transparent 50%);
+  border-radius: var(--radius-btn);
+  box-shadow: var(--ba-btn-shadow);
+  transform: skewX(var(--ba-skew));
 }
 
 .gp-select::after {
@@ -249,20 +278,25 @@
   right: 14px;
   transform: translateY(-50%);
   font-size: 10px;
-  color: #124a7d;
+  color: var(--ba-btn-text);
   pointer-events: none;
 }
 
 .gp-select select {
   appearance: none;
   width: 100%;
-  padding: 9px 34px 9px 18px;
+  height: 100%;
+  padding: 0 32px 0 16px;
   border: none;
   background: transparent;
-  color: #124a7d;
-  font-size: 14px;
+  color: var(--ba-btn-text);
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
+}
+
+.gp-select select:focus {
+  outline: none;
 }
 
 .settings-item input:disabled {
@@ -297,11 +331,11 @@
 
 .settings-item input[type="color"] {
   margin-left: auto;
-  width: 36px;
-  height: 24px;
+  width: 40px;
+  height: 26px;
   padding: 0;
-  border: 1px solid #c3ccd6;
-  border-radius: 4px;
+  border: 2px solid var(--ba-card-border);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   background: none;
 }
@@ -311,7 +345,8 @@
   display: flex;
   justify-content: flex-end;
   padding: 10px 12px 12px;
-  background: #eef4f8;
+  background: var(--ba-modal-bg);
+  border-top: 1px solid #dee2e6;
 }
 
 @media (max-width: 640px) {

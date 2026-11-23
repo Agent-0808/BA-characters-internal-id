@@ -1,21 +1,28 @@
 /* ===== BA 风格斜切填充按钮 =====
-   用伪元素做斜切圆角背景，文字保持水平，宽度自适应 */
+   用伪元素做斜切圆角背景，文字保持水平，无需反向斜切子元素。
+   配色 / 尺寸参考 BA-Gift-Planner 的 .btn-skew 系列。 */
 
 .ba-btn {
+  /* 底板配色，修饰符只需覆盖这两个变量 */
+  --btn-bg: var(--ba-btn-blue);
+  --btn-edge: var(--ba-btn-blue-edge);
+
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 8px 26px;
+  height: 42px;
+  padding: 0 24px;
   border: none;
   background: none;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
+  color: var(--ba-btn-text);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
   cursor: pointer;
   isolation: isolate;
-  transition: color 0.15s;
+  transition: transform 0.2s ease;
 }
 
 .ba-btn::before {
@@ -23,50 +30,94 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--gradient-accent);
-  border-radius: 10px;
-  /* 游戏风格：平行四边形 + 圆角，底部一条深色实边 */
-  transform: skewX(-10deg);
-  box-shadow: 0 2px 0 var(--ba-accent-deep);
-  transition: filter 0.15s, transform 0.15s, box-shadow 0.15s;
+  background-color: var(--btn-bg);
+  /* 两角对角线渐变，还原游戏按钮的高光 */
+  background-image:
+    linear-gradient(to bottom right, var(--btn-edge) 0%, transparent 50%),
+    linear-gradient(to top left, var(--btn-edge) 0%, transparent 50%);
+  border-radius: var(--radius-btn);
+  box-shadow: var(--ba-btn-shadow);
+  transform: skewX(var(--ba-skew));
+  transition: box-shadow 0.2s ease;
 }
 
-.ba-btn:hover::before {
-  filter: brightness(1.08);
+.ba-btn:hover {
+  transform: translateY(-2px);
 }
 
-.ba-btn:active::before {
-  transform: skewX(-10deg) translateY(2px);
-  box-shadow: none;
+/* 按下时整体轻微缩小 */
+.ba-btn:active {
+  transform: scale(0.95);
+}
+
+.ba-btn:focus-visible {
+  outline: none;
+}
+
+.ba-btn:focus-visible::before {
+  box-shadow: 0 0 0 3px rgba(18, 135, 255, 0.35), var(--ba-btn-shadow);
+}
+
+.ba-btn:disabled,
+.ba-btn.is-disabled {
+  --btn-bg: var(--ba-btn-gray);
+  --btn-edge: var(--ba-btn-gray-edge);
+  cursor: not-allowed;
+}
+
+.ba-btn:disabled:hover,
+.ba-btn:disabled:active,
+.ba-btn.is-disabled:hover,
+.ba-btn.is-disabled:active {
+  transform: none;
+}
+
+/* 黄色按钮：特殊操作 */
+.ba-btn--yellow,
+.ba-btn--accent {
+  --btn-bg: var(--ba-btn-yellow);
+  --btn-edge: var(--ba-btn-yellow-edge);
+}
+
+/* 灰色按钮：未选中的 tab、取消类操作 */
+.ba-btn--gray {
+  --btn-bg: var(--ba-btn-gray);
+  --btn-edge: var(--ba-btn-gray-edge);
 }
 
 /* 次按钮：白底蓝描边 */
 .ba-btn--ghost {
+  --btn-bg: var(--color-surface);
+  --btn-edge: transparent;
   color: var(--ba-accent-deep);
 }
 
 .ba-btn--ghost::before {
-  background: var(--color-surface);
   border: 1.5px solid var(--ba-accent);
   box-shadow: none;
 }
 
 .ba-btn--ghost:hover::before {
-  background: var(--ba-row-hover);
-  filter: none;
+  background-color: var(--ba-row-hover);
 }
 
-/* 强调按钮：黄色填充（对应游戏里的导入/特殊操作） */
-.ba-btn--accent {
-  color: #6a4a00;
+/* 方形图标按钮 */
+.ba-btn--icon {
+  width: 42px;
+  padding: 0;
 }
 
-.ba-btn--accent::before {
-  background: linear-gradient(135deg, #ffe27a, #ffcc33);
-  box-shadow: 0 2px 0 #d9a300;
+/* 导航 tab：比普通按钮矮一些 */
+.ba-btn--tab {
+  height: 36px;
+  padding: 0 20px;
+  font-size: 0.9rem;
 }
 
-.ba-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+@media (max-width: 480px) {
+  .ba-btn--tab {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 0.78rem;
+  }
 }

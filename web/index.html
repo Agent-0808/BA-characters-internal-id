@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- 全局设置按钮（固定右上角，两个视图共用） -->
-    <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置" data-i18n-attrs="title:common.settings,aria-label:common.settings"><span class="settings-icon">&#9881;&#65038;</span></button>
+    <button class="settings-btn ba-btn ba-btn--icon" id="settingsBtn" title="设置" aria-label="设置" data-i18n-attrs="title:common.settings,aria-label:common.settings"><span class="settings-icon">&#9881;&#65038;</span></button>
 
     <div class="container">
         <!-- 视图一：文件ID速查表 -->
@@ -20,8 +20,8 @@
                 <div class="header-left">
                     <h1 data-i18n="header.indexTitle">📚 蔚蓝档案角色内部ID速查表</h1>
                     <div class="nav-links">
-                        <a href="#index" class="active" data-i18n="nav.index">文件ID</a>
-                        <a href="#kivonavi" data-i18n="nav.kivonavi">KivoWiki导航</a>
+                        <a href="#index" class="ba-btn ba-btn--tab ba-btn--gray active" data-i18n="nav.index">文件ID</a>
+                        <a href="#kivonavi" class="ba-btn ba-btn--tab ba-btn--gray" data-i18n="nav.kivonavi">KivoWiki导航</a>
                     </div>
                 </div>
                 <div class="stats">
@@ -69,8 +69,8 @@
                 <div class="header-left">
                     <h1 data-i18n="header.kivoTitle">📚 KivoWiki 角色数据导航</h1>
                     <div class="nav-links">
-                        <a href="#index" data-i18n="nav.index">文件ID</a>
-                        <a href="#kivonavi" class="active" data-i18n="nav.kivonavi">KivoWiki导航</a>
+                        <a href="#index" class="ba-btn ba-btn--tab ba-btn--gray" data-i18n="nav.index">文件ID</a>
+                        <a href="#kivonavi" class="ba-btn ba-btn--tab ba-btn--gray active" data-i18n="nav.kivonavi">KivoWiki导航</a>
                     </div>
                 </div>
                 <div class="stats">
@@ -228,7 +228,7 @@
                 </div>
             </div>
             <div class="settings-footer">
-                <button class="ba-btn settings-reset" id="settingsReset" data-i18n="action.reset">恢复默认</button>
+                <button class="ba-btn ba-btn--yellow settings-reset" id="settingsReset" data-i18n="action.reset">恢复默认</button>
             </div>
         </div>
     </div>

@@ -5,12 +5,20 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-family-base);
   /* BA 风格：浅蓝渐变背景，衬托白色圆角主容器 */
   background: linear-gradient(135deg, #b9dcf5 0%, #e6f3fd 100%);
   height: 100vh;
   padding: 15px;
   overflow: hidden;
+}
+
+/* 表单控件默认不继承字体，统一跟随正文字体 */
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
 .loading {

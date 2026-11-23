@@ -7,7 +7,7 @@
   height: calc(100vh - 30px);
   margin: 0 auto;
   background: var(--color-surface);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   overflow: hidden;
   display: flex;
@@ -97,11 +97,11 @@
   min-width: 112px;
   background: var(--color-surface);
   border: 2px solid var(--ba-navy);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   box-shadow: 0 2px 8px var(--shadow-card);
   overflow: hidden;
   text-align: center;
-  transform: skewX(-6deg);
+  transform: skewX(var(--ba-skew));
 }
 
 /* 反向斜切让文字正视；加宽覆盖斜切后两侧空隙 */
@@ -109,7 +109,7 @@
 .stat-value {
   width: 120%;
   margin-left: -10%;
-  transform: skewX(6deg);
+  transform: skewX(var(--ba-skew-back));
 }
 
 .stat-label {
@@ -176,11 +176,11 @@
   min-width: 92px;
   background: var(--color-surface);
   border: 2px solid var(--ba-navy);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   box-shadow: 0 1px 4px var(--shadow-card);
   overflow: hidden;
   text-align: center;
-  transform: skewX(-6deg);
+  transform: skewX(var(--ba-skew));
 }
 
 /* 反向斜切让文字正视；加宽覆盖斜切后两侧空隙 */
@@ -188,7 +188,7 @@
 .hash-value {
   width: 120%;
   margin-left: -10%;
-  transform: skewX(6deg);
+  transform: skewX(var(--ba-skew-back));
 }
 
 .hash-label {
@@ -271,7 +271,7 @@
   }
 }
 
-/* 导航链接：BA 风格斜切填充 tab（第二层） */
+/* 导航链接：造型由 .ba-btn 系列提供（.ba-btn--tab），未选中为灰色、选中为蓝色 */
 .nav-links {
   display: flex;
   gap: 10px;
@@ -279,49 +279,19 @@
 }
 
 .nav-links a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 26px;
-  color: var(--ba-accent-deep);
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  isolation: isolate;
-  transition: color 0.15s;
 }
 
-/* 斜切圆角背景同按钮，文字保持水平 */
-.nav-links a::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--color-surface);
-  border: 1.5px solid var(--ba-accent);
-  border-radius: 9px;
-  transform: skewX(-10deg);
-  transition: background 0.15s, box-shadow 0.15s;
-}
-
-.nav-links a:hover::before {
-  background: var(--ba-row-hover);
-}
-
+/* 选中态覆盖灰色修饰符的底板配色 */
 .nav-links a.active {
-  color: #ffffff;
-}
-
-.nav-links a.active::before {
-  background: var(--gradient-accent);
-  border-color: var(--ba-accent-deep);
-  box-shadow: 0 2px 0 var(--ba-accent-deep);
+  --btn-bg: var(--ba-btn-blue);
+  --btn-edge: var(--ba-btn-blue-edge);
 }
 
 /* 窄屏（手机）进一步收紧水平留白，并保证两个视图 tab 始终一行 */
 @media (max-width: 480px) {
   .header {
-    /* 设置按钮同步缩小为 40px、右移 12px，故右侧留白由 68 收到 52 */
+    /* 设置按钮同步缩小为 42px、右移 12px，故右侧留白由 68 收到 52 */
     padding: 8px 52px 8px 12px;
   }
 
@@ -338,8 +308,6 @@
   }
 
   .nav-links a {
-    padding: 6px 12px;
-    font-size: 0.78rem;
     white-space: nowrap;
   }
 }

@@ -55,8 +55,7 @@ Steam 版的文件储存路径为`BlueArchive\BlueArchive_Data\StreamingAssets\P
 
 - 信息来自 [基沃托斯古书馆](https://kivo.wiki)，感谢
 - API用法参考：[说明](https://github.com/Agent-0808/bluearchive-api-kivowiki)（[原仓库](https://github.com/Dale233/bluearchive-api-kivowiki)）
-- 代码由AI编写
-- 网页也是AI搞的，我完全不懂前端orz
+- 网页的界面设计参考了 [BA-Gift-Planner](https://github.com/Yuuzi261/BA-Gift-Planner)（仅参考设计，未使用其代码）
 
 ### 许可协议
 

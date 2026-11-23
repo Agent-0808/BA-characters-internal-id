@@ -37,9 +37,9 @@
   cursor: pointer;
   background: var(--color-surface);
   border: 2px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   /* BA 风格斜切；子元素反向斜切补偿 */
-  transform: skewX(-6deg);
+  transform: skewX(var(--ba-skew));
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
@@ -59,8 +59,8 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  /* 反向斜切 + 轻微放大，恰好覆盖斜切后的四角（按 404:456 推算最小约 1.12） */
-  transform: skewX(6deg) scale(1.14);
+  /* 反向斜切 + 轻微放大，恰好覆盖斜切后的四角（按 404:456 与 -8deg 推算最小约 1.16） */
+  transform: skewX(var(--ba-skew-back)) scale(1.18);
 }
 
 .tile-avatar-empty {
@@ -83,7 +83,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transform: skewX(6deg) scale(1.14);
+  transform: skewX(var(--ba-skew-back)) scale(1.18);
   transform-origin: bottom center;
 }
 
@@ -98,7 +98,7 @@
   color: var(--ba-highlight);
   font-size: 11px;
   /* 角标只做反向斜切，不放大 */
-  transform: skewX(6deg);
+  transform: skewX(var(--ba-skew-back));
 }
 
 /* ---------- 展开态：整行详情面板 ---------- */
@@ -108,7 +108,7 @@
   padding: 14px;
   background: #f4f9fe;
   border: 1.5px solid var(--ba-accent-2);
-  border-radius: 12px;
+  border-radius: var(--radius-btn);
 }
 
 /* 深蓝信息头：姓名 + ID + NPC + 学校徽章 */
@@ -118,7 +118,7 @@
   gap: 10px;
   flex-wrap: wrap;
   padding: 8px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: linear-gradient(90deg, #24406b, #2f5b93);
   color: #ffffff;
 }
@@ -144,13 +144,13 @@
   padding: 3px 12px;
   /* 四边形外部轮廓跟随学校文字颜色 */
   border: 1.5px solid currentColor;
-  border-radius: 6px;
-  transform: skewX(-8deg);
+  border-radius: var(--radius-sm);
+  transform: skewX(var(--ba-skew));
 }
 
 .school-chip > span {
   display: inline-block;
-  transform: skewX(8deg);
+  transform: skewX(var(--ba-skew-back));
   font-size: 12px;
   font-weight: 500;
   /* 文字颜色跟随学校配色（由渲染时内联指定） */
@@ -163,7 +163,7 @@
   width: 18px;
   height: 18px;
   object-fit: contain;
-  transform: skewX(8deg);
+  transform: skewX(var(--ba-skew-back));
 }
 
 @media (max-width: 720px) {
@@ -184,16 +184,16 @@
 .lang-pill {
   padding: 2px 10px;
   border: 1px solid var(--color-border);
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   background: var(--color-surface);
   color: var(--ba-navy);
   font-size: 12px;
-  transform: skewX(-8deg);
+  transform: skewX(var(--ba-skew));
 }
 
 .lang-pill > span {
   display: inline-block;
-  transform: skewX(8deg);
+  transform: skewX(var(--ba-skew-back));
 }
 
 .lang-pill b {
@@ -211,7 +211,7 @@
   color: #ffffff;
   font-size: 13px;
   font-weight: 700;
-  border-radius: 5px 0 0 5px;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
   clip-path: polygon(0 0, 100% 0, calc(100% - 22px) 100%, 0 100%);
 }
 
@@ -223,7 +223,7 @@
   gap: 14px;
   padding: 10px;
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: #f7fbff;
 }
 
@@ -245,11 +245,11 @@
   overflow: hidden;
   background: var(--color-surface);
   border: 2px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   text-decoration: none;
-  /* 与学生瓦片一致：-6deg 斜切，子元素反向补偿 */
-  transform: skewX(-6deg);
+  /* 与学生瓦片一致：同一斜切角度，子元素反向补偿 */
+  transform: skewX(var(--ba-skew));
   box-shadow: 0 2px 6px var(--shadow-card);
 }
 
@@ -258,7 +258,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: skewX(6deg) scale(1.14);
+  transform: skewX(var(--ba-skew-back)) scale(1.18);
 }
 
 .page-card-empty {
@@ -281,7 +281,7 @@
   letter-spacing: 1px;
   text-align: center;
   white-space: nowrap;
-  transform: skewX(6deg) scale(1.14);
+  transform: skewX(var(--ba-skew-back)) scale(1.18);
   transform-origin: bottom center;
 }
 
@@ -296,7 +296,7 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-shadow: 0 1px 2px rgb(93, 34, 2);
-  transform: skewX(-6deg);
+  transform: skewX(var(--ba-skew));
 }
 
 .page-main {
@@ -323,7 +323,7 @@
   min-width: 150px;
   /* 两条 28px + 4px 间距 = 60px，与右侧三服状态卡等高 */
   height: 60px;
-  transform: skewX(-6deg);
+  transform: skewX(var(--ba-skew));
 }
 
 .fact {
@@ -331,7 +331,7 @@
   flex: 1;
   overflow: hidden;
   border: 1px solid var(--color-border);
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
 }
 
 .fact-key {
@@ -367,7 +367,7 @@
 /* 标签与数值文字反向斜切，保持正视 */
 .fact-key > span,
 .fact-val > span {
-  transform: skewX(6deg);
+  transform: skewX(var(--ba-skew-back));
 }
 
 /* 三服实装状态：1:2 竖长小卡，斜切为平行四边形；上半深灰底放图标，下半放 ✓/✕ */
@@ -386,8 +386,8 @@
   overflow: hidden;
   background: var(--color-surface);
   border: 1.5px solid var(--color-border);
-  border-radius: 4px;
-  transform: skewX(-6deg);
+  border-radius: var(--radius-sm);
+  transform: skewX(var(--ba-skew));
 }
 
 .server-head {
@@ -400,7 +400,7 @@
 }
 
 .server .ico {
-  transform: skewX(6deg);
+  transform: skewX(var(--ba-skew-back));
   font-size: 15px;
   line-height: 1;
 }
@@ -409,7 +409,7 @@
   display: flex;
   flex: 1;
   align-items: center;
-  transform: skewX(6deg);
+  transform: skewX(var(--ba-skew-back));
   font-size: 13px;
   font-weight: 700;
   line-height: 1;
@@ -441,15 +441,15 @@
   display: inline-flex;
   align-items: center;
   padding: 2px 10px;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-size: 0.75rem;
   font-weight: 500;
-  transform: skewX(-8deg);
+  transform: skewX(var(--ba-skew));
 }
 
 .tag > span {
   display: inline-block;
-  transform: skewX(8deg);
+  transform: skewX(var(--ba-skew-back));
 }
 
 .tag-npc {
@@ -470,19 +470,19 @@
   padding: 2px 10px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 0.8rem;
   font-family: 'Courier New', monospace;
   color: var(--ba-navy);
   text-decoration: none;
   /* 与页面行其余元素保持同一倾斜方向 */
-  transform: skewX(-6deg);
+  transform: skewX(var(--ba-skew));
 }
 
 /* 数字反向斜切，保持正视 */
 .spine-id > span {
   display: inline-block;
-  transform: skewX(6deg);
+  transform: skewX(var(--ba-skew-back));
 }
 
 a.spine-id {
