@@ -21,7 +21,7 @@
                     <h1 data-i18n="header.indexTitle">📚 蔚蓝档案角色内部ID速查表</h1>
                     <div class="nav-links">
                         <a href="#index" class="ba-btn ba-btn--tab ba-btn--gray active" data-i18n="nav.index">文件ID</a>
-                        <a href="#kivonavi" class="ba-btn ba-btn--tab ba-btn--gray" data-i18n="nav.kivonavi">KivoWiki导航</a>
+                        <a href="#studentnav" class="ba-btn ba-btn--tab ba-btn--gray" data-i18n="nav.studentnav">学生信息导航</a>
                     </div>
                 </div>
                 <div class="stats">
@@ -63,48 +63,48 @@
             </div>
         </section>
 
-        <!-- 视图二：KivoWiki 导航 -->
-        <section class="view" id="view-kivonavi" hidden>
+        <!-- 视图二：学生信息导航 -->
+        <section class="view" id="view-studentnav" hidden>
             <div class="header">
                 <div class="header-left">
-                    <h1 data-i18n="header.kivoTitle">📚 KivoWiki 角色数据导航</h1>
+                    <h1 data-i18n="header.studentNavTitle">📚 学生信息导航</h1>
                     <div class="nav-links">
                         <a href="#index" class="ba-btn ba-btn--tab ba-btn--gray" data-i18n="nav.index">文件ID</a>
-                        <a href="#kivonavi" class="ba-btn ba-btn--tab ba-btn--gray active" data-i18n="nav.kivonavi">KivoWiki导航</a>
+                        <a href="#studentnav" class="ba-btn ba-btn--tab ba-btn--gray active" data-i18n="nav.studentnav">学生信息导航</a>
                     </div>
                 </div>
                 <div class="stats">
-                    <div class="stat-item"><span class="stat-label" data-i18n="header.pageCount">页面数</span><span class="stat-value" id="kivoPageCount">-</span></div>
-                    <div class="stat-item"><span class="stat-label" data-i18n="header.studentCount">学生数</span><span class="stat-value" id="kivoTotalCount">-</span></div>
-                    <div class="stat-item"><span class="stat-label" data-i18n="header.updateTime">数据更新时间</span><span class="stat-value" id="kivoUpdateTime">-</span></div>
+                    <div class="stat-item"><span class="stat-label" data-i18n="header.pageCount">页面数</span><span class="stat-value" id="studentNavPageCount">-</span></div>
+                    <div class="stat-item"><span class="stat-label" data-i18n="header.studentCount">学生数</span><span class="stat-value" id="studentNavTotalCount">-</span></div>
+                    <div class="stat-item"><span class="stat-label" data-i18n="header.updateTime">数据更新时间</span><span class="stat-value" id="studentNavUpdateTime">-</span></div>
                 </div>
             </div>
 
             <div class="controls">
                 <div class="search-box">
-                    <input type="text" id="kivoSearchInput" placeholder="搜索名称..." data-i18n-attrs="placeholder:common.searchPlaceholder">
+                    <input type="text" id="studentNavSearchInput" placeholder="搜索名称..." data-i18n-attrs="placeholder:common.searchPlaceholder">
                 </div>
                 <!-- 学校多选筛选（与文件ID页共用样式和逻辑） -->
                 <div class="school-filter-dropdown">
-                    <button class="ba-btn school-filter-btn" id="kivoSchoolFilterBtn">
+                    <button class="ba-btn school-filter-btn" id="studentNavSchoolFilterBtn">
                         <span class="school-filter-label" data-i18n="schoolFilter.school">学校</span>
-                        <span class="school-filter-count" id="kivoSchoolFilterCount"></span>
+                        <span class="school-filter-count" id="studentNavSchoolFilterCount"></span>
                         <span class="school-filter-arrow">▼</span>
                     </button>
-                    <div class="school-filter-content" id="kivoSchoolDropdown">
+                    <div class="school-filter-content" id="studentNavSchoolDropdown">
                         <!-- 动态生成学校选项 -->
                     </div>
                 </div>
                 <div class="filter-group">
-                    <label data-i18n="kivo.install">实装:</label>
+                    <label data-i18n="studentnav.install">实装:</label>
                     <span class="select-shell">
                         <select id="installFilter">
-                            <option value="" data-i18n="kivo.installAll">全部</option>
-                            <option value="jp" data-i18n="kivo.installJp">日服</option>
-                            <option value="global" data-i18n="kivo.installGlobal">国际服</option>
-                            <option value="cn" data-i18n="kivo.installCn">国服</option>
-                            <option value="not_npc" data-i18n="kivo.installNotNpc">非NPC</option>
-                            <option value="npc" data-i18n="kivo.installNpc">NPC</option>
+                            <option value="" data-i18n="studentnav.installAll">全部</option>
+                            <option value="jp" data-i18n="studentnav.installJp">日服</option>
+                            <option value="global" data-i18n="studentnav.installGlobal">国际服</option>
+                            <option value="cn" data-i18n="studentnav.installCn">国服</option>
+                            <option value="not_npc" data-i18n="studentnav.installNotNpc">非NPC</option>
+                            <option value="npc" data-i18n="studentnav.installNpc">NPC</option>
                         </select>
                     </span>
                 </div>

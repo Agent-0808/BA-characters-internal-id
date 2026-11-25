@@ -1,4 +1,4 @@
-// 学校多选筛选下拉组件（table 与 kivonavi 共用）
+// 学校多选筛选下拉组件（table 与 studentNav 共用）
 // 封装：下拉渲染、多选状态、按钮计数、清除全部、按钮定位、点击外部关闭
 
 import { t } from '../core/i18n.js';

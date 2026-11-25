@@ -1,6 +1,6 @@
 // GoatCounter 访问统计封装：统计脚本在 index.html 中以 async 引入，并通过
 // data-goatcounter-settings 的 no_onload 关闭脚本默认的整站上报。
-// 改为在视图切换时调用 countView() 手动上报，使 #index / #kivonavi
+// 改为在视图切换时调用 countView() 手动上报，使 #index / #studentnav
 // 两个子页面在后台以不同路径区分；加载失败静默放弃，不影响页面功能
 interface GoatCounter {
   count: (vars?: { path?: string; title?: string; event?: boolean }) => void;

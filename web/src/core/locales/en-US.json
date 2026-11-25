@@ -18,13 +18,13 @@
   },
   "nav": {
     "index": "File IDs",
-    "kivonavi": "KivoWiki Navigation",
+    "studentnav": "Student Navigation",
     "docTitleIndex": "BA Characters Internal ID",
-    "docTitleKivo": "KivoWiki Navigation"
+    "docTitleStudentNav": "Student Navigation"
   },
   "header": {
     "indexTitle": "Blue Archive Characters Internal ID Database",
-    "kivoTitle": "KivoWiki Characters Navigation",
+    "studentNavTitle": "Student Navigation",
     "totalRecords": "Records",
     "studentCount": "Students",
     "pageCount": "Pages",
@@ -66,7 +66,7 @@
     "school_id": "School ID",
     "school_name": "School"
   },
-  "kivo": {
+  "studentnav": {
     "install": "Availability:",
     "installAll": "All",
     "installJp": "JP",

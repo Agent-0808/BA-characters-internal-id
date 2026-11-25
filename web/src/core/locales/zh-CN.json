@@ -18,13 +18,13 @@
   },
   "nav": {
     "index": "文件ID",
-    "kivonavi": "KivoWiki导航",
+    "studentnav": "学生信息导航",
     "docTitleIndex": "BA Characters Internal ID",
-    "docTitleKivo": "KivoWiki 导航"
+    "docTitleStudentNav": "学生信息导航"
   },
   "header": {
     "indexTitle": "蔚蓝档案角色内部ID速查表",
-    "kivoTitle": "KivoWiki 角色数据导航",
+    "studentNavTitle": "学生信息导航",
     "totalRecords": "总记录",
     "studentCount": "学生数",
     "pageCount": "页面数",
@@ -66,7 +66,7 @@
     "school_id": "学校ID",
     "school_name": "学校"
   },
-  "kivo": {
+  "studentnav": {
     "install": "实装:",
     "installAll": "全部",
     "installJp": "日服",

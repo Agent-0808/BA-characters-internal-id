@@ -317,7 +317,7 @@ function updateStats(data: StudentData[]): void {
   elements.studentCount.textContent = uniqueStudents.toString();
 }
 
-// 构建学校过滤器选项：以 schools.json 为准按 id 排序（与 kivonavi 页一致）
+// 构建学校过滤器选项：以 schools.json 为准按 id 排序（与 studentNav 页一致）
 function buildSchoolOptions(): SchoolOption[] {
   return Array.from(schoolsMap.values())
     .sort((a, b) => a.id - b.id)

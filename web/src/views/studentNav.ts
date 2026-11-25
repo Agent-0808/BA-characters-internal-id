@@ -18,16 +18,16 @@ let schoolFilter: SchoolFilter | null = null;  // 学校多选筛选组件
 
 // DOM 元素引用
 const elements = {
-  searchInput: document.getElementById('kivoSearchInput') as HTMLInputElement,
-  schoolFilterBtn: document.getElementById('kivoSchoolFilterBtn') as HTMLButtonElement,
-  schoolDropdown: document.getElementById('kivoSchoolDropdown') as HTMLDivElement,
-  schoolFilterCount: document.getElementById('kivoSchoolFilterCount') as HTMLSpanElement,
+  searchInput: document.getElementById('studentNavSearchInput') as HTMLInputElement,
+  schoolFilterBtn: document.getElementById('studentNavSchoolFilterBtn') as HTMLButtonElement,
+  schoolDropdown: document.getElementById('studentNavSchoolDropdown') as HTMLDivElement,
+  schoolFilterCount: document.getElementById('studentNavSchoolFilterCount') as HTMLSpanElement,
   installFilter: document.getElementById('installFilter') as HTMLSelectElement,
   studentsContainer: document.getElementById('studentsContainer') as HTMLDivElement,
   collapseAllBtn: document.getElementById('collapseAllBtn') as HTMLButtonElement,
-  totalCount: document.getElementById('kivoTotalCount') as HTMLDivElement,
-  pageCount: document.getElementById('kivoPageCount') as HTMLDivElement,
-  updateTime: document.getElementById('kivoUpdateTime') as HTMLDivElement,
+  totalCount: document.getElementById('studentNavTotalCount') as HTMLDivElement,
+  pageCount: document.getElementById('studentNavPageCount') as HTMLDivElement,
+  updateTime: document.getElementById('studentNavUpdateTime') as HTMLDivElement,
 };
 
 // 获取学校名称（按当前界面语言取名，见 schoolNames.ts）
@@ -87,7 +87,7 @@ function getStudentName(student: Student, showFamily: boolean): string {
 // 生成page名称：按界面语言取皮肤名，缺失时回落原始名称，再缺失显示默认页
 function getPageName(page: KivoPage): string {
   const localized = getDisplayLang() === 'en' ? page.skin_en : page.skin;
-  return localized || t('kivo.defaultPage');
+  return localized || t('studentnav.defaultPage');
 }
 
 // 生成单个 page 行：斜切头像卡（限定标记 + 星级条）+ 皮肤名 + 三服实装 + spine
@@ -101,7 +101,7 @@ function generatePageHTML(page: KivoPage, studentIsNpc: boolean): string {
   const bandText = stars || '🔒';
   // 限定是页面级属性；NPC 学生不展示
   const limitedBadge = page.limited && !studentIsNpc
-    ? `<span class="corner-badge">${t('kivo.limited')}</span>`
+    ? `<span class="corner-badge">${t('studentnav.limited')}</span>`
     : '';
 
   // 单服实装状态小卡：上半部分深灰底放图标，下半部分放 ✓/✕
@@ -114,9 +114,9 @@ function generatePageHTML(page: KivoPage, studentIsNpc: boolean): string {
   // NPC 页面不展示实装状态（NPC 属于学生级属性）
   const servers = studentIsNpc ? '' : `
     <div class="servers">
-      ${server(page.is_install, '⛩️', t('kivo.installJp'))}
-      ${server(page.is_install_global, '🌐', t('kivo.installGlobal'))}
-      ${server(page.is_install_cn, '🀄', t('kivo.installCn'))}
+      ${server(page.is_install, '⛩️', t('studentnav.installJp'))}
+      ${server(page.is_install_global, '🌐', t('studentnav.installGlobal'))}
+      ${server(page.is_install_cn, '🀄', t('studentnav.installCn'))}
     </div>
   `;
 
@@ -141,18 +141,18 @@ function generatePageHTML(page: KivoPage, studentIsNpc: boolean): string {
         <div class="page-meta">
           <div class="facts">
             <div class="fact">
-              <span class="fact-key"><span>${t('kivo.skinLabel')}</span></span>
+              <span class="fact-key"><span>${t('studentnav.skinLabel')}</span></span>
               <span class="fact-val"><span>${pageName}</span></span>
             </div>
             <div class="fact">
-              <span class="fact-key"><span>${t('kivo.pageLabel')}</span></span>
+              <span class="fact-key"><span>${t('studentnav.pageLabel')}</span></span>
               <span class="fact-val"><span>${page.page_id}</span></span>
             </div>
           </div>
           ${servers}
         </div>
         <div class="spine-line">
-          <div class="spines-list">${spinesHTML || `<span class="spine-empty">${t('kivo.none')}</span>`}</div>
+          <div class="spines-list">${spinesHTML || `<span class="spine-empty">${t('studentnav.none')}</span>`}</div>
         </div>
       </div>
     </div>
@@ -222,7 +222,7 @@ function generateStudentCard(student: Student): string {
         ${schoolChip}
       </div>
       <div class="lang-row">${generateLangPills(student)}</div>
-      <div class="section-band">${t('kivo.pagesLabel', { n: student.pages.length })}</div>
+      <div class="section-band">${t('studentnav.pagesLabel', { n: student.pages.length })}</div>
       ${student.pages.map(page => generatePageHTML(page, isNpc)).join('')}
     </div>
   `;
@@ -433,8 +433,8 @@ async function loadData(): Promise<void> {
   }
 }
 
-// 初始化 KivoWiki 导航视图（懒加载：首次切换到该视图时调用）
-export function initKivoView(): void {
+// 初始化学生信息导航视图（懒加载：首次切换到该视图时调用）
+export function initStudentNav(): void {
   // 事件监听（学校筛选按钮由共享组件绑定）
   elements.searchInput.addEventListener('input', applyFilters);
   elements.installFilter.addEventListener('change', applyFilters);

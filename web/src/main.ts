@@ -5,7 +5,7 @@ import { CONFIG, saveUiSettings } from './core/config.js';
 import { initI18n, t } from './core/i18n.js';
 import { countView } from './core/analytics.js';
 import { initTableView } from './views/table.js';
-import { initKivoView } from './views/kivonavi.js';
+import { initStudentNav } from './views/studentNav.js';
 import type { Metadata } from './core/types.js';
 
 // 容器宽度拖拽的常量（需在下方 initContainerResize() 调用前声明，避免 const TDZ 异常）
@@ -118,23 +118,23 @@ loadFooterHashes();
 // 视图注册表：首次切换到某视图时才初始化并加载数据
 const viewInits: Record<string, () => void> = {
   index: initTableView,
-  kivonavi: initKivoView,
+  studentnav: initStudentNav,
 };
 const initializedViews = new Set<string>();
 
 // 从 hash 解析当前视图（默认 index），hash 保证 URL query（如 spine_link）不丢失
 function currentView(): string {
-  return location.hash === '#kivonavi' ? 'kivonavi' : 'index';
+  return location.hash === '#studentnav' ? 'studentnav' : 'index';
 }
 
 // 切换视图可见性，并懒初始化目标视图
 function switchView(): void {
   const view = currentView();
   const indexEl = document.getElementById('view-index') as HTMLElement;
-  const kivoEl = document.getElementById('view-kivonavi') as HTMLElement;
+  const studentNavEl = document.getElementById('view-studentnav') as HTMLElement;
   indexEl.hidden = view !== 'index';
-  kivoEl.hidden = view !== 'kivonavi';
-  document.title = view === 'kivonavi' ? t('nav.docTitleKivo') : t('nav.docTitleIndex');
+  studentNavEl.hidden = view !== 'studentnav';
+  document.title = view === 'studentnav' ? t('nav.docTitleStudentNav') : t('nav.docTitleIndex');
   // 按视图上报访问统计（初始加载与 hash 切换都会经过这里）
   countView(view);
   if (!initializedViews.has(view)) {
@@ -157,7 +157,7 @@ window.addEventListener('hashchange', switchView);
 
 // 语言切换时同步更新标题
 window.addEventListener('lang-changed', () => {
-  document.title = currentView() === 'kivonavi' ? t('nav.docTitleKivo') : t('nav.docTitleIndex');
+  document.title = currentView() === 'studentnav' ? t('nav.docTitleStudentNav') : t('nav.docTitleIndex');
 });
 
 // 初始视图

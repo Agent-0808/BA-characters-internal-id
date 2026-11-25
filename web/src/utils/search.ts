@@ -1,4 +1,4 @@
-// 全局搜索的通用匹配逻辑，供 table.ts 与 kivonavi.ts 复用：
+// 全局搜索的通用匹配逻辑，供 table.ts 与 studentNav.ts 复用：
 // 查询按空白分词，各词都需命中（AND，可实现 "mika swim" 多词查询）。
 // 拉丁文本按非字母数字分词后做词前缀匹配（搜 Mika 命中 Misono Mika，
 // 不意外命中 Umika / Sumika 等词中子串）；其余文本与数字保留子串匹配。

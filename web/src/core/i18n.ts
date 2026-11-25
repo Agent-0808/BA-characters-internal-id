@@ -29,7 +29,7 @@ export async function initI18n(lang: string): Promise<void> {
   applyI18n();
 }
 
-// 翻译函数透传（params 为插值参数，如 t('kivo.spineCount', { n: 3 })）
+// 翻译函数透传（params 为插值参数，如 t('studentnav.pagesLabel', { n: 3 })）
 export function t(key: string, params?: TOptions): string {
   return i18next.t(key, params);
 }
