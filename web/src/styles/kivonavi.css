@@ -3,6 +3,8 @@
 .students-container {
   padding: 20px 30px;
   overflow-y: auto;
+  /* 始终预留滚动条空间：否则滚动条出现/消失会让可用宽度变化，auto-fill 网格的列数随之跳变，卡片大小忽大忽小 */
+  scrollbar-gutter: stable;
   flex: 1;
   min-height: 0;
 }
