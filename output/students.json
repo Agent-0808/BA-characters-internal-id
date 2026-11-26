@@ -11653,7 +11653,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%E5%85%94%E5%A5%B3%E9%83%8E%E5%AD%A6%E7%94%9F-%E7%8B%99%E5%87%BB%E6%9E%AA/avatar.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E7%9A%84%E5%85%94%E5%A5%B3%E9%83%8EA/original/BunnyGirl_SR_spr_2.png",
         "spines": [
           1582
         ],
@@ -16255,17 +16255,20 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%E4%BA%91%E7%B1%BB%E9%B9%AB%20%E7%88%B1%E7%BE%8E/original/avatar.png",
-        "spines": [],
+        "avatar": "//static.kivo.wiki/images/students/%E4%BA%91%E7%B1%BB%E9%B9%AB%20%E7%88%B1%E7%BE%8E/original/Student_Portrait_CH0339_Collection.png",
+        "spines": [
+          1925,
+          1929
+        ],
         "is_install": true,
         "is_install_cn": false,
         "is_install_global": false,
-        "rarity": 0,
+        "rarity": 3,
         "limited": false,
-        "sd_model_image": "",
-        "recollection_lobby_image": "",
-        "game_id": 0,
-        "dev_name": ""
+        "sd_model_image": "//static.kivo.wiki/images/students/%E4%BA%91%E7%B1%BB%E9%B9%AB%20%E7%88%B1%E7%BE%8E/original/EnemyInfo_CH0339.png",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E4%BA%91%E7%B1%BB%E9%B9%AB%20%E7%88%B1%E7%BE%8E/original/cropped-1795607884429.jpg",
+        "game_id": 10154,
+        "dev_name": "CH0339"
       }
     ]
   },
@@ -17399,7 +17402,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%201/original/%E3%82%B9%E3%83%9F%E3%82%AB.png",
+        "avatar": "//static.kivo.wiki/images/students/%E5%B0%8F%E6%A3%AE%20%E5%A2%A8%E5%8D%8E/original/CH0383_spr_00_0.png",
         "spines": [
           1793
         ],
@@ -17440,7 +17443,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E4%B8%89%E5%8F%89%E6%88%9F%E9%83%A8%E5%91%98A/original/Trident.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E4%B8%89%E5%8F%89%E6%88%9F%E9%83%A8%E5%91%98A/original/NP0296_spr_Idle_01_1.8717665076255754.png",
         "spines": [
           1778
         ],
@@ -17481,7 +17484,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E6%B5%B7%E7%9B%97A/original/%E6%B5%B7%E7%9B%97A.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E6%B5%B7%E7%9B%97A/original/NP0297_spr_Idle_01_1.4851999999284746.png",
         "spines": [
           1779
         ],
@@ -17648,7 +17651,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E5%B0%8F%E7%99%BE%E5%90%88/original/sayuri.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%B0%8F%E7%99%BE%E5%90%88/original/CH0371_spr_Idle_01_1.2845999999999984.png",
         "spines": [
           1847
         ],
@@ -17773,7 +17776,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E7%8E%9B%E7%90%AA%E5%A8%9C/original/makina.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E7%8E%9B%E7%90%AA%E5%A8%9C/original/CH0370_spr_Idle_01_1.5013999999999927.png",
         "spines": [
           1846
         ],
@@ -17814,7 +17817,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%E6%8A%A4%E5%AE%88%20%E4%B8%83%E6%B5%B7/original/Nanami.png",
+        "avatar": "//static.kivo.wiki/images/students/%E6%8A%A4%E5%AE%88%20%E4%B8%83%E6%B5%B7/original/CH0374_spr_Idle_01_1.2680000000000007.png",
         "spines": [
           1849
         ],
@@ -17855,7 +17858,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%E6%B5%B7%E8%B7%AF%20%E5%87%91/original/Minato.png",
+        "avatar": "//static.kivo.wiki/images/students/%E6%B5%B7%E8%B7%AF%20%E5%87%91/original/CH0342_spr_Idle_01_1.2013000000000025.png",
         "spines": [
           1841
         ],
@@ -17896,7 +17899,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%E7%81%AF%E4%B8%8B%20%E4%BA%9A%E7%BE%8E/original/Ami.png",
+        "avatar": "//static.kivo.wiki/images/students/%E7%81%AF%E4%B8%8B%20%E7%88%B1%E6%B5%B7/original/CH0343_spr_Idle_01_1.4682999999999866.png",
         "spines": [
           1842
         ],
@@ -17937,7 +17940,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%E8%88%B9%E5%AE%88%20%E6%97%A9%E8%8B%97/original/Sanae.png",
+        "avatar": "//static.kivo.wiki/images/students/%E8%88%B9%E5%AE%88%20%E6%97%A9%E8%8B%97/original/CH0350_spr_Idle_01_2.3857000000000035.png",
         "spines": [
           1843
         ],
@@ -17978,7 +17981,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%E5%8D%83%E7%9F%B3%20%E7%BE%8E%E6%9C%88/original/Mitsuki.png",
+        "avatar": "//static.kivo.wiki/images/students/%E5%8D%83%E7%9F%B3%20%E4%B8%89%E6%9C%88/original/CH0372_spr_Idle_01_1.134300000000002.png",
         "spines": [
           1848
         ],
@@ -18019,7 +18022,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FA/original/OdesseyStuA.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FA/original/NP0259_spr_Idle_01_0.8709665076732618.png",
         "spines": [
           1850
         ],
@@ -18060,7 +18063,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FB/original/OdesseyStuB.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FB/original/NP0260_spr_Idle_01_1.1345999999046328.png",
         "spines": [
           1851
         ],
@@ -18101,7 +18104,7 @@
         "skin_en": "",
         "skin_tw": "",
         "skin_cn": "",
-        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FC/original/OdesseyStuC.png",
+        "avatar": "//static.kivo.wiki/images/students/%20%E5%A5%A5%E5%BE%B7%E8%B5%9B%E5%AD%A6%E7%94%9FC/original/NP0309_spr_Idle_01_1.2848000000715258.png",
         "spines": [
           1852
         ],
@@ -18441,6 +18444,171 @@
         "recollection_lobby_image": "",
         "game_id": 0,
         "dev_name": ""
+      }
+    ]
+  },
+  {
+    "id": 649,
+    "family_name": "云林院",
+    "given_name": "丽",
+    "family_name_jp": "雲林院",
+    "given_name_jp": "ウララ",
+    "family_name_kr": "운린인",
+    "given_name_kr": "우라라",
+    "family_name_en": "Unrinin",
+    "given_name_en": "Urara",
+    "family_name_tw": "",
+    "given_name_tw": "",
+    "family_name_cn": "",
+    "given_name_cn": "",
+    "school_id": 14,
+    "is_npc": false,
+    "pages": [
+      {
+        "page_id": 649,
+        "skin": "",
+        "skin_jp": "",
+        "skin_kr": "",
+        "skin_en": "",
+        "skin_tw": "",
+        "skin_cn": "",
+        "avatar": "//static.kivo.wiki/images/students/%E4%BA%91%E6%9E%97%E9%99%A2%20%E4%B8%BD/original/Student_Portrait_CH0340_Collection.png",
+        "spines": [
+          1926,
+          1928
+        ],
+        "is_install": true,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "rarity": 3,
+        "limited": false,
+        "sd_model_image": "//static.kivo.wiki/images/students/%E4%BA%91%E6%9E%97%E9%99%A2%20%E4%B8%BD/original/EnemyInfo_CH0340.png",
+        "recollection_lobby_image": "//static.kivo.wiki/images/students/%E4%BA%91%E6%9E%97%E9%99%A2%20%E4%B8%BD/original/CH0340_home.jpg",
+        "game_id": 20064,
+        "dev_name": "CH0340"
+      }
+    ]
+  },
+  {
+    "id": 650,
+    "family_name": "久远寺",
+    "given_name": "卡农",
+    "family_name_jp": "久遠寺",
+    "given_name_jp": "カノン",
+    "family_name_kr": "쿠온지",
+    "given_name_kr": "카논",
+    "family_name_en": "",
+    "given_name_en": "",
+    "family_name_tw": "",
+    "given_name_tw": "",
+    "family_name_cn": "",
+    "given_name_cn": "",
+    "school_id": 14,
+    "is_npc": false,
+    "pages": [
+      {
+        "page_id": 650,
+        "skin": "",
+        "skin_jp": "",
+        "skin_kr": "",
+        "skin_en": "",
+        "skin_tw": "",
+        "skin_cn": "",
+        "avatar": "//static.kivo.wiki/images/students/%E4%B9%85%E8%BF%9C%E5%AF%BA%20%E5%8D%A1%E5%86%9C/original/CH0341_spr_Idle_01_1.9023999999999026.png",
+        "spines": [
+          1927
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "rarity": 0,
+        "limited": false,
+        "sd_model_image": "",
+        "recollection_lobby_image": "",
+        "game_id": 0,
+        "dev_name": "CH0341"
+      }
+    ]
+  },
+  {
+    "id": 651,
+    "family_name": "小城",
+    "given_name": "小夜",
+    "family_name_jp": "小城",
+    "given_name_jp": "サヨ",
+    "family_name_kr": "코지로",
+    "given_name_kr": "사요",
+    "family_name_en": "",
+    "given_name_en": "",
+    "family_name_tw": "",
+    "given_name_tw": "",
+    "family_name_cn": "",
+    "given_name_cn": "",
+    "school_id": 14,
+    "is_npc": false,
+    "pages": [
+      {
+        "page_id": 651,
+        "skin": "",
+        "skin_jp": "",
+        "skin_kr": "",
+        "skin_en": "",
+        "skin_tw": "",
+        "skin_cn": "",
+        "avatar": "//static.kivo.wiki/images/students/%E5%B0%8F%E5%9F%8E%20%E5%B0%8F%E5%A4%9C/original/CH0315_spr_Idle_01_1.8470665077209247.png",
+        "spines": [
+          1923
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "rarity": 0,
+        "limited": false,
+        "sd_model_image": "",
+        "recollection_lobby_image": "",
+        "game_id": 0,
+        "dev_name": "CH0315"
+      }
+    ]
+  },
+  {
+    "id": 652,
+    "family_name": "初田",
+    "given_name": "飞鸟",
+    "family_name_jp": "初田",
+    "given_name_jp": "アスカ",
+    "family_name_kr": "핫타",
+    "given_name_kr": "아스카",
+    "family_name_en": "",
+    "given_name_en": "",
+    "family_name_tw": "",
+    "given_name_tw": "",
+    "family_name_cn": "",
+    "given_name_cn": "",
+    "school_id": 24,
+    "is_npc": false,
+    "pages": [
+      {
+        "page_id": 652,
+        "skin": "",
+        "skin_jp": "",
+        "skin_kr": "",
+        "skin_en": "",
+        "skin_tw": "",
+        "skin_cn": "",
+        "avatar": "//static.kivo.wiki/images/students/%E5%88%9D%E7%94%B0%20%E9%A3%9E%E9%B8%9F/original/asuka.png",
+        "spines": [
+          1924
+        ],
+        "is_install": false,
+        "is_install_cn": false,
+        "is_install_global": false,
+        "rarity": 0,
+        "limited": false,
+        "sd_model_image": "//static.kivo.wiki/images/students/%20%E6%8B%9C%E9%87%91%E6%8E%AE%E5%AE%A2/original/EnemyInfo_CH0338_Enemy.png",
+        "recollection_lobby_image": "",
+        "game_id": 0,
+        "dev_name": "CH0338"
       }
     ]
   }
