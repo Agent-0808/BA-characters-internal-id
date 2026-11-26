@@ -7168,5 +7168,47 @@
     "name": "CH0380_spr",
     "remark": "初始立绘",
     "type": "spr"
+  },
+  {
+    "id": 1923,
+    "name": "CH0315_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1924,
+    "name": "CH0338_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1925,
+    "name": "CH0339_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1926,
+    "name": "CH0340_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1927,
+    "name": "CH0341_spr",
+    "remark": "初始立绘",
+    "type": "spr"
+  },
+  {
+    "id": 1928,
+    "name": "CH0340_home",
+    "remark": "",
+    "type": "home"
+  },
+  {
+    "id": 1929,
+    "name": "CH0339_home",
+    "remark": "",
+    "type": "home"
   }
 ]
