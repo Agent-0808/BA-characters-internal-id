@@ -273,6 +273,11 @@ jobs:
           # zip 内统一命名为 LICENSE-DATA.txt，与 Pages 的 data/ 目录保持一致
           cp LICENSE-DATA release_assets/LICENSE-DATA.txt
 
+          # 缓存包：完整 cache/ 目录，供需要数据源额外字段（如年龄、身高）的下游项目自行处理
+          # 内容为爬虫内部缓存，结构与字段可能随版本变化，不视为稳定契约
+          zip -q -r release_assets/cache.zip cache
+          ls -lh release_assets/cache.zip
+
           # 查询推送后的 data 分支 commit hash（branches API 的字段为 commit.sha）
           DATA_COMMIT_HASH=$(gh api "repos/$GITHUB_REPOSITORY/branches/data" --jq '.commit.sha' 2>/dev/null || echo "unknown")
 
@@ -313,6 +318,7 @@ jobs:
             output/spines.json
             release_assets/skin_map.json
             release_assets/BA-Characters-Internal-ID.zip
+            release_assets/cache.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -55,6 +55,9 @@ jobs:
             if [ -d "output" ]; then
               cp -r output/* web/public/data/
             fi
+
+            # 缓存目录：仅用于打包缓存 zip 供下游下载，不复制到 data/ 根目录
+            git checkout origin/data -- cache/ 2>/dev/null || true
           fi
 
           # 皮肤译名词表以 main 分支最新版本为准（数据分支的副本可能滞后于词表更新）
@@ -101,6 +104,18 @@ jobs:
           zip -q BA-Characters-Internal-ID.zip students.json spines.json students_data.csv skipped_ids.csv skin_map.json LICENSE-DATA.txt metadata.json
           echo "数据 zip 打包完成："
           ls -lh BA-Characters-Internal-ID.zip
+
+      # 打包缓存 zip：完整 cache 目录，供需要数据源额外字段的下游项目自行下载
+      # 内容为爬虫内部缓存，结构与字段可能随版本变化，不视为稳定契约
+      - name: 打包缓存 zip
+        run: |
+          if [ -d "cache" ]; then
+            zip -q -r web/public/data/cache.zip cache
+            echo "缓存 zip 打包完成："
+            ls -lh web/public/data/cache.zip
+          else
+            echo "未获取到 cache 目录，跳过缓存包"
+          fi
 
       - name: 构建项目
         working-directory: ./web
