@@ -16200,8 +16200,8 @@
     "given_name_en": "Miyo",
     "family_name_tw": "櫻井",
     "given_name_tw": "美代",
-    "family_name_cn": "",
-    "given_name_cn": "",
+    "family_name_cn": "樱井",
+    "given_name_cn": "美代",
     "school_id": 14,
     "is_npc": false,
     "pages": [
@@ -16233,7 +16233,7 @@
   {
     "id": 555,
     "family_name": "云类鹫",
-    "given_name": "爱美",
+    "given_name": "学美",
     "family_name_jp": "雲類鷲",
     "given_name_jp": "マナミ",
     "family_name_kr": "우루와시",
